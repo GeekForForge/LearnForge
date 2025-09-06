@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { CheckCircle, Youtube, ExternalLink } from 'lucide-react';
+import { CheckCircle, ExternalLink } from 'lucide-react';
 import LessonSidebar from '../components/LessonSidebar';
 import ResourceCard from '../components/ResourceCard';
+import VideoPlayer from '../components/VideoPlayer';
 
 const CourseDetailPage = ({ setCurrentPage }) => {
   const { id } = useParams();
@@ -135,6 +136,35 @@ const CourseDetailPage = ({ setCurrentPage }) => {
     }
   };
 
+  // Video tracking handlers - ready for backend integration
+  const handleVideoPlay = (lessonId) => {
+    console.log(`Video played - Lesson ${lessonId}`);
+    // TODO: POST /api/progress/play
+    // fetch('/api/progress/play', {
+    //   method: 'POST',
+    //   headers: { 'Content-Type': 'application/json' },
+    //   body: JSON.stringify({ lessonId, event: 'PLAY', timestamp: Date.now() })
+    // });
+  };
+
+  const handleVideoPause = (lessonId) => {
+    console.log(`Video paused - Lesson ${lessonId}`);
+    // TODO: POST /api/progress/pause
+  };
+
+  const handleVideoEnd = (lessonId) => {
+    console.log(`Video completed - Lesson ${lessonId}`);
+    // TODO: POST /api/progress/complete
+    // Automatically mark lesson as complete when video ends
+    markLessonComplete();
+  };
+
+  const handleVideoStateChange = (lessonId, state) => {
+    console.log(`Video state changed - Lesson ${lessonId}, State: ${state}`);
+    // TODO: POST /api/progress/state
+    // Track seek events, buffering, etc.
+  };
+
   if (!course) {
     return (
       <div className="min-h-screen pt-24 flex items-center justify-center">
@@ -233,17 +263,14 @@ const CourseDetailPage = ({ setCurrentPage }) => {
                 {/* Video Player */}
                 {currentLesson.type === 'video' && (
                   <div className="mb-8">
-                    <div className="relative bg-black rounded-xl overflow-hidden shadow-2xl">
-                      <div className="aspect-video">
-                        <iframe
-                          src={`https://www.youtube.com/embed/${currentLesson.videoId}?rel=0&modestbranding=1`}
-                          title={currentLesson.title}
-                          className="w-full h-full"
-                          allowFullScreen
-                          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                        />
-                      </div>
-                    </div>
+                    <VideoPlayer
+                      videoUrl={`https://www.youtube.com/watch?v=${currentLesson.videoId}`}
+                      lessonId={currentLesson.id}
+                      onPlay={handleVideoPlay}
+                      onPause={handleVideoPause}
+                      onEnd={handleVideoEnd}
+                      onStateChange={handleVideoStateChange}
+                    />
                   </div>
                 )}
 
