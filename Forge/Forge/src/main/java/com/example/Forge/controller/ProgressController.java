@@ -1,5 +1,6 @@
 package com.example.Forge.controller;
 
+import com.example.Forge.entity.LessonProgress;
 import com.example.Forge.entity.Progress;
 import com.example.Forge.service.ProgressService;
 import org.springframework.http.ResponseEntity;
@@ -23,4 +24,6 @@ public class ProgressController {
         Progress saved = progSvc.recordProgress(userId, courseId, completedLessons);
         return ResponseEntity.ok(saved);
     }
+
+
 }

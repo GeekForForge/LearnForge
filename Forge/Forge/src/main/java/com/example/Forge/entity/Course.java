@@ -1,5 +1,6 @@
 package com.example.Forge.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
@@ -37,10 +38,12 @@ public class Course {
 
     // One-to-Many relationship with Lessons
     @OneToMany(mappedBy = "course", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JsonIgnore
     private List<Lesson> lessons = new ArrayList<>();
 
     // One-to-Many relationship with Progress
     @OneToMany(mappedBy = "course", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JsonIgnore
     private List<Progress> progressList = new ArrayList<>();
 
     // Constructors

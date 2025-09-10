@@ -3,12 +3,12 @@ package com.example.Forge.controller;
 import com.example.Forge.entity.Course;
 import com.example.Forge.service.CourseService;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.access.prepost.PreAuthorize;
+//import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/admin/courses")
-@PreAuthorize("hasRole('ADMIN')") // Spring Security annotation
+//@PreAuthorize("hasRole('ADMIN')") // Spring Security annotation
 public class AdminCourseController {
 private CourseService courseSvc;
 public AdminCourseController(CourseService courseSvc) {

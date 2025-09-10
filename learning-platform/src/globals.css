@@ -1,3 +1,47 @@
+@import 'lenis/dist/lenis.css';
+
+html.lenis, html.lenis body { height: auto; }
+.lenis.lenis-smooth { scroll-behavior: auto !important; }
+.lenis.lenis-smooth [data-lenis-prevent] { overscroll-behavior: contain; }
+.lenis-prevent { overscroll-behavior: contain; }
+/* Add to your globals.css */
+
+/* YouTube iframe specific fixes */
+iframe[src*="youtube.com"] {
+  pointer-events: auto !important;
+  position: relative;
+  z-index: 10;
+}
+
+/* Prevent smooth scroll interference with videos */
+.video-container {
+  transform: translateZ(0);
+  isolation: isolate;
+  will-change: auto;
+}
+
+/* Ensure video controls are clickable */
+.video-container iframe,
+.video-container embed,
+.video-container object {
+  pointer-events: auto;
+  user-select: auto;
+}
+/* Add to globals.css for even better video sizing */
+.video-responsive {
+  position: relative;
+  width: 100%;
+  max-width: 1200px; /* Maximum width */
+  margin: 0 auto;
+}
+
+@media (max-width: 768px) {
+  .video-responsive {
+    margin: 0 -1rem; /* Full width on mobile */
+  }
+}
+
+
 :root {
   /* Primitive Color Tokens */
   --color-white: rgba(255, 255, 255, 1);

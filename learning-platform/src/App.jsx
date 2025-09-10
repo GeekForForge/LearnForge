@@ -17,6 +17,7 @@ import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import DynamicCursor from './components/DynamicCursor';
 import ParticleBackground from './components/ParticleBackground';
+import SmoothScrolling from './components/SmoothScrolling';
 
 function App() {
   const [currentPage, setCurrentPage] = useState('home');
@@ -74,68 +75,70 @@ function App() {
 
   return (
     <Router>
-      <div className="App min-h-screen bg-dark-900 text-white overflow-hidden">
-        {/* Global Particle Background */}
-        <ParticleBackground />
-        
-        {/* Dynamic Cursor */}
-        <DynamicCursor />
-        
-        {/* Navigation */}
-        <Navbar 
-          currentPage={currentPage} 
-          setCurrentPage={setCurrentPage}
-          isAuthenticated={isAuthenticated}
-          setIsAuthenticated={setIsAuthenticated}
-        />
-        
-        {/* Main Content */}
-        <AnimatePresence mode="wait">
-          <motion.div
-            key={currentPage}
-            initial="initial"
-            animate="in"
-            exit="out"
-            variants={pageVariants}
-            transition={pageTransition}
-            className="relative z-10"
-          >
-            <Routes>
-              <Route 
-                path="/" 
-                element={<LandingPage setCurrentPage={setCurrentPage} />} 
-              />
-              <Route 
-                path="/courses" 
-                element={<CoursesPage setCurrentPage={setCurrentPage} />} 
-              />
-              <Route 
-                path="/course/:id" 
-                element={<CourseDetailPage setCurrentPage={setCurrentPage} />} 
-              />
-              <Route 
-                path="/profile" 
-                element={<ProfilePage setCurrentPage={setCurrentPage} />} 
-              />
-              <Route 
-                path="/login" 
-                element={<LoginPage setCurrentPage={setCurrentPage} />} 
-              />
-              <Route 
-                path="/signup" 
-                element={<SignUpPage setCurrentPage={setCurrentPage} />} 
-              />
-              <Route 
-                path="/settings" 
-                element={<SettingsPage setCurrentPage={setCurrentPage} />} 
-              />
-            </Routes>
-          </motion.div>
-        </AnimatePresence>
-        
-        {/* Footer */}
-        <Footer />
-      </div>
+      <SmoothScrolling>
+        <div className="App min-h-screen bg-dark-900 text-white overflow-hidden">
+          {/* Global Particle Background */}
+          <ParticleBackground />
+          
+          {/* Dynamic Cursor */}
+          <DynamicCursor />
+          
+          {/* Navigation */}
+          <Navbar 
+            currentPage={currentPage} 
+            setCurrentPage={setCurrentPage}
+            isAuthenticated={isAuthenticated}
+            setIsAuthenticated={setIsAuthenticated}
+          />
+          
+          {/* Main Content */}
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={currentPage}
+              initial="initial"
+              animate="in"
+              exit="out"
+              variants={pageVariants}
+              transition={pageTransition}
+              className="relative z-10"
+            >
+              <Routes>
+                <Route 
+                  path="/" 
+                  element={<LandingPage setCurrentPage={setCurrentPage} />} 
+                />
+                <Route 
+                  path="/courses" 
+                  element={<CoursesPage setCurrentPage={setCurrentPage} />} 
+                />
+                <Route 
+                  path="/course/:id" 
+                  element={<CourseDetailPage setCurrentPage={setCurrentPage} />} 
+                />
+                <Route 
+                  path="/profile" 
+                  element={<ProfilePage setCurrentPage={setCurrentPage} />} 
+                />
+                <Route 
+                  path="/login" 
+                  element={<LoginPage setCurrentPage={setCurrentPage} />} 
+                />
+                <Route 
+                  path="/signup" 
+                  element={<SignUpPage setCurrentPage={setCurrentPage} />} 
+                />
+                <Route 
+                  path="/settings" 
+                  element={<SettingsPage setCurrentPage={setCurrentPage} />} 
+                />
+              </Routes>
+            </motion.div>
+          </AnimatePresence>
+          
+          {/* Footer */}
+          <Footer />
+        </div>
+      </SmoothScrolling>
     </Router>
   );
 }

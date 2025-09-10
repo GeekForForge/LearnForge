@@ -5,117 +5,136 @@ import { CheckCircle, ExternalLink } from 'lucide-react';
 import LessonSidebar from '../components/LessonSidebar';
 import ResourceCard from '../components/ResourceCard';
 import VideoPlayer from '../components/VideoPlayer';
+import ApiService from '../services/api';
 
 const CourseDetailPage = ({ setCurrentPage }) => {
   const { id } = useParams();
   const [currentLesson, setCurrentLesson] = useState(null);
   const [course, setCourse] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     setCurrentPage('course-detail');
     
-    // Sample course data - in real app, fetch from API
-    const courseData = {
-      id: parseInt(id),
-      title: 'Data Structures & Algorithms in Java',
-      description: 'Master the fundamentals of DSA with Java. From basic arrays to advanced graph algorithms, build a solid foundation for technical interviews.',
-      difficulty: 'Intermediate',
-      duration: '12 weeks',
-      students: 25300,
-      rating: 4.9,
-      instructor: 'Sarah Chen',
-      lessons: [
-        {
-          id: 1,
-          title: 'Introduction to DSA',
-          duration: '15 min',
-          type: 'video',
-          completed: true,
-          sectionId: '1',
-          sectionName: 'Getting Started',
-          videoId: 'dQw4w9WgXcQ', // Sample YouTube ID
-          resources: [
+    const fetchCourse = async () => {
+      try {
+        setLoading(true);
+        console.log('Fetching course with ID:', id);
+        
+        // Fetch real course data from backend
+        const courseData = await ApiService.getCourseById(id);
+        console.log('Fetched course data:', courseData);
+        
+        // Add mock lessons since backend might not have them yet
+        const courseWithLessons = {
+          ...courseData,
+          lessons: [
             {
               id: 1,
-              title: 'DSA Cheat Sheet',
-              type: 'article',
-              url: 'https://example.com/cheatsheet',
-              description: 'Comprehensive reference for all data structures'
+              title: 'Introduction to DSA',
+              duration: '15 min',
+              type: 'video',
+              completed: false,
+              sectionId: '1',
+              sectionName: 'Getting Started',
+              videoId: 'dQw4w9WgXcQ',
+              resources: [
+                {
+                  id: 1,
+                  title: 'DSA Cheat Sheet',
+                  type: 'article',
+                  url: 'https://example.com/cheatsheet',
+                  description: 'Comprehensive reference for all data structures'
+                },
+                {
+                  id: 2,
+                  title: 'Setup Java Development Environment',
+                  type: 'github',
+                  url: 'https://github.com/example/java-setup',
+                  description: 'Step-by-step guide to setup your coding environment'
+                }
+              ]
             },
             {
               id: 2,
-              title: 'Setup Java Development Environment',
-              type: 'github',
-              url: 'https://github.com/example/java-setup',
-              description: 'Step-by-step guide to setup your coding environment'
-            }
-          ]
-        },
-        {
-          id: 2,
-          title: 'Arrays and Strings',
-          duration: '25 min',
-          type: 'video',
-          completed: true,
-          sectionId: '1',
-          sectionName: 'Getting Started',
-          videoId: 'dQw4w9WgXcQ',
-          resources: [
+              title: 'Arrays and Strings',
+              duration: '25 min',
+              type: 'video',
+              completed: false,
+              sectionId: '1',
+              sectionName: 'Getting Started',
+              videoId: 'dQw4w9WgXcQ',
+              resources: [
+                {
+                  id: 3,
+                  title: 'Array Manipulation Practice',
+                  type: 'github',
+                  url: 'https://github.com/example/array-practice',
+                  description: 'Collection of array problems with solutions'
+                }
+              ]
+            },
             {
               id: 3,
-              title: 'Array Manipulation Practice',
-              type: 'github',
-              url: 'https://github.com/example/array-practice',
-              description: 'Collection of array problems with solutions'
-            }
-          ]
-        },
-        {
-          id: 3,
-          title: 'Linked Lists Fundamentals',
-          duration: '30 min',
-          type: 'video',
-          completed: false,
-          sectionId: '2',
-          sectionName: 'Linear Data Structures',
-          videoId: 'dQw4w9WgXcQ',
-          resources: [
+              title: 'Linked Lists Fundamentals',
+              duration: '30 min',
+              type: 'video',
+              completed: false,
+              sectionId: '2',
+              sectionName: 'Linear Data Structures',
+              videoId: 'dQw4w9WgXcQ',
+              resources: [
+                {
+                  id: 4,
+                  title: 'Visualizing Linked Lists',
+                  type: 'article',
+                  url: 'https://example.com/linkedlist-viz',
+                  description: 'Interactive visualization of linked list operations'
+                }
+              ]
+            },
             {
               id: 4,
-              title: 'Visualizing Linked Lists',
-              type: 'article',
-              url: 'https://example.com/linkedlist-viz',
-              description: 'Interactive visualization of linked list operations'
+              title: 'Stacks and Queues',
+              duration: '28 min',
+              type: 'video',
+              completed: false,
+              sectionId: '2',
+              sectionName: 'Linear Data Structures',
+              videoId: 'dQw4w9WgXcQ',
+              resources: []
+            },
+            {
+              id: 5,
+              title: 'Trees and Binary Trees',
+              duration: '35 min',
+              type: 'video',
+              completed: false,
+              sectionId: '3',
+              sectionName: 'Tree Data Structures',
+              videoId: 'dQw4w9WgXcQ',
+              resources: []
             }
-          ]
-        },
-        {
-          id: 4,
-          title: 'Stacks and Queues',
-          duration: '28 min',
-          type: 'video',
-          completed: false,
-          sectionId: '2',
-          sectionName: 'Linear Data Structures',
-          videoId: 'dQw4w9WgXcQ',
-          resources: []
-        },
-        {
-          id: 5,
-          title: 'Trees and Binary Trees',
-          duration: '35 min',
-          type: 'video',
-          completed: false,
-          sectionId: '3',
-          sectionName: 'Tree Data Structures',
-          videoId: 'dQw4w9WgXcQ',
-          resources: []
-        }
-      ]
+          ],
+          instructor: 'Sarah Chen',
+          duration: '12 weeks',
+          students: 25300,
+          rating: 4.9
+        };
+        
+        setCourse(courseWithLessons);
+        setCurrentLesson(courseWithLessons.lessons[0]);
+        
+      } catch (error) {
+        console.error('Error fetching course:', error);
+        setError('Failed to load course');
+      } finally {
+        setLoading(false);
+      }
     };
-    
-    setCourse(courseData);
-    setCurrentLesson(courseData.lessons[0]);
+
+    fetchCourse();
   }, [id, setCurrentPage]);
 
   const handleLessonSelect = (lesson) => {
@@ -136,41 +155,40 @@ const CourseDetailPage = ({ setCurrentPage }) => {
     }
   };
 
-  // Video tracking handlers - ready for backend integration
   const handleVideoPlay = (lessonId) => {
     console.log(`Video played - Lesson ${lessonId}`);
-    // TODO: POST /api/progress/play
-    // fetch('/api/progress/play', {
-    //   method: 'POST',
-    //   headers: { 'Content-Type': 'application/json' },
-    //   body: JSON.stringify({ lessonId, event: 'PLAY', timestamp: Date.now() })
-    // });
   };
 
   const handleVideoPause = (lessonId) => {
     console.log(`Video paused - Lesson ${lessonId}`);
-    // TODO: POST /api/progress/pause
   };
 
   const handleVideoEnd = (lessonId) => {
     console.log(`Video completed - Lesson ${lessonId}`);
-    // TODO: POST /api/progress/complete
-    // Automatically mark lesson as complete when video ends
     markLessonComplete();
   };
 
   const handleVideoStateChange = (lessonId, state) => {
     console.log(`Video state changed - Lesson ${lessonId}, State: ${state}`);
-    // TODO: POST /api/progress/state
-    // Track seek events, buffering, etc.
   };
 
-  if (!course) {
+  if (loading) {
     return (
       <div className="min-h-screen pt-24 flex items-center justify-center">
         <div className="text-center">
           <div className="w-12 h-12 border-2 border-neon-purple border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
           <p className="text-gray-400">Loading course...</p>
+        </div>
+      </div>
+    );
+  }
+
+  if (error || !course) {
+    return (
+      <div className="min-h-screen pt-24 flex items-center justify-center">
+        <div className="text-center">
+          <h2 className="text-2xl font-bold text-white mb-4">Course Not Found</h2>
+          <p className="text-gray-400">{error || 'The requested course could not be found.'}</p>
         </div>
       </div>
     );
@@ -187,15 +205,16 @@ const CourseDetailPage = ({ setCurrentPage }) => {
             transition={{ duration: 0.6 }}
           >
             <h1 className="text-3xl md:text-4xl font-orbitron font-bold text-white mb-4">
-              {course.title}
+              {course.courseTitle}
             </h1>
             <p className="text-gray-300 mb-4 max-w-3xl">
-              {course.description}
+              {course.courseDescription}
             </p>
             <div className="flex flex-wrap items-center gap-6 text-sm text-gray-400">
+              <span>Category: <span className="text-neon-cyan">{course.category}</span></span>
               <span>Instructor: <span className="text-neon-cyan">{course.instructor}</span></span>
               <span>{course.duration}</span>
-              <span>{course.students.toLocaleString()} students</span>
+              <span>{course.students?.toLocaleString()} students</span>
               <span>⭐ {course.rating}</span>
             </div>
           </motion.div>
@@ -203,9 +222,9 @@ const CourseDetailPage = ({ setCurrentPage }) => {
       </div>
 
       {/* Main Content */}
-      <div className="flex h-screen">
+      <div className="flex min-h-screen">
         {/* Sidebar */}
-        <div className="w-80 flex-shrink-0">
+        <div className="w-72 flex-shrink-0 bg-dark-800/50 border-r border-white/10">
           <LessonSidebar
             lessons={course.lessons}
             currentLesson={currentLesson}
@@ -214,8 +233,8 @@ const CourseDetailPage = ({ setCurrentPage }) => {
         </div>
 
         {/* Main Content Area */}
-        <div className="flex-1 overflow-auto">
-          <div className="p-8">
+        <div className="flex-1 bg-dark-900">
+          <div className="max-w-6xl mx-auto px-8 py-8">
             {currentLesson && (
               <motion.div
                 key={currentLesson.id}
@@ -263,14 +282,16 @@ const CourseDetailPage = ({ setCurrentPage }) => {
                 {/* Video Player */}
                 {currentLesson.type === 'video' && (
                   <div className="mb-8">
-                    <VideoPlayer
-                      videoUrl={`https://www.youtube.com/watch?v=${currentLesson.videoId}`}
-                      lessonId={currentLesson.id}
-                      onPlay={handleVideoPlay}
-                      onPause={handleVideoPause}
-                      onEnd={handleVideoEnd}
-                      onStateChange={handleVideoStateChange}
-                    />
+                    <div className="w-full" style={{ maxWidth: '1000px' }}>
+                      <VideoPlayer
+                        videoUrl={`https://www.youtube.com/watch?v=${currentLesson?.videoId}`}
+                        lessonId={currentLesson?.id}
+                        onPlay={handleVideoPlay}
+                        onPause={handleVideoPause}
+                        onEnd={handleVideoEnd}
+                        onStateChange={handleVideoStateChange}
+                      />
+                    </div>
                   </div>
                 )}
 
@@ -282,7 +303,7 @@ const CourseDetailPage = ({ setCurrentPage }) => {
                       <span>Resources & Links</span>
                     </h3>
                     
-                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
+                    <div className="grid grid-cols-1 xl:grid-cols-2 gap-6">
                       {currentLesson.resources.map((resource, index) => (
                         <ResourceCard
                           key={resource.id}
