@@ -56,6 +56,27 @@ class ApiService {
     const response = await fetch(`${API_BASE_URL}/progress/users/${userId}/dashboard`);
     return response.json();
   }
+   async getCurrentUser() {
+    const response = await fetch(`${API_BASE_URL}/auth/user`, {
+      method: 'GET',
+      credentials: 'include',
+      headers: {
+        'Content-Type': 'application/json',
+      }
+    });
+    return response.json();
+  }
+
+  async logout() {
+    const response = await fetch(`${API_BASE_URL}/auth/logout`, {
+      method: 'POST',
+      credentials: 'include',
+      headers: {
+        'Content-Type': 'application/json',
+      }
+    });
+    return response.ok;
+  }
 }
 
 export default new ApiService();

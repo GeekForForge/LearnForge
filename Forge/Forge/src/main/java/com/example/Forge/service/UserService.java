@@ -26,7 +26,8 @@ public class UserService {
     }
 
     public Optional<User> getById(String userId) {
-        return userRepo.findByIdWithProgress(userId);
+//        return userRepo.findByIdWithProgress(userId);
+        return null;
     }
 
     public User updateProfile(User user) {

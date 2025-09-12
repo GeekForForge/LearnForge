@@ -49,4 +49,10 @@ CREATE TABLE lesson_progress (
     FOREIGN KEY (lesson_id) REFERENCES lessons(lesson_id) ON DELETE CASCADE,
     UNIQUE KEY unique_user_lesson (user_id, lesson_id)
 );
-select * from lesson_progress;
+UPDATE lessons
+SET video_url = 'https://youtu.be/qcQKq4XABNk'
+WHERE lesson_id = 1;
+ALTER TABLE users 
+ADD COLUMN avatar_url VARCHAR(255),
+ADD COLUMN provider_id VARCHAR(100);
+select * from users;
