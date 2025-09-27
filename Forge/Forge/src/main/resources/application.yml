@@ -1,36 +1,50 @@
-# Add to your existing application.yml
+# src/main/resources/application.yml
 spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/dream
+    username: root
+    password: Sam@2006
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+        dialect: org.hibernate.dialect.MySQL8Dialect
+
   security:
     oauth2:
       client:
         registration:
           github:
-            client-id: YOUR_GITHUB_CLIENT_ID
-            client-secret: YOUR_GITHUB_CLIENT_SECRET
+            client-id: "Ov23liXqx4s5Tj7Nqbyr"
+            client-secret: "39db7e749afe9305df3311f10ffd50497b3927b7"
             scope:
               - user:email
               - read:user
-          google:
-            client-id: YOUR_GOOGLE_CLIENT_ID
-            client-secret: YOUR_GOOGLE_CLIENT_SECRET
-            scope:
-              - openid
-              - profile
-              - email
-        provider:
-          github:
-            authorization-uri: https://github.com/login/oauth/authorize
-            token-uri: https://github.com/login/oauth/access_token
-            user-info-uri: https://api.github.com/user
-            user-name-attribute: id
-          google:
-            authorization-uri: https://accounts.google.com/o/oauth2/auth
-            token-uri: https://oauth2.googleapis.com/token
-            user-info-uri: https://www.googleapis.com/oauth2/v2/userinfo
-            user-name-attribute: id
+            redirect-uri: http://localhost:8080/login/oauth2/code/github
+#          google:
+#            client-id: ${GOOGLE_CLIENT_ID:your_google_client_id}
+#            client-secret: ${GOOGLE_CLIENT_SECRET:your_google_client_secret}
+#            scope:
+#              - openid
+#              - profile
+#              - email
+#            redirect-uri: http://localhost:8080/login/oauth2/code/google
 
 server:
+  port: 8080
   servlet:
     session:
       cookie:
         same-site: lax
+
+# Logging for debugging OAuth issues
+logging:
+  level:
+    org.springframework.security: DEBUG
+    org.springframework.security.oauth2: DEBUG
+    org.springframework.web: DEBUG

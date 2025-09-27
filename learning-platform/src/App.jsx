@@ -12,6 +12,7 @@ import LoginPage from './pages/LoginPage';
 import SignUpPage from './pages/SignUpPage';
 import SettingsPage from './pages/SettingsPage';
 import AuthCallbackPage from './pages/AuthCallbackPage';
+import AdminPage from './pages/AdminPage';
 
 // Import Components
 import Navbar from './components/Navbar';
@@ -20,8 +21,8 @@ import DynamicCursor from './components/DynamicCursor';
 import ParticleBackground from './components/ParticleBackground';
 import SmoothScrolling from './components/SmoothScrolling';
 
-// Import Auth Context
-import { AuthProvider } from './context/AuthContext';
+// 🎯 COMMENTED OUT - Import Auth Context
+// import { AuthProvider } from './context/AuthContext';
 
 function App() {
   const [currentPage, setCurrentPage] = useState('home');
@@ -78,7 +79,8 @@ function App() {
   };
 
   return (
-    <AuthProvider>
+    // 🎯 COMMENTED OUT - AuthProvider wrapper
+    // <AuthProvider>
       <Router>
         <SmoothScrolling>
           <div className="App min-h-screen bg-dark-900 text-white overflow-hidden">
@@ -140,6 +142,11 @@ function App() {
                     path="/auth/callback" 
                     element={<AuthCallbackPage setCurrentPage={setCurrentPage} />} 
                   />
+                  <Route 
+                    path="/admin" 
+                  element={<AdminPage setCurrentPage={setCurrentPage} />} 
+                  />
+
                 </Routes>
               </motion.div>
             </AnimatePresence>
@@ -149,7 +156,8 @@ function App() {
           </div>
         </SmoothScrolling>
       </Router>
-    </AuthProvider>
+    // 🎯 COMMENTED OUT - AuthProvider closing tag
+    // </AuthProvider>
   );
 }
 

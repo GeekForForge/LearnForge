@@ -20,11 +20,11 @@ public AdminCourseController(CourseService courseSvc) {
         return ResponseEntity.ok(saved);
     }
 
-    @PutMapping("/{id}")
-    public ResponseEntity<Course> updateCourse(@PathVariable Long id, @RequestBody Course course) {
-        // Admin can edit courses
-        return ResponseEntity.ok(courseSvc.updatecourse(id, course));
-    }
+//    @PutMapping("/{id}")
+//    public ResponseEntity<Course> updateCourse(@PathVariable Long id, @RequestBody Course course) {
+//        // Admin can edit courses
+//        return ResponseEntity.ok(courseSvc.updatecourse(id, course));
+//    }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteCourse(@PathVariable Long id) {

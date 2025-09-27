@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/api/progress")
+@RequestMapping("/progress")
 public class LessonProgressController {
 
     private final LessonProgressService lessonProgressService;

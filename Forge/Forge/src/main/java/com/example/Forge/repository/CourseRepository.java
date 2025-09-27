@@ -23,20 +23,15 @@ public interface CourseRepository extends JpaRepository<Course, Long> {
     List<Course> findByCourseTitleContainingIgnoreCase(String keyword);
 
     /**
-     * Get course with all its lessons
+     * 🎯 SIMPLIFIED - Get course by ID (no lessons join needed)
      */
-    @Query("SELECT c FROM Course c LEFT JOIN FETCH c.lessons WHERE c.courseId = :courseId")
-    Optional<Course> findByIdWithLessons(@Param("courseId") Long courseId);
+    Optional<Course> findById(Long courseId);
 
-    /**
-     * Get all courses with their lesson count
-     */
-    @Query("SELECT c, SIZE(c.lessons) as lessonCount FROM Course c")
-    List<Object[]> findAllWithLessonCount();
+    // 🚨 REMOVED ALL QUERIES THAT REFERENCE c.lessons:
+    // - findByIdWithLessons
+    // - findAllWithLessonCount
+    // - findByCategoryWithLessons
 
-    /**
-     * Get courses by category with lessons
-     */
-    @Query("SELECT c FROM Course c LEFT JOIN FETCH c.lessons WHERE c.category = :category")
-    List<Course> findByCategoryWithLessons(@Param("category") String category);
+    // These are removed because Course entity no longer has lessons relationship
+    // We'll fetch lessons separately using LessonService
 }
