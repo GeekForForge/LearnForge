@@ -13,7 +13,7 @@ import SignUpPage from './pages/SignUpPage';
 import SettingsPage from './pages/SettingsPage';
 import AuthCallbackPage from './pages/AuthCallbackPage';
 import AdminPage from './pages/AdminPage';
-
+import AboutPage from './pages/AboutPage';
 // Import Components
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
@@ -145,6 +145,10 @@ function App() {
                   <Route 
                     path="/admin" 
                   element={<AdminPage setCurrentPage={setCurrentPage} />} 
+                  />
+                  <Route 
+                    path="/about" 
+                  element={<AboutPage setCurrentPage={setCurrentPage} />} 
                   />
 
                 </Routes>
