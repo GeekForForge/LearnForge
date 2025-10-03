@@ -1,4 +1,3 @@
-// src/main/java/com/example/Forge/repository/UserRepository.java
 package com.example.Forge.repository;
 
 import com.example.Forge.entity.User;
@@ -15,6 +14,10 @@ public interface UserRepository extends JpaRepository<User, String> {
 
     boolean existsByEmail(String email);
 
-
     Optional<User> findByEmailAndProvider(String email, String provider);
+
+    // Helper method for authentication service
+    default Optional<User> findByProviderId(String providerId) {
+        return findByProviderAndProviderId("github", providerId);
+    }
 }

@@ -1,4 +1,3 @@
-
 package com.example.Forge.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -18,7 +17,7 @@ import java.util.UUID;
 public class User {
 
     @Id
-    @Column(name = "user_id", length = 36)
+    @Column(name = "user_id", length = 36, nullable = false, updatable = false)
     private String userId;
 
     @NotBlank(message = "Name is required")
@@ -32,17 +31,22 @@ public class User {
     @Column(name = "email", nullable = false, unique = true, length = 150)
     private String email;
 
-    @Size(max = 50, message = "Provider must not exceed 50 characters")
+    @Size(max = 50)
     @Column(name = "provider", length = 50)
     private String provider;
 
-    // 🎯 NEW OAuth-specific fields
+    @Size(max = 100)
+    @Column(name = "provider_id", length = 100, unique = true)
+    private String providerId;
+
     @Column(name = "avatar_url", length = 255)
     private String avatarUrl;
 
-    @Size(max = 100, message = "Provider ID must not exceed 100 characters")
-    @Column(name = "provider_id", length = 100)
-    private String providerId;
+    @Column(name = "bio", length = 512)
+    private String bio;
+
+    @Column(name = "location", length = 100)
+    private String location;
 
     @Column(name = "created_at")
     private LocalDateTime createdAt;
@@ -50,41 +54,38 @@ public class User {
     @Column(name = "updated_at")
     private LocalDateTime updatedAt;
 
-    // One-to-Many relationship with Progress
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JsonIgnore
     private List<Progress> progressList = new ArrayList<>();
 
     // Constructors
     public User() {
-        this.userId = UUID.randomUUID().toString(); // Auto-generate UUID
+        this.userId = UUID.randomUUID().toString();
         this.createdAt = LocalDateTime.now();
         this.updatedAt = LocalDateTime.now();
     }
 
-    public User(String name, String email, String provider) {
+    public User(String name, String email, String provider, String providerId, String avatarUrl) {
         this();
         this.name = name;
         this.email = email;
-        this.provider = provider;
-    }
-
-
-    public User(String name, String email, String avatarUrl, String provider, String providerId) {
-        this();
-        this.name = name;
-        this.email = email;
-        this.avatarUrl = avatarUrl;
         this.provider = provider;
         this.providerId = providerId;
+        this.avatarUrl = avatarUrl;
     }
 
-    // Lifecycle methods
+    @PrePersist
+    public void onCreate() {
+        createdAt = LocalDateTime.now();
+        updatedAt = LocalDateTime.now();
+    }
+
     @PreUpdate
-    public void preUpdate() {
-        this.updatedAt = LocalDateTime.now();
+    public void onUpdate() {
+        updatedAt = LocalDateTime.now();
     }
 
+    // Getters and Setters
 
     public String getUserId() {
         return userId;
@@ -118,6 +119,13 @@ public class User {
         this.provider = provider;
     }
 
+    public String getProviderId() {
+        return providerId;
+    }
+
+    public void setProviderId(String providerId) {
+        this.providerId = providerId;
+    }
 
     public String getAvatarUrl() {
         return avatarUrl;
@@ -127,12 +135,20 @@ public class User {
         this.avatarUrl = avatarUrl;
     }
 
-    public String getProviderId() {
-        return providerId;
+    public String getBio() {
+        return bio;
     }
 
-    public void setProviderId(String providerId) {
-        this.providerId = providerId;
+    public void setBio(String bio) {
+        this.bio = bio;
+    }
+
+    public String getLocation() {
+        return location;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
     }
 
     public LocalDateTime getCreatedAt() {
@@ -159,6 +175,16 @@ public class User {
         this.progressList = progressList;
     }
 
+    // Explicit method used in AuthService
+    public String getGithubId() {
+        return this.providerId;
+    }
+
+    // Explicit method used in AuthService
+    public String getUsername() {
+        return this.name;
+    }
+
     @Override
     public String toString() {
         return "User{" +
@@ -170,5 +196,9 @@ public class User {
                 ", createdAt=" + createdAt +
                 ", updatedAt=" + updatedAt +
                 '}';
+    }
+
+    public void setUsername(String username) {
+        this.name=username;
     }
 }
