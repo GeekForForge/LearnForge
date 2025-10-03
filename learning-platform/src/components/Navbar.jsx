@@ -1,12 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { Menu, X, User, BookOpen, Home, Settings, LogIn, UserPlus, LogOut } from 'lucide-react';
+import { Menu, X, User, BookOpen, Home, Settings, LogIn, LogOut, Info } from 'lucide-react';
+import { useAuth } from '../context/AuthContext';
 
-const Navbar = ({ currentPage, setCurrentPage, isAuthenticated, setIsAuthenticated }) => {
+const Navbar = ({ currentPage, setCurrentPage }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
+  
+  // ✅ Get auth state from context
+  const { user, isAuthenticated, logout } = useAuth();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -23,23 +27,23 @@ const Navbar = ({ currentPage, setCurrentPage, isAuthenticated, setIsAuthenticat
     const path = location.pathname;
     if (path === '/') setCurrentPage('home');
     else if (path === '/courses') setCurrentPage('courses');
+    else if (path === '/about') setCurrentPage('about');
     else if (path === '/profile') setCurrentPage('profile');
     else if (path === '/settings') setCurrentPage('settings');
     else if (path === '/login') setCurrentPage('login');
-    else if (path === '/signup') setCurrentPage('signup');
     else if (path.includes('/course/')) setCurrentPage('course-detail');
   }, [location, setCurrentPage]);
 
   const handleLogout = () => {
-    setIsAuthenticated(false);
+    logout();
     setCurrentPage('home');
-    console.log('User logged out');
   };
 
   // Main navigation items
   const navItems = [
     { name: 'Home', path: '/', icon: Home, key: 'home' },
     { name: 'Courses', path: '/courses', icon: BookOpen, key: 'courses' },
+    { name: 'About', path: '/about', icon: Info, key: 'about' },
   ];
 
   // Authenticated user items
@@ -48,15 +52,9 @@ const Navbar = ({ currentPage, setCurrentPage, isAuthenticated, setIsAuthenticat
     { name: 'Settings', path: '/settings', icon: Settings, key: 'settings' },
   ];
 
-  // Guest user items
-  const guestNavItems = [
-    { name: 'Login', path: '/login', icon: LogIn, key: 'login' },
-    { name: 'Sign Up', path: '/signup', icon: UserPlus, key: 'signup' },
-  ];
-
   const allNavItems = [
     ...navItems,
-    ...(isAuthenticated ? authNavItems : guestNavItems)
+    ...(isAuthenticated ? authNavItems : [])
   ];
 
   return (
@@ -152,45 +150,39 @@ const Navbar = ({ currentPage, setCurrentPage, isAuthenticated, setIsAuthenticat
                   </Link>
                 ))}
 
-                {/* Logout Button */}
-                <motion.button
-                  onClick={handleLogout}
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="interactive px-4 py-2 text-gray-300 hover:text-red-400 transition-colors flex items-center space-x-2 rounded-lg hover:bg-red-500/10"
-                >
-                  <LogOut size={18} />
-                  <span>Logout</span>
-                </motion.button>
+                {/* User Avatar & Logout */}
+                <div className="flex items-center gap-3">
+                  {user?.avatarUrl && (
+                    <img 
+                      src={user.avatarUrl} 
+                      alt={user.name}
+                      className="w-8 h-8 rounded-full border-2 border-neon-cyan"
+                    />
+                  )}
+                  <motion.button
+                    onClick={handleLogout}
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                    className="interactive px-4 py-2 text-gray-300 hover:text-red-400 transition-colors flex items-center space-x-2 rounded-lg hover:bg-red-500/10"
+                  >
+                    <LogOut size={18} />
+                    <span>Logout</span>
+                  </motion.button>
+                </div>
               </>
             ) : (
               <>
-                {/* Guest User Auth Buttons */}
+                {/* Guest User Login Button */}
                 <Link to="/login">
-                  <motion.button
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                    className={`interactive px-4 py-2 transition-colors flex items-center space-x-2 rounded-lg ${
-                      currentPage === 'login' 
-                        ? 'text-neon-cyan bg-neon-cyan/10' 
-                        : 'text-gray-300 hover:text-white hover:bg-white/5'
-                    }`}
-                  >
-                    <LogIn size={18} />
-                    <span>Login</span>
-                  </motion.button>
-                </Link>
-                
-                <Link to="/signup">
                   <motion.button
                     whileHover={{ scale: 1.05, boxShadow: '0 0 20px rgba(139, 92, 246, 0.5)' }}
                     whileTap={{ scale: 0.95 }}
                     className={`interactive px-6 py-2 bg-gradient-to-r from-neon-purple to-neon-cyan text-white font-medium rounded-lg btn-glow transition-all duration-300 flex items-center space-x-2 ${
-                      currentPage === 'signup' ? 'shadow-neon-purple/50 shadow-lg' : ''
+                      currentPage === 'login' ? 'shadow-neon-purple/50 shadow-lg' : ''
                     }`}
                   >
-                    <UserPlus size={18} />
-                    <span>Sign Up</span>
+                    <LogIn size={18} />
+                    <span>Login</span>
                   </motion.button>
                 </Link>
               </>
@@ -235,18 +227,37 @@ const Navbar = ({ currentPage, setCurrentPage, isAuthenticated, setIsAuthenticat
               </Link>
             ))}
             
-            {/* Mobile Logout Button */}
-            {isAuthenticated && (
-              <button
-                onClick={() => {
-                  handleLogout();
-                  setIsOpen(false);
-                }}
-                className="interactive w-full flex items-center space-x-3 px-4 py-3 text-gray-300 hover:text-red-400 hover:bg-red-500/10 transition-colors rounded-lg"
-              >
-                <LogOut size={18} />
-                <span>Logout</span>
-              </button>
+            {/* Mobile Auth Section */}
+            {isAuthenticated ? (
+              <>
+                {user?.avatarUrl && (
+                  <div className="flex items-center gap-3 px-4 py-3">
+                    <img 
+                      src={user.avatarUrl} 
+                      alt={user.name}
+                      className="w-8 h-8 rounded-full border-2 border-neon-cyan"
+                    />
+                    <span className="text-white font-medium">{user.name}</span>
+                  </div>
+                )}
+                <button
+                  onClick={() => {
+                    handleLogout();
+                    setIsOpen(false);
+                  }}
+                  className="interactive w-full flex items-center space-x-3 px-4 py-3 text-gray-300 hover:text-red-400 hover:bg-red-500/10 transition-colors rounded-lg"
+                >
+                  <LogOut size={18} />
+                  <span>Logout</span>
+                </button>
+              </>
+            ) : (
+              <Link to="/login" onClick={() => setIsOpen(false)}>
+                <button className="interactive w-full flex items-center space-x-3 px-4 py-3 bg-gradient-to-r from-neon-purple to-neon-cyan text-white font-medium rounded-lg">
+                  <LogIn size={18} />
+                  <span>Login</span>
+                </button>
+              </Link>
             )}
           </div>
         </motion.div>

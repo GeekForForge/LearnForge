@@ -31,16 +31,9 @@ public class AuthService {
     private final RestTemplate restTemplate = new RestTemplate();
 
     public Map<String, Object> authenticateWithGithub(String code) {
-        // Exchange code for access token
         String accessToken = getGithubAccessToken(code);
-
-        // Get user info from GitHub
         Map<String, Object> githubUser = getGithubUserInfo(accessToken);
-
-        // Create or update user
         User user = createOrUpdateUser(githubUser);
-
-        // Generate JWT token with GitHub unique ID and username
         String jwt = jwtUtil.generateToken(user.getGithubId(), user.getUsername());
 
         Map<String, Object> response = new HashMap<>();
@@ -50,6 +43,7 @@ public class AuthService {
         return response;
     }
 
+    // ✅ UPDATE THIS METHOD
     private String getGithubAccessToken(String code) {
         String url = "https://github.com/login/oauth/access_token";
 
@@ -64,9 +58,17 @@ public class AuthService {
 
         HttpEntity<Map<String, String>> request = new HttpEntity<>(body, headers);
 
-        ResponseEntity<Map> response = restTemplate.postForEntity(url, request, Map.class);
+        try {
+            ResponseEntity<Map> response = restTemplate.postForEntity(url, request, Map.class);
 
-        return (String) response.getBody().get("access_token");
+            if (response.getBody() != null && response.getBody().containsKey("access_token")) {
+                return (String) response.getBody().get("access_token");
+            } else {
+                throw new RuntimeException("Failed to get access token from GitHub: " + response.getBody());
+            }
+        } catch (Exception e) {
+            throw new RuntimeException("GitHub OAuth failed: " + e.getMessage());
+        }
     }
 
     private Map<String, Object> getGithubUserInfo(String accessToken) {
@@ -82,6 +84,7 @@ public class AuthService {
         return response.getBody();
     }
 
+    // ✅ UPDATE THIS METHOD
     private User createOrUpdateUser(Map<String, Object> githubUser) {
         String githubId = String.valueOf(githubUser.get("id"));
 
@@ -90,10 +93,22 @@ public class AuthService {
 
         user.setProvider("github");
         user.setProviderId(githubId);
-        user.setUsername((String) githubUser.get("login"));
-        user.setEmail((String) githubUser.get("email"));
+
+        // Handle null email (GitHub users can hide email)
+        String email = (String) githubUser.get("email");
+        if (email == null || email.isEmpty()) {
+            email = githubUser.get("login") + "@github.user";
+        }
+        user.setEmail(email);
+
+        // Use login as name if name is null
+        String name = (String) githubUser.get("name");
+        if (name == null || name.isEmpty()) {
+            name = (String) githubUser.get("login");
+        }
+        user.setName(name);
+
         user.setAvatarUrl((String) githubUser.get("avatar_url"));
-        user.setName((String) githubUser.get("name"));
         user.setBio((String) githubUser.get("bio"));
         user.setLocation((String) githubUser.get("location"));
         user.setUpdatedAt(LocalDateTime.now());

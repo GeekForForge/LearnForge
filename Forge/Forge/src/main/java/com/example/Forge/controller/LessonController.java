@@ -2,110 +2,114 @@ package com.example.Forge.controller;
 
 import com.example.Forge.entity.Lesson;
 import com.example.Forge.service.LessonService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 
 @RestController
-@RequestMapping("/")
-@CrossOrigin(
-        origins = "http://localhost:3000",
-        allowedHeaders = "*",
-        allowCredentials = "false",
-        methods = {RequestMethod.GET, RequestMethod.POST, RequestMethod.PUT, RequestMethod.DELETE, RequestMethod.OPTIONS}
-)
+@RequestMapping("/courses")
+@CrossOrigin(origins = {"http://localhost:3000", "http://localhost:5173"})
 public class LessonController {
 
-    private final LessonService lessonService;
+    @Autowired
+    private LessonService lessonService;
 
-    public LessonController(LessonService lessonService) {
-        this.lessonService = lessonService;
-        System.out.println("🎯 LessonController initialized!");
+    // Get all lessons for a specific course
+    @GetMapping("/{courseId}/lessons")
+    public ResponseEntity<List<Lesson>> getLessonsByCourse(@PathVariable Long courseId) {
+        System.out.println("🎯 Fetching lessons for course ID: " + courseId);
+        List<Lesson> lessons = lessonService.getLessonsByCourseId(courseId);
+        System.out.println("✅ Found " + lessons.size() + " lessons for course " + courseId);
+        return ResponseEntity.ok(lessons);
     }
 
-    // 🎯 GET all lessons for a course
-    @GetMapping("/courses/{courseId}/lessons")
-    public ResponseEntity<List<Lesson>> getLessonsByCourse(@PathVariable Long courseId) {
+    // Get specific lesson
+    @GetMapping("/{courseId}/lessons/{lessonId}")
+    public ResponseEntity<Lesson> getLesson(
+            @PathVariable Long courseId,
+            @PathVariable Long lessonId) {
+
+        if (!lessonService.lessonExistsInCourse(lessonId, courseId)) {
+            return ResponseEntity.notFound().build();
+        }
+
+        Lesson lesson = lessonService.getLessonById(lessonId);
+        return ResponseEntity.ok(lesson);
+    }
+
+    // Get first lesson of a course
+    @GetMapping("/{courseId}/lessons/first")
+    public ResponseEntity<Lesson> getFirstLesson(@PathVariable Long courseId) {
         try {
-            System.out.println("🎯 Fetching lessons for course ID: " + courseId);
-            List<Lesson> lessons = lessonService.getLessonsByCourseId(courseId);
-            System.out.println("✅ Found " + lessons.size() + " lessons for course " + courseId);
-            return ResponseEntity.ok(lessons);
-        } catch (Exception e) {
-            System.err.println("❌ Error fetching lessons for course " + courseId + ": " + e.getMessage());
-            e.printStackTrace();
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+            Lesson lesson = lessonService.getFirstLessonOfCourse(courseId);
+            return ResponseEntity.ok(lesson);
+        } catch (RuntimeException e) {
+            return ResponseEntity.notFound().build();
         }
     }
 
-    // 🎯 GET specific lesson by ID
-    @GetMapping("/lessons/{lessonId}")
-    public ResponseEntity<Lesson> getLessonById(@PathVariable Long lessonId) {
-        try {
-            System.out.println("🎯 Fetching lesson ID: " + lessonId);
-            Optional<Lesson> lesson = lessonService.getLessonById(lessonId);
+    // Count lessons in a course
+    @GetMapping("/{courseId}/lessons/count")
+    public ResponseEntity<Long> countLessons(@PathVariable Long courseId) {
+        Long count = lessonService.countLessonsByCourseId(courseId);
+        return ResponseEntity.ok(count);
+    }
 
-            if (lesson.isPresent()) {
-                System.out.println("✅ Found lesson: " + lesson.get().getLessonName());
-                return ResponseEntity.ok(lesson.get());
-            } else {
-                System.out.println("❌ Lesson not found: " + lessonId);
+    // Create new lesson (admin only)
+    @PostMapping("/{courseId}/lessons")
+    public ResponseEntity<Lesson> createLesson(
+            @PathVariable Long courseId,
+            @RequestBody Lesson lesson) {
+        try {
+            Lesson createdLesson = lessonService.createLesson(courseId, lesson);
+            return ResponseEntity.status(HttpStatus.CREATED).body(createdLesson);
+        } catch (RuntimeException e) {
+            return ResponseEntity.badRequest().build();
+        }
+    }
+
+    // Update lesson (admin only)
+    @PutMapping("/{courseId}/lessons/{lessonId}")
+    public ResponseEntity<Lesson> updateLesson(
+            @PathVariable Long courseId,
+            @PathVariable Long lessonId,
+            @RequestBody Lesson lessonDetails) {
+        try {
+            if (!lessonService.lessonExistsInCourse(lessonId, courseId)) {
                 return ResponseEntity.notFound().build();
             }
-        } catch (Exception e) {
-            System.err.println("❌ Error fetching lesson " + lessonId + ": " + e.getMessage());
-            e.printStackTrace();
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
-        }
-    }
 
-    // 🎯 POST - Create new lesson for a course
-    @PostMapping("/courses/{courseId}/lessons")
-    public ResponseEntity<Lesson> createLesson(@PathVariable Long courseId, @RequestBody Lesson lesson) {
-        try {
-            System.out.println("🎯 Creating lesson for course " + courseId + ": " + lesson.getLessonName());
-            lesson.setCourseId(courseId);
-            Lesson savedLesson = lessonService.saveLesson(lesson);
-            System.out.println("✅ Created lesson with ID: " + savedLesson.getLessonId());
-            return ResponseEntity.ok(savedLesson);
-        } catch (Exception e) {
-            System.err.println("❌ Error creating lesson: " + e.getMessage());
-            e.printStackTrace();
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
-        }
-    }
-
-    // 🎯 PUT - Update existing lesson
-    @PutMapping("/lessons/{lessonId}")
-    public ResponseEntity<Lesson> updateLesson(@PathVariable Long lessonId, @RequestBody Lesson lesson) {
-        try {
-            System.out.println("🎯 Updating lesson ID: " + lessonId);
-            lesson.setLessonId(lessonId);
-            Lesson updatedLesson = lessonService.saveLesson(lesson);
-            System.out.println("✅ Updated lesson: " + updatedLesson.getLessonName());
+            Lesson updatedLesson = lessonService.updateLesson(lessonId, lessonDetails);
             return ResponseEntity.ok(updatedLesson);
-        } catch (Exception e) {
-            System.err.println("❌ Error updating lesson " + lessonId + ": " + e.getMessage());
-            e.printStackTrace();
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+        } catch (RuntimeException e) {
+            return ResponseEntity.badRequest().build();
         }
     }
 
-    // 🎯 DELETE - Delete lesson
-    @DeleteMapping("/lessons/{lessonId}")
-    public ResponseEntity<String> deleteLesson(@PathVariable Long lessonId) {
+    // Delete lesson (admin only)
+    @DeleteMapping("/{courseId}/lessons/{lessonId}")
+    public ResponseEntity<Void> deleteLesson(
+            @PathVariable Long courseId,
+            @PathVariable Long lessonId) {
         try {
-            System.out.println("🎯 Deleting lesson ID: " + lessonId);
+            if (!lessonService.lessonExistsInCourse(lessonId, courseId)) {
+                return ResponseEntity.notFound().build();
+            }
+
             lessonService.deleteLesson(lessonId);
-            System.out.println("✅ Deleted lesson successfully");
-            return ResponseEntity.ok("Lesson deleted successfully");
-        } catch (Exception e) {
-            System.err.println("❌ Error deleting lesson " + lessonId + ": " + e.getMessage());
-            e.printStackTrace();
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+            return ResponseEntity.noContent().build();
+        } catch (RuntimeException e) {
+            return ResponseEntity.badRequest().build();
         }
+    }
+
+    // Search lessons
+    @GetMapping("/lessons/search")
+    public ResponseEntity<List<Lesson>> searchLessons(@RequestParam String keyword) {
+        List<Lesson> lessons = lessonService.searchLessons(keyword);
+        return ResponseEntity.ok(lessons);
     }
 }

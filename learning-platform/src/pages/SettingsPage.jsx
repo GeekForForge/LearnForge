@@ -1,26 +1,36 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
+import { useNavigate } from 'react-router-dom';
 import { 
-  User, Mail, Lock, Eye, EyeOff, Save, LogOut, Trash2, 
-  Moon, Sun, Github, Chrome, Unlink, Bell, Shield, 
-  Globe, Smartphone, Download, Upload
+  User, Mail, Lock, Eye, EyeOff, Save, Trash2, 
+  Github, Chrome, Unlink, Bell, Shield, Globe, Upload,
+  CheckCircle, AlertCircle, Loader
 } from 'lucide-react';
+import { useAuth } from '../context/AuthContext';
+import axios from 'axios';
 
 const SettingsPage = ({ setCurrentPage }) => {
+  const navigate = useNavigate();
+  const { user, isAuthenticated, updateUser, logout } = useAuth();
+  
   const [activeTab, setActiveTab] = useState('profile');
-  const [isDarkMode, setIsDarkMode] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
+  const [success, setSuccess] = useState('');
+  const [error, setError] = useState('');
+  
   const [showCurrentPassword, setShowCurrentPassword] = useState(false);
   const [showNewPassword, setShowNewPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
-  // User profile data
+  const API_BASE_URL = 'http://localhost:8080/api';
+
+  // Real user profile data from backend
   const [profileData, setProfileData] = useState({
-    name: 'Alex Developer',
-    email: 'alex@example.com',
-    bio: 'Passionate developer learning new technologies',
-    location: 'San Francisco, CA',
-    website: 'https://alexdev.com'
+    name: '',
+    email: '',
+    bio: '',
+    location: '',
+    website: ''
   });
 
   // Password change data
@@ -30,13 +40,7 @@ const SettingsPage = ({ setCurrentPage }) => {
     confirmPassword: ''
   });
 
-  // Connected accounts
-  const [connectedAccounts, setConnectedAccounts] = useState({
-    google: true,
-    github: false
-  });
-
-  // Notification settings
+  // Notification settings (stored in localStorage for now)
   const [notifications, setNotifications] = useState({
     email: true,
     push: true,
@@ -47,77 +51,164 @@ const SettingsPage = ({ setCurrentPage }) => {
 
   useEffect(() => {
     setCurrentPage('settings');
-  }, [setCurrentPage]);
+    
+    if (!isAuthenticated) {
+      navigate('/login');
+      return;
+    }
 
-  const handleProfileSave = () => {
-    setIsLoading(true);
-    setTimeout(() => {
-      console.log('Profile updated:', profileData);
-      setIsLoading(false);
-      alert('Profile updated successfully!');
-    }, 1000);
+    // Load real user data
+    if (user) {
+      setProfileData({
+        name: user.name || '',
+        email: user.email || '',
+        bio: user.bio || '',
+        location: user.location || '',
+        website: user.website || ''
+      });
+
+      // Load notification preferences from localStorage
+      const savedNotifications = localStorage.getItem('notifications');
+      if (savedNotifications) {
+        setNotifications(JSON.parse(savedNotifications));
+      }
+    }
+  }, [isAuthenticated, user, setCurrentPage]);
+
+  const showMessage = (type, message) => {
+    if (type === 'success') {
+      setSuccess(message);
+      setError('');
+      setTimeout(() => setSuccess(''), 3000);
+    } else {
+      setError(message);
+      setSuccess('');
+      setTimeout(() => setError(''), 5000);
+    }
   };
 
-  const handlePasswordChange = () => {
+  // ✅ HANDLE PROFILE SAVE
+  const handleProfileSave = async () => {
+    setIsLoading(true);
+    try {
+      console.log('💾 Updating profile:', profileData);
+
+      const response = await axios.put(
+        `${API_BASE_URL}/users/${user.userId}`,
+        profileData,
+        {
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${localStorage.getItem('token')}`
+          }
+        }
+      );
+
+      console.log('✅ Profile updated:', response.data);
+      updateUser(response.data);
+      showMessage('success', 'Profile updated successfully!');
+    } catch (err) {
+      console.error('❌ Error updating profile:', err);
+      showMessage('error', err.response?.data || 'Failed to update profile');
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  // ✅ HANDLE PASSWORD CHANGE
+  const handlePasswordChange = async () => {
     if (passwordData.newPassword !== passwordData.confirmPassword) {
-      alert('New passwords do not match!');
+      showMessage('error', 'New passwords do not match!');
       return;
     }
     if (passwordData.newPassword.length < 6) {
-      alert('Password must be at least 6 characters long!');
+      showMessage('error', 'Password must be at least 6 characters long!');
       return;
     }
     
     setIsLoading(true);
-    setTimeout(() => {
-      console.log('Password change requested');
+    try {
+      const response = await axios.post(
+        `${API_BASE_URL}/users/${user.userId}/change-password`,
+        {
+          currentPassword: passwordData.currentPassword,
+          newPassword: passwordData.newPassword
+        },
+        {
+          headers: {
+            'Authorization': `Bearer ${localStorage.getItem('token')}`
+          }
+        }
+      );
+
+      console.log('✅ Password changed');
       setPasswordData({ currentPassword: '', newPassword: '', confirmPassword: '' });
+      showMessage('success', 'Password updated successfully!');
+    } catch (err) {
+      console.error('❌ Error changing password:', err);
+      showMessage('error', err.response?.data || 'Failed to change password');
+    } finally {
       setIsLoading(false);
-      alert('Password updated successfully!');
-    }, 1000);
-  };
-
-  const handleAccountDisconnect = (provider) => {
-    setConnectedAccounts(prev => ({
-      ...prev,
-      [provider]: false
-    }));
-    console.log(`Disconnected ${provider} account`);
-    alert(`${provider.charAt(0).toUpperCase() + provider.slice(1)} account disconnected`);
-  };
-
-  const handleAccountConnect = (provider) => {
-    setConnectedAccounts(prev => ({
-      ...prev,
-      [provider]: true
-    }));
-    console.log(`Connected ${provider} account`);
-    alert(`${provider.charAt(0).toUpperCase() + provider.slice(1)} account connected`);
-  };
-
-  const handleDeleteAccount = () => {
-    if (window.confirm('Are you sure you want to delete your account? This action cannot be undone.')) {
-      console.log('Account deletion requested');
-      alert('Account deletion requested. You will receive a confirmation email.');
     }
+  };
+
+  // ✅ HANDLE DELETE ACCOUNT
+  const handleDeleteAccount = async () => {
+    if (!window.confirm('Are you ABSOLUTELY sure? This action cannot be undone!')) {
+      return;
+    }
+
+    try {
+      await axios.delete(
+        `${API_BASE_URL}/users/${user.userId}`,
+        {
+          headers: {
+            'Authorization': `Bearer ${localStorage.getItem('token')}`
+          }
+        }
+      );
+
+      showMessage('success', 'Account deleted successfully');
+      setTimeout(() => {
+        logout();
+        navigate('/');
+      }, 1500);
+    } catch (err) {
+      console.error('❌ Error deleting account:', err);
+      showMessage('error', 'Failed to delete account');
+    }
+  };
+
+  // ✅ SAVE NOTIFICATION PREFERENCES
+  const handleNotificationToggle = (key) => {
+    const updated = { ...notifications, [key]: !notifications[key] };
+    setNotifications(updated);
+    localStorage.setItem('notifications', JSON.stringify(updated));
+    showMessage('success', 'Notification preferences saved');
   };
 
   const tabs = [
     { id: 'profile', label: 'Profile', icon: User },
     { id: 'security', label: 'Security', icon: Shield },
     { id: 'notifications', label: 'Notifications', icon: Bell },
-    { id: 'appearance', label: 'Appearance', icon: isDarkMode ? Moon : Sun },
     { id: 'accounts', label: 'Connected Accounts', icon: Globe },
   ];
 
+  if (!user) {
+    return (
+      <div className="min-h-screen pt-24 flex items-center justify-center">
+        <Loader className="w-12 h-12 text-neon-cyan animate-spin" />
+      </div>
+    );
+  }
+
   return (
-    <div className="min-h-screen pt-24 pb-12">
+  <div className="min-h-screen pt-24 pb-12">
       <div className="container mx-auto px-6">
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
           className="mb-8"
         >
           <h1 className="text-4xl md:text-5xl font-orbitron font-bold mb-4 bg-gradient-to-r from-neon-purple via-neon-cyan to-neon-pink bg-clip-text text-transparent">
@@ -128,12 +219,34 @@ const SettingsPage = ({ setCurrentPage }) => {
           </p>
         </motion.div>
 
+        {/* Success/Error Messages */}
+        {success && (
+          <motion.div
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="mb-6 p-4 bg-green-500/20 border border-green-500/50 rounded-xl flex items-center gap-3"
+          >
+            <CheckCircle size={20} className="text-green-400" />
+            <span className="text-green-400 font-medium">{success}</span>
+          </motion.div>
+        )}
+
+        {error && (
+          <motion.div
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="mb-6 p-4 bg-red-500/20 border border-red-500/50 rounded-xl flex items-center gap-3"
+          >
+            <AlertCircle size={20} className="text-red-400" />
+            <span className="text-red-400 font-medium">{error}</span>
+          </motion.div>
+        )}
+
         <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
           {/* Sidebar */}
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6 }}
             className="lg:col-span-1"
           >
             <div className="bg-white/5 backdrop-blur-lg border border-white/10 rounded-2xl p-6">
@@ -143,7 +256,7 @@ const SettingsPage = ({ setCurrentPage }) => {
                     key={tab.id}
                     onClick={() => setActiveTab(tab.id)}
                     whileHover={{ scale: 1.02, x: 5 }}
-                    className={`w-full flex items-center space-x-3 px-4 py-3 rounded-xl transition-all duration-300 interactive ${
+                    className={`w-full flex items-center space-x-3 px-4 py-3 rounded-xl transition-all duration-300 ${
                       activeTab === tab.id
                         ? 'bg-gradient-to-r from-neon-purple/20 to-neon-cyan/20 text-neon-cyan border border-neon-purple/30'
                         : 'text-gray-300 hover:text-white hover:bg-white/5'
@@ -161,7 +274,7 @@ const SettingsPage = ({ setCurrentPage }) => {
           <motion.div
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
+            transition={{ delay: 0.2 }}
             className="lg:col-span-3"
           >
             <div className="bg-white/5 backdrop-blur-lg border border-white/10 rounded-2xl p-8">
@@ -176,20 +289,30 @@ const SettingsPage = ({ setCurrentPage }) => {
                   {/* Avatar Section */}
                   <div className="flex items-center space-x-6 mb-8">
                     <div className="relative">
-                      <div className="w-20 h-20 rounded-full bg-gradient-to-br from-neon-purple to-neon-cyan p-1">
-                        <div className="w-full h-full rounded-full bg-dark-800 flex items-center justify-center">
-                          <span className="text-2xl font-orbitron font-bold text-white">
-                            {profileData.name.charAt(0)}
-                          </span>
+                      {user.avatarUrl ? (
+                        <img 
+                          src={user.avatarUrl} 
+                          alt={user.name}
+                          className="w-20 h-20 rounded-full border-2 border-neon-cyan"
+                        />
+                      ) : (
+                        <div className="w-20 h-20 rounded-full bg-gradient-to-br from-neon-purple to-neon-cyan p-1">
+                          <div className="w-full h-full rounded-full bg-dark-800 flex items-center justify-center">
+                            <span className="text-2xl font-orbitron font-bold text-white">
+                              {user.name?.charAt(0) || 'U'}
+                            </span>
+                          </div>
                         </div>
-                      </div>
-                      <button className="absolute -bottom-1 -right-1 w-8 h-8 bg-neon-cyan rounded-full flex items-center justify-center interactive hover:scale-110 transition-transform">
-                        <Upload size={14} className="text-dark-900" />
-                      </button>
+                      )}
                     </div>
                     <div>
-                      <h3 className="text-lg font-semibold text-white">{profileData.name}</h3>
-                      <p className="text-gray-400">{profileData.email}</p>
+                      <h3 className="text-lg font-semibold text-white">{user.name}</h3>
+                      <p className="text-gray-400">{user.email}</p>
+                      {user.provider && (
+                        <p className="text-sm text-neon-cyan mt-1">
+                          Connected via {user.provider}
+                        </p>
+                      )}
                     </div>
                   </div>
 
@@ -202,7 +325,7 @@ const SettingsPage = ({ setCurrentPage }) => {
                         type="text"
                         value={profileData.name}
                         onChange={(e) => setProfileData({ ...profileData, name: e.target.value })}
-                        className="w-full px-4 py-3 bg-white/10 backdrop-blur-lg border border-white/20 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:border-neon-cyan focus:shadow-neon-cyan/30 focus:shadow-lg transition-all duration-300"
+                        className="w-full px-4 py-3 bg-white/10 backdrop-blur-lg border border-white/20 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:border-neon-cyan transition-all"
                       />
                     </div>
                     
@@ -214,7 +337,7 @@ const SettingsPage = ({ setCurrentPage }) => {
                         type="email"
                         value={profileData.email}
                         onChange={(e) => setProfileData({ ...profileData, email: e.target.value })}
-                        className="w-full px-4 py-3 bg-white/10 backdrop-blur-lg border border-white/20 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:border-neon-purple focus:shadow-neon-purple/30 focus:shadow-lg transition-all duration-300"
+                        className="w-full px-4 py-3 bg-white/10 backdrop-blur-lg border border-white/20 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:border-neon-purple transition-all"
                       />
                     </div>
                     
@@ -226,7 +349,7 @@ const SettingsPage = ({ setCurrentPage }) => {
                         type="text"
                         value={profileData.location}
                         onChange={(e) => setProfileData({ ...profileData, location: e.target.value })}
-                        className="w-full px-4 py-3 bg-white/10 backdrop-blur-lg border border-white/20 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:border-neon-pink focus:shadow-neon-pink/30 focus:shadow-lg transition-all duration-300"
+                        className="w-full px-4 py-3 bg-white/10 backdrop-blur-lg border border-white/20 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:border-neon-pink transition-all"
                         placeholder="Your location"
                       />
                     </div>
@@ -239,7 +362,7 @@ const SettingsPage = ({ setCurrentPage }) => {
                         type="url"
                         value={profileData.website}
                         onChange={(e) => setProfileData({ ...profileData, website: e.target.value })}
-                        className="w-full px-4 py-3 bg-white/10 backdrop-blur-lg border border-white/20 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:border-neon-blue focus:shadow-neon-blue/30 focus:shadow-lg transition-all duration-300"
+                        className="w-full px-4 py-3 bg-white/10 backdrop-blur-lg border border-white/20 rounded-xl text-white placeholder-gray-400 focus:outline-none transition-all"
                         placeholder="https://yourwebsite.com"
                       />
                     </div>
@@ -253,7 +376,7 @@ const SettingsPage = ({ setCurrentPage }) => {
                       value={profileData.bio}
                       onChange={(e) => setProfileData({ ...profileData, bio: e.target.value })}
                       rows={4}
-                      className="w-full px-4 py-3 bg-white/10 backdrop-blur-lg border border-white/20 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:border-neon-cyan focus:shadow-neon-cyan/30 focus:shadow-lg transition-all duration-300 resize-none"
+                      className="w-full px-4 py-3 bg-white/10 backdrop-blur-lg border border-white/20 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:border-neon-cyan transition-all resize-none"
                       placeholder="Tell us about yourself..."
                     />
                   </div>
@@ -263,10 +386,13 @@ const SettingsPage = ({ setCurrentPage }) => {
                     disabled={isLoading}
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
-                    className="px-6 py-3 bg-gradient-to-r from-neon-purple to-neon-cyan text-white font-semibold rounded-xl btn-glow transition-all duration-300 flex items-center space-x-2 interactive disabled:opacity-50"
+                    className="px-6 py-3 bg-gradient-to-r from-neon-purple to-neon-cyan text-white font-semibold rounded-xl transition-all flex items-center space-x-2 disabled:opacity-50"
                   >
                     {isLoading ? (
-                      <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+                      <>
+                        <Loader className="animate-spin" size={18} />
+                        <span>Saving...</span>
+                      </>
                     ) : (
                       <>
                         <Save size={18} />
@@ -293,13 +419,13 @@ const SettingsPage = ({ setCurrentPage }) => {
                           type={showCurrentPassword ? 'text' : 'password'}
                           value={passwordData.currentPassword}
                           onChange={(e) => setPasswordData({ ...passwordData, currentPassword: e.target.value })}
-                          className="w-full pl-4 pr-12 py-3 bg-white/10 backdrop-blur-lg border border-white/20 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:border-neon-cyan focus:shadow-neon-cyan/30 focus:shadow-lg transition-all duration-300"
+                          className="w-full pl-4 pr-12 py-3 bg-white/10 backdrop-blur-lg border border-white/20 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:border-neon-cyan transition-all"
                           placeholder="Current password"
                         />
                         <button
                           type="button"
                           onClick={() => setShowCurrentPassword(!showCurrentPassword)}
-                          className="absolute inset-y-0 right-0 pr-3 flex items-center interactive"
+                          className="absolute inset-y-0 right-0 pr-3 flex items-center"
                         >
                           {showCurrentPassword ? (
                             <EyeOff size={20} className="text-gray-400 hover:text-neon-cyan transition-colors" />
@@ -314,13 +440,13 @@ const SettingsPage = ({ setCurrentPage }) => {
                           type={showNewPassword ? 'text' : 'password'}
                           value={passwordData.newPassword}
                           onChange={(e) => setPasswordData({ ...passwordData, newPassword: e.target.value })}
-                          className="w-full pl-4 pr-12 py-3 bg-white/10 backdrop-blur-lg border border-white/20 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:border-neon-purple focus:shadow-neon-purple/30 focus:shadow-lg transition-all duration-300"
+                          className="w-full pl-4 pr-12 py-3 bg-white/10 backdrop-blur-lg border border-white/20 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:border-neon-purple transition-all"
                           placeholder="New password"
                         />
                         <button
                           type="button"
                           onClick={() => setShowNewPassword(!showNewPassword)}
-                          className="absolute inset-y-0 right-0 pr-3 flex items-center interactive"
+                          className="absolute inset-y-0 right-0 pr-3 flex items-center"
                         >
                           {showNewPassword ? (
                             <EyeOff size={20} className="text-gray-400 hover:text-neon-cyan transition-colors" />
@@ -335,13 +461,13 @@ const SettingsPage = ({ setCurrentPage }) => {
                           type={showConfirmPassword ? 'text' : 'password'}
                           value={passwordData.confirmPassword}
                           onChange={(e) => setPasswordData({ ...passwordData, confirmPassword: e.target.value })}
-                          className="w-full pl-4 pr-12 py-3 bg-white/10 backdrop-blur-lg border border-white/20 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:border-neon-pink focus:shadow-neon-pink/30 focus:shadow-lg transition-all duration-300"
+                          className="w-full pl-4 pr-12 py-3 bg-white/10 backdrop-blur-lg border border-white/20 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:border-neon-pink transition-all"
                           placeholder="Confirm new password"
                         />
                         <button
                           type="button"
                           onClick={() => setShowConfirmPassword(!showConfirmPassword)}
-                          className="absolute inset-y-0 right-0 pr-3 flex items-center interactive"
+                          className="absolute inset-y-0 right-0 pr-3 flex items-center"
                         >
                           {showConfirmPassword ? (
                             <EyeOff size={20} className="text-gray-400 hover:text-neon-cyan transition-colors" />
@@ -357,10 +483,13 @@ const SettingsPage = ({ setCurrentPage }) => {
                       disabled={isLoading}
                       whileHover={{ scale: 1.02 }}
                       whileTap={{ scale: 0.98 }}
-                      className="mt-4 px-6 py-3 bg-gradient-to-r from-neon-purple to-neon-cyan text-white font-semibold rounded-xl btn-glow transition-all duration-300 flex items-center space-x-2 interactive disabled:opacity-50"
+                      className="mt-4 px-6 py-3 bg-gradient-to-r from-neon-purple to-neon-cyan text-white font-semibold rounded-xl transition-all flex items-center space-x-2 disabled:opacity-50"
                     >
                       {isLoading ? (
-                        <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+                        <>
+                          <Loader className="animate-spin" size={18} />
+                          <span>Updating...</span>
+                        </>
                       ) : (
                         <>
                           <Lock size={18} />
@@ -380,7 +509,7 @@ const SettingsPage = ({ setCurrentPage }) => {
                       onClick={handleDeleteAccount}
                       whileHover={{ scale: 1.02 }}
                       whileTap={{ scale: 0.98 }}
-                      className="px-6 py-3 bg-red-600 hover:bg-red-700 text-white font-semibold rounded-xl transition-all duration-300 flex items-center space-x-2 interactive"
+                      className="px-6 py-3 bg-red-600 hover:bg-red-700 text-white font-semibold rounded-xl transition-all flex items-center space-x-2"
                     >
                       <Trash2 size={18} />
                       <span>Delete Account</span>
@@ -416,9 +545,9 @@ const SettingsPage = ({ setCurrentPage }) => {
                           </p>
                         </div>
                         <motion.button
-                          onClick={() => setNotifications(prev => ({ ...prev, [key]: !prev[key] }))}
+                          onClick={() => handleNotificationToggle(key)}
                           whileHover={{ scale: 1.05 }}
-                          className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors interactive ${
+                          className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors ${
                             notifications[key] ? 'bg-neon-cyan' : 'bg-gray-600'
                           }`}
                         >
@@ -433,69 +562,6 @@ const SettingsPage = ({ setCurrentPage }) => {
                 </div>
               )}
 
-              {/* Appearance Settings */}
-              {activeTab === 'appearance' && (
-                <div className="space-y-6">
-                  <h2 className="text-2xl font-orbitron font-bold text-white mb-6">
-                    Appearance Settings
-                  </h2>
-                  
-                  <div className="bg-white/5 p-6 rounded-xl border border-white/10">
-                    <h3 className="text-lg font-semibold text-white mb-4">Theme</h3>
-                    <div className="flex items-center justify-between">
-                      <div className="flex items-center space-x-4">
-                        <div className="flex items-center space-x-2">
-                          {isDarkMode ? <Moon size={20} className="text-neon-cyan" /> : <Sun size={20} className="text-yellow-400" />}
-                          <span className="text-white font-medium">
-                            {isDarkMode ? 'Dark Mode' : 'Light Mode'}
-                          </span>
-                        </div>
-                        <span className="text-sm text-gray-400">
-                          Currently using {isDarkMode ? 'dark' : 'light'} theme
-                        </span>
-                      </div>
-                      <motion.button
-                        onClick={() => setIsDarkMode(!isDarkMode)}
-                        whileHover={{ scale: 1.05 }}
-                        className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors interactive ${
-                          isDarkMode ? 'bg-neon-cyan' : 'bg-gray-600'
-                        }`}
-                      >
-                        <motion.span
-                          animate={{ x: isDarkMode ? 20 : 2 }}
-                          className="inline-block h-4 w-4 transform rounded-full bg-white transition"
-                        />
-                      </motion.button>
-                    </div>
-                    <p className="text-sm text-gray-400 mt-2">
-                      Note: Light mode is coming soon! Currently, the platform uses the futuristic dark theme.
-                    </p>
-                  </div>
-
-                  <div className="bg-gradient-to-r from-neon-purple/10 to-neon-cyan/10 p-6 rounded-xl border border-white/10">
-                    <h3 className="text-lg font-semibold text-white mb-4">Color Scheme Preview</h3>
-                    <div className="grid grid-cols-4 gap-4">
-                      <div className="flex flex-col items-center space-y-2">
-                        <div className="w-12 h-12 rounded-full bg-neon-purple shadow-neon-purple/50 shadow-lg"></div>
-                        <span className="text-xs text-gray-400">Purple</span>
-                      </div>
-                      <div className="flex flex-col items-center space-y-2">
-                        <div className="w-12 h-12 rounded-full bg-neon-cyan shadow-neon-cyan/50 shadow-lg"></div>
-                        <span className="text-xs text-gray-400">Cyan</span>
-                      </div>
-                      <div className="flex flex-col items-center space-y-2">
-                        <div className="w-12 h-12 rounded-full bg-neon-pink shadow-neon-pink/50 shadow-lg"></div>
-                        <span className="text-xs text-gray-400">Pink</span>
-                      </div>
-                      <div className="flex flex-col items-center space-y-2">
-                        <div className="w-12 h-12 rounded-full bg-neon-blue shadow-neon-blue/50 shadow-lg"></div>
-                        <span className="text-xs text-gray-400">Blue</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              )}
-
               {/* Connected Accounts */}
               {activeTab === 'accounts' && (
                 <div className="space-y-6">
@@ -504,40 +570,6 @@ const SettingsPage = ({ setCurrentPage }) => {
                   </h2>
                   
                   <div className="space-y-4">
-                    {/* Google Account */}
-                    <div className="flex items-center justify-between p-6 bg-white/5 rounded-xl border border-white/10">
-                      <div className="flex items-center space-x-4">
-                        <div className="w-12 h-12 bg-gradient-to-br from-red-500 to-yellow-500 rounded-full flex items-center justify-center">
-                          <Chrome size={24} className="text-white" />
-                        </div>
-                        <div>
-                          <h4 className="font-medium text-white">Google Account</h4>
-                          <p className="text-sm text-gray-400">
-                            {connectedAccounts.google ? 'Connected as alex@gmail.com' : 'Not connected'}
-                          </p>
-                        </div>
-                      </div>
-                      {connectedAccounts.google ? (
-                        <motion.button
-                          onClick={() => handleAccountDisconnect('google')}
-                          whileHover={{ scale: 1.05 }}
-                          className="px-4 py-2 bg-red-600 hover:bg-red-700 text-white font-medium rounded-lg transition-all interactive flex items-center space-x-2"
-                        >
-                          <Unlink size={16} />
-                          <span>Disconnect</span>
-                        </motion.button>
-                      ) : (
-                        <motion.button
-                          onClick={() => handleAccountConnect('google')}
-                          whileHover={{ scale: 1.05 }}
-                          className="px-4 py-2 bg-gradient-to-r from-neon-purple to-neon-cyan text-white font-medium rounded-lg transition-all interactive flex items-center space-x-2"
-                        >
-                          <Chrome size={16} />
-                          <span>Connect</span>
-                        </motion.button>
-                      )}
-                    </div>
-
                     {/* GitHub Account */}
                     <div className="flex items-center justify-between p-6 bg-white/5 rounded-xl border border-white/10">
                       <div className="flex items-center space-x-4">
@@ -547,24 +579,19 @@ const SettingsPage = ({ setCurrentPage }) => {
                         <div>
                           <h4 className="font-medium text-white">GitHub Account</h4>
                           <p className="text-sm text-gray-400">
-                            {connectedAccounts.github ? 'Connected as alexdev' : 'Not connected'}
+                            {user.provider === 'github' ? `Connected as ${user.email}` : 'Not connected'}
                           </p>
                         </div>
                       </div>
-                      {connectedAccounts.github ? (
-                        <motion.button
-                          onClick={() => handleAccountDisconnect('github')}
-                          whileHover={{ scale: 1.05 }}
-                          className="px-4 py-2 bg-red-600 hover:bg-red-700 text-white font-medium rounded-lg transition-all interactive flex items-center space-x-2"
-                        >
-                          <Unlink size={16} />
-                          <span>Disconnect</span>
-                        </motion.button>
+                      {user.provider === 'github' ? (
+                        <span className="px-4 py-2 bg-green-500/20 text-green-400 font-medium rounded-lg border border-green-500/30">
+                          Connected
+                        </span>
                       ) : (
                         <motion.button
-                          onClick={() => handleAccountConnect('github')}
+                          onClick={() => window.location.href = '/login'}
                           whileHover={{ scale: 1.05 }}
-                          className="px-4 py-2 bg-gradient-to-r from-neon-purple to-neon-cyan text-white font-medium rounded-lg transition-all interactive flex items-center space-x-2"
+                          className="px-4 py-2 bg-gradient-to-r from-neon-purple to-neon-cyan text-white font-medium rounded-lg transition-all flex items-center space-x-2"
                         >
                           <Github size={16} />
                           <span>Connect</span>

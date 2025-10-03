@@ -1,7 +1,20 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 
-const ProgressBar = ({ progress, color = 'purple', size = 'md', animated = true }) => {
+const ProgressBar = ({ 
+  progress, 
+  percentage, // Accept both props for backwards compatibility
+  color = 'purple', 
+  size = 'md', 
+  animated = true,
+  showLabel = true 
+}) => {
+  // Use either progress or percentage prop
+  const value = progress !== undefined ? progress : percentage || 0;
+  
+  // Ensure value is valid number between 0-100
+  const validProgress = isNaN(value) ? 0 : Math.min(Math.max(value, 0), 100);
+
   const sizeClasses = {
     sm: 'h-2',
     md: 'h-3',
@@ -29,29 +42,31 @@ const ProgressBar = ({ progress, color = 'purple', size = 'md', animated = true 
         {/* Progress Fill */}
         <motion.div
           initial={{ width: 0 }}
-          animate={{ width: animated ? `${progress}%` : `${progress}%` }}
+          animate={{ width: `${validProgress}%` }}
           transition={{ duration: animated ? 1.5 : 0, ease: "easeOut" }}
           className={`h-full bg-gradient-to-r ${colorClasses[color]} ${glowClasses[color]} relative`}
         >
           {/* Animated shine effect */}
-          {animated && (
+          {animated && validProgress > 0 && (
             <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent animate-shine" />
           )}
         </motion.div>
       </div>
 
       {/* Progress Text */}
-      <div className="flex justify-between items-center mt-2">
-        <span className="text-sm text-gray-400">Progress</span>
-        <motion.span
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: animated ? 1 : 0 }}
-          className="text-sm font-medium text-white"
-        >
-          {Math.round(progress)}%
-        </motion.span>
-      </div>
+      {showLabel && (
+        <div className="flex justify-between items-center mt-2">
+          <span className="text-sm text-gray-400">Progress</span>
+          <motion.span
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: animated ? 0.5 : 0 }}
+            className="text-sm font-semibold text-white"
+          >
+            {Math.round(validProgress)}%
+          </motion.span>
+        </div>
+      )}
     </div>
   );
 };

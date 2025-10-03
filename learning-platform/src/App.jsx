@@ -14,6 +14,7 @@ import SettingsPage from './pages/SettingsPage';
 import AuthCallbackPage from './pages/AuthCallbackPage';
 import AdminPage from './pages/AdminPage';
 import AboutPage from './pages/AboutPage';
+
 // Import Components
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
@@ -21,12 +22,12 @@ import DynamicCursor from './components/DynamicCursor';
 import ParticleBackground from './components/ParticleBackground';
 import SmoothScrolling from './components/SmoothScrolling';
 
-// 🎯 COMMENTED OUT - Import Auth Context
-// import { AuthProvider } from './context/AuthContext';
+// ✅✅✅ Import BOTH Contexts
+import { AuthProvider } from './context/AuthContext';
+import { ProgressProvider } from './context/ProgressContext'; // ⬅️ ADD THIS!
 
 function App() {
   const [currentPage, setCurrentPage] = useState('home');
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
 
   useEffect(() => {
     // Initialize dynamic cursor
@@ -79,89 +80,87 @@ function App() {
   };
 
   return (
-    // 🎯 COMMENTED OUT - AuthProvider wrapper
-    // <AuthProvider>
-      <Router>
-        <SmoothScrolling>
-          <div className="App min-h-screen bg-dark-900 text-white overflow-hidden">
-            {/* Global Particle Background */}
-            <ParticleBackground />
-            
-            {/* Dynamic Cursor */}
-            <DynamicCursor />
-            
-            {/* Navigation */}
-            <Navbar 
-              currentPage={currentPage} 
-              setCurrentPage={setCurrentPage}
-              isAuthenticated={isAuthenticated}
-              setIsAuthenticated={setIsAuthenticated}
-            />
-            
-            {/* Main Content */}
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={currentPage}
-                initial="initial"
-                animate="in"
-                exit="out"
-                variants={pageVariants}
-                transition={pageTransition}
-                className="relative z-10"
-              >
-                <Routes>
-                  <Route 
-                    path="/" 
-                    element={<LandingPage setCurrentPage={setCurrentPage} />} 
-                  />
-                  <Route 
-                    path="/courses" 
-                    element={<CoursesPage setCurrentPage={setCurrentPage} />} 
-                  />
-                  <Route 
-                    path="/course/:id" 
-                    element={<CourseDetailPage setCurrentPage={setCurrentPage} />} 
-                  />
-                  <Route 
-                    path="/profile" 
-                    element={<ProfilePage setCurrentPage={setCurrentPage} />} 
-                  />
-                  <Route 
-                    path="/login" 
-                    element={<LoginPage setCurrentPage={setCurrentPage} />} 
-                  />
-                  <Route 
-                    path="/signup" 
-                    element={<SignUpPage setCurrentPage={setCurrentPage} />} 
-                  />
-                  <Route 
-                    path="/settings" 
-                    element={<SettingsPage setCurrentPage={setCurrentPage} />} 
-                  />
-                  <Route 
-                    path="/auth/callback" 
-                    element={<AuthCallbackPage setCurrentPage={setCurrentPage} />} 
-                  />
-                  <Route 
-                    path="/admin" 
-                  element={<AdminPage setCurrentPage={setCurrentPage} />} 
-                  />
-                  <Route 
-                    path="/about" 
-                  element={<AboutPage setCurrentPage={setCurrentPage} />} 
-                  />
-
-                </Routes>
-              </motion.div>
-            </AnimatePresence>
-            
-            {/* Footer */}
-            <Footer />
-          </div>
-        </SmoothScrolling>
-      </Router>
-    // 🎯 COMMENTED OUT - AuthProvider closing tag
-    // </AuthProvider>
+    // ✅✅✅ WRAP WITH BOTH PROVIDERS - CORRECT ORDER!
+    <AuthProvider>
+      <ProgressProvider> {/* ⬅️⬅️⬅️ ADD THIS! */}
+        <Router>
+          <SmoothScrolling>
+            <div className="App min-h-screen bg-dark-900 text-white overflow-hidden">
+              {/* Global Particle Background */}
+              <ParticleBackground />
+              
+              {/* Dynamic Cursor */}
+              <DynamicCursor />
+              
+              {/* Navigation */}
+              <Navbar 
+                currentPage={currentPage} 
+                setCurrentPage={setCurrentPage}
+              />
+              
+              {/* Main Content */}
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={currentPage}
+                  initial="initial"
+                  animate="in"
+                  exit="out"
+                  variants={pageVariants}
+                  transition={pageTransition}
+                  className="relative z-10"
+                >
+                  <Routes>
+                    <Route 
+                      path="/" 
+                      element={<LandingPage setCurrentPage={setCurrentPage} />} 
+                    />
+                    <Route 
+                      path="/courses" 
+                      element={<CoursesPage setCurrentPage={setCurrentPage} />} 
+                    />
+                    <Route 
+                      path="/course/:id" 
+                      element={<CourseDetailPage setCurrentPage={setCurrentPage} />} 
+                    />
+                    <Route 
+                      path="/profile" 
+                      element={<ProfilePage setCurrentPage={setCurrentPage} />} 
+                    />
+                    <Route 
+                      path="/login" 
+                      element={<LoginPage setCurrentPage={setCurrentPage} />} 
+                    />
+                    <Route 
+                      path="/signup" 
+                      element={<SignUpPage setCurrentPage={setCurrentPage} />} 
+                    />
+                    <Route 
+                      path="/settings" 
+                      element={<SettingsPage setCurrentPage={setCurrentPage} />} 
+                    />
+                    <Route 
+                      path="/auth/callback" 
+                      element={<AuthCallbackPage setCurrentPage={setCurrentPage} />} 
+                    />
+                    <Route 
+                      path="/admin" 
+                      element={<AdminPage setCurrentPage={setCurrentPage} />} 
+                    />
+                    <Route 
+                      path="/about" 
+                      element={<AboutPage setCurrentPage={setCurrentPage} />} 
+                    />
+                  </Routes>
+                </motion.div>
+              </AnimatePresence>
+              
+              {/* Footer */}
+              <Footer />
+            </div>
+          </SmoothScrolling>
+        </Router>
+      </ProgressProvider> {/* ⬅️⬅️⬅️ CLOSE THIS! */}
+    </AuthProvider>
   );
 }
 

@@ -1,11 +1,14 @@
-// src/main/java/com/example/Forge/entity/Lesson.java
 package com.example.Forge.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
+import lombok.Data;
+
 import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "lessons")
+@Data
 public class Lesson {
 
     @Id
@@ -13,17 +16,19 @@ public class Lesson {
     @Column(name = "lesson_id")
     private Long lessonId;
 
-    @Column(name = "lesson_name")
+    @Column(name = "lesson_name", nullable = false, length = 200)
     private String lessonName;
 
-    @Column(name = "video_url")  // 🎯 Changed back to match your database
+    @Column(name = "video_url", length = 500)
     private String videoUrl;
 
-    @Column(name = "duration")
+    @Column(name = "duration", length = 20)
     private String duration;
 
-    @Column(name = "course_id")
-    private Long courseId;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "course_id", nullable = false)
+    @JsonIgnore
+    private Course course;
 
     @Column(name = "created_at")
     private LocalDateTime createdAt;
@@ -42,37 +47,11 @@ public class Lesson {
         updatedAt = LocalDateTime.now();
     }
 
-    // Constructors
-    public Lesson() {}
-
-    public Lesson(String lessonName, String videoUrl, String duration, Long courseId) {
-        this.lessonName = lessonName;
-        this.videoUrl = videoUrl;
-        this.duration = duration;
-        this.courseId = courseId;
+    // Custom getter to return courseId without loading full Course
+    @JsonIgnore
+    public Long getCourseId() {
+        return course != null ? course.getCourseId() : null;
     }
-
-    // Getters and Setters
-    public Long getLessonId() { return lessonId; }
-    public void setLessonId(Long lessonId) { this.lessonId = lessonId; }
-
-    public String getLessonName() { return lessonName; }
-    public void setLessonName(String lessonName) { this.lessonName = lessonName; }
-
-    public String getVideoUrl() { return videoUrl; }
-    public void setVideoUrl(String videoUrl) { this.videoUrl = videoUrl; }
-
-    public String getDuration() { return duration; }
-    public void setDuration(String duration) { this.duration = duration; }
-
-    public Long getCourseId() { return courseId; }
-    public void setCourseId(Long courseId) { this.courseId = courseId; }
-
-    public LocalDateTime getCreatedAt() { return createdAt; }
-    public void setCreatedAt(LocalDateTime createdAt) { this.createdAt = createdAt; }
-
-    public LocalDateTime getUpdatedAt() { return updatedAt; }
-    public void setUpdatedAt(LocalDateTime updatedAt) { this.updatedAt = updatedAt; }
 
     @Override
     public String toString() {
@@ -81,7 +60,6 @@ public class Lesson {
                 ", lessonName='" + lessonName + '\'' +
                 ", videoUrl='" + videoUrl + '\'' +
                 ", duration='" + duration + '\'' +
-                ", courseId=" + courseId +
                 '}';
     }
 }

@@ -1,220 +1,335 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
-import { Settings, Edit, Download, Share2 } from 'lucide-react';
-import ProfileCard from '../components/ProfileCard';
+import { useNavigate } from 'react-router-dom';
+import { 
+  BookOpen, Award, TrendingUp, Target, Clock, CheckCircle,
+  User, Mail, Calendar, Settings, Edit3, ChevronRight
+} from 'lucide-react';
+import { useAuth } from '../context/AuthContext';
+import { useProgress } from '../context/ProgressContext';
+import ProgressBar from '../components/ProgressBar';
+import ApiService from '../services/api';
 
 const ProfilePage = ({ setCurrentPage }) => {
+  const navigate = useNavigate();
+  const { user, isAuthenticated } = useAuth();
+  const { summary, progressData, refreshSummary, refreshProgress } = useProgress();
+  const [enrolledCourses, setEnrolledCourses] = useState([]);
+  const [loading, setLoading] = useState(true);
+
   useEffect(() => {
     setCurrentPage('profile');
-  }, [setCurrentPage]);
+    
+    if (!isAuthenticated) {
+      navigate('/login');
+      return;
+    }
 
-  // Sample user data - in real app, fetch from API/context
-  const userData = {
-    name: 'Alex Developer',
-    email: 'alex@example.com',
-    joinDate: '2024-01-15',
-    level: 7,
-    skillLevel: 'Intermediate',
-    coursesCompleted: 12,
-    hoursLearned: 156,
-    streak: 23,
-    overallProgress: 78,
-    currentCourses: [
-      {
-        id: 1,
-        title: 'Data Structures & Algorithms in Java',
-        progress: 65
-      },
-      {
-        id: 2,
-        title: 'React Frontend Development',
-        progress: 30
-      },
-      {
-        id: 3,
-        title: 'Node.js Backend Development',
-        progress: 85
-      }
-    ]
+    loadProfileData();
+  }, [isAuthenticated, setCurrentPage]);
+
+  const loadProfileData = async () => {
+    try {
+      setLoading(true);
+      
+      // Refresh progress data
+      await refreshProgress();
+      await refreshSummary();
+      
+      // Get all courses
+      const allCourses = await ApiService.getAllCourses();
+      
+      // Filter courses where user has progress
+      const coursesWithProgress = allCourses.filter(course => 
+        progressData[course.courseId]
+      );
+      
+      setEnrolledCourses(coursesWithProgress);
+      console.log('✅ Enrolled courses:', coursesWithProgress);
+    } catch (error) {
+      console.error('❌ Error loading profile:', error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const getCourseProgress = async (courseId) => {
+    try {
+      const lessons = await ApiService.getLessonsByCourse(courseId);
+      const progress = progressData[courseId];
+      
+      if (!progress || !lessons.length) return 0;
+      
+      const completedCount = progress.completedLessons?.length || 0;
+      return Math.round((completedCount / lessons.length) * 100);
+    } catch (error) {
+      console.error('Error calculating progress:', error);
+      return 0;
+    }
+  };
+
+  if (loading) {
+    return (
+      <div className="min-h-screen pt-24 pb-12 flex items-center justify-center">
+        <div className="text-center">
+          <div className="w-16 h-16 border-4 border-neon-cyan border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
+          <p className="text-white text-xl">Loading Profile...</p>
+        </div>
+      </div>
+    );
+  }
+
+  if (!user) {
+    return (
+      <div className="min-h-screen pt-24 pb-12 flex items-center justify-center">
+        <div className="text-center">
+          <p className="text-gray-400 text-xl">Please login to view profile</p>
+        </div>
+      </div>
+    );
+  }
+
+  const calculateOverallProgress = () => {
+    if (!summary || !summary.totalLessons) return 0;
+    return Math.round((summary.completedLessons / summary.totalLessons) * 100);
   };
 
   return (
-    <div className="min-h-screen pt-24 pb-12">
-      <div className="container mx-auto px-6">
-        {/* Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          className="flex flex-col md:flex-row items-start md:items-center justify-between mb-12"
-        >
-          <div>
-            <h1 className="text-4xl md:text-5xl font-orbitron font-bold mb-4 bg-gradient-to-r from-neon-purple via-neon-cyan to-neon-pink bg-clip-text text-transparent">
-              Your Profile
-            </h1>
-            <p className="text-xl text-gray-300 max-w-2xl">
-              Track your learning journey and celebrate your achievements
-            </p>
-          </div>
-
-          {/* Action Buttons */}
-          <div className="flex items-center space-x-4 mt-6 md:mt-0">
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="interactive p-3 bg-white/10 hover:bg-white/20 rounded-lg transition-all group"
-              title="Settings"
-            >
-              <Settings size={20} className="text-gray-400 group-hover:text-neon-cyan transition-colors" />
-            </motion.button>
-            
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="interactive p-3 bg-white/10 hover:bg-white/20 rounded-lg transition-all group"
-              title="Edit Profile"
-            >
-              <Edit size={20} className="text-gray-400 group-hover:text-neon-purple transition-colors" />
-            </motion.button>
-            
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="interactive p-3 bg-white/10 hover:bg-white/20 rounded-lg transition-all group"
-              title="Download Certificate"
-            >
-              <Download size={20} className="text-gray-400 group-hover:text-neon-pink transition-colors" />
-            </motion.button>
-            
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="interactive px-6 py-3 bg-gradient-to-r from-neon-purple to-neon-cyan text-white font-semibold rounded-lg hover:shadow-neon-purple/30 hover:shadow-lg transition-all flex items-center space-x-2"
-            >
-              <Share2 size={18} />
-              <span>Share Profile</span>
-            </motion.button>
-          </div>
-        </motion.div>
-
-        {/* Profile Content */}
-        <ProfileCard user={userData} />
-
-        {/* Recent Activity */}
+    <div className="min-h-screen pt-20 pb-12">
+      <div className="container mx-auto px-6 max-w-7xl">
+        {/* Profile Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.8 }}
-          className="mt-12 p-8 bg-white/5 backdrop-blur-lg border border-white/10 rounded-2xl"
+          className="bg-gradient-to-r from-neon-purple/20 to-neon-cyan/20 rounded-3xl p-8 mb-8 border border-white/10"
         >
-          <h3 className="text-2xl font-orbitron font-bold text-white mb-6">
-            Recent Activity
-          </h3>
-          
-          <div className="space-y-4">
-            {[
-              {
-                id: 1,
-                action: 'Completed lesson',
-                target: 'Arrays and Strings',
-                course: 'DSA in Java',
-                time: '2 hours ago',
-                type: 'completion'
-              },
-              {
-                id: 2,
-                action: 'Started course',
-                target: 'Node.js Backend Development',
-                time: '1 day ago',
-                type: 'start'
-              },
-              {
-                id: 3,
-                action: 'Earned achievement',
-                target: 'Week Streak',
-                time: '3 days ago',
-                type: 'achievement'
-              },
-              {
-                id: 4,
-                action: 'Completed course',
-                target: 'TypeScript Fundamentals',
-                time: '1 week ago',
-                type: 'completion'
-              }
-            ].map((activity, index) => (
-              <motion.div
-                key={activity.id}
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.4, delay: index * 0.1 }}
-                className="flex items-center space-x-4 p-4 bg-white/5 rounded-lg hover:bg-white/10 transition-all group"
-              >
-                <div className={`w-3 h-3 rounded-full ${
-                  activity.type === 'completion' ? 'bg-green-400' :
-                  activity.type === 'start' ? 'bg-blue-400' :
-                  activity.type === 'achievement' ? 'bg-yellow-400' :
-                  'bg-gray-400'
-                }`} />
-                
-                <div className="flex-1">
-                  <p className="text-white">
-                    <span className="opacity-70">{activity.action}</span>{' '}
-                    <span className="font-medium text-neon-cyan">{activity.target}</span>
-                    {activity.course && (
-                      <span className="opacity-70"> in {activity.course}</span>
-                    )}
-                  </p>
-                  <p className="text-sm text-gray-400 mt-1">{activity.time}</p>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </motion.div>
-
-        {/* Learning Streak */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 1 }}
-          className="mt-8 p-8 bg-gradient-to-br from-neon-purple/10 to-neon-cyan/10 backdrop-blur-lg border border-white/20 rounded-2xl"
-        >
-          <h3 className="text-2xl font-orbitron font-bold text-white mb-6">
-            Learning Streak 🔥
-          </h3>
-          
-          <div className="grid grid-cols-7 gap-2 mb-6">
-            {Array.from({ length: 21 }, (_, i) => {
-              const isActive = i < 18; // Mock streak data
-              const isToday = i === 17;
+          <div className="flex flex-col md:flex-row items-start md:items-center gap-6">
+            {/* Avatar */}
+            <img
+              src={user.avatarUrl || 'https://via.placeholder.com/120'}
+              alt={user.name}
+              className="w-32 h-32 rounded-full border-4 border-neon-cyan shadow-lg shadow-neon-cyan/30"
+            />
+            
+            {/* User Info */}
+            <div className="flex-1">
+              <h1 className="text-4xl font-bold text-white mb-2">{user.name}</h1>
               
-              return (
-                <motion.div
-                  key={i}
-                  initial={{ scale: 0 }}
-                  animate={{ scale: 1 }}
-                  transition={{ duration: 0.2, delay: i * 0.03 }}
-                  className={`aspect-square rounded-lg flex items-center justify-center text-xs font-medium transition-all ${
-                    isToday
-                      ? 'bg-neon-cyan text-dark-900 ring-2 ring-neon-cyan shadow-neon-cyan/50 shadow-lg'
-                      : isActive
-                      ? 'bg-gradient-to-br from-neon-purple to-neon-cyan text-white'
-                      : 'bg-white/10 text-gray-500'
-                  }`}
-                >
-                  {i + 1}
-                </motion.div>
-              );
-            })}
+              <div className="flex flex-wrap items-center gap-4 text-sm text-gray-400 mb-4">
+                <div className="flex items-center gap-2">
+                  <Mail size={16} />
+                  <span>{user.email}</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <Calendar size={16} />
+                  <span>Joined {new Date(user.createdAt).toLocaleDateString()}</span>
+                </div>
+              </div>
+
+              {/* Overall Progress */}
+              {summary && summary.totalLessons > 0 && (
+                <div className="max-w-md">
+                  <div className="flex items-center justify-between mb-2">
+                    <span className="text-sm text-gray-300">Overall Progress</span>
+                    <span className="text-sm font-bold text-neon-cyan">{calculateOverallProgress()}%</span>
+                  </div>
+                  <ProgressBar 
+                    progress={calculateOverallProgress()} 
+                    color="cyan" 
+                    size="md" 
+                    animated={true}
+                    showLabel={false}
+                  />
+                  <p className="text-xs text-gray-400 mt-2">
+                    {summary.completedLessons} of {summary.totalLessons} lessons completed
+                  </p>
+                </div>
+              )}
+            </div>
+
+            {/* Edit Button */}
+            <button
+              onClick={() => navigate('/settings')}
+              className="px-6 py-3 bg-white/10 hover:bg-white/20 rounded-xl text-white font-medium flex items-center gap-2 transition-all border border-white/20"
+            >
+              <Settings size={18} />
+              Settings
+            </button>
           </div>
+        </motion.div>
+
+        {/* Stats Cards */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+          <StatCard
+            icon={<BookOpen className="text-neon-purple" size={28} />}
+            label="Total Courses"
+            value={summary?.totalCourses || 0}
+            color="purple"
+          />
           
-          <p className="text-gray-300">
-            You're on a <span className="text-neon-cyan font-semibold">{userData.streak}-day</span> learning streak! 
-            Keep it up to unlock special achievements.
-          </p>
+          <StatCard
+            icon={<CheckCircle className="text-green-400" size={28} />}
+            label="Completed Courses"
+            value={summary?.completedCourses || 0}
+            color="green"
+          />
+          
+          <StatCard
+            icon={<Target className="text-neon-cyan" size={28} />}
+            label="Lessons Done"
+            value={`${summary?.completedLessons || 0}/${summary?.totalLessons || 0}`}
+            color="cyan"
+          />
+          
+          <StatCard
+            icon={<TrendingUp className="text-yellow-400" size={28} />}
+            label="Avg Progress"
+            value={`${calculateOverallProgress()}%`}
+            color="yellow"
+          />
+        </div>
+
+        {/* Enrolled Courses */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.2 }}
+        >
+          <div className="flex items-center justify-between mb-6">
+            <h2 className="text-3xl font-bold text-white">My Courses</h2>
+            <button
+              onClick={() => navigate('/courses')}
+              className="text-neon-cyan hover:text-white transition-colors flex items-center gap-2"
+            >
+              Browse More
+              <ChevronRight size={20} />
+            </button>
+          </div>
+
+          {enrolledCourses.length > 0 ? (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {enrolledCourses.map((course) => (
+                <CourseCard 
+                  key={course.courseId} 
+                  course={course} 
+                  progressData={progressData}
+                  getCourseProgress={getCourseProgress}
+                  navigate={navigate}
+                />
+              ))}
+            </div>
+          ) : (
+            <div className="bg-white/5 border border-white/10 rounded-2xl p-12 text-center">
+              <BookOpen size={64} className="mx-auto text-gray-500 mb-4" />
+              <h3 className="text-xl font-bold text-white mb-2">No Courses Yet</h3>
+              <p className="text-gray-400 mb-6">Start learning by enrolling in a course!</p>
+              <button
+                onClick={() => navigate('/courses')}
+                className="px-8 py-3 bg-gradient-to-r from-neon-purple to-neon-cyan text-white font-bold rounded-xl hover:shadow-lg hover:shadow-neon-cyan/50 transition-all"
+              >
+                Explore Courses
+              </button>
+            </div>
+          )}
         </motion.div>
       </div>
     </div>
+  );
+};
+
+// Stat Card Component
+const StatCard = ({ icon, label, value, color }) => {
+  const colorClasses = {
+    purple: 'bg-neon-purple/20 border-neon-purple/30',
+    cyan: 'bg-neon-cyan/20 border-neon-cyan/30',
+    green: 'bg-green-500/20 border-green-500/30',
+    yellow: 'bg-yellow-500/20 border-yellow-500/30'
+  };
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      whileHover={{ y: -5 }}
+      className={`${colorClasses[color]} border backdrop-blur-sm rounded-2xl p-6 transition-all`}
+    >
+      <div className="flex items-center gap-4">
+        <div className="w-14 h-14 rounded-xl bg-white/10 flex items-center justify-center">
+          {icon}
+        </div>
+        <div>
+          <p className="text-gray-400 text-sm mb-1">{label}</p>
+          <p className="text-3xl font-bold text-white">{value}</p>
+        </div>
+      </div>
+    </motion.div>
+  );
+};
+
+// Course Card Component
+const CourseCard = ({ course, progressData, getCourseProgress, navigate }) => {
+  const [progress, setProgress] = useState(0);
+
+  useEffect(() => {
+    const loadProgress = async () => {
+      const p = await getCourseProgress(course.courseId);
+      setProgress(p);
+    };
+    loadProgress();
+  }, [course.courseId, progressData]);
+
+  const courseProgress = progressData[course.courseId];
+  const completedCount = courseProgress?.completedLessons?.length || 0;
+
+  return (
+    <motion.div
+      whileHover={{ y: -8 }}
+      onClick={() => navigate(`/course/${course.courseId}`)}
+      className="bg-white/5 backdrop-blur-sm rounded-2xl overflow-hidden border border-white/10 hover:border-neon-cyan/50 cursor-pointer transition-all group"
+    >
+      {/* Course Header */}
+      <div className="h-32 bg-gradient-to-br from-neon-purple/20 to-neon-cyan/20 flex items-center justify-center relative">
+        <BookOpen size={48} className="text-white opacity-30 group-hover:opacity-50 transition-opacity" />
+        <div className="absolute top-4 right-4">
+          <span className={`px-3 py-1 rounded-full text-xs font-semibold ${
+            course.difficulty === 'Beginner' ? 'bg-green-500/20 text-green-400' :
+            course.difficulty === 'Intermediate' ? 'bg-yellow-500/20 text-yellow-400' :
+            'bg-red-500/20 text-red-400'
+          }`}>
+            {course.difficulty}
+          </span>
+        </div>
+      </div>
+
+      {/* Course Info */}
+      <div className="p-6">
+        <span className="text-xs text-neon-cyan font-medium uppercase tracking-wider">
+          {course.category}
+        </span>
+        
+        <h3 className="text-lg font-bold text-white mt-2 mb-2 group-hover:text-neon-cyan transition-colors">
+          {course.courseTitle}
+        </h3>
+
+        <p className="text-sm text-gray-400 mb-4">
+          {completedCount > 0 ? `${completedCount} lessons completed` : 'Just started'}
+        </p>
+
+        {/* Progress Bar */}
+        <ProgressBar 
+          progress={progress} 
+          color="purple" 
+          size="sm" 
+          animated={false}
+          showLabel={false}
+        />
+        
+        <div className="flex items-center justify-between mt-2">
+          <span className="text-xs text-gray-400">Progress</span>
+          <span className="text-xs font-bold text-white">{progress}%</span>
+        </div>
+      </div>
+    </motion.div>
   );
 };
 

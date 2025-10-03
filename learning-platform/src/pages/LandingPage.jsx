@@ -8,7 +8,12 @@ const LandingPage = ({ setCurrentPage }) => {
   const [courses, setCourses] = useState([]);
   const [devArticles, setDevArticles] = useState([]);
   const [trendingRepos, setTrendingRepos] = useState([]);
+  const [yourGithub, setYourGithub] = useState(null); // ✅ Added
+  const [topDevs, setTopDevs] = useState([]); // ✅ Added
+  const [dailyMeme, setDailyMeme] = useState(null); // ✅ Added
   const [loading, setLoading] = useState(true);
+
+  const YOUR_GITHUB = 'sam1302-sks'; // ✅ Your GitHub username
 
   useEffect(() => {
     setCurrentPage('home');
@@ -17,21 +22,84 @@ const LandingPage = ({ setCurrentPage }) => {
 
   const fetchAllData = async () => {
     try {
+      // 1. Your courses from your backend
       const coursesData = await ApiService.getAllCourses();
-      setCourses(coursesData);
+      setCourses(coursesData.slice(0, 6));
 
-      // Dev.to latest articles
-      const devResponse = await fetch('https://dev.to/api/articles?tag=programming&per_page=6');
-      const devData = await devResponse.json();
-      setDevArticles(devData);
+      // 2. Dev.to articles via proxy
+      try {
+        const devResponse = await fetch('http://localhost:8080/api/external/dev-articles');
+        const devData = await devResponse.json();
+        setDevArticles(devData);
+      } catch (error) {
+        console.log('Dev.to API failed:', error);
+      }
 
-      // GitHub trending
-      const githubResponse = await fetch('https://gh-trending-api.herokuapp.com/repositories?since=daily&spoken_language_code=en');
-      const githubData = await githubResponse.json();
-      setTrendingRepos(githubData.slice(0, 5));
+      // 3. GitHub Trending Repos via proxy
+      try {
+        const githubTrendingResponse = await fetch('http://localhost:8080/api/external/trending-repos');
+        const githubTrendingData = await githubTrendingResponse.json();
+        setTrendingRepos(githubTrendingData.slice(0, 5));
+      } catch (error) {
+        console.log('GitHub trending API failed:', error);
+      }
+
+      // 4. Your GitHub Stats via proxy
+      try {
+        const userResponse = await fetch(`http://localhost:8080/api/external/github-user/${YOUR_GITHUB}`);
+        const userData = await userResponse.json();
+        
+        const reposResponse = await fetch(`http://localhost:8080/api/external/github-repos/${YOUR_GITHUB}`);
+        const reposData = await reposResponse.json();
+
+        const totalStars = reposData.reduce((sum, repo) => sum + repo.stargazers_count, 0);
+        const totalForks = reposData.reduce((sum, repo) => sum + repo.forks_count, 0);
+
+        setYourGithub({
+          user: userData,
+          repos: reposData.slice(0, 5),
+          totalStars,
+          totalForks,
+          totalRepos: userData.public_repos
+        });
+      } catch (error) {
+        console.log('GitHub user API failed:', error);
+      }
+
+      // 5. Top Devs to Compare via proxy
+      try {
+        const topDevsResponse = await fetch('http://localhost:8080/api/external/trending-devs');
+        const topDevsRepos = await topDevsResponse.json();
+        
+        const topDevsData = [];
+        for (let i = 0; i < 3 && i < topDevsRepos.length; i++) {
+          try {
+            const devResponse = await fetch(`http://localhost:8080/api/external/github-user/${topDevsRepos[i].author}`);
+            const devData = await devResponse.json();
+            topDevsData.push({
+              ...devData,
+              trendingRepo: topDevsRepos[i]
+            });
+          } catch (error) {
+            console.log('Dev fetch failed:', error);
+          }
+        }
+        setTopDevs(topDevsData);
+      } catch (error) {
+        console.log('Top devs API failed:', error);
+      }
+
+      // 6. Daily Programming Meme via proxy
+      try {
+        const memeResponse = await fetch('http://localhost:8080/api/external/programming-meme');
+        const memeData = await memeResponse.json();
+        setDailyMeme(memeData);
+      } catch (error) {
+        console.log('Meme API failed:', error);
+      }
 
     } catch (error) {
-      console.error('Error:', error);
+      console.error('Error fetching data:', error);
     } finally {
       setLoading(false);
     }
@@ -46,7 +114,7 @@ const LandingPage = ({ setCurrentPage }) => {
           animate={{ opacity: 1, y: 0 }}
           className="text-center mb-16"
         >
-          <h1 className="text-5xl font-orbitron font-bold text-white mb-4">
+          <h1 className="text-4xl md:text-6xl font-orbitron font-bold mb-6 bg-gradient-to-r from-neon-purple via-neon-cyan to-neon-pink bg-clip-text text-transparent">
             Eat and Repeat
           </h1>
           <p className="text-xl text-gray-400 max-w-2xl mx-auto">
@@ -134,9 +202,11 @@ const LandingPage = ({ setCurrentPage }) => {
                 <h3 className="text-white font-semibold mb-2 line-clamp-2">
                   {article.title}
                 </h3>
-                <p className="text-gray-400 text-sm line-clamp-2 mb-3">
-                  {article.description}
-                </p>
+                {article.description && (
+                  <p className="text-gray-400 text-sm line-clamp-2 mb-3">
+                    {article.description}
+                  </p>
+                )}
                 <div className="flex items-center gap-4 text-xs text-gray-500">
                   <span>❤️ {article.public_reactions_count}</span>
                   <span>💬 {article.comments_count}</span>
@@ -194,15 +264,15 @@ const LandingPage = ({ setCurrentPage }) => {
                       )}
                       <span className="flex items-center gap-1">
                         <Star size={14} />
-                        {repo.stars.toLocaleString()}
+                        {repo.stars?.toLocaleString() || 0}
                       </span>
                       <span className="flex items-center gap-1">
                         <GitFork size={14} />
-                        {repo.forks.toLocaleString()}
+                        {repo.forks?.toLocaleString() || 0}
                       </span>
                       <span className="text-neon-pink flex items-center gap-1">
                         <TrendingUp size={14} />
-                        {repo.currentPeriodStars} today
+                        {repo.currentPeriodStars || 0} today
                       </span>
                     </div>
                   </div>

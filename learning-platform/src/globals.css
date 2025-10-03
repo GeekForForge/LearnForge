@@ -1073,3 +1073,16 @@ body {
   outline: var(--focus-outline);
   outline-offset: var(--space-2);
 }
+/* Animated shine effect for progress bar */
+@keyframes shine {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+.animate-shine {
+  animation: shine 2s infinite;
+}
