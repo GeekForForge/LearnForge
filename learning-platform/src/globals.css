@@ -1086,3 +1086,173 @@ body {
 .animate-shine {
   animation: shine 2s infinite;
 }
+
+/* =================================
+   LENIS LANDING PAGE ADDITIONS
+   ================================= */
+
+/* Hero Section Gradient Background */
+.hero-gradient {
+    background: linear-gradient(135deg, #0A0A0F 0%, #131318 50%, #1A1A22 100%);
+}
+
+/* Animated Gradient Text */
+.text-gradient {
+    background: linear-gradient(90deg, #8B5CF6, #06B6D4, #EC4899, #3B82F6);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: gradient-shift 3s ease infinite;
+}
+
+@keyframes gradient-shift {
+    0%, 100% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+}
+
+/* Smooth Scroll Behavior */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Parallax and Scroll Effects */
+.scroll-smooth {
+    scroll-behavior: smooth;
+}
+
+/* Hero Text Sizes - Enhanced */
+.hero-title {
+    font-size: clamp(3rem, 12vw, 12rem);
+    line-height: 0.9;
+    font-weight: 900;
+    letter-spacing: -0.02em;
+}
+
+.hero-subtitle {
+    font-size: clamp(1.25rem, 3vw, 3rem);
+    line-height: 1.4;
+}
+
+/* Hover Scale Effects */
+.hover-scale {
+    transition: transform var(--duration-normal) var(--ease-standard);
+}
+
+.hover-scale:hover {
+    transform: scale(1.05);
+}
+
+/* Gradient Overlay for Cards */
+.gradient-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(139, 92, 246, 0.1), rgba(6, 182, 212, 0.1));
+    opacity: 0;
+    transition: opacity var(--duration-normal) var(--ease-standard);
+}
+
+.group:hover .gradient-overlay {
+    opacity: 1;
+}
+
+/* Neon Color Classes for Tailwind Compatibility */
+.neon-purple { color: #8B5CF6; }
+.neon-cyan { color: #06B6D4; }
+.neon-pink { color: #EC4899; }
+.neon-blue { color: #3B82F6; }
+
+.bg-neon-purple { background-color: #8B5CF6; }
+.bg-neon-cyan { background-color: #06B6D4; }
+.bg-neon-pink { background-color: #EC4899; }
+.bg-neon-blue { background-color: #3B82F6; }
+
+.border-neon-purple { border-color: #8B5CF6; }
+.border-neon-cyan { border-color: #06B6D4; }
+.border-neon-pink { border-color: #EC4899; }
+.border-neon-blue { border-color: #3B82F6; }
+
+/* Opacity variants for neon colors */
+.bg-neon-purple\/10 { background-color: rgba(139, 92, 246, 0.1); }
+.bg-neon-cyan\/10 { background-color: rgba(6, 182, 212, 0.1); }
+.bg-neon-purple\/20 { background-color: rgba(139, 92, 246, 0.2); }
+.bg-neon-cyan\/20 { background-color: rgba(6, 182, 212, 0.2); }
+.border-neon-cyan\/50 { border-color: rgba(6, 182, 212, 0.5); }
+.border-neon-purple\/50 { border-color: rgba(139, 92, 246, 0.5); }
+
+/* Text color opacity variants */
+.text-gray-400 { color: rgba(156, 163, 175, 1); }
+.text-gray-500 { color: rgba(107, 114, 128, 1); }
+.text-white { color: white; }
+
+/* Background utilities */
+.bg-\[#0A0A0F\] { background-color: #0A0A0F; }
+
+/* Smooth transitions for all interactive elements */
+.transition-all {
+    transition: all var(--duration-normal) var(--ease-standard);
+}
+
+/* Line clamp utilities */
+.line-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.line-clamp-3 {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+/* Backdrop blur for glass effects */
+.backdrop-blur-xl {
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+}
+
+/* Custom shadow utilities */
+.shadow-2xl {
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+}
+
+/* Gradient backgrounds for sections */
+.gradient-to-r {
+    background-image: linear-gradient(to right, var(--tw-gradient-stops));
+}
+
+.gradient-to-b {
+    background-image: linear-gradient(to bottom, var(--tw-gradient-stops));
+}
+
+.gradient-to-t {
+    background-image: linear-gradient(to top, var(--tw-gradient-stops));
+}
+
+.gradient-to-br {
+    background-image: linear-gradient(to bottom right, var(--tw-gradient-stops));
+}
+
+/* Rounded corners */
+.rounded-2xl {
+    border-radius: 1rem;
+}
+
+.rounded-3xl {
+    border-radius: 1.5rem;
+}
+
+.rounded-full {
+    border-radius: 9999px;
+}
+
+/* =================================
+   END LENIS LANDING PAGE ADDITIONS
+   ================================= */

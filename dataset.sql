@@ -49,6 +49,35 @@ CREATE TABLE lesson_progress (
     FOREIGN KEY (lesson_id) REFERENCES lessons(lesson_id) ON DELETE CASCADE,
     UNIQUE KEY unique_user_lesson (user_id, lesson_id)
 );
+
+-- Create a new table for lesson resources
+CREATE TABLE lesson_resources (
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    lesson_id BIGINT NOT NULL,
+    resource_type ENUM('LEETCODE', 'GITHUB', 'GFG', 'OTHER') NOT NULL,
+    resource_url VARCHAR(500) NOT NULL,
+    resource_title VARCHAR(255),
+    display_order INT DEFAULT 0,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    CONSTRAINT fk_resource_lesson FOREIGN KEY (lesson_id) REFERENCES lessons(lesson_id) ON DELETE CASCADE
+);
+CREATE TABLE video_progress (
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    user_id VARCHAR(255) NOT NULL,
+    lesson_id BIGINT NOT NULL,
+    watch_time DOUBLE NOT NULL,
+    duration DOUBLE,
+    last_updated TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    UNIQUE KEY unique_user_lesson (user_id, lesson_id),
+    CONSTRAINT fk_video_progress_user FOREIGN KEY (user_id) REFERENCES users(user_id) ON DELETE CASCADE,
+    CONSTRAINT fk_video_progress_lesson FOREIGN KEY (lesson_id) REFERENCES lessons(lesson_id) ON DELETE CASCADE
+);
+
+
+
+-- Add index for faster queries
+CREATE INDEX idx_lesson_resources ON lesson_resources(lesson_id, resource_type);
+
 UPDATE lessons
 SET video_url = 'https://youtu.be/qcQKq4XABNk'
 WHERE lesson_id = 1;

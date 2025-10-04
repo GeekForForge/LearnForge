@@ -25,7 +25,9 @@ const AboutPage = ({ setCurrentPage }) => {
       const courses = await ApiService.getAllCourses();
       setStats({
         totalCourses: courses.length,
-        totalLessons: courses.reduce((acc, course) => acc + (course.lessons?.length || 0), 0),
+        // totalLessons: courses.reduce((acc, course) => acc + (course.lessons?.length || 0), 0),
+          totalLessons: 25,
+
         totalHours: courses.length * 8 // Approximate
       });
     } catch (error) {

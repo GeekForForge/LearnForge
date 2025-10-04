@@ -4,10 +4,7 @@ import com.example.Forge.entity.Course;
 import com.example.Forge.entity.Lesson;
 import com.example.Forge.entity.Progress;
 import com.example.Forge.entity.User;
-import com.example.Forge.repository.CourseRepository;
-import com.example.Forge.repository.LessonRepository;
-import com.example.Forge.repository.ProgressRepository;
-import com.example.Forge.repository.UserRepository;
+import com.example.Forge.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
