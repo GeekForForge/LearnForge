@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.time.LocalDateTime;
 import java.util.List;
 
 @Service
@@ -20,26 +19,21 @@ public class LessonService {
     @Autowired
     private CourseRepository courseRepository;
 
-    public List<Lesson> getAllLessons() {
-        return lessonRepository.findAll();
+    public List<Lesson> getLessonsByCourseId(Long courseId) {
+        System.out.println("📚 Fetching lessons for course " + courseId);
+        List<Lesson> lessons = lessonRepository.findByCourseIdOrderByLessonIdAsc(courseId);
+        System.out.println("✅ Found " + lessons.size() + " lessons");
+        return lessons;
     }
 
     public Lesson getLessonById(Long lessonId) {
         return lessonRepository.findById(lessonId)
-                .orElseThrow(() -> new RuntimeException("Lesson not found with id: " + lessonId));
-    }
-
-    public List<Lesson> getLessonsByCourseId(Long courseId) {
-        return lessonRepository.findByCourseIdOrderByLessonIdAsc(courseId);
-    }
-
-    public List<Lesson> getLessonsByCourse(Course course) {
-        return lessonRepository.findByCourseOrderByLessonIdAsc(course);
+                .orElseThrow(() -> new RuntimeException("Lesson not found"));
     }
 
     public Lesson getFirstLessonOfCourse(Long courseId) {
         return lessonRepository.findFirstByCourseId(courseId)
-                .orElseThrow(() -> new RuntimeException("No lessons found for course: " + courseId));
+                .orElseThrow(() -> new RuntimeException("No lessons found"));
     }
 
     public Long countLessonsByCourseId(Long courseId) {
@@ -49,43 +43,37 @@ public class LessonService {
     @Transactional
     public Lesson createLesson(Long courseId, Lesson lesson) {
         Course course = courseRepository.findById(courseId)
-                .orElseThrow(() -> new RuntimeException("Course not found with id: " + courseId));
-
+                .orElseThrow(() -> new RuntimeException("Course not found"));
         lesson.setCourse(course);
-        lesson.setCreatedAt(LocalDateTime.now());
-        lesson.setUpdatedAt(LocalDateTime.now());
-
         return lessonRepository.save(lesson);
     }
 
     @Transactional
     public Lesson updateLesson(Long lessonId, Lesson lessonDetails) {
-        Lesson lesson = getLessonById(lessonId);
-
+        Lesson lesson = lessonRepository.findById(lessonId)
+                .orElseThrow(() -> new RuntimeException("Lesson not found"));
         lesson.setLessonName(lessonDetails.getLessonName());
         lesson.setVideoUrl(lessonDetails.getVideoUrl());
         lesson.setDuration(lessonDetails.getDuration());
-        lesson.setUpdatedAt(LocalDateTime.now());
-
         return lessonRepository.save(lesson);
     }
 
     @Transactional
     public void deleteLesson(Long lessonId) {
-        Lesson lesson = getLessonById(lessonId);
-        lessonRepository.delete(lesson);
+        lessonRepository.deleteById(lessonId);
     }
 
-    @Transactional
-    public void deleteAllLessonsInCourse(Long courseId) {
-        lessonRepository.deleteByCourseId(courseId);
+    // For ProgressService
+    public List<Lesson> getLessonsByCourse(Course course) {
+        return lessonRepository.findByCourse(course);
     }
 
-    public List<Lesson> searchLessons(String keyword) {
-        return lessonRepository.findByLessonNameContainingIgnoreCase(keyword);
+    public Long countLessonsByCourse(Course course) {
+        return lessonRepository.countByCourse(course);
     }
 
-    public boolean lessonExistsInCourse(Long lessonId, Long courseId) {
-        return lessonRepository.existsByLessonIdAndCourse_CourseId(lessonId, courseId);
+    public Lesson getFirstLessonOfCourse(Course course) {
+        return lessonRepository.findFirstByCourseOrderByLessonIdAsc(course)
+                .orElseThrow(() -> new RuntimeException("No lessons found"));
     }
 }

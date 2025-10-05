@@ -124,4 +124,7 @@ public class AuthService {
         String githubId = jwtUtil.getGithubIdFromToken(token);
         return userRepository.findByProviderId(githubId).orElse(null);
     }
+    public User getUserById(String id) {
+        return userRepository.findByProviderId(id).orElse(null);
+    }
 }

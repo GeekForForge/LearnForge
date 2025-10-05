@@ -58,11 +58,15 @@ public class User {
     @JsonIgnore
     private List<Progress> progressList = new ArrayList<>();
 
+    @Column(name = "is_admin", nullable = false)
+    private Boolean isAdmin = false;
+
     // Constructors
     public User() {
         this.userId = UUID.randomUUID().toString();
         this.createdAt = LocalDateTime.now();
         this.updatedAt = LocalDateTime.now();
+        this.isAdmin = false; // ✅ Initialize to false
     }
 
     public User(String name, String email, String provider, String providerId, String avatarUrl) {
@@ -78,6 +82,9 @@ public class User {
     public void onCreate() {
         createdAt = LocalDateTime.now();
         updatedAt = LocalDateTime.now();
+        if (isAdmin == null) {
+            isAdmin = false;
+        }
     }
 
     @PreUpdate
@@ -175,6 +182,15 @@ public class User {
         this.progressList = progressList;
     }
 
+    // ✅ ADDED - isAdmin getter and setter
+    public Boolean getIsAdmin() {
+        return isAdmin != null ? isAdmin : false;
+    }
+
+    public void setIsAdmin(Boolean isAdmin) {
+        this.isAdmin = isAdmin;
+    }
+
     // Explicit method used in AuthService
     public String getGithubId() {
         return this.providerId;
@@ -185,6 +201,10 @@ public class User {
         return this.name;
     }
 
+    public void setUsername(String username) {
+        this.name = username;
+    }
+
     @Override
     public String toString() {
         return "User{" +
@@ -193,12 +213,9 @@ public class User {
                 ", email='" + email + '\'' +
                 ", provider='" + provider + '\'' +
                 ", providerId='" + providerId + '\'' +
+                ", isAdmin=" + isAdmin +
                 ", createdAt=" + createdAt +
                 ", updatedAt=" + updatedAt +
                 '}';
-    }
-
-    public void setUsername(String username) {
-        this.name=username;
     }
 }

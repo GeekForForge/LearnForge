@@ -1,253 +1,162 @@
-import React, { createContext, useState, useEffect, useContext } from 'react';
-import axios from 'axios';
+import React, { createContext, useState, useContext, useEffect } from 'react';
+import ApiService from '../services/api';
 
 const AuthContext = createContext();
 
-export const useAuth = () => {
-  const context = useContext(AuthContext);
-  if (!context) {
-    throw new Error('useAuth must be used within an AuthProvider');
-  }
-  return context;
-};
-
 export const AuthProvider = ({ children }) => {
-  const [user, setUser] = useState(null);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+    const [user, setUser] = useState(null);
+    const [isAuthenticated, setIsAuthenticated] = useState(false);
+    const [loading, setLoading] = useState(true);
 
-  // Configuration
-  const API_BASE_URL ='http://localhost:8080/api';
-  const GITHUB_CLIENT_ID ='Ov23li0GzarRfL1R2lcv';
+    useEffect(() => {
+        fetchUser();
+    }, []);
 
-  // Check authentication on mount
-  useEffect(() => {
-    checkAuth();
-  }, []);
-
-  /**
-   * Check if user is authenticated with stored token
-   */
-  const checkAuth = async () => {
-    const token = localStorage.getItem('token');
-    
-    if (!token) {
-      console.log('ℹ️ No token found in localStorage');
-      setLoading(false);
-      return;
-    }
-
-    try {
-      console.log('🔐 Checking authentication with token...');
-      const response = await axios.get(`${API_BASE_URL}/auth/me`, {
-        headers: { 
-          Authorization: `Bearer ${token}`,
-          'Content-Type': 'application/json'
-        }
-      });
-
-      if (response.data) {
-        console.log('✅ User authenticated:', response.data.email);
-        setUser(response.data);
-        setError(null);
-      }
-    } catch (error) {
-      console.error('❌ Auth check failed:', error.response?.status, error.message);
-      
-      // Clear invalid token
-      localStorage.removeItem('token');
-      setUser(null);
-      setError('Session expired. Please login again.');
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  /**
-   * Redirect to GitHub OAuth login
-   */
-  const loginWithGithub = () => {
-    try {
-      const redirectUri = `${window.location.origin}/auth/callback`;
-      const githubAuthUrl = new URL('https://github.com/login/oauth/authorize');
-      
-      githubAuthUrl.searchParams.append('client_id', GITHUB_CLIENT_ID);
-      githubAuthUrl.searchParams.append('redirect_uri', redirectUri);
-      githubAuthUrl.searchParams.append('scope', 'user:email read:user');
-      githubAuthUrl.searchParams.append('state', generateRandomState()); // CSRF protection
-
-      console.log('🔐 Redirecting to GitHub OAuth:', githubAuthUrl.toString());
-      
-      // Store state for verification
-      sessionStorage.setItem('oauth_state', githubAuthUrl.searchParams.get('state'));
-      
-      window.location.href = githubAuthUrl.toString();
-    } catch (error) {
-      console.error('❌ Error initiating GitHub login:', error);
-      setError('Failed to initiate login. Please try again.');
-    }
-  };
-
-  /**
-   * Handle GitHub OAuth callback
-   */
-  const handleGithubCallback = async (code, state) => {
-    try {
-      // Verify state for CSRF protection
-      const savedState = sessionStorage.getItem('oauth_state');
-      if (state && savedState && state !== savedState) {
-        throw new Error('Invalid OAuth state - possible CSRF attack');
-      }
-
-      console.log('📤 Sending authorization code to backend...');
-      
-      const response = await axios.post(
-        `${API_BASE_URL}/auth/github`,
-        { code },
-        {
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          timeout: 10000 // 10 second timeout
-        }
-      );
-
-      if (!response.data) {
-        throw new Error('No data received from server');
-      }
-
-      const { token, user: userData } = response.data;
-
-      if (!token || !userData) {
-        throw new Error('Invalid response format from server');
-      }
-
-      console.log('✅ Authentication successful!');
-      console.log('👤 User:', userData.email);
-      console.log('🎫 Token received');
-
-      // Store token
-      localStorage.setItem('token', token);
-      
-      // Set user data
-      setUser(userData);
-      setError(null);
-
-      // Clear OAuth state
-      sessionStorage.removeItem('oauth_state');
-
-      return true;
-    } catch (error) {
-      console.error('❌ GitHub authentication failed:', error);
-      
-      // Handle specific errors
-      let errorMessage = 'Authentication failed. Please try again.';
-      
-      if (error.response) {
-        // Server responded with error
-        console.error('Server error:', error.response.status, error.response.data);
-        errorMessage = error.response.data || errorMessage;
-      } else if (error.request) {
-        // Request made but no response
-        console.error('Network error:', error.message);
-        errorMessage = 'Network error. Please check your connection.';
-      } else {
-        // Something else went wrong
-        console.error('Error:', error.message);
-        errorMessage = error.message;
-      }
-
-      setError(errorMessage);
-      
-      // Clear any stored data
-      localStorage.removeItem('token');
-      sessionStorage.removeItem('oauth_state');
-      setUser(null);
-
-      return false;
-    }
-  };
-
-  /**
-   * Logout user
-   */
-  const logout = async () => {
-    try {
-      const token = localStorage.getItem('token');
-      
-      if (token) {
-        // Optional: Call logout endpoint
+    const fetchUser = async () => {
         try {
-          await axios.post(
-            `${API_BASE_URL}/auth/logout`,
-            {},
-            {
-              headers: { Authorization: `Bearer ${token}` }
+            console.log('🔍 AuthContext: Fetching user...');
+            const userData = await ApiService.getCurrentUser();
+
+            console.log('📦 AuthContext: User data received:', userData);
+
+            if (userData && !userData.error) {
+                console.log('✅ AuthContext: User authenticated');
+                console.log('   - Name:', userData.name);
+                console.log('   - Email:', userData.email);
+                console.log('   - isAdmin:', userData.isAdmin);
+
+                setUser({
+                    userId: userData.userId,
+                    name: userData.name,
+                    email: userData.email,
+                    avatarUrl: userData.avatarUrl,
+                    bio: userData.bio,
+                    location: userData.location,
+                    isAdmin: userData.isAdmin || false,
+                });
+                setIsAuthenticated(true);
+            } else {
+                console.log('❌ AuthContext: No user data or error');
+                setUser(null);
+                setIsAuthenticated(false);
             }
-          );
         } catch (error) {
-          console.warn('Logout endpoint failed:', error.message);
+            console.error('❌ AuthContext: Error fetching user:', error);
+            setUser(null);
+            setIsAuthenticated(false);
+        } finally {
+            setLoading(false);
         }
-      }
+    };
 
-      // Clear local data
-      localStorage.removeItem('token');
-      sessionStorage.removeItem('oauth_state');
-      
-      setUser(null);
-      setError(null);
+    // ✅ GitHub OAuth Login - Redirect to GitHub
+    const loginWithGithub = () => {
+        const clientId = 'Ov23li0GzarRfL1R2lcv'; // Your GitHub Client ID
+        const redirectUri = 'http://localhost:3000/auth/callback';
+        const scope = 'read:user user:email';
 
-      console.log('✅ Logged out successfully');
-    } catch (error) {
-      console.error('❌ Error during logout:', error);
-    }
-  };
+        const githubAuthUrl = `https://github.com/login/oauth/authorize?client_id=${clientId}&redirect_uri=${redirectUri}&scope=${scope}`;
 
-  /**
-   * Update user profile
-   */
-  const updateUser = (updatedData) => {
-    setUser(prev => ({
-      ...prev,
-      ...updatedData
-    }));
-  };
+        console.log('🔐 Redirecting to GitHub OAuth...');
+        console.log('   - Client ID:', clientId);
+        console.log('   - Redirect URI:', redirectUri);
 
-  /**
-   * Clear error message
-   */
-  const clearError = () => {
-    setError(null);
-  };
+        window.location.href = githubAuthUrl;
+    };
 
-  /**
-   * Generate random state for CSRF protection
-   */
-  const generateRandomState = () => {
-    const array = new Uint8Array(16);
-    crypto.getRandomValues(array);
-    return Array.from(array, byte => byte.toString(16).padStart(2, '0')).join('');
-  };
+    // ✅ Handle GitHub Callback - Process the code
+    const handleGithubCallback = async (code) => {
+        try {
+            console.log('🔐 AuthContext: Processing GitHub callback with code:', code);
 
-  // Context value
-  const value = {
-    user,
-    loading,
-    error,
-    isAuthenticated: !!user,
-    loginWithGithub,
-    handleGithubCallback,
-    logout,
-    updateUser,
-    clearError,
-    checkAuth
-  };
+            // Send code to backend
+            const response = await fetch('http://localhost:8080/api/auth/github', {
+                method: 'POST',
+                credentials: 'include', // ✅ CRITICAL for sessions
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ code }),
+            });
 
-  return (
-    <AuthContext.Provider value={value}>
-      {children}
-    </AuthContext.Provider>
-  );
+            console.log('📡 Backend response status:', response.status);
+
+            if (!response.ok) {
+                const errorText = await response.text();
+                console.error('❌ Backend error:', errorText);
+                throw new Error(`Authentication failed: ${response.status}`);
+            }
+
+            const data = await response.json();
+            console.log('✅ Backend response data:', data);
+
+            if (data.user) {
+                console.log('✅ User authenticated:', data.user.email);
+
+                // Set user in context
+                setUser({
+                    userId: data.user.userId,
+                    name: data.user.name || data.user.username,
+                    email: data.user.email,
+                    avatarUrl: data.user.avatarUrl || data.user.avatar_url,
+                    bio: data.user.bio,
+                    location: data.user.location,
+                    isAdmin: data.user.isAdmin || false,
+                });
+                setIsAuthenticated(true);
+
+                // Fetch fresh user data to ensure isAdmin is loaded
+                await fetchUser();
+
+                return true;
+            } else {
+                console.error('❌ No user in response');
+                return false;
+            }
+        } catch (error) {
+            console.error('❌ AuthContext: handleGithubCallback error:', error);
+            return false;
+        }
+    };
+
+    const login = (userData) => {
+        console.log('🔐 AuthContext: Login called with:', userData);
+        setUser(userData);
+        setIsAuthenticated(true);
+    };
+
+    const logout = async () => {
+        try {
+            console.log('👋 AuthContext: Logging out...');
+            await ApiService.logout();
+            setUser(null);
+            setIsAuthenticated(false);
+            console.log('✅ AuthContext: Logout complete');
+        } catch (error) {
+            console.error('❌ AuthContext: Logout error:', error);
+        }
+    };
+
+    return (
+        <AuthContext.Provider value={{
+            user,
+            isAuthenticated,
+            loading,
+            login,
+            logout,
+            fetchUser,
+            loginWithGithub,      // ✅ For login button
+            handleGithubCallback  // ✅ For callback page
+        }}>
+            {children}
+        </AuthContext.Provider>
+    );
 };
 
-export default AuthContext;
+export const useAuth = () => {
+    const context = useContext(AuthContext);
+    if (!context) {
+        throw new Error('useAuth must be used within AuthProvider');
+    }
+    return context;
+};

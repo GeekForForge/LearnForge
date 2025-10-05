@@ -3,8 +3,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import {
     Play, Clock, Book, Code, Github, ArrowLeft,
-    CheckCircle, Circle, Save, Edit3, Star, Users, Info,
-    ExternalLink, BookOpen // Added missing imports
+    CheckCircle, Circle, Save, Edit3, Star, Users, Info, ExternalLink, BookOpen
 } from 'lucide-react';
 import ApiService from '../services/api';
 import ProgressBar from '../components/ProgressBar';
@@ -22,7 +21,6 @@ const CourseDetailPage = ({ setCurrentPage }) => {
     const [notes, setNotes] = useState('');
     const [isSavingNotes, setIsSavingNotes] = useState(false);
 
-    // ✅ Video Progress State
     const [lastWatchedTime, setLastWatchedTime] = useState(0);
     const [showResumePrompt, setShowResumePrompt] = useState(false);
     const watchTimeRef = useRef(0);
@@ -48,12 +46,9 @@ const CourseDetailPage = ({ setCurrentPage }) => {
         if (selectedLesson) {
             const savedNotes = localStorage.getItem(`notes_${id}_${selectedLesson.lessonId}`);
             setNotes(savedNotes || '');
-
-            // ✅ Load saved watch time
             loadLastWatchedTime();
         }
 
-        // Cleanup interval on lesson change
         return () => {
             if (saveIntervalRef.current) {
                 clearInterval(saveIntervalRef.current);
@@ -62,12 +57,11 @@ const CourseDetailPage = ({ setCurrentPage }) => {
         };
     }, [selectedLesson, id]);
 
-    // ✅ Auto-save watch time every 10 seconds
     useEffect(() => {
         if (selectedLesson && isAuthenticated) {
             saveIntervalRef.current = setInterval(() => {
                 saveCurrentWatchTime();
-            }, 10000); // Save every 10 seconds
+            }, 10000);
 
             return () => {
                 if (saveIntervalRef.current) {
@@ -79,15 +73,23 @@ const CourseDetailPage = ({ setCurrentPage }) => {
 
     const fetchCourseData = async () => {
         try {
+            console.log('🎯 Fetching course data for ID:', id);
+
             const [courseData, lessonsData] = await Promise.all([
                 ApiService.getCourseById(id),
                 ApiService.getLessonsByCourse(id)
             ]);
 
+            console.log('✅ Course data:', courseData);
+            console.log('✅ Lessons data:', lessonsData);
+
             setCourse(courseData);
             setLessons(lessonsData);
 
-            if (lessonsData.length > 0) {
+            if (lessonsData && lessonsData.length > 0) {
+                console.log('🎬 First lesson:', lessonsData[0]);
+                console.log('🎬 Video URL:', lessonsData[0].videoUrl);
+                console.log('🎬 Resources count:', lessonsData[0].resources?.length || 0);
                 setSelectedLesson(lessonsData[0]);
             }
 
@@ -95,13 +97,12 @@ const CourseDetailPage = ({ setCurrentPage }) => {
                 await getCourseProgress(id);
             }
         } catch (error) {
-            console.error('Error fetching course:', error);
+            console.error('❌ Error fetching course:', error);
         } finally {
             setLoading(false);
         }
     };
 
-    // ✅ Load last watched time from backend
     const loadLastWatchedTime = async () => {
         if (!isAuthenticated || !user || !selectedLesson) return;
 
@@ -127,7 +128,6 @@ const CourseDetailPage = ({ setCurrentPage }) => {
         }
     };
 
-    // ✅ Save current watch time
     const saveCurrentWatchTime = async () => {
         if (!isAuthenticated || !user || !selectedLesson || watchTimeRef.current < 5) return;
 
@@ -145,7 +145,6 @@ const CourseDetailPage = ({ setCurrentPage }) => {
         }
     };
 
-    // ✅ Manual time tracking (user tells us when they pause/leave)
     const updateWatchTime = (seconds) => {
         watchTimeRef.current = seconds;
     };
@@ -191,10 +190,28 @@ const CourseDetailPage = ({ setCurrentPage }) => {
         }
     };
 
+    // ✅ IMPROVED YouTube Video ID Extraction
     const getYouTubeVideoId = (url) => {
         if (!url) return null;
-        const match = url.match(/(?:youtube\.com\/watch\?v=|youtu\.be\/|youtube\.com\/embed\/)([^&\n?#]+)/);
-        return match ? match[1] : null;
+
+        console.log('🎬 Extracting video ID from:', url);
+
+        // Handle different YouTube URL formats
+        const patterns = [
+            /(?:youtube\.com\/watch\?v=|youtu\.be\/|youtube\.com\/embed\/)([^&\n?#]+)/,
+            /^([a-zA-Z0-9_-]{11})$/  // Direct video ID
+        ];
+
+        for (let pattern of patterns) {
+            const match = url.match(pattern);
+            if (match) {
+                console.log('✅ Video ID found:', match[1]);
+                return match[1];
+            }
+        }
+
+        console.log('❌ No video ID found in URL');
+        return null;
     };
 
     const getDifficultyColor = (difficulty) => {
@@ -239,10 +256,13 @@ const CourseDetailPage = ({ setCurrentPage }) => {
         );
     }
 
-    const videoId = getYouTubeVideoId(selectedLesson?.videoUrl);
+    const videoId = selectedLesson?.videoUrl ? getYouTubeVideoId(selectedLesson.videoUrl) : null;
     const videoUrl = videoId
         ? `https://www.youtube.com/embed/${videoId}?start=${Math.floor(lastWatchedTime)}`
         : null;
+
+    console.log('🎥 Current video ID:', videoId);
+    console.log('🎥 Embed URL:', videoUrl);
 
     return (
         <div className="min-h-screen pt-20 pb-12">
@@ -265,12 +285,12 @@ const CourseDetailPage = ({ setCurrentPage }) => {
                     className="mb-8"
                 >
                     <div className="flex flex-wrap items-center gap-3 mb-4">
-                        <span className={`px-4 py-1.5 rounded-full text-sm font-semibold ${getDifficultyColor(course.difficulty)}`}>
-                            {course.difficulty || 'Beginner'}
-                        </span>
+            <span className={`px-4 py-1.5 rounded-full text-sm font-semibold ${getDifficultyColor(course.difficulty)}`}>
+              {course.difficulty || 'Beginner'}
+            </span>
                         <span className="px-4 py-1.5 rounded-full text-sm font-semibold bg-neon-cyan/20 text-neon-cyan border border-neon-cyan/30">
-                            {course.category}
-                        </span>
+              {course.category}
+            </span>
                     </div>
 
                     <h1 className="text-4xl md:text-5xl font-bold text-white mb-3">
@@ -317,90 +337,6 @@ const CourseDetailPage = ({ setCurrentPage }) => {
                     )}
                 </motion.div>
 
-                {/* Resource Links Section - UPDATED */}
-                {selectedLesson && selectedLesson.resources && selectedLesson.resources.length > 0 && (
-                    <div className="p-6 border-t border-white/10">
-                        <h4 className="text-lg font-bold text-white mb-4 flex items-center gap-2">
-                            <Code size={18} className="text-neon-cyan" />
-                            Practice Resources
-                        </h4>
-
-                        <div className="space-y-3">
-                            {/* LeetCode Links */}
-                            {selectedLesson.resources
-                                .filter(r => r.resourceType === 'LEETCODE')
-                                .map((resource, index) => (
-                                    <a
-                                        key={resource.id || `leetcode-${index}`}
-                                        href={resource.resourceUrl}
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        className="block px-5 py-3 bg-orange-500/10 hover:bg-orange-500/20 border border-orange-500/30 text-orange-400 rounded-xl flex items-center justify-between gap-2 font-medium transition-all group"
-                                    >
-                                        <div className="flex items-center gap-3">
-                                            <Code size={20} />
-                                            <div>
-                                                <span className="font-semibold">
-                                                    {resource.resourceTitle || `LeetCode Problem ${index + 1}`}
-                                                </span>
-                                                <p className="text-xs text-orange-400/70">Practice coding challenge</p>
-                                            </div>
-                                        </div>
-                                        <ExternalLink size={16} className="group-hover:translate-x-1 transition-transform" />
-                                    </a>
-                                ))}
-
-                            {/* GitHub Link */}
-                            {selectedLesson.resources
-                                .filter(r => r.resourceType === 'GITHUB')
-                                .map((resource, index) => (
-                                    <a
-                                        key={resource.id || `github-${index}`}
-                                        href={resource.resourceUrl}
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        className="block px-5 py-3 bg-gray-800 hover:bg-gray-700 border border-gray-600 text-white rounded-xl flex items-center justify-between gap-2 font-medium transition-all group"
-                                    >
-                                        <div className="flex items-center gap-3">
-                                            <Github size={20} />
-                                            <div>
-                                                <span className="font-semibold">
-                                                    {resource.resourceTitle || 'View Source Code'}
-                                                </span>
-                                                <p className="text-xs text-gray-400">GitHub repository</p>
-                                            </div>
-                                        </div>
-                                        <ExternalLink size={16} className="group-hover:translate-x-1 transition-transform" />
-                                    </a>
-                                ))}
-
-                            {/* GeeksforGeeks Link */}
-                            {selectedLesson.resources
-                                .filter(r => r.resourceType === 'GFG')
-                                .map((resource, index) => (
-                                    <a
-                                        key={resource.id || `gfg-${index}`}
-                                        href={resource.resourceUrl}
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        className="block px-5 py-3 bg-green-500/10 hover:bg-green-500/20 border border-green-500/30 text-green-400 rounded-xl flex items-center justify-between gap-2 font-medium transition-all group"
-                                    >
-                                        <div className="flex items-center gap-3">
-                                            <BookOpen size={20} />
-                                            <div>
-                                                <span className="font-semibold">
-                                                    {resource.resourceTitle || 'GeeksforGeeks Article'}
-                                                </span>
-                                                <p className="text-xs text-green-400/70">Theory & examples</p>
-                                            </div>
-                                        </div>
-                                        <ExternalLink size={16} className="group-hover:translate-x-1 transition-transform" />
-                                    </a>
-                                ))}
-                        </div>
-                    </div>
-                )}
-
                 {/* Main Grid */}
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
                     {/* Left Column - Video & Notes (8/12) */}
@@ -434,7 +370,7 @@ const CourseDetailPage = ({ setCurrentPage }) => {
                             animate={{ opacity: 1, y: 0 }}
                             className="bg-white/5 backdrop-blur-sm rounded-2xl overflow-hidden border border-white/10"
                         >
-                            {selectedLesson && videoUrl ? (
+                            {selectedLesson && videoId ? (
                                 <>
                                     <div className="aspect-video bg-black">
                                         <iframe
@@ -461,8 +397,8 @@ const CourseDetailPage = ({ setCurrentPage }) => {
                                                     </div>
                                                     {lastWatchedTime > 10 && (
                                                         <span className="text-neon-cyan text-sm font-medium">
-                                                            ▶ Started from {formatTime(lastWatchedTime)}
-                                                        </span>
+                              ▶ Started from {formatTime(lastWatchedTime)}
+                            </span>
                                                     )}
                                                 </div>
                                             </div>
@@ -517,30 +453,90 @@ const CourseDetailPage = ({ setCurrentPage }) => {
                                             </div>
                                         )}
 
-                                        {(selectedLesson.githubUrl || selectedLesson.leetcodeUrl) && (
-                                            <div className="flex gap-3">
-                                                {selectedLesson.githubUrl && (
-                                                    <a
-                                                        href={selectedLesson.githubUrl}
-                                                        target="_blank"
-                                                        rel="noopener noreferrer"
-                                                        className="flex-1 px-5 py-3 bg-gray-800 hover:bg-gray-700 text-white rounded-xl flex items-center justify-center gap-2 font-medium transition-colors"
-                                                    >
-                                                        <Github size={20} />
-                                                        View Code
-                                                    </a>
-                                                )}
-                                                {selectedLesson.leetcodeUrl && (
-                                                    <a
-                                                        href={selectedLesson.leetcodeUrl}
-                                                        target="_blank"
-                                                        rel="noopener noreferrer"
-                                                        className="flex-1 px-5 py-3 bg-orange-500 hover:bg-orange-600 text-white rounded-xl flex items-center justify-center gap-2 font-medium transition-colors"
-                                                    >
-                                                        <Code size={20} />
-                                                        Practice
-                                                    </a>
-                                                )}
+                                        {/* Resource Links */}
+                                        {selectedLesson.resources && selectedLesson.resources.length > 0 && (
+                                            <div className="mt-6">
+                                                <h4 className="text-lg font-bold text-white mb-4 flex items-center gap-2">
+                                                    <Code size={18} className="text-neon-cyan" />
+                                                    Practice Resources
+                                                </h4>
+
+                                                <div className="space-y-3">
+                                                    {/* LeetCode Links */}
+                                                    {selectedLesson.resources
+                                                        .filter(r => r.resourceType === 'LEETCODE')
+                                                        .slice(0, 3)
+                                                        .map((resource, index) => (
+                                                            <a
+                                                                key={resource.id}
+                                                                href={resource.resourceUrl}
+                                                                target="_blank"
+                                                                rel="noopener noreferrer"
+                                                                className="block px-5 py-3 bg-orange-500/10 hover:bg-orange-500/20 border border-orange-500/30 text-orange-400 rounded-xl flex items-center justify-between gap-2 font-medium transition-all group"
+                                                            >
+                                                                <div className="flex items-center gap-3">
+                                                                    <Code size={20} />
+                                                                    <div>
+                                    <span className="font-semibold">
+                                      {resource.resourceTitle || `LeetCode Problem ${index + 1}`}
+                                    </span>
+                                                                        <p className="text-xs text-orange-400/70">Practice coding challenge</p>
+                                                                    </div>
+                                                                </div>
+                                                                <ExternalLink size={16} className="group-hover:translate-x-1 transition-transform" />
+                                                            </a>
+                                                        ))}
+
+                                                    {/* GitHub Link */}
+                                                    {selectedLesson.resources
+                                                        .filter(r => r.resourceType === 'GITHUB')
+                                                        .slice(0, 1)
+                                                        .map((resource) => (
+                                                            <a
+                                                                key={resource.id}
+                                                                href={resource.resourceUrl}
+                                                                target="_blank"
+                                                                rel="noopener noreferrer"
+                                                                className="block px-5 py-3 bg-gray-800 hover:bg-gray-700 border border-gray-600 text-white rounded-xl flex items-center justify-between gap-2 font-medium transition-all group"
+                                                            >
+                                                                <div className="flex items-center gap-3">
+                                                                    <Github size={20} />
+                                                                    <div>
+                                    <span className="font-semibold">
+                                      {resource.resourceTitle || 'View Source Code'}
+                                    </span>
+                                                                        <p className="text-xs text-gray-400">GitHub repository</p>
+                                                                    </div>
+                                                                </div>
+                                                                <ExternalLink size={16} className="group-hover:translate-x-1 transition-transform" />
+                                                            </a>
+                                                        ))}
+
+                                                    {/* GFG Link */}
+                                                    {selectedLesson.resources
+                                                        .filter(r => r.resourceType === 'GFG')
+                                                        .slice(0, 1)
+                                                        .map((resource) => (
+                                                            <a
+                                                                key={resource.id}
+                                                                href={resource.resourceUrl}
+                                                                target="_blank"
+                                                                rel="noopener noreferrer"
+                                                                className="block px-5 py-3 bg-green-500/10 hover:bg-green-500/20 border border-green-500/30 text-green-400 rounded-xl flex items-center justify-between gap-2 font-medium transition-all group"
+                                                            >
+                                                                <div className="flex items-center gap-3">
+                                                                    <BookOpen size={20} />
+                                                                    <div>
+                                    <span className="font-semibold">
+                                      {resource.resourceTitle || 'GeeksforGeeks Article'}
+                                    </span>
+                                                                        <p className="text-xs text-green-400/70">Theory & examples</p>
+                                                                    </div>
+                                                                </div>
+                                                                <ExternalLink size={16} className="group-hover:translate-x-1 transition-transform" />
+                                                            </a>
+                                                        ))}
+                                                </div>
                                             </div>
                                         )}
                                     </div>
@@ -548,7 +544,12 @@ const CourseDetailPage = ({ setCurrentPage }) => {
                             ) : (
                                 <div className="aspect-video flex flex-col items-center justify-center bg-gradient-to-br from-white/5 to-white/10">
                                     <Play size={64} className="text-gray-500 mb-4" />
-                                    <p className="text-gray-400 text-lg">Select a lesson to start learning</p>
+                                    <p className="text-gray-400 text-lg">
+                                        {selectedLesson ? 'No video available for this lesson' : 'Select a lesson to start learning'}
+                                    </p>
+                                    {selectedLesson && (
+                                        <p className="text-red-400 text-sm mt-2">⚠️ Video URL: {selectedLesson.videoUrl || 'Not found'}</p>
+                                    )}
                                 </div>
                             )}
                         </motion.div>
@@ -647,6 +648,12 @@ const CourseDetailPage = ({ setCurrentPage }) => {
                                                     <div className="flex items-center gap-2 text-xs text-gray-500">
                                                         <Clock size={12} />
                                                         <span>{lesson.duration}</span>
+                                                        {lesson.resources && lesson.resources.length > 0 && (
+                                                            <>
+                                                                <span>•</span>
+                                                                <span>{lesson.resources.length} resources</span>
+                                                            </>
+                                                        )}
                                                     </div>
                                                 </div>
 

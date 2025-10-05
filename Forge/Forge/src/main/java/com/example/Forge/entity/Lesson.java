@@ -1,28 +1,30 @@
 package com.example.Forge.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.Data;
 
-import java.time.LocalDateTime;
+import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name = "lessons")
 @Data
+@JsonIgnoreProperties({"course"})  // Prevent circular reference
 public class Lesson {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "lesson_id")
     private Long lessonId;
 
-    @Column(name = "lesson_name", nullable = false, length = 200)
+    @Column(name = "lesson_name", nullable = false)
     private String lessonName;
 
-    @Column(name = "video_url", length = 500)
+    @Column(name = "video_url", nullable = false, length = 500)
     private String videoUrl;
 
-    @Column(name = "duration", length = 20)
+    @Column(name = "duration")
     private String duration;
 
     @ManyToOne(fetch = FetchType.LAZY)
@@ -31,35 +33,14 @@ public class Lesson {
     private Course course;
 
     @Column(name = "created_at")
-    private LocalDateTime createdAt;
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date createdAt;
 
     @Column(name = "updated_at")
-    private LocalDateTime updatedAt;
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date updatedAt;
 
-    @PrePersist
-    protected void onCreate() {
-        createdAt = LocalDateTime.now();
-        updatedAt = LocalDateTime.now();
-    }
-
-    @PreUpdate
-    protected void onUpdate() {
-        updatedAt = LocalDateTime.now();
-    }
-
-    // Custom getter to return courseId without loading full Course
-    @JsonIgnore
-    public Long getCourseId() {
-        return course != null ? course.getCourseId() : null;
-    }
-
-    @Override
-    public String toString() {
-        return "Lesson{" +
-                "lessonId=" + lessonId +
-                ", lessonName='" + lessonName + '\'' +
-                ", videoUrl='" + videoUrl + '\'' +
-                ", duration='" + duration + '\'' +
-                '}';
-    }
+    // ✅ This field is NOT stored in DB - populated at runtime
+//    @Transient
+//    private List<LessonResource> resources;
 }

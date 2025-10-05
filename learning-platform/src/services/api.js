@@ -60,7 +60,7 @@ class ApiService {
             }
 
             const lessons = await response.json();
-            console.log('✅ ApiService: Found lessons with resources:', lessons);
+            console.log('✅ ApiService: Found lessons:', lessons);
             return lessons;
         } catch (error) {
             console.error('❌ ApiService: Error fetching lessons:', error);
@@ -83,7 +83,7 @@ class ApiService {
             }
 
             const lesson = await response.json();
-            console.log('✅ ApiService: Lesson with resources:', lesson);
+            console.log('✅ ApiService: Lesson received:', lesson);
             return lesson;
         } catch (error) {
             console.error('❌ ApiService: Error fetching lesson:', error);
@@ -121,15 +121,29 @@ class ApiService {
     async addResourceToLesson(courseId, lessonId, resource) {
         try {
             console.log('🎯 ApiService: Adding resource to lesson:', lessonId);
+            console.log('   📦 Resource data received:', resource);
+
+            // ✅ Map frontend field names to backend field names
+            const resourceData = {
+                title: resource.title || resource.name || resource.resourceTitle || '',
+                type: resource.type || resource.resourceType || '',
+                url: resource.url || resource.resourceUrl || '',
+                description: resource.description || ''
+            };
+
+            console.log('   📤 Sending to backend:', resourceData);
+
             const response = await fetch(`${API_BASE_URL}/courses/${courseId}/lessons/${lessonId}/resources`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify(resource),
+                body: JSON.stringify(resourceData),
             });
 
             if (!response.ok) {
+                const errorText = await response.text();
+                console.error('❌ Backend error:', errorText);
                 throw new Error(`HTTP error! status: ${response.status}`);
             }
 
@@ -243,7 +257,8 @@ class ApiService {
 
     async getCurrentUser() {
         try {
-            const response = await fetch(`${API_BASE_URL}/auth/user`, {
+            console.log('🔐 Fetching current user...');
+            const response = await fetch(`${API_BASE_URL}/auth/me`, {
                 method: 'GET',
                 credentials: 'include',
                 headers: {
@@ -252,10 +267,14 @@ class ApiService {
             });
 
             if (!response.ok) {
-                throw new Error(`HTTP error! status: ${response.status}`);
+                console.log('❌ Response not OK:', response.status);
+                return null;
             }
 
-            return response.json();
+            const data = await response.json();
+            console.log('✅ User data received:', data);
+            console.log('  - isAdmin:', data.isAdmin);
+            return data;
         } catch (error) {
             console.error('❌ Error fetching current user:', error);
             return null;

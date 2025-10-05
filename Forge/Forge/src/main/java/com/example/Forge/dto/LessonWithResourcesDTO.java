@@ -1,11 +1,10 @@
 package com.example.Forge.dto;
 
 import com.example.Forge.entity.Lesson;
-import com.example.Forge.entity.LessonResource;
+import com.example.Forge.entity.Resource;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
 import java.util.List;
 
 @Data
@@ -13,5 +12,5 @@ import java.util.List;
 @AllArgsConstructor
 public class LessonWithResourcesDTO {
     private Lesson lesson;
-    private List<LessonResource> resources;
+    private List<Resource> resources;
 }

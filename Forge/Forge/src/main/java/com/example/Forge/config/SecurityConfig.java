@@ -1,4 +1,3 @@
-// src/main/java/com/example/Forge/config/SecurityConfig.java
 package com.example.Forge.config;
 
 import org.springframework.context.annotation.Bean;
@@ -22,16 +21,19 @@ public class SecurityConfig {
                 .csrf(csrf -> csrf.disable())
                 .cors(cors -> cors.configurationSource(corsConfigurationSource()))
                 .authorizeHttpRequests(authz -> authz
-                        // 🎯 ALLOW ALL COURSE ENDPOINTS
-                        .requestMatchers("/api/courses/**").permitAll()
+                        // ✅ ALLOW AUTH ENDPOINTS (LOGIN, LOGOUT, USER INFO)
+                        .requestMatchers("/auth/**").permitAll()
 
-                        // 🎯 ALLOW ALL LESSON ENDPOINTS
-                        .requestMatchers("/api/lessons/**").permitAll()
+                        // ✅ ALLOW ALL API ENDPOINTS
+                        .requestMatchers("/api/**").permitAll()
 
-                        // 🎯 ALLOW ERROR AND ACTUATOR
+                        // ✅ ALLOW COURSE ENDPOINTS
+                        .requestMatchers("/courses/**").permitAll()
+
+                        // ✅ ALLOW ERROR AND ACTUATOR
                         .requestMatchers("/error", "/actuator/**").permitAll()
 
-                        // 🎯 TEMPORARILY ALLOW EVERYTHING ELSE
+                        // ✅ ALLOW EVERYTHING ELSE
                         .anyRequest().permitAll()
                 );
 
@@ -41,10 +43,18 @@ public class SecurityConfig {
     @Bean
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
-        configuration.setAllowedOrigins(Arrays.asList("http://localhost:3000"));
+
+        // ✅ Allow both ports
+        configuration.setAllowedOrigins(Arrays.asList(
+                "http://localhost:3000",
+                "http://localhost:5173"
+        ));
+
         configuration.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE", "OPTIONS"));
         configuration.setAllowedHeaders(Arrays.asList("*"));
-        configuration.setAllowCredentials(false);
+
+        // ✅ CRITICAL - Must be true for cookies/sessions to work!
+        configuration.setAllowCredentials(true);
 
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         source.registerCorsConfiguration("/**", configuration);
