@@ -20,7 +20,7 @@ public class Resource {
     private String title;
 
     @Column(nullable = false)
-    private String type; // "leetcode", "github", "gfg"
+    private String type;
 
     @Column(nullable = false, length = 500)
     private String url;

@@ -32,11 +32,9 @@ public class ResourceController {
             @RequestBody Resource resource) {
 
         System.out.println("🎯 POST /courses/" + courseId + "/lessons/" + lessonId + "/resources");
-        System.out.println("📦 Received resource:");
         System.out.println("   - Title: " + resource.getTitle());
         System.out.println("   - Type: " + resource.getType());
         System.out.println("   - URL: " + resource.getUrl());
-        System.out.println("   - Description: " + resource.getDescription());
 
         resource.setLessonId(lessonId);
         Resource saved = resourceService.addResource(resource);
@@ -53,6 +51,4 @@ public class ResourceController {
         resourceService.deleteResource(resourceId);
         return ResponseEntity.noContent().build();
     }
-
-
 }

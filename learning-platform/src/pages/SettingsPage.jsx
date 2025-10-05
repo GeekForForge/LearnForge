@@ -188,9 +188,9 @@ const SettingsPage = ({ setCurrentPage }) => {
   };
 
   const tabs = [
-    { id: 'profile', label: 'Profile', icon: User },
-    { id: 'security', label: 'Security', icon: Shield },
-    { id: 'notifications', label: 'Notifications', icon: Bell },
+    { id: 'profile', label: 'Profile Info', icon: User },
+    // { id: 'security', label: 'Security', icon: Shield },
+    // { id: 'notifications', label: 'Notifications', icon: Bell },
     { id: 'accounts', label: 'Connected Accounts', icon: Globe },
   ];
 

@@ -5,6 +5,7 @@ import com.example.Forge.entity.Lesson;
 import com.example.Forge.entity.Progress;
 import com.example.Forge.entity.User;
 import com.example.Forge.repository.*;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -26,6 +27,10 @@ public class ProgressService {
     @Autowired
     private LessonRepository lessonRepository;
 
+    @Autowired
+    private UserStreakService streakService;  // ✅ Fixed name
+
+    // ✅ Get user progress for a course
     public Progress getUserCourseProgress(String userId, Long courseId) {
         User user = userRepository.findById(userId)
                 .orElseThrow(() -> new RuntimeException("User not found"));
@@ -50,11 +55,14 @@ public class ProgressService {
     public List<Progress> getAllUserProgress(String userId) {
         User user = userRepository.findById(userId)
                 .orElseThrow(() -> new RuntimeException("User not found"));
-
         return progressRepository.findByUser(user);
     }
 
+    // ✅ Main method to mark lesson complete
+    @Transactional
     public Progress markLessonComplete(String userId, Long courseId, Integer lessonId) {
+        System.out.println("✅ Marking lesson " + lessonId + " complete for user " + userId);
+
         Progress progress = getUserCourseProgress(userId, courseId);
 
         if (progress.getCompletedLessons() == null) {
@@ -64,10 +72,16 @@ public class ProgressService {
         progress.getCompletedLessons().add(lessonId);
         progress.setUpdatedAt(LocalDateTime.now());
 
-        return progressRepository.save(progress);
+        // ✅ Update streak when lesson is completed
+        streakService.updateStreakOnLessonComplete(userId);
+
+        return progressRepository.save(progress);  // ✅ Fixed: lowercase 'p'
     }
 
+    @Transactional
     public Progress markLessonIncomplete(String userId, Long courseId, Integer lessonId) {
+        System.out.println("❌ Marking lesson " + lessonId + " incomplete for user " + userId);
+
         Progress progress = getUserCourseProgress(userId, courseId);
 
         if (progress.getCompletedLessons() != null) {
@@ -75,7 +89,7 @@ public class ProgressService {
             progress.setUpdatedAt(LocalDateTime.now());
         }
 
-        return progressRepository.save(progress);
+        return progressRepository.save(progress);  // ✅ Fixed: lowercase 'p'
     }
 
     public Map<String, Object> getProgressSummary(String userId) {

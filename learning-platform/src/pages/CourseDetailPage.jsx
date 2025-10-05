@@ -103,6 +103,29 @@ const CourseDetailPage = ({ setCurrentPage }) => {
         }
     };
 
+    // ✅ ADDED: Fetch detailed lesson data when selected lesson changes
+    useEffect(() => {
+        const fetchLessonData = async () => {
+            if (!selectedLesson || !id) return;
+
+            try {
+                const lessonData = await ApiService.getLessonById(id, selectedLesson.lessonId);
+                console.log('📦 Detailed lesson data:', lessonData);
+                console.log('📦 Resources:', lessonData.resources);
+
+                // Update the selected lesson with detailed data
+                setSelectedLesson(prev => ({
+                    ...prev,
+                    ...lessonData
+                }));
+            } catch (error) {
+                console.error('Error fetching detailed lesson:', error);
+            }
+        };
+
+        fetchLessonData();
+    }, [selectedLesson?.lessonId, id]);
+
     const loadLastWatchedTime = async () => {
         if (!isAuthenticated || !user || !selectedLesson) return;
 
@@ -453,92 +476,63 @@ const CourseDetailPage = ({ setCurrentPage }) => {
                                             </div>
                                         )}
 
-                                        {/* Resource Links */}
-                                        {selectedLesson.resources && selectedLesson.resources.length > 0 && (
-                                            <div className="mt-6">
-                                                <h4 className="text-lg font-bold text-white mb-4 flex items-center gap-2">
-                                                    <Code size={18} className="text-neon-cyan" />
-                                                    Practice Resources
-                                                </h4>
-
-                                                <div className="space-y-3">
-                                                    {/* LeetCode Links */}
-                                                    {selectedLesson.resources
-                                                        .filter(r => r.resourceType === 'LEETCODE')
-                                                        .slice(0, 3)
-                                                        .map((resource, index) => (
-                                                            <a
-                                                                key={resource.id}
-                                                                href={resource.resourceUrl}
-                                                                target="_blank"
-                                                                rel="noopener noreferrer"
-                                                                className="block px-5 py-3 bg-orange-500/10 hover:bg-orange-500/20 border border-orange-500/30 text-orange-400 rounded-xl flex items-center justify-between gap-2 font-medium transition-all group"
-                                                            >
-                                                                <div className="flex items-center gap-3">
-                                                                    <Code size={20} />
-                                                                    <div>
-                                    <span className="font-semibold">
-                                      {resource.resourceTitle || `LeetCode Problem ${index + 1}`}
-                                    </span>
-                                                                        <p className="text-xs text-orange-400/70">Practice coding challenge</p>
-                                                                    </div>
-                                                                </div>
-                                                                <ExternalLink size={16} className="group-hover:translate-x-1 transition-transform" />
-                                                            </a>
-                                                        ))}
-
-                                                    {/* GitHub Link */}
-                                                    {selectedLesson.resources
-                                                        .filter(r => r.resourceType === 'GITHUB')
-                                                        .slice(0, 1)
-                                                        .map((resource) => (
-                                                            <a
-                                                                key={resource.id}
-                                                                href={resource.resourceUrl}
-                                                                target="_blank"
-                                                                rel="noopener noreferrer"
-                                                                className="block px-5 py-3 bg-gray-800 hover:bg-gray-700 border border-gray-600 text-white rounded-xl flex items-center justify-between gap-2 font-medium transition-all group"
-                                                            >
-                                                                <div className="flex items-center gap-3">
-                                                                    <Github size={20} />
-                                                                    <div>
-                                    <span className="font-semibold">
-                                      {resource.resourceTitle || 'View Source Code'}
-                                    </span>
-                                                                        <p className="text-xs text-gray-400">GitHub repository</p>
-                                                                    </div>
-                                                                </div>
-                                                                <ExternalLink size={16} className="group-hover:translate-x-1 transition-transform" />
-                                                            </a>
-                                                        ))}
-
-                                                    {/* GFG Link */}
-                                                    {selectedLesson.resources
-                                                        .filter(r => r.resourceType === 'GFG')
-                                                        .slice(0, 1)
-                                                        .map((resource) => (
-                                                            <a
-                                                                key={resource.id}
-                                                                href={resource.resourceUrl}
-                                                                target="_blank"
-                                                                rel="noopener noreferrer"
-                                                                className="block px-5 py-3 bg-green-500/10 hover:bg-green-500/20 border border-green-500/30 text-green-400 rounded-xl flex items-center justify-between gap-2 font-medium transition-all group"
-                                                            >
-                                                                <div className="flex items-center gap-3">
-                                                                    <BookOpen size={20} />
-                                                                    <div>
-                                    <span className="font-semibold">
-                                      {resource.resourceTitle || 'GeeksforGeeks Article'}
-                                    </span>
-                                                                        <p className="text-xs text-green-400/70">Theory & examples</p>
-                                                                    </div>
-                                                                </div>
-                                                                <ExternalLink size={16} className="group-hover:translate-x-1 transition-transform" />
-                                                            </a>
-                                                        ))}
-                                                </div>
+                                        {/* ✅ FIXED Practice Resources Section */}
+                                        <div className="bg-gray-800/50 rounded-lg p-6 mt-6">
+                                            <div className="flex items-center gap-2 mb-4">
+                                                <Code className="w-5 h-5 text-cyan-400" />
+                                                <h3 className="text-lg font-semibold text-white">Practice Resources</h3>
                                             </div>
-                                        )}
+
+                                            {selectedLesson?.resources && selectedLesson.resources.length > 0 ? (
+                                                <div className="space-y-3">
+                                                    {selectedLesson.resources.map((resource) => {
+                                                        console.log('🔍 Resource data:', resource); // Debug log
+
+                                                        return (
+                                                            <a
+                                                                key={resource.id}
+                                                                href={resource.url} // ✅ Changed from resource.resourceUrl
+                                                                target="_blank"
+                                                                rel="noopener noreferrer"
+                                                                className="flex items-center gap-3 p-4 bg-gray-700/50 rounded-lg hover:bg-gray-700 transition-colors"
+                                                            >
+                                                                {/* Icon based on resource type */}
+                                                                {resource.type?.toLowerCase() === 'leetcode' && ( // ✅ Changed from resourceType
+                                                                    <div className="w-8 h-8 bg-yellow-500/20 rounded flex items-center justify-center">
+                                                                        <Code className="w-5 h-5 text-yellow-400" />
+                                                                    </div>
+                                                                )}
+                                                                {resource.type?.toLowerCase() === 'github' && (
+                                                                    <div className="w-8 h-8 bg-purple-500/20 rounded flex items-center justify-center">
+                                                                        <Github className="w-5 h-5 text-purple-400" />
+                                                                    </div>
+                                                                )}
+                                                                {resource.type?.toLowerCase() === 'gfg' && (
+                                                                    <div className="w-8 h-8 bg-green-500/20 rounded flex items-center justify-center">
+                                                                        <BookOpen className="w-5 h-5 text-green-400" />
+                                                                    </div>
+                                                                )}
+
+                                                                <div className="flex-1">
+                                                                    <h4 className="font-medium text-white">{resource.title}</h4> {/* ✅ Changed from resourceTitle */}
+                                                                    {resource.description && (
+                                                                        <p className="text-sm text-gray-400 mt-1">{resource.description}</p>
+                                                                    )}
+                                                                    <p className="text-xs text-cyan-400 mt-1">{resource.type?.toUpperCase()}</p> {/* ✅ Changed from resourceType */}
+                                                                </div>
+
+                                                                <ExternalLink className="w-4 h-4 text-gray-400" />
+                                                            </a>
+                                                        );
+                                                    })}
+                                                </div>
+                                            ) : (
+                                                <p className="text-gray-400 text-center py-8">
+                                                    No practice resources available for this lesson yet.
+                                                </p>
+                                            )}
+                                        </div>
+
                                     </div>
                                 </>
                             ) : (

@@ -1,18 +1,18 @@
 package com.example.Forge.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.Data;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 @Entity
 @Table(name = "lessons")
 @Data
-@JsonIgnoreProperties({"course"})  // Prevent circular reference
 public class Lesson {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "lesson_id")
@@ -40,7 +40,18 @@ public class Lesson {
     @Temporal(TemporalType.TIMESTAMP)
     private Date updatedAt;
 
-    // ✅ This field is NOT stored in DB - populated at runtime
-//    @Transient
-//    private List<LessonResource> resources;
+    // ✅ Resources field (not stored in DB, populated at runtime)
+    @Transient
+    private List<Resource> resources = new ArrayList<>();
+
+    @PrePersist
+    protected void onCreate() {
+        createdAt = new Date();
+        updatedAt = new Date();
+    }
+
+    @PreUpdate
+    protected void onUpdate() {
+        updatedAt = new Date();
+    }
 }

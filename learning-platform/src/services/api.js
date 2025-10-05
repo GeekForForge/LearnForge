@@ -296,6 +296,37 @@ class ApiService {
             return false;
         }
     }
+    // ============================================
+// STREAK METHODS
+// ============================================
+
+    async getUserStreak(userId) {
+        try {
+            console.log('🔥 ApiService: Fetching streak for user:', userId);
+            const response = await fetch(`${API_BASE_URL}/streaks/${userId}`, {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+            });
+
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+
+            const streak = await response.json();
+            console.log('✅ ApiService: Streak data:', streak);
+            return streak;
+        } catch (error) {
+            console.error('❌ ApiService: Error fetching streak:', error);
+            return {
+                currentStreak: 0,
+                longestStreak: 0,
+                totalLessonsCompleted: 0
+            };
+        }
+    }
+
 }
 
 export default new ApiService();

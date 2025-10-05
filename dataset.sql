@@ -72,6 +72,18 @@ CREATE TABLE video_progress (
     CONSTRAINT fk_video_progress_user FOREIGN KEY (user_id) REFERENCES users(user_id) ON DELETE CASCADE,
     CONSTRAINT fk_video_progress_lesson FOREIGN KEY (lesson_id) REFERENCES lessons(lesson_id) ON DELETE CASCADE
 );
+CREATE TABLE user_streaks (
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    user_id CHAR(36) NOT NULL UNIQUE,
+    current_streak INT DEFAULT 0,
+    longest_streak INT DEFAULT 0,
+    last_active_date DATE,
+    total_lessons_completed INT DEFAULT 0,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    FOREIGN KEY (user_id) REFERENCES users(user_id) ON DELETE CASCADE
+);
+
 
 
 
