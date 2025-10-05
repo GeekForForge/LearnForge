@@ -8,7 +8,9 @@ class ApiService {
 
     async getAllCourses() {
         try {
-            const response = await fetch(`${API_BASE_URL}/courses`);
+            const response = await fetch(`${API_BASE_URL}/courses`, {
+                credentials: 'include'
+            });
             if (!response.ok) {
                 throw new Error(`HTTP error! status: ${response.status}`);
             }
@@ -24,6 +26,7 @@ class ApiService {
             console.log('🎯 ApiService: Fetching course ID:', id);
             const response = await fetch(`${API_BASE_URL}/courses/${id}`, {
                 method: 'GET',
+                credentials: 'include',
                 headers: {
                     'Content-Type': 'application/json',
                 },
@@ -51,6 +54,7 @@ class ApiService {
             console.log('🎯 ApiService: Fetching lessons for course:', courseId);
             const response = await fetch(`${API_BASE_URL}/courses/${courseId}/lessons`, {
                 method: 'GET',
+                credentials: 'include',
                 headers: {
                     'Content-Type': 'application/json',
                 },
@@ -74,6 +78,7 @@ class ApiService {
             console.log('🎯 ApiService: Fetching lesson:', lessonId, 'from course:', courseId);
             const response = await fetch(`${API_BASE_URL}/courses/${courseId}/lessons/${lessonId}`, {
                 method: 'GET',
+                credentials: 'include',
                 headers: {
                     'Content-Type': 'application/json',
                 },
@@ -101,6 +106,7 @@ class ApiService {
             console.log('🎯 ApiService: Fetching resources for lesson:', lessonId);
             const response = await fetch(`${API_BASE_URL}/courses/${courseId}/lessons/${lessonId}/resources`, {
                 method: 'GET',
+                credentials: 'include',
                 headers: {
                     'Content-Type': 'application/json',
                 },
@@ -124,7 +130,6 @@ class ApiService {
             console.log('🎯 ApiService: Adding resource to lesson:', lessonId);
             console.log('   📦 Resource data received:', resource);
 
-            // ✅ Map frontend field names to backend field names
             const resourceData = {
                 title: resource.title || resource.name || resource.resourceTitle || '',
                 type: resource.type || resource.resourceType || '',
@@ -136,6 +141,7 @@ class ApiService {
 
             const response = await fetch(`${API_BASE_URL}/courses/${courseId}/lessons/${lessonId}/resources`, {
                 method: 'POST',
+                credentials: 'include',
                 headers: {
                     'Content-Type': 'application/json',
                 },
@@ -162,6 +168,7 @@ class ApiService {
             console.log('🎯 ApiService: Deleting resource:', resourceId);
             const response = await fetch(`${API_BASE_URL}/courses/${courseId}/lessons/${lessonId}/resources/${resourceId}`, {
                 method: 'DELETE',
+                credentials: 'include',
                 headers: {
                     'Content-Type': 'application/json',
                 },
@@ -187,6 +194,7 @@ class ApiService {
         try {
             const response = await fetch(`${API_BASE_URL}/progress/play`, {
                 method: 'POST',
+                credentials: 'include',
                 headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
                 body: `userId=${userId}&lessonId=${lessonId}`
             });
@@ -201,6 +209,7 @@ class ApiService {
         try {
             const response = await fetch(`${API_BASE_URL}/progress/pause`, {
                 method: 'POST',
+                credentials: 'include',
                 headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
                 body: `userId=${userId}&lessonId=${lessonId}&currentPosition=${currentPosition}`
             });
@@ -215,6 +224,7 @@ class ApiService {
         try {
             const response = await fetch(`${API_BASE_URL}/progress/complete`, {
                 method: 'POST',
+                credentials: 'include',
                 headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
                 body: `userId=${userId}&lessonId=${lessonId}`
             });
@@ -229,6 +239,7 @@ class ApiService {
         try {
             const response = await fetch(`${API_BASE_URL}/progress/watch-time`, {
                 method: 'POST',
+                credentials: 'include',
                 headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
                 body: `userId=${userId}&lessonId=${lessonId}&watchTimeSeconds=${watchTimeSeconds}`
             });
@@ -241,7 +252,9 @@ class ApiService {
 
     async getUserProgress(userId) {
         try {
-            const response = await fetch(`${API_BASE_URL}/progress/users/${userId}/dashboard`);
+            const response = await fetch(`${API_BASE_URL}/progress/users/${userId}/dashboard`, {
+                credentials: 'include'
+            });
             if (!response.ok) {
                 throw new Error(`HTTP error! status: ${response.status}`);
             }
@@ -297,15 +310,17 @@ class ApiService {
             return false;
         }
     }
+
     // ============================================
-// STREAK METHODS
-// ============================================
+    // STREAK METHODS
+    // ============================================
 
     async getUserStreak(userId) {
         try {
             console.log('🔥 ApiService: Fetching streak for user:', userId);
             const response = await fetch(`${API_BASE_URL}/streaks/${userId}`, {
                 method: 'GET',
+                credentials: 'include',
                 headers: {
                     'Content-Type': 'application/json',
                 },

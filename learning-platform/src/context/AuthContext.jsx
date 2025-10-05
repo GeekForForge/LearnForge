@@ -52,7 +52,7 @@ export const AuthProvider = ({ children }) => {
     // ✅ GitHub OAuth Login - Redirect to GitHub
     const loginWithGithub = () => {
         const clientId = 'Ov23li0GzarRfL1R2lcv'; // Your GitHub Client ID
-        const redirectUri = 'http://localhost:3000/auth/callback';
+        const redirectUri = 'https://learnforge.onrender.com/api/auth/callback';
         const scope = 'read:user user:email';
 
         const githubAuthUrl = `https://github.com/login/oauth/authorize?client_id=${clientId}&redirect_uri=${redirectUri}&scope=${scope}`;
