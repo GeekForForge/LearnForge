@@ -70,7 +70,7 @@ export const AuthProvider = ({ children }) => {
             console.log('🔐 AuthContext: Processing GitHub callback with code:', code);
 
             // Send code to backend
-            const response = await fetch('http://localhost:8080/api/auth/github', {
+            const response = await fetch('https://learnforge.onrender.com/api/auth/github', {
                 method: 'POST',
                 credentials: 'include', // ✅ CRITICAL for sessions
                 headers: {

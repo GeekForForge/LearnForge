@@ -18,7 +18,7 @@ export const ProgressProvider = ({ children }) => {
   const [summary, setSummary] = useState(null);
   const [loading, setLoading] = useState(false);
 
-  const API_BASE_URL = 'http://localhost:8080/api';
+  const API_BASE_URL = 'https://learnforge.onrender.com/api';
 
   useEffect(() => {
     if (isAuthenticated && user?.userId) {
