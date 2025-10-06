@@ -10,15 +10,15 @@ const AuthCallbackPage = ({ setCurrentPage }) => {
     const navigate = useNavigate();
     const [status, setStatus] = useState('loading');
     const hasCalledRef = useRef(false);
-    const isProcessingRef = useRef(false);
 
     useEffect(() => {
-        setCurrentPage('auth-callback');
-
-        if (hasCalledRef.current || isProcessingRef.current) {
-            console.log('⚠️ Already called or processing, skipping...');
+        // ✅ PREVENT DOUBLE EXECUTION
+        if (hasCalledRef.current) {
+            console.log('⚠️ Already processed, skipping...');
             return;
         }
+
+        setCurrentPage('auth-callback');
 
         const code = searchParams.get('code');
         const error = searchParams.get('error');
@@ -31,20 +31,26 @@ const AuthCallbackPage = ({ setCurrentPage }) => {
         }
 
         if (code) {
-            hasCalledRef.current = true;
-            isProcessingRef.current = true;
-            console.log('✅ Got code, authenticating...', code);
+            console.log('✅ Got code, processing...', code);
+            hasCalledRef.current = true;  // ✅ Mark as called IMMEDIATELY
+
+            // ✅ CLEAR URL TO PREVENT REUSE
+            window.history.replaceState({}, '', '/auth/callback');
+
+            // ✅ Call authentication
             authenticateUser(code);
         } else {
             console.error('❌ No code in URL');
             setStatus('error');
             setTimeout(() => navigate('/login'), 2000);
         }
-    }, []);
+    }, []); // ✅ EMPTY DEPENDENCY ARRAY - Run only once!
 
     const authenticateUser = async (code) => {
         try {
-            console.log('🔐 Calling handleGithubCallback with code:', code);
+            setStatus('loading');
+            console.log('🔐 Authenticating with code:', code);
+
             const success = await handleGithubCallback(code);
 
             if (success) {
@@ -55,21 +61,17 @@ const AuthCallbackPage = ({ setCurrentPage }) => {
                 await new Promise(resolve => setTimeout(resolve, 500));
                 await fetchUser();
 
-                // ✅ Navigate without reload
-                setTimeout(() => {
-                    navigate('/');
-                }, 1000);
+                // ✅ Navigate to home
+                setTimeout(() => navigate('/'), 1500);
             } else {
                 console.error('❌ Authentication returned false');
                 setStatus('error');
                 setTimeout(() => navigate('/login'), 2000);
             }
         } catch (error) {
-            console.error('❌ Auth failed:', error);
+            console.error('❌ Authentication error:', error);
             setStatus('error');
             setTimeout(() => navigate('/login'), 2000);
-        } finally {
-            isProcessingRef.current = false;
         }
     };
 

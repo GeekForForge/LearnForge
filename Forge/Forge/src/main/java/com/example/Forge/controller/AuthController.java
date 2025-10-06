@@ -2,10 +2,13 @@ package com.example.Forge.controller;
 
 import com.example.Forge.entity.User;
 import com.example.Forge.service.AuthService;
+import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.Cookie;  // ✅ Also need this for Cookie class
 
 import java.util.HashMap;
 import java.util.Map;
@@ -23,43 +26,44 @@ public class AuthController {
     private AuthService authService;
 
     @PostMapping("/github")
-    public ResponseEntity<?> githubAuth(@RequestBody Map<String, String> request, HttpSession session) {
+    public ResponseEntity<?> githubAuth(
+            @RequestBody Map<String, String> request,
+            HttpSession session,
+            HttpServletResponse response) {  // ✅ ADD THIS
         try {
             String code = request.get("code");
             System.out.println("🔐 GitHub auth with code: " + code);
-            System.out.println("📋 Session ID (before): " + session.getId());
-            System.out.println("📋 Session isNew: " + session.isNew());
 
-            Map<String, Object> response = authService.authenticateWithGithub(code);
+            Map<String, Object> authResponse = authService.authenticateWithGithub(code);
 
             // ✅ Store user in session
-            User user = (User) response.get("user");
+            User user = (User) authResponse.get("user");
             if (user != null) {
                 System.out.println("✅ User authenticated: " + user.getEmail());
-                System.out.println("✅ User isAdmin: " + user.getIsAdmin());
-                System.out.println("✅ Storing user in session...");
 
                 session.setAttribute("user", user);
                 session.setAttribute("userId", user.getUserId());
-                session.setMaxInactiveInterval(30 * 60); // 30 minutes
+                session.setMaxInactiveInterval(30 * 60);
 
-                System.out.println("✅ Session ID (after): " + session.getId());
-                System.out.println("✅ User stored in session successfully!");
+                // ✅ MANUALLY SET COOKIE WITH CORRECT ATTRIBUTES
+                Cookie cookie = new Cookie("JSESSIONID", session.getId());
+                cookie.setPath("/");
+                cookie.setHttpOnly(true);
+                cookie.setSecure(true);  // ✅ Required for HTTPS
+                cookie.setMaxAge(30 * 60);
+                cookie.setAttribute("SameSite", "None");  // ✅ CRITICAL!
+                response.addCookie(cookie);
 
-                // Verify it was stored
-                User storedUser = (User) session.getAttribute("user");
-                System.out.println("✅ Verification - User from session: " + (storedUser != null ? storedUser.getEmail() : "NULL"));
-            } else {
-                System.out.println("❌ No user in response!");
+                System.out.println("✅ Session cookie set: " + session.getId());
             }
 
-            return ResponseEntity.ok(response);
+            return ResponseEntity.ok(authResponse);
         } catch (Exception e) {
             System.err.println("❌ Auth failed: " + e.getMessage());
-            e.printStackTrace();
             return ResponseEntity.badRequest().body(Map.of("error", "Authentication failed: " + e.getMessage()));
         }
     }
+
 
     @GetMapping("/me")
     public ResponseEntity<?> getCurrentUser(HttpSession session) {
