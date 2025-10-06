@@ -11,6 +11,8 @@ public class Resource {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    //temporary
+    @Column(name = "resource_id")
     private Long id;
 
     @Column(name = "lesson_id", nullable = false)
