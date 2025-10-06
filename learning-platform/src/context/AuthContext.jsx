@@ -54,13 +54,10 @@ export const AuthProvider = ({ children }) => {
         const clientId = 'Ov23li0GzarRfL1R2lcv'; // Your GitHub Client ID
         const redirectUri = 'https://learn-forge-xi.vercel.app/api/call/authback';
         const scope = 'read:user user:email';
-
         const githubAuthUrl = `https://github.com/login/oauth/authorize?client_id=${clientId}&redirect_uri=${redirectUri}&scope=${scope}`;
-
         console.log('🔐 Redirecting to GitHub OAuth...');
         console.log('   - Client ID:', clientId);
         console.log('   - Redirect URI:', redirectUri);
-
         window.location.href = githubAuthUrl;
     };
 
