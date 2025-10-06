@@ -12,7 +12,11 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("/auth")
-@CrossOrigin(origins = {"http://localhost:3000", "http://localhost:5173"}, allowCredentials = "true")
+@CrossOrigin(origins = {
+        "http://localhost:3000",
+        "http://localhost:5173",
+        "https://learn-forge-xi.vercel.app"
+}, allowCredentials = "true")
 public class AuthController {
 
     @Autowired
