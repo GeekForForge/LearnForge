@@ -20,6 +20,6 @@ public class PingContoller {
     }, allowCredentials = "true")
     public String ping() {
         someservice.keepAliveCheck();
-        return "I'am here! coming in 10 mins";
+        return "I'am here! coming in 10 mins with a new partner ";
     }
 }

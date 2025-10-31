@@ -6,7 +6,6 @@ CREATE TABLE users (
     provider VARCHAR(50)
 );
 
--- COURSES TABLE
 CREATE TABLE courses (
     course_id BIGINT AUTO_INCREMENT PRIMARY KEY,
     course_title VARCHAR(200) NOT NULL,
@@ -14,7 +13,6 @@ CREATE TABLE courses (
     category VARCHAR(100)
 );
 
--- LESSONS TABLE
 CREATE TABLE lessons (
     lesson_id BIGINT AUTO_INCREMENT PRIMARY KEY,
     lesson_name VARCHAR(200) NOT NULL,
@@ -24,7 +22,6 @@ CREATE TABLE lessons (
     FOREIGN KEY (course_id) REFERENCES courses(course_id) ON DELETE CASCADE
 );
 
--- PROGRESS TABLE
 CREATE TABLE progress (
     id BIGINT AUTO_INCREMENT PRIMARY KEY,
     completed_lessons INT DEFAULT 0,
@@ -50,7 +47,6 @@ CREATE TABLE lesson_progress (
     UNIQUE KEY unique_user_lesson (user_id, lesson_id)
 );
 
--- Create a new table for lesson resources
 CREATE TABLE lesson_resources (
     id BIGINT AUTO_INCREMENT PRIMARY KEY,
     lesson_id BIGINT NOT NULL,
