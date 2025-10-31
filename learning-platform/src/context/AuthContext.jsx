@@ -51,8 +51,8 @@ export const AuthProvider = ({ children }) => {
 
     // ✅ GitHub OAuth Login - Redirect to GitHub
     const loginWithGithub = () => {
-        const clientId = 'Ov23li0GzarRfL1R2lcv';
-        const redirectUri = 'https://learn-forge-xi.vercel.app/auth/callback'; // ✅ FIXED
+        const clientId = 'Ov23litSllTjFFL7HGIv';
+        const redirectUri = 'http://localhost:3000/auth/callback'; // ✅ FIXED
         const scope = 'read:user user:email';
         const githubAuthUrl = `https://github.com/login/oauth/authorize?client_id=${clientId}&redirect_uri=${redirectUri}&scope=${scope}`;
         console.log('🔐 Redirecting to GitHub OAuth...');
@@ -68,7 +68,7 @@ export const AuthProvider = ({ children }) => {
             console.log('🔐 AuthContext: Processing GitHub callback with code:', code);
 
             // Send code to backend
-            const response = await fetch('https://learnforge.onrender.com/api/auth/github', {
+            const response = await fetch('http://localhost:8080/api/auth/github', {
                 method: 'POST',
                 credentials: 'include', // ✅ CRITICAL for sessions
                 headers: {
