@@ -15,6 +15,19 @@ import SettingsPage from './pages/SettingsPage';
 import AuthCallbackPage from './pages/AuthCallbackPage';
 import AboutPage from './pages/AboutPage';
 
+import Community from './pages/Community';
+
+import Messages from './pages/Messages';
+import Notifications from './pages/Notifications';
+import Home from './pages/Home';
+
+
+
+
+// In your Routes:
+
+
+
 // Admin
 import ProtectedAdminRoute from './components/ProtectedAdminRoute';
 import AdminPageNew from './pages/AdminPageNew';
@@ -103,6 +116,13 @@ function App() {
                                             path="/"
                                             element={<LandingPage setCurrentPage={setCurrentPage} />}
                                         />
+                                        <Route path="/community" element={<Community />} />
+                                        <Route path="/messages" element={<Messages />} />
+                                        <Route path="/notifications" element={<Notifications />} />
+                                        // In your Routes:
+                                        <Route path="/home" element={<Home />} />
+                                        // OR if you want it as default after login:
+                                        <Route path="/" element={<Home />} />
                                         <Route
                                             path="/courses"
                                             element={<CoursesPage setCurrentPage={setCurrentPage} />}
