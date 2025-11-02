@@ -19,6 +19,10 @@ import Community from './pages/Community';
 
 import Messages from './pages/Messages';
 import Notifications from './pages/Notifications';
+import Home from './pages/Home';
+
+
+
 
 // In your Routes:
 
@@ -115,6 +119,10 @@ function App() {
                                         <Route path="/community" element={<Community />} />
                                         <Route path="/messages" element={<Messages />} />
                                         <Route path="/notifications" element={<Notifications />} />
+                                        // In your Routes:
+                                        <Route path="/home" element={<Home />} />
+                                        // OR if you want it as default after login:
+                                        <Route path="/" element={<Home />} />
                                         <Route
                                             path="/courses"
                                             element={<CoursesPage setCurrentPage={setCurrentPage} />}
