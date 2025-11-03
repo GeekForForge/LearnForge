@@ -5,7 +5,7 @@ import {
     Heart, MessageCircle, Share2, Bookmark, Send, Smile,
     Award, TrendingUp, Users, Flame, BookOpen, Code,
     MoreHorizontal, MapPin, Calendar, Image, Video, Link as LinkIcon,
-    Rocket, Sparkles, Zap, Eye, EyeOff, GitBranch
+    Rocket, Sparkles, Zap, Eye, EyeOff, GitBranch, ChevronRight
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
@@ -297,7 +297,7 @@ const Home = () => {
                                                 { icon: <Image className="w-5 h-5" />, label: 'Photo' },
                                                 { icon: <Video className="w-5 h-5" />, label: 'Video' },
                                                 { icon: <Code className="w-5 h-5" />, label: 'Code' },
-                                                { icon: <Link className="w-5 h-5" />, label: 'Link' }
+                                                { icon: <LinkIcon className="w-5 h-5" />, label: 'Link' }
                                             ].map((item, index) => (
                                                 <button key={index} className="flex items-center gap-2 px-3 py-2 text-gray-400 hover:text-white hover:bg-white/5 rounded-xl transition-all">
                                                     {item.icon}
