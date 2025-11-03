@@ -1,3 +1,4 @@
+// src/context/AuthContext.jsx
 import React, { createContext, useState, useContext, useEffect } from 'react';
 import ApiService from '../services/api';
 
@@ -49,28 +50,64 @@ export const AuthProvider = ({ children }) => {
         }
     };
 
-    // ✅ GitHub OAuth Login - Redirect to GitHub
+    // ✅ GitHub OAuth Login
     const loginWithGithub = () => {
         const clientId = 'Ov23litSllTjFFL7HGIv';
-        const redirectUri = 'http://localhost:3000/auth/callback'; // ✅ FIXED
+        const redirectUri = 'http://localhost:3000/auth/callback';
         const scope = 'read:user user:email';
         const githubAuthUrl = `https://github.com/login/oauth/authorize?client_id=${clientId}&redirect_uri=${redirectUri}&scope=${scope}`;
         console.log('🔐 Redirecting to GitHub OAuth...');
-        console.log('   - Client ID:', clientId);
-        console.log('   - Redirect URI:', redirectUri);
         window.location.href = githubAuthUrl;
     };
 
+    // ✅ Google OAuth Login
+    const loginWithGoogle = () => {
+        console.log('🔐 Redirecting to Google OAuth...');
+        window.location.href = 'http://localhost:8080/oauth2/authorization/google';
+    };
 
-    // ✅ Handle GitHub Callback - Process the code
+    // ✅ Email/Password Login
+    const loginWithEmail = async (email, password) => {
+        try {
+            console.log('🔐 AuthContext: Email login attempt for:', email);
+            const result = await ApiService.loginWithEmail(email, password);
+
+            if (result.success) {
+                await fetchUser();
+                return true;
+            }
+            return false;
+        } catch (error) {
+            console.error('❌ AuthContext: Email login error:', error);
+            return false;
+        }
+    };
+
+    // ✅ Email/Password Signup
+    const signupWithEmail = async (name, email, password) => {
+        try {
+            console.log('🔐 AuthContext: Email signup attempt for:', email);
+            const result = await ApiService.signupWithEmail(name, email, password);
+
+            if (result.success) {
+                await fetchUser();
+                return true;
+            }
+            return false;
+        } catch (error) {
+            console.error('❌ AuthContext: Email signup error:', error);
+            return false;
+        }
+    };
+
+    // ✅ Handle GitHub Callback
     const handleGithubCallback = async (code) => {
         try {
             console.log('🔐 AuthContext: Processing GitHub callback with code:', code);
 
-            // Send code to backend
             const response = await fetch('http://localhost:8080/api/auth/github', {
                 method: 'POST',
-                credentials: 'include', // ✅ CRITICAL for sessions
+                credentials: 'include',
                 headers: {
                     'Content-Type': 'application/json',
                 },
@@ -91,7 +128,6 @@ export const AuthProvider = ({ children }) => {
             if (data.user) {
                 console.log('✅ User authenticated:', data.user.email);
 
-                // Set user in context
                 setUser({
                     userId: data.user.userId,
                     name: data.user.name || data.user.username,
@@ -103,7 +139,6 @@ export const AuthProvider = ({ children }) => {
                 });
                 setIsAuthenticated(true);
 
-                // Fetch fresh user data to ensure isAdmin is loaded
                 await fetchUser();
 
                 return true;
@@ -143,8 +178,11 @@ export const AuthProvider = ({ children }) => {
             login,
             logout,
             fetchUser,
-            loginWithGithub,      // ✅ For login button
-            handleGithubCallback  // ✅ For callback page
+            loginWithGithub,
+            loginWithGoogle,       // ✅ NEW
+            loginWithEmail,        // ✅ NEW
+            signupWithEmail,       // ✅ NEW
+            handleGithubCallback
         }}>
             {children}
         </AuthContext.Provider>
