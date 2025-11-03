@@ -1,4 +1,3 @@
-// src/pages/Notifications.jsx
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import {
@@ -6,7 +5,7 @@ import {
     TrendingUp, Users, Bell, Check, Trash2, Filter,
     CheckCheck, X
 } from 'lucide-react';
-import { Link } from 'react-router-dom';
+// Removed unused 'Link' import
 
 const Notifications = () => {
     const [filter, setFilter] = useState('all');
@@ -83,6 +82,7 @@ const Notifications = () => {
             unread: false,
             actionable: false
         },
+        // Added a few more to better show the scroll/layout
         {
             id: 7,
             type: 'achievement',
@@ -160,12 +160,23 @@ const Notifications = () => {
 
     const unreadCount = notifications.filter(n => n.unread).length;
 
+    // Common style for frosted-glass effect
+    const frostedGlassStyle = {
+        border: '1px solid rgba(255, 255, 255, 0.1)',
+        backdropFilter: 'blur(10px)',
+        WebkitBackdropFilter: 'blur(10px)', // For Safari support
+    };
+
     return (
         <div style={{
             minHeight: '100vh',
-            backgroundColor: '#0a0a0f',
+            // --- CHANGE: Removed solid background color ---
+            backgroundColor: 'transparent',
+            // --- END CHANGE ---
             paddingTop: '100px',
-            paddingBottom: '64px'
+            paddingBottom: '64px',
+            // Ensures text is readable over complex backgrounds
+            color: '#F9FAFB',
         }}>
             <div style={{ maxWidth: '900px', margin: '0 auto', padding: '0 24px' }}>
 
@@ -190,17 +201,19 @@ const Notifications = () => {
                             <button
                                 onClick={markAllAsRead}
                                 style={{
+                                    ...frostedGlassStyle, // --- ADDED frosted glass effect
                                     display: 'flex',
                                     alignItems: 'center',
                                     gap: '8px',
                                     padding: '8px 16px',
                                     backgroundColor: 'rgba(139, 92, 246, 0.1)',
-                                    border: '1px solid rgba(139, 92, 246, 0.3)',
+                                    border: '1px solid rgba(139, 92, 246, 0.3)', // Kept stronger border for accent
                                     borderRadius: '8px',
-                                    color: '#8B5CF6',
+                                    color: '#C4B5FD', // Brighter purple for readability
                                     fontSize: '14px',
                                     cursor: 'pointer',
-                                    fontWeight: '500'
+                                    fontWeight: '500',
+                                    transition: 'all 0.2s',
                                 }}
                             >
                                 <CheckCheck size={16} />
@@ -208,8 +221,8 @@ const Notifications = () => {
                             </button>
                         )}
                     </div>
-                    <p style={{ color: '#9CA3AF', fontSize: '16px' }}>
-                        You have <span style={{ color: '#8B5CF6', fontWeight: '600' }}>{unreadCount}</span> unread notifications
+                    <p style={{ color: '#D1D5DB', fontSize: '16px' }}>
+                        You have <span style={{ color: '#C4B5FD', fontWeight: '600' }}>{unreadCount}</span> unread notifications
                     </p>
                 </div>
 
@@ -234,16 +247,18 @@ const Notifications = () => {
                                 key={item.key}
                                 onClick={() => setFilter(item.key)}
                                 style={{
+                                    ...frostedGlassStyle, // --- ADDED frosted glass effect
                                     display: 'flex',
                                     alignItems: 'center',
                                     gap: '8px',
                                     padding: '10px 16px',
                                     borderRadius: '8px',
-                                    border: '1px solid rgba(255, 255, 255, 0.1)',
+                                    // --- CHANGED: Updated background colors for transparency
                                     backgroundColor: filter === item.key
                                         ? 'rgba(139, 92, 246, 0.2)'
-                                        : 'rgba(19, 19, 24, 0.5)',
-                                    color: filter === item.key ? '#8B5CF6' : '#9CA3AF',
+                                        : 'rgba(255, 255, 255, 0.05)',
+                                    // --- END CHANGE
+                                    color: filter === item.key ? '#C4B5FD' : '#9CA3AF',
                                     fontSize: '14px',
                                     cursor: 'pointer',
                                     fontWeight: '500',
@@ -261,11 +276,13 @@ const Notifications = () => {
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
                     {filteredNotifications.length === 0 ? (
                         <div style={{
+                            ...frostedGlassStyle, // --- ADDED frosted glass effect
                             textAlign: 'center',
                             padding: '64px 24px',
-                            backgroundColor: 'rgba(19, 19, 24, 0.5)',
+                            // --- CHANGED: Updated background color for transparency
+                            backgroundColor: 'rgba(255, 255, 255, 0.05)',
+                            // --- END CHANGE
                             borderRadius: '16px',
-                            border: '1px solid rgba(255, 255, 255, 0.1)'
                         }}>
                             <Bell size={48} style={{
                                 color: '#6B7280',
@@ -287,13 +304,16 @@ const Notifications = () => {
                                 initial={{ opacity: 0, y: 20 }}
                                 animate={{ opacity: 1, y: 0 }}
                                 style={{
+                                    ...frostedGlassStyle, // --- ADDED frosted glass effect
                                     display: 'flex',
                                     gap: '16px',
                                     padding: '16px',
+                                    // --- CHANGED: Updated background colors for transparency
                                     backgroundColor: notif.unread
-                                        ? 'rgba(139, 92, 246, 0.05)'
-                                        : 'rgba(19, 19, 24, 0.5)',
-                                    border: `1px solid ${notif.unread ? 'rgba(139, 92, 246, 0.2)' : 'rgba(255, 255, 255, 0.1)'}`,
+                                        ? 'rgba(139, 92, 246, 0.1)'
+                                        : 'rgba(255, 255, 255, 0.05)',
+                                    border: `1px solid ${notif.unread ? 'rgba(139, 92, 246, 0.2)' : 'rgba(255, 255, 255, 0.1)'}`, // Kept border logic
+                                    // --- END CHANGE
                                     borderRadius: '12px',
                                     position: 'relative',
                                     transition: 'all 0.2s'
@@ -304,7 +324,9 @@ const Notifications = () => {
                                     width: '48px',
                                     height: '48px',
                                     borderRadius: '50%',
-                                    backgroundColor: 'rgba(26, 26, 36, 1)',
+                                    // --- CHANGED: Updated background color for transparency
+                                    backgroundColor: 'rgba(26, 26, 36, 0.7)',
+                                    // --- END CHANGE
                                     display: 'flex',
                                     alignItems: 'center',
                                     justifyContent: 'center',
@@ -337,12 +359,12 @@ const Notifications = () => {
                                                 {notif.user.name}
                                             </span>
                                         )}
-                                        <span style={{ color: '#9CA3AF', fontSize: '14px' }}>
+                                        <span style={{ color: '#D1D5DB', fontSize: '14px' }}>
                                             {notif.message}
                                         </span>
                                     </div>
                                     <p style={{
-                                        color: '#6B7280',
+                                        color: '#9CA3AF', // Darker gray for time
                                         fontSize: '13px',
                                         marginBottom: '12px'
                                     }}>
@@ -366,7 +388,9 @@ const Notifications = () => {
                                             </button>
                                             <button style={{
                                                 padding: '6px 16px',
-                                                backgroundColor: 'rgba(26, 26, 36, 1)',
+                                                // --- CHANGED: Updated background color for transparency
+                                                backgroundColor: 'rgba(26, 26, 36, 0.7)',
+                                                // --- END CHANGE
                                                 border: '1px solid rgba(255, 255, 255, 0.1)',
                                                 borderRadius: '6px',
                                                 color: '#9CA3AF',
@@ -442,9 +466,11 @@ const Notifications = () => {
                         marginTop: '32px'
                     }}>
                         <button style={{
+                            ...frostedGlassStyle, // --- ADDED frosted glass effect
                             padding: '12px 32px',
-                            backgroundColor: 'rgba(19, 19, 24, 0.8)',
-                            border: '1px solid rgba(255, 255, 255, 0.1)',
+                            // --- CHANGED: Updated background color for transparency
+                            backgroundColor: 'rgba(255, 255, 255, 0.1)',
+                            // --- END CHANGE
                             borderRadius: '8px',
                             color: 'white',
                             fontSize: '14px',

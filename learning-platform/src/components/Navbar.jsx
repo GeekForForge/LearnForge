@@ -1,10 +1,10 @@
 // src/components/Navbar.jsx
 import React, { useState, useEffect } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
     Menu, X, User, BookOpen, Home, Settings, LogIn, LogOut, Info,
-    Bell, MessageSquare, Users, ChevronDown
+    Bell, MessageSquare, Flame, Trophy, Users
 } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
 
@@ -15,32 +15,18 @@ const Navbar = ({ currentPage, setCurrentPage }) => {
     const [isNotificationOpen, setIsNotificationOpen] = useState(false);
     const [isMessageOpen, setIsMessageOpen] = useState(false);
     const location = useLocation();
+    const navigate = useNavigate();
 
     const { user, isAuthenticated, logout } = useAuth();
 
-    // Mock data for notifications and messages
+    // Mock data
     const [notificationCount] = useState(3);
     const [messageCount] = useState(5);
 
     const notifications = [
-        {
-            id: 1,
-            message: 'John Doe sent you a friend request',
-            time: '2 hours ago',
-            unread: true
-        },
-        {
-            id: 2,
-            message: 'Jane replied to your discussion',
-            time: '5 hours ago',
-            unread: true
-        },
-        {
-            id: 3,
-            message: 'You earned the "7 Day Streak" badge!',
-            time: '1 day ago',
-            unread: false
-        },
+        { id: 1, message: 'John Doe sent you a friend request', time: '2 hours ago', unread: true },
+        { id: 2, message: 'Jane replied to your discussion', time: '5 hours ago', unread: true },
+        { id: 3, message: 'You earned the "7 Day Streak" badge!', time: '1 day ago', unread: false },
     ];
 
     const messages = [
@@ -75,10 +61,8 @@ const Navbar = ({ currentPage, setCurrentPage }) => {
 
     useEffect(() => {
         const handleScroll = () => {
-            const isScrolled = window.scrollY > 10;
-            setScrolled(isScrolled);
+            setScrolled(window.scrollY > 10);
         };
-
         window.addEventListener('scroll', handleScroll);
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
@@ -90,19 +74,24 @@ const Navbar = ({ currentPage, setCurrentPage }) => {
 
         const path = location.pathname;
         if (path === '/') setCurrentPage('home');
+        else if (path === '/home') setCurrentPage('home');
+        else if (path === '/feed') setCurrentPage('feed');
         else if (path === '/courses') setCurrentPage('courses');
         else if (path === '/about') setCurrentPage('about');
-        else if (path === '/community') setCurrentPage('community');
         else if (path === '/messages') setCurrentPage('messages');
+        else if (path === '/notifications') setCurrentPage('notifications');
+        else if (path === '/leaderboard') setCurrentPage('leaderboard');
+        else if (path === '/community') setCurrentPage('community');
         else if (path === '/profile') setCurrentPage('profile');
         else if (path === '/settings') setCurrentPage('settings');
         else if (path === '/login') setCurrentPage('login');
         else if (path.includes('/course/')) setCurrentPage('course-detail');
+        else if (path === '/admin') setCurrentPage('admin');
     }, [location, setCurrentPage]);
 
     const handleLogout = () => {
         logout();
-        setCurrentPage('home');
+        navigate('/');
         setIsUserMenuOpen(false);
     };
 
@@ -114,21 +103,26 @@ const Navbar = ({ currentPage, setCurrentPage }) => {
                 setIsMessageOpen(false);
             }
         };
-
         document.addEventListener('mousedown', handleClickOutside);
         return () => document.removeEventListener('mousedown', handleClickOutside);
     }, []);
 
-    // Main navigation items - ADDED COMMUNITY
-    const navItems = [
+    // Navigation items - UPDATED with proper synchronization
+    const navItems = isAuthenticated ? [
+        { name: 'Home', path: '/', icon: Home, key: 'home' },     // <-- always "/"
+        { name: 'Feed', path: '/feed', icon: Flame, key: 'feed' }, // <-- always "/feed"
+        { name: 'Courses', path: '/courses', icon: BookOpen, key: 'courses' },
+        { name: 'About', path: '/about', icon: Info, key: 'about' },
+    ] : [
         { name: 'Home', path: '/', icon: Home, key: 'home' },
         { name: 'Courses', path: '/courses', icon: BookOpen, key: 'courses' },
-        { name: 'Community', path: '/community', icon: Users, key: 'community' }, // NEW!
         { name: 'About', path: '/about', icon: Info, key: 'about' },
     ];
 
+
     const userMenuItems = [
         { name: 'Profile', path: '/profile', icon: User, key: 'profile' },
+        { name: 'Leaderboard', path: '/leaderboard', icon: Trophy, key: 'leaderboard' },
         { name: 'Settings', path: '/settings', icon: Settings, key: 'settings' },
     ];
 
@@ -166,16 +160,13 @@ const Navbar = ({ currentPage, setCurrentPage }) => {
                                     whileHover={{ y: -2 }}
                                     className={`flex items-center space-x-2 px-4 py-2 rounded-lg transition-all duration-300 ${
                                         currentPage === item.key
-                                            ? 'text-neon-purple shadow-neon-purple'
+                                            ? 'text-neon-purple'
                                             : 'text-gray-300 hover:text-white'
                                     }`}
                                 >
                                     <item.icon size={18} />
                                     <span className="font-medium">{item.name}</span>
                                 </motion.div>
-
-                                <div className="absolute inset-0 rounded-lg bg-gradient-to-r from-neon-purple/20 to-neon-cyan/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10" />
-
                                 {currentPage === item.key && (
                                     <motion.div
                                         layoutId="activeTab"
@@ -199,7 +190,7 @@ const Navbar = ({ currentPage, setCurrentPage }) => {
                                             setIsMessageOpen(false);
                                             setIsUserMenuOpen(false);
                                         }}
-                                        className="relative p-2 rounded-full hover:bg-white/10 transition-all duration-300"
+                                        className="relative p-2 rounded-full hover:bg-white/10 transition-all"
                                     >
                                         <Bell size={20} className="text-gray-300" />
                                         {notificationCount > 0 && (
@@ -219,7 +210,7 @@ const Navbar = ({ currentPage, setCurrentPage }) => {
                                             >
                                                 <div className="px-4 py-3 border-b border-white/10 flex items-center justify-between">
                                                     <h3 className="font-semibold text-white">Notifications</h3>
-                                                    <button className="text-xs text-neon-cyan hover:text-neon-purple transition-colors">
+                                                    <button className="text-xs text-neon-cyan hover:text-neon-purple">
                                                         Mark all read
                                                     </button>
                                                 </div>
@@ -227,7 +218,7 @@ const Navbar = ({ currentPage, setCurrentPage }) => {
                                                     {notifications.map((notif) => (
                                                         <div
                                                             key={notif.id}
-                                                            className={`px-4 py-3 border-b border-white/5 hover:bg-white/5 cursor-pointer transition-colors ${
+                                                            className={`px-4 py-3 border-b border-white/5 hover:bg-white/5 cursor-pointer ${
                                                                 notif.unread ? 'bg-neon-purple/10' : ''
                                                             }`}
                                                         >
@@ -239,6 +230,7 @@ const Navbar = ({ currentPage, setCurrentPage }) => {
                                                 <Link
                                                     to="/notifications"
                                                     className="block px-4 py-3 text-center text-sm text-neon-cyan hover:bg-white/5 font-medium"
+                                                    onClick={() => setIsNotificationOpen(false)}
                                                 >
                                                     View All Notifications
                                                 </Link>
@@ -257,7 +249,7 @@ const Navbar = ({ currentPage, setCurrentPage }) => {
                                             setIsNotificationOpen(false);
                                             setIsUserMenuOpen(false);
                                         }}
-                                        className="relative p-2 rounded-full hover:bg-white/10 transition-all duration-300"
+                                        className="relative p-2 rounded-full hover:bg-white/10 transition-all"
                                     >
                                         <MessageSquare size={20} className="text-gray-300" />
                                         {messageCount > 0 && (
@@ -282,7 +274,7 @@ const Navbar = ({ currentPage, setCurrentPage }) => {
                                                     {messages.map((msg) => (
                                                         <div
                                                             key={msg.id}
-                                                            className={`px-4 py-3 border-b border-white/5 hover:bg-white/5 cursor-pointer transition-colors ${
+                                                            className={`px-4 py-3 border-b border-white/5 hover:bg-white/5 cursor-pointer ${
                                                                 msg.unread ? 'bg-neon-cyan/10' : ''
                                                             }`}
                                                         >
@@ -298,10 +290,7 @@ const Navbar = ({ currentPage, setCurrentPage }) => {
                                                                     )}
                                                                 </div>
                                                                 <div className="flex-1 min-w-0">
-                                                                    <div className="flex items-center justify-between">
-                                                                        <p className="font-semibold text-sm text-white truncate">{msg.user}</p>
-                                                                        <span className="text-xs text-gray-500">{msg.time}</span>
-                                                                    </div>
+                                                                    <p className="font-semibold text-sm text-white truncate">{msg.user}</p>
                                                                     <p className="text-sm text-gray-400 truncate">{msg.message}</p>
                                                                 </div>
                                                             </div>
@@ -311,6 +300,7 @@ const Navbar = ({ currentPage, setCurrentPage }) => {
                                                 <Link
                                                     to="/messages"
                                                     className="block px-4 py-3 text-center text-sm text-neon-cyan hover:bg-white/5 font-medium"
+                                                    onClick={() => setIsMessageOpen(false)}
                                                 >
                                                     View All Messages
                                                 </Link>
@@ -332,7 +322,7 @@ const Navbar = ({ currentPage, setCurrentPage }) => {
                                         setIsNotificationOpen(false);
                                         setIsMessageOpen(false);
                                     }}
-                                    className="flex items-center justify-center p-2 rounded-full bg-white/5 hover:bg-white/10 border border-white/10 transition-all duration-300"
+                                    className="flex items-center justify-center p-2 rounded-full bg-white/5 hover:bg-white/10 border border-white/10 transition-all"
                                 >
                                     <img
                                         src={user?.avatarUrl || "/api/placeholder/32/32"}
@@ -351,7 +341,7 @@ const Navbar = ({ currentPage, setCurrentPage }) => {
                                             animate={{ opacity: 1, y: 0, scale: 1 }}
                                             exit={{ opacity: 0, y: 10, scale: 0.95 }}
                                             transition={{ duration: 0.2 }}
-                                            className="absolute right-0 mt-2 w-64 bg-dark-800/95 backdrop-blur-lg border border-white/10 rounded-xl shadow-2xl shadow-neon-purple/20 overflow-hidden"
+                                            className="absolute right-0 mt-2 w-64 bg-dark-800/95 backdrop-blur-lg border border-white/10 rounded-xl shadow-2xl overflow-hidden"
                                         >
                                             <div className="p-5 border-b border-white/10">
                                                 <div className="flex items-center space-x-4">
@@ -380,7 +370,7 @@ const Navbar = ({ currentPage, setCurrentPage }) => {
                                                         key={item.key}
                                                         to={item.path}
                                                         onClick={() => setIsUserMenuOpen(false)}
-                                                        className={`flex items-center space-x-3 px-4 py-3 rounded-lg transition-all duration-200 text-base ${
+                                                        className={`flex items-center space-x-3 px-4 py-3 rounded-lg transition-all text-base ${
                                                             currentPage === item.key
                                                                 ? 'bg-neon-purple/20 text-neon-purple'
                                                                 : 'text-gray-300 hover:text-white hover:bg-white/5'
@@ -395,7 +385,7 @@ const Navbar = ({ currentPage, setCurrentPage }) => {
                                             <div className="p-3 border-t border-white/10">
                                                 <button
                                                     onClick={handleLogout}
-                                                    className="flex items-center space-x-3 w-full px-4 py-3 text-red-400 hover:text-red-300 hover:bg-red-500/10 rounded-lg transition-all duration-200 text-base"
+                                                    className="flex items-center space-x-3 w-full px-4 py-3 text-red-400 hover:text-red-300 hover:bg-red-500/10 rounded-lg transition-all text-base"
                                                 >
                                                     <LogOut size={20} />
                                                     <span className="font-medium">Logout</span>
@@ -410,12 +400,12 @@ const Navbar = ({ currentPage, setCurrentPage }) => {
                                 <motion.button
                                     whileHover={{ scale: 1.05, boxShadow: '0 0 20px rgba(139, 92, 246, 0.5)' }}
                                     whileTap={{ scale: 0.95 }}
-                                    className={`interactive px-6 py-2 bg-gradient-to-r from-neon-purple to-neon-cyan text-white font-medium rounded-lg btn-glow transition-all duration-300 flex items-center space-x-2 ${
-                                        currentPage === 'login' ? 'shadow-neon-purple/50 shadow-lg' : ''
-                                    }`}
+                                    className="px-6 py-2 bg-gradient-to-r from-neon-purple to-neon-cyan text-white font-medium rounded-lg transition-all"
                                 >
-                                    <LogIn size={18} />
-                                    <span>Login</span>
+                                    <span className="flex items-center space-x-2">
+                                        <LogIn size={18} />
+                                        <span>Login</span>
+                                    </span>
                                 </motion.button>
                             </Link>
                         )}
@@ -426,7 +416,7 @@ const Navbar = ({ currentPage, setCurrentPage }) => {
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.95 }}
                         onClick={() => setIsOpen(!isOpen)}
-                        className="md:hidden interactive p-2 text-white"
+                        className="md:hidden p-2 text-white"
                     >
                         {isOpen ? <X size={24} /> : <Menu size={24} />}
                     </motion.button>
@@ -448,9 +438,9 @@ const Navbar = ({ currentPage, setCurrentPage }) => {
                                 key={item.key}
                                 to={item.path}
                                 onClick={() => setIsOpen(false)}
-                                className={`interactive flex items-center space-x-3 px-4 py-3 rounded-lg transition-all duration-300 ${
+                                className={`flex items-center space-x-3 px-4 py-3 rounded-lg transition-all ${
                                     currentPage === item.key
-                                        ? 'text-neon-purple bg-neon-purple/10 shadow-neon-purple/20 shadow-lg'
+                                        ? 'text-neon-purple bg-neon-purple/10'
                                         : 'text-gray-300 hover:text-white hover:bg-white/5'
                                 }`}
                             >
@@ -466,9 +456,9 @@ const Navbar = ({ currentPage, setCurrentPage }) => {
                                         key={item.key}
                                         to={item.path}
                                         onClick={() => setIsOpen(false)}
-                                        className={`interactive flex items-center space-x-3 px-4 py-3 rounded-lg transition-all duration-300 ${
+                                        className={`flex items-center space-x-3 px-4 py-3 rounded-lg transition-all ${
                                             currentPage === item.key
-                                                ? 'text-neon-cyan bg-neon-cyan/10 shadow-neon-cyan/20 shadow-lg'
+                                                ? 'text-neon-cyan bg-neon-cyan/10'
                                                 : 'text-gray-300 hover:text-white hover:bg-white/5'
                                         }`}
                                     >
@@ -477,31 +467,12 @@ const Navbar = ({ currentPage, setCurrentPage }) => {
                                     </Link>
                                 ))}
 
-                                <div className="flex items-center gap-3 px-4 py-3 border-t border-white/10 mt-3 pt-4">
-                                    <img
-                                        src={user?.avatarUrl || "/api/placeholder/32/32"}
-                                        alt={user?.name || "User"}
-                                        className="w-10 h-10 rounded-full border-2 border-neon-cyan"
-                                        onError={(e) => {
-                                            e.target.src = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 24 24' fill='none' stroke='%2306B6D4' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2'/%3E%3Ccircle cx='12' cy='7' r='4'/%3E%3C/svg%3E";
-                                        }}
-                                    />
-                                    <div className="flex-1 min-w-0">
-                                        <p className="text-white font-medium text-base truncate">
-                                            {user?.name || 'User'}
-                                        </p>
-                                        <p className="text-gray-400 text-sm truncate">
-                                            {user?.email || 'Welcome back!'}
-                                        </p>
-                                    </div>
-                                </div>
-
                                 <button
                                     onClick={() => {
                                         handleLogout();
                                         setIsOpen(false);
                                     }}
-                                    className="interactive w-full flex items-center space-x-3 px-4 py-3 text-gray-300 hover:text-red-400 hover:bg-red-500/10 transition-colors rounded-lg text-base"
+                                    className="flex items-center space-x-3 w-full px-4 py-3 text-gray-300 hover:text-red-400 hover:bg-red-500/10 transition-colors rounded-lg"
                                 >
                                     <LogOut size={18} />
                                     <span>Logout</span>
@@ -509,7 +480,7 @@ const Navbar = ({ currentPage, setCurrentPage }) => {
                             </>
                         ) : (
                             <Link to="/login" onClick={() => setIsOpen(false)}>
-                                <button className="interactive w-full flex items-center space-x-3 px-4 py-3 bg-gradient-to-r from-neon-purple to-neon-cyan text-white font-medium rounded-lg">
+                                <button className="w-full flex items-center space-x-3 px-4 py-3 bg-gradient-to-r from-neon-purple to-neon-cyan text-white font-medium rounded-lg">
                                     <LogIn size={18} />
                                     <span>Login</span>
                                 </button>
