@@ -26,14 +26,14 @@ spring:
               - user:email
               - read:user
             redirect-uri: http://localhost:8080/login/oauth2/code/github
-#          google:
-#            client-id: ${GOOGLE_CLIENT_ID:your_google_client_id}
-#            client-secret: ${GOOGLE_CLIENT_SECRET:your_google_client_secret}
-#            scope:
-#              - openid
-#              - profile
-#              - email
-#            redirect-uri: http://localhost:8080/login/oauth2/code/google
+          google:
+            client-id: "354410344753-k7kj6li8pgociktjun9g6ig8hohdt3p7.apps.googleusercontent.com"
+            client-secret: "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"
+            scope:
+              - openid
+              - profile
+              - email
+            redirect-uri: http://localhost:8080/login/oauth2/code/google
 
 server:
   port: 8080
