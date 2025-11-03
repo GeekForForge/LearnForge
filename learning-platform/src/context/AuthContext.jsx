@@ -1,6 +1,8 @@
-// src/context/AuthContext.jsx
 import React, { createContext, useState, useContext, useEffect } from 'react';
 import ApiService from '../services/api';
+
+const BASE_URL = process.env.REACT_APP_BACKEND_URL || "http://localhost:8080/api";
+const GOOGLE_CLIENT_ID = "354410344753-k7kj6li8pgociktjun9g6ig8hohdt3p7.apps.googleusercontent.com";
 
 const AuthContext = createContext();
 
@@ -9,23 +11,45 @@ export const AuthProvider = ({ children }) => {
     const [isAuthenticated, setIsAuthenticated] = useState(false);
     const [loading, setLoading] = useState(true);
 
+    // Check user session on mount (covers OAuth redirects)
     useEffect(() => {
-        fetchUser();
+        fetchCurrentUserDirect();
     }, []);
 
+    // Fetch user using session/cookies (for OAuth logins)
+    const fetchCurrentUserDirect = async () => {
+        try {
+            const res = await fetch(`${BASE_URL}/auth/me`, {
+                credentials: 'include'
+            });
+            if (res.ok) {
+                const userData = await res.json();
+                if (userData && userData.email) {
+                    setUser(userData);
+                    setIsAuthenticated(true);
+                    console.log('✅ User loaded from session:', userData.email);
+                } else {
+                    setUser(null);
+                    setIsAuthenticated(false);
+                }
+            } else {
+                setUser(null);
+                setIsAuthenticated(false);
+            }
+        } catch (err) {
+            console.error('Session fetch error:', err);
+            setUser(null);
+            setIsAuthenticated(false);
+        } finally {
+            setLoading(false);
+        }
+    };
+
+    // For email/password login using ApiService
     const fetchUser = async () => {
         try {
-            console.log('🔍 AuthContext: Fetching user...');
             const userData = await ApiService.getCurrentUser();
-
-            console.log('📦 AuthContext: User data received:', userData);
-
             if (userData && !userData.error) {
-                console.log('✅ AuthContext: User authenticated');
-                console.log('   - Name:', userData.name);
-                console.log('   - Email:', userData.email);
-                console.log('   - isAdmin:', userData.isAdmin);
-
                 setUser({
                     userId: userData.userId,
                     name: userData.name,
@@ -37,12 +61,11 @@ export const AuthProvider = ({ children }) => {
                 });
                 setIsAuthenticated(true);
             } else {
-                console.log('❌ AuthContext: No user data or error');
                 setUser(null);
                 setIsAuthenticated(false);
             }
         } catch (error) {
-            console.error('❌ AuthContext: Error fetching user:', error);
+            console.error('Fetch user error:', error);
             setUser(null);
             setIsAuthenticated(false);
         } finally {
@@ -50,123 +73,105 @@ export const AuthProvider = ({ children }) => {
         }
     };
 
-    // ✅ GitHub OAuth Login
+    // GitHub OAuth - initiates redirect to Spring backend
     const loginWithGithub = () => {
         const clientId = 'Ov23litSllTjFFL7HGIv';
         const redirectUri = 'http://localhost:3000/auth/callback';
         const scope = 'read:user user:email';
         const githubAuthUrl = `https://github.com/login/oauth/authorize?client_id=${clientId}&redirect_uri=${redirectUri}&scope=${scope}`;
-        console.log('🔐 Redirecting to GitHub OAuth...');
         window.location.href = githubAuthUrl;
     };
 
-    // ✅ Google OAuth Login
+    // Google OAuth - manual popup-based (NO window.href redirect)
     const loginWithGoogle = () => {
-        console.log('🔐 Redirecting to Google OAuth...');
-        window.location.href = 'http://localhost:8080/oauth2/authorization/google';
+        const googleAuthUrl = `https://accounts.google.com/o/oauth2/v2/auth?client_id=${GOOGLE_CLIENT_ID}&redirect_uri=${encodeURIComponent(`${BASE_URL}/auth/google/callback`)}&response_type=code&scope=openid%20email%20profile`;
+        window.location.href = googleAuthUrl; // do full redirect
     };
 
-    // ✅ Email/Password Login
+
+    // Email/password login
     const loginWithEmail = async (email, password) => {
         try {
-            console.log('🔐 AuthContext: Email login attempt for:', email);
             const result = await ApiService.loginWithEmail(email, password);
-
             if (result.success) {
                 await fetchUser();
                 return true;
             }
             return false;
         } catch (error) {
-            console.error('❌ AuthContext: Email login error:', error);
+            console.error('Email login error:', error);
             return false;
         }
     };
 
-    // ✅ Email/Password Signup
+    // Email/password signup
     const signupWithEmail = async (name, email, password) => {
         try {
-            console.log('🔐 AuthContext: Email signup attempt for:', email);
             const result = await ApiService.signupWithEmail(name, email, password);
-
             if (result.success) {
                 await fetchUser();
                 return true;
             }
             return false;
         } catch (error) {
-            console.error('❌ AuthContext: Email signup error:', error);
+            console.error('Signup error:', error);
             return false;
         }
     };
 
-    // ✅ Handle GitHub Callback
+    // GitHub callback handler
     const handleGithubCallback = async (code) => {
         try {
-            console.log('🔐 AuthContext: Processing GitHub callback with code:', code);
-
-            const response = await fetch('http://localhost:8080/api/auth/github', {
+            const response = await fetch(`${BASE_URL}/auth/github`, {
                 method: 'POST',
                 credentials: 'include',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
+                headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ code }),
             });
 
-            console.log('📡 Backend response status:', response.status);
-
             if (!response.ok) {
-                const errorText = await response.text();
-                console.error('❌ Backend error:', errorText);
-                throw new Error(`Authentication failed: ${response.status}`);
+                setUser(null);
+                setIsAuthenticated(false);
+                return false;
             }
 
             const data = await response.json();
-            console.log('✅ Backend response data:', data);
-
             if (data.user) {
-                console.log('✅ User authenticated:', data.user.email);
-
-                setUser({
-                    userId: data.user.userId,
-                    name: data.user.name || data.user.username,
-                    email: data.user.email,
-                    avatarUrl: data.user.avatarUrl || data.user.avatar_url,
-                    bio: data.user.bio,
-                    location: data.user.location,
-                    isAdmin: data.user.isAdmin || false,
-                });
+                setUser(data.user);
                 setIsAuthenticated(true);
-
-                await fetchUser();
-
                 return true;
             } else {
-                console.error('❌ No user in response');
+                setUser(null);
+                setIsAuthenticated(false);
                 return false;
             }
         } catch (error) {
-            console.error('❌ AuthContext: handleGithubCallback error:', error);
+            console.error('GitHub callback error:', error);
+            setUser(null);
+            setIsAuthenticated(false);
             return false;
         }
     };
 
+    // Generic login method
     const login = (userData) => {
-        console.log('🔐 AuthContext: Login called with:', userData);
         setUser(userData);
         setIsAuthenticated(true);
     };
 
+    // Logout
     const logout = async () => {
         try {
-            console.log('👋 AuthContext: Logging out...');
-            await ApiService.logout();
+            await fetch(`${BASE_URL}/auth/logout`, {
+                method: 'POST',
+                credentials: 'include'
+            });
             setUser(null);
             setIsAuthenticated(false);
-            console.log('✅ AuthContext: Logout complete');
         } catch (error) {
-            console.error('❌ AuthContext: Logout error:', error);
+            console.error('Logout error:', error);
+            setUser(null);
+            setIsAuthenticated(false);
         }
     };
 
@@ -178,10 +183,11 @@ export const AuthProvider = ({ children }) => {
             login,
             logout,
             fetchUser,
+            fetchCurrentUserDirect,
             loginWithGithub,
-            loginWithGoogle,       // ✅ NEW
-            loginWithEmail,        // ✅ NEW
-            signupWithEmail,       // ✅ NEW
+            loginWithGoogle,
+            loginWithEmail,
+            signupWithEmail,
             handleGithubCallback
         }}>
             {children}

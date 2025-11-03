@@ -1,4 +1,3 @@
-// src/App.js
 import React, { useEffect, useState } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -36,8 +35,8 @@ import SmoothScrolling from './components/SmoothScrolling';
 import { AuthProvider } from './context/AuthContext';
 import { ProgressProvider } from './context/ProgressContext';
 
-function App() {
-    const [currentPage, setCurrentPage] = useState('home');
+function AppContent() {
+    const [currentPage, setCurrentPage] = useState('landing');
 
     useEffect(() => {
         // Initialize dynamic cursor
@@ -81,111 +80,109 @@ function App() {
     };
 
     return (
-        <AuthProvider>
-            <ProgressProvider>
-                <Router>
+        <div className="App min-h-screen bg-dark-900 text-white overflow-hidden">
+            <ParticleBackground />
+            <DynamicCursor />
+            <Navbar currentPage={currentPage} setCurrentPage={setCurrentPage} />
+            <AnimatePresence mode="wait">
+                <motion.div
+                    key={currentPage}
+                    initial="initial"
+                    animate="in"
+                    exit="out"
+                    variants={pageVariants}
+                    transition={pageTransition}
+                    className="relative z-10"
+                >
+                    <Routes>
+                        <Route
+                            path="/"
+                            element={<LandingPage setCurrentPage={setCurrentPage} />}
+                        />
+                        <Route
+                            path="/home"
+                            element={<Home setCurrentPage={setCurrentPage} />}
+                        />
+                        <Route
+                            path="/feed"
+                            element={<Feed setCurrentPage={setCurrentPage} />}
+                        />
+                        <Route
+                            path="/messages"
+                            element={<Messages setCurrentPage={setCurrentPage} />}
+                        />
+                        <Route
+                            path="/notifications"
+                            element={<Notifications setCurrentPage={setCurrentPage} />}
+                        />
+                        <Route
+                            path="/leaderboard"
+                            element={<Leaderboard setCurrentPage={setCurrentPage} />}
+                        />
+                        <Route
+                            path="/community"
+                            element={<Community setCurrentPage={setCurrentPage} />}
+                        />
+                        <Route
+                            path="/courses"
+                            element={<CoursesPage setCurrentPage={setCurrentPage} />}
+                        />
+                        <Route
+                            path="/course/:id"
+                            element={<CourseDetailPage setCurrentPage={setCurrentPage} />}
+                        />
+                        <Route
+                            path="/profile"
+                            element={<ProfilePage setCurrentPage={setCurrentPage} />}
+                        />
+                        <Route
+                            path="/login"
+                            element={<LoginPage setCurrentPage={setCurrentPage} />}
+                        />
+                        <Route
+                            path="/signup"
+                            element={<SignUpPage setCurrentPage={setCurrentPage} />}
+                        />
+                        <Route
+                            path="/settings"
+                            element={<SettingsPage setCurrentPage={setCurrentPage} />}
+                        />
+                        <Route
+                            path="/auth/callback"
+                            element={<AuthCallbackPage setCurrentPage={setCurrentPage} />}
+                        />
+                        <Route
+                            path="/about"
+                            element={<AboutPage setCurrentPage={setCurrentPage} />}
+                        />
+                        {/* ✅ Protected Admin Route */}
+                        <Route
+                            path="/admin"
+                            element={
+                                <ProtectedAdminRoute>
+                                    <AdminPageNew setCurrentPage={setCurrentPage} />
+                                </ProtectedAdminRoute>
+                            }
+                        />
+                    </Routes>
+                </motion.div>
+            </AnimatePresence>
+            <Footer />
+        </div>
+    );
+}
+
+function App() {
+    return (
+        <Router>
+            <AuthProvider>
+                <ProgressProvider>
                     <SmoothScrolling>
-                        <div className="App min-h-screen bg-dark-900 text-white overflow-hidden">
-                            {/* Background & Cursor */}
-                            <ParticleBackground />
-                            <DynamicCursor />
-
-                            {/* Navbar */}
-                            <Navbar currentPage={currentPage} setCurrentPage={setCurrentPage} />
-
-                            {/* Page Content */}
-                            <AnimatePresence mode="wait">
-                                <motion.div
-                                    key={currentPage}
-                                    initial="initial"
-                                    animate="in"
-                                    exit="out"
-                                    variants={pageVariants}
-                                    transition={pageTransition}
-                                    className="relative z-10"
-                                >
-                                    <Routes>
-                                        <Route
-                                            path="/"
-                                            element={<LandingPage setCurrentPage={setCurrentPage} />}
-                                        />
-                                        <Route
-                                            path="/home"
-                                            element={<Home setCurrentPage={setCurrentPage} />}
-                                        />
-                                        <Route
-                                            path="/feed"
-                                            element={<Feed setCurrentPage={setCurrentPage} />}
-                                        />
-                                        <Route
-                                            path="/messages"
-                                            element={<Messages setCurrentPage={setCurrentPage} />}
-                                        />
-                                        <Route
-                                            path="/notifications"
-                                            element={<Notifications setCurrentPage={setCurrentPage} />}
-                                        />
-                                        <Route
-                                            path="/leaderboard"
-                                            element={<Leaderboard setCurrentPage={setCurrentPage} />}
-                                        />
-                                        <Route
-                                            path="/community"
-                                            element={<Community setCurrentPage={setCurrentPage} />}
-                                        />
-                                        <Route
-                                            path="/courses"
-                                            element={<CoursesPage setCurrentPage={setCurrentPage} />}
-                                        />
-                                        <Route
-                                            path="/course/:id"
-                                            element={<CourseDetailPage setCurrentPage={setCurrentPage} />}
-                                        />
-                                        <Route
-                                            path="/profile"
-                                            element={<ProfilePage setCurrentPage={setCurrentPage} />}
-                                        />
-                                        <Route
-                                            path="/login"
-                                            element={<LoginPage setCurrentPage={setCurrentPage} />}
-                                        />
-                                        <Route
-                                            path="/signup"
-                                            element={<SignUpPage setCurrentPage={setCurrentPage} />}
-                                        />
-                                        <Route
-                                            path="/settings"
-                                            element={<SettingsPage setCurrentPage={setCurrentPage} />}
-                                        />
-                                        <Route
-                                            path="/auth/callback"
-                                            element={<AuthCallbackPage setCurrentPage={setCurrentPage} />}
-                                        />
-                                        <Route
-                                            path="/about"
-                                            element={<AboutPage setCurrentPage={setCurrentPage} />}
-                                        />
-
-                                        {/* ✅ Protected Admin Route */}
-                                        <Route
-                                            path="/admin"
-                                            element={
-                                                <ProtectedAdminRoute>
-                                                    <AdminPageNew setCurrentPage={setCurrentPage} />
-                                                </ProtectedAdminRoute>
-                                            }
-                                        />
-                                    </Routes>
-                                </motion.div>
-                            </AnimatePresence>
-
-                            {/* Footer */}
-                            <Footer />
-                        </div>
+                        <AppContent />
                     </SmoothScrolling>
-                </Router>
-            </ProgressProvider>
-        </AuthProvider>
+                </ProgressProvider>
+            </AuthProvider>
+        </Router>
     );
 }
 
