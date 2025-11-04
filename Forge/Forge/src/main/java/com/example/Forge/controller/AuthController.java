@@ -107,7 +107,7 @@ public class AuthController {
                 response.addCookie(cookie);
 
                 // ✅ Redirect to home or landing page!
-                response.sendRedirect("http://localhost:3000/home"); // or "/" for landing
+                response.sendRedirect("http://localhost:3000/"); // or "/" for landing
                 return;
             }
             response.sendRedirect("http://localhost:3000/login?error=google");

@@ -11,23 +11,35 @@ export const AuthProvider = ({ children }) => {
     const [isAuthenticated, setIsAuthenticated] = useState(false);
     const [loading, setLoading] = useState(true);
 
-    // Check user session on mount (covers OAuth redirects)
     useEffect(() => {
         fetchCurrentUserDirect();
     }, []);
 
-    // Fetch user using session/cookies (for OAuth logins)
     const fetchCurrentUserDirect = async () => {
         try {
             const res = await fetch(`${BASE_URL}/auth/me`, {
-                credentials: 'include'
+                credentials: 'include',
             });
+
             if (res.ok) {
                 const userData = await res.json();
                 if (userData && userData.email) {
                     setUser(userData);
                     setIsAuthenticated(true);
                     console.log('✅ User loaded from session:', userData.email);
+
+                    // ✅ Detect Google OAuth callback
+                    const urlParams = new URLSearchParams(window.location.search);
+                    const fromGoogle =
+                        urlParams.get('code') ||
+                        window.location.pathname.includes('/auth/google/callback');
+
+                    if (fromGoogle) {
+                        console.log('🌐 Redirecting to /landing after Google login');
+                        // Clean redirect (same style as GitHub)
+                        window.history.replaceState({}, document.title, '/landing');
+                        window.location.href = '/landing';
+                    }
                 } else {
                     setUser(null);
                     setIsAuthenticated(false);
@@ -45,7 +57,7 @@ export const AuthProvider = ({ children }) => {
         }
     };
 
-    // For email/password login using ApiService
+    // ✅ Standard email fetch (kept for completeness)
     const fetchUser = async () => {
         try {
             const userData = await ApiService.getCurrentUser();
@@ -73,7 +85,7 @@ export const AuthProvider = ({ children }) => {
         }
     };
 
-    // GitHub OAuth - initiates redirect to Spring backend
+    // ✅ GitHub OAuth login
     const loginWithGithub = () => {
         const clientId = 'Ov23litSllTjFFL7HGIv';
         const redirectUri = 'http://localhost:3000/auth/callback';
@@ -82,44 +94,15 @@ export const AuthProvider = ({ children }) => {
         window.location.href = githubAuthUrl;
     };
 
-    // Google OAuth - manual popup-based (NO window.href redirect)
+    // ✅ Google OAuth login — same behavior as GitHub
     const loginWithGoogle = () => {
-        const googleAuthUrl = `https://accounts.google.com/o/oauth2/v2/auth?client_id=${GOOGLE_CLIENT_ID}&redirect_uri=${encodeURIComponent(`${BASE_URL}/auth/google/callback`)}&response_type=code&scope=openid%20email%20profile`;
-        window.location.href = googleAuthUrl; // do full redirect
+        const googleAuthUrl = `https://accounts.google.com/o/oauth2/v2/auth?client_id=${GOOGLE_CLIENT_ID}&redirect_uri=${encodeURIComponent(
+            `${BASE_URL}/auth/google/callback`
+        )}&response_type=code&scope=openid%20email%20profile`;
+        window.location.href = googleAuthUrl;
     };
 
-
-    // Email/password login
-    const loginWithEmail = async (email, password) => {
-        try {
-            const result = await ApiService.loginWithEmail(email, password);
-            if (result.success) {
-                await fetchUser();
-                return true;
-            }
-            return false;
-        } catch (error) {
-            console.error('Email login error:', error);
-            return false;
-        }
-    };
-
-    // Email/password signup
-    const signupWithEmail = async (name, email, password) => {
-        try {
-            const result = await ApiService.signupWithEmail(name, email, password);
-            if (result.success) {
-                await fetchUser();
-                return true;
-            }
-            return false;
-        } catch (error) {
-            console.error('Signup error:', error);
-            return false;
-        }
-    };
-
-    // GitHub callback handler
+    // ✅ GitHub callback handler
     const handleGithubCallback = async (code) => {
         try {
             const response = await fetch(`${BASE_URL}/auth/github`, {
@@ -139,6 +122,10 @@ export const AuthProvider = ({ children }) => {
             if (data.user) {
                 setUser(data.user);
                 setIsAuthenticated(true);
+
+                // ✅ Redirect to Landing page after GitHub login
+                console.log('🌐 Redirecting to /landing after GitHub login');
+                window.location.href = '/landing';
                 return true;
             } else {
                 setUser(null);
@@ -153,18 +140,16 @@ export const AuthProvider = ({ children }) => {
         }
     };
 
-    // Generic login method
     const login = (userData) => {
         setUser(userData);
         setIsAuthenticated(true);
     };
 
-    // Logout
     const logout = async () => {
         try {
             await fetch(`${BASE_URL}/auth/logout`, {
                 method: 'POST',
-                credentials: 'include'
+                credentials: 'include',
             });
             setUser(null);
             setIsAuthenticated(false);
@@ -176,20 +161,20 @@ export const AuthProvider = ({ children }) => {
     };
 
     return (
-        <AuthContext.Provider value={{
-            user,
-            isAuthenticated,
-            loading,
-            login,
-            logout,
-            fetchUser,
-            fetchCurrentUserDirect,
-            loginWithGithub,
-            loginWithGoogle,
-            loginWithEmail,
-            signupWithEmail,
-            handleGithubCallback
-        }}>
+        <AuthContext.Provider
+            value={{
+                user,
+                isAuthenticated,
+                loading,
+                login,
+                logout,
+                fetchUser,
+                fetchCurrentUserDirect,
+                loginWithGithub,
+                loginWithGoogle,
+                handleGithubCallback,
+            }}
+        >
             {children}
         </AuthContext.Provider>
     );

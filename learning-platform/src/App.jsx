@@ -9,7 +9,6 @@ import CoursesPage from './pages/CoursesPage';
 import CourseDetailPage from './pages/CourseDetailPage';
 import ProfilePage from './pages/ProfilePage';
 import LoginPage from './pages/LoginPage';
-import SignUpPage from './pages/SignUpPage';
 import SettingsPage from './pages/SettingsPage';
 import AuthCallbackPage from './pages/AuthCallbackPage';
 import AboutPage from './pages/AboutPage';
@@ -18,15 +17,13 @@ import Community from './pages/Community';
 import Leaderboard from './pages/Leaderboard';
 import Messages from './pages/Messages';
 import Notifications from './pages/Notifications';
-import Home from './pages/Home';
 import Resources from './pages/Resources';
-
 
 // Admin
 import ProtectedAdminRoute from './components/ProtectedAdminRoute';
 import AdminPageNew from './pages/AdminPageNew';
 
-// Import Components
+// Components
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import DynamicCursor from './components/DynamicCursor';
@@ -97,14 +94,17 @@ function AppContent() {
                     className="relative z-10"
                 >
                     <Routes>
+                        {/* ✅ Root and Landing routes */}
                         <Route
                             path="/"
                             element={<LandingPage setCurrentPage={setCurrentPage} />}
                         />
                         <Route
-                            path="/home"
-                            element={<Home setCurrentPage={setCurrentPage} />}
+                            path="/landing"
+                            element={<LandingPage setCurrentPage={setCurrentPage} />}
                         />
+
+                        {/* Other pages */}
                         <Route
                             path="/feed"
                             element={<Feed setCurrentPage={setCurrentPage} />}
@@ -125,6 +125,8 @@ function AppContent() {
                             path="/community"
                             element={<Community setCurrentPage={setCurrentPage} />}
                         />
+
+                        {/* Courses */}
                         <Route
                             path="/courses"
                             element={<CoursesPage setCurrentPage={setCurrentPage} />}
@@ -133,18 +135,15 @@ function AppContent() {
                             path="/course/:id"
                             element={<CourseDetailPage setCurrentPage={setCurrentPage} />}
                         />
+
+                        {/* Profile and Auth */}
                         <Route
                             path="/profile"
                             element={<ProfilePage setCurrentPage={setCurrentPage} />}
                         />
-                        <Route path="/resources" element={<Resources />} />
                         <Route
                             path="/login"
                             element={<LoginPage setCurrentPage={setCurrentPage} />}
-                        />
-                        <Route
-                            path="/signup"
-                            element={<SignUpPage setCurrentPage={setCurrentPage} />}
                         />
                         <Route
                             path="/settings"
@@ -158,7 +157,11 @@ function AppContent() {
                             path="/about"
                             element={<AboutPage setCurrentPage={setCurrentPage} />}
                         />
-                        {/* ✅ Protected Admin Route */}
+
+                        {/* Resources */}
+                        <Route path="/resources" element={<Resources />} />
+
+                        {/* Admin (Protected) */}
                         <Route
                             path="/admin"
                             element={
