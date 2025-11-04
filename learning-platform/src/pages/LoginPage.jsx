@@ -1,7 +1,7 @@
 // src/pages/LoginPage.jsx
 import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
-import { Github, Code, Zap } from 'lucide-react';
+import { Github, Code, Zap, Mail, Eye, EyeOff } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
 import { useNavigate } from 'react-router-dom';
 
@@ -28,15 +28,44 @@ const GoogleIcon = () => (
 );
 
 const LoginPage = ({ setCurrentPage }) => {
-    const { loginWithGithub, loginWithGoogle, isAuthenticated } = useAuth();
+    // Consolidated useAuth destructuring
+    const { loginWithGithub, loginWithGoogle, loginWithEmail, isAuthenticated } = useAuth();
     const navigate = useNavigate();
 
+    // State management
+    const [showEmailForm, setShowEmailForm] = useState(false);
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [showPassword, setShowPassword] = useState(false);
+    const [error, setError] = useState('');
+    const [loading, setLoading] = useState(false);
+
+    // Single useEffect for navigation
     useEffect(() => {
         setCurrentPage('login');
         if (isAuthenticated) {
             navigate('/landing');
         }
     }, [isAuthenticated, navigate, setCurrentPage]);
+
+    const handleEmailLogin = async (e) => {
+        e.preventDefault();
+        setError('');
+        setLoading(true);
+
+        try {
+            const success = await loginWithEmail(email, password);
+            if (success) {
+                navigate('/landing');
+            } else {
+                setError('Invalid email or password');
+            }
+        } catch (err) {
+            setError('Login failed. Please try again.');
+        } finally {
+            setLoading(false);
+        }
+    };
 
     return (
         <div className="min-h-screen flex items-center justify-center pt-20 px-6">
@@ -57,36 +86,122 @@ const LoginPage = ({ setCurrentPage }) => {
                         <p className="text-gray-400 text-lg">Sign in to continue learning</p>
                     </div>
 
-                    {/* OAuth Buttons */}
-                    <div className="space-y-4 mb-6">
-                        {/* Google Login */}
-                        <motion.button
-                            whileHover={{
-                                scale: 1.02,
-                                boxShadow: '0 10px 40px rgba(0,0,0,0.3)',
-                            }}
-                            whileTap={{ scale: 0.98 }}
-                            onClick={loginWithGoogle}
-                            className="w-full py-4 bg-dark-700 hover:bg-dark-600 text-white font-bold rounded-xl flex items-center justify-center gap-3 transition-all border border-white/10"
-                        >
-                            <GoogleIcon />
-                            Continue with Google
-                        </motion.button>
+                    {!showEmailForm ? (
+                        <>
+                            {/* OAuth Buttons */}
+                            <div className="space-y-4 mb-6">
+                                {/* Google Login */}
+                                <motion.button
+                                    whileHover={{ scale: 1.02, boxShadow: '0 10px 40px rgba(0,0,0,0.3)' }}
+                                    whileTap={{ scale: 0.98 }}
+                                    onClick={loginWithGoogle}
+                                    className="w-full py-4 bg-dark-700 hover:bg-dark-600 text-white font-bold rounded-xl flex items-center justify-center gap-3 transition-all border border-white/10"
+                                >
+                                    <GoogleIcon />
+                                    Continue with Google
+                                </motion.button>
 
-                        {/* GitHub Login */}
-                        <motion.button
-                            whileHover={{
-                                scale: 1.02,
-                                boxShadow: '0 10px 40px rgba(0,0,0,0.3)',
-                            }}
-                            whileTap={{ scale: 0.98 }}
-                            onClick={loginWithGithub}
-                            className="w-full py-4 bg-gray-900 hover:bg-gray-800 text-white font-bold rounded-xl flex items-center justify-center gap-3 transition-all border border-white/10"
-                        >
-                            <Github size={24} />
-                            Continue with GitHub
-                        </motion.button>
-                    </div>
+                                {/* GitHub Login */}
+                                <motion.button
+                                    whileHover={{ scale: 1.02, boxShadow: '0 10px 40px rgba(0,0,0,0.3)' }}
+                                    whileTap={{ scale: 0.98 }}
+                                    onClick={loginWithGithub}
+                                    className="w-full py-4 bg-gray-900 hover:bg-gray-800 text-white font-bold rounded-xl flex items-center justify-center gap-3 transition-all border border-white/10"
+                                >
+                                    <Github size={24} />
+                                    Continue with GitHub
+                                </motion.button>
+                            </div>
+
+                            {/* Divider */}
+                            <div className="relative mb-6">
+                                <div className="absolute inset-0 flex items-center">
+                                    <div className="w-full border-t border-white/10"></div>
+                                </div>
+                                <div className="relative flex justify-center text-sm">
+                                    <span className="px-4 bg-transparent text-gray-400">Or continue with</span>
+                                </div>
+                            </div>
+
+                            {/* Email Login Button */}
+                            <motion.button
+                                whileHover={{ scale: 1.02 }}
+                                whileTap={{ scale: 0.98 }}
+                                onClick={() => setShowEmailForm(true)}
+                                className="w-full py-4 bg-gradient-to-r from-neon-purple to-neon-cyan text-white font-bold rounded-xl flex items-center justify-center gap-3 transition-all"
+                            >
+                                <Mail size={24} />
+                                Sign in with Email
+                            </motion.button>
+                        </>
+                    ) : (
+                        <>
+                            {/* Email/Password Form */}
+                            <form onSubmit={handleEmailLogin} className="space-y-4 mb-6">
+                                {error && (
+                                    <div className="bg-red-500/10 border border-red-500/20 rounded-lg p-3 text-red-400 text-sm">
+                                        {error}
+                                    </div>
+                                )}
+
+                                <div>
+                                    <label className="block text-gray-300 text-sm font-medium mb-2">
+                                        Email
+                                    </label>
+                                    <input
+                                        type="email"
+                                        value={email}
+                                        onChange={(e) => setEmail(e.target.value)}
+                                        required
+                                        className="w-full px-4 py-3 bg-dark-700 border border-white/10 rounded-xl text-white focus:outline-none focus:border-neon-cyan transition-colors"
+                                        placeholder="your@email.com"
+                                    />
+                                </div>
+
+                                <div>
+                                    <label className="block text-gray-300 text-sm font-medium mb-2">
+                                        Password
+                                    </label>
+                                    <div className="relative">
+                                        <input
+                                            type={showPassword ? "text" : "password"}
+                                            value={password}
+                                            onChange={(e) => setPassword(e.target.value)}
+                                            required
+                                            className="w-full px-4 py-3 bg-dark-700 border border-white/10 rounded-xl text-white focus:outline-none focus:border-neon-cyan transition-colors pr-12"
+                                            placeholder="••••••••"
+                                        />
+                                        <button
+                                            type="button"
+                                            onClick={() => setShowPassword(!showPassword)}
+                                            className="absolute right-4 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-white transition-colors"
+                                        >
+                                            {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <button
+                                    type="submit"
+                                    disabled={loading}
+                                    className="w-full py-4 bg-gradient-to-r from-neon-purple to-neon-cyan text-white font-bold rounded-xl hover:opacity-90 transition-opacity disabled:opacity-50"
+                                >
+                                    {loading ? 'Signing in...' : 'Sign In'}
+                                </button>
+                            </form>
+
+                            {/* Back Button */}
+                            <button
+                                onClick={() => {
+                                    setShowEmailForm(false);
+                                    setError('');
+                                }}
+                                className="w-full py-3 bg-white/5 hover:bg-white/10 text-gray-300 rounded-xl transition-colors"
+                            >
+                                Back to other options
+                            </button>
+                        </>
+                    )}
 
                     {/* Features */}
                     <div className="space-y-3 mb-6 mt-6">
@@ -95,10 +210,7 @@ const LoginPage = ({ setCurrentPage }) => {
                             'Save notes for each lesson',
                             'Be Curious',
                         ].map((feature, index) => (
-                            <div
-                                key={index}
-                                className="flex items-center gap-3 text-gray-400 text-sm"
-                            >
+                            <div key={index} className="flex items-center gap-3 text-gray-400 text-sm">
                                 <Zap size={16} className="text-neon-cyan" />
                                 <span>{feature}</span>
                             </div>
@@ -106,9 +218,19 @@ const LoginPage = ({ setCurrentPage }) => {
                     </div>
 
                     {/* Footer */}
-                    <p className="text-gray-500 text-xs text-center mt-6">
+                    <p className="text-gray-500 text-xs text-center mb-4">
                         By signing in, you agree to our Terms of Service and Privacy Policy
                     </p>
+
+                    {/* Sign Up Link */}
+                    <div className="text-center">
+                        <p className="text-gray-400 text-sm">
+                            Don't have an account?{' '}
+                            <a href="/signup" className="text-neon-cyan hover:text-neon-purple transition-colors font-semibold">
+                                Sign up here
+                            </a>
+                        </p>
+                    </div>
                 </div>
             </motion.div>
         </div>
