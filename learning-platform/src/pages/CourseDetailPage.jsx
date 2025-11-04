@@ -596,7 +596,14 @@ const CourseDetailPage = ({ setCurrentPage }) => {
                                 <span className="ml-auto text-sm text-neon-cyan font-semibold">{lessons.length}</span>
                             </h4>
 
-                            <div className="space-y-2 max-h-[650px] overflow-y-auto pr-2 custom-scrollbar">
+                            {/* ✅ ENHANCED: Scroll container with Lenis compatibility and scroll chaining prevention */}
+                            <div
+                                className="space-y-2 max-h-[650px] overflow-y-auto pr-2 custom-scrollbar"
+                                data-lenis-prevent
+                                style={{
+                                    overscrollBehavior: 'contain'
+                                }}
+                            >
                                 {lessons.map((lesson, index) => {
                                     const isCompleted = isAuthenticated && isLessonCompleted(parseInt(id), lesson.lessonId);
                                     const isActive = selectedLesson?.lessonId === lesson.lessonId;
@@ -675,6 +682,9 @@ const CourseDetailPage = ({ setCurrentPage }) => {
                 .custom-scrollbar::-webkit-scrollbar-thumb {
                     background: linear-gradient(to bottom, #8B5CF6, #06B6D4);
                     border-radius: 10px;
+                }
+                .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+                    background: linear-gradient(to bottom, #7C3AED, #0891B2);
                 }
             `}</style>
         </div>
