@@ -19,6 +19,8 @@ import Leaderboard from './pages/Leaderboard';
 import Messages from './pages/Messages';
 import Notifications from './pages/Notifications';
 import Home from './pages/Home';
+import Resources from './pages/Resources';
+
 
 // Admin
 import ProtectedAdminRoute from './components/ProtectedAdminRoute';
@@ -135,6 +137,7 @@ function AppContent() {
                             path="/profile"
                             element={<ProfilePage setCurrentPage={setCurrentPage} />}
                         />
+                        <Route path="/resources" element={<Resources />} />
                         <Route
                             path="/login"
                             element={<LoginPage setCurrentPage={setCurrentPage} />}
