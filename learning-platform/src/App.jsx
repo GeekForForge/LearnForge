@@ -14,19 +14,12 @@ import SignUpPage from './pages/SignUpPage';
 import SettingsPage from './pages/SettingsPage';
 import AuthCallbackPage from './pages/AuthCallbackPage';
 import AboutPage from './pages/AboutPage';
-
+import Feed from './pages/Feed';
 import Community from './pages/Community';
-
+import Leaderboard from './pages/Leaderboard';
 import Messages from './pages/Messages';
 import Notifications from './pages/Notifications';
 import Home from './pages/Home';
-
-
-
-
-// In your Routes:
-
-
 
 // Admin
 import ProtectedAdminRoute from './components/ProtectedAdminRoute';
@@ -116,13 +109,30 @@ function App() {
                                             path="/"
                                             element={<LandingPage setCurrentPage={setCurrentPage} />}
                                         />
-                                        <Route path="/community" element={<Community />} />
-                                        <Route path="/messages" element={<Messages />} />
-                                        <Route path="/notifications" element={<Notifications />} />
-                                        // In your Routes:
-                                        <Route path="/home" element={<Home />} />
-                                        // OR if you want it as default after login:
-                                        <Route path="/" element={<Home />} />
+                                        <Route
+                                            path="/home"
+                                            element={<Home setCurrentPage={setCurrentPage} />}
+                                        />
+                                        <Route
+                                            path="/feed"
+                                            element={<Feed setCurrentPage={setCurrentPage} />}
+                                        />
+                                        <Route
+                                            path="/messages"
+                                            element={<Messages setCurrentPage={setCurrentPage} />}
+                                        />
+                                        <Route
+                                            path="/notifications"
+                                            element={<Notifications setCurrentPage={setCurrentPage} />}
+                                        />
+                                        <Route
+                                            path="/leaderboard"
+                                            element={<Leaderboard setCurrentPage={setCurrentPage} />}
+                                        />
+                                        <Route
+                                            path="/community"
+                                            element={<Community setCurrentPage={setCurrentPage} />}
+                                        />
                                         <Route
                                             path="/courses"
                                             element={<CoursesPage setCurrentPage={setCurrentPage} />}

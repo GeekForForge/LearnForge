@@ -21,6 +21,7 @@ public class CourseController {
         System.out.println("🎯 CourseController initialized!");
     }
 
+    // ✅ GET - Get all courses
     @GetMapping("/courses")
     public ResponseEntity<List<Course>> getAllCourses() {
         try {

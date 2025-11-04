@@ -1,3 +1,4 @@
+// src/services/api.js
 const API_BASE_URL = 'http://localhost:8080/api';
 // const API_BASE_URL = 'https://learnforge.onrender.com/api';
 
@@ -311,6 +312,58 @@ class ApiService {
         }
     }
 
+    // ✅ NEW: Email/Password Login
+    async loginWithEmail(email, password) {
+        try {
+            console.log('🔐 ApiService: Email login attempt');
+            const response = await fetch(`${API_BASE_URL}/auth/login`, {
+                method: 'POST',
+                credentials: 'include',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ email, password }),
+            });
+
+            if (!response.ok) {
+                throw new Error('Login failed');
+            }
+
+            const data = await response.json();
+            console.log('✅ ApiService: Email login successful');
+            return { success: true, data };
+        } catch (error) {
+            console.error('❌ ApiService: Email login error:', error);
+            return { success: false, error: error.message };
+        }
+    }
+
+    // ✅ NEW: Email/Password Signup
+    async signupWithEmail(name, email, password) {
+        try {
+            console.log('🔐 ApiService: Email signup attempt');
+            const response = await fetch(`${API_BASE_URL}/auth/signup`, {
+                method: 'POST',
+                credentials: 'include',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ name, email, password }),
+            });
+
+            if (!response.ok) {
+                throw new Error('Signup failed');
+            }
+
+            const data = await response.json();
+            console.log('✅ ApiService: Email signup successful');
+            return { success: true, data };
+        } catch (error) {
+            console.error('❌ ApiService: Email signup error:', error);
+            return { success: false, error: error.message };
+        }
+    }
+
     // ============================================
     // STREAK METHODS
     // ============================================
@@ -342,7 +395,6 @@ class ApiService {
             };
         }
     }
-
 }
 
 export default new ApiService();
