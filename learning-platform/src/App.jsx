@@ -1,14 +1,17 @@
+// src/App.jsx
 import React, { useEffect, useState } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import './globals.css';
 
-// Import Pages
+// Pages
 import LandingPage from './pages/LandingPage';
+import Home from './pages/Home';
 import CoursesPage from './pages/CoursesPage';
 import CourseDetailPage from './pages/CourseDetailPage';
 import ProfilePage from './pages/ProfilePage';
 import LoginPage from './pages/LoginPage';
+import SignUpPage from './pages/SignUpPage';
 import SettingsPage from './pages/SettingsPage';
 import AuthCallbackPage from './pages/AuthCallbackPage';
 import AboutPage from './pages/AboutPage';
@@ -18,7 +21,6 @@ import Leaderboard from './pages/Leaderboard';
 import Messages from './pages/Messages';
 import Notifications from './pages/Notifications';
 import Resources from './pages/Resources';
-import Home from './pages/Home';
 
 // Admin
 import ProtectedAdminRoute from './components/ProtectedAdminRoute';
@@ -39,7 +41,7 @@ function AppContent() {
     const [currentPage, setCurrentPage] = useState('landing');
 
     useEffect(() => {
-        // Initialize dynamic cursor
+        // Custom dynamic cursor logic
         const cursor = document.createElement('div');
         cursor.className = 'cursor';
         document.body.appendChild(cursor);
@@ -62,8 +64,8 @@ function AppContent() {
 
         return () => {
             document.removeEventListener('mousemove', moveCursor);
-            if (cursor.parentNode) cursor.parentNode.removeChild(cursor);
-            if (cursorTrail.parentNode) cursorTrail.parentNode.removeChild(cursorTrail);
+            cursor.remove();
+            cursorTrail.remove();
         };
     }, []);
 
@@ -81,9 +83,14 @@ function AppContent() {
 
     return (
         <div className="App min-h-screen bg-dark-900 text-white overflow-hidden">
+            {/* Background & Cursor */}
             <ParticleBackground />
             <DynamicCursor />
+
+            {/* Navbar */}
             <Navbar currentPage={currentPage} setCurrentPage={setCurrentPage} />
+
+            {/* Animated Page Content */}
             <AnimatePresence mode="wait">
                 <motion.div
                     key={currentPage}
@@ -95,72 +102,31 @@ function AppContent() {
                     className="relative z-10"
                 >
                     <Routes>
-                        {/* ✅ Root and Landing routes */}
-                        <Route
-                            path="/"
-                            element={<LandingPage setCurrentPage={setCurrentPage} />}
-                        />
-                        <Route
-                            path="/landing"
-                            element={<LandingPage setCurrentPage={setCurrentPage} />}
-                        />
+                        {/* Public Routes */}
+                        <Route path="/" element={<LandingPage setCurrentPage={setCurrentPage} />} />
+                        <Route path="/landing" element={<LandingPage setCurrentPage={setCurrentPage} />} />
+                        <Route path="/home" element={<Home setCurrentPage={setCurrentPage} />} />
 
-                        {/* Other pages */}
-                        <Route
-                            path="/feed"
-                            element={<Feed setCurrentPage={setCurrentPage} />}
-                        />
-                        <Route
-                            path="/messages"
-                            element={<Messages setCurrentPage={setCurrentPage} />}
-                        />
-                        <Route
-                            path="/notifications"
-                            element={<Notifications setCurrentPage={setCurrentPage} />}
-                        />
-                        <Route
-                            path="/leaderboard"
-                            element={<Leaderboard setCurrentPage={setCurrentPage} />}
-                        />
-                        <Route
-                            path="/community"
-                            element={<Community setCurrentPage={setCurrentPage} />}
-                        />
+                        <Route path="/feed" element={<Feed setCurrentPage={setCurrentPage} />} />
+                        <Route path="/messages" element={<Messages setCurrentPage={setCurrentPage} />} />
+                        <Route path="/notifications" element={<Notifications setCurrentPage={setCurrentPage} />} />
+                        <Route path="/leaderboard" element={<Leaderboard setCurrentPage={setCurrentPage} />} />
+                        <Route path="/community" element={<Community setCurrentPage={setCurrentPage} />} />
 
                         {/* Courses */}
-                        <Route
-                            path="/courses"
-                            element={<CoursesPage setCurrentPage={setCurrentPage} />}
-                        />
-                        <Route
-                            path="/course/:id"
-                            element={<CourseDetailPage setCurrentPage={setCurrentPage} />}
-                        />
+                        <Route path="/courses" element={<CoursesPage setCurrentPage={setCurrentPage} />} />
+                        <Route path="/course/:id" element={<CourseDetailPage setCurrentPage={setCurrentPage} />} />
 
-                        {/* Profile and Auth */}
-                        <Route
-                            path="/profile"
-                            element={<ProfilePage setCurrentPage={setCurrentPage} />}
-                        />
-                        <Route
-                            path="/login"
-                            element={<LoginPage setCurrentPage={setCurrentPage} />}
-                        />
-                        <Route
-                            path="/settings"
-                            element={<SettingsPage setCurrentPage={setCurrentPage} />}
-                        />
-                        <Route
-                            path="/auth/callback"
-                            element={<AuthCallbackPage setCurrentPage={setCurrentPage} />}
-                        />
-                        <Route
-                            path="/about"
-                            element={<AboutPage setCurrentPage={setCurrentPage} />}
-                        />
+                        {/* Profile & Auth */}
+                        <Route path="/profile" element={<ProfilePage setCurrentPage={setCurrentPage} />} />
+                        <Route path="/login" element={<LoginPage setCurrentPage={setCurrentPage} />} />
+                        <Route path="/signup" element={<SignUpPage setCurrentPage={setCurrentPage} />} />
+                        <Route path="/settings" element={<SettingsPage setCurrentPage={setCurrentPage} />} />
+                        <Route path="/auth/callback" element={<AuthCallbackPage setCurrentPage={setCurrentPage} />} />
+                        <Route path="/about" element={<AboutPage setCurrentPage={setCurrentPage} />} />
 
                         {/* Resources */}
-                        <Route path="/resources" element={<Resources />} />
+                        <Route path="/resources" element={<Resources setCurrentPage={setCurrentPage} />} />
 
                         {/* Admin (Protected) */}
                         <Route
@@ -174,6 +140,8 @@ function AppContent() {
                     </Routes>
                 </motion.div>
             </AnimatePresence>
+
+            {/* Footer */}
             <Footer />
         </div>
     );
@@ -186,103 +154,6 @@ function App() {
                 <ProgressProvider>
                     <SmoothScrolling>
                         <AppContent />
-                        <div className="App min-h-screen bg-dark-900 text-white overflow-hidden">
-                            {/* Background & Cursor */}
-                            <ParticleBackground />
-                            <DynamicCursor />
-
-                            {/* Navbar */}
-                            <Navbar currentPage={currentPage} setCurrentPage={setCurrentPage} />
-
-                            {/* Page Content */}
-                            <AnimatePresence mode="wait">
-                                <motion.div
-                                    key={currentPage}
-                                    initial="initial"
-                                    animate="in"
-                                    exit="out"
-                                    variants={pageVariants}
-                                    transition={pageTransition}
-                                    className="relative z-10"
-                                >
-                                    <Routes>
-                                        <Route
-                                            path="/"
-                                            element={<LandingPage setCurrentPage={setCurrentPage} />}
-                                        />
-                                        <Route
-                                            path="/home"
-                                            element={<Home setCurrentPage={setCurrentPage} />}
-                                        />
-                                        <Route
-                                            path="/feed"
-                                            element={<Feed setCurrentPage={setCurrentPage} />}
-                                        />
-                                        <Route
-                                            path="/messages"
-                                            element={<Messages setCurrentPage={setCurrentPage} />}
-                                        />
-                                        <Route
-                                            path="/notifications"
-                                            element={<Notifications setCurrentPage={setCurrentPage} />}
-                                        />
-                                        <Route
-                                            path="/leaderboard"
-                                            element={<Leaderboard setCurrentPage={setCurrentPage} />}
-                                        />
-                                        <Route
-                                            path="/community"
-                                            element={<Community setCurrentPage={setCurrentPage} />}
-                                        />
-                                        <Route
-                                            path="/courses"
-                                            element={<CoursesPage setCurrentPage={setCurrentPage} />}
-                                        />
-                                        <Route
-                                            path="/course/:id"
-                                            element={<CourseDetailPage setCurrentPage={setCurrentPage} />}
-                                        />
-                                        <Route
-                                            path="/profile"
-                                            element={<ProfilePage setCurrentPage={setCurrentPage} />}
-                                        />
-                                        <Route
-                                            path="/login"
-                                            element={<LoginPage setCurrentPage={setCurrentPage} />}
-                                        />
-                                        <Route
-                                            path="/signup"
-                                            element={<SignUpPage setCurrentPage={setCurrentPage} />}
-                                        />
-                                        <Route
-                                            path="/settings"
-                                            element={<SettingsPage setCurrentPage={setCurrentPage} />}
-                                        />
-                                        <Route
-                                            path="/auth/callback"
-                                            element={<AuthCallbackPage setCurrentPage={setCurrentPage} />}
-                                        />
-                                        <Route
-                                            path="/about"
-                                            element={<AboutPage setCurrentPage={setCurrentPage} />}
-                                        />
-
-                                        {/* ✅ Protected Admin Route */}
-                                        <Route
-                                            path="/admin"
-                                            element={
-                                                <ProtectedAdminRoute>
-                                                    <AdminPageNew setCurrentPage={setCurrentPage} />
-                                                </ProtectedAdminRoute>
-                                            }
-                                        />
-                                    </Routes>
-                                </motion.div>
-                            </AnimatePresence>
-
-                            {/* Footer */}
-                            <Footer />
-                        </div>
                     </SmoothScrolling>
                 </ProgressProvider>
             </AuthProvider>

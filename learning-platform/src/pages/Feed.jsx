@@ -1,6 +1,27 @@
 // src/pages/Feed.jsx
-import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+
+// ... (other imports like React)
+
+import { db } from '../firebase';
+import {
+    collection,
+    query,
+    onSnapshot,
+    orderBy,
+    addDoc,
+    serverTimestamp,
+    doc,
+    updateDoc,
+    arrayUnion,
+    arrayRemove,
+    where,
+    runTransaction,
+    increment,
+    deleteDoc,
+    setDoc,
+    getDoc,
+    getDocs
+} from 'firebase/firestore';
 import {
     Heart, MessageCircle, Share2, Bookmark, Send, Smile,
     Award, TrendingUp, Users, Flame, BookOpen, Code,
@@ -9,153 +30,53 @@ import {
     MapPin, Calendar, Clock, Star, Target, Coffee,
     Home, Bell, MessageSquare, Briefcase, User
 } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { useAuth } from '../context/AuthContext';
+import { Link, useNavigate } from 'react-router-dom'; // Make sure useNavigate is here
+import React, { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+// Helper function to format Firebase Timestamps
+const formatTimestamp = (timestamp) => {
+    if (!timestamp) return 'Just now';
+
+    const date = timestamp.toDate();
+    const seconds = Math.floor((new Date() - date) / 1000);
+
+    let interval = seconds / 31536000;
+    if (interval > 1) return Math.floor(interval) + " years ago";
+    interval = seconds / 2592000;
+    if (interval > 1) return Math.floor(interval) + " months ago";
+    interval = seconds / 86400;
+    if (interval > 1) return Math.floor(interval) + " days ago";
+    interval = seconds / 3600;
+    if (interval > 1) return Math.floor(interval) + " hours ago";
+    interval = seconds / 60;
+    if (interval > 1) return Math.floor(interval) + " minutes ago";
+
+    return "Just now";
+};
+
 
 const Feed = () => {
+    const { user } = useAuth();
+    const navigate = useNavigate();
     const [activeTab, setActiveTab] = useState('forYou');
     const [postText, setPostText] = useState('');
     const [searchQuery, setSearchQuery] = useState('');
 
-    // Enhanced mock data for posts
-    const [posts, setPosts] = useState([
-        {
-            id: 1,
-            user: {
-                name: 'Samarth Patil',
-                username: '@samarth-sachin',
-                avatar: 'https://ui-avatars.com/api/?name=Samarth+Patil&background=8B5CF6&color=fff',
-                level: 15,
-                badge: '🔥',
-                online: true,
-                title: 'Full Stack Developer'
-            },
-            content: 'Just completed the Advanced React Patterns course! Finally mastered render props and compound components. The project was challenging but so rewarding! 🚀',
-            type: 'achievement',
-            course: 'React Masterclass',
-            timestamp: '2 hours ago',
-            likes: 45,
-            comments: 8,
-            shares: 3,
-            views: 245,
-            isLiked: false,
-            isBookmarked: false,
-            tags: ['#React', '#AdvancedPatterns', '#WebDev'],
-            media: null,
-            achievement: {
-                title: 'React Patterns Master',
-                xp: 250
-            }
-        },
-        {
-            id: 2,
-            user: {
-                name: 'Priya Sharma',
-                username: '@priya-dev',
-                avatar: 'https://ui-avatars.com/api/?name=Priya+Sharma&background=06B6D4&color=fff',
-                level: 12,
-                badge: '⭐',
-                online: true,
-                title: 'UI/UX Designer'
-            },
-            content: 'Looking for study partners for Data Structures & Algorithms! Planning to solve 3 problems daily and discuss solutions. Anyone interested in joining this coding journey? 💪',
-            type: 'collaboration',
-            timestamp: '5 hours ago',
-            likes: 23,
-            comments: 15,
-            shares: 5,
-            views: 189,
-            isLiked: true,
-            isBookmarked: false,
-            tags: ['#DSA', '#StudyGroup', '#Programming', '#LeetCode'],
-            media: null
-        },
-        {
-            id: 3,
-            user: {
-                name: 'Rahul Kumar',
-                username: '@rahul-code',
-                avatar: 'https://ui-avatars.com/api/?name=Rahul+Kumar&background=EC4899&color=fff',
-                level: 18,
-                badge: '💎',
-                online: false,
-                title: 'ML Engineer'
-            },
-            content: 'Just deployed my first machine learning model to production! Built a recommendation system using collaborative filtering. The journey from notebook to production was intense but worth it!',
-            type: 'project',
-            project: 'ML Recommendation System',
-            timestamp: '1 day ago',
-            likes: 89,
-            comments: 12,
-            shares: 18,
-            views: 542,
-            isLiked: false,
-            isBookmarked: true,
-            tags: ['#MachineLearning', '#Python', '#Production', '#MLOps'],
-            media: 'https://images.unsplash.com/photo-1555949963-aa79dcee981c?w=600&h=300&fit=crop'
-        },
-        {
-            id: 4,
-            user: {
-                name: 'Aisha Khan',
-                username: '@aisha-dev',
-                avatar: 'https://ui-avatars.com/api/?name=Aisha+Khan&background=10B981&color=fff',
-                level: 20,
-                badge: '🚀',
-                online: true,
-                title: 'Senior Frontend Engineer'
-            },
-            content: 'Just gave a talk about Micro-frontend architecture at the React Conference! So many great questions from the audience. The future of frontend development is modular!',
-            type: 'event',
-            timestamp: '3 hours ago',
-            likes: 156,
-            comments: 34,
-            shares: 28,
-            views: 890,
-            isLiked: true,
-            isBookmarked: false,
-            tags: ['#MicroFrontends', '#React', '#Architecture'],
-            media: 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=600&h=300&fit=crop'
-        }
-    ]);
+    const [posts, setPosts] = useState([]);
+    const [loading, setLoading] = useState(true);
 
-    // Enhanced mock data for users
-    const [users, setUsers] = useState([
-        {
-            id: 1,
-            name: 'Ananya Singh',
-            username: '@ananya-learns',
-            avatar: 'https://ui-avatars.com/api/?name=Ananya+Singh&background=10B981&color=fff',
-            level: 10,
-            xp: 1500,
-            coursesCompleted: 3,
-            followers: 120,
-            following: 85,
-            isFollowing: false,
-            online: true,
-            title: 'DevOps Enthusiast',
-            bio: 'Passionate about cloud computing and automation | Learning AWS & Docker',
-            skills: ['AWS', 'Docker', 'Linux'],
-            streak: 7
-        },
-        {
-            id: 2,
-            name: 'Vikram Patel',
-            username: '@vikram-dev',
-            avatar: 'https://ui-avatars.com/api/?name=Vikram+Patel&background=F59E0B&color=fff',
-            level: 14,
-            xp: 2800,
-            coursesCompleted: 7,
-            followers: 245,
-            following: 120,
-            isFollowing: true,
-            online: false,
-            title: 'Competitive Programmer',
-            bio: 'DSA enthusiast | 3⭐ CodeChef | Love solving complex problems',
-            skills: ['C++', 'Algorithms', 'Data Structures'],
-            streak: 21
-        }
-    ]);
+    // State for dynamic profile card
+    const [postCount, setPostCount] = useState(0);
+    const [followerCount, setFollowerCount] = useState(0);
+    const [followingCount, setFollowingCount] = useState(0);
 
+    // State for dynamic Discover/Follow logic
+    const [discoverUsers, setDiscoverUsers] = useState([]); // Replaces mock 'users'
+    const [followingList, setFollowingList] = useState([]); // To track who user follows
+    const [loadingDiscover, setLoadingDiscover] = useState(true);
+
+    // Mock data for 'trendingTopics' (still hardcoded)
     const trendingTopics = [
         { tag: '#JavaScript', posts: '2.4K', trend: 'up', growth: '+12%' },
         { tag: '#React', posts: '1.8K', trend: 'up', growth: '+8%' },
@@ -164,64 +85,260 @@ const Feed = () => {
         { tag: '#WebDev', posts: '980', trend: 'down', growth: '-3%' }
     ];
 
-    const handleCreatePost = () => {
-        if (postText.trim()) {
-            const newPost = {
-                id: posts.length + 1,
-                user: {
-                    name: 'You',
-                    username: '@you',
-                    avatar: 'https://ui-avatars.com/api/?name=You&background=8B5CF6&color=fff',
-                    level: 15,
-                    badge: '🔥',
-                    online: true,
-                    title: 'Full Stack Developer'
-                },
-                content: postText,
-                type: 'text',
-                timestamp: 'Just now',
-                likes: 0,
-                comments: 0,
-                shares: 0,
-                views: 0,
-                isLiked: false,
-                isBookmarked: false,
-                tags: [],
-                media: null
-            };
-            setPosts([newPost, ...posts]);
+    // --- UseEffects for fetching data ---
+
+    // 1. Fetches posts
+    useEffect(() => {
+        setLoading(true);
+        const postsCollection = collection(db, 'posts');
+        const q = query(postsCollection, orderBy('timestamp', 'desc'));
+        const unsubscribe = onSnapshot(q, (snapshot) => {
+            const fetchedPosts = snapshot.docs.map(doc => ({
+                id: doc.id,
+                ...doc.data()
+            }));
+            setPosts(fetchedPosts);
+            setLoading(false);
+        });
+        return () => unsubscribe();
+    }, []);
+
+    // 2. Fetches the logged-in user's social stats
+    useEffect(() => {
+        if (!user) return;
+
+        const userDocRef = doc(db, 'users', user.userId);
+        const unsubscribe = onSnapshot(userDocRef, (doc) => {
+            if (doc.exists()) {
+                const data = doc.data();
+                setFollowerCount(data.followersCount || 0);
+                setFollowingCount(data.followingCount || 0);
+            } else {
+                console.log("No user document found! Please create one.");
+            }
+        });
+
+        return () => unsubscribe();
+    }, [user]);
+
+    // 3. Fetches the user's total post count
+    useEffect(() => {
+        if (!user) return;
+
+        const postsCollection = collection(db, 'posts');
+        const q = query(postsCollection, where('userId', '==', user.userId));
+        const unsubscribe = onSnapshot(q, (snapshot) => {
+            setPostCount(snapshot.size);
+        });
+
+        return () => unsubscribe();
+    }, [user]);
+
+    // 4. Fetches the list of users for the "Discover" tab
+    useEffect(() => {
+        if (!user) {
+            setLoadingDiscover(false);
+            return;
+        }
+        setLoadingDiscover(true);
+
+        const usersCollection = collection(db, 'users');
+        const q = query(usersCollection, where('userId', '!=', user.userId));
+
+        const unsubscribe = onSnapshot(q, (snapshot) => {
+            const fetchedUsers = snapshot.docs.map(doc => ({
+                id: doc.id,
+                ...doc.data()
+            }));
+            setDiscoverUsers(fetchedUsers);
+            setLoadingDiscover(false);
+        }, (error) => {
+            console.error("Error fetching discover users: ", error);
+            setLoadingDiscover(false);
+        });
+
+        return () => unsubscribe();
+    }, [user]);
+
+    // 5. Fetches the list of IDs the current user is following
+    useEffect(() => {
+        if (!user) return;
+
+        const followingColRef = collection(db, 'users', user.userId, 'following');
+        const unsubscribe = onSnapshot(followingColRef, (snapshot) => {
+            const followingIds = snapshot.docs.map(doc => doc.id);
+            setFollowingList(followingIds);
+        });
+
+        return () => unsubscribe();
+    }, [user]);
+
+    // --- Handler Functions ---
+
+    // Updated to write to Firestore AND update post count
+    const handleCreatePost = async () => {
+        if (!postText.trim() || !user) return;
+
+        const userDocRef = doc(db, 'users', user.userId);
+        const newPostRef = doc(collection(db, 'posts'));
+
+        const newPostData = {
+            id: newPostRef.id,
+            content: postText,
+            timestamp: serverTimestamp(),
+            userId: user.userId,
+            userName: user.name,
+            userAvatar: user.avatarUrl || `https://ui-avatars.com/api/?name=${user.name.replace(' ', '+')}&background=8B5CF6&color=fff`,
+            userTitle: user.bio || '',
+            likedBy: [],
+            bookmarkedBy: [],
+            type: 'text',
+            tags: [],
+            comments: 0,
+            shares: 0,
+            views: 0,
+        };
+
+        try {
+            await runTransaction(db, async (transaction) => {
+                transaction.set(newPostRef, newPostData);
+                transaction.update(userDocRef, {
+                    postsCount: increment(1)
+                });
+            });
             setPostText('');
+        } catch (error) {
+            console.error("Error creating post: ", error);
+        }
+    };
+    const handleStartChat = async (targetUser) => {
+        if (!user || !targetUser) return;
+
+        const currentUserId = user.userId;
+        const targetUserId = targetUser.id; // Assuming targetUser has .id
+
+        // Create a unique, consistent chat ID
+        const chatId = currentUserId > targetUserId
+            ? `${currentUserId}_${targetUserId}`
+            : `${targetUserId}_${currentUserId}`;
+
+        const chatDocRef = doc(db, 'chats', chatId);
+
+        try {
+            // Check if chat already exists
+            const docSnap = await getDoc(chatDocRef);
+
+            if (!docSnap.exists()) {
+                // Chat doesn't exist, create it
+                console.log("Creating new chat...");
+                await setDoc(chatDocRef, {
+                    users: [currentUserId, targetUserId],
+                    userNames: [user.name, targetUser.name],
+                    userAvatars: [
+                        user.avatarUrl || `https://ui-avatars.com/api/?name=${user.name}`,
+                        targetUser.avatarUrl || `https://ui-avatars.com/api/?name=${targetUser.name}`
+                    ],
+                    lastMessage: '',
+                    lastTimestamp: serverTimestamp()
+                });
+            }
+
+            // Navigate to the messages page
+            // We pass the chat ID and other user info in state
+            navigate('/messages', {
+                state: {
+                    selectedChatId: chatId
+                }
+            });
+
+        } catch (error) {
+            console.error("Error starting chat: ", error);
+        }
+    };
+    // Updated to modify Firestore document
+    const handleLike = async (postId) => {
+        if (!user) return;
+
+        const postRef = doc(db, 'posts', postId);
+        const post = posts.find(p => p.id === postId);
+
+        const isLiked = post.likedBy && post.likedBy.includes(user.userId);
+
+        try {
+            if (isLiked) {
+                await updateDoc(postRef, {
+                    likedBy: arrayRemove(user.userId)
+                });
+            } else {
+                await updateDoc(postRef, {
+                    likedBy: arrayUnion(user.userId)
+                });
+            }
+        } catch (error) {
+            console.error("Error updating like: ", error);
         }
     };
 
-    const handleLike = (postId) => {
-        setPosts(posts.map(post =>
-            post.id === postId
-                ? { ...post, isLiked: !post.isLiked, likes: post.isLiked ? post.likes - 1 : post.likes + 1 }
-                : post
-        ));
+    // Updated to modify Firestore document
+    const handleBookmark = async (postId) => {
+        if (!user) return;
+
+        const postRef = doc(db, 'posts', postId);
+        const post = posts.find(p => p.id === postId);
+
+        const isBookmarked = post.bookmarkedBy && post.bookmarkedBy.includes(user.userId);
+
+        try {
+            if (isBookmarked) {
+                await updateDoc(postRef, {
+                    bookmarkedBy: arrayRemove(user.userId)
+                });
+            } else {
+                await updateDoc(postRef, {
+                    bookmarkedBy: arrayUnion(user.userId)
+                });
+            }
+        } catch (error) {
+            console.error("Error updating bookmark: ", error);
+        }
     };
 
-    const handleBookmark = (postId) => {
-        setPosts(posts.map(post =>
-            post.id === postId
-                ? { ...post, isBookmarked: !post.isBookmarked }
-                : post
-        ));
+    // Firebase logic for follow/unfollow
+    const handleFollow = async (targetUserId, isCurrentlyFollowing) => {
+        if (!user) return;
+
+        const currentUserRef = doc(db, 'users', user.userId);
+        const targetUserRef = doc(db, 'users', targetUserId);
+
+        const followingRef = doc(db, 'users', user.userId, 'following', targetUserId);
+        const followerRef = doc(db, 'users', targetUserId, 'followers', user.userId);
+
+        try {
+            await runTransaction(db, async (transaction) => {
+                if (isCurrentlyFollowing) {
+                    // --- Logic to UNFOLLOW ---
+                    transaction.update(currentUserRef, { followingCount: increment(-1) });
+                    transaction.update(targetUserRef, { followersCount: increment(-1) });
+                    transaction.delete(followingRef);
+                    transaction.delete(followerRef);
+                } else {
+                    // --- Logic to FOLLOW ---
+                    transaction.update(currentUserRef, { followingCount: increment(1) });
+                    transaction.update(targetUserRef, { followersCount: increment(1) });
+                    transaction.set(followingRef, { timestamp: serverTimestamp() });
+                    transaction.set(followerRef, { timestamp: serverTimestamp() });
+                }
+            });
+        } catch (error) {
+            console.error("Error following/unfollowing user: ", error);
+        }
     };
 
-    const handleFollow = (userId) => {
-        setUsers(users.map(user =>
-            user.id === userId
-                ? { ...user, isFollowing: !user.isFollowing }
-                : user
-        ));
-    };
-
-    const filteredUsers = users.filter(user =>
+    // Updated to use dynamic 'discoverUsers' state
+    const filteredUsers = discoverUsers.filter(user =>
         user.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        user.username.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        user.skills.some(skill => skill.toLowerCase().includes(searchQuery.toLowerCase()))
+        (user.username && user.username.toLowerCase().includes(searchQuery.toLowerCase())) ||
+        (user.skills && user.skills.some(skill => skill.toLowerCase().includes(searchQuery.toLowerCase())))
     );
 
     const getPostTypeIcon = (type) => {
@@ -236,70 +353,75 @@ const Feed = () => {
 
     return (
         <div className="min-h-screen bg-transparent pt-16">
-            {/* Main Container - Full Width */}
             <div className="max-w-screen-2xl mx-auto px-4 py-6">
                 <div className="grid grid-cols-12 gap-6">
 
                     {/* LEFT SIDEBAR - Profile & Quick Actions */}
                     <div className="col-span-3 space-y-6">
-                        {/* Profile Card */}
+                        {/* Profile Card - Dynamic */}
                         <motion.div
                             initial={{ opacity: 0, x: -20 }}
                             animate={{ opacity: 1, x: 0 }}
                             className="bg-white/5 backdrop-blur-xl rounded-2xl p-6 border border-white/10"
                         >
-                            <div className="text-center">
-                                <div className="relative inline-block mb-4">
-                                    <img
-                                        src="https://ui-avatars.com/api/?name=Samarth+Patil&background=8B5CF6&color=fff&size=128"
-                                        alt="Profile"
-                                        className="w-20 h-20 rounded-full border-4 border-neon-purple"
-                                    />
-                                    <div className="absolute bottom-0 right-0 w-6 h-6 bg-green-500 rounded-full border-4 border-dark-800"></div>
-                                </div>
-                                <h3 className="text-white font-bold text-lg mb-1">Samarth Patil</h3>
-                                <p className="text-gray-300 text-sm mb-4">Full Stack Developer</p>
+                            {user ? (
+                                <div className="text-center">
+                                    <div className="relative inline-block mb-4">
+                                        <img
+                                            src={user.avatarUrl || `https://ui-avatars.com/api/?name=${user.name}&background=8B5CF6&color=fff&size=128`}
+                                            alt="Profile"
+                                            className="w-20 h-20 rounded-full border-4 border-neon-purple"
+                                        />
+                                        <div className="absolute bottom-0 right-0 w-6 h-6 bg-green-500 rounded-full border-4 border-dark-800"></div>
+                                    </div>
+                                    <h3 className="text-white font-bold text-lg mb-1">{user.name}</h3>
+                                    <p className="text-gray-300 text-sm mb-4">{user.bio || 'A LearnForge User'}</p>
 
-                                {/* Level Progress */}
-                                <div className="mb-6">
-                                    <div className="flex justify-between text-sm mb-2">
-                                        <span className="text-gray-300">Level 15</span>
-                                        <span className="text-neon-cyan font-semibold">2500/3000 XP</span>
+                                    {/* Level Progress (Hardcoded) */}
+                                    <div className="mb-6">
+                                        <div className="flex justify-between text-sm mb-2">
+                                            <span className="text-gray-300">Level 15</span>
+                                            <span className="text-neon-cyan font-semibold">2500/3000 XP</span>
+                                        </div>
+                                        <div className="w-full bg-white/10 rounded-full h-2">
+                                            <div className="bg-gradient-to-r from-neon-purple to-neon-cyan h-2 rounded-full" style={{ width: '83%' }}></div>
+                                        </div>
                                     </div>
-                                    <div className="w-full bg-white/10 rounded-full h-2">
-                                        <div className="bg-gradient-to-r from-neon-purple to-neon-cyan h-2 rounded-full" style={{ width: '83%' }}></div>
-                                    </div>
-                                </div>
 
-                                {/* Stats Grid */}
-                                <div className="grid grid-cols-3 gap-4 mb-6">
-                                    <div className="text-center p-3 bg-white/5 rounded-xl">
-                                        <div className="text-white font-bold text-lg">245</div>
-                                        <div className="text-gray-300 text-xs">Followers</div>
+                                    {/* Stats Grid - Dynamic */}
+                                    <div className="grid grid-cols-3 gap-4 mb-6">
+                                        <div className="text-center p-3 bg-white/5 rounded-xl">
+                                            <div className="text-white font-bold text-lg">{followerCount}</div>
+                                            <div className="text-gray-300 text-xs">Followers</div>
+                                        </div>
+                                        <div className="text-center p-3 bg-white/5 rounded-xl">
+                                            <div className="text-white font-bold text-lg">{followingCount}</div>
+                                            <div className="text-gray-300 text-xs">Following</div>
+                                        </div>
+                                        <div className="text-center p-3 bg-white/5 rounded-xl">
+                                            <div className="text-white font-bold text-lg">{postCount}</div>
+                                            <div className="text-gray-300 text-xs">Posts</div>
+                                        </div>
                                     </div>
-                                    <div className="text-center p-3 bg-white/5 rounded-xl">
-                                        <div className="text-white font-bold text-lg">180</div>
-                                        <div className="text-gray-300 text-xs">Following</div>
-                                    </div>
-                                    <div className="text-center p-3 bg-white/5 rounded-xl">
-                                        <div className="text-white font-bold text-lg">45</div>
-                                        <div className="text-gray-300 text-xs">Posts</div>
-                                    </div>
-                                </div>
 
-                                {/* Quick Actions */}
-                                <div className="flex gap-2">
-                                    <button className="flex-1 px-4 py-2 bg-white/10 text-white rounded-xl text-sm font-semibold hover:bg-white/20 transition-all">
-                                        Edit Profile
-                                    </button>
-                                    <button className="px-4 py-2 bg-gradient-to-r from-neon-purple to-neon-cyan text-white rounded-xl text-sm font-semibold hover:opacity-90 transition-all">
-                                        Share
-                                    </button>
+                                    {/* Quick Actions (Hardcoded) */}
+                                    <div className="flex gap-2">
+                                        <button className="flex-1 px-4 py-2 bg-white/10 text-white rounded-xl text-sm font-semibold hover:bg-white/20 transition-all">
+                                            Edit Profile
+                                        </button>
+                                        <button className="px-4 py-2 bg-gradient-to-r from-neon-purple to-neon-cyan text-white rounded-xl text-sm font-semibold hover:opacity-90 transition-all">
+                                            Share
+                                        </button>
+                                    </div>
                                 </div>
-                            </div>
+                            ) : (
+                                <div className="text-center text-gray-300">
+                                    Loading profile...
+                                </div>
+                            )}
                         </motion.div>
 
-                        {/* Quick Navigation */}
+                        {/* Quick Navigation (Hardcoded) */}
                         <motion.div
                             initial={{ opacity: 0, x: -20 }}
                             animate={{ opacity: 1, x: 0 }}
@@ -331,7 +453,7 @@ const Feed = () => {
                             ))}
                         </motion.div>
 
-                        {/* Recent Activity */}
+                        {/* Recent Activity (Hardcoded) */}
                         <motion.div
                             initial={{ opacity: 0, x: -20 }}
                             animate={{ opacity: 1, x: 0 }}
@@ -363,7 +485,7 @@ const Feed = () => {
 
                     {/* MAIN CONTENT - Feed Posts */}
                     <div className="col-span-6 space-y-6">
-                        {/* Enhanced Tab Navigation */}
+                        {/* Enhanced Tab Navigation (Hardcoded) */}
                         <motion.div
                             initial={{ opacity: 0, y: -20 }}
                             animate={{ opacity: 1, y: 0 }}
@@ -401,220 +523,210 @@ const Feed = () => {
                                     exit={{ opacity: 0, y: -20 }}
                                     className="space-y-6"
                                 >
-                                    {/* Create Post Card */}
-                                    <motion.div
-                                        initial={{ opacity: 0, y: 20 }}
-                                        animate={{ opacity: 1, y: 0 }}
-                                        className="bg-white/5 backdrop-blur-xl rounded-2xl p-6 border border-white/10"
-                                    >
-                                        <div className="flex gap-4">
-                                            <img
-                                                src="https://ui-avatars.com/api/?name=You&background=8B5CF6&color=fff"
-                                                alt="Your avatar"
-                                                className="w-12 h-12 rounded-full border-2 border-neon-cyan"
-                                            />
-                                            <div className="flex-1">
-                                                <textarea
-                                                    value={postText}
-                                                    onChange={(e) => setPostText(e.target.value)}
-                                                    placeholder="Share your learning journey..."
-                                                    className="w-full bg-white/5 text-white rounded-2xl p-4 border border-white/10 focus:border-neon-purple focus:outline-none resize-none backdrop-blur-sm"
-                                                    rows="3"
-                                                />
-                                                <div className="flex items-center justify-between mt-4">
-                                                    <div className="flex gap-2">
-                                                        {[
-                                                            { icon: <Image className="w-5 h-5" />, label: 'Photo' },
-                                                            { icon: <Video className="w-5 h-5" />, label: 'Video' },
-                                                            { icon: <Code className="w-5 h-5" />, label: 'Code' },
-                                                            { icon: <Calendar className="w-5 h-5" />, label: 'Event' }
-                                                        ].map((item, index) => (
-                                                            <button key={index} className="flex items-center gap-2 px-3 py-2 text-gray-300 hover:text-white hover:bg-white/5 rounded-xl transition-all">
-                                                                {item.icon}
-                                                                <span className="text-xs">{item.label}</span>
-                                                            </button>
-                                                        ))}
-                                                    </div>
-                                                    <motion.button
-                                                        onClick={handleCreatePost}
-                                                        whileHover={{ scale: 1.05 }}
-                                                        whileTap={{ scale: 0.95 }}
-                                                        className="px-6 py-3 bg-gradient-to-r from-neon-purple to-neon-cyan text-white rounded-xl font-semibold hover:shadow-lg hover:shadow-neon-cyan/20 transition-all flex items-center gap-2"
-                                                    >
-                                                        <Rocket className="w-4 h-4" />
-                                                        Post
-                                                    </motion.button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </motion.div>
-
-                                    {/* Posts Feed */}
-                                    {posts.map((post, index) => (
+                                    {/* ✅ RESTORED: Create Post Card */}
+                                    {user && (
                                         <motion.div
-                                            key={post.id}
                                             initial={{ opacity: 0, y: 20 }}
                                             animate={{ opacity: 1, y: 0 }}
-                                            transition={{ delay: index * 0.1 }}
-                                            className="bg-white/5 backdrop-blur-xl rounded-2xl border border-white/10 hover:border-white/20 transition-all overflow-hidden"
+                                            className="bg-white/5 backdrop-blur-xl rounded-2xl p-6 border border-white/10"
                                         >
-                                            {/* Post Header */}
-                                            <div className="p-6 pb-4">
-                                                <div className="flex items-start justify-between">
-                                                    <div className="flex gap-3">
-                                                        <div className="relative">
-                                                            <img
-                                                                src={post.user.avatar}
-                                                                alt={post.user.name}
-                                                                className="w-12 h-12 rounded-full border-2 border-neon-purple"
-                                                            />
-                                                            {post.user.online && (
-                                                                <div className="absolute bottom-0 right-0 w-3 h-3 bg-green-500 rounded-full border-2 border-dark-800"></div>
-                                                            )}
-                                                        </div>
-                                                        <div className="flex-1">
-                                                            <div className="flex items-center gap-2 mb-1">
-                                                                <h4 className="text-white font-bold">{post.user.name}</h4>
-                                                                <span className="text-lg">{post.user.badge}</span>
-                                                                <span className="text-xs text-neon-cyan bg-neon-cyan/10 px-2 py-1 rounded-full">
-                                                                    Lv {post.user.level}
-                                                                </span>
-                                                            </div>
-                                                            <div className="flex items-center gap-2 text-gray-300 text-sm">
-                                                                <span>{post.user.username}</span>
-                                                                <span>•</span>
-                                                                <span>{post.timestamp}</span>
-                                                                {post.type !== 'text' && (
-                                                                    <>
-                                                                        <span>•</span>
-                                                                        <div className="flex items-center gap-1">
-                                                                            {getPostTypeIcon(post.type)}
-                                                                            <span className="capitalize">{post.type}</span>
-                                                                        </div>
-                                                                    </>
-                                                                )}
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <button className="text-gray-300 hover:text-white p-2 rounded-xl hover:bg-white/5 transition-all">
-                                                        <MoreHorizontal size={20} />
-                                                    </button>
-                                                </div>
-
-                                                {/* Post Content */}
-                                                <div className="mt-4">
-                                                    <p className="text-white text-base leading-relaxed mb-3">
-                                                        {post.content}
-                                                    </p>
-
-                                                    {/* Achievement Badge */}
-                                                    {post.achievement && (
-                                                        <div className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-green-500/20 to-emerald-500/20 border border-green-400/30 rounded-xl text-green-300 mb-3">
-                                                            <Award size={16} />
-                                                            <span className="text-sm font-semibold">{post.achievement.title}</span>
-                                                            <span className="text-xs bg-green-500/30 px-2 py-1 rounded-full">+{post.achievement.xp} XP</span>
-                                                        </div>
-                                                    )}
-
-                                                    {/* Course/Project Info */}
-                                                    {(post.course || post.project) && (
-                                                        <div className="inline-flex items-center gap-2 px-3 py-2 bg-white/5 rounded-xl text-sm text-neon-cyan mb-3">
-                                                            <BookOpen size={14} />
-                                                            {post.course || post.project}
-                                                        </div>
-                                                    )}
-
-                                                    {/* Tags */}
-                                                    {post.tags.length > 0 && (
-                                                        <div className="flex flex-wrap gap-2 mb-4">
-                                                            {post.tags.map((tag, idx) => (
-                                                                <span key={idx} className="px-3 py-1 bg-neon-purple/20 text-neon-purple text-xs rounded-full font-semibold">
-                                                                    {tag}
-                                                                </span>
+                                            <div className="flex gap-4">
+                                                <img
+                                                    src={user.avatarUrl || `https://ui-avatars.com/api/?name=${user.name}&background=8B5CF6&color=fff`}
+                                                    alt="Your avatar"
+                                                    className="w-12 h-12 rounded-full border-2 border-neon-cyan"
+                                                />
+                                                <div className="flex-1">
+                                                    <textarea
+                                                        value={postText}
+                                                        onChange={(e) => setPostText(e.target.value)}
+                                                        placeholder="Share your learning journey..."
+                                                        className="w-full bg-white/5 text-white rounded-2xl p-4 border border-white/10 focus:border-neon-purple focus:outline-none resize-none backdrop-blur-sm"
+                                                        rows="3"
+                                                    />
+                                                    <div className="flex items-center justify-between mt-4">
+                                                        <div className="flex gap-2">
+                                                            {[
+                                                                { icon: <Image className="w-5 h-5" />, label: 'Photo' },
+                                                                { icon: <Video className="w-5 h-5" />, label: 'Video' },
+                                                                { icon: <Code className="w-5 h-5" />, label: 'Code' },
+                                                                { icon: <Calendar className="w-5 h-5" />, label: 'Event' }
+                                                            ].map((item, index) => (
+                                                                <button key={index} className="flex items-center gap-2 px-3 py-2 text-gray-300 hover:text-white hover:bg-white/5 rounded-xl transition-all">
+                                                                    {item.icon}
+                                                                    <span className="text-xs">{item.label}</span>
+                                                                </button>
                                                             ))}
                                                         </div>
-                                                    )}
-
-                                                    {/* Media */}
-                                                    {post.media && (
-                                                        <div className="rounded-2xl overflow-hidden mb-4">
-                                                            <img
-                                                                src={post.media}
-                                                                alt="Post media"
-                                                                className="w-full h-64 object-cover hover:scale-105 transition-transform duration-300"
-                                                            />
-                                                        </div>
-                                                    )}
-                                                </div>
-                                            </div>
-
-                                            {/* Post Stats */}
-                                            <div className="px-6 py-3 border-t border-white/10 bg-white/2">
-                                                <div className="flex items-center gap-6 text-sm text-gray-300">
-                                                    <span className="flex items-center gap-1">
-                                                        <Eye size={14} />
-                                                        {post.views} views
-                                                    </span>
-                                                    <span>{post.comments} comments</span>
-                                                    <span>{post.shares} shares</span>
-                                                </div>
-                                            </div>
-
-                                            {/* Post Actions */}
-                                            <div className="px-6 py-4 border-t border-white/10">
-                                                <div className="flex items-center justify-between">
-                                                    <motion.button
-                                                        whileHover={{ scale: 1.05 }}
-                                                        whileTap={{ scale: 0.95 }}
-                                                        onClick={() => handleLike(post.id)}
-                                                        className={`flex items-center gap-2 px-4 py-2 rounded-xl transition-all ${
-                                                            post.isLiked
-                                                                ? 'text-pink-500 bg-pink-500/10'
-                                                                : 'text-gray-300 hover:text-pink-500 hover:bg-pink-500/10'
-                                                        }`}
-                                                    >
-                                                        <Heart size={20} fill={post.isLiked ? 'currentColor' : 'none'} />
-                                                        <span className="font-semibold">{post.likes}</span>
-                                                    </motion.button>
-
-                                                    <motion.button
-                                                        whileHover={{ scale: 1.05 }}
-                                                        whileTap={{ scale: 0.95 }}
-                                                        className="flex items-center gap-2 px-4 py-2 rounded-xl text-gray-300 hover:text-neon-cyan hover:bg-neon-cyan/10 transition-all"
-                                                    >
-                                                        <MessageCircle size={20} />
-                                                        <span className="font-semibold">{post.comments}</span>
-                                                    </motion.button>
-
-                                                    <motion.button
-                                                        whileHover={{ scale: 1.05 }}
-                                                        whileTap={{ scale: 0.95 }}
-                                                        className="flex items-center gap-2 px-4 py-2 rounded-xl text-gray-300 hover:text-neon-purple hover:bg-neon-purple/10 transition-all"
-                                                    >
-                                                        <Share2 size={20} />
-                                                        <span className="font-semibold">{post.shares}</span>
-                                                    </motion.button>
-
-                                                    <motion.button
-                                                        whileHover={{ scale: 1.05 }}
-                                                        whileTap={{ scale: 0.95 }}
-                                                        onClick={() => handleBookmark(post.id)}
-                                                        className={`p-3 rounded-xl transition-all ${
-                                                            post.isBookmarked
-                                                                ? 'text-neon-cyan bg-neon-cyan/10'
-                                                                : 'text-gray-300 hover:text-neon-cyan hover:bg-neon-cyan/10'
-                                                        }`}
-                                                    >
-                                                        <Bookmark size={20} fill={post.isBookmarked ? 'currentColor' : 'none'} />
-                                                    </motion.button>
+                                                        <motion.button
+                                                            onClick={handleCreatePost}
+                                                            whileHover={{ scale: 1.05 }}
+                                                            whileTap={{ scale: 0.95 }}
+                                                            className="px-6 py-3 bg-gradient-to-r from-neon-purple to-neon-cyan text-white rounded-xl font-semibold hover:shadow-lg hover:shadow-neon-cyan/20 transition-all flex items-center gap-2"
+                                                        >
+                                                            <Rocket className="w-4 h-4" />
+                                                            Post
+                                                        </motion.button>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </motion.div>
-                                    ))}
+                                    )}
+
+                                    {/* ✅ RESTORED: Posts Feed */}
+                                    {loading && (
+                                        <div className="text-center p-10 text-gray-300">
+                                            <Sparkles className="w-8 h-8 mx-auto animate-spin" />
+                                            <p className="mt-2">Loading latest posts...</p>
+                                        </div>
+                                    )}
+
+                                    {!loading && posts.map((post, index) => {
+                                        const isLiked = user && post.likedBy && post.likedBy.includes(user.userId);
+                                        const likesCount = post.likedBy ? post.likedBy.length : 0;
+                                        const isBookmarked = user && post.bookmarkedBy && post.bookmarkedBy.includes(user.userId);
+
+                                        return (
+                                            <motion.div
+                                                key={post.id}
+                                                initial={{ opacity: 0, y: 20 }}
+                                                animate={{ opacity: 1, y: 0 }}
+                                                transition={{ delay: index * 0.1 }}
+                                                className="bg-white/5 backdrop-blur-xl rounded-2xl border border-white/10 hover:border-white/20 transition-all overflow-hidden"
+                                            >
+                                                {/* Post Header - Dynamic Data */}
+                                                <div className="p-6 pb-4">
+                                                    <div className="flex items-start justify-between">
+                                                        <div className="flex gap-3">
+                                                            <div className="relative">
+                                                                <img
+                                                                    src={post.userAvatar}
+                                                                    alt={post.userName}
+                                                                    className="w-12 h-12 rounded-full border-2 border-neon-purple"
+                                                                />
+                                                            </div>
+                                                            <div className="flex-1">
+                                                                <div className="flex items-center gap-2 mb-1">
+                                                                    <h4 className="text-white font-bold">{post.userName}</h4>
+                                                                </div>
+                                                                <div className="flex items-center gap-2 text-gray-300 text-sm">
+                                                                    <span>@{post.userName.toLowerCase().replace(' ', '-')}</span>
+                                                                    <span>•</span>
+                                                                    <span>{formatTimestamp(post.timestamp)}</span>
+                                                                    {post.type !== 'text' && (
+                                                                        <>
+                                                                            <span>•</span>
+                                                                            <div className="flex items-center gap-1">
+                                                                                {getPostTypeIcon(post.type)}
+                                                                                <span className="capitalize">{post.type}</span>
+                                                                            </div>
+                                                                        </>
+                                                                    )}
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <button className="text-gray-300 hover:text-white p-2 rounded-xl hover:bg-white/5 transition-all">
+                                                            <MoreHorizontal size={20} />
+                                                        </button>
+                                                    </div>
+
+                                                    {/* Post Content - Dynamic */}
+                                                    <div className="mt-4">
+                                                        <p className="text-white text-base leading-relaxed mb-3">
+                                                            {post.content}
+                                                        </p>
+
+                                                        {/* Tags */}
+                                                        {post.tags && post.tags.length > 0 && (
+                                                            <div className="flex flex-wrap gap-2 mb-4">
+                                                                {post.tags.map((tag, idx) => (
+                                                                    <span key={idx} className="px-3 py-1 bg-neon-purple/20 text-neon-purple text-xs rounded-full font-semibold">
+                                                                        {tag}
+                                                                    </span>
+                                                                ))}
+                                                            </div>
+                                                        )}
+                                                        {/* Media */}
+                                                        {post.media && (
+                                                            <div className="rounded-2xl overflow-hidden mb-4">
+                                                                <img
+                                                                    src={post.media}
+                                                                    alt="Post media"
+                                                                    className="w-full h-64 object-cover hover:scale-105 transition-transform duration-300"
+                                                                />
+                                                            </div>
+                                                        )}
+                                                    </div>
+                                                </div>
+
+                                                {/* Post Stats (Static for now) */}
+                                                <div className="px-6 py-3 border-t border-white/10 bg-white/2">
+                                                    <div className="flex items-center gap-6 text-sm text-gray-300">
+                                                        <span className="flex items-center gap-1">
+                                                            <Eye size={14} />
+                                                            {post.views || 0} views
+                                                        </span>
+                                                        <span>{post.comments || 0} comments</span>
+                                                        <span>{post.shares || 0} shares</span>
+                                                    </div>
+                                                </div>
+
+                                                {/* Post Actions - Dynamic */}
+                                                <div className="px-6 py-4 border-t border-white/10">
+                                                    <div className="flex items-center justify-between">
+                                                        <motion.button
+                                                            whileHover={{ scale: 1.05 }}
+                                                            whileTap={{ scale: 0.95 }}
+                                                            onClick={() => handleLike(post.id)}
+                                                            className={`flex items-center gap-2 px-4 py-2 rounded-xl transition-all ${
+                                                                isLiked
+                                                                    ? 'text-pink-500 bg-pink-500/10'
+                                                                    : 'text-gray-300 hover:text-pink-500 hover:bg-pink-500/10'
+                                                            }`}
+                                                        >
+                                                            <Heart size={20} fill={isLiked ? 'currentColor' : 'none'} />
+                                                            <span className="font-semibold">{likesCount}</span>
+                                                        </motion.button>
+
+                                                        <motion.button
+                                                            whileHover={{ scale: 1.05 }}
+                                                            whileTap={{ scale: 0.95 }}
+                                                            className="flex items-center gap-2 px-4 py-2 rounded-xl text-gray-300 hover:text-neon-cyan hover:bg-neon-cyan/10 transition-all"
+                                                        >
+                                                            <MessageCircle size={20} />
+                                                            <span className="font-semibold">{post.comments || 0}</span>
+                                                        </motion.button>
+
+                                                        <motion.button
+                                                            whileHover={{ scale: 1.05 }}
+                                                            whileTap={{ scale: 0.95 }}
+                                                            className="flex items-center gap-2 px-4 py-2 rounded-xl text-gray-300 hover:text-neon-purple hover:bg-neon-purple/10 transition-all"
+                                                        >
+                                                            <Share2 size={20} />
+                                                            <span className="font-semibold">{post.shares || 0}</span>
+                                                        </motion.button>
+
+                                                        <motion.button
+                                                            whileHover={{ scale: 1.05 }}
+                                                            whileTap={{ scale: 0.95 }}
+                                                            onClick={() => handleBookmark(post.id)}
+                                                            className={`p-3 rounded-xl transition-all ${
+                                                                isBookmarked
+                                                                    ? 'text-neon-cyan bg-neon-cyan/10'
+                                                                    : 'text-gray-300 hover:text-neon-cyan hover:bg-neon-cyan/10'
+                                                            }`}
+                                                        >
+                                                            <Bookmark size={20} fill={isBookmarked ? 'currentColor' : 'none'} />
+                                                        </motion.button>
+                                                    </div>
+                                                </div>
+                                            </motion.div>
+                                        )
+                                    })}
                                 </motion.div>
                             )}
 
-                            {/* DISCOVER TAB */}
+                            {/* DISCOVER TAB - Dynamic */}
                             {activeTab === 'discover' && (
                                 <motion.div
                                     key="discover"
@@ -652,99 +764,115 @@ const Feed = () => {
                                         </div>
                                     </motion.div>
 
-                                    {/* User Cards Grid */}
-                                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                        {filteredUsers.map((user, index) => (
-                                            <motion.div
-                                                key={user.id}
-                                                initial={{ opacity: 0, y: 20 }}
-                                                animate={{ opacity: 1, y: 0 }}
-                                                transition={{ delay: index * 0.1 }}
-                                                whileHover={{ y: -5 }}
-                                                className="bg-white/5 backdrop-blur-xl rounded-2xl p-6 border border-white/10 hover:border-white/20 transition-all"
-                                            >
-                                                <div className="flex items-start gap-4 mb-4">
-                                                    <div className="relative">
-                                                        <img
-                                                            src={user.avatar}
-                                                            alt={user.name}
-                                                            className="w-16 h-16 rounded-full border-2 border-neon-cyan"
-                                                        />
-                                                        {user.online && (
-                                                            <div className="absolute bottom-0 right-0 w-3 h-3 bg-green-500 rounded-full border-2 border-dark-800"></div>
+                                    {/* User Cards Grid - Dynamic */}
+                                    {loadingDiscover ? (
+                                        <div className="text-center p-10 text-gray-300">
+                                            <Sparkles className="w-8 h-8 mx-auto animate-spin" />
+                                            <p className="mt-2">Finding developers...</p>
+                                        </div>
+                                    ) : (
+                                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                            {filteredUsers.map((discoverUser, index) => {
+                                                const isFollowing = followingList.includes(discoverUser.id);
+
+                                                return (
+                                                    <motion.div
+                                                        key={discoverUser.id}
+                                                        initial={{ opacity: 0, y: 20 }}
+                                                        animate={{ opacity: 1, y: 0 }}
+                                                        transition={{ delay: index * 0.1 }}
+                                                        whileHover={{ y: -5 }}
+                                                        className="bg-white/5 backdrop-blur-xl rounded-2xl p-6 border border-white/10 hover:border-white/20 transition-all"
+                                                    >
+                                                        <div className="flex items-start gap-4 mb-4">
+                                                            <div className="relative">
+                                                                <img
+                                                                    src={discoverUser.avatarUrl || `https://ui-avatars.com/api/?name=${discoverUser.name}&background=10B981&color=fff`}
+                                                                    alt={discoverUser.name}
+                                                                    className="w-16 h-16 rounded-full border-2 border-neon-cyan"
+                                                                />
+                                                            </div>
+                                                            <div className="flex-1 min-w-0">
+                                                                <div className="flex items-center gap-2 mb-1">
+                                                                    <h3 className="text-white font-bold text-lg truncate">{discoverUser.name}</h3>
+                                                                </div>
+                                                                <p className="text-gray-300 text-sm truncate">@{discoverUser.username || discoverUser.name.toLowerCase()}</p>
+                                                                <p className="text-neon-cyan text-xs mt-1">{discoverUser.title || discoverUser.bio}</p>
+                                                            </div>
+                                                        </div>
+
+                                                        <p className="text-gray-300 text-sm mb-4 leading-relaxed">{discoverUser.bio}</p>
+
+                                                        {/* Skills (from user doc) */}
+                                                        {discoverUser.skills && (
+                                                            <div className="flex flex-wrap gap-2 mb-4">
+                                                                {discoverUser.skills.map((skill, idx) => (
+                                                                    <span key={idx} className="px-2 py-1 bg-white/5 text-gray-300 text-xs rounded-full border border-white/10">
+                                                                        {skill}
+                                                                    </span>
+                                                                ))}
+                                                            </div>
                                                         )}
-                                                    </div>
-                                                    <div className="flex-1 min-w-0">
-                                                        <div className="flex items-center gap-2 mb-1">
-                                                            <h3 className="text-white font-bold text-lg truncate">{user.name}</h3>
-                                                            <span className="text-xs text-neon-purple bg-neon-purple/10 px-2 py-1 rounded-full">
-                                                                Lv {user.level}
-                                                            </span>
+
+                                                        {/* Stats (from user doc) */}
+                                                        <div className="grid grid-cols-3 gap-4 mb-4 text-center">
+                                                            <div>
+                                                                <div className="text-white font-bold text-sm">{discoverUser.followersCount || 0}</div>
+                                                                <div className="text-gray-300 text-xs">Followers</div>
+                                                            </div>
+                                                            <div>
+                                                                <div className="text-white font-bold text-sm">{discoverUser.coursesCompleted || 0}</div>
+                                                                <div className="text-gray-300 text-xs">Courses</div>
+                                                            </div>
+                                                            <div>
+                                                                <div className="text-white font-bold text-sm flex items-center justify-center gap-1">
+                                                                    <Flame size={12} className="text-orange-500" />
+                                                                    {discoverUser.streak || 0}
+                                                                </div>
+                                                                <div className="text-gray-300 text-xs">Streak</div>
+                                                            </div>
                                                         </div>
-                                                        <p className="text-gray-300 text-sm truncate">{user.username}</p>
-                                                        <p className="text-neon-cyan text-xs mt-1">{user.title}</p>
-                                                    </div>
-                                                </div>
 
-                                                <p className="text-gray-300 text-sm mb-4 leading-relaxed">{user.bio}</p>
-
-                                                {/* Skills */}
-                                                <div className="flex flex-wrap gap-2 mb-4">
-                                                    {user.skills.map((skill, idx) => (
-                                                        <span key={idx} className="px-2 py-1 bg-white/5 text-gray-300 text-xs rounded-full border border-white/10">
-                                                            {skill}
-                                                        </span>
-                                                    ))}
-                                                </div>
-
-                                                {/* Stats */}
-                                                <div className="grid grid-cols-3 gap-4 mb-4 text-center">
-                                                    <div>
-                                                        <div className="text-white font-bold text-sm">{user.followers}</div>
-                                                        <div className="text-gray-300 text-xs">Followers</div>
-                                                    </div>
-                                                    <div>
-                                                        <div className="text-white font-bold text-sm">{user.coursesCompleted}</div>
-                                                        <div className="text-gray-300 text-xs">Courses</div>
-                                                    </div>
-                                                    <div>
-                                                        <div className="text-white font-bold text-sm flex items-center justify-center gap-1">
-                                                            <Flame size={12} className="text-orange-500" />
-                                                            {user.streak}
-                                                        </div>
-                                                        <div className="text-gray-300 text-xs">Streak</div>
-                                                    </div>
-                                                </div>
-
-                                                <motion.button
-                                                    whileHover={{ scale: 1.02 }}
-                                                    whileTap={{ scale: 0.98 }}
-                                                    onClick={() => handleFollow(user.id)}
-                                                    className={`w-full py-3 rounded-xl font-semibold transition-all ${
-                                                        user.isFollowing
-                                                            ? 'bg-white/10 text-white hover:bg-white/20'
-                                                            : 'bg-gradient-to-r from-neon-purple to-neon-cyan text-white hover:shadow-lg hover:shadow-neon-cyan/20'
-                                                    }`}
-                                                >
-                                                    {user.isFollowing ? (
-                                                        <span className="flex items-center justify-center gap-2">
-                                                            <UserCheck size={16} />
-                                                            Following
-                                                        </span>
-                                                    ) : (
-                                                        <span className="flex items-center justify-center gap-2">
-                                                            <UserPlus size={16} />
-                                                            Follow
-                                                        </span>
-                                                    )}
-                                                </motion.button>
-                                            </motion.div>
-                                        ))}
-                                    </div>
+                                                        {/* Dynamic Follow Button */}
+                                                        <motion.button
+                                                            whileHover={{ scale: 1.02 }}
+                                                            whileTap={{ scale: 0.98 }}
+                                                            onClick={() => handleFollow(discoverUser.id, isFollowing)}
+                                                            className={`w-full py-3 rounded-xl font-semibold transition-all ${
+                                                                isFollowing
+                                                                    ? 'bg-white/10 text-white hover:bg-white/20'
+                                                                    : 'bg-gradient-to-r from-neon-purple to-neon-cyan text-white hover:shadow-lg hover:shadow-neon-cyan/20'
+                                                            }`}
+                                                        >
+                                                            {isFollowing ? (
+                                                                <span className="flex items-center justify-center gap-2">
+                                                                    <UserCheck size={16} />
+                                                                    Following
+                                                                </span>
+                                                            ) : (
+                                                                <span className="flex items-center justify-center gap-2">
+                                                                    <UserPlus size={16} />
+                                                                    Follow
+                                                                </span>
+                                                            )}
+                                                        </motion.button>
+                                                        <motion.button
+                                                            whileHover={{ scale: 1.02 }}
+                                                            whileTap={{ scale: 0.98 }}
+                                                            onClick={() => handleStartChat(discoverUser)}
+                                                            className="py-3 px-4 rounded-xl font-semibold transition-all bg-white/10 text-white hover:bg-white/20"
+                                                        >
+                                                            <MessageSquare size={16} />
+                                                        </motion.button>
+                                                    </motion.div>
+                                                )
+                                            })}
+                                        </div>
+                                    )}
                                 </motion.div>
                             )}
 
-                            {/* TRENDING TAB */}
+                            {/* TRENDING TAB (Hardcoded) */}
                             {activeTab === 'trending' && (
                                 <motion.div
                                     key="trending"
@@ -786,7 +914,8 @@ const Feed = () => {
 
                     {/* RIGHT SIDEBAR - Trending & Stats */}
                     <div className="col-span-3 space-y-6">
-                        {/* Trending Topics */}
+
+                        {/* ✅ RESTORED: Trending Topics (Hardcoded) */}
                         <motion.div
                             initial={{ opacity: 0, x: 20 }}
                             animate={{ opacity: 1, x: 0 }}
@@ -825,7 +954,7 @@ const Feed = () => {
                             </div>
                         </motion.div>
 
-                        {/* Weekly Progress */}
+                        {/* ✅ RESTORED: Weekly Progress (Hardcoded) */}
                         <motion.div
                             initial={{ opacity: 0, x: 20 }}
                             animate={{ opacity: 1, x: 0 }}
@@ -861,7 +990,7 @@ const Feed = () => {
                             </div>
                         </motion.div>
 
-                        {/* Quick Stats */}
+                        {/* ✅ RESTORED: Quick Stats (Hardcoded) */}
                         <motion.div
                             initial={{ opacity: 0, x: 20 }}
                             animate={{ opacity: 1, x: 0 }}
@@ -891,7 +1020,7 @@ const Feed = () => {
                             </div>
                         </motion.div>
 
-                        {/* Who to Follow */}
+                        {/* Who to Follow - Dynamic */}
                         <motion.div
                             initial={{ opacity: 0, x: 20 }}
                             animate={{ opacity: 1, x: 0 }}
@@ -900,31 +1029,42 @@ const Feed = () => {
                         >
                             <h3 className="text-white font-bold mb-4">Who to Follow</h3>
                             <div className="space-y-4">
-                                {users.slice(0, 3).map((user) => (
-                                    <div key={user.id} className="flex items-center justify-between">
-                                        <div className="flex items-center gap-3">
-                                            <img
-                                                src={user.avatar}
-                                                alt={user.name}
-                                                className="w-10 h-10 rounded-full"
-                                            />
-                                            <div>
-                                                <div className="text-white text-sm font-semibold">{user.name}</div>
-                                                <div className="text-gray-300 text-xs">{user.title}</div>
-                                            </div>
-                                        </div>
-                                        <button
-                                            onClick={() => handleFollow(user.id)}
-                                            className={`px-3 py-1 rounded-lg text-xs font-semibold ${
-                                                user.isFollowing
-                                                    ? 'bg-white/10 text-white'
-                                                    : 'bg-neon-cyan text-dark-900'
-                                            }`}
-                                        >
-                                            {user.isFollowing ? 'Following' : 'Follow'}
-                                        </button>
-                                    </div>
-                                ))}
+                                {loadingDiscover ? (
+                                    <div className="text-gray-300 text-sm">Loading...</div>
+                                ) : (
+                                    discoverUsers.length > 0 ? (
+                                        discoverUsers.slice(0, 3).map((discoverUser) => {
+                                            const isFollowing = followingList.includes(discoverUser.id);
+                                            return (
+                                                <div key={discoverUser.id} className="flex items-center justify-between">
+                                                    <div className="flex items-center gap-3">
+                                                        <img
+                                                            src={discoverUser.avatarUrl || `https://ui-avatars.com/api/?name=${discoverUser.name}&background=F59E0B&color=fff`}
+                                                            alt={discoverUser.name}
+                                                            className="w-10 h-10 rounded-full"
+                                                        />
+                                                        <div>
+                                                            <div className="text-white text-sm font-semibold">{discoverUser.name}</div>
+                                                            <div className="text-gray-300 text-xs">{discoverUser.title || discoverUser.bio}</div>
+                                                        </div>
+                                                    </div>
+                                                    <button
+                                                        onClick={() => handleFollow(discoverUser.id, isFollowing)}
+                                                        className={`px-3 py-1 rounded-lg text-xs font-semibold ${
+                                                            isFollowing
+                                                                ? 'bg-white/10 text-white'
+                                                                : 'bg-neon-cyan text-dark-900'
+                                                        }`}
+                                                    >
+                                                        {isFollowing ? 'Following' : 'Follow'}
+                                                    </button>
+                                                </div>
+                                            )
+                                        })
+                                    ) : (
+                                        <div className="text-gray-300 text-sm">No new users to follow.</div>
+                                    )
+                                )}
                             </div>
                         </motion.div>
                     </div>
