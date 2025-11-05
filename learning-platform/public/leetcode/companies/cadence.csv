@@ -1,0 +1,7 @@
+question,difficulty,topics,link,frequency,acceptance
+Sudoku Solver,HARD,"Array, Hash Table, Backtracking, Matrix",https://leetcode.com/problems/sudoku-solver,100.0,0.6390844622410038
+Island Perimeter,EASY,"Array, Depth-First Search, Breadth-First Search, Matrix",https://leetcode.com/problems/island-perimeter,100.0,0.7353943497919185
+Merge Intervals,MEDIUM,"Array, Sorting",https://leetcode.com/problems/merge-intervals,100.0,0.4939521330242054
+Two Sum,EASY,"Array, Hash Table",https://leetcode.com/problems/two-sum,100.0,0.5577704214653709
+Valid Palindrome,EASY,"Two Pointers, String",https://leetcode.com/problems/valid-palindrome,100.0,0.5096361518985055
+3Sum,MEDIUM,"Array, Two Pointers, Sorting",https://leetcode.com/problems/3sum,100.0,0.3707118624816828

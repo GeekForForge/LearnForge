@@ -1,0 +1,30 @@
+question,difficulty,topics,link,frequency,acceptance
+Count Subarrays With Fixed Bounds,HARD,"Array, Queue, Sliding Window, Monotonic Queue",https://leetcode.com/problems/count-subarrays-with-fixed-bounds,100.0,0.6940834976032579
+Maximum Number of Alloys,MEDIUM,"Array, Binary Search",https://leetcode.com/problems/maximum-number-of-alloys,98.5,0.3892313439805734
+Sell Diminishing-Valued Colored Balls,MEDIUM,"Array, Math, Binary Search, Greedy, Sorting, Heap (Priority Queue)",https://leetcode.com/problems/sell-diminishing-valued-colored-balls,91.2,0.2996067002222998
+Reshape the Matrix,EASY,"Array, Matrix, Simulation",https://leetcode.com/problems/reshape-the-matrix,91.2,0.6389851604503701
+Total Cost to Hire K Workers,MEDIUM,"Array, Two Pointers, Heap (Priority Queue), Simulation",https://leetcode.com/problems/total-cost-to-hire-k-workers,91.2,0.4310698766448885
+Earliest Second to Mark Indices I,MEDIUM,"Array, Binary Search",https://leetcode.com/problems/earliest-second-to-mark-indices-i,88.9,0.3465720539433736
+Binary Tree Cameras,HARD,"Dynamic Programming, Tree, Depth-First Search, Binary Tree",https://leetcode.com/problems/binary-tree-cameras,88.9,0.4718257360539049
+Keyboard Row,EASY,"Array, Hash Table, String",https://leetcode.com/problems/keyboard-row,88.9,0.7245746901047094
+Maximum Palindromes After Operations,MEDIUM,"Array, Hash Table, String, Greedy, Sorting, Counting",https://leetcode.com/problems/maximum-palindromes-after-operations,88.9,0.4308371154815936
+Shopping Offers,MEDIUM,"Array, Dynamic Programming, Backtracking, Bit Manipulation, Memoization, Bitmask",https://leetcode.com/problems/shopping-offers,88.9,0.5190263317700597
+Earliest Second to Mark Indices II,HARD,"Array, Binary Search, Greedy, Heap (Priority Queue)",https://leetcode.com/problems/earliest-second-to-mark-indices-ii,88.9,0.2030544488711819
+Last Substring in Lexicographical Order,HARD,"Two Pointers, String",https://leetcode.com/problems/last-substring-in-lexicographical-order,88.9,0.3460069368222329
+Count Anagrams,HARD,"Hash Table, Math, String, Combinatorics, Counting",https://leetcode.com/problems/count-anagrams,88.9,0.3523180569098484
+Remove Colored Pieces if Both Neighbors are the Same Color,MEDIUM,"Math, String, Greedy, Game Theory",https://leetcode.com/problems/remove-colored-pieces-if-both-neighbors-are-the-same-color,88.9,0.6283932786999268
+Minimum Cost Tree From Leaf Values,MEDIUM,"Array, Dynamic Programming, Stack, Greedy, Monotonic Stack",https://leetcode.com/problems/minimum-cost-tree-from-leaf-values,88.9,0.6766395592073932
+Pass the Pillow,EASY,"Math, Simulation",https://leetcode.com/problems/pass-the-pillow,80.5,0.5655326422584914
+String Transformation,HARD,"Math, String, Dynamic Programming, String Matching",https://leetcode.com/problems/string-transformation,80.5,0.2510979075174374
+Minimum Edge Reversals So Every Node Is Reachable,HARD,"Dynamic Programming, Depth-First Search, Breadth-First Search, Graph",https://leetcode.com/problems/minimum-edge-reversals-so-every-node-is-reachable,72.6,0.5529070058590816
+Longest String Chain,MEDIUM,"Array, Hash Table, Two Pointers, String, Dynamic Programming, Sorting",https://leetcode.com/problems/longest-string-chain,60.7,0.6201512673699018
+Sum of Distances in Tree,HARD,"Dynamic Programming, Tree, Depth-First Search, Graph",https://leetcode.com/problems/sum-of-distances-in-tree,60.7,0.653395424019089
+Number of Divisible Triplet Sums,MEDIUM,"Array, Hash Table",https://leetcode.com/problems/number-of-divisible-triplet-sums,60.7,0.6780637725701113
+Split Array Largest Sum,HARD,"Array, Binary Search, Dynamic Programming, Greedy, Prefix Sum",https://leetcode.com/problems/split-array-largest-sum,60.7,0.5809960631242778
+Break a Palindrome,MEDIUM,"String, Greedy",https://leetcode.com/problems/break-a-palindrome,51.2,0.515441720680916
+Reverse Nodes in k-Group,HARD,"Linked List, Recursion",https://leetcode.com/problems/reverse-nodes-in-k-group,51.2,0.6304370910860896
+Maximum Difference Between Increasing Elements,EASY,Array,https://leetcode.com/problems/maximum-difference-between-increasing-elements,51.2,0.6610089592872825
+Convert Binary Number in a Linked List to Integer,EASY,"Linked List, Math",https://leetcode.com/problems/convert-binary-number-in-a-linked-list-to-integer,51.2,0.8121536256620584
+Longest Repeating Character Replacement,MEDIUM,"Hash Table, String, Sliding Window",https://leetcode.com/problems/longest-repeating-character-replacement,51.2,0.5721163745594167
+Distinct Subsequences,HARD,"String, Dynamic Programming",https://leetcode.com/problems/distinct-subsequences,51.2,0.5009993949952919
+Beautiful Arrangement,MEDIUM,"Array, Dynamic Programming, Backtracking, Bit Manipulation, Bitmask",https://leetcode.com/problems/beautiful-arrangement,51.2,0.6452784543104094

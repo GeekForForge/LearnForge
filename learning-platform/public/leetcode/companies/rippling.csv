@@ -1,0 +1,17 @@
+question,difficulty,topics,link,frequency,acceptance
+Design Excel Sum Formula,HARD,"Array, Hash Table, String, Graph, Design, Topological Sort, Matrix",https://leetcode.com/problems/design-excel-sum-formula,100.0,0.4256816329246585
+Median of Two Sorted Arrays,HARD,"Array, Binary Search, Divide and Conquer",https://leetcode.com/problems/median-of-two-sorted-arrays,88.8,0.4381461925594216
+Design Spreadsheet,MEDIUM,"Array, Hash Table, String, Design, Matrix",https://leetcode.com/problems/design-spreadsheet,88.8,0.6762689977153075
+Evaluate Division,MEDIUM,"Array, String, Depth-First Search, Breadth-First Search, Union Find, Graph, Shortest Path",https://leetcode.com/problems/evaluate-division,84.2,0.6314708808408903
+Synonymous Sentences,MEDIUM,"Array, Hash Table, String, Backtracking, Union Find",https://leetcode.com/problems/synonymous-sentences,63.5,0.5657701813916468
+Employee Importance,MEDIUM,"Array, Hash Table, Tree, Depth-First Search, Breadth-First Search",https://leetcode.com/problems/employee-importance,63.5,0.6842114454359709
+Maximum Subarray,MEDIUM,"Array, Divide and Conquer, Dynamic Programming",https://leetcode.com/problems/maximum-subarray,63.5,0.5209980357192625
+Optimal Account Balancing,HARD,"Array, Dynamic Programming, Backtracking, Bit Manipulation, Bitmask",https://leetcode.com/problems/optimal-account-balancing,63.5,0.4993810266893702
+Last Stone Weight,EASY,"Array, Heap (Priority Queue)",https://leetcode.com/problems/last-stone-weight,55.1,0.6592872235573963
+Number of Visible People in a Queue,HARD,"Array, Stack, Monotonic Stack",https://leetcode.com/problems/number-of-visible-people-in-a-queue,55.1,0.7129705142972448
+Accounts Merge,MEDIUM,"Array, Hash Table, String, Depth-First Search, Breadth-First Search, Union Find, Sorting",https://leetcode.com/problems/accounts-merge,55.1,0.595800382092666
+Insert Delete GetRandom O(1),MEDIUM,"Array, Hash Table, Math, Design, Randomized",https://leetcode.com/problems/insert-delete-getrandom-o1,55.1,0.5499186948290465
+LFU Cache,HARD,"Hash Table, Linked List, Design, Doubly-Linked List",https://leetcode.com/problems/lfu-cache,55.1,0.4660898637811462
+Merge Two Sorted Lists,EASY,"Linked List, Recursion",https://leetcode.com/problems/merge-two-sorted-lists,55.1,0.6684090442432823
+Maximize Amount After Two Days of Conversions,MEDIUM,"Array, String, Depth-First Search, Breadth-First Search, Graph",https://leetcode.com/problems/maximize-amount-after-two-days-of-conversions,55.1,0.5897915340547422
+Alien Dictionary,HARD,"Array, String, Depth-First Search, Breadth-First Search, Graph, Topological Sort",https://leetcode.com/problems/alien-dictionary,55.1,0.3667372421638184

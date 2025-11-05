@@ -1,0 +1,13 @@
+question,difficulty,topics,link,frequency,acceptance
+Additive Number,MEDIUM,"String, Backtracking",https://leetcode.com/problems/additive-number,100.0,0.3254622700270529
+Letter Combinations of a Phone Number,MEDIUM,"Hash Table, String, Backtracking",https://leetcode.com/problems/letter-combinations-of-a-phone-number,98.1,0.6385757633103413
+Self Dividing Numbers,EASY,Math,https://leetcode.com/problems/self-dividing-numbers,89.3,0.7962262980034188
+Spiral Matrix,MEDIUM,"Array, Matrix, Simulation",https://leetcode.com/problems/spiral-matrix,85.9,0.5393983473936499
+Stepping Numbers,MEDIUM,"Math, Backtracking, Breadth-First Search",https://leetcode.com/problems/stepping-numbers,84.0,0.4766837034691754
+Valid Parentheses,EASY,"String, Stack",https://leetcode.com/problems/valid-parentheses,81.8,0.4232287912473047
+Word Search,MEDIUM,"Array, String, Backtracking, Depth-First Search, Matrix",https://leetcode.com/problems/word-search,65.3,0.4526704051416151
+Angle Between Hands of a Clock,MEDIUM,Math,https://leetcode.com/problems/angle-between-hands-of-a-clock,65.3,0.6421501908804211
+Two Sum,EASY,"Array, Hash Table",https://leetcode.com/problems/two-sum,59.5,0.5577701741164135
+Longest Substring Without Repeating Characters,MEDIUM,"Hash Table, String, Sliding Window",https://leetcode.com/problems/longest-substring-without-repeating-characters,51.3,0.3693615818367021
+Bulls and Cows,MEDIUM,"Hash Table, String, Counting",https://leetcode.com/problems/bulls-and-cows,51.3,0.5138576872462376
+Palindromic Substrings,MEDIUM,"Two Pointers, String, Dynamic Programming",https://leetcode.com/problems/palindromic-substrings,51.3,0.716780342298775

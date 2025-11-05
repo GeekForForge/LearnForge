@@ -1,0 +1,8 @@
+question,difficulty,topics,link,frequency,acceptance
+Maximize Distance to Closest Person,MEDIUM,Array,https://leetcode.com/problems/maximize-distance-to-closest-person,100.0,0.4898931447175697
+Move Zeroes,EASY,"Array, Two Pointers",https://leetcode.com/problems/move-zeroes,95.6,0.6280482534248885
+Valid Parentheses,EASY,"String, Stack",https://leetcode.com/problems/valid-parentheses,90.2,0.4232839601634058
+Merge Sorted Array,EASY,"Array, Two Pointers, Sorting",https://leetcode.com/problems/merge-sorted-array,83.2,0.5292466143644876
+Summary Ranges,EASY,Array,https://leetcode.com/problems/summary-ranges,83.2,0.5302431124795074
+Valid Palindrome,EASY,"Two Pointers, String",https://leetcode.com/problems/valid-palindrome,73.3,0.5096809657578885
+Longest Subarray of 1's After Deleting One Element,MEDIUM,"Array, Dynamic Programming, Sliding Window",https://leetcode.com/problems/longest-subarray-of-1s-after-deleting-one-element,73.3,0.6923692019165307

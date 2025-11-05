@@ -1,0 +1,32 @@
+question,difficulty,topics,link,frequency,acceptance
+Longest Univalue Path,MEDIUM,"Tree, Depth-First Search, Binary Tree",https://leetcode.com/problems/longest-univalue-path,100.0,0.4263113741464799
+Merge Intervals,MEDIUM,"Array, Sorting",https://leetcode.com/problems/merge-intervals,100.0,0.4939837348223001
+Path Sum III,MEDIUM,"Tree, Depth-First Search, Binary Tree",https://leetcode.com/problems/path-sum-iii,100.0,0.4609079598795253
+Car Pooling,MEDIUM,"Array, Sorting, Heap (Priority Queue), Simulation, Prefix Sum",https://leetcode.com/problems/car-pooling,93.4,0.5605023399382655
+Largest Rectangle in Histogram,HARD,"Array, Stack, Monotonic Stack",https://leetcode.com/problems/largest-rectangle-in-histogram,84.8,0.47385351537378
+Minimum Cost For Tickets,MEDIUM,"Array, Dynamic Programming",https://leetcode.com/problems/minimum-cost-for-tickets,84.8,0.6741426890709348
+Find Peak Element,MEDIUM,"Array, Binary Search",https://leetcode.com/problems/find-peak-element,84.8,0.4650963229115464
+Koko Eating Bananas,MEDIUM,"Array, Binary Search",https://leetcode.com/problems/koko-eating-bananas,84.8,0.4906779477542466
+Sliding Window Maximum,HARD,"Array, Queue, Sliding Window, Heap (Priority Queue), Monotonic Queue",https://leetcode.com/problems/sliding-window-maximum,84.8,0.4760512566643992
+Longest Consecutive Sequence,MEDIUM,"Array, Hash Table, Union Find",https://leetcode.com/problems/longest-consecutive-sequence,84.8,0.4703932281954044
+Unique Paths II,MEDIUM,"Array, Dynamic Programming, Matrix",https://leetcode.com/problems/unique-paths-ii,72.8,0.4315692481145451
+Rotting Oranges,MEDIUM,"Array, Breadth-First Search, Matrix",https://leetcode.com/problems/rotting-oranges,72.8,0.5662375312811522
+Divide Two Integers,MEDIUM,"Math, Bit Manipulation",https://leetcode.com/problems/divide-two-integers,72.8,0.1839859270303101
+Maximum Width Ramp,MEDIUM,"Array, Two Pointers, Stack, Monotonic Stack",https://leetcode.com/problems/maximum-width-ramp,72.8,0.5572131980281463
+Number of Islands,MEDIUM,"Array, Depth-First Search, Breadth-First Search, Union Find, Matrix",https://leetcode.com/problems/number-of-islands,72.8,0.6232462312834289
+Next Permutation,MEDIUM,"Array, Two Pointers",https://leetcode.com/problems/next-permutation,72.8,0.430620496334422
+Longest Repeating Character Replacement,MEDIUM,"Hash Table, String, Sliding Window",https://leetcode.com/problems/longest-repeating-character-replacement,72.8,0.5721748068556534
+Longest Palindromic Substring,MEDIUM,"Two Pointers, String, Dynamic Programming",https://leetcode.com/problems/longest-palindromic-substring,72.8,0.3585050420213667
+Search in Rotated Sorted Array,MEDIUM,"Array, Binary Search",https://leetcode.com/problems/search-in-rotated-sorted-array,72.8,0.4284267766513949
+Gas Station,MEDIUM,"Array, Greedy",https://leetcode.com/problems/gas-station,72.8,0.4638732300553279
+Word Search,MEDIUM,"Array, String, Backtracking, Depth-First Search, Matrix",https://leetcode.com/problems/word-search,72.8,0.4527183432594811
+Rabbits in Forest,MEDIUM,"Array, Hash Table, Math, Greedy",https://leetcode.com/problems/rabbits-in-forest,72.8,0.5826704796321077
+Count Sub Islands,MEDIUM,"Array, Depth-First Search, Breadth-First Search, Union Find, Matrix",https://leetcode.com/problems/count-sub-islands,72.8,0.728260371788594
+Make Array Empty,HARD,"Array, Binary Search, Greedy, Binary Indexed Tree, Segment Tree, Sorting, Ordered Set",https://leetcode.com/problems/make-array-empty,72.8,0.2546377388535031
+Find the Distance Value Between Two Arrays,EASY,"Array, Two Pointers, Binary Search, Sorting",https://leetcode.com/problems/find-the-distance-value-between-two-arrays,72.8,0.7024488911363143
+LRU Cache,MEDIUM,"Hash Table, Linked List, Design, Doubly-Linked List",https://leetcode.com/problems/lru-cache,72.8,0.4522002784151563
+Open the Lock,MEDIUM,"Array, Hash Table, String, Breadth-First Search",https://leetcode.com/problems/open-the-lock,72.8,0.6074135869227004
+Maximum Sum BST in Binary Tree,HARD,"Dynamic Programming, Tree, Depth-First Search, Binary Search Tree, Binary Tree",https://leetcode.com/problems/maximum-sum-bst-in-binary-tree,72.8,0.4432028890811803
+Jump Game II,MEDIUM,"Array, Dynamic Programming, Greedy",https://leetcode.com/problems/jump-game-ii,72.8,0.4150480041745862
+Trapping Rain Water,HARD,"Array, Two Pointers, Dynamic Programming, Stack, Monotonic Stack",https://leetcode.com/problems/trapping-rain-water,72.8,0.6510861177691735
+Maximum Good Subarray Sum,MEDIUM,"Array, Hash Table, Prefix Sum",https://leetcode.com/problems/maximum-good-subarray-sum,72.8,0.2028278221208665

@@ -1,0 +1,6 @@
+question,difficulty,topics,link,frequency,acceptance
+Complement of Base 10 Integer,EASY,Bit Manipulation,https://leetcode.com/problems/complement-of-base-10-integer,100.0,0.6070765922229309
+Number Complement,EASY,Bit Manipulation,https://leetcode.com/problems/number-complement,100.0,0.7033055757403649
+Best Time to Buy and Sell Stock,EASY,"Array, Dynamic Programming",https://leetcode.com/problems/best-time-to-buy-and-sell-stock,73.9,0.5525969539323237
+Cheapest Flights Within K Stops,MEDIUM,"Dynamic Programming, Depth-First Search, Breadth-First Search, Graph, Heap (Priority Queue), Shortest Path",https://leetcode.com/problems/cheapest-flights-within-k-stops,65.2,0.403990125524016
+Lexicographically Smallest Equivalent String,MEDIUM,"String, Union Find",https://leetcode.com/problems/lexicographically-smallest-equivalent-string,65.2,0.8102597266735775

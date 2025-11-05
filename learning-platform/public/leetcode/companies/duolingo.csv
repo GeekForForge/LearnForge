@@ -1,0 +1,5 @@
+question,difficulty,topics,link,frequency,acceptance
+Encrypt and Decrypt Strings,HARD,"Array, Hash Table, String, Design, Trie",https://leetcode.com/problems/encrypt-and-decrypt-strings,100.0,0.3689486493650449
+Minimum Number of People to Teach,MEDIUM,"Array, Hash Table, Greedy",https://leetcode.com/problems/minimum-number-of-people-to-teach,82.6,0.4370178957112002
+K Radius Subarray Averages,MEDIUM,"Array, Sliding Window",https://leetcode.com/problems/k-radius-subarray-averages,80.9,0.4595762325330679
+Task Scheduler II,MEDIUM,"Array, Hash Table, Simulation",https://leetcode.com/problems/task-scheduler-ii,52.1,0.5397196782316108

@@ -1,0 +1,6 @@
+question,difficulty,topics,link,frequency,acceptance
+Meeting Rooms II,MEDIUM,"Array, Two Pointers, Greedy, Sorting, Heap (Priority Queue), Prefix Sum",https://leetcode.com/problems/meeting-rooms-ii,100.0,0.5214233389386647
+LRU Cache,MEDIUM,"Hash Table, Linked List, Design, Doubly-Linked List",https://leetcode.com/problems/lru-cache,94.8,0.452200607923341
+Meeting Rooms,EASY,"Array, Sorting",https://leetcode.com/problems/meeting-rooms,88.1,0.5894747413879683
+Longest Palindromic Substring,MEDIUM,"Two Pointers, String, Dynamic Programming",https://leetcode.com/problems/longest-palindromic-substring,78.6,0.3585065915691926
+Number of Sub-arrays of Size K and Average Greater than or Equal to Threshold,MEDIUM,"Array, Sliding Window",https://leetcode.com/problems/number-of-sub-arrays-of-size-k-and-average-greater-than-or-equal-to-threshold,78.6,0.7023805449487369

@@ -1,0 +1,24 @@
+question,difficulty,topics,link,frequency,acceptance
+Find Candidates for Data Scientist Position,EASY,Database,https://leetcode.com/problems/find-candidates-for-data-scientist-position,100.0,0.7610571736785329
+Maximize Items,HARD,Database,https://leetcode.com/problems/maximize-items,100.0,0.7523250122369065
+Maximum Points Inside the Square,MEDIUM,"Array, Hash Table, String, Binary Search, Sorting",https://leetcode.com/problems/maximum-points-inside-the-square,100.0,0.3818238944309166
+Count the Number of Powerful Integers,HARD,"Math, String, Dynamic Programming",https://leetcode.com/problems/count-the-number-of-powerful-integers,83.0,0.4651365700919542
+Minimize Length of Array Using Operations,MEDIUM,"Array, Math, Greedy, Number Theory",https://leetcode.com/problems/minimize-length-of-array-using-operations,83.0,0.3486486486486486
+Best Time to Buy and Sell Stock,EASY,"Array, Dynamic Programming",https://leetcode.com/problems/best-time-to-buy-and-sell-stock,70.5,0.5525965736768343
+Trapping Rain Water,HARD,"Array, Two Pointers, Dynamic Programming, Stack, Monotonic Stack",https://leetcode.com/problems/trapping-rain-water,70.5,0.6510207934299767
+Maximum Subarray,MEDIUM,"Array, Divide and Conquer, Dynamic Programming",https://leetcode.com/problems/maximum-subarray,70.5,0.5209982621027541
+3Sum,MEDIUM,"Array, Two Pointers, Sorting",https://leetcode.com/problems/3sum,60.6,0.3707105624040494
+Minimum Time to Repair Cars,MEDIUM,"Array, Binary Search",https://leetcode.com/problems/minimum-time-to-repair-cars,60.6,0.5991672990715053
+Container With Most Water,MEDIUM,"Array, Two Pointers, Greedy",https://leetcode.com/problems/container-with-most-water,60.6,0.5778291958481471
+Group Anagrams,MEDIUM,"Array, Hash Table, String, Sorting",https://leetcode.com/problems/group-anagrams,60.6,0.709289019979725
+Isomorphic Strings,EASY,"Hash Table, String",https://leetcode.com/problems/isomorphic-strings,60.6,0.4685800275723814
+Edit Distance,MEDIUM,"String, Dynamic Programming",https://leetcode.com/problems/edit-distance,60.6,0.5878982137282472
+Maximum Product Subarray,MEDIUM,"Array, Dynamic Programming",https://leetcode.com/problems/maximum-product-subarray,60.6,0.3494172590598055
+Chalkboard XOR Game,HARD,"Array, Math, Bit Manipulation, Brainteaser, Game Theory",https://leetcode.com/problems/chalkboard-xor-game,60.6,0.6295199566250991
+Number of Islands,MEDIUM,"Array, Depth-First Search, Breadth-First Search, Union Find, Matrix",https://leetcode.com/problems/number-of-islands,60.6,0.6232011028511795
+Beautiful Arrangement,MEDIUM,"Array, Dynamic Programming, Backtracking, Bit Manipulation, Bitmask",https://leetcode.com/problems/beautiful-arrangement,60.6,0.6452775069853577
+Jump Game,MEDIUM,"Array, Dynamic Programming, Greedy",https://leetcode.com/problems/jump-game,60.6,0.3947916759941618
+Jump Game II,MEDIUM,"Array, Dynamic Programming, Greedy",https://leetcode.com/problems/jump-game-ii,60.6,0.4150342458178816
+Next Permutation,MEDIUM,"Array, Two Pointers",https://leetcode.com/problems/next-permutation,60.6,0.430577526234452
+Minimum Cost to Make Array Equal,HARD,"Array, Binary Search, Greedy, Sorting, Prefix Sum",https://leetcode.com/problems/minimum-cost-to-make-array-equal,60.6,0.4632379781368273
+Koko Eating Bananas,MEDIUM,"Array, Binary Search",https://leetcode.com/problems/koko-eating-bananas,60.6,0.4906725459783618

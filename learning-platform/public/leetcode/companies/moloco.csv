@@ -1,0 +1,8 @@
+question,difficulty,topics,link,frequency,acceptance
+Longest String Chain,MEDIUM,"Array, Hash Table, Two Pointers, String, Dynamic Programming, Sorting",https://leetcode.com/problems/longest-string-chain,100.0,0.6201747823811324
+Design a Stack With Increment Operation,MEDIUM,"Array, Stack, Design",https://leetcode.com/problems/design-a-stack-with-increment-operation,92.6,0.8013068356286052
+Trapping Rain Water,HARD,"Array, Two Pointers, Dynamic Programming, Stack, Monotonic Stack",https://leetcode.com/problems/trapping-rain-water,92.6,0.6510865148781917
+Meeting Rooms II,MEDIUM,"Array, Two Pointers, Greedy, Sorting, Heap (Priority Queue), Prefix Sum",https://leetcode.com/problems/meeting-rooms-ii,82.2,0.5214228658199016
+Single Element in a Sorted Array,MEDIUM,"Array, Binary Search",https://leetcode.com/problems/single-element-in-a-sorted-array,82.2,0.5920752928191202
+Longest Continuous Subarray With Absolute Diff Less Than or Equal to Limit,MEDIUM,"Array, Queue, Sliding Window, Heap (Priority Queue), Ordered Set, Monotonic Queue",https://leetcode.com/problems/longest-continuous-subarray-with-absolute-diff-less-than-or-equal-to-limit,82.2,0.5674974850508926
+Number of Islands,MEDIUM,"Array, Depth-First Search, Breadth-First Search, Union Find, Matrix",https://leetcode.com/problems/number-of-islands,82.2,0.623246254585838

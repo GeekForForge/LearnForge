@@ -1,0 +1,16 @@
+question,difficulty,topics,link,frequency,acceptance
+Snapshot Array,MEDIUM,"Array, Hash Table, Binary Search, Design",https://leetcode.com/problems/snapshot-array,100.0,0.366655740635895
+Maximum Profit in Job Scheduling,HARD,"Array, Binary Search, Dynamic Programming, Sorting",https://leetcode.com/problems/maximum-profit-in-job-scheduling,88.5,0.5441727193976145
+Interval List Intersections,MEDIUM,"Array, Two Pointers, Line Sweep",https://leetcode.com/problems/interval-list-intersections,84.4,0.7267728615564074
+Guess the Word,HARD,"Array, Math, String, Interactive, Game Theory",https://leetcode.com/problems/guess-the-word,84.4,0.3765162794319245
+Non-overlapping Intervals,MEDIUM,"Array, Dynamic Programming, Greedy, Sorting",https://leetcode.com/problems/non-overlapping-intervals,84.4,0.5550325870996576
+Basic Calculator II,MEDIUM,"Math, String, Stack",https://leetcode.com/problems/basic-calculator-ii,84.4,0.4581175582517616
+Merge k Sorted Lists,HARD,"Linked List, Divide and Conquer, Heap (Priority Queue), Merge Sort",https://leetcode.com/problems/merge-k-sorted-lists,72.9,0.5677425213018046
+Remove Sub-Folders from the Filesystem,MEDIUM,"Array, String, Depth-First Search, Trie",https://leetcode.com/problems/remove-sub-folders-from-the-filesystem,72.9,0.7574624821995838
+Transpose Matrix,EASY,"Array, Matrix, Simulation",https://leetcode.com/problems/transpose-matrix,72.9,0.7432867206392598
+Image Smoother,EASY,"Array, Matrix",https://leetcode.com/problems/image-smoother,63.8,0.6837229689163258
+Basic Calculator III,HARD,"Math, String, Stack, Recursion",https://leetcode.com/problems/basic-calculator-iii,63.8,0.5246933031589953
+LRU Cache,MEDIUM,"Hash Table, Linked List, Design, Doubly-Linked List",https://leetcode.com/problems/lru-cache,63.8,0.4521483770727891
+Diameter of Binary Tree,EASY,"Tree, Depth-First Search, Binary Tree",https://leetcode.com/problems/diameter-of-binary-tree,63.8,0.6358628987039221
+Number of 1 Bits,EASY,"Divide and Conquer, Bit Manipulation",https://leetcode.com/problems/number-of-1-bits,63.8,0.7450480575885099
+Time Based Key-Value Store,MEDIUM,"Hash Table, String, Binary Search, Design",https://leetcode.com/problems/time-based-key-value-store,63.8,0.4936639150396512

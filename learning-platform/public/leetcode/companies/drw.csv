@@ -1,0 +1,10 @@
+question,difficulty,topics,link,frequency,acceptance
+Subsequence of Size K With the Largest Even Sum,MEDIUM,"Array, Greedy, Sorting",https://leetcode.com/problems/subsequence-of-size-k-with-the-largest-even-sum,100.0,0.3559148936170213
+Counting Elements,EASY,"Array, Hash Table",https://leetcode.com/problems/counting-elements,100.0,0.6046223903768713
+Maximize Score After Pair Deletions,MEDIUM,"Array, Greedy",https://leetcode.com/problems/maximize-score-after-pair-deletions,100.0,0.6062992125984252
+Best Time to Buy and Sell Stock,EASY,"Array, Dynamic Programming",https://leetcode.com/problems/best-time-to-buy-and-sell-stock,79.6,0.5525966929197105
+Remove Duplicate Letters,MEDIUM,"String, Stack, Greedy, Monotonic Stack",https://leetcode.com/problems/remove-duplicate-letters,73.2,0.5135128285840808
+Minimum Fuel Cost to Report to the Capital,MEDIUM,"Tree, Depth-First Search, Breadth-First Search, Graph",https://leetcode.com/problems/minimum-fuel-cost-to-report-to-the-capital,64.2,0.6435778675036323
+Reorder Routes to Make All Paths Lead to the City Zero,MEDIUM,"Depth-First Search, Breadth-First Search, Graph",https://leetcode.com/problems/reorder-routes-to-make-all-paths-lead-to-the-city-zero,64.2,0.6503433212255785
+Maximal Network Rank,MEDIUM,Graph,https://leetcode.com/problems/maximal-network-rank,64.2,0.6547542413356314
+Robot Room Cleaner,HARD,"Backtracking, Interactive",https://leetcode.com/problems/robot-room-cleaner,64.2,0.7752235506882347

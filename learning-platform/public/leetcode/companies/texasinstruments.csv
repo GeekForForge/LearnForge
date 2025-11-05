@@ -1,0 +1,5 @@
+question,difficulty,topics,link,frequency,acceptance
+Group Anagrams,MEDIUM,"Array, Hash Table, String, Sorting",https://leetcode.com/problems/group-anagrams,100.0,0.7092900327250541
+Generate Parentheses,MEDIUM,"String, Dynamic Programming, Backtracking",https://leetcode.com/problems/generate-parentheses,100.0,0.7713298544494309
+Partition Array Into Two Arrays to Minimize Sum Difference,HARD,"Array, Two Pointers, Binary Search, Dynamic Programming, Bit Manipulation, Ordered Set, Bitmask",https://leetcode.com/problems/partition-array-into-two-arrays-to-minimize-sum-difference,88.4,0.2175272660052991
+Merge Two Sorted Lists,EASY,"Linked List, Recursion",https://leetcode.com/problems/merge-two-sorted-lists,88.4,0.6684113392189636

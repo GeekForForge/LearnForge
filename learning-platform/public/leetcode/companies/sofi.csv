@@ -1,0 +1,19 @@
+question,difficulty,topics,link,frequency,acceptance
+Minimum Number of Steps to Make Two Strings Anagram,MEDIUM,"Hash Table, String, Counting",https://leetcode.com/problems/minimum-number-of-steps-to-make-two-strings-anagram,100.0,0.8215204393310427
+Minimum Window Substring,HARD,"Hash Table, String, Sliding Window",https://leetcode.com/problems/minimum-window-substring,92.9,0.4535067170244298
+Asteroid Collision,MEDIUM,"Array, Stack, Simulation",https://leetcode.com/problems/asteroid-collision,88.5,0.4550061229796745
+Longest Mountain in Array,MEDIUM,"Array, Two Pointers, Dynamic Programming, Enumeration",https://leetcode.com/problems/longest-mountain-in-array,88.5,0.4107846968136123
+Number of Islands,MEDIUM,"Array, Depth-First Search, Breadth-First Search, Union Find, Matrix",https://leetcode.com/problems/number-of-islands,83.0,0.6232014425500368
+Insert Delete GetRandom O(1),MEDIUM,"Array, Hash Table, Math, Design, Randomized",https://leetcode.com/problems/insert-delete-getrandom-o1,83.0,0.549919064652625
+Roman to Integer,EASY,"Hash Table, Math, String",https://leetcode.com/problems/roman-to-integer,75.9,0.6486636808679633
+Maximum Number of Non-overlapping Palindrome Substrings,HARD,"Two Pointers, String, Dynamic Programming, Greedy",https://leetcode.com/problems/maximum-number-of-non-overlapping-palindrome-substrings,75.9,0.4156976135101724
+Merge k Sorted Lists,HARD,"Linked List, Divide and Conquer, Heap (Priority Queue), Merge Sort",https://leetcode.com/problems/merge-k-sorted-lists,75.9,0.5677426186956992
+Two Sum,EASY,"Array, Hash Table",https://leetcode.com/problems/two-sum,75.9,0.5577702725256378
+Degree of an Array,EASY,"Array, Hash Table",https://leetcode.com/problems/degree-of-an-array,75.9,0.5742054384866819
+Meeting Rooms II,MEDIUM,"Array, Two Pointers, Greedy, Sorting, Heap (Priority Queue), Prefix Sum",https://leetcode.com/problems/meeting-rooms-ii,66.0,0.5214172217778257
+LRU Cache,MEDIUM,"Hash Table, Linked List, Design, Doubly-Linked List",https://leetcode.com/problems/lru-cache,66.0,0.4521484931675215
+Flatten a Multilevel Doubly Linked List,MEDIUM,"Linked List, Depth-First Search, Doubly-Linked List",https://leetcode.com/problems/flatten-a-multilevel-doubly-linked-list,66.0,0.6131209568946355
+Palindromic Substrings,MEDIUM,"Two Pointers, String, Dynamic Programming",https://leetcode.com/problems/palindromic-substrings,66.0,0.716780342298775
+Subarray Product Less Than K,MEDIUM,"Array, Binary Search, Sliding Window, Prefix Sum",https://leetcode.com/problems/subarray-product-less-than-k,66.0,0.5285353676533414
+Find the Winner of the Circular Game,MEDIUM,"Array, Math, Recursion, Queue, Simulation",https://leetcode.com/problems/find-the-winner-of-the-circular-game,66.0,0.8206653804804053
+Top K Frequent Elements,MEDIUM,"Array, Hash Table, Divide and Conquer, Sorting, Heap (Priority Queue), Bucket Sort, Counting, Quickselect",https://leetcode.com/problems/top-k-frequent-elements,66.0,0.6456597639542642

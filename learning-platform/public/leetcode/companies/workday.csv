@@ -1,0 +1,9 @@
+question,difficulty,topics,link,frequency,acceptance
+Group Anagrams,MEDIUM,"Array, Hash Table, String, Sorting",https://leetcode.com/problems/group-anagrams,100.0,0.709289019979725
+Reaching Points,HARD,Math,https://leetcode.com/problems/reaching-points,88.0,0.336468882434809
+Serialize and Deserialize Binary Tree,HARD,"String, Tree, Depth-First Search, Breadth-First Search, Design, Binary Tree",https://leetcode.com/problems/serialize-and-deserialize-binary-tree,88.0,0.589694187837451
+Merge Intervals,MEDIUM,"Array, Sorting",https://leetcode.com/problems/merge-intervals,88.0,0.493952574621571
+Convert Binary Number in a Linked List to Integer,EASY,"Linked List, Math",https://leetcode.com/problems/convert-binary-number-in-a-linked-list-to-integer,88.0,0.8121524244503869
+LRU Cache,MEDIUM,"Hash Table, Linked List, Design, Doubly-Linked List",https://leetcode.com/problems/lru-cache,88.0,0.4521483770727891
+Course Schedule II,MEDIUM,"Depth-First Search, Breadth-First Search, Graph, Topological Sort",https://leetcode.com/problems/course-schedule-ii,88.0,0.5342357909139157
+Permutations,MEDIUM,"Array, Backtracking",https://leetcode.com/problems/permutations,88.0,0.8066020773412196

@@ -1,0 +1,12 @@
+question,difficulty,topics,link,frequency,acceptance
+The Number of Rich Customers,EASY,Database,https://leetcode.com/problems/the-number-of-rich-customers,100.0,0.7749586938866951
+Group Anagrams,MEDIUM,"Array, Hash Table, String, Sorting",https://leetcode.com/problems/group-anagrams,79.6,0.7092895037238552
+Best Time to Buy and Sell Stock,EASY,"Array, Dynamic Programming",https://leetcode.com/problems/best-time-to-buy-and-sell-stock,73.2,0.5525968886230834
+Merge Intervals,MEDIUM,"Array, Sorting",https://leetcode.com/problems/merge-intervals,73.2,0.4939525838584966
+Two Sum,EASY,"Array, Hash Table",https://leetcode.com/problems/two-sum,64.2,0.5577703805574933
+Unique Paths II,MEDIUM,"Array, Dynamic Programming, Matrix",https://leetcode.com/problems/unique-paths-ii,64.2,0.4315430597653034
+Merge Sorted Array,EASY,"Array, Two Pointers, Sorting",https://leetcode.com/problems/merge-sorted-array,64.2,0.5291966721564944
+First Missing Positive,HARD,"Array, Hash Table",https://leetcode.com/problems/first-missing-positive,64.2,0.4108477906309714
+Longest Substring Without Repeating Characters,MEDIUM,"Hash Table, String, Sliding Window",https://leetcode.com/problems/longest-substring-without-repeating-characters,64.2,0.3693616503140243
+Longest Palindromic Substring,MEDIUM,"Two Pointers, String, Dynamic Programming",https://leetcode.com/problems/longest-palindromic-substring,64.2,0.358462302039074
+Exclusive Time of Functions,MEDIUM,"Array, Stack",https://leetcode.com/problems/exclusive-time-of-functions,64.2,0.6479218958904363

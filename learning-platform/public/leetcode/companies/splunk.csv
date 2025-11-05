@@ -1,0 +1,15 @@
+question,difficulty,topics,link,frequency,acceptance
+Meeting Rooms II,MEDIUM,"Array, Two Pointers, Greedy, Sorting, Heap (Priority Queue), Prefix Sum",https://leetcode.com/problems/meeting-rooms-ii,100.0,0.5214182529017943
+Group Anagrams,MEDIUM,"Array, Hash Table, String, Sorting",https://leetcode.com/problems/group-anagrams,91.4,0.709288828623018
+Number of Distinct Islands,MEDIUM,"Hash Table, Depth-First Search, Breadth-First Search, Union Find, Hash Function",https://leetcode.com/problems/number-of-distinct-islands,91.4,0.6225544075621016
+Longest Increasing Subsequence,MEDIUM,"Array, Binary Search, Dynamic Programming",https://leetcode.com/problems/longest-increasing-subsequence,91.4,0.5780838894511294
+Find Median from Data Stream,HARD,"Two Pointers, Design, Sorting, Heap (Priority Queue), Data Stream",https://leetcode.com/problems/find-median-from-data-stream,91.4,0.5327808081897567
+Find First and Last Position of Element in Sorted Array,MEDIUM,"Array, Binary Search",https://leetcode.com/problems/find-first-and-last-position-of-element-in-sorted-array,91.4,0.4682884568735488
+Decode String,MEDIUM,"String, Stack, Recursion",https://leetcode.com/problems/decode-string,79.4,0.6115259200424883
+Koko Eating Bananas,MEDIUM,"Array, Binary Search",https://leetcode.com/problems/koko-eating-bananas,79.4,0.4906714096772501
+LRU Cache,MEDIUM,"Hash Table, Linked List, Design, Doubly-Linked List",https://leetcode.com/problems/lru-cache,79.4,0.4521475035659106
+Design Browser History,MEDIUM,"Array, Linked List, Stack, Design, Doubly-Linked List, Data Stream",https://leetcode.com/problems/design-browser-history,79.4,0.7774686768883133
+Trapping Rain Water,HARD,"Array, Two Pointers, Dynamic Programming, Stack, Monotonic Stack",https://leetcode.com/problems/trapping-rain-water,79.4,0.6510205336424274
+Minimum Height Trees,MEDIUM,"Depth-First Search, Breadth-First Search, Graph, Topological Sort",https://leetcode.com/problems/minimum-height-trees,79.4,0.420144691524227
+Find All Anagrams in a String,MEDIUM,"Hash Table, String, Sliding Window",https://leetcode.com/problems/find-all-anagrams-in-a-string,79.4,0.5220068246888969
+Valid Parentheses,EASY,"String, Stack",https://leetcode.com/problems/valid-parentheses,79.4,0.4232286113783459

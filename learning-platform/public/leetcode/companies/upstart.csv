@@ -1,0 +1,5 @@
+question,difficulty,topics,link,frequency,acceptance
+Maximum Subarray,MEDIUM,"Array, Divide and Conquer, Dynamic Programming",https://leetcode.com/problems/maximum-subarray,100.0,0.5209988985600883
+Simplify Path,MEDIUM,"String, Stack",https://leetcode.com/problems/simplify-path,85.6,0.4785476063011359
+Next Permutation,MEDIUM,"Array, Two Pointers",https://leetcode.com/problems/next-permutation,66.7,0.4305779256856484
+Range Sum Query 2D - Immutable,MEDIUM,"Array, Design, Matrix, Prefix Sum",https://leetcode.com/problems/range-sum-query-2d-immutable,66.7,0.5652722738293752

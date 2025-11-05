@@ -1,0 +1,12 @@
+question,difficulty,topics,link,frequency,acceptance
+Design SQL,MEDIUM,"Array, Hash Table, String, Design",https://leetcode.com/problems/design-sql,100.0,0.698193359375
+Flatten Nested List Iterator,MEDIUM,"Stack, Tree, Depth-First Search, Design, Queue, Iterator",https://leetcode.com/problems/flatten-nested-list-iterator,85.4,0.6522839525510098
+Design Excel Sum Formula,HARD,"Array, Hash Table, String, Graph, Design, Topological Sort, Matrix",https://leetcode.com/problems/design-excel-sum-formula,75.4,0.4256816329246585
+Time Based Key-Value Store,MEDIUM,"Hash Table, String, Binary Search, Design",https://leetcode.com/problems/time-based-key-value-store,71.8,0.493663464237889
+Web Crawler Multithreaded,MEDIUM,"Depth-First Search, Breadth-First Search, Concurrency",https://leetcode.com/problems/web-crawler-multithreaded,67.5,0.5009640940121944
+Design Memory Allocator,MEDIUM,"Array, Hash Table, Design, Simulation",https://leetcode.com/problems/design-memory-allocator,61.8,0.484441262323071
+Simplify Path,MEDIUM,"String, Stack",https://leetcode.com/problems/simplify-path,53.9,0.4785443730878952
+Flood Fill,EASY,"Array, Depth-First Search, Breadth-First Search, Matrix",https://leetcode.com/problems/flood-fill,53.9,0.6647640296665365
+Encode and Decode Strings,MEDIUM,"Array, String, Design",https://leetcode.com/problems/encode-and-decode-strings,53.9,0.4969917167091597
+Largest Local Values in a Matrix,EASY,"Array, Matrix",https://leetcode.com/problems/largest-local-values-in-a-matrix,53.9,0.8777892092355545
+Asteroid Collision,MEDIUM,"Array, Stack, Simulation",https://leetcode.com/problems/asteroid-collision,53.9,0.4550058681647622

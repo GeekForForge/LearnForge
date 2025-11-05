@@ -1,0 +1,6 @@
+question,difficulty,topics,link,frequency,acceptance
+Valid Parentheses,EASY,"String, Stack",https://leetcode.com/problems/valid-parentheses,100.0,0.4232838963831868
+Min Stack,MEDIUM,"Stack, Design",https://leetcode.com/problems/min-stack,94.7,0.564535276127446
+Evaluate Reverse Polish Notation,MEDIUM,"Array, Math, Stack",https://leetcode.com/problems/evaluate-reverse-polish-notation,78.1,0.5495723545430139
+Reverse String,EASY,"Two Pointers, String",https://leetcode.com/problems/reverse-string,78.1,0.7976685574633238
+Fair Candy Swap,EASY,"Array, Hash Table, Binary Search, Sorting",https://leetcode.com/problems/fair-candy-swap,78.1,0.6328457708884947

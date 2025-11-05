@@ -1,0 +1,9 @@
+question,difficulty,topics,link,frequency,acceptance
+Collect Coins in a Tree,HARD,"Array, Tree, Graph, Topological Sort",https://leetcode.com/problems/collect-coins-in-a-tree,100.0,0.360585905388237
+Maximum Number of Balls in a Box,EASY,"Hash Table, Math, Counting",https://leetcode.com/problems/maximum-number-of-balls-in-a-box,100.0,0.7425731994015815
+Valid Parentheses,EASY,"String, Stack",https://leetcode.com/problems/valid-parentheses,73.8,0.4232290000073043
+Min Stack,MEDIUM,"Stack, Design",https://leetcode.com/problems/min-stack,73.8,0.56445131595822
+Generate Parentheses,MEDIUM,"String, Dynamic Programming, Backtracking",https://leetcode.com/problems/generate-parentheses,64.9,0.771329420183894
+Longest Substring Without Repeating Characters,MEDIUM,"Hash Table, String, Sliding Window",https://leetcode.com/problems/longest-substring-without-repeating-characters,64.9,0.3693616810291483
+Gas Station,MEDIUM,"Array, Greedy",https://leetcode.com/problems/gas-station,64.9,0.4638358684554832
+Number of Islands,MEDIUM,"Array, Depth-First Search, Breadth-First Search, Union Find, Matrix",https://leetcode.com/problems/number-of-islands,64.9,0.6232014087574222

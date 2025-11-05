@@ -1,0 +1,5 @@
+question,difficulty,topics,link,frequency,acceptance
+Maximal Score After Applying K Operations,MEDIUM,"Array, Greedy, Heap (Priority Queue)",https://leetcode.com/problems/maximal-score-after-applying-k-operations,100.0,0.6378607678773867
+Shortest Bridge,MEDIUM,"Array, Depth-First Search, Breadth-First Search, Matrix",https://leetcode.com/problems/shortest-bridge,100.0,0.5864849244498144
+Number of Operations to Make Network Connected,MEDIUM,"Depth-First Search, Breadth-First Search, Union Find, Graph",https://leetcode.com/problems/number-of-operations-to-make-network-connected,97.7,0.6466501296398147
+Minimum One Bit Operations to Make Integers Zero,HARD,"Dynamic Programming, Bit Manipulation, Memoization",https://leetcode.com/problems/minimum-one-bit-operations-to-make-integers-zero,80.2,0.73240710674027

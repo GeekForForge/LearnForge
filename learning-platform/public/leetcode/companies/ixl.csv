@@ -1,0 +1,18 @@
+question,difficulty,topics,link,frequency,acceptance
+Range Addition II,EASY,"Array, Math",https://leetcode.com/problems/range-addition-ii,100.0,0.5730635939153311
+Fraction Addition and Subtraction,MEDIUM,"Math, String, Simulation",https://leetcode.com/problems/fraction-addition-and-subtraction,91.9,0.6614695886090164
+Palindrome Linked List,EASY,"Linked List, Two Pointers, Stack, Recursion",https://leetcode.com/problems/palindrome-linked-list,90.2,0.5585940023485525
+Stickers to Spell Word,HARD,"Array, Hash Table, String, Dynamic Programming, Backtracking, Bit Manipulation, Memoization, Bitmask",https://leetcode.com/problems/stickers-to-spell-word,88.4,0.5004141760136118
+Merge k Sorted Lists,HARD,"Linked List, Divide and Conquer, Heap (Priority Queue), Merge Sort",https://leetcode.com/problems/merge-k-sorted-lists,86.4,0.5677430082708387
+Merge Intervals,MEDIUM,"Array, Sorting",https://leetcode.com/problems/merge-intervals,86.4,0.4939525764689584
+Design Snake Game,MEDIUM,"Array, Hash Table, Design, Queue, Simulation",https://leetcode.com/problems/design-snake-game,86.4,0.3968509744502433
+Find the Derangement of An Array,MEDIUM,"Math, Dynamic Programming, Combinatorics",https://leetcode.com/problems/find-the-derangement-of-an-array,86.4,0.4171815547875868
+Fraction to Recurring Decimal,MEDIUM,"Hash Table, Math, String",https://leetcode.com/problems/fraction-to-recurring-decimal,86.4,0.2622353839768554
+Find Median from Data Stream,HARD,"Two Pointers, Design, Sorting, Heap (Priority Queue), Data Stream",https://leetcode.com/problems/find-median-from-data-stream,81.6,0.5327803919248424
+Minimum Number of Steps to Make Two Strings Anagram,MEDIUM,"Hash Table, String, Counting",https://leetcode.com/problems/minimum-number-of-steps-to-make-two-strings-anagram,75.5,0.8215204393310427
+Find Peak Element,MEDIUM,"Array, Binary Search",https://leetcode.com/problems/find-peak-element,71.7,0.4650923477957429
+1-bit and 2-bit Characters,EASY,Array,https://leetcode.com/problems/1-bit-and-2-bit-characters,66.9,0.4511727696394956
+Basic Calculator II,MEDIUM,"Math, String, Stack",https://leetcode.com/problems/basic-calculator-ii,66.9,0.4581175582517616
+Insert Delete GetRandom O(1),MEDIUM,"Array, Hash Table, Math, Design, Randomized",https://leetcode.com/problems/insert-delete-getrandom-o1,60.9,0.5499187644056863
+Maximum Area of a Piece of Cake After Horizontal and Vertical Cuts,MEDIUM,"Array, Greedy, Sorting",https://leetcode.com/problems/maximum-area-of-a-piece-of-cake-after-horizontal-and-vertical-cuts,60.9,0.4123031611359338
+Course Schedule,MEDIUM,"Depth-First Search, Breadth-First Search, Graph, Topological Sort",https://leetcode.com/problems/course-schedule,52.3,0.4923445089786651

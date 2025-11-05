@@ -1,0 +1,9 @@
+question,difficulty,topics,link,frequency,acceptance
+Top Travellers,EASY,Database,https://leetcode.com/problems/top-travellers,100.0,0.5708967116729169
+Weather Type in Each Country,EASY,Database,https://leetcode.com/problems/weather-type-in-each-country,100.0,0.6704324173956047
+Evaluate Boolean Expression,MEDIUM,Database,https://leetcode.com/problems/evaluate-boolean-expression,100.0,0.7209377722842496
+Restaurant Growth,MEDIUM,Database,https://leetcode.com/problems/restaurant-growth,100.0,0.5661350311272455
+Replace Employee ID With The Unique Identifier,EASY,Database,https://leetcode.com/problems/replace-employee-id-with-the-unique-identifier,100.0,0.8358557403596368
+Advantage Shuffle,MEDIUM,"Array, Two Pointers, Greedy, Sorting",https://leetcode.com/problems/advantage-shuffle,63.7,0.5338231296410227
+Generate Parentheses,MEDIUM,"String, Dynamic Programming, Backtracking",https://leetcode.com/problems/generate-parentheses,63.7,0.7713291799018006
+Sliding Window Median,HARD,"Array, Hash Table, Sliding Window, Heap (Priority Queue)",https://leetcode.com/problems/sliding-window-median,63.7,0.386913379270922

@@ -1,0 +1,7 @@
+question,difficulty,topics,link,frequency,acceptance
+Happy Number,EASY,"Hash Table, Math, Two Pointers",https://leetcode.com/problems/happy-number,100.0,0.580727274965834
+Check If It Is a Good Array,HARD,"Array, Math, Number Theory",https://leetcode.com/problems/check-if-it-is-a-good-array,82.8,0.6136115712496465
+Best Time to Buy and Sell Stock IV,HARD,"Array, Dynamic Programming",https://leetcode.com/problems/best-time-to-buy-and-sell-stock-iv,82.8,0.4708632632828892
+Subtree of Another Tree,EASY,"Tree, Depth-First Search, String Matching, Binary Tree, Hash Function",https://leetcode.com/problems/subtree-of-another-tree,82.8,0.4998483394921633
+Largest Combination With Bitwise AND Greater Than Zero,MEDIUM,"Array, Hash Table, Bit Manipulation, Counting",https://leetcode.com/problems/largest-combination-with-bitwise-and-greater-than-zero,82.8,0.808988824327877
+Permutation Sequence,HARD,"Math, Recursion",https://leetcode.com/problems/permutation-sequence,82.8,0.4994318658519785

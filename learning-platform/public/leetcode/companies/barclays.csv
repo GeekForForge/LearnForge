@@ -1,0 +1,19 @@
+question,difficulty,topics,link,frequency,acceptance
+Mark Elements on Array by Performing Queries,MEDIUM,"Array, Hash Table, Sorting, Heap (Priority Queue), Simulation",https://leetcode.com/problems/mark-elements-on-array-by-performing-queries,100.0,0.4769432539403733
+Furthest Point From Origin,EASY,"String, Counting",https://leetcode.com/problems/furthest-point-from-origin,100.0,0.6444120731849435
+Count Submatrices with Top-Left Element and Sum Less Than k,MEDIUM,"Array, Matrix, Prefix Sum",https://leetcode.com/problems/count-submatrices-with-top-left-element-and-sum-less-than-k,100.0,0.5723915766867506
+Double Modular Exponentiation,MEDIUM,"Array, Math, Simulation",https://leetcode.com/problems/double-modular-exponentiation,100.0,0.4710246360582307
+Lexicographically Smallest Generated String,HARD,"String, Greedy, String Matching",https://leetcode.com/problems/lexicographically-smallest-generated-string,77.9,0.296344330064035
+Maximum Employees to Be Invited to a Meeting,HARD,"Depth-First Search, Graph, Topological Sort",https://leetcode.com/problems/maximum-employees-to-be-invited-to-a-meeting,71.0,0.6210808912817661
+Number of Islands,MEDIUM,"Array, Depth-First Search, Breadth-First Search, Union Find, Matrix",https://leetcode.com/problems/number-of-islands,71.0,0.6232012377009197
+Valid Parentheses,EASY,"String, Stack",https://leetcode.com/problems/valid-parentheses,71.0,0.4232289742372698
+Two Sum,EASY,"Array, Hash Table",https://leetcode.com/problems/two-sum,71.0,0.5577701178825513
+Minimum Number of Refueling Stops,HARD,"Array, Dynamic Programming, Greedy, Heap (Priority Queue)",https://leetcode.com/problems/minimum-number-of-refueling-stops,71.0,0.405574587771098
+3Sum,MEDIUM,"Array, Two Pointers, Sorting",https://leetcode.com/problems/3sum,71.0,0.3707106112260931
+Isomorphic Strings,EASY,"Hash Table, String",https://leetcode.com/problems/isomorphic-strings,71.0,0.4685800275723814
+Merge Sorted Array,EASY,"Array, Two Pointers, Sorting",https://leetcode.com/problems/merge-sorted-array,61.2,0.5291962968191866
+Maximum Subarray,MEDIUM,"Array, Divide and Conquer, Dynamic Programming",https://leetcode.com/problems/maximum-subarray,61.2,0.5209982621027541
+Palindrome Linked List,EASY,"Linked List, Two Pointers, Stack, Recursion",https://leetcode.com/problems/palindrome-linked-list,61.2,0.5585939012301956
+Lexicographical Numbers,MEDIUM,"Depth-First Search, Trie",https://leetcode.com/problems/lexicographical-numbers,61.2,0.7597714941239238
+Permutations,MEDIUM,"Array, Backtracking",https://leetcode.com/problems/permutations,61.2,0.8066019584580677
+Climbing Stairs,EASY,"Math, Dynamic Programming, Memoization",https://leetcode.com/problems/climbing-stairs,61.2,0.5354078816907156

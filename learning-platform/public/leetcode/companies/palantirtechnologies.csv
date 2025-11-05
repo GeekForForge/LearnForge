@@ -1,0 +1,30 @@
+question,difficulty,topics,link,frequency,acceptance
+Find Beautiful Indices in the Given Array I,MEDIUM,"Two Pointers, String, Binary Search, Rolling Hash, String Matching, Hash Function",https://leetcode.com/problems/find-beautiful-indices-in-the-given-array-i,100.0,0.3843060775054507
+Find Beautiful Indices in the Given Array II,HARD,"Two Pointers, String, Binary Search, Rolling Hash, String Matching, Hash Function",https://leetcode.com/problems/find-beautiful-indices-in-the-given-array-ii,92.0,0.264520327554728
+Minimum Time Difference,MEDIUM,"Array, Math, String, Sorting",https://leetcode.com/problems/minimum-time-difference,82.4,0.6235324529015283
+Integer to English Words,HARD,"Math, String, Recursion",https://leetcode.com/problems/integer-to-english-words,82.4,0.3435478950195029
+LRU Cache,MEDIUM,"Hash Table, Linked List, Design, Doubly-Linked List",https://leetcode.com/problems/lru-cache,80.6,0.4521466908978712
+Range Sum Query - Immutable,EASY,"Array, Design, Prefix Sum",https://leetcode.com/problems/range-sum-query-immutable,80.6,0.6854763152086079
+Contains Duplicate II,EASY,"Array, Hash Table, Sliding Window",https://leetcode.com/problems/contains-duplicate-ii,80.6,0.4904995537469206
+Selling Pieces of Wood,HARD,"Array, Dynamic Programming, Memoization",https://leetcode.com/problems/selling-pieces-of-wood,78.7,0.5154615647940359
+Maximum Size Subarray Sum Equals k,MEDIUM,"Array, Hash Table, Prefix Sum",https://leetcode.com/problems/maximum-size-subarray-sum-equals-k,78.7,0.5060333232817832
+Single Number,EASY,"Array, Bit Manipulation",https://leetcode.com/problems/single-number,78.7,0.7596886320417466
+Check If It Is a Straight Line,EASY,"Array, Math, Geometry",https://leetcode.com/problems/check-if-it-is-a-straight-line,78.7,0.3970230609133101
+Contains Duplicate,EASY,"Array, Hash Table, Sorting",https://leetcode.com/problems/contains-duplicate,78.7,0.6323637919991744
+Contains Duplicate III,HARD,"Array, Sliding Window, Sorting, Bucket Sort, Ordered Set",https://leetcode.com/problems/contains-duplicate-iii,78.7,0.236334246913539
+Merge k Sorted Lists,HARD,"Linked List, Divide and Conquer, Heap (Priority Queue), Merge Sort",https://leetcode.com/problems/merge-k-sorted-lists,68.1,0.5677423948386318
+Shortest Word Distance III,MEDIUM,"Array, String",https://leetcode.com/problems/shortest-word-distance-iii,64.3,0.5910015691072046
+Merge Intervals,MEDIUM,"Array, Sorting",https://leetcode.com/problems/merge-intervals,64.3,0.4939523131783485
+Construct Quad Tree,MEDIUM,"Array, Divide and Conquer, Tree, Matrix",https://leetcode.com/problems/construct-quad-tree,59.7,0.7711755516320173
+Minimum Equal Sum of Two Arrays After Replacing Zeros,MEDIUM,"Array, Greedy",https://leetcode.com/problems/minimum-equal-sum-of-two-arrays-after-replacing-zeros,53.7,0.5016214325632321
+Find Players With Zero or One Losses,MEDIUM,"Array, Hash Table, Sorting, Counting",https://leetcode.com/problems/find-players-with-zero-or-one-losses,53.7,0.7259675342193808
+Count the Number of Good Subsequences,MEDIUM,"Hash Table, Math, String, Combinatorics, Counting",https://leetcode.com/problems/count-the-number-of-good-subsequences,53.7,0.505726872246696
+Flood Fill,EASY,"Array, Depth-First Search, Breadth-First Search, Matrix",https://leetcode.com/problems/flood-fill,45.4,0.6647640296665365
+Accounts Merge,MEDIUM,"Array, Hash Table, String, Depth-First Search, Breadth-First Search, Union Find, Sorting",https://leetcode.com/problems/accounts-merge,45.4,0.5958001410459624
+Number of Islands,MEDIUM,"Array, Depth-First Search, Breadth-First Search, Union Find, Matrix",https://leetcode.com/problems/number-of-islands,45.4,0.6232001770811916
+All Ancestors of a Node in a Directed Acyclic Graph,MEDIUM,"Depth-First Search, Breadth-First Search, Graph, Topological Sort",https://leetcode.com/problems/all-ancestors-of-a-node-in-a-directed-acyclic-graph,45.4,0.6189030152589998
+Number of Divisible Triplet Sums,MEDIUM,"Array, Hash Table",https://leetcode.com/problems/number-of-divisible-triplet-sums,45.4,0.6780637725701113
+Trapping Rain Water II,HARD,"Array, Breadth-First Search, Heap (Priority Queue), Matrix",https://leetcode.com/problems/trapping-rain-water-ii,45.4,0.588762524838287
+Sort List,MEDIUM,"Linked List, Two Pointers, Divide and Conquer, Sorting, Merge Sort",https://leetcode.com/problems/sort-list,45.4,0.618074922962942
+Daily Temperatures,MEDIUM,"Array, Stack, Monotonic Stack",https://leetcode.com/problems/daily-temperatures,45.4,0.6736502832589849
+Best Time to Buy and Sell Stock,EASY,"Array, Dynamic Programming",https://leetcode.com/problems/best-time-to-buy-and-sell-stock,45.4,0.5525962294861477

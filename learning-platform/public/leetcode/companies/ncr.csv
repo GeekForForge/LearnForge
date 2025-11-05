@@ -1,0 +1,3 @@
+question,difficulty,topics,link,frequency,acceptance
+Number of People Aware of a Secret,MEDIUM,"Dynamic Programming, Queue, Simulation",https://leetcode.com/problems/number-of-people-aware-of-a-secret,100.0,0.4636862359780561
+Longest Substring Without Repeating Characters,MEDIUM,"Hash Table, String, Sliding Window",https://leetcode.com/problems/longest-substring-without-repeating-characters,89.6,0.369361815744455

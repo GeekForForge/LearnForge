@@ -1,0 +1,52 @@
+question,difficulty,topics,link,frequency,acceptance
+Best Time to Buy and Sell Stock,EASY,"Array, Dynamic Programming",https://leetcode.com/problems/best-time-to-buy-and-sell-stock,100.0,0.5525959754111676
+Minimum Cost to Move Chips to The Same Position,EASY,"Array, Math, Greedy",https://leetcode.com/problems/minimum-cost-to-move-chips-to-the-same-position,89.7,0.7235395523557598
+Find The Original Array of Prefix Xor,MEDIUM,"Array, Bit Manipulation",https://leetcode.com/problems/find-the-original-array-of-prefix-xor,89.7,0.8810500495257456
+Best Team With No Conflicts,MEDIUM,"Array, Dynamic Programming, Sorting",https://leetcode.com/problems/best-team-with-no-conflicts,89.7,0.5042606461247886
+Find Subarrays With Equal Sum,EASY,"Array, Hash Table",https://leetcode.com/problems/find-subarrays-with-equal-sum,87.5,0.6625844195401696
+Minimum Number of Lines to Cover Points,MEDIUM,"Array, Hash Table, Math, Dynamic Programming, Backtracking, Bit Manipulation, Geometry, Bitmask",https://leetcode.com/problems/minimum-number-of-lines-to-cover-points,87.5,0.42784942488672
+The Employee That Worked on the Longest Task,EASY,Array,https://leetcode.com/problems/the-employee-that-worked-on-the-longest-task,87.5,0.5059108514906449
+Find the Longest Valid Obstacle Course at Each Position,HARD,"Array, Binary Search, Binary Indexed Tree",https://leetcode.com/problems/find-the-longest-valid-obstacle-course-at-each-position,87.5,0.6252322177156585
+Count Subarrays With Fixed Bounds,HARD,"Array, Queue, Sliding Window, Monotonic Queue",https://leetcode.com/problems/count-subarrays-with-fixed-bounds,75.5,0.6940834976032579
+Two Sum,EASY,"Array, Hash Table",https://leetcode.com/problems/two-sum,71.2,0.5577699298053613
+Merge Intervals,MEDIUM,"Array, Sorting",https://leetcode.com/problems/merge-intervals,71.2,0.493952626052891
+Longest Substring Without Repeating Characters,MEDIUM,"Hash Table, String, Sliding Window",https://leetcode.com/problems/longest-substring-without-repeating-characters,65.9,0.3693615703956595
+First Missing Positive,HARD,"Array, Hash Table",https://leetcode.com/problems/first-missing-positive,65.9,0.4108465766394882
+Kth Largest Element in an Array,MEDIUM,"Array, Divide and Conquer, Sorting, Heap (Priority Queue), Quickselect",https://leetcode.com/problems/kth-largest-element-in-an-array,59.2,0.6797704154096826
+3Sum,MEDIUM,"Array, Two Pointers, Sorting",https://leetcode.com/problems/3sum,59.2,0.3707096729545715
+Group Anagrams,MEDIUM,"Array, Hash Table, String, Sorting",https://leetcode.com/problems/group-anagrams,59.2,0.7092883685173318
+Make K-Subarray Sums Equal,MEDIUM,"Array, Math, Greedy, Sorting, Number Theory",https://leetcode.com/problems/make-k-subarray-sums-equal,59.2,0.3661727523960722
+Contiguous Array,MEDIUM,"Array, Hash Table, Prefix Sum",https://leetcode.com/problems/contiguous-array,59.2,0.4937158662930979
+Minimum Number of Refueling Stops,HARD,"Array, Dynamic Programming, Greedy, Heap (Priority Queue)",https://leetcode.com/problems/minimum-number-of-refueling-stops,59.2,0.405574587771098
+LRU Cache,MEDIUM,"Hash Table, Linked List, Design, Doubly-Linked List",https://leetcode.com/problems/lru-cache,59.2,0.4521471552799032
+Copy List with Random Pointer,MEDIUM,"Hash Table, Linked List",https://leetcode.com/problems/copy-list-with-random-pointer,59.2,0.6053671430291659
+Reverse String,EASY,"Two Pointers, String",https://leetcode.com/problems/reverse-string,49.7,0.7976438069258097
+Maximum Subarray,MEDIUM,"Array, Divide and Conquer, Dynamic Programming",https://leetcode.com/problems/maximum-subarray,49.7,0.5209980940492812
+Remove Duplicates from Sorted Array,EASY,"Array, Two Pointers",https://leetcode.com/problems/remove-duplicates-from-sorted-array,49.7,0.6035559664677481
+Stamping The Sequence,HARD,"String, Stack, Greedy, Queue",https://leetcode.com/problems/stamping-the-sequence,49.7,0.6186645778728447
+Generate Parentheses,MEDIUM,"String, Dynamic Programming, Backtracking",https://leetcode.com/problems/generate-parentheses,49.7,0.7713290410170575
+Kth Missing Positive Number,EASY,"Array, Binary Search",https://leetcode.com/problems/kth-missing-positive-number,49.7,0.6228373866165937
+Coin Change II,MEDIUM,"Array, Dynamic Programming",https://leetcode.com/problems/coin-change-ii,49.7,0.622854660501933
+Min Stack,MEDIUM,"Stack, Design",https://leetcode.com/problems/min-stack,49.7,0.5644514426772719
+Palindrome Linked List,EASY,"Linked List, Two Pointers, Stack, Recursion",https://leetcode.com/problems/palindrome-linked-list,49.7,0.5585942645417848
+Valid Parentheses,EASY,"String, Stack",https://leetcode.com/problems/valid-parentheses,49.7,0.42322842865981
+Letter Combinations of a Phone Number,MEDIUM,"Hash Table, String, Backtracking",https://leetcode.com/problems/letter-combinations-of-a-phone-number,49.7,0.6385756795942178
+Word Search,MEDIUM,"Array, String, Backtracking, Depth-First Search, Matrix",https://leetcode.com/problems/word-search,49.7,0.4526701252584612
+Minimum Operations to Reduce X to Zero,MEDIUM,"Array, Hash Table, Binary Search, Sliding Window, Prefix Sum",https://leetcode.com/problems/minimum-operations-to-reduce-x-to-zero,49.7,0.400636924671409
+Number of Islands,MEDIUM,"Array, Depth-First Search, Breadth-First Search, Union Find, Matrix",https://leetcode.com/problems/number-of-islands,49.7,0.6232001329897883
+Subarrays with K Different Integers,HARD,"Array, Hash Table, Sliding Window, Counting",https://leetcode.com/problems/subarrays-with-k-different-integers,49.7,0.658657617557622
+Jump Game,MEDIUM,"Array, Dynamic Programming, Greedy",https://leetcode.com/problems/jump-game,49.7,0.3947922849262536
+Steps to Make Array Non-decreasing,MEDIUM,"Array, Linked List, Stack, Monotonic Stack",https://leetcode.com/problems/steps-to-make-array-non-decreasing,49.7,0.2315229539016001
+Meeting Rooms II,MEDIUM,"Array, Two Pointers, Greedy, Sorting, Heap (Priority Queue), Prefix Sum",https://leetcode.com/problems/meeting-rooms-ii,49.7,0.5214181010083032
+Count of Range Sum,HARD,"Array, Binary Search, Divide and Conquer, Binary Indexed Tree, Segment Tree, Merge Sort, Ordered Set",https://leetcode.com/problems/count-of-range-sum,49.7,0.370513551074288
+Rotate List,MEDIUM,"Linked List, Two Pointers",https://leetcode.com/problems/rotate-list,49.7,0.3994484650742562
+Sort Colors,MEDIUM,"Array, Two Pointers, Sorting",https://leetcode.com/problems/sort-colors,49.7,0.6758311358294806
+Next Greater Element I,EASY,"Array, Hash Table, Stack, Monotonic Stack",https://leetcode.com/problems/next-greater-element-i,49.7,0.7451249169659646
+Count of Integers,HARD,"Math, String, Dynamic Programming",https://leetcode.com/problems/count-of-integers,49.7,0.3705763284916699
+Decode Ways,MEDIUM,"String, Dynamic Programming",https://leetcode.com/problems/decode-ways,49.7,0.3653096896681662
+Subarray Sum Equals K,MEDIUM,"Array, Hash Table, Prefix Sum",https://leetcode.com/problems/subarray-sum-equals-k,49.7,0.4547624491588419
+Count Binary Substrings,EASY,"Two Pointers, String",https://leetcode.com/problems/count-binary-substrings,49.7,0.659166376012681
+Subtree of Another Tree,EASY,"Tree, Depth-First Search, String Matching, Binary Tree, Hash Function",https://leetcode.com/problems/subtree-of-another-tree,49.7,0.4998488050003843
+Reverse Words in a String,MEDIUM,"Two Pointers, String",https://leetcode.com/problems/reverse-words-in-a-string,49.7,0.519133143499611
+House Robber,MEDIUM,"Array, Dynamic Programming",https://leetcode.com/problems/house-robber,49.7,0.5230497238120853
+Longest Palindromic Substring,MEDIUM,"Two Pointers, String, Dynamic Programming",https://leetcode.com/problems/longest-palindromic-substring,49.7,0.3584611181029343

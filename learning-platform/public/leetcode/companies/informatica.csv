@@ -1,0 +1,4 @@
+question,difficulty,topics,link,frequency,acceptance
+Rotting Oranges,MEDIUM,"Array, Breadth-First Search, Matrix",https://leetcode.com/problems/rotting-oranges,100.0,0.5661871540163392
+Min Stack,MEDIUM,"Stack, Design",https://leetcode.com/problems/min-stack,88.8,0.5644516360179425
+Jump Game,MEDIUM,"Array, Dynamic Programming, Greedy",https://leetcode.com/problems/jump-game,88.8,0.3947921981769201

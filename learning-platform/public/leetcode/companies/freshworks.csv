@@ -1,0 +1,10 @@
+question,difficulty,topics,link,frequency,acceptance
+Longest Substring Without Repeating Characters,MEDIUM,"Hash Table, String, Sliding Window",https://leetcode.com/problems/longest-substring-without-repeating-characters,100.0,0.3694078272294453
+Valid Parentheses,EASY,"String, Stack",https://leetcode.com/problems/valid-parentheses,100.0,0.4232837353096316
+Two Sum,EASY,"Array, Hash Table",https://leetcode.com/problems/two-sum,100.0,0.5578040766755331
+Letter Combinations of a Phone Number,MEDIUM,"Hash Table, String, Backtracking",https://leetcode.com/problems/letter-combinations-of-a-phone-number,87.8,0.638613807305123
+Best Time to Buy and Sell Stock,EASY,"Array, Dynamic Programming",https://leetcode.com/problems/best-time-to-buy-and-sell-stock,87.8,0.5526329321127535
+Find Minimum in Rotated Sorted Array,MEDIUM,"Array, Binary Search",https://leetcode.com/problems/find-minimum-in-rotated-sorted-array,87.8,0.5265208305595915
+Maximum Product of Three Numbers,EASY,"Array, Math, Sorting",https://leetcode.com/problems/maximum-product-of-three-numbers,87.8,0.453128811704281
+LRU Cache,MEDIUM,"Hash Table, Linked List, Design, Doubly-Linked List",https://leetcode.com/problems/lru-cache,87.8,0.4522004147201063
+Word Search,MEDIUM,"Array, String, Backtracking, Depth-First Search, Matrix",https://leetcode.com/problems/word-search,87.8,0.4527182664451023

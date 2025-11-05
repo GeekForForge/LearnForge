@@ -1,0 +1,31 @@
+question,difficulty,topics,link,frequency,acceptance
+Smallest K-Length Subsequence With Occurrences of a Letter,HARD,"String, Stack, Greedy, Monotonic Stack",https://leetcode.com/problems/smallest-k-length-subsequence-with-occurrences-of-a-letter,100.0,0.3886850152905198
+Maximum Running Time of N Computers,HARD,"Array, Binary Search, Greedy, Sorting",https://leetcode.com/problems/maximum-running-time-of-n-computers,91.3,0.4984652362617595
+Find the Maximum Sum of Node Values,HARD,"Array, Dynamic Programming, Greedy, Bit Manipulation, Tree, Sorting",https://leetcode.com/problems/find-the-maximum-sum-of-node-values,91.3,0.697984949055961
+Maximum Coins Heroes Can Collect,MEDIUM,"Array, Two Pointers, Binary Search, Sorting, Prefix Sum",https://leetcode.com/problems/maximum-coins-heroes-can-collect,89.1,0.6841622503057481
+The Time When the Network Becomes Idle,MEDIUM,"Array, Breadth-First Search, Graph",https://leetcode.com/problems/the-time-when-the-network-becomes-idle,89.1,0.5372318622762673
+Apply Operations to Maximize Frequency Score,HARD,"Array, Binary Search, Sliding Window, Sorting, Prefix Sum",https://leetcode.com/problems/apply-operations-to-maximize-frequency-score,89.1,0.3633111220428424
+Minimum Operations to Make the Array Increasing,EASY,"Array, Greedy",https://leetcode.com/problems/minimum-operations-to-make-the-array-increasing,89.1,0.8111434784392566
+Minimum Operations to Collect Elements,EASY,"Array, Hash Table, Bit Manipulation",https://leetcode.com/problems/minimum-operations-to-collect-elements,89.1,0.6113210197345319
+Pour Water Between Buckets to Make Water Levels Equal,MEDIUM,"Array, Binary Search",https://leetcode.com/problems/pour-water-between-buckets-to-make-water-levels-equal,89.1,0.6714846169729508
+Minimize the Difference Between Target and Chosen Elements,MEDIUM,"Array, Dynamic Programming, Matrix",https://leetcode.com/problems/minimize-the-difference-between-target-and-chosen-elements,86.6,0.3587066177158844
+Robot Collisions,HARD,"Array, Stack, Sorting, Simulation",https://leetcode.com/problems/robot-collisions,80.8,0.5610641049690483
+Boats to Save People,MEDIUM,"Array, Two Pointers, Greedy, Sorting",https://leetcode.com/problems/boats-to-save-people,80.8,0.6030089519639718
+Koko Eating Bananas,MEDIUM,"Array, Binary Search",https://leetcode.com/problems/koko-eating-bananas,80.8,0.4906727505946439
+Best Time to Buy and Sell Stock,EASY,"Array, Dynamic Programming",https://leetcode.com/problems/best-time-to-buy-and-sell-stock,72.9,0.5525964005010793
+Collecting Chocolates,MEDIUM,"Array, Enumeration",https://leetcode.com/problems/collecting-chocolates,72.9,0.3362275010975074
+Two Sum,EASY,"Array, Hash Table",https://leetcode.com/problems/two-sum,67.8,0.5577699705853779
+Asteroid Collision,MEDIUM,"Array, Stack, Simulation",https://leetcode.com/problems/asteroid-collision,67.8,0.4550056046459279
+Longest Common Prefix,EASY,"String, Trie",https://leetcode.com/problems/longest-common-prefix,61.1,0.4548316604171443
+Maximum Fruits Harvested After at Most K Steps,HARD,"Array, Binary Search, Sliding Window, Prefix Sum",https://leetcode.com/problems/maximum-fruits-harvested-after-at-most-k-steps,61.1,0.3651762852077999
+Best Time to Buy and Sell Stock II,MEDIUM,"Array, Dynamic Programming, Greedy",https://leetcode.com/problems/best-time-to-buy-and-sell-stock-ii,61.1,0.6950035045286252
+Frequency of the Most Frequent Element,MEDIUM,"Array, Binary Search, Greedy, Sliding Window, Sorting, Prefix Sum",https://leetcode.com/problems/frequency-of-the-most-frequent-element,61.1,0.4410334035974388
+Spiral Matrix,MEDIUM,"Array, Matrix, Simulation",https://leetcode.com/problems/spiral-matrix,51.7,0.5393980917622436
+Design HashMap,EASY,"Array, Hash Table, Linked List, Design, Hash Function",https://leetcode.com/problems/design-hashmap,51.7,0.6589410060802129
+Rotting Oranges,MEDIUM,"Array, Breadth-First Search, Matrix",https://leetcode.com/problems/rotting-oranges,51.7,0.5661860880572026
+Minimize Manhattan Distances,HARD,"Array, Math, Geometry, Sorting, Ordered Set",https://leetcode.com/problems/minimize-manhattan-distances,51.7,0.3149616576929352
+Validate IP Address,MEDIUM,String,https://leetcode.com/problems/validate-ip-address,51.7,0.2781752462045336
+Fruit Into Baskets,MEDIUM,"Array, Hash Table, Sliding Window",https://leetcode.com/problems/fruit-into-baskets,51.7,0.4642786690056997
+Reverse String,EASY,"Two Pointers, String",https://leetcode.com/problems/reverse-string,51.7,0.7976440076920845
+Kth Largest Element in an Array,MEDIUM,"Array, Divide and Conquer, Sorting, Heap (Priority Queue), Quickselect",https://leetcode.com/problems/kth-largest-element-in-an-array,51.7,0.6797702368478369
+Squares of a Sorted Array,EASY,"Array, Two Pointers, Sorting",https://leetcode.com/problems/squares-of-a-sorted-array,51.7,0.7321918278136608

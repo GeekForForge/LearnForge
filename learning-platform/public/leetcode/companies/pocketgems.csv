@@ -1,0 +1,16 @@
+question,difficulty,topics,link,frequency,acceptance
+Find the Index of the First Occurrence in a String,EASY,"Two Pointers, String, String Matching",https://leetcode.com/problems/find-the-index-of-the-first-occurrence-in-a-string,100.0,0.4497156554644657
+Sort Colors,MEDIUM,"Array, Two Pointers, Sorting",https://leetcode.com/problems/sort-colors,100.0,0.6758313357788631
+Non-negative Integers without Consecutive Ones,HARD,Dynamic Programming,https://leetcode.com/problems/non-negative-integers-without-consecutive-ones,100.0,0.4030213766451369
+Clone Graph,MEDIUM,"Hash Table, Depth-First Search, Breadth-First Search, Graph",https://leetcode.com/problems/clone-graph,100.0,0.6238586619062403
+Word Break,MEDIUM,"Array, Hash Table, String, Dynamic Programming, Trie, Memoization",https://leetcode.com/problems/word-break,100.0,0.4827400085243717
+Top K Frequent Words,MEDIUM,"Array, Hash Table, String, Trie, Sorting, Heap (Priority Queue), Bucket Sort, Counting",https://leetcode.com/problems/top-k-frequent-words,100.0,0.5927723758908081
+Shortest Palindrome,HARD,"String, Rolling Hash, String Matching, Hash Function",https://leetcode.com/problems/shortest-palindrome,100.0,0.4065591390802263
+Kth Largest Element in an Array,MEDIUM,"Array, Divide and Conquer, Sorting, Heap (Priority Queue), Quickselect",https://leetcode.com/problems/kth-largest-element-in-an-array,100.0,0.6797712416691327
+Alien Dictionary,HARD,"Array, String, Depth-First Search, Breadth-First Search, Graph, Topological Sort",https://leetcode.com/problems/alien-dictionary,100.0,0.3667361451288913
+Basic Calculator III,HARD,"Math, String, Stack, Recursion",https://leetcode.com/problems/basic-calculator-iii,100.0,0.5246948282838411
+Inorder Successor in BST,MEDIUM,"Tree, Depth-First Search, Binary Search Tree, Binary Tree",https://leetcode.com/problems/inorder-successor-in-bst,100.0,0.5066789131179683
+Top K Frequent Elements,MEDIUM,"Array, Hash Table, Divide and Conquer, Sorting, Heap (Priority Queue), Bucket Sort, Counting, Quickselect",https://leetcode.com/problems/top-k-frequent-elements,100.0,0.6456611344925648
+Insert Delete GetRandom O(1),MEDIUM,"Array, Hash Table, Math, Design, Randomized",https://leetcode.com/problems/insert-delete-getrandom-o1,100.0,0.5499151153774708
+Longest Repeating Character Replacement,MEDIUM,"Hash Table, String, Sliding Window",https://leetcode.com/problems/longest-repeating-character-replacement,100.0,0.5721182355010312
+Find All Duplicates in an Array,MEDIUM,"Array, Hash Table",https://leetcode.com/problems/find-all-duplicates-in-an-array,100.0,0.7640875331476287

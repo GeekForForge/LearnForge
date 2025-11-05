@@ -1,0 +1,20 @@
+question,difficulty,topics,link,frequency,acceptance
+Ransom Note,EASY,"Hash Table, String, Counting",https://leetcode.com/problems/ransom-note,100.0,0.6452368869682432
+Merge Intervals,MEDIUM,"Array, Sorting",https://leetcode.com/problems/merge-intervals,100.0,0.493952574621571
+LRU Cache,MEDIUM,"Hash Table, Linked List, Design, Doubly-Linked List",https://leetcode.com/problems/lru-cache,100.0,0.4521484931675215
+Max Area of Island,MEDIUM,"Array, Depth-First Search, Breadth-First Search, Union Find, Matrix",https://leetcode.com/problems/max-area-of-island,91.6,0.7316427664618339
+Remove All Adjacent Duplicates in String II,MEDIUM,"String, Stack",https://leetcode.com/problems/remove-all-adjacent-duplicates-in-string-ii,91.6,0.5960173343469628
+Generate Parentheses,MEDIUM,"String, Dynamic Programming, Backtracking",https://leetcode.com/problems/generate-parentheses,91.6,0.7713291799018006
+Search in Rotated Sorted Array,MEDIUM,"Array, Binary Search",https://leetcode.com/problems/search-in-rotated-sorted-array,79.8,0.4283731773782037
+Subarray Sum Equals K,MEDIUM,"Array, Hash Table, Prefix Sum",https://leetcode.com/problems/subarray-sum-equals-k,79.8,0.4547634324231493
+Longest Palindromic Substring,MEDIUM,"Two Pointers, String, Dynamic Programming",https://leetcode.com/problems/longest-palindromic-substring,79.8,0.3584617187764493
+Group Anagrams,MEDIUM,"Array, Hash Table, String, Sorting",https://leetcode.com/problems/group-anagrams,79.8,0.709289019979725
+Longest Common Prefix,EASY,"String, Trie",https://leetcode.com/problems/longest-common-prefix,79.8,0.4548317505066894
+Reverse Linked List II,MEDIUM,Linked List,https://leetcode.com/problems/reverse-linked-list-ii,79.8,0.4959180622144242
+Climbing Stairs,EASY,"Math, Dynamic Programming, Memoization",https://leetcode.com/problems/climbing-stairs,79.8,0.5354078194126206
+Valid Parentheses,EASY,"String, Stack",https://leetcode.com/problems/valid-parentheses,79.8,0.4232289130590427
+Valid Anagram,EASY,"Hash Table, String, Sorting",https://leetcode.com/problems/valid-anagram,79.8,0.6666099763648226
+Egg Drop With 2 Eggs and N Floors,MEDIUM,"Math, Dynamic Programming",https://leetcode.com/problems/egg-drop-with-2-eggs-and-n-floors,79.8,0.7373311247994203
+Number of Islands,MEDIUM,"Array, Depth-First Search, Breadth-First Search, Union Find, Matrix",https://leetcode.com/problems/number-of-islands,79.8,0.6232013751253481
+Valid Word Abbreviation,EASY,"Two Pointers, String",https://leetcode.com/problems/valid-word-abbreviation,79.8,0.3685153316370521
+Product of Array Except Self,MEDIUM,"Array, Prefix Sum",https://leetcode.com/problems/product-of-array-except-self,79.8,0.6778005728606573

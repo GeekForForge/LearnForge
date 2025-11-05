@@ -1,0 +1,11 @@
+question,difficulty,topics,link,frequency,acceptance
+Palindrome Permutation,EASY,"Hash Table, String, Bit Manipulation",https://leetcode.com/problems/palindrome-permutation,100.0,0.6850934894703868
+Integer to English Words,HARD,"Math, String, Recursion",https://leetcode.com/problems/integer-to-english-words,100.0,0.3435494729092234
+House Robber,MEDIUM,"Array, Dynamic Programming",https://leetcode.com/problems/house-robber,100.0,0.523051005429001
+House Robber II,MEDIUM,"Array, Dynamic Programming",https://leetcode.com/problems/house-robber-ii,100.0,0.4356278416977166
+Spiral Matrix,MEDIUM,"Array, Matrix, Simulation",https://leetcode.com/problems/spiral-matrix,100.0,0.5393999618722131
+Course Schedule,MEDIUM,"Depth-First Search, Breadth-First Search, Graph, Topological Sort",https://leetcode.com/problems/course-schedule,100.0,0.492346075157369
+Word Break,MEDIUM,"Array, Hash Table, String, Dynamic Programming, Trie, Memoization",https://leetcode.com/problems/word-break,88.1,0.4827394870005235
+LRU Cache,MEDIUM,"Hash Table, Linked List, Design, Doubly-Linked List",https://leetcode.com/problems/lru-cache,88.1,0.4521496303064773
+Meeting Rooms II,MEDIUM,"Array, Two Pointers, Greedy, Sorting, Heap (Priority Queue), Prefix Sum",https://leetcode.com/problems/meeting-rooms-ii,88.1,0.5214157634771466
+Display Table of Food Orders in a Restaurant,MEDIUM,"Array, Hash Table, String, Sorting, Ordered Set",https://leetcode.com/problems/display-table-of-food-orders-in-a-restaurant,88.1,0.7565692616551416

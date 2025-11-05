@@ -1,0 +1,74 @@
+question,difficulty,topics,link,frequency,acceptance
+Rank Teams by Votes,MEDIUM,"Array, Hash Table, String, Sorting, Counting",https://leetcode.com/problems/rank-teams-by-votes,100.0,0.5940446839336095
+Design Snake Game,MEDIUM,"Array, Hash Table, Design, Queue, Simulation",https://leetcode.com/problems/design-snake-game,88.4,0.3968485567576451
+Stock Price Fluctuation ,MEDIUM,"Hash Table, Design, Heap (Priority Queue), Data Stream, Ordered Set",https://leetcode.com/problems/stock-price-fluctuation,86.6,0.4816387154783381
+All O`one Data Structure,HARD,"Hash Table, Linked List, Design, Doubly-Linked List",https://leetcode.com/problems/all-oone-data-structure,77.2,0.4413477976145218
+High-Access Employees,MEDIUM,"Array, Hash Table, String, Sorting",https://leetcode.com/problems/high-access-employees,71.2,0.4612636964811507
+Logger Rate Limiter,EASY,"Hash Table, Design, Data Stream",https://leetcode.com/problems/logger-rate-limiter,71.2,0.766103057053701
+Merge Intervals,MEDIUM,"Array, Sorting",https://leetcode.com/problems/merge-intervals,61.9,0.4939526848741133
+Maximum Good Subarray Sum,MEDIUM,"Array, Hash Table, Prefix Sum",https://leetcode.com/problems/maximum-good-subarray-sum,58.7,0.2028196432101957
+Minimum Cost to Convert String I,MEDIUM,"Array, String, Graph, Shortest Path",https://leetcode.com/problems/minimum-cost-to-convert-string-i,58.7,0.5755714079298737
+Minimum Cost to Convert String II,HARD,"Array, String, Dynamic Programming, Graph, Trie, Shortest Path",https://leetcode.com/problems/minimum-cost-to-convert-string-ii,58.7,0.2553901437371663
+Maximum Square Area by Removing Fences From a Field,MEDIUM,"Array, Hash Table, Enumeration",https://leetcode.com/problems/maximum-square-area-by-removing-fences-from-a-field,58.7,0.2410700053616195
+Meeting Rooms II,MEDIUM,"Array, Two Pointers, Greedy, Sorting, Heap (Priority Queue), Prefix Sum",https://leetcode.com/problems/meeting-rooms-ii,58.7,0.5214164447683243
+Maximum Area of Longest Diagonal Rectangle,EASY,Array,https://leetcode.com/problems/maximum-area-of-longest-diagonal-rectangle,58.7,0.3654547482773711
+Number of Possible Sets of Closing Branches,HARD,"Bit Manipulation, Graph, Heap (Priority Queue), Enumeration, Shortest Path",https://leetcode.com/problems/number-of-possible-sets-of-closing-branches,58.7,0.4844893500819224
+Verbal Arithmetic Puzzle,HARD,"Array, Math, String, Backtracking",https://leetcode.com/problems/verbal-arithmetic-puzzle,58.7,0.3477800583342335
+Cherry Pickup,HARD,"Array, Dynamic Programming, Matrix",https://leetcode.com/problems/cherry-pickup,58.7,0.3786948581341589
+Smallest Missing Non-negative Integer After Operations,MEDIUM,"Array, Hash Table, Math, Greedy",https://leetcode.com/problems/smallest-missing-non-negative-integer-after-operations,58.7,0.3987738925814309
+Make Lexicographically Smallest Array by Swapping Elements,MEDIUM,"Array, Union Find, Sorting",https://leetcode.com/problems/make-lexicographically-smallest-array-by-swapping-elements,58.7,0.6026879026047842
+Minimum Time to Visit a Cell In a Grid,HARD,"Array, Breadth-First Search, Graph, Heap (Priority Queue), Matrix, Shortest Path",https://leetcode.com/problems/minimum-time-to-visit-a-cell-in-a-grid,58.7,0.568054168958796
+Find the Width of Columns of a Grid,EASY,"Array, Matrix",https://leetcode.com/problems/find-the-width-of-columns-of-a-grid,58.7,0.693232244841104
+Group Anagrams,MEDIUM,"Array, Hash Table, String, Sorting",https://leetcode.com/problems/group-anagrams,56.8,0.7092883082997726
+Text Justification,HARD,"Array, String, Simulation",https://leetcode.com/problems/text-justification,56.8,0.4814993566410409
+Design File System,MEDIUM,"Hash Table, String, Design, Trie",https://leetcode.com/problems/design-file-system,56.8,0.6413755041392486
+Longest String Chain,MEDIUM,"Array, Hash Table, Two Pointers, String, Dynamic Programming, Sorting",https://leetcode.com/problems/longest-string-chain,56.8,0.6201512673699018
+Longest Increasing Subsequence,MEDIUM,"Array, Binary Search, Dynamic Programming",https://leetcode.com/problems/longest-increasing-subsequence,54.6,0.5780836795005291
+Lowest Common Ancestor of a Binary Tree,MEDIUM,"Tree, Depth-First Search, Binary Tree",https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-tree,54.6,0.6675501387816432
+Majority Element II,MEDIUM,"Array, Hash Table, Sorting, Counting",https://leetcode.com/problems/majority-element-ii,52.2,0.5438036123865881
+Koko Eating Bananas,MEDIUM,"Array, Binary Search",https://leetcode.com/problems/koko-eating-bananas,49.5,0.4906728015668445
+Best Time to Buy and Sell Stock,EASY,"Array, Dynamic Programming",https://leetcode.com/problems/best-time-to-buy-and-sell-stock,49.5,0.5525964317904726
+Can Place Flowers,EASY,"Array, Greedy",https://leetcode.com/problems/can-place-flowers,46.2,0.2889923936767658
+String Transformation,HARD,"Math, String, Dynamic Programming, String Matching",https://leetcode.com/problems/string-transformation,46.2,0.2510979075174374
+Online Election,MEDIUM,"Array, Hash Table, Binary Search, Design",https://leetcode.com/problems/online-election,46.2,0.5184691560254644
+The Time When the Network Becomes Idle,MEDIUM,"Array, Breadth-First Search, Graph",https://leetcode.com/problems/the-time-when-the-network-becomes-idle,46.2,0.5372318622762673
+Top K Frequent Elements,MEDIUM,"Array, Hash Table, Divide and Conquer, Sorting, Heap (Priority Queue), Bucket Sort, Counting, Quickselect",https://leetcode.com/problems/top-k-frequent-elements,46.2,0.6456596310666731
+Word Search,MEDIUM,"Array, String, Backtracking, Depth-First Search, Matrix",https://leetcode.com/problems/word-search,42.2,0.4526695178423744
+Longest Consecutive Sequence,MEDIUM,"Array, Hash Table, Union Find",https://leetcode.com/problems/longest-consecutive-sequence,42.2,0.4704082270068146
+Russian Doll Envelopes,HARD,"Array, Binary Search, Dynamic Programming, Sorting",https://leetcode.com/problems/russian-doll-envelopes,42.2,0.3732991914997274
+Two Sum,EASY,"Array, Hash Table",https://leetcode.com/problems/two-sum,42.2,0.5577699935138669
+Longest Substring Without Repeating Characters,MEDIUM,"Hash Table, String, Sliding Window",https://leetcode.com/problems/longest-substring-without-repeating-characters,42.2,0.3693617542319536
+Count Vowels Permutation,HARD,Dynamic Programming,https://leetcode.com/problems/count-vowels-permutation,37.1,0.61484920403603
+Integer to Roman,MEDIUM,"Hash Table, Math, String",https://leetcode.com/problems/integer-to-roman,37.1,0.6861927118001762
+Nth Highest Salary,MEDIUM,Database,https://leetcode.com/problems/nth-highest-salary,37.1,0.380390316890866
+Pairs of Songs With Total Durations Divisible by 60,MEDIUM,"Array, Hash Table, Counting",https://leetcode.com/problems/pairs-of-songs-with-total-durations-divisible-by-60,37.1,0.5324763404751333
+Merge Sorted Array,EASY,"Array, Two Pointers, Sorting",https://leetcode.com/problems/merge-sorted-array,37.1,0.5291952521829845
+Crawler Log Folder,EASY,"Array, String, Stack",https://leetcode.com/problems/crawler-log-folder,37.1,0.7160418239109896
+Jump Game II,MEDIUM,"Array, Dynamic Programming, Greedy",https://leetcode.com/problems/jump-game-ii,37.1,0.415032966531176
+Boats to Save People,MEDIUM,"Array, Two Pointers, Greedy, Sorting",https://leetcode.com/problems/boats-to-save-people,37.1,0.6030059688557481
+Design Tic-Tac-Toe,MEDIUM,"Array, Hash Table, Design, Matrix, Simulation",https://leetcode.com/problems/design-tic-tac-toe,37.1,0.5860148086637603
+Maximum Number of Occurrences of a Substring,MEDIUM,"Hash Table, String, Sliding Window",https://leetcode.com/problems/maximum-number-of-occurrences-of-a-substring,37.1,0.5342731408965465
+Search Suggestions System,MEDIUM,"Array, String, Binary Search, Trie, Sorting, Heap (Priority Queue)",https://leetcode.com/problems/search-suggestions-system,30.0,0.6505032264917545
+Kth Largest Element in a Stream,EASY,"Tree, Design, Binary Search Tree, Heap (Priority Queue), Binary Tree, Data Stream",https://leetcode.com/problems/kth-largest-element-in-a-stream,30.0,0.5985304879240446
+Design a Food Rating System,MEDIUM,"Array, Hash Table, String, Design, Heap (Priority Queue), Ordered Set",https://leetcode.com/problems/design-a-food-rating-system,30.0,0.4491783716594157
+Maximum Subarray,MEDIUM,"Array, Divide and Conquer, Dynamic Programming",https://leetcode.com/problems/maximum-subarray,30.0,0.5209978589630087
+Lowest Common Ancestor of a Binary Tree III,MEDIUM,"Hash Table, Two Pointers, Tree, Binary Tree",https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-tree-iii,30.0,0.8246674945153157
+Find First and Last Position of Element in Sorted Array,MEDIUM,"Array, Binary Search",https://leetcode.com/problems/find-first-and-last-position-of-element-in-sorted-array,30.0,0.468287686874522
+Find Words That Can Be Formed by Characters,EASY,"Array, Hash Table, String, Counting",https://leetcode.com/problems/find-words-that-can-be-formed-by-characters,30.0,0.7106771491390691
+Count Vowel Strings in Ranges,MEDIUM,"Array, String, Prefix Sum",https://leetcode.com/problems/count-vowel-strings-in-ranges,30.0,0.6786629908928055
+Container With Most Water,MEDIUM,"Array, Two Pointers, Greedy",https://leetcode.com/problems/container-with-most-water,30.0,0.5778284346286925
+Design Add and Search Words Data Structure,MEDIUM,"String, Depth-First Search, Design, Trie",https://leetcode.com/problems/design-add-and-search-words-data-structure,30.0,0.4706656098549707
+Assign Cookies,EASY,"Array, Two Pointers, Greedy, Sorting",https://leetcode.com/problems/assign-cookies,30.0,0.5387634784437695
+3Sum,MEDIUM,"Array, Two Pointers, Sorting",https://leetcode.com/problems/3sum,30.0,0.3707096937268573
+Trapping Rain Water,HARD,"Array, Two Pointers, Dynamic Programming, Stack, Monotonic Stack",https://leetcode.com/problems/trapping-rain-water,30.0,0.6510195479297859
+Design Hit Counter,MEDIUM,"Array, Binary Search, Design, Queue, Data Stream",https://leetcode.com/problems/design-hit-counter,30.0,0.6920824458148753
+Unique Paths II,MEDIUM,"Array, Dynamic Programming, Matrix",https://leetcode.com/problems/unique-paths-ii,30.0,0.4315432414196138
+Maximum Path Quality of a Graph,HARD,"Array, Backtracking, Graph",https://leetcode.com/problems/maximum-path-quality-of-a-graph,30.0,0.596989256918232
+Tallest Billboard,HARD,"Array, Dynamic Programming",https://leetcode.com/problems/tallest-billboard,30.0,0.5187288448273096
+Add Two Integers,EASY,Math,https://leetcode.com/problems/add-two-integers,30.0,0.8812230793897231
+Find K Closest Elements,MEDIUM,"Array, Two Pointers, Binary Search, Sliding Window, Sorting, Heap (Priority Queue)",https://leetcode.com/problems/find-k-closest-elements,30.0,0.486686656754684
+Number of Digit One,HARD,"Math, Dynamic Programming, Recursion",https://leetcode.com/problems/number-of-digit-one,30.0,0.3599159436598703
+Valid Anagram,EASY,"Hash Table, String, Sorting",https://leetcode.com/problems/valid-anagram,30.0,0.6666091503030548
+Single Element in a Sorted Array,MEDIUM,"Array, Binary Search",https://leetcode.com/problems/single-element-in-a-sorted-array,30.0,0.5920694527750138
+Coin Change,MEDIUM,"Array, Dynamic Programming, Breadth-First Search",https://leetcode.com/problems/coin-change,30.0,0.4649545396006711
+Last Day Where You Can Still Cross,HARD,"Array, Binary Search, Depth-First Search, Breadth-First Search, Union Find, Matrix",https://leetcode.com/problems/last-day-where-you-can-still-cross,30.0,0.6231939687413881

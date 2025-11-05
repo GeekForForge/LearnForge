@@ -1,0 +1,4 @@
+question,difficulty,topics,link,frequency,acceptance
+Valid Parentheses,EASY,"String, Stack",https://leetcode.com/problems/valid-parentheses,100.0,0.4232839987745111
+Two Sum,EASY,"Array, Hash Table",https://leetcode.com/problems/two-sum,90.3,0.5578039438654574
+Candy Crush,MEDIUM,"Array, Two Pointers, Matrix, Simulation",https://leetcode.com/problems/candy-crush,90.3,0.7737140091942899

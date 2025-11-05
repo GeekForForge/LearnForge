@@ -1,0 +1,6 @@
+question,difficulty,topics,link,frequency,acceptance
+Find Mirror Score of a String,MEDIUM,"Hash Table, String, Stack, Simulation",https://leetcode.com/problems/find-mirror-score-of-a-string,100.0,0.3393199271016682
+Zigzag Conversion,MEDIUM,String,https://leetcode.com/problems/zigzag-conversion,74.0,0.516106229324453
+Trapping Rain Water,HARD,"Array, Two Pointers, Dynamic Programming, Stack, Monotonic Stack",https://leetcode.com/problems/trapping-rain-water,74.0,0.6510864354564603
+Best Time to Buy and Sell Stock,EASY,"Array, Dynamic Programming",https://leetcode.com/problems/best-time-to-buy-and-sell-stock,65.2,0.5526330287665571
+Minimum Time Difference,MEDIUM,"Array, Math, String, Sorting",https://leetcode.com/problems/minimum-time-difference,65.2,0.623534335935315

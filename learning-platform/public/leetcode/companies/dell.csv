@@ -1,0 +1,8 @@
+question,difficulty,topics,link,frequency,acceptance
+Valid Parentheses,EASY,"String, Stack",https://leetcode.com/problems/valid-parentheses,100.0,0.423228947377488
+Merge k Sorted Lists,HARD,"Linked List, Divide and Conquer, Heap (Priority Queue), Merge Sort",https://leetcode.com/problems/merge-k-sorted-lists,100.0,0.5677429108771196
+Longest Substring Without Repeating Characters,MEDIUM,"Hash Table, String, Sliding Window",https://leetcode.com/problems/longest-substring-without-repeating-characters,100.0,0.3693615853602407
+Group Anagrams,MEDIUM,"Array, Hash Table, String, Sorting",https://leetcode.com/problems/group-anagrams,100.0,0.709289019979725
+Longest Palindromic Substring,MEDIUM,"Two Pointers, String, Dynamic Programming",https://leetcode.com/problems/longest-palindromic-substring,87.6,0.3584618368161397
+Delete Duplicate Emails,EASY,Database,https://leetcode.com/problems/delete-duplicate-emails,87.6,0.6432529647276789
+Department Top Three Salaries,HARD,Database,https://leetcode.com/problems/department-top-three-salaries,87.6,0.5777105873664997

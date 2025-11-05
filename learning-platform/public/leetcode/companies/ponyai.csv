@@ -1,0 +1,5 @@
+question,difficulty,topics,link,frequency,acceptance
+K-th Smallest Prime Fraction,MEDIUM,"Array, Two Pointers, Binary Search, Sorting, Heap (Priority Queue)",https://leetcode.com/problems/k-th-smallest-prime-fraction,100.0,0.6852111087945333
+Maximum Profit in Job Scheduling,HARD,"Array, Binary Search, Dynamic Programming, Sorting",https://leetcode.com/problems/maximum-profit-in-job-scheduling,100.0,0.5441744826912199
+Minimum Sideway Jumps,MEDIUM,"Array, Dynamic Programming, Greedy",https://leetcode.com/problems/minimum-sideway-jumps,100.0,0.508328457187439
+Frequency of the Most Frequent Element,MEDIUM,"Array, Binary Search, Greedy, Sliding Window, Sorting, Prefix Sum",https://leetcode.com/problems/frequency-of-the-most-frequent-element,100.0,0.4410329758310676

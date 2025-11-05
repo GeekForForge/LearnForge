@@ -1,0 +1,5 @@
+question,difficulty,topics,link,frequency,acceptance
+Validate Stack Sequences,MEDIUM,"Array, Stack, Simulation",https://leetcode.com/problems/validate-stack-sequences,100.0,0.6969342482559882
+Minimum Window Substring,HARD,"Hash Table, String, Sliding Window",https://leetcode.com/problems/minimum-window-substring,100.0,0.4535447322090199
+Subarray Sum Equals K,MEDIUM,"Array, Hash Table, Prefix Sum",https://leetcode.com/problems/subarray-sum-equals-k,93.2,0.4548204352876518
+Evaluate Reverse Polish Notation,MEDIUM,"Array, Math, Stack",https://leetcode.com/problems/evaluate-reverse-polish-notation,93.2,0.5495720230545159

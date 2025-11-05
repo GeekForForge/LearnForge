@@ -1,0 +1,5 @@
+question,difficulty,topics,link,frequency,acceptance
+Find Array Given Subset Sums,HARD,"Array, Divide and Conquer",https://leetcode.com/problems/find-array-given-subset-sums,100.0,0.4868854808657016
+Get the Maximum Score,HARD,"Array, Two Pointers, Dynamic Programming, Greedy",https://leetcode.com/problems/get-the-maximum-score,100.0,0.3998538840393505
+Number of Ways to Wear Different Hats to Each Other,HARD,"Array, Dynamic Programming, Bit Manipulation, Bitmask",https://leetcode.com/problems/number-of-ways-to-wear-different-hats-to-each-other,100.0,0.4443784933471831
+Capacity To Ship Packages Within D Days,MEDIUM,"Array, Binary Search",https://leetcode.com/problems/capacity-to-ship-packages-within-d-days,64.6,0.7213314724109039

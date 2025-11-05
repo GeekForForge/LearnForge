@@ -1,0 +1,15 @@
+question,difficulty,topics,link,frequency,acceptance
+Valid Parentheses,EASY,"String, Stack",https://leetcode.com/problems/valid-parentheses,100.0,0.4232289179408012
+Merge Intervals,MEDIUM,"Array, Sorting",https://leetcode.com/problems/merge-intervals,91.8,0.4939526574581855
+Squares of a Sorted Array,EASY,"Array, Two Pointers, Sorting",https://leetcode.com/problems/squares-of-a-sorted-array,91.8,0.7321912907683713
+Monotonic Array,EASY,Array,https://leetcode.com/problems/monotonic-array,86.4,0.6169876003093298
+Department Top Three Salaries,HARD,Database,https://leetcode.com/problems/department-top-three-salaries,86.4,0.5777105873664997
+Two Sum,EASY,"Array, Hash Table",https://leetcode.com/problems/two-sum,79.4,0.5577704313462045
+Move Zeroes,EASY,"Array, Two Pointers",https://leetcode.com/problems/move-zeroes,69.5,0.6280403967919924
+Reverse Linked List,EASY,"Linked List, Recursion",https://leetcode.com/problems/reverse-linked-list,69.5,0.7920666630113735
+First Unique Character in a String,EASY,"Hash Table, String, Queue, Counting",https://leetcode.com/problems/first-unique-character-in-a-string,69.5,0.6369554792501443
+Invert Binary Tree,EASY,"Tree, Depth-First Search, Breadth-First Search, Binary Tree",https://leetcode.com/problems/invert-binary-tree,69.5,0.7902177593392995
+Best Time to Buy and Sell Stock,EASY,"Array, Dynamic Programming",https://leetcode.com/problems/best-time-to-buy-and-sell-stock,69.5,0.5525969358423186
+Decode String,MEDIUM,"String, Stack, Recursion",https://leetcode.com/problems/decode-string,69.5,0.6115270128103837
+Department Highest Salary,MEDIUM,Database,https://leetcode.com/problems/department-highest-salary,69.5,0.5481318064086517
+Longest Substring Without Repeating Characters,MEDIUM,"Hash Table, String, Sliding Window",https://leetcode.com/problems/longest-substring-without-repeating-characters,69.5,0.369361622666222

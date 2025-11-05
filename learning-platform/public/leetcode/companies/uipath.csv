@@ -1,0 +1,11 @@
+question,difficulty,topics,link,frequency,acceptance
+Escape a Large Maze,HARD,"Array, Hash Table, Depth-First Search, Breadth-First Search",https://leetcode.com/problems/escape-a-large-maze,100.0,0.3532354342403946
+Sorting Three Groups,MEDIUM,"Array, Binary Search, Dynamic Programming",https://leetcode.com/problems/sorting-three-groups,100.0,0.4188815458659579
+As Far from Land as Possible,MEDIUM,"Array, Dynamic Programming, Breadth-First Search, Matrix",https://leetcode.com/problems/as-far-from-land-as-possible,100.0,0.5184355695888827
+Number of Islands,MEDIUM,"Array, Depth-First Search, Breadth-First Search, Union Find, Matrix",https://leetcode.com/problems/number-of-islands,72.1,0.6232010198187545
+Longest Palindromic Substring,MEDIUM,"Two Pointers, String, Dynamic Programming",https://leetcode.com/problems/longest-palindromic-substring,62.7,0.3584618958359686
+Integer to Roman,MEDIUM,"Hash Table, Math, String",https://leetcode.com/problems/integer-to-roman,62.7,0.6861943680423237
+Making A Large Island,HARD,"Array, Depth-First Search, Breadth-First Search, Union Find, Matrix",https://leetcode.com/problems/making-a-large-island,62.7,0.5489021109141428
+Boats to Save People,MEDIUM,"Array, Two Pointers, Greedy, Sorting",https://leetcode.com/problems/boats-to-save-people,62.7,0.6030109406778812
+Satisfiability of Equality Equations,MEDIUM,"Array, String, Union Find, Graph",https://leetcode.com/problems/satisfiability-of-equality-equations,62.7,0.5101847530677794
+Longest Repeating Character Replacement,MEDIUM,"Hash Table, String, Sliding Window",https://leetcode.com/problems/longest-repeating-character-replacement,62.7,0.572118026869801

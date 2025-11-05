@@ -1,0 +1,5 @@
+question,difficulty,topics,link,frequency,acceptance
+LRU Cache,MEDIUM,"Hash Table, Linked List, Design, Doubly-Linked List",https://leetcode.com/problems/lru-cache,100.0,0.4522001234660487
+Trapping Rain Water,HARD,"Array, Two Pointers, Dynamic Programming, Stack, Monotonic Stack",https://leetcode.com/problems/trapping-rain-water,89.4,0.651086853842941
+Word Ladder,HARD,"Hash Table, String, Breadth-First Search",https://leetcode.com/problems/word-ladder,89.4,0.4281925382274492
+Paint House,MEDIUM,"Array, Dynamic Programming",https://leetcode.com/problems/paint-house,89.4,0.6373217658070741

@@ -1,0 +1,4 @@
+question,difficulty,topics,link,frequency,acceptance
+Count Pairs in Two Arrays,MEDIUM,"Array, Two Pointers, Binary Search, Sorting",https://leetcode.com/problems/count-pairs-in-two-arrays,100.0,0.6015575998327409
+Candy,HARD,"Array, Greedy",https://leetcode.com/problems/candy,100.0,0.4669990512422267
+Merge Two Sorted Lists,EASY,"Linked List, Recursion",https://leetcode.com/problems/merge-two-sorted-lists,100.0,0.6684110044467867

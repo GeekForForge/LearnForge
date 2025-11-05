@@ -1,0 +1,4 @@
+question,difficulty,topics,link,frequency,acceptance
+Find Pivot Index,EASY,"Array, Prefix Sum",https://leetcode.com/problems/find-pivot-index,100.0,0.6057051050431013
+Number of Visible People in a Queue,HARD,"Array, Stack, Monotonic Stack",https://leetcode.com/problems/number-of-visible-people-in-a-queue,100.0,0.7129705142972448
+Best Time to Buy and Sell Stock,EASY,"Array, Dynamic Programming",https://leetcode.com/problems/best-time-to-buy-and-sell-stock,100.0,0.5525969178647564

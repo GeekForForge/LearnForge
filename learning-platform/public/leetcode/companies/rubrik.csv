@@ -1,0 +1,37 @@
+question,difficulty,topics,link,frequency,acceptance
+Maximum Points After Enemy Battles,MEDIUM,"Array, Greedy",https://leetcode.com/problems/maximum-points-after-enemy-battles,100.0,0.3253262567778697
+Stamping the Grid,HARD,"Array, Greedy, Matrix, Prefix Sum",https://leetcode.com/problems/stamping-the-grid,67.8,0.3324935104596122
+Alice and Bob Playing Flower Game,MEDIUM,Math,https://leetcode.com/problems/alice-and-bob-playing-flower-game,62.6,0.4574722690474704
+LRU Cache,MEDIUM,"Hash Table, Linked List, Design, Doubly-Linked List",https://leetcode.com/problems/lru-cache,62.6,0.4521471552799032
+Count Lattice Points Inside a Circle,MEDIUM,"Array, Hash Table, Math, Geometry, Enumeration",https://leetcode.com/problems/count-lattice-points-inside-a-circle,62.6,0.5524300028092518
+Candy Crush,MEDIUM,"Array, Two Pointers, Matrix, Simulation",https://leetcode.com/problems/candy-crush,62.6,0.7736899161778655
+Random Pick with Weight,MEDIUM,"Array, Math, Binary Search, Prefix Sum, Randomized",https://leetcode.com/problems/random-pick-with-weight,62.6,0.4827844806841818
+Distribute Candies Among Children III,HARD,"Math, Combinatorics",https://leetcode.com/problems/distribute-candies-among-children-iii,61.0,0.5759096612296111
+Distribute Candies Among Children II,MEDIUM,"Math, Combinatorics, Enumeration",https://leetcode.com/problems/distribute-candies-among-children-ii,61.0,0.5613421338342496
+Distribute Candies Among Children I,EASY,"Math, Combinatorics, Enumeration",https://leetcode.com/problems/distribute-candies-among-children-i,61.0,0.7497536136662286
+Find X Value of Array I,MEDIUM,"Array, Math, Dynamic Programming",https://leetcode.com/problems/find-x-value-of-array-i,61.0,0.3315965471654094
+Find Longest Special Substring That Occurs Thrice II,MEDIUM,"Hash Table, String, Binary Search, Sliding Window, Counting",https://leetcode.com/problems/find-longest-special-substring-that-occurs-thrice-ii,61.0,0.3841043604300036
+Find the Sum of Subsequence Powers,HARD,"Array, Dynamic Programming, Sorting",https://leetcode.com/problems/find-the-sum-of-subsequence-powers,61.0,0.234628919378435
+Existence of a Substring in a String and Its Reverse,EASY,"Hash Table, String",https://leetcode.com/problems/existence-of-a-substring-in-a-string-and-its-reverse,61.0,0.6570279684458559
+Maximize Subarray Sum After Removing All Occurrences of One Element,HARD,"Array, Dynamic Programming, Segment Tree",https://leetcode.com/problems/maximize-subarray-sum-after-removing-all-occurrences-of-one-element,61.0,0.1984073424213793
+Find X Value of Array II,HARD,"Array, Math, Segment Tree",https://leetcode.com/problems/find-x-value-of-array-ii,61.0,0.2741993957703927
+Manhattan Distances of All Arrangements of Pieces,HARD,"Math, Combinatorics",https://leetcode.com/problems/manhattan-distances-of-all-arrangements-of-pieces,61.0,0.3298979387632579
+Insert Delete GetRandom O(1),MEDIUM,"Array, Hash Table, Math, Design, Randomized",https://leetcode.com/problems/insert-delete-getrandom-o1,52.3,0.5499189489424546
+Snapshot Array,MEDIUM,"Array, Hash Table, Binary Search, Design",https://leetcode.com/problems/snapshot-array,49.2,0.3666532076028315
+Scramble String,HARD,"String, Dynamic Programming",https://leetcode.com/problems/scramble-string,49.2,0.4218183471253161
+Next Permutation,MEDIUM,"Array, Two Pointers",https://leetcode.com/problems/next-permutation,49.2,0.4305777991035235
+Web Crawler Multithreaded,MEDIUM,"Depth-First Search, Breadth-First Search, Concurrency",https://leetcode.com/problems/web-crawler-multithreaded,49.2,0.5009640940121944
+Design Add and Search Words Data Structure,MEDIUM,"String, Depth-First Search, Design, Trie",https://leetcode.com/problems/design-add-and-search-words-data-structure,45.5,0.4706668909360868
+Design a Text Editor,HARD,"Linked List, String, Stack, Design, Simulation, Doubly-Linked List",https://leetcode.com/problems/design-a-text-editor,40.6,0.4713807144713662
+Web Crawler,MEDIUM,"String, Depth-First Search, Breadth-First Search, Interactive",https://leetcode.com/problems/web-crawler,40.6,0.6876521792062333
+Task Scheduler,MEDIUM,"Array, Hash Table, Greedy, Sorting, Heap (Priority Queue), Counting",https://leetcode.com/problems/task-scheduler,40.6,0.6153931254639827
+Edit Distance,MEDIUM,"String, Dynamic Programming",https://leetcode.com/problems/edit-distance,40.6,0.5878982716843788
+Sliding Window Maximum,HARD,"Array, Queue, Sliding Window, Heap (Priority Queue), Monotonic Queue",https://leetcode.com/problems/sliding-window-maximum,40.6,0.4760412052856051
+Building H2O,MEDIUM,Concurrency,https://leetcode.com/problems/building-h2o,33.8,0.5758696646024687
+4Sum,MEDIUM,"Array, Two Pointers, Sorting",https://leetcode.com/problems/4sum,33.8,0.3821906583861416
+Prefix and Suffix Search,HARD,"Array, Hash Table, String, Design, Trie",https://leetcode.com/problems/prefix-and-suffix-search,33.8,0.4041937535878857
+Remove Invalid Parentheses,HARD,"String, Backtracking, Breadth-First Search",https://leetcode.com/problems/remove-invalid-parentheses,33.8,0.4923173156124781
+Cherry Pickup II,HARD,"Array, Dynamic Programming, Matrix",https://leetcode.com/problems/cherry-pickup-ii,33.8,0.7196542271599925
+Minimum Number of Refueling Stops,HARD,"Array, Dynamic Programming, Greedy, Heap (Priority Queue)",https://leetcode.com/problems/minimum-number-of-refueling-stops,33.8,0.405574587771098
+Design Bounded Blocking Queue,MEDIUM,Concurrency,https://leetcode.com/problems/design-bounded-blocking-queue,33.8,0.7299444681759931
+Design Memory Allocator,MEDIUM,"Array, Hash Table, Design, Simulation",https://leetcode.com/problems/design-memory-allocator,33.8,0.484441262323071

@@ -1,0 +1,5 @@
+question,difficulty,topics,link,frequency,acceptance
+Maximize Sum Of Array After K Negations,EASY,"Array, Greedy, Sorting",https://leetcode.com/problems/maximize-sum-of-array-after-k-negations,100.0,0.5238275789608325
+Reorganize String,MEDIUM,"Hash Table, String, Greedy, Sorting, Heap (Priority Queue), Counting",https://leetcode.com/problems/reorganize-string,67.0,0.5619678232551094
+Search in Rotated Sorted Array,MEDIUM,"Array, Binary Search",https://leetcode.com/problems/search-in-rotated-sorted-array,67.0,0.4283746977996756
+Longest Increasing Subsequence,MEDIUM,"Array, Binary Search, Dynamic Programming",https://leetcode.com/problems/longest-increasing-subsequence,67.0,0.578085996864673

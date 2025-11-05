@@ -1,0 +1,7 @@
+question,difficulty,topics,link,frequency,acceptance
+Find Edges in Shortest Paths,HARD,"Depth-First Search, Breadth-First Search, Graph, Heap (Priority Queue), Shortest Path",https://leetcode.com/problems/find-edges-in-shortest-paths,100.0,0.4555747851339063
+Maximize Greatness of an Array,MEDIUM,"Array, Two Pointers, Greedy, Sorting",https://leetcode.com/problems/maximize-greatness-of-an-array,85.3,0.5864617466875623
+Maximum Profit in Job Scheduling,HARD,"Array, Binary Search, Dynamic Programming, Sorting",https://leetcode.com/problems/maximum-profit-in-job-scheduling,80.6,0.5441746135165552
+Longest Increasing Path in a Matrix,HARD,"Array, Dynamic Programming, Depth-First Search, Breadth-First Search, Graph, Topological Sort, Memoization, Matrix",https://leetcode.com/problems/longest-increasing-path-in-a-matrix,74.5,0.5534762586302827
+Swim in Rising Water,HARD,"Array, Binary Search, Depth-First Search, Breadth-First Search, Union Find, Heap (Priority Queue), Matrix",https://leetcode.com/problems/swim-in-rising-water,65.9,0.6285273239373714
+Text Justification,HARD,"Array, String, Simulation",https://leetcode.com/problems/text-justification,65.9,0.4815035316083349

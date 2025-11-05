@@ -1,0 +1,9 @@
+question,difficulty,topics,link,frequency,acceptance
+Compare Version Numbers,MEDIUM,"Two Pointers, String",https://leetcode.com/problems/compare-version-numbers,100.0,0.4234723231238846
+All O`one Data Structure,HARD,"Hash Table, Linked List, Design, Doubly-Linked List",https://leetcode.com/problems/all-oone-data-structure,98.0,0.4413480853234703
+Merge Intervals,MEDIUM,"Array, Sorting",https://leetcode.com/problems/merge-intervals,78.9,0.4939525764689584
+Letter Combinations of a Phone Number,MEDIUM,"Hash Table, String, Backtracking",https://leetcode.com/problems/letter-combinations-of-a-phone-number,64.4,0.6385758739982268
+Trapping Rain Water,HARD,"Array, Two Pointers, Dynamic Programming, Stack, Monotonic Stack",https://leetcode.com/problems/trapping-rain-water,64.4,0.6510217577539866
+Nested List Weight Sum,MEDIUM,"Depth-First Search, Breadth-First Search",https://leetcode.com/problems/nested-list-weight-sum,64.4,0.8554010438592917
+Divide Two Integers,MEDIUM,"Math, Bit Manipulation",https://leetcode.com/problems/divide-two-integers,64.4,0.1839700628527233
+Time Based Key-Value Store,MEDIUM,"Hash Table, String, Binary Search, Design",https://leetcode.com/problems/time-based-key-value-store,64.4,0.493664334355531

@@ -1,0 +1,5 @@
+question,difficulty,topics,link,frequency,acceptance
+Construct the Minimum Bitwise Array II,MEDIUM,"Array, Bit Manipulation",https://leetcode.com/problems/construct-the-minimum-bitwise-array-ii,100.0,0.3486627673349109
+Construct the Minimum Bitwise Array I,EASY,"Array, Bit Manipulation",https://leetcode.com/problems/construct-the-minimum-bitwise-array-i,100.0,0.7395921725937926
+Classifying Triangles by Lengths,EASY,Database,https://leetcode.com/problems/classifying-triangles-by-lengths,88.5,0.5082222606889389
+Minimize OR of Remaining Elements Using Operations,HARD,"Array, Greedy, Bit Manipulation",https://leetcode.com/problems/minimize-or-of-remaining-elements-using-operations,88.5,0.2896179141872846

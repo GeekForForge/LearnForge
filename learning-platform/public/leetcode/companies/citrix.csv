@@ -1,0 +1,8 @@
+question,difficulty,topics,link,frequency,acceptance
+Find All Groups of Farmland,MEDIUM,"Array, Depth-First Search, Breadth-First Search, Matrix",https://leetcode.com/problems/find-all-groups-of-farmland,100.0,0.7548102383053839
+Check if Strings Can be Made Equal With Operations II,MEDIUM,"Hash Table, String, Sorting",https://leetcode.com/problems/check-if-strings-can-be-made-equal-with-operations-ii,100.0,0.5522769560396188
+Check if Strings Can be Made Equal With Operations I,EASY,String,https://leetcode.com/problems/check-if-strings-can-be-made-equal-with-operations-i,100.0,0.470779474689696
+Maximum Performance of a Team,HARD,"Array, Greedy, Sorting, Heap (Priority Queue)",https://leetcode.com/problems/maximum-performance-of-a-team,100.0,0.4751514702683188
+Remove Nth Node From End of List,MEDIUM,"Linked List, Two Pointers",https://leetcode.com/problems/remove-nth-node-from-end-of-list,63.7,0.4896144298412496
+Pairs of Songs With Total Durations Divisible by 60,MEDIUM,"Array, Hash Table, Counting",https://leetcode.com/problems/pairs-of-songs-with-total-durations-divisible-by-60,63.7,0.5324771514259002
+LRU Cache,MEDIUM,"Hash Table, Linked List, Design, Doubly-Linked List",https://leetcode.com/problems/lru-cache,63.7,0.4521519780245163

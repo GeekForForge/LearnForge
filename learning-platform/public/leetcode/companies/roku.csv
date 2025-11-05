@@ -1,0 +1,16 @@
+question,difficulty,topics,link,frequency,acceptance
+Substring with Concatenation of All Words,HARD,"Hash Table, String, Sliding Window",https://leetcode.com/problems/substring-with-concatenation-of-all-words,100.0,0.3299746364949338
+Sliding Window Maximum,HARD,"Array, Queue, Sliding Window, Heap (Priority Queue), Monotonic Queue",https://leetcode.com/problems/sliding-window-maximum,100.0,0.4760419873658764
+LRU Cache,MEDIUM,"Hash Table, Linked List, Design, Doubly-Linked List",https://leetcode.com/problems/lru-cache,100.0,0.4521484931675215
+Simplify Path,MEDIUM,"String, Stack",https://leetcode.com/problems/simplify-path,87.5,0.4785475875201086
+Decode String,MEDIUM,"String, Stack, Recursion",https://leetcode.com/problems/decode-string,87.5,0.6115258855748797
+Asteroid Collision,MEDIUM,"Array, Stack, Simulation",https://leetcode.com/problems/asteroid-collision,87.5,0.4550061229796745
+Backspace String Compare,EASY,"Two Pointers, String, Stack, Simulation",https://leetcode.com/problems/backspace-string-compare,87.5,0.494817507336685
+Multiply Strings,MEDIUM,"Math, String, Simulation",https://leetcode.com/problems/multiply-strings,87.5,0.4228951540469344
+Maximum Product of Three Numbers,EASY,"Array, Math, Sorting",https://leetcode.com/problems/maximum-product-of-three-numbers,87.5,0.4531179403180326
+Max Consecutive Ones III,MEDIUM,"Array, Binary Search, Sliding Window, Prefix Sum",https://leetcode.com/problems/max-consecutive-ones-iii,87.5,0.659395885149928
+Shortest Path to Get All Keys,HARD,"Array, Bit Manipulation, Breadth-First Search, Matrix",https://leetcode.com/problems/shortest-path-to-get-all-keys,87.5,0.537030042053839
+24 Game,HARD,"Array, Math, Backtracking",https://leetcode.com/problems/24-game,87.5,0.5000170520428348
+Valid Palindrome II,EASY,"Two Pointers, String, Greedy",https://leetcode.com/problems/valid-palindrome-ii,87.5,0.4302720128918736
+Top K Frequent Elements,MEDIUM,"Array, Hash Table, Divide and Conquer, Sorting, Heap (Priority Queue), Bucket Sort, Counting, Quickselect",https://leetcode.com/problems/top-k-frequent-elements,87.5,0.6456597639542642
+Valid Parenthesis String,MEDIUM,"String, Dynamic Programming, Stack, Greedy",https://leetcode.com/problems/valid-parenthesis-string,87.5,0.3890943290154454

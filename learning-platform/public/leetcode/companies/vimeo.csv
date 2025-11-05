@@ -1,0 +1,7 @@
+question,difficulty,topics,link,frequency,acceptance
+Count Pairs With XOR in a Range,HARD,"Array, Bit Manipulation, Trie",https://leetcode.com/problems/count-pairs-with-xor-in-a-range,100.0,0.4574437091605277
+Flower Planting With No Adjacent,MEDIUM,"Depth-First Search, Breadth-First Search, Graph",https://leetcode.com/problems/flower-planting-with-no-adjacent,66.4,0.5237790114146059
+Maximum Subarray,MEDIUM,"Array, Divide and Conquer, Dynamic Programming",https://leetcode.com/problems/maximum-subarray,66.4,0.5209994418742664
+3Sum,MEDIUM,"Array, Two Pointers, Sorting",https://leetcode.com/problems/3sum,66.4,0.3707128174190882
+LRU Cache,MEDIUM,"Hash Table, Linked List, Design, Doubly-Linked List",https://leetcode.com/problems/lru-cache,66.4,0.452151705282671
+Min Stack,MEDIUM,"Stack, Design",https://leetcode.com/problems/min-stack,66.4,0.5644526831800445

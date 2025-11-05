@@ -1,0 +1,4 @@
+question,difficulty,topics,link,frequency,acceptance
+Modify the Matrix,EASY,"Array, Matrix",https://leetcode.com/problems/modify-the-matrix,100.0,0.6830875645058072
+Two Sum,EASY,"Array, Hash Table",https://leetcode.com/problems/two-sum,64.4,0.5577703036819196
+Valid Anagram,EASY,"Hash Table, String, Sorting",https://leetcode.com/problems/valid-anagram,64.4,0.666610113985987

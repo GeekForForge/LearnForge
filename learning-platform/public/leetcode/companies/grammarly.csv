@@ -1,0 +1,28 @@
+question,difficulty,topics,link,frequency,acceptance
+Merge Intervals,MEDIUM,"Array, Sorting",https://leetcode.com/problems/merge-intervals,100.0,0.4939525598424313
+Remove All Adjacent Duplicates In String,EASY,"String, Stack",https://leetcode.com/problems/remove-all-adjacent-duplicates-in-string,93.2,0.715875534292082
+Remove All Adjacent Duplicates in String II,MEDIUM,"String, Stack",https://leetcode.com/problems/remove-all-adjacent-duplicates-in-string-ii,88.0,0.5960173343469628
+Insert Delete GetRandom O(1),MEDIUM,"Array, Hash Table, Math, Design, Randomized",https://leetcode.com/problems/insert-delete-getrandom-o1,84.8,0.5499191107870306
+Generate Parentheses,MEDIUM,"String, Dynamic Programming, Backtracking",https://leetcode.com/problems/generate-parentheses,81.1,0.7713293364055746
+Repeated DNA Sequences,MEDIUM,"Hash Table, String, Bit Manipulation, Sliding Window, Rolling Hash, Hash Function",https://leetcode.com/problems/repeated-dna-sequences,78.9,0.5132038237868195
+Vowel Spellchecker,MEDIUM,"Array, Hash Table, String",https://leetcode.com/problems/vowel-spellchecker,78.9,0.5157619197411585
+Search in Rotated Sorted Array,MEDIUM,"Array, Binary Search",https://leetcode.com/problems/search-in-rotated-sorted-array,78.9,0.4283724679402803
+Perfect Number,EASY,Math,https://leetcode.com/problems/perfect-number,76.5,0.4489257450556843
+Climbing Stairs,EASY,"Math, Dynamic Programming, Memoization",https://leetcode.com/problems/climbing-stairs,70.5,0.535407459224679
+Sqrt(x),EASY,"Math, Binary Search",https://leetcode.com/problems/sqrtx,70.5,0.4037182691859833
+Number of Islands,MEDIUM,"Array, Depth-First Search, Breadth-First Search, Union Find, Matrix",https://leetcode.com/problems/number-of-islands,66.8,0.6232010561844157
+Word Search,MEDIUM,"Array, String, Backtracking, Depth-First Search, Matrix",https://leetcode.com/problems/word-search,66.8,0.4526701296840141
+Backspace String Compare,EASY,"Two Pointers, String, Stack, Simulation",https://leetcode.com/problems/backspace-string-compare,62.2,0.4948175019000657
+Word Break II,HARD,"Array, Hash Table, String, Dynamic Programming, Backtracking, Trie, Memoization",https://leetcode.com/problems/word-break-ii,62.2,0.5364546303753539
+Implement Trie (Prefix Tree),MEDIUM,"Hash Table, String, Design, Trie",https://leetcode.com/problems/implement-trie-prefix-tree,56.3,0.679349409041436
+Word Break,MEDIUM,"Array, Hash Table, String, Dynamic Programming, Trie, Memoization",https://leetcode.com/problems/word-break,56.3,0.4827386605332721
+Logger Rate Limiter,EASY,"Hash Table, Design, Data Stream",https://leetcode.com/problems/logger-rate-limiter,56.3,0.766103057053701
+Special Binary String,HARD,"String, Recursion",https://leetcode.com/problems/special-binary-string,48.0,0.6351153721156971
+Decode the Slanted Ciphertext,MEDIUM,"String, Simulation",https://leetcode.com/problems/decode-the-slanted-ciphertext,48.0,0.4912737614129622
+Evaluate Reverse Polish Notation,MEDIUM,"Array, Math, Stack",https://leetcode.com/problems/evaluate-reverse-polish-notation,48.0,0.5495028146041505
+Sum of Left Leaves,EASY,"Tree, Depth-First Search, Breadth-First Search, Binary Tree",https://leetcode.com/problems/sum-of-left-leaves,48.0,0.6165969923913787
+Set Mismatch,EASY,"Array, Hash Table, Bit Manipulation, Sorting",https://leetcode.com/problems/set-mismatch,48.0,0.4500023166771268
+Maximum Palindromes After Operations,MEDIUM,"Array, Hash Table, String, Greedy, Sorting, Counting",https://leetcode.com/problems/maximum-palindromes-after-operations,48.0,0.4308371154815936
+Clone Graph,MEDIUM,"Hash Table, Depth-First Search, Breadth-First Search, Graph",https://leetcode.com/problems/clone-graph,48.0,0.6238583023997237
+Trapping Rain Water,HARD,"Array, Two Pointers, Dynamic Programming, Stack, Monotonic Stack",https://leetcode.com/problems/trapping-rain-water,48.0,0.6510204648612313
+Unique Paths,MEDIUM,"Math, Dynamic Programming, Combinatorics",https://leetcode.com/problems/unique-paths,48.0,0.6577292198640936

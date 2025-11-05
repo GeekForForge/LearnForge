@@ -1,0 +1,17 @@
+question,difficulty,topics,link,frequency,acceptance
+Reward Top K Students,MEDIUM,"Array, Hash Table, String, Sorting, Heap (Priority Queue)",https://leetcode.com/problems/reward-top-k-students,100.0,0.4598559663446112
+Delete Duplicate Folders in System,HARD,"Array, Hash Table, String, Trie, Hash Function",https://leetcode.com/problems/delete-duplicate-folders-in-system,87.5,0.5378519731628718
+Sliding Window Maximum,HARD,"Array, Queue, Sliding Window, Heap (Priority Queue), Monotonic Queue",https://leetcode.com/problems/sliding-window-maximum,87.5,0.4760423596637481
+Coloring A Border,MEDIUM,"Array, Depth-First Search, Breadth-First Search, Matrix",https://leetcode.com/problems/coloring-a-border,85.5,0.498215113583681
+Two Out of Three,EASY,"Array, Hash Table, Bit Manipulation",https://leetcode.com/problems/two-out-of-three,85.5,0.7658462504348121
+K Highest Ranked Items Within a Price Range,MEDIUM,"Array, Breadth-First Search, Sorting, Heap (Priority Queue), Matrix",https://leetcode.com/problems/k-highest-ranked-items-within-a-price-range,85.5,0.4482546298489083
+Order Two Columns Independently,MEDIUM,Database,https://leetcode.com/problems/order-two-columns-independently,85.5,0.6097405900305188
+Reconstruct Itinerary,HARD,"Depth-First Search, Graph, Eulerian Circuit",https://leetcode.com/problems/reconstruct-itinerary,74.9,0.4360560656471098
+Maximal Square,MEDIUM,"Array, Dynamic Programming, Matrix",https://leetcode.com/problems/maximal-square,66.4,0.4876116072755284
+Integer to Roman,MEDIUM,"Hash Table, Math, String",https://leetcode.com/problems/integer-to-roman,66.4,0.6861926427887565
+Backspace String Compare,EASY,"Two Pointers, String, Stack, Simulation",https://leetcode.com/problems/backspace-string-compare,60.5,0.4948175019000657
+Permutations,MEDIUM,"Array, Backtracking",https://leetcode.com/problems/permutations,60.5,0.8066016018077352
+Number of Islands,MEDIUM,"Array, Depth-First Search, Breadth-First Search, Union Find, Matrix",https://leetcode.com/problems/number-of-islands,52.0,0.6232011443676149
+Valid Parentheses,EASY,"String, Stack",https://leetcode.com/problems/valid-parentheses,52.0,0.423228571633331
+LRU Cache,MEDIUM,"Hash Table, Linked List, Design, Doubly-Linked List",https://leetcode.com/problems/lru-cache,52.0,0.4521475035659106
+Roman to Integer,EASY,"Hash Table, Math, String",https://leetcode.com/problems/roman-to-integer,52.0,0.6486634253801707

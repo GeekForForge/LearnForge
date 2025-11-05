@@ -1,0 +1,4 @@
+question,difficulty,topics,link,frequency,acceptance
+House Robber IV,MEDIUM,"Array, Binary Search, Dynamic Programming, Greedy",https://leetcode.com/problems/house-robber-iv,100.0,0.6515789686838721
+Maximum Erasure Value,MEDIUM,"Array, Hash Table, Sliding Window",https://leetcode.com/problems/maximum-erasure-value,100.0,0.5942006438410263
+Non-decreasing Array,MEDIUM,Array,https://leetcode.com/problems/non-decreasing-array,66.3,0.2507915184147182

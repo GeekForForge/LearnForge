@@ -1,0 +1,26 @@
+question,difficulty,topics,link,frequency,acceptance
+Two Sum,EASY,"Array, Hash Table",https://leetcode.com/problems/two-sum,100.0,0.5577701038240835
+Number of Unique Subjects Taught by Each Teacher,EASY,Database,https://leetcode.com/problems/number-of-unique-subjects-taught-by-each-teacher,95.7,0.8935578320377495
+Reverse Degree of a String,EASY,"String, Simulation",https://leetcode.com/problems/reverse-degree-of-a-string,95.7,0.8705975043652314
+Remove Duplicates from Sorted Array,EASY,"Array, Two Pointers",https://leetcode.com/problems/remove-duplicates-from-sorted-array,83.5,0.603556859688818
+Count Elements With Maximum Frequency,EASY,"Array, Hash Table, Counting",https://leetcode.com/problems/count-elements-with-maximum-frequency,79.2,0.7792370150792628
+Best Time to Buy and Sell Stock,EASY,"Array, Dynamic Programming",https://leetcode.com/problems/best-time-to-buy-and-sell-stock,73.9,0.5525965264574566
+Add Two Numbers,MEDIUM,"Linked List, Math, Recursion",https://leetcode.com/problems/add-two-numbers,67.1,0.4622518482012795
+Longest Common Prefix,EASY,"String, Trie",https://leetcode.com/problems/longest-common-prefix,67.1,0.4548318229538721
+Palindrome Number,EASY,Math,https://leetcode.com/problems/palindrome-number,67.1,0.5922450070533695
+Rotate Array,MEDIUM,"Array, Math, Two Pointers",https://leetcode.com/problems/rotate-array,57.5,0.4302139930837287
+Find First and Last Position of Element in Sorted Array,MEDIUM,"Array, Binary Search",https://leetcode.com/problems/find-first-and-last-position-of-element-in-sorted-array,57.5,0.4682882945946236
+Subarray Sum Equals K,MEDIUM,"Array, Hash Table, Prefix Sum",https://leetcode.com/problems/subarray-sum-equals-k,57.5,0.4547631578284704
+Balanced Binary Tree,EASY,"Tree, Depth-First Search, Binary Tree",https://leetcode.com/problems/balanced-binary-tree,57.5,0.5534189713909605
+Longest Substring Without Repeating Characters,MEDIUM,"Hash Table, String, Sliding Window",https://leetcode.com/problems/longest-substring-without-repeating-characters,57.5,0.3693614927582452
+Trapping Rain Water,HARD,"Array, Two Pointers, Dynamic Programming, Stack, Monotonic Stack",https://leetcode.com/problems/trapping-rain-water,57.5,0.6510207934299767
+Move Zeroes,EASY,"Array, Two Pointers",https://leetcode.com/problems/move-zeroes,57.5,0.6280401723881761
+Valid Anagram,EASY,"Hash Table, String, Sorting",https://leetcode.com/problems/valid-anagram,57.5,0.6666099304442351
+Fibonacci Number,EASY,"Math, Dynamic Programming, Recursion, Memoization",https://leetcode.com/problems/fibonacci-number,57.5,0.7294494380980834
+Exchange Seats,MEDIUM,Database,https://leetcode.com/problems/exchange-seats,57.5,0.7270890874290025
+Median of Two Sorted Arrays,HARD,"Array, Binary Search, Divide and Conquer",https://leetcode.com/problems/median-of-two-sorted-arrays,57.5,0.4381465178962261
+Longest Happy String,MEDIUM,"String, Greedy, Heap (Priority Queue)",https://leetcode.com/problems/longest-happy-string,57.5,0.6546225631378025
+Valid Palindrome,EASY,"Two Pointers, String",https://leetcode.com/problems/valid-palindrome,57.5,0.5096357007859084
+Reverse Words in a String,MEDIUM,"Two Pointers, String",https://leetcode.com/problems/reverse-words-in-a-string,57.5,0.5191334577686688
+Nth Highest Salary,MEDIUM,Database,https://leetcode.com/problems/nth-highest-salary,57.5,0.3803894192214344
+Coin Change,MEDIUM,"Array, Dynamic Programming, Breadth-First Search",https://leetcode.com/problems/coin-change,57.5,0.4649556137047272

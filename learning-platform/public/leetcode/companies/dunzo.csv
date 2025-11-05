@@ -1,0 +1,9 @@
+question,difficulty,topics,link,frequency,acceptance
+Stone Game VII,MEDIUM,"Array, Math, Dynamic Programming, Game Theory",https://leetcode.com/problems/stone-game-vii,100.0,0.5832279630840782
+Build Array Where You Can Find The Maximum Exactly K Comparisons,HARD,"Dynamic Programming, Prefix Sum",https://leetcode.com/problems/build-array-where-you-can-find-the-maximum-exactly-k-comparisons,100.0,0.6675608950059291
+Number of Distinct Substrings in a String,MEDIUM,"String, Trie, Rolling Hash, Suffix Array, Hash Function",https://leetcode.com/problems/number-of-distinct-substrings-in-a-string,100.0,0.6454241948153967
+Number of Ways to Form a Target String Given a Dictionary,HARD,"Array, String, Dynamic Programming",https://leetcode.com/problems/number-of-ways-to-form-a-target-string-given-a-dictionary,100.0,0.5706421937156789
+Find All Good Strings,HARD,"String, Dynamic Programming, String Matching",https://leetcode.com/problems/find-all-good-strings,100.0,0.4370181344337062
+Ways to Make a Fair Array,MEDIUM,"Array, Prefix Sum",https://leetcode.com/problems/ways-to-make-a-fair-array,100.0,0.6450748112174719
+Arithmetic Slices II - Subsequence,HARD,"Array, Dynamic Programming",https://leetcode.com/problems/arithmetic-slices-ii-subsequence,63.4,0.5454027309965013
+Count Complete Tree Nodes,EASY,"Binary Search, Bit Manipulation, Tree, Binary Tree",https://leetcode.com/problems/count-complete-tree-nodes,63.4,0.6996765512992228

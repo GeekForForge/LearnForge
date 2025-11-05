@@ -1,0 +1,32 @@
+question,difficulty,topics,link,frequency,acceptance
+Number of Subarrays That Match a Pattern I,MEDIUM,"Array, Rolling Hash, String Matching, Hash Function",https://leetcode.com/problems/number-of-subarrays-that-match-a-pattern-i,100.0,0.6684595198334382
+Number of Changing Keys,EASY,String,https://leetcode.com/problems/number-of-changing-keys,97.9,0.7970178853428329
+Distribute Elements Into Two Arrays I,EASY,"Array, Simulation",https://leetcode.com/problems/distribute-elements-into-two-arrays-i,95.5,0.7297186224280118
+Distribute Elements Into Two Arrays II,HARD,"Array, Binary Indexed Tree, Segment Tree, Simulation",https://leetcode.com/problems/distribute-elements-into-two-arrays-ii,95.5,0.2933888118354137
+Number of Subarrays That Match a Pattern II,HARD,"Array, Rolling Hash, String Matching, Hash Function",https://leetcode.com/problems/number-of-subarrays-that-match-a-pattern-ii,95.5,0.322212333121424
+Count Prefix and Suffix Pairs II,HARD,"Array, String, Trie, Rolling Hash, String Matching, Hash Function",https://leetcode.com/problems/count-prefix-and-suffix-pairs-ii,95.5,0.2720387820263219
+Count Prefix and Suffix Pairs I,EASY,"Array, String, Trie, Rolling Hash, String Matching, Hash Function",https://leetcode.com/problems/count-prefix-and-suffix-pairs-i,95.5,0.7768949245817506
+Group Anagrams,MEDIUM,"Array, Hash Table, String, Sorting",https://leetcode.com/problems/group-anagrams,73.1,0.709289019979725
+Sliding Window Maximum,HARD,"Array, Queue, Sliding Window, Heap (Priority Queue), Monotonic Queue",https://leetcode.com/problems/sliding-window-maximum,73.1,0.4760419873658764
+Search in Rotated Sorted Array,MEDIUM,"Array, Binary Search",https://leetcode.com/problems/search-in-rotated-sorted-array,66.1,0.4283730253678093
+Maximum Subarray,MEDIUM,"Array, Divide and Conquer, Dynamic Programming",https://leetcode.com/problems/maximum-subarray,66.1,0.5209983613582243
+Valid Parentheses,EASY,"String, Stack",https://leetcode.com/problems/valid-parentheses,66.1,0.4232288415727031
+Combination Sum,MEDIUM,"Array, Backtracking",https://leetcode.com/problems/combination-sum,66.1,0.7467475424037326
+Reverse Nodes in k-Group,HARD,"Linked List, Recursion",https://leetcode.com/problems/reverse-nodes-in-k-group,56.3,0.6304369585397218
+Median of Two Sorted Arrays,HARD,"Array, Binary Search, Divide and Conquer",https://leetcode.com/problems/median-of-two-sorted-arrays,56.3,0.4381465895366487
+Longest Increasing Subsequence,MEDIUM,"Array, Binary Search, Dynamic Programming",https://leetcode.com/problems/longest-increasing-subsequence,56.3,0.5780840582748139
+Linked List Cycle,EASY,"Hash Table, Linked List, Two Pointers",https://leetcode.com/problems/linked-list-cycle,56.3,0.5257071677823446
+Sort Colors,MEDIUM,"Array, Two Pointers, Sorting",https://leetcode.com/problems/sort-colors,56.3,0.6758309643609473
+Letter Combinations of a Phone Number,MEDIUM,"Hash Table, String, Backtracking",https://leetcode.com/problems/letter-combinations-of-a-phone-number,56.3,0.6385757633103413
+Longest Palindromic Substring,MEDIUM,"Two Pointers, String, Dynamic Programming",https://leetcode.com/problems/longest-palindromic-substring,56.3,0.3584616666918127
+3Sum,MEDIUM,"Array, Two Pointers, Sorting",https://leetcode.com/problems/3sum,56.3,0.3707107001706355
+Elimination Game,MEDIUM,"Math, Recursion",https://leetcode.com/problems/elimination-game,56.3,0.4479893502122422
+Set Matrix Zeroes,MEDIUM,"Array, Hash Table, Matrix",https://leetcode.com/problems/set-matrix-zeroes,56.3,0.6070890553968923
+Valid Sudoku,MEDIUM,"Array, Hash Table, Matrix",https://leetcode.com/problems/valid-sudoku,56.3,0.6227684023133426
+Minimum Size Subarray Sum,MEDIUM,"Array, Binary Search, Sliding Window, Prefix Sum",https://leetcode.com/problems/minimum-size-subarray-sum,56.3,0.4939095490430486
+Koko Eating Bananas,MEDIUM,"Array, Binary Search",https://leetcode.com/problems/koko-eating-bananas,56.3,0.4906716951687366
+Majority Element,EASY,"Array, Hash Table, Divide and Conquer, Sorting, Counting",https://leetcode.com/problems/majority-element,56.3,0.657403709272363
+Restore IP Addresses,MEDIUM,"String, Backtracking",https://leetcode.com/problems/restore-ip-addresses,56.3,0.5315843132324689
+Block Placement Queries,HARD,"Array, Binary Search, Binary Indexed Tree, Segment Tree",https://leetcode.com/problems/block-placement-queries,56.3,0.168902023187088
+Product of Array Except Self,MEDIUM,"Array, Prefix Sum",https://leetcode.com/problems/product-of-array-except-self,56.3,0.6778005135612262
+LRU Cache,MEDIUM,"Hash Table, Linked List, Design, Doubly-Linked List",https://leetcode.com/problems/lru-cache,56.3,0.4521483770727891

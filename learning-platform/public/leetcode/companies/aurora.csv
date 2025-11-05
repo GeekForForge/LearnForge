@@ -1,0 +1,5 @@
+question,difficulty,topics,link,frequency,acceptance
+LRU Cache,MEDIUM,"Hash Table, Linked List, Design, Doubly-Linked List",https://leetcode.com/problems/lru-cache,100.0,0.452148887598132
+Number of Distinct Islands,MEDIUM,"Hash Table, Depth-First Search, Breadth-First Search, Union Find, Hash Function",https://leetcode.com/problems/number-of-distinct-islands,74.6,0.6225556277539093
+Diameter of Binary Tree,EASY,"Tree, Depth-First Search, Binary Tree",https://leetcode.com/problems/diameter-of-binary-tree,74.6,0.6358628163246234
+Word Search II,HARD,"Array, String, Backtracking, Trie, Matrix",https://leetcode.com/problems/word-search-ii,74.6,0.3732641536078909

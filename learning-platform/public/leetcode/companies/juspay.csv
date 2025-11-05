@@ -1,0 +1,12 @@
+question,difficulty,topics,link,frequency,acceptance
+Longest Cycle in a Graph,HARD,"Depth-First Search, Breadth-First Search, Graph, Topological Sort",https://leetcode.com/problems/longest-cycle-in-a-graph,100.0,0.4980014754946761
+Operations on Tree,MEDIUM,"Array, Hash Table, Tree, Depth-First Search, Breadth-First Search, Design",https://leetcode.com/problems/operations-on-tree,100.0,0.4336829375091223
+Find Closest Node to Given Two Nodes,MEDIUM,"Depth-First Search, Graph",https://leetcode.com/problems/find-closest-node-to-given-two-nodes,95.8,0.5285199349714834
+Node With Highest Edge Score,MEDIUM,"Hash Table, Graph",https://leetcode.com/problems/node-with-highest-edge-score,90.6,0.4845573841803813
+Longest Subsequence With Decreasing Adjacent Difference,MEDIUM,"Array, Dynamic Programming",https://leetcode.com/problems/longest-subsequence-with-decreasing-adjacent-difference,88.5,0.1466422532177284
+Set Matrix Zeroes,MEDIUM,"Array, Hash Table, Matrix",https://leetcode.com/problems/set-matrix-zeroes,68.8,0.6070892209392098
+Longest Substring Without Repeating Characters,MEDIUM,"Hash Table, String, Sliding Window",https://leetcode.com/problems/longest-substring-without-repeating-characters,62.6,0.3693615972153291
+Largest Color Value in a Directed Graph,HARD,"Hash Table, Dynamic Programming, Graph, Topological Sort, Memoization, Counting",https://leetcode.com/problems/largest-color-value-in-a-directed-graph,62.6,0.5767908345021908
+Shortest Path in a Weighted Tree,HARD,"Array, Tree, Depth-First Search, Binary Indexed Tree, Segment Tree",https://leetcode.com/problems/shortest-path-in-a-weighted-tree,62.6,0.3218752658895601
+Sliding Window Maximum,HARD,"Array, Queue, Sliding Window, Heap (Priority Queue), Monotonic Queue",https://leetcode.com/problems/sliding-window-maximum,62.6,0.4760411733705058
+Word Ladder,HARD,"Hash Table, String, Breadth-First Search",https://leetcode.com/problems/word-ladder,53.9,0.428121180370933

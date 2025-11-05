@@ -1,0 +1,16 @@
+question,difficulty,topics,link,frequency,acceptance
+Time Based Key-Value Store,MEDIUM,"Hash Table, String, Binary Search, Design",https://leetcode.com/problems/time-based-key-value-store,100.0,0.4936643133682532
+Check if Every Row and Column Contains All Numbers,EASY,"Array, Hash Table, Matrix",https://leetcode.com/problems/check-if-every-row-and-column-contains-all-numbers,96.4,0.528410934019593
+Find First and Last Position of Element in Sorted Array,MEDIUM,"Array, Binary Search",https://leetcode.com/problems/find-first-and-last-position-of-element-in-sorted-array,79.6,0.4682883757340722
+Squares of a Sorted Array,EASY,"Array, Two Pointers, Sorting",https://leetcode.com/problems/squares-of-a-sorted-array,74.9,0.73219143688745
+Wildcard Matching,HARD,"String, Dynamic Programming, Greedy, Recursion",https://leetcode.com/problems/wildcard-matching,68.7,0.2989829339911512
+Best Time to Buy and Sell Stock,EASY,"Array, Dynamic Programming",https://leetcode.com/problems/best-time-to-buy-and-sell-stock,60.1,0.552596467973665
+Valid Number,HARD,String,https://leetcode.com/problems/valid-number,60.1,0.2156370520735026
+Minimum Number of Arrows to Burst Balloons,MEDIUM,"Array, Greedy, Sorting",https://leetcode.com/problems/minimum-number-of-arrows-to-burst-balloons,60.1,0.6039249178941016
+Maximum Number of Events That Can Be Attended,MEDIUM,"Array, Greedy, Sorting, Heap (Priority Queue)",https://leetcode.com/problems/maximum-number-of-events-that-can-be-attended,60.1,0.3292198182552009
+Search Insert Position,EASY,"Array, Binary Search",https://leetcode.com/problems/search-insert-position,60.1,0.4901245846617453
+Valid Sudoku,MEDIUM,"Array, Hash Table, Matrix",https://leetcode.com/problems/valid-sudoku,60.1,0.6227680112280841
+Non-overlapping Intervals,MEDIUM,"Array, Dynamic Programming, Greedy, Sorting",https://leetcode.com/problems/non-overlapping-intervals,60.1,0.5550319675646174
+Merge Intervals,MEDIUM,"Array, Sorting",https://leetcode.com/problems/merge-intervals,60.1,0.4939526408318937
+Word Search II,HARD,"Array, String, Backtracking, Trie, Matrix",https://leetcode.com/problems/word-search-ii,60.1,0.3732635028051379
+Average Waiting Time,MEDIUM,"Array, Simulation",https://leetcode.com/problems/average-waiting-time,60.1,0.730517914922463

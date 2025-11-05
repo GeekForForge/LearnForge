@@ -1,0 +1,30 @@
+question,difficulty,topics,link,frequency,acceptance
+Destination City,EASY,"Array, Hash Table, String",https://leetcode.com/problems/destination-city,100.0,0.7943375928894831
+"Filter Restaurants by Vegan-Friendly, Price and Distance",MEDIUM,"Array, Sorting",https://leetcode.com/problems/filter-restaurants-by-vegan-friendly-price-and-distance,100.0,0.6325734199731369
+Course Schedule,MEDIUM,"Depth-First Search, Breadth-First Search, Graph, Topological Sort",https://leetcode.com/problems/course-schedule,100.0,0.492343878329654
+Two Sum,EASY,"Array, Hash Table",https://leetcode.com/problems/two-sum,97.5,0.5577699645064844
+Longest Substring Without Repeating Characters,MEDIUM,"Hash Table, String, Sliding Window",https://leetcode.com/problems/longest-substring-without-repeating-characters,97.5,0.3693613948915527
+Letter Case Permutation,MEDIUM,"String, Backtracking, Bit Manipulation",https://leetcode.com/problems/letter-case-permutation,97.5,0.7516161037128495
+Top K Frequent Words,MEDIUM,"Array, Hash Table, String, Trie, Sorting, Heap (Priority Queue), Bucket Sort, Counting",https://leetcode.com/problems/top-k-frequent-words,97.5,0.5927716320908868
+Minimum Index Sum of Two Lists,EASY,"Array, Hash Table, String",https://leetcode.com/problems/minimum-index-sum-of-two-lists,97.5,0.5797263211918526
+Find the Closest Palindrome,HARD,"Math, String",https://leetcode.com/problems/find-the-closest-palindrome,97.5,0.3162979970229028
+Check If a Word Occurs As a Prefix of Any Word in a Sentence,EASY,"Two Pointers, String, String Matching",https://leetcode.com/problems/check-if-a-word-occurs-as-a-prefix-of-any-word-in-a-sentence,97.5,0.6867219790163613
+String Compression,MEDIUM,"Two Pointers, String",https://leetcode.com/problems/string-compression,97.5,0.580915717497265
+Decode String,MEDIUM,"String, Stack, Recursion",https://leetcode.com/problems/decode-string,97.5,0.6115259200424883
+Insert Delete GetRandom O(1) - Duplicates allowed,HARD,"Array, Hash Table, Math, Design, Randomized",https://leetcode.com/problems/insert-delete-getrandom-o1-duplicates-allowed,97.5,0.3577155976591297
+Insert Delete GetRandom O(1),MEDIUM,"Array, Hash Table, Math, Design, Randomized",https://leetcode.com/problems/insert-delete-getrandom-o1,97.5,0.5499191107870306
+Top K Frequent Elements,MEDIUM,"Array, Hash Table, Divide and Conquer, Sorting, Heap (Priority Queue), Bucket Sort, Counting, Quickselect",https://leetcode.com/problems/top-k-frequent-elements,97.5,0.6456599976389505
+Valid Anagram,EASY,"Hash Table, String, Sorting",https://leetcode.com/problems/valid-anagram,97.5,0.6666095634535033
+The Skyline Problem,HARD,"Array, Divide and Conquer, Binary Indexed Tree, Segment Tree, Line Sweep, Heap (Priority Queue), Ordered Set",https://leetcode.com/problems/the-skyline-problem,97.5,0.4396233271583687
+Reverse Linked List,EASY,"Linked List, Recursion",https://leetcode.com/problems/reverse-linked-list,97.5,0.7920658884935761
+Active Businesses,MEDIUM,Database,https://leetcode.com/problems/active-businesses,97.5,0.6590212855860138
+Reverse Words in a String,MEDIUM,"Two Pointers, String",https://leetcode.com/problems/reverse-words-in-a-string,97.5,0.5191333530123619
+Word Ladder,HARD,"Hash Table, String, Breadth-First Search",https://leetcode.com/problems/word-ladder,97.5,0.42811943257807
+Word Ladder II,HARD,"Hash Table, String, Backtracking, Breadth-First Search",https://leetcode.com/problems/word-ladder-ii,97.5,0.271526407856053
+Merge Intervals,MEDIUM,"Array, Sorting",https://leetcode.com/problems/merge-intervals,97.5,0.4939524807002676
+Group Anagrams,MEDIUM,"Array, Hash Table, String, Sorting",https://leetcode.com/problems/group-anagrams,97.5,0.709288828623018
+Longest Common Prefix,EASY,"String, Trie",https://leetcode.com/problems/longest-common-prefix,97.5,0.454831534103868
+Remove Colored Pieces if Both Neighbors are the Same Color,MEDIUM,"Math, String, Greedy, Game Theory",https://leetcode.com/problems/remove-colored-pieces-if-both-neighbors-are-the-same-color,97.5,0.628394799073718
+Random Pick with Weight,MEDIUM,"Array, Math, Binary Search, Prefix Sum, Randomized",https://leetcode.com/problems/random-pick-with-weight,79.5,0.4827848834673827
+Minimum String Length After Removing Substrings,EASY,"String, Stack, Simulation",https://leetcode.com/problems/minimum-string-length-after-removing-substrings,55.8,0.7708193935176512
+Shortest and Lexicographically Smallest Beautiful String,MEDIUM,"String, Sliding Window",https://leetcode.com/problems/shortest-and-lexicographically-smallest-beautiful-string,55.8,0.3966286564204264

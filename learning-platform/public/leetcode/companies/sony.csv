@@ -1,0 +1,5 @@
+question,difficulty,topics,link,frequency,acceptance
+Subtree Removal Game with Fibonacci Tree,HARD,"Math, Dynamic Programming, Tree, Binary Tree, Game Theory",https://leetcode.com/problems/subtree-removal-game-with-fibonacci-tree,100.0,0.5698689956331878
+Reducing Dishes,HARD,"Array, Dynamic Programming, Greedy, Sorting",https://leetcode.com/problems/reducing-dishes,74.9,0.7634905741624626
+Best Time to Buy and Sell Stock,EASY,"Array, Dynamic Programming",https://leetcode.com/problems/best-time-to-buy-and-sell-stock,66.5,0.5525969471064145
+Random Pick with Weight,MEDIUM,"Array, Math, Binary Search, Prefix Sum, Randomized",https://leetcode.com/problems/random-pick-with-weight,66.5,0.4827853398737957
