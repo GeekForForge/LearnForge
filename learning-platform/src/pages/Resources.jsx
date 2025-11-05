@@ -62,7 +62,9 @@ const companyNames = [
     "ZScaler", "Zalando", "Zendesk", "Zenefits", "Zepto", "Zeta", "Zillow", "ZipRecruiter", "Zluri",
     "Zoho", "Zomato", "Zoom", "Zoox", "Zopsmart", "Zynga", "athenahealth", "blinkit", "carwale",
     "ciena", "eBay", "fourkites", "instabase", "jio", "josh technology"
-];
+].sort(function (a, b) {
+    return a.toLowerCase().localeCompare(b.toLowerCase());
+});
 
 const colorThemes = [
     "from-blue-500 to-cyan-500",
