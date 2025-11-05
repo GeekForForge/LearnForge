@@ -4,7 +4,7 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
     Menu, X, User, BookOpen, Home, Settings, LogIn, LogOut, Info,
-    Bell, MessageSquare, Flame, Trophy, Users
+    Trophy
 } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
 
@@ -12,52 +12,10 @@ const Navbar = ({ currentPage, setCurrentPage }) => {
     const [isOpen, setIsOpen] = useState(false);
     const [scrolled, setScrolled] = useState(false);
     const [isUserMenuOpen, setIsUserMenuOpen] = useState(false);
-    const [isNotificationOpen, setIsNotificationOpen] = useState(false);
-    const [isMessageOpen, setIsMessageOpen] = useState(false);
     const location = useLocation();
     const navigate = useNavigate();
 
     const { user, isAuthenticated, logout } = useAuth();
-
-    // Mock data
-    const [notificationCount] = useState(3);
-    const [messageCount] = useState(5);
-
-    const notifications = [
-        { id: 1, message: 'John Doe sent you a friend request', time: '2 hours ago', unread: true },
-        { id: 2, message: 'Jane replied to your discussion', time: '5 hours ago', unread: true },
-        { id: 3, message: 'You earned the "7 Day Streak" badge!', time: '1 day ago', unread: false },
-    ];
-
-    const messages = [
-        {
-            id: 1,
-            user: 'Alice Johnson',
-            avatar: 'https://ui-avatars.com/api/?name=Alice+Johnson',
-            message: 'Hey! Can you help me with React hooks?',
-            time: '2m ago',
-            unread: true,
-            online: true
-        },
-        {
-            id: 2,
-            user: 'Bob Smith',
-            avatar: 'https://ui-avatars.com/api/?name=Bob+Smith',
-            message: 'Thanks for the DSA notes!',
-            time: '1h ago',
-            unread: true,
-            online: false
-        },
-        {
-            id: 3,
-            user: 'Carol White',
-            avatar: 'https://ui-avatars.com/api/?name=Carol+White',
-            message: 'Lets start a study group',
-            time: '3h ago',
-            unread: false,
-            online: true
-        },
-    ];
 
     useEffect(() => {
         const handleScroll = () => {
@@ -69,8 +27,6 @@ const Navbar = ({ currentPage, setCurrentPage }) => {
 
     useEffect(() => {
         setIsUserMenuOpen(false);
-        setIsNotificationOpen(false);
-        setIsMessageOpen(false);
 
         const path = location.pathname;
         if (path === '/') setCurrentPage('home');
@@ -99,18 +55,16 @@ const Navbar = ({ currentPage, setCurrentPage }) => {
         const handleClickOutside = (event) => {
             if (!event.target.closest('.dropdown-menu')) {
                 setIsUserMenuOpen(false);
-                setIsNotificationOpen(false);
-                setIsMessageOpen(false);
             }
         };
         document.addEventListener('mousedown', handleClickOutside);
         return () => document.removeEventListener('mousedown', handleClickOutside);
     }, []);
 
-    // Navigation items - UPDATED with proper synchronization
+    // Navigation items
     const navItems = isAuthenticated ? [
-        { name: 'Home', path: '/', icon: Home, key: 'home' },     // <-- always "/"
-        { name: 'Feed', path: '/feed', icon: Flame, key: 'feed' }, // <-- always "/feed"
+        { name: 'Home', path: '/', icon: Home, key: 'home' },
+        { name: 'Feed', path: '/feed', icon: BookOpen, key: 'feed' },
         { name: 'Courses', path: '/courses', icon: BookOpen, key: 'courses' },
         { name: 'About', path: '/about', icon: Info, key: 'about' },
     ] : [
@@ -118,7 +72,6 @@ const Navbar = ({ currentPage, setCurrentPage }) => {
         { name: 'Courses', path: '/courses', icon: BookOpen, key: 'courses' },
         { name: 'About', path: '/about', icon: Info, key: 'about' },
     ];
-
 
     const userMenuItems = [
         { name: 'Profile', path: '/profile', icon: User, key: 'profile' },
@@ -178,139 +131,6 @@ const Navbar = ({ currentPage, setCurrentPage }) => {
                             </Link>
                         ))}
 
-                        {isAuthenticated && (
-                            <>
-                                {/* Notifications */}
-                                <div className="relative dropdown-menu">
-                                    <motion.button
-                                        whileHover={{ scale: 1.05 }}
-                                        whileTap={{ scale: 0.95 }}
-                                        onClick={() => {
-                                            setIsNotificationOpen(!isNotificationOpen);
-                                            setIsMessageOpen(false);
-                                            setIsUserMenuOpen(false);
-                                        }}
-                                        className="relative p-2 rounded-full hover:bg-white/10 transition-all"
-                                    >
-                                        <Bell size={20} className="text-gray-300" />
-                                        {notificationCount > 0 && (
-                                            <span className="absolute top-0 right-0 bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center font-bold">
-                                                {notificationCount}
-                                            </span>
-                                        )}
-                                    </motion.button>
-
-                                    <AnimatePresence>
-                                        {isNotificationOpen && (
-                                            <motion.div
-                                                initial={{ opacity: 0, y: 10, scale: 0.95 }}
-                                                animate={{ opacity: 1, y: 0, scale: 1 }}
-                                                exit={{ opacity: 0, y: 10, scale: 0.95 }}
-                                                className="absolute right-0 mt-2 w-80 bg-dark-800/95 backdrop-blur-lg border border-white/10 rounded-xl shadow-2xl overflow-hidden"
-                                            >
-                                                <div className="px-4 py-3 border-b border-white/10 flex items-center justify-between">
-                                                    <h3 className="font-semibold text-white">Notifications</h3>
-                                                    <button className="text-xs text-neon-cyan hover:text-neon-purple">
-                                                        Mark all read
-                                                    </button>
-                                                </div>
-                                                <div className="max-h-96 overflow-y-auto">
-                                                    {notifications.map((notif) => (
-                                                        <div
-                                                            key={notif.id}
-                                                            className={`px-4 py-3 border-b border-white/5 hover:bg-white/5 cursor-pointer ${
-                                                                notif.unread ? 'bg-neon-purple/10' : ''
-                                                            }`}
-                                                        >
-                                                            <p className="text-sm text-gray-200">{notif.message}</p>
-                                                            <p className="text-xs text-gray-500 mt-1">{notif.time}</p>
-                                                        </div>
-                                                    ))}
-                                                </div>
-                                                <Link
-                                                    to="/notifications"
-                                                    className="block px-4 py-3 text-center text-sm text-neon-cyan hover:bg-white/5 font-medium"
-                                                    onClick={() => setIsNotificationOpen(false)}
-                                                >
-                                                    View All Notifications
-                                                </Link>
-                                            </motion.div>
-                                        )}
-                                    </AnimatePresence>
-                                </div>
-
-                                {/* Messages */}
-                                <div className="relative dropdown-menu">
-                                    <motion.button
-                                        whileHover={{ scale: 1.05 }}
-                                        whileTap={{ scale: 0.95 }}
-                                        onClick={() => {
-                                            setIsMessageOpen(!isMessageOpen);
-                                            setIsNotificationOpen(false);
-                                            setIsUserMenuOpen(false);
-                                        }}
-                                        className="relative p-2 rounded-full hover:bg-white/10 transition-all"
-                                    >
-                                        <MessageSquare size={20} className="text-gray-300" />
-                                        {messageCount > 0 && (
-                                            <span className="absolute top-0 right-0 bg-neon-cyan text-white text-xs rounded-full w-5 h-5 flex items-center justify-center font-bold">
-                                                {messageCount}
-                                            </span>
-                                        )}
-                                    </motion.button>
-
-                                    <AnimatePresence>
-                                        {isMessageOpen && (
-                                            <motion.div
-                                                initial={{ opacity: 0, y: 10, scale: 0.95 }}
-                                                animate={{ opacity: 1, y: 0, scale: 1 }}
-                                                exit={{ opacity: 0, y: 10, scale: 0.95 }}
-                                                className="absolute right-0 mt-2 w-80 bg-dark-800/95 backdrop-blur-lg border border-white/10 rounded-xl shadow-2xl overflow-hidden"
-                                            >
-                                                <div className="px-4 py-3 border-b border-white/10">
-                                                    <h3 className="font-semibold text-white">Messages</h3>
-                                                </div>
-                                                <div className="max-h-96 overflow-y-auto">
-                                                    {messages.map((msg) => (
-                                                        <div
-                                                            key={msg.id}
-                                                            className={`px-4 py-3 border-b border-white/5 hover:bg-white/5 cursor-pointer ${
-                                                                msg.unread ? 'bg-neon-cyan/10' : ''
-                                                            }`}
-                                                        >
-                                                            <div className="flex items-center space-x-3">
-                                                                <div className="relative">
-                                                                    <img
-                                                                        src={msg.avatar}
-                                                                        alt={msg.user}
-                                                                        className="w-10 h-10 rounded-full"
-                                                                    />
-                                                                    {msg.online && (
-                                                                        <div className="absolute bottom-0 right-0 w-3 h-3 bg-green-500 rounded-full border-2 border-dark-800"></div>
-                                                                    )}
-                                                                </div>
-                                                                <div className="flex-1 min-w-0">
-                                                                    <p className="font-semibold text-sm text-white truncate">{msg.user}</p>
-                                                                    <p className="text-sm text-gray-400 truncate">{msg.message}</p>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    ))}
-                                                </div>
-                                                <Link
-                                                    to="/messages"
-                                                    className="block px-4 py-3 text-center text-sm text-neon-cyan hover:bg-white/5 font-medium"
-                                                    onClick={() => setIsMessageOpen(false)}
-                                                >
-                                                    View All Messages
-                                                </Link>
-                                            </motion.div>
-                                        )}
-                                    </AnimatePresence>
-                                </div>
-                            </>
-                        )}
-
                         {/* User Menu */}
                         {isAuthenticated ? (
                             <div className="relative dropdown-menu">
@@ -319,8 +139,6 @@ const Navbar = ({ currentPage, setCurrentPage }) => {
                                     whileTap={{ scale: 0.95 }}
                                     onClick={() => {
                                         setIsUserMenuOpen(!isUserMenuOpen);
-                                        setIsNotificationOpen(false);
-                                        setIsMessageOpen(false);
                                     }}
                                     className="flex items-center justify-center p-2 rounded-full bg-white/5 hover:bg-white/10 border border-white/10 transition-all"
                                 >

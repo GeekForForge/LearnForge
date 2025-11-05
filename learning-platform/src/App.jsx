@@ -21,6 +21,7 @@ import Leaderboard from './pages/Leaderboard';
 import Messages from './pages/Messages';
 import Notifications from './pages/Notifications';
 import Resources from './pages/Resources';
+import UserProfilePage from "./pages/UserProfilePage";
 
 // Admin
 import ProtectedAdminRoute from './components/ProtectedAdminRoute';
@@ -124,6 +125,8 @@ function AppContent() {
                         <Route path="/settings" element={<SettingsPage setCurrentPage={setCurrentPage} />} />
                         <Route path="/auth/callback" element={<AuthCallbackPage setCurrentPage={setCurrentPage} />} />
                         <Route path="/about" element={<AboutPage setCurrentPage={setCurrentPage} />} />
+                        <Route path="/user/:userId" element={<UserProfilePage setCurrentPage={setCurrentPage} />} />
+
 
                         {/* Resources */}
                         <Route path="/resources" element={<Resources setCurrentPage={setCurrentPage} />} />

@@ -1256,3 +1256,17 @@ html {
 /* =================================
    END LENIS LANDING PAGE ADDITIONS
    ================================= */
+@keyframes glow {
+    0%, 100% { box-shadow: 0 0 30px 8px #22ffff99, 0 10px 55px 18px #a884fa40; }
+    50%      { box-shadow: 0 0 40px 20px #22ffffbb, 0 10px 75px 25px #a884fa80; }
+}
+.animate-glow {
+    animation: glow 2.5s ease-in-out infinite alternate;
+}
+.neon-glow {
+    text-shadow:
+            0 0 8px #2ee3fa,
+            0 0 10px #85edfc,
+            0 0 16px #6ec0ff,
+            0 0 22px #61dafb;
+}

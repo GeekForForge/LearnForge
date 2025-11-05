@@ -20,22 +20,33 @@ const AboutPage = ({ setCurrentPage }) => {
     fetchStats();
   }, [setCurrentPage]);
 
-  const fetchStats = async () => {
-    try {
-      const courses = await ApiService.getAllCourses();
-      setStats({
-        totalCourses: courses.length,
-        // totalLessons: courses.reduce((acc, course) => acc + (course.lessons?.length || 0), 0),
-          totalLessons: 25,
+    const fetchStats = async () => {
+        try {
+            const courses = await ApiService.getAllCourses();
 
-        totalHours: courses.length * 8 // Approximate
-      });
-    } catch (error) {
-      console.error('Error fetching stats:', error);
-    }
-  };
+            let totalLessons = 0;
 
-  const journey = [
+            for (const course of courses) {
+                try {
+                    const lessons = await ApiService.getLessonsByCourse(course.courseId);
+                    totalLessons += lessons.length;
+                } catch (error) {
+                    console.error(`Error fetching lessons for course ${course.courseId}:`, error);
+                }
+            }
+
+            setStats({
+                totalCourses: courses.length,
+                totalLessons: totalLessons,
+                totalHours: Math.ceil(totalLessons / 5) // approximate hours per 5 lessons
+            });
+        } catch (error) {
+            console.error('Error fetching stats:', error);
+        }
+    };
+
+
+    const journey = [
     {
       year: "2023",
       title: "The Beginning",

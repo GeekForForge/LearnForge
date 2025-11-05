@@ -3,7 +3,8 @@ import { motion } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
 import {
     BookOpen, Award, TrendingUp, Target, Clock, CheckCircle,
-    User, Mail, Calendar, Settings, Edit3, ChevronRight, Flame, Trophy
+    User, Mail, Calendar, Settings, Edit3, ChevronRight, Flame, Trophy,
+    Code, Star, Zap, Crown, Medal
 } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
 import { useProgress } from '../context/ProgressContext';
@@ -23,42 +24,41 @@ const ProfilePage = ({ setCurrentPage }) => {
         totalLessonsCompleted: 0
     });
 
+    // Problem solving stats state
+    const [problemStats, setProblemStats] = useState({
+        totalQuestions: 427,
+        leetcode: { total: 303, easy: 150, medium: 120, hard: 33 },
+        codeStudio: { total: 123, easy: 80, medium: 30, hard: 13 },
+        geeksforgeeks: { total: 0, easy: 0, medium: 0, hard: 0 },
+        awards: 2,
+        streak: [false, false, true, true, true] // Weekly streak dots
+    });
+
     useEffect(() => {
         setCurrentPage('profile');
-
         if (!isAuthenticated) {
             navigate('/login');
             return;
         }
-
         loadProfileData();
     }, [isAuthenticated, setCurrentPage]);
 
     const loadProfileData = async () => {
         try {
             setLoading(true);
-
-            // Refresh progress data
             await refreshProgress();
             await refreshSummary();
 
-            // Get all courses
             const allCourses = await ApiService.getAllCourses();
-
-            // Filter courses where user has progress
             const coursesWithProgress = allCourses.filter(course =>
                 progressData[course.courseId]
             );
-
             setEnrolledCourses(coursesWithProgress);
-            console.log('✅ Enrolled courses:', coursesWithProgress);
 
-            // ✅ Fetch streak data
             if (user && user.userId) {
                 try {
                     const streak = await ApiService.getUserStreak(user.userId);
                     setStreakData(streak);
-                    console.log('🔥 Streak data:', streak);
                 } catch (error) {
                     console.error('❌ Error fetching streak:', error);
                 }
@@ -74,9 +74,7 @@ const ProfilePage = ({ setCurrentPage }) => {
         try {
             const lessons = await ApiService.getLessonsByCourse(courseId);
             const progress = progressData[courseId];
-
             if (!progress || !lessons.length) return 0;
-
             const completedCount = progress.completedLessons?.length || 0;
             return Math.round((completedCount / lessons.length) * 100);
         } catch (error) {
@@ -121,17 +119,13 @@ const ProfilePage = ({ setCurrentPage }) => {
                     className="bg-gradient-to-r from-neon-purple/20 to-neon-cyan/20 rounded-3xl p-8 mb-8 border border-white/10"
                 >
                     <div className="flex flex-col md:flex-row items-start md:items-center gap-6">
-                        {/* Avatar */}
                         <img
                             src={user.avatarUrl || 'https://via.placeholder.com/120'}
                             alt={user.name}
                             className="w-32 h-32 rounded-full border-4 border-neon-cyan shadow-lg shadow-neon-cyan/30"
                         />
-
-                        {/* User Info */}
                         <div className="flex-1">
                             <h1 className="text-4xl font-bold text-white mb-2">{user.name}</h1>
-
                             <div className="flex flex-wrap items-center gap-4 text-sm text-gray-400 mb-4">
                                 <div className="flex items-center gap-2">
                                     <Mail size={16} />
@@ -142,8 +136,6 @@ const ProfilePage = ({ setCurrentPage }) => {
                                     <span>Joined {new Date(user.createdAt).toLocaleDateString()}</span>
                                 </div>
                             </div>
-
-                            {/* Overall Progress */}
                             {summary && summary.totalLessons > 0 && (
                                 <div className="max-w-md">
                                     <div className="flex items-center justify-between mb-2">
@@ -163,8 +155,6 @@ const ProfilePage = ({ setCurrentPage }) => {
                                 </div>
                             )}
                         </div>
-
-                        {/* Edit Button */}
                         <button
                             onClick={() => navigate('/settings')}
                             className="px-6 py-3 bg-white/10 hover:bg-white/20 rounded-xl text-white font-medium flex items-center gap-2 transition-all border border-white/20"
@@ -175,11 +165,163 @@ const ProfilePage = ({ setCurrentPage }) => {
                     </div>
                 </motion.div>
 
-                {/* ✅ STREAK SECTION - NEW! */}
+                {/* CODING STATS - STUNNING NEW SECTION */}
+                <motion.div
+                    initial={{ opacity: 0, y: 30 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.1 }}
+                    className="mb-8"
+                >
+                    <div className="flex items-center gap-3 mb-6">
+                        <div className="p-2 bg-gradient-to-r from-neon-purple to-neon-cyan rounded-xl">
+                            <Code className="text-white" size={28} />
+                        </div>
+                        <h2 className="text-3xl font-bold text-white">Problem Solving Stats</h2>
+                    </div>
+
+                    <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                        {/* Main Stats Card */}
+                        <motion.div
+                            whileHover={{ scale: 1.02, y: -5 }}
+                            className="lg:col-span-2 bg-gradient-to-br from-gray-900 to-black rounded-3xl p-8 border border-neon-purple/30 relative overflow-hidden"
+                        >
+                            {/* Animated Background Elements */}
+                            <div className="absolute top-0 right-0 w-32 h-32 bg-neon-cyan/10 rounded-full blur-2xl"></div>
+                            <div className="absolute bottom-0 left-0 w-24 h-24 bg-neon-purple/10 rounded-full blur-2xl"></div>
+
+                            <div className="relative z-10">
+                                <div className="flex items-center justify-between mb-8">
+                                    <h3 className="text-2xl font-bold text-white">Total Questions</h3>
+                                    <div className="flex items-center gap-2">
+                                        {problemStats.streak.map((completed, index) => (
+                                            <div
+                                                key={index}
+                                                className={`w-3 h-3 rounded-full ${
+                                                    completed
+                                                        ? 'bg-gradient-to-r from-yellow-400 to-orange-500 shadow-lg shadow-yellow-500/25'
+                                                        : 'bg-gray-600'
+                                                }`}
+                                            />
+                                        ))}
+                                    </div>
+                                </div>
+
+                                <div className="grid grid-cols-3 gap-6 mb-6">
+                                    <div className="text-center">
+                                        <div className="text-5xl font-bold bg-gradient-to-r from-green-400 to-cyan-400 bg-clip-text text-transparent mb-2">
+                                            {problemStats.leetcode.total}
+                                        </div>
+                                        <div className="flex items-center justify-center gap-2 text-gray-300">
+                                            <div className="w-3 h-3 bg-green-500 rounded-full"></div>
+                                            <span className="text-sm">LeetCode</span>
+                                        </div>
+                                    </div>
+
+                                    <div className="text-center">
+                                        <div className="text-5xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent mb-2">
+                                            {problemStats.codeStudio.total}
+                                        </div>
+                                        <div className="flex items-center justify-center gap-2 text-gray-300">
+                                            <div className="w-3 h-3 bg-blue-500 rounded-full"></div>
+                                            <span className="text-sm">CodeStudio</span>
+                                        </div>
+                                    </div>
+
+                                    <div className="text-center">
+                                        <div className="text-5xl font-bold bg-gradient-to-r from-orange-400 to-red-400 bg-clip-text text-transparent mb-2">
+                                            {problemStats.geeksforgeeks.total}
+                                        </div>
+                                        <div className="flex items-center justify-center gap-2 text-gray-300">
+                                            <div className="w-3 h-3 bg-orange-500 rounded-full"></div>
+                                            <span className="text-sm">GeeksforGeeks</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div className="bg-black/50 rounded-2xl p-6 border border-white/10">
+                                    <h4 className="text-lg font-semibold text-white mb-4 flex items-center gap-2">
+                                        <Zap className="text-yellow-400" size={20} />
+                                        Difficulty Breakdown
+                                    </h4>
+                                    <div className="grid grid-cols-3 gap-4">
+                                        <div className="text-center">
+                                            <div className="text-2xl font-bold text-green-400 mb-1">
+                                                {problemStats.leetcode.easy + problemStats.codeStudio.easy}
+                                            </div>
+                                            <div className="text-xs text-gray-400">Easy</div>
+                                        </div>
+                                        <div className="text-center">
+                                            <div className="text-2xl font-bold text-yellow-400 mb-1">
+                                                {problemStats.leetcode.medium + problemStats.codeStudio.medium}
+                                            </div>
+                                            <div className="text-xs text-gray-400">Medium</div>
+                                        </div>
+                                        <div className="text-center">
+                                            <div className="text-2xl font-bold text-red-400 mb-1">
+                                                {problemStats.leetcode.hard + problemStats.codeStudio.hard}
+                                            </div>
+                                            <div className="text-xs text-gray-400">Hard</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </motion.div>
+
+                        {/* Awards & Achievements */}
+                        <motion.div
+                            whileHover={{ scale: 1.02, y: -5 }}
+                            className="bg-gradient-to-br from-gray-900 to-black rounded-3xl p-8 border border-yellow-500/30 relative overflow-hidden"
+                        >
+                            <div className="absolute top-0 right-0 w-24 h-24 bg-yellow-500/10 rounded-full blur-2xl"></div>
+
+                            <div className="relative z-10">
+                                <h3 className="text-2xl font-bold text-white mb-6 flex items-center gap-3">
+                                    <Crown className="text-yellow-400" size={28} />
+                                    Awards & Achievements
+                                </h3>
+
+                                <div className="text-center mb-6">
+                                    <div className="text-6xl font-bold bg-gradient-to-r from-yellow-400 to-orange-500 bg-clip-text text-transparent mb-2">
+                                        {problemStats.awards}
+                                    </div>
+                                    <p className="text-gray-400 text-sm">Badges Earned</p>
+                                </div>
+
+                                <div className="space-y-4">
+                                    <div className="flex items-center gap-4 p-4 bg-yellow-500/10 rounded-2xl border border-yellow-500/20">
+                                        <div className="w-12 h-12 bg-gradient-to-r from-yellow-400 to-orange-500 rounded-xl flex items-center justify-center">
+                                            <Medal className="text-white" size={24} />
+                                        </div>
+                                        <div>
+                                            <div className="text-white font-semibold">Problem Solver</div>
+                                            <div className="text-yellow-400 text-sm">100+ Questions</div>
+                                        </div>
+                                    </div>
+
+                                    <div className="flex items-center gap-4 p-4 bg-purple-500/10 rounded-2xl border border-purple-500/20">
+                                        <div className="w-12 h-12 bg-gradient-to-r from-purple-400 to-pink-500 rounded-xl flex items-center justify-center">
+                                            <Star className="text-white" size={24} />
+                                        </div>
+                                        <div>
+                                            <div className="text-white font-semibold">Consistency King</div>
+                                            <div className="text-purple-400 text-sm">7-Day Streak</div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <button className="w-full mt-6 py-3 bg-gradient-to-r from-yellow-500 to-orange-500 text-white font-bold rounded-xl hover:shadow-lg hover:shadow-yellow-500/25 transition-all">
+                                    View All Achievements
+                                </button>
+                            </div>
+                        </motion.div>
+                    </div>
+                </motion.div>
+
+                {/* STREAK SECTION */}
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.1 }}
+                    transition={{ delay: 0.2 }}
                     className="mb-8"
                 >
                     <h2 className="text-2xl font-bold text-white mb-4 flex items-center gap-2">
@@ -193,7 +335,7 @@ const ProfilePage = ({ setCurrentPage }) => {
                     />
                 </motion.div>
 
-                {/* Stats Cards */}
+                {/* Original Stats Cards */}
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
                     <StatCard
                         icon={<BookOpen className="text-neon-purple" size={28} />}
@@ -201,21 +343,18 @@ const ProfilePage = ({ setCurrentPage }) => {
                         value={summary?.totalCourses || 0}
                         color="purple"
                     />
-
                     <StatCard
                         icon={<CheckCircle className="text-green-400" size={28} />}
                         label="Completed Courses"
                         value={summary?.completedCourses || 0}
                         color="green"
                     />
-
                     <StatCard
                         icon={<Target className="text-neon-cyan" size={28} />}
                         label="Lessons Done"
                         value={`${summary?.completedLessons || 0}/${summary?.totalLessons || 0}`}
                         color="cyan"
                     />
-
                     <StatCard
                         icon={<TrendingUp className="text-yellow-400" size={28} />}
                         label="Avg Progress"
@@ -228,7 +367,7 @@ const ProfilePage = ({ setCurrentPage }) => {
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.2 }}
+                    transition={{ delay: 0.3 }}
                 >
                     <div className="flex items-center justify-between mb-6">
                         <h2 className="text-3xl font-bold text-white">My Courses</h2>
@@ -271,6 +410,8 @@ const ProfilePage = ({ setCurrentPage }) => {
         </div>
     );
 };
+
+// ... Rest of your components (StatCard, CourseCard) remain the same ...
 
 // Stat Card Component
 const StatCard = ({ icon, label, value, color }) => {
@@ -322,7 +463,6 @@ const CourseCard = ({ course, progressData, getCourseProgress, navigate }) => {
             onClick={() => navigate(`/course/${course.courseId}`)}
             className="bg-white/5 backdrop-blur-sm rounded-2xl overflow-hidden border border-white/10 hover:border-neon-cyan/50 cursor-pointer transition-all group"
         >
-            {/* Course Header */}
             <div className="h-32 bg-gradient-to-br from-neon-purple/20 to-neon-cyan/20 flex items-center justify-center relative">
                 <BookOpen size={48} className="text-white opacity-30 group-hover:opacity-50 transition-opacity" />
                 <div className="absolute top-4 right-4">
@@ -335,22 +475,16 @@ const CourseCard = ({ course, progressData, getCourseProgress, navigate }) => {
           </span>
                 </div>
             </div>
-
-            {/* Course Info */}
             <div className="p-6">
         <span className="text-xs text-neon-cyan font-medium uppercase tracking-wider">
           {course.category}
         </span>
-
                 <h3 className="text-lg font-bold text-white mt-2 mb-2 group-hover:text-neon-cyan transition-colors">
                     {course.courseTitle}
                 </h3>
-
                 <p className="text-sm text-gray-400 mb-4">
                     {completedCount > 0 ? `${completedCount} lessons completed` : 'Just started'}
                 </p>
-
-                {/* Progress Bar */}
                 <ProgressBar
                     progress={progress}
                     color="purple"
@@ -358,7 +492,6 @@ const CourseCard = ({ course, progressData, getCourseProgress, navigate }) => {
                     animated={false}
                     showLabel={false}
                 />
-
                 <div className="flex items-center justify-between mt-2">
                     <span className="text-xs text-gray-400">Progress</span>
                     <span className="text-xs font-bold text-white">{progress}%</span>
