@@ -1,0 +1,8 @@
+question,difficulty,topics,link,frequency,acceptance
+Insert Delete GetRandom O(1),MEDIUM,"Array, Hash Table, Math, Design, Randomized",https://leetcode.com/problems/insert-delete-getrandom-o1,100.0,0.5499187644056863
+Find Median from Data Stream,HARD,"Two Pointers, Design, Sorting, Heap (Priority Queue), Data Stream",https://leetcode.com/problems/find-median-from-data-stream,100.0,0.5327803919248424
+Merge Intervals,MEDIUM,"Array, Sorting",https://leetcode.com/problems/merge-intervals,87.9,0.4939525764689584
+Daily Temperatures,MEDIUM,"Array, Stack, Monotonic Stack",https://leetcode.com/problems/daily-temperatures,87.9,0.6736510911088325
+Strings Differ by One Character,MEDIUM,"Hash Table, String, Rolling Hash, Hash Function",https://leetcode.com/problems/strings-differ-by-one-character,87.9,0.4106843965036265
+Koko Eating Bananas,MEDIUM,"Array, Binary Search",https://leetcode.com/problems/koko-eating-bananas,87.9,0.4906726025853324
+LRU Cache,MEDIUM,"Hash Table, Linked List, Design, Doubly-Linked List",https://leetcode.com/problems/lru-cache,87.9,0.4521486701029791

@@ -1,0 +1,18 @@
+question,difficulty,topics,link,frequency,acceptance
+Happy Number,EASY,"Hash Table, Math, Two Pointers",https://leetcode.com/problems/happy-number,100.0,0.5807274040188486
+Valid Parentheses,EASY,"String, Stack",https://leetcode.com/problems/valid-parentheses,94.0,0.4232289344923429
+Evaluate Division,MEDIUM,"Array, String, Depth-First Search, Breadth-First Search, Union Find, Graph, Shortest Path",https://leetcode.com/problems/evaluate-division,82.3,0.6314703330107434
+Find the Maximum Sum of Node Values,HARD,"Array, Dynamic Programming, Greedy, Bit Manipulation, Tree, Sorting",https://leetcode.com/problems/find-the-maximum-sum-of-node-values,73.2,0.6979865078996403
+Pairs of Songs With Total Durations Divisible by 60,MEDIUM,"Array, Hash Table, Counting",https://leetcode.com/problems/pairs-of-songs-with-total-durations-divisible-by-60,71.4,0.5324771514259002
+Maximum Subtree of the Same Color,MEDIUM,"Array, Dynamic Programming, Tree, Depth-First Search",https://leetcode.com/problems/maximum-subtree-of-the-same-color,71.4,0.5692307692307692
+Group Anagrams,MEDIUM,"Array, Hash Table, String, Sorting",https://leetcode.com/problems/group-anagrams,58.6,0.709289019979725
+Best Time to Buy and Sell Stock,EASY,"Array, Dynamic Programming",https://leetcode.com/problems/best-time-to-buy-and-sell-stock,58.6,0.5525966208962203
+Path with Maximum Probability,MEDIUM,"Array, Graph, Heap (Priority Queue), Shortest Path",https://leetcode.com/problems/path-with-maximum-probability,49.2,0.6529407064392282
+Maximum Profit From Trading Stocks,MEDIUM,"Array, Dynamic Programming",https://leetcode.com/problems/maximum-profit-from-trading-stocks,49.2,0.4659311012728279
+Number of Islands,MEDIUM,"Array, Depth-First Search, Breadth-First Search, Union Find, Matrix",https://leetcode.com/problems/number-of-islands,41.7,0.6232011028511795
+Valid Anagram,EASY,"Hash Table, String, Sorting",https://leetcode.com/problems/valid-anagram,41.7,0.6666099304442351
+Coin Change,MEDIUM,"Array, Dynamic Programming, Breadth-First Search",https://leetcode.com/problems/coin-change,41.7,0.4649556137047272
+Generate Parentheses,MEDIUM,"String, Dynamic Programming, Backtracking",https://leetcode.com/problems/generate-parentheses,41.7,0.7713291060549546
+Maximize Greatness of an Array,MEDIUM,"Array, Two Pointers, Greedy, Sorting",https://leetcode.com/problems/maximize-greatness-of-an-array,41.7,0.5864617466875623
+Boundary of Binary Tree,MEDIUM,"Tree, Depth-First Search, Binary Tree",https://leetcode.com/problems/boundary-of-binary-tree,41.7,0.4715862928790685
+Longest Palindromic Substring,MEDIUM,"Two Pointers, String, Dynamic Programming",https://leetcode.com/problems/longest-palindromic-substring,41.7,0.3584616475847028

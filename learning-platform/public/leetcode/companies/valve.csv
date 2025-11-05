@@ -1,0 +1,5 @@
+question,difficulty,topics,link,frequency,acceptance
+Dota2 Senate,MEDIUM,"String, Greedy, Queue",https://leetcode.com/problems/dota2-senate,100.0,0.4890672536522696
+String to Integer (atoi),MEDIUM,String,https://leetcode.com/problems/string-to-integer-atoi,88.0,0.1922949010909638
+Deep Merge of Two Objects,MEDIUM,,https://leetcode.com/problems/deep-merge-of-two-objects,66.2,0.6422558922558923
+Design Parking System,EASY,"Design, Simulation, Counting",https://leetcode.com/problems/design-parking-system,66.2,0.8707487022637689

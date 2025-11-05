@@ -1,0 +1,5 @@
+question,difficulty,topics,link,frequency,acceptance
+Maximum Number of Pairs in Array,EASY,"Array, Hash Table, Counting",https://leetcode.com/problems/maximum-number-of-pairs-in-array,100.0,0.755399434671643
+Two Sum,EASY,"Array, Hash Table",https://leetcode.com/problems/two-sum,80.4,0.5577709811356623
+3Sum,MEDIUM,"Array, Two Pointers, Sorting",https://leetcode.com/problems/3sum,74.3,0.3707126482332111
+Design a Food Rating System,MEDIUM,"Array, Hash Table, String, Design, Heap (Priority Queue), Ordered Set",https://leetcode.com/problems/design-a-food-rating-system,65.6,0.4491788770279475

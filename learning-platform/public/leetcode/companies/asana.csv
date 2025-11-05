@@ -1,0 +1,4 @@
+question,difficulty,topics,link,frequency,acceptance
+Product of Array Except Self,MEDIUM,"Array, Prefix Sum",https://leetcode.com/problems/product-of-array-except-self,100.0,0.677800810058164
+Maximum Repeating Substring,EASY,"String, Dynamic Programming, String Matching",https://leetcode.com/problems/maximum-repeating-substring,83.5,0.3962144463908421
+K Closest Points to Origin,MEDIUM,"Array, Math, Divide and Conquer, Geometry, Sorting, Heap (Priority Queue), Quickselect",https://leetcode.com/problems/k-closest-points-to-origin,79.5,0.6793970834941822

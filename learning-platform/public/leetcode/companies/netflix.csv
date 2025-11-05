@@ -1,0 +1,39 @@
+question,difficulty,topics,link,frequency,acceptance
+Merge Intervals,MEDIUM,"Array, Sorting",https://leetcode.com/problems/merge-intervals,100.0,0.4939523849309626
+Logger Rate Limiter,EASY,"Hash Table, Design, Data Stream",https://leetcode.com/problems/logger-rate-limiter,89.4,0.766103057053701
+Meeting Rooms II,MEDIUM,"Array, Two Pointers, Greedy, Sorting, Heap (Priority Queue), Prefix Sum",https://leetcode.com/problems/meeting-rooms-ii,87.7,0.5214171545868618
+First Missing Positive,HARD,"Array, Hash Table",https://leetcode.com/problems/first-missing-positive,87.7,0.4108465766394882
+Reconstruct Itinerary,HARD,"Depth-First Search, Graph, Eulerian Circuit",https://leetcode.com/problems/reconstruct-itinerary,85.8,0.4360564496598489
+Random Pick with Weight,MEDIUM,"Array, Math, Binary Search, Prefix Sum, Randomized",https://leetcode.com/problems/random-pick-with-weight,81.3,0.4827836751158982
+Time Based Key-Value Store,MEDIUM,"Hash Table, String, Binary Search, Design",https://leetcode.com/problems/time-based-key-value-store,75.8,0.4936630449185106
+Flatten Nested List Iterator,MEDIUM,"Stack, Tree, Depth-First Search, Design, Queue, Iterator",https://leetcode.com/problems/flatten-nested-list-iterator,75.8,0.6522839525510098
+LRU Cache,MEDIUM,"Hash Table, Linked List, Design, Doubly-Linked List",https://leetcode.com/problems/lru-cache,72.4,0.45214645870656
+Top K Frequent Elements,MEDIUM,"Array, Hash Table, Divide and Conquer, Sorting, Heap (Priority Queue), Bucket Sort, Counting, Quickselect",https://leetcode.com/problems/top-k-frequent-elements,72.4,0.6456597249158955
+Summary Ranges,EASY,Array,https://leetcode.com/problems/summary-ranges,72.4,0.5302484768932422
+Cache With Time Limit,MEDIUM,,https://leetcode.com/problems/cache-with-time-limit,68.4,0.7578738827979018
+Contains Duplicate II,EASY,"Array, Hash Table, Sliding Window",https://leetcode.com/problems/contains-duplicate-ii,63.5,0.4904988267558174
+Longest Substring Without Repeating Characters,MEDIUM,"Hash Table, String, Sliding Window",https://leetcode.com/problems/longest-substring-without-repeating-characters,63.5,0.3693617406358928
+Contains Duplicate III,HARD,"Array, Sliding Window, Sorting, Bucket Sort, Ordered Set",https://leetcode.com/problems/contains-duplicate-iii,63.5,0.236334246913539
+Top K Frequent Words,MEDIUM,"Array, Hash Table, String, Trie, Sorting, Heap (Priority Queue), Bucket Sort, Counting",https://leetcode.com/problems/top-k-frequent-words,57.2,0.592771943363307
+Contains Duplicate,EASY,"Array, Hash Table, Sorting",https://leetcode.com/problems/contains-duplicate,57.2,0.6323637027239968
+Koko Eating Bananas,MEDIUM,"Array, Binary Search",https://leetcode.com/problems/koko-eating-bananas,57.2,0.4906726131205488
+Word Search,MEDIUM,"Array, String, Backtracking, Depth-First Search, Matrix",https://leetcode.com/problems/word-search,57.2,0.452669635264123
+Daily Temperatures,MEDIUM,"Array, Stack, Monotonic Stack",https://leetcode.com/problems/daily-temperatures,57.2,0.6736501174296972
+Best Time to Buy and Sell Stock,EASY,"Array, Dynamic Programming",https://leetcode.com/problems/best-time-to-buy-and-sell-stock,57.2,0.5525963419027548
+Valid Parentheses,EASY,"String, Stack",https://leetcode.com/problems/valid-parentheses,57.2,0.423228375756834
+Insert Delete GetRandom O(1),MEDIUM,"Array, Hash Table, Math, Design, Randomized",https://leetcode.com/problems/insert-delete-getrandom-o1,57.2,0.5499187409631957
+Search in Rotated Sorted Array,MEDIUM,"Array, Binary Search",https://leetcode.com/problems/search-in-rotated-sorted-array,57.2,0.4283722142038899
+Course Schedule II,MEDIUM,"Depth-First Search, Breadth-First Search, Graph, Topological Sort",https://leetcode.com/problems/course-schedule-ii,57.2,0.5342350029047974
+Text Justification,HARD,"Array, String, Simulation",https://leetcode.com/problems/text-justification,48.3,0.4814993566410409
+Spiral Matrix,MEDIUM,"Array, Matrix, Simulation",https://leetcode.com/problems/spiral-matrix,48.3,0.539397306376751
+Merge Sorted Array,EASY,"Array, Two Pointers, Sorting",https://leetcode.com/problems/merge-sorted-array,48.3,0.5291952521829845
+Number of Flowers in Full Bloom,HARD,"Array, Hash Table, Binary Search, Sorting, Prefix Sum, Ordered Set",https://leetcode.com/problems/number-of-flowers-in-full-bloom,48.3,0.5717535511066795
+Rotate Image,MEDIUM,"Array, Math, Matrix",https://leetcode.com/problems/rotate-image,48.3,0.7790166005161556
+Coin Change,MEDIUM,"Array, Dynamic Programming, Breadth-First Search",https://leetcode.com/problems/coin-change,48.3,0.4649548561668961
+Word Break,MEDIUM,"Array, Hash Table, String, Dynamic Programming, Trie, Memoization",https://leetcode.com/problems/word-break,48.3,0.4827378020649074
+Generate Parentheses,MEDIUM,"String, Dynamic Programming, Backtracking",https://leetcode.com/problems/generate-parentheses,48.3,0.7713287456277772
+Rotate Array,MEDIUM,"Array, Math, Two Pointers",https://leetcode.com/problems/rotate-array,48.3,0.4302138810363553
+Network Delay Time,MEDIUM,"Depth-First Search, Breadth-First Search, Graph, Heap (Priority Queue), Shortest Path",https://leetcode.com/problems/network-delay-time,48.3,0.5744231558987412
+Minimum Remove to Make Valid Parentheses,MEDIUM,"String, Stack",https://leetcode.com/problems/minimum-remove-to-make-valid-parentheses,48.3,0.7074652447295087
+To Be Or Not To Be,EASY,,https://leetcode.com/problems/to-be-or-not-to-be,48.3,0.6295807994256238
+Implement Queue using Stacks,EASY,"Stack, Design, Queue",https://leetcode.com/problems/implement-queue-using-stacks,48.3,0.6806078349365677

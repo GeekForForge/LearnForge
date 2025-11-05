@@ -1,0 +1,3 @@
+question,difficulty,topics,link,frequency,acceptance
+Longest Common Prefix,EASY,"String, Trie",https://leetcode.com/problems/longest-common-prefix,100.0,0.4548730938950001
+Palindrome Number,EASY,Math,https://leetcode.com/problems/palindrome-number,100.0,0.5922738985051591

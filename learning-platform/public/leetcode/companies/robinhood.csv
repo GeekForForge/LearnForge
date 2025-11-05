@@ -1,0 +1,16 @@
+question,difficulty,topics,link,frequency,acceptance
+Number of Orders in the Backlog,MEDIUM,"Array, Heap (Priority Queue), Simulation",https://leetcode.com/problems/number-of-orders-in-the-backlog,100.0,0.5196292359051828
+Restore the Array From Adjacent Pairs,MEDIUM,"Array, Hash Table, Depth-First Search",https://leetcode.com/problems/restore-the-array-from-adjacent-pairs,91.4,0.7472197096394245
+Brightest Position on Street,MEDIUM,"Array, Sorting, Prefix Sum, Ordered Set",https://leetcode.com/problems/brightest-position-on-street,87.6,0.605687821115855
+Count Good Meals,MEDIUM,"Array, Hash Table",https://leetcode.com/problems/count-good-meals,87.6,0.3164606880510123
+Ways to Split Array Into Three Subarrays,MEDIUM,"Array, Two Pointers, Binary Search, Prefix Sum",https://leetcode.com/problems/ways-to-split-array-into-three-subarrays,87.6,0.3344652559336574
+Check if There is a Valid Path in a Grid,MEDIUM,"Array, Depth-First Search, Breadth-First Search, Union Find, Matrix",https://leetcode.com/problems/check-if-there-is-a-valid-path-in-a-grid,87.6,0.4896488091805547
+Capital Gain/Loss,MEDIUM,Database,https://leetcode.com/problems/capital-gainloss,87.6,0.849191049073916
+Count the Number of Consistent Strings,EASY,"Array, Hash Table, String, Bit Manipulation, Counting",https://leetcode.com/problems/count-the-number-of-consistent-strings,87.6,0.8827632052615655
+Top K Frequent Words,MEDIUM,"Array, Hash Table, String, Trie, Sorting, Heap (Priority Queue), Bucket Sort, Counting",https://leetcode.com/problems/top-k-frequent-words,80.0,0.592771943363307
+Text Justification,HARD,"Array, String, Simulation",https://leetcode.com/problems/text-justification,62.1,0.4814993566410409
+Best Time to Buy and Sell Stock,EASY,"Array, Dynamic Programming",https://leetcode.com/problems/best-time-to-buy-and-sell-stock,62.1,0.5525960901035435
+Minesweeper,MEDIUM,"Array, Depth-First Search, Breadth-First Search, Matrix",https://leetcode.com/problems/minesweeper,62.1,0.6812440177509644
+Defanging an IP Address,EASY,String,https://leetcode.com/problems/defanging-an-ip-address,53.5,0.896860944340323
+Top K Frequent Elements,MEDIUM,"Array, Hash Table, Divide and Conquer, Sorting, Heap (Priority Queue), Bucket Sort, Counting, Quickselect",https://leetcode.com/problems/top-k-frequent-elements,53.5,0.6456601799887839
+Employee Importance,MEDIUM,"Array, Hash Table, Tree, Depth-First Search, Breadth-First Search",https://leetcode.com/problems/employee-importance,53.5,0.6842114454359709

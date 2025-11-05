@@ -1,0 +1,12 @@
+question,difficulty,topics,link,frequency,acceptance
+Zigzag Conversion,MEDIUM,String,https://leetcode.com/problems/zigzag-conversion,100.0,0.516106229324453
+Rotate Image,MEDIUM,"Array, Math, Matrix",https://leetcode.com/problems/rotate-image,100.0,0.7790644590447863
+Coin Change,MEDIUM,"Array, Dynamic Programming, Breadth-First Search",https://leetcode.com/problems/coin-change,92.0,0.4649991325536831
+Candy,HARD,"Array, Greedy",https://leetcode.com/problems/candy,92.0,0.4670440977059737
+Transpose Matrix,EASY,"Array, Matrix, Simulation",https://leetcode.com/problems/transpose-matrix,80.8,0.7433303551988469
+Count and Say,MEDIUM,String,https://leetcode.com/problems/count-and-say,80.8,0.6051171537164609
+Minimum Deletions to Make Character Frequencies Unique,MEDIUM,"Hash Table, String, Greedy, Sorting",https://leetcode.com/problems/minimum-deletions-to-make-character-frequencies-unique,80.8,0.612947969971021
+Jump Game II,MEDIUM,"Array, Dynamic Programming, Greedy",https://leetcode.com/problems/jump-game-ii,80.8,0.4150477889469695
+Group Anagrams,MEDIUM,"Array, Hash Table, String, Sorting",https://leetcode.com/problems/group-anagrams,80.8,0.7093182554988369
+Merge Intervals,MEDIUM,"Array, Sorting",https://leetcode.com/problems/merge-intervals,80.8,0.4939842039069274
+Valid Anagram,EASY,"Hash Table, String, Sorting",https://leetcode.com/problems/valid-anagram,80.8,0.6666387454891136

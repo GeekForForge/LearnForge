@@ -1,0 +1,7 @@
+question,difficulty,topics,link,frequency,acceptance
+Minimum Moves to Spread Stones Over Grid,MEDIUM,"Array, Dynamic Programming, Breadth-First Search, Matrix",https://leetcode.com/problems/minimum-moves-to-spread-stones-over-grid,100.0,0.4431509316566788
+Minimum Number of Operations to Sort a Binary Tree by Level,MEDIUM,"Tree, Breadth-First Search, Binary Tree",https://leetcode.com/problems/minimum-number-of-operations-to-sort-a-binary-tree-by-level,100.0,0.7425819778656343
+Construct the Longest New String,MEDIUM,"Math, Dynamic Programming, Greedy, Brainteaser",https://leetcode.com/problems/construct-the-longest-new-string,100.0,0.5384322081417517
+Get Watched Videos by Your Friends,MEDIUM,"Array, Hash Table, Breadth-First Search, Graph, Sorting",https://leetcode.com/problems/get-watched-videos-by-your-friends,89.3,0.497568206030849
+Kth Largest Element in an Array,MEDIUM,"Array, Divide and Conquer, Sorting, Heap (Priority Queue), Quickselect",https://leetcode.com/problems/kth-largest-element-in-an-array,89.3,0.679770776384085
+Print Words Vertically,MEDIUM,"Array, String, Simulation",https://leetcode.com/problems/print-words-vertically,89.3,0.6622658589234733

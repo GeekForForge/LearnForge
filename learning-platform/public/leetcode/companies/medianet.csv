@@ -1,0 +1,40 @@
+question,difficulty,topics,link,frequency,acceptance
+Minimum Operations to Form Subsequence With Target Sum,HARD,"Array, Greedy, Bit Manipulation",https://leetcode.com/problems/minimum-operations-to-form-subsequence-with-target-sum,100.0,0.3129730765545654
+Count the Number of Square-Free Subsets,MEDIUM,"Array, Math, Dynamic Programming, Bit Manipulation, Bitmask",https://leetcode.com/problems/count-the-number-of-square-free-subsets,92.9,0.25180479353162
+Scramble String,HARD,"String, Dynamic Programming",https://leetcode.com/problems/scramble-string,86.4,0.4218183471253161
+Maximum Genetic Difference Query,HARD,"Array, Hash Table, Bit Manipulation, Depth-First Search, Trie",https://leetcode.com/problems/maximum-genetic-difference-query,86.4,0.4434214822069866
+Furthest Building You Can Reach,MEDIUM,"Array, Greedy, Heap (Priority Queue)",https://leetcode.com/problems/furthest-building-you-can-reach,82.4,0.5037105972749183
+Minimum Total Space Wasted With K Resizing Operations,MEDIUM,"Array, Dynamic Programming",https://leetcode.com/problems/minimum-total-space-wasted-with-k-resizing-operations,82.4,0.4296401393009157
+Make the XOR of All Segments Equal to Zero,HARD,"Array, Dynamic Programming, Bit Manipulation",https://leetcode.com/problems/make-the-xor-of-all-segments-equal-to-zero,82.4,0.3991844132306298
+Minimum Time Visiting All Points,EASY,"Array, Math, Geometry",https://leetcode.com/problems/minimum-time-visiting-all-points,82.4,0.8256296671703379
+Minimum XOR Sum of Two Arrays,HARD,"Array, Dynamic Programming, Bit Manipulation, Bitmask",https://leetcode.com/problems/minimum-xor-sum-of-two-arrays,82.4,0.4909993792675357
+Minimum Cost to Buy Apples,MEDIUM,"Array, Graph, Heap (Priority Queue), Shortest Path",https://leetcode.com/problems/minimum-cost-to-buy-apples,82.4,0.671071953010279
+Queens That Can Attack the King,MEDIUM,"Array, Matrix, Simulation",https://leetcode.com/problems/queens-that-can-attack-the-king,82.4,0.7218199832329852
+Maximum XOR of Two Non-Overlapping Subtrees,HARD,"Tree, Depth-First Search, Graph, Trie",https://leetcode.com/problems/maximum-xor-of-two-non-overlapping-subtrees,82.4,0.4955277280858676
+Difference Between Maximum and Minimum Price Sum,HARD,"Array, Dynamic Programming, Tree, Depth-First Search",https://leetcode.com/problems/difference-between-maximum-and-minimum-price-sum,82.4,0.3183270902780164
+Sum of Remoteness of All Cells,MEDIUM,"Array, Hash Table, Depth-First Search, Breadth-First Search, Union Find, Matrix",https://leetcode.com/problems/sum-of-remoteness-of-all-cells,82.4,0.7082374597330879
+Maximum Value of an Ordered Triplet II,MEDIUM,Array,https://leetcode.com/problems/maximum-value-of-an-ordered-triplet-ii,82.4,0.5666645634689401
+Maximum Value of an Ordered Triplet I,EASY,Array,https://leetcode.com/problems/maximum-value-of-an-ordered-triplet-i,82.4,0.5829082279897915
+Best Time to Buy and Sell Stock,EASY,"Array, Dynamic Programming",https://leetcode.com/problems/best-time-to-buy-and-sell-stock,77.4,0.5525964297430098
+Flatten Binary Tree to Linked List,MEDIUM,"Linked List, Stack, Tree, Depth-First Search, Binary Tree",https://leetcode.com/problems/flatten-binary-tree-to-linked-list,74.4,0.6851019754160277
+Substring with Concatenation of All Words,HARD,"Hash Table, String, Sliding Window",https://leetcode.com/problems/substring-with-concatenation-of-all-words,74.4,0.3299746308169643
+Merge Two Sorted Lists,EASY,"Linked List, Recursion",https://leetcode.com/problems/merge-two-sorted-lists,70.9,0.6684092933471077
+Painting the Walls,HARD,"Array, Dynamic Programming",https://leetcode.com/problems/painting-the-walls,66.9,0.4851847868464569
+Fizz Buzz,EASY,"Math, String, Simulation",https://leetcode.com/problems/fizz-buzz,61.9,0.7437059893592051
+Jump Game,MEDIUM,"Array, Dynamic Programming, Greedy",https://leetcode.com/problems/jump-game,61.9,0.3947919116690167
+LRU Cache,MEDIUM,"Hash Table, Linked List, Design, Doubly-Linked List",https://leetcode.com/problems/lru-cache,55.5,0.4521482406975544
+Number of Submatrices That Sum to Target,HARD,"Array, Hash Table, Matrix, Prefix Sum",https://leetcode.com/problems/number-of-submatrices-that-sum-to-target,55.5,0.7445370210523446
+Binary Search Tree Iterator,MEDIUM,"Stack, Tree, Design, Binary Search Tree, Binary Tree, Iterator",https://leetcode.com/problems/binary-search-tree-iterator,55.5,0.7486914932717553
+Valid Phone Numbers,EASY,Shell,https://leetcode.com/problems/valid-phone-numbers,55.5,0.27466647810305
+The Number of Good Subsets,HARD,"Array, Math, Dynamic Programming, Bit Manipulation, Bitmask",https://leetcode.com/problems/the-number-of-good-subsets,55.5,0.3594289069955223
+Valid Sudoku,MEDIUM,"Array, Hash Table, Matrix",https://leetcode.com/problems/valid-sudoku,55.5,0.6227680112280841
+Best Time to Buy and Sell Stock II,MEDIUM,"Array, Dynamic Programming, Greedy",https://leetcode.com/problems/best-time-to-buy-and-sell-stock-ii,55.5,0.6950035045286252
+All O`one Data Structure,HARD,"Hash Table, Linked List, Design, Doubly-Linked List",https://leetcode.com/problems/all-oone-data-structure,46.5,0.4413480853234703
+Merge Intervals,MEDIUM,"Array, Sorting",https://leetcode.com/problems/merge-intervals,46.5,0.4939526408318937
+Sliding Window Maximum,HARD,"Array, Queue, Sliding Window, Heap (Priority Queue), Monotonic Queue",https://leetcode.com/problems/sliding-window-maximum,46.5,0.4760419019953976
+Longest Palindromic Substring,MEDIUM,"Two Pointers, String, Dynamic Programming",https://leetcode.com/problems/longest-palindromic-substring,46.5,0.358461529544858
+Sum of Distances in Tree,HARD,"Dynamic Programming, Tree, Depth-First Search, Graph",https://leetcode.com/problems/sum-of-distances-in-tree,46.5,0.653395424019089
+Majority Element,EASY,"Array, Hash Table, Divide and Conquer, Sorting, Counting",https://leetcode.com/problems/majority-element,46.5,0.6574035017144465
+Trapping Rain Water,HARD,"Array, Two Pointers, Dynamic Programming, Stack, Monotonic Stack",https://leetcode.com/problems/trapping-rain-water,46.5,0.651020475550146
+Search in Rotated Sorted Array,MEDIUM,"Array, Binary Search",https://leetcode.com/problems/search-in-rotated-sorted-array,46.5,0.4283726199512434
+Minimize the Maximum Difference of Pairs,MEDIUM,"Array, Binary Search, Dynamic Programming, Greedy, Sorting",https://leetcode.com/problems/minimize-the-maximum-difference-of-pairs,46.5,0.5085231942398741

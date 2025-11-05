@@ -1,0 +1,10 @@
+question,difficulty,topics,link,frequency,acceptance
+Number of Islands,MEDIUM,"Array, Depth-First Search, Breadth-First Search, Union Find, Matrix",https://leetcode.com/problems/number-of-islands,100.0,0.6232010198187545
+LRU Cache,MEDIUM,"Hash Table, Linked List, Design, Doubly-Linked List",https://leetcode.com/problems/lru-cache,100.0,0.4521486701029791
+Merge Intervals,MEDIUM,"Array, Sorting",https://leetcode.com/problems/merge-intervals,88.3,0.4939525764689584
+Flatten Deeply Nested Array,MEDIUM,,https://leetcode.com/problems/flatten-deeply-nested-array,88.3,0.6443499752842314
+String Compression,MEDIUM,"Two Pointers, String",https://leetcode.com/problems/string-compression,88.3,0.5809155013297463
+Rotate String,EASY,"String, String Matching",https://leetcode.com/problems/rotate-string,88.3,0.6393957618351697
+Merge k Sorted Lists,HARD,"Linked List, Divide and Conquer, Heap (Priority Queue), Merge Sort",https://leetcode.com/problems/merge-k-sorted-lists,88.3,0.5677430082708387
+Max Increase to Keep City Skyline,MEDIUM,"Array, Greedy, Matrix",https://leetcode.com/problems/max-increase-to-keep-city-skyline,88.3,0.8620984013658234
+Degree of an Array,EASY,"Array, Hash Table",https://leetcode.com/problems/degree-of-an-array,88.3,0.5742054384866819

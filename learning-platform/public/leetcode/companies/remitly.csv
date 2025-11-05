@@ -1,0 +1,9 @@
+question,difficulty,topics,link,frequency,acceptance
+Isomorphic Strings,EASY,"Hash Table, String",https://leetcode.com/problems/isomorphic-strings,100.0,0.4685798323600621
+Task Scheduler II,MEDIUM,"Array, Hash Table, Simulation",https://leetcode.com/problems/task-scheduler-ii,70.6,0.5397196782316108
+Design Search Autocomplete System,HARD,"String, Depth-First Search, Design, Trie, Sorting, Heap (Priority Queue), Data Stream",https://leetcode.com/problems/design-search-autocomplete-system,62.5,0.4940684034753071
+Task Scheduler,MEDIUM,"Array, Hash Table, Greedy, Sorting, Heap (Priority Queue), Counting",https://leetcode.com/problems/task-scheduler,62.5,0.6153925972156205
+Best Time to Buy and Sell Stock,EASY,"Array, Dynamic Programming",https://leetcode.com/problems/best-time-to-buy-and-sell-stock,62.5,0.5525968886230834
+Random Pick with Weight,MEDIUM,"Array, Math, Binary Search, Prefix Sum, Randomized",https://leetcode.com/problems/random-pick-with-weight,62.5,0.4827853398737957
+Course Schedule II,MEDIUM,"Depth-First Search, Breadth-First Search, Graph, Topological Sort",https://leetcode.com/problems/course-schedule-ii,62.5,0.5342357857229685
+Evaluate the Bracket Pairs of a String,MEDIUM,"Array, Hash Table, String",https://leetcode.com/problems/evaluate-the-bracket-pairs-of-a-string,62.5,0.6823127483382226

@@ -1,0 +1,50 @@
+question,difficulty,topics,link,frequency,acceptance
+Subsets,MEDIUM,"Array, Backtracking, Bit Manipulation",https://leetcode.com/problems/subsets,100.0,0.8087961776912436
+Word Break,MEDIUM,"Array, Hash Table, String, Dynamic Programming, Trie, Memoization",https://leetcode.com/problems/word-break,100.0,0.4827378020649074
+Decode String,MEDIUM,"String, Stack, Recursion",https://leetcode.com/problems/decode-string,98.0,0.6115254553566836
+Longest Substring with At Most K Distinct Characters,MEDIUM,"Hash Table, String, Sliding Window",https://leetcode.com/problems/longest-substring-with-at-most-k-distinct-characters,95.8,0.4949640081035646
+LFU Cache,HARD,"Hash Table, Linked List, Design, Doubly-Linked List",https://leetcode.com/problems/lfu-cache,95.8,0.4660898637811462
+Range Module,HARD,"Design, Segment Tree, Ordered Set",https://leetcode.com/problems/range-module,93.4,0.4419888641888101
+Split BST,MEDIUM,"Tree, Binary Search Tree, Recursion, Binary Tree",https://leetcode.com/problems/split-bst,93.4,0.8241178043129567
+Find Pivot Index,EASY,"Array, Prefix Sum",https://leetcode.com/problems/find-pivot-index,93.4,0.6057034999062264
+LRU Cache,MEDIUM,"Hash Table, Linked List, Design, Doubly-Linked List",https://leetcode.com/problems/lru-cache,93.4,0.4521468069934531
+Course Schedule,MEDIUM,"Depth-First Search, Breadth-First Search, Graph, Topological Sort",https://leetcode.com/problems/course-schedule,90.7,0.4923440720817781
+Design In-Memory File System,HARD,"Hash Table, String, Design, Trie, Sorting",https://leetcode.com/problems/design-in-memory-file-system,90.7,0.4816948941663167
+Unique Paths II,MEDIUM,"Array, Dynamic Programming, Matrix",https://leetcode.com/problems/unique-paths-ii,80.5,0.4315424243087263
+Design Twitter,MEDIUM,"Hash Table, Linked List, Design, Heap (Priority Queue)",https://leetcode.com/problems/design-twitter,80.5,0.4265238051053148
+Possible Bipartition,MEDIUM,"Depth-First Search, Breadth-First Search, Union Find, Graph",https://leetcode.com/problems/possible-bipartition,75.9,0.5150773648728767
+Shopping Offers,MEDIUM,"Array, Dynamic Programming, Backtracking, Bit Manipulation, Memoization, Bitmask",https://leetcode.com/problems/shopping-offers,75.9,0.5190263317700597
+Longest Repeating Substring,MEDIUM,"String, Binary Search, Dynamic Programming, Rolling Hash, Suffix Array, Hash Function",https://leetcode.com/problems/longest-repeating-substring,75.9,0.6306457934659812
+Unique Paths,MEDIUM,"Math, Dynamic Programming, Combinatorics",https://leetcode.com/problems/unique-paths,75.9,0.6577290213473723
+Regular Expression Matching,HARD,"String, Dynamic Programming, Recursion",https://leetcode.com/problems/regular-expression-matching,75.9,0.2928019029725673
+Find K Closest Elements,MEDIUM,"Array, Two Pointers, Binary Search, Sliding Window, Sorting, Heap (Priority Queue)",https://leetcode.com/problems/find-k-closest-elements,70.2,0.486686656754684
+Remove K Digits,MEDIUM,"String, Stack, Greedy, Monotonic Stack",https://leetcode.com/problems/remove-k-digits,70.2,0.3494044611317414
+Longest Substring Without Repeating Characters,MEDIUM,"Hash Table, String, Sliding Window",https://leetcode.com/problems/longest-substring-without-repeating-characters,70.2,0.3693616094426569
+Shortest Bridge,MEDIUM,"Array, Depth-First Search, Breadth-First Search, Matrix",https://leetcode.com/problems/shortest-bridge,70.2,0.5864849244498144
+Longest Duplicate Substring,HARD,"String, Binary Search, Sliding Window, Rolling Hash, Suffix Array, Hash Function",https://leetcode.com/problems/longest-duplicate-substring,70.2,0.3079820333128984
+Design Hit Counter,MEDIUM,"Array, Binary Search, Design, Queue, Data Stream",https://leetcode.com/problems/design-hit-counter,63.0,0.6920824458148753
+Sliding Window Maximum,HARD,"Array, Queue, Sliding Window, Heap (Priority Queue), Monotonic Queue",https://leetcode.com/problems/sliding-window-maximum,63.0,0.47604137491635
+Search a 2D Matrix,MEDIUM,"Array, Binary Search, Matrix",https://leetcode.com/problems/search-a-2d-matrix,63.0,0.5228966494616509
+Snapshot Array,MEDIUM,"Array, Hash Table, Binary Search, Design",https://leetcode.com/problems/snapshot-array,63.0,0.3666537538924564
+Single Element in a Sorted Array,MEDIUM,"Array, Binary Search",https://leetcode.com/problems/single-element-in-a-sorted-array,63.0,0.5920699695159606
+Group Anagrams,MEDIUM,"Array, Hash Table, String, Sorting",https://leetcode.com/problems/group-anagrams,63.0,0.7092883921583564
+Number of Distinct Islands,MEDIUM,"Hash Table, Depth-First Search, Breadth-First Search, Union Find, Hash Function",https://leetcode.com/problems/number-of-distinct-islands,63.0,0.6225551999482754
+Basic Calculator II,MEDIUM,"Math, String, Stack",https://leetcode.com/problems/basic-calculator-ii,63.0,0.4581136189592885
+Cheapest Flights Within K Stops,MEDIUM,"Dynamic Programming, Depth-First Search, Breadth-First Search, Graph, Heap (Priority Queue), Shortest Path",https://leetcode.com/problems/cheapest-flights-within-k-stops,63.0,0.4039901581477084
+Number of Islands,MEDIUM,"Array, Depth-First Search, Breadth-First Search, Union Find, Matrix",https://leetcode.com/problems/number-of-islands,63.0,0.6232000655644069
+Wildcard Matching,HARD,"String, Dynamic Programming, Greedy, Recursion",https://leetcode.com/problems/wildcard-matching,63.0,0.2989831385599265
+Distinct Subsequences,HARD,"String, Dynamic Programming",https://leetcode.com/problems/distinct-subsequences,52.8,0.5009993949952919
+Buildings With an Ocean View,MEDIUM,"Array, Stack, Monotonic Stack",https://leetcode.com/problems/buildings-with-an-ocean-view,52.8,0.807697531670367
+Maximum Number of Tasks You Can Assign,HARD,"Array, Two Pointers, Binary Search, Greedy, Queue, Sorting, Monotonic Queue",https://leetcode.com/problems/maximum-number-of-tasks-you-can-assign,52.8,0.506049588007545
+Reorganize String,MEDIUM,"Hash Table, String, Greedy, Sorting, Heap (Priority Queue), Counting",https://leetcode.com/problems/reorganize-string,52.8,0.561964362417487
+Kth Largest Element in an Array,MEDIUM,"Array, Divide and Conquer, Sorting, Heap (Priority Queue), Quickselect",https://leetcode.com/problems/kth-largest-element-in-an-array,52.8,0.6797704242093222
+Bus Routes,HARD,"Array, Hash Table, Breadth-First Search",https://leetcode.com/problems/bus-routes,52.8,0.4695297092963377
+Split Strings by Separator,EASY,"Array, String",https://leetcode.com/problems/split-strings-by-separator,52.8,0.7491123619831133
+Number of Atoms,HARD,"Hash Table, String, Stack, Sorting",https://leetcode.com/problems/number-of-atoms,52.8,0.6500029349858701
+Find Median from Data Stream,HARD,"Two Pointers, Design, Sorting, Heap (Priority Queue), Data Stream",https://leetcode.com/problems/find-median-from-data-stream,52.8,0.5327809111719406
+Open the Lock,MEDIUM,"Array, Hash Table, String, Breadth-First Search",https://leetcode.com/problems/open-the-lock,52.8,0.6074112952607815
+Pacific Atlantic Water Flow,MEDIUM,"Array, Depth-First Search, Breadth-First Search, Matrix",https://leetcode.com/problems/pacific-atlantic-water-flow,52.8,0.5753384405299414
+Search a 2D Matrix II,MEDIUM,"Array, Binary Search, Divide and Conquer, Matrix",https://leetcode.com/problems/search-a-2d-matrix-ii,52.8,0.5522253382801748
+Basic Calculator III,HARD,"Math, String, Stack, Recursion",https://leetcode.com/problems/basic-calculator-iii,52.8,0.5246933031589953
+Increasing Triplet Subsequence,MEDIUM,"Array, Greedy",https://leetcode.com/problems/increasing-triplet-subsequence,52.8,0.3912497382273071
+Basic Calculator,HARD,"Math, String, Stack, Recursion",https://leetcode.com/problems/basic-calculator,52.8,0.4558961346476732

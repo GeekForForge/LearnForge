@@ -1,0 +1,10 @@
+question,difficulty,topics,link,frequency,acceptance
+Median of Two Sorted Arrays,HARD,"Array, Binary Search, Divide and Conquer",https://leetcode.com/problems/median-of-two-sorted-arrays,100.0,0.4381466769505518
+Longest Substring Without Repeating Characters,MEDIUM,"Hash Table, String, Sliding Window",https://leetcode.com/problems/longest-substring-without-repeating-characters,79.3,0.3693614370485206
+Longest Common Prefix,EASY,"String, Trie",https://leetcode.com/problems/longest-common-prefix,79.3,0.4548317594843367
+Maximum Subarray,MEDIUM,"Array, Divide and Conquer, Dynamic Programming",https://leetcode.com/problems/maximum-subarray,79.3,0.5209986094967198
+Extra Characters in a String,MEDIUM,"Array, Hash Table, String, Dynamic Programming, Trie",https://leetcode.com/problems/extra-characters-in-a-string,79.3,0.5705564198111501
+Check if Number Has Equal Digit Count and Digit Value,EASY,"Hash Table, String, Counting",https://leetcode.com/problems/check-if-number-has-equal-digit-count-and-digit-value,79.3,0.7244297819277936
+Reverse Nodes in k-Group,HARD,"Linked List, Recursion",https://leetcode.com/problems/reverse-nodes-in-k-group,79.3,0.6304369585397218
+Split Array Largest Sum,HARD,"Array, Binary Search, Dynamic Programming, Greedy, Prefix Sum",https://leetcode.com/problems/split-array-largest-sum,79.3,0.5809965654277032
+Search in Rotated Sorted Array,MEDIUM,"Array, Binary Search",https://leetcode.com/problems/search-in-rotated-sorted-array,79.3,0.4283731267627601

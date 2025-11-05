@@ -1,0 +1,6 @@
+question,difficulty,topics,link,frequency,acceptance
+Maximum Profit in Job Scheduling,HARD,"Array, Binary Search, Dynamic Programming, Sorting",https://leetcode.com/problems/maximum-profit-in-job-scheduling,100.0,0.5441735460704106
+Surrounded Regions,MEDIUM,"Array, Depth-First Search, Breadth-First Search, Union Find, Matrix",https://leetcode.com/problems/surrounded-regions,92.3,0.4288651022112916
+Number of Islands,MEDIUM,"Array, Depth-First Search, Breadth-First Search, Union Find, Matrix",https://leetcode.com/problems/number-of-islands,92.3,0.6232026637330483
+Search in Rotated Sorted Array,MEDIUM,"Array, Binary Search",https://leetcode.com/problems/search-in-rotated-sorted-array,81.3,0.4283746302583542
+Candy,HARD,"Array, Greedy",https://leetcode.com/problems/candy,81.3,0.4669999266397387

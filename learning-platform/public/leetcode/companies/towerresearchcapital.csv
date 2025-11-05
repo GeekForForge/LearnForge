@@ -1,0 +1,3 @@
+question,difficulty,topics,link,frequency,acceptance
+Unique Binary Search Trees,MEDIUM,"Math, Dynamic Programming, Tree, Binary Search Tree, Binary Tree",https://leetcode.com/problems/unique-binary-search-trees,100.0,0.6244505288303076
+Bricks Falling When Hit,HARD,"Array, Union Find, Matrix",https://leetcode.com/problems/bricks-falling-when-hit,73.5,0.3572389298699115

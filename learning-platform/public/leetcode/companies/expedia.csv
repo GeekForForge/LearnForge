@@ -1,0 +1,50 @@
+question,difficulty,topics,link,frequency,acceptance
+Find the Smallest Divisor Given a Threshold,MEDIUM,"Array, Binary Search",https://leetcode.com/problems/find-the-smallest-divisor-given-a-threshold,100.0,0.6364604732557255
+Valid Triangle Number,MEDIUM,"Array, Two Pointers, Binary Search, Greedy, Sorting",https://leetcode.com/problems/valid-triangle-number,97.7,0.5234449388412803
+The kth Factor of n,MEDIUM,"Math, Number Theory",https://leetcode.com/problems/the-kth-factor-of-n,97.7,0.6957668800559188
+Minimum Swaps to Group All 1's Together,MEDIUM,"Array, Sliding Window",https://leetcode.com/problems/minimum-swaps-to-group-all-1s-together,97.7,0.6108541758288527
+Divide Players Into Teams of Equal Skill,MEDIUM,"Array, Hash Table, Two Pointers, Sorting",https://leetcode.com/problems/divide-players-into-teams-of-equal-skill,95.2,0.6892726777444839
+Break a Palindrome,MEDIUM,"String, Greedy",https://leetcode.com/problems/break-a-palindrome,95.2,0.515441720680916
+Minimum One Bit Operations to Make Integers Zero,HARD,"Dynamic Programming, Bit Manipulation, Memoization",https://leetcode.com/problems/minimum-one-bit-operations-to-make-integers-zero,95.2,0.73240710674027
+Most Visited Sector in  a Circular Track,EASY,"Array, Simulation",https://leetcode.com/problems/most-visited-sector-in-a-circular-track,95.2,0.5910626136658872
+Number of Good Binary Strings,MEDIUM,Dynamic Programming,https://leetcode.com/problems/number-of-good-binary-strings,95.2,0.5249371022643184
+Rearrange Words in a Sentence,MEDIUM,"String, Sorting",https://leetcode.com/problems/rearrange-words-in-a-sentence,95.2,0.6583426651735722
+String Compression,MEDIUM,"Two Pointers, String",https://leetcode.com/problems/string-compression,95.2,0.580915717497265
+Minimum Replacements to Sort the Array,HARD,"Array, Math, Greedy",https://leetcode.com/problems/minimum-replacements-to-sort-the-array,95.2,0.5324087646108167
+Unique Substrings With Equal Digit Frequency,MEDIUM,"Hash Table, String, Rolling Hash, Counting, Hash Function",https://leetcode.com/problems/unique-substrings-with-equal-digit-frequency,95.2,0.6411486580447782
+Valid Word,EASY,String,https://leetcode.com/problems/valid-word,95.2,0.3871845347371215
+The Earliest Moment When Everyone Become Friends,MEDIUM,"Array, Union Find, Sorting",https://leetcode.com/problems/the-earliest-moment-when-everyone-become-friends,95.2,0.656983282716056
+Valid Parentheses,EASY,"String, Stack",https://leetcode.com/problems/valid-parentheses,85.9,0.4232284180792206
+Remove Duplicate Letters,MEDIUM,"String, Stack, Greedy, Monotonic Stack",https://leetcode.com/problems/remove-duplicate-letters,81.9,0.5135095841552992
+Find the City With the Smallest Number of Neighbors at a Threshold Distance,MEDIUM,"Dynamic Programming, Graph, Shortest Path",https://leetcode.com/problems/find-the-city-with-the-smallest-number-of-neighbors-at-a-threshold-distance,71.3,0.7022963279294668
+Trapping Rain Water,HARD,"Array, Two Pointers, Dynamic Programming, Stack, Monotonic Stack",https://leetcode.com/problems/trapping-rain-water,71.3,0.6510201836943224
+Group Anagrams,MEDIUM,"Array, Hash Table, String, Sorting",https://leetcode.com/problems/group-anagrams,71.3,0.7092884996578606
+Longest Substring Without Repeating Characters,MEDIUM,"Hash Table, String, Sliding Window",https://leetcode.com/problems/longest-substring-without-repeating-characters,71.3,0.3693615936497769
+Capacity To Ship Packages Within D Days,MEDIUM,"Array, Binary Search",https://leetcode.com/problems/capacity-to-ship-packages-within-d-days,71.3,0.721177358490566
+Set Matrix Zeroes,MEDIUM,"Array, Hash Table, Matrix",https://leetcode.com/problems/set-matrix-zeroes,71.3,0.6070890553968923
+Best Time to Buy and Sell Stock,EASY,"Array, Dynamic Programming",https://leetcode.com/problems/best-time-to-buy-and-sell-stock,71.3,0.5525960316193482
+Minimum Number of Swaps to Make the String Balanced,MEDIUM,"Two Pointers, String, Stack, Greedy",https://leetcode.com/problems/minimum-number-of-swaps-to-make-the-string-balanced,71.3,0.7796926022806927
+House Robber,MEDIUM,"Array, Dynamic Programming",https://leetcode.com/problems/house-robber,63.8,0.5230497238120853
+Jump Game II,MEDIUM,"Array, Dynamic Programming, Greedy",https://leetcode.com/problems/jump-game-ii,63.8,0.4150335455546491
+Max Consecutive Ones III,MEDIUM,"Array, Binary Search, Sliding Window, Prefix Sum",https://leetcode.com/problems/max-consecutive-ones-iii,63.8,0.659394298879811
+Number of Islands,MEDIUM,"Array, Depth-First Search, Breadth-First Search, Union Find, Matrix",https://leetcode.com/problems/number-of-islands,63.8,0.6232001329897883
+Roman to Integer,EASY,"Hash Table, Math, String",https://leetcode.com/problems/roman-to-integer,63.8,0.6486630835177992
+Minimum Number of Chairs in a Waiting Room,EASY,"String, Simulation",https://leetcode.com/problems/minimum-number-of-chairs-in-a-waiting-room,53.3,0.7833645625224912
+Merge Sorted Array,EASY,"Array, Two Pointers, Sorting",https://leetcode.com/problems/merge-sorted-array,53.3,0.5291955199854382
+Number of Visible People in a Queue,HARD,"Array, Stack, Monotonic Stack",https://leetcode.com/problems/number-of-visible-people-in-a-queue,53.3,0.7129705142972448
+Longest Increasing Subsequence,MEDIUM,"Array, Binary Search, Dynamic Programming",https://leetcode.com/problems/longest-increasing-subsequence,53.3,0.5780837494841731
+Reformat Date,EASY,String,https://leetcode.com/problems/reformat-date,53.3,0.6733420066288758
+Two Sum,EASY,"Array, Hash Table",https://leetcode.com/problems/two-sum,53.3,0.557770000731489
+Keys and Rooms,MEDIUM,"Depth-First Search, Breadth-First Search, Graph",https://leetcode.com/problems/keys-and-rooms,53.3,0.7467687157157744
+Find the Index of the First Occurrence in a String,EASY,"Two Pointers, String, String Matching",https://leetcode.com/problems/find-the-index-of-the-first-occurrence-in-a-string,53.3,0.449715887092611
+Add Two Numbers,MEDIUM,"Linked List, Math, Recursion",https://leetcode.com/problems/add-two-numbers,53.3,0.4622511186296071
+Reverse Linked List,EASY,"Linked List, Recursion",https://leetcode.com/problems/reverse-linked-list,53.3,0.7920658766722495
+LRU Cache,MEDIUM,"Hash Table, Linked List, Design, Doubly-Linked List",https://leetcode.com/problems/lru-cache,53.3,0.4521471552799032
+Merge Intervals,MEDIUM,"Array, Sorting",https://leetcode.com/problems/merge-intervals,53.3,0.4939524714631436
+Subarray Sums Divisible by K,MEDIUM,"Array, Hash Table, Prefix Sum",https://leetcode.com/problems/subarray-sums-divisible-by-k,53.3,0.5561771980621089
+Least Number of Unique Integers after K Removals,MEDIUM,"Array, Hash Table, Greedy, Sorting, Counting",https://leetcode.com/problems/least-number-of-unique-integers-after-k-removals,53.3,0.6341766250570863
+Permutation in String,MEDIUM,"Hash Table, Two Pointers, String, Sliding Window",https://leetcode.com/problems/permutation-in-string,53.3,0.4724782167062026
+Climbing Stairs,EASY,"Math, Dynamic Programming, Memoization",https://leetcode.com/problems/climbing-stairs,53.3,0.535407296923177
+Count Number of Pairs With Absolute Difference K,EASY,"Array, Hash Table, Counting",https://leetcode.com/problems/count-number-of-pairs-with-absolute-difference-k,53.3,0.8488583382642377
+Rotting Oranges,MEDIUM,"Array, Breadth-First Search, Matrix",https://leetcode.com/problems/rotting-oranges,53.3,0.5661847679426031
+Degree of an Array,EASY,"Array, Hash Table",https://leetcode.com/problems/degree-of-an-array,53.3,0.5742057825337067

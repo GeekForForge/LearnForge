@@ -1,0 +1,7 @@
+question,difficulty,topics,link,frequency,acceptance
+Top K Frequent Elements,MEDIUM,"Array, Hash Table, Divide and Conquer, Sorting, Heap (Priority Queue), Bucket Sort, Counting, Quickselect",https://leetcode.com/problems/top-k-frequent-elements,100.0,0.6456600029861541
+Design Tic-Tac-Toe,MEDIUM,"Array, Hash Table, Design, Matrix, Simulation",https://leetcode.com/problems/design-tic-tac-toe,100.0,0.5860157935441853
+Robot Bounded In Circle,MEDIUM,"Math, String, Simulation",https://leetcode.com/problems/robot-bounded-in-circle,100.0,0.562297474032361
+Backspace String Compare,EASY,"Two Pointers, String, Stack, Simulation",https://leetcode.com/problems/backspace-string-compare,88.9,0.49481803728999
+Two Sum,EASY,"Array, Hash Table",https://leetcode.com/problems/two-sum,88.9,0.5577703274921263
+LRU Cache,MEDIUM,"Hash Table, Linked List, Design, Doubly-Linked List",https://leetcode.com/problems/lru-cache,88.9,0.4521489022918771

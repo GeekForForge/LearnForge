@@ -1,0 +1,5 @@
+question,difficulty,topics,link,frequency,acceptance
+Satisfiability of Equality Equations,MEDIUM,"Array, String, Union Find, Graph",https://leetcode.com/problems/satisfiability-of-equality-equations,100.0,0.5101847530677794
+First Missing Positive,HARD,"Array, Hash Table",https://leetcode.com/problems/first-missing-positive,66.0,0.4108476464353969
+Flood Fill,EASY,"Array, Depth-First Search, Breadth-First Search, Matrix",https://leetcode.com/problems/flood-fill,66.0,0.6647648139762219
+Decode String,MEDIUM,"String, Stack, Recursion",https://leetcode.com/problems/decode-string,66.0,0.6115276408838193

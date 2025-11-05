@@ -1,0 +1,10 @@
+question,difficulty,topics,link,frequency,acceptance
+Count Number of Ways to Place Houses,MEDIUM,Dynamic Programming,https://leetcode.com/problems/count-number-of-ways-to-place-houses,100.0,0.4282920556679213
+Longest Substring Without Repeating Characters,MEDIUM,"Hash Table, String, Sliding Window",https://leetcode.com/problems/longest-substring-without-repeating-characters,79.4,0.369361622666222
+Minimum Window Substring,HARD,"Hash Table, String, Sliding Window",https://leetcode.com/problems/minimum-window-substring,72.9,0.4535067916626291
+Two Sum,EASY,"Array, Hash Table",https://leetcode.com/problems/two-sum,63.8,0.5577704460383334
+Valid Parentheses,EASY,"String, Stack",https://leetcode.com/problems/valid-parentheses,63.8,0.4232289471051158
+Contains Duplicate,EASY,"Array, Hash Table, Sorting",https://leetcode.com/problems/contains-duplicate,63.8,0.6323639865751375
+Subarray Sum Equals K,MEDIUM,"Array, Hash Table, Prefix Sum",https://leetcode.com/problems/subarray-sum-equals-k,63.8,0.4547631572254478
+Valid Anagram,EASY,"Hash Table, String, Sorting",https://leetcode.com/problems/valid-anagram,63.8,0.6666102516536134
+Remove Duplicates from Sorted Array,EASY,"Array, Two Pointers",https://leetcode.com/problems/remove-duplicates-from-sorted-array,63.8,0.6035569868747543

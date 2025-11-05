@@ -1,0 +1,15 @@
+question,difficulty,topics,link,frequency,acceptance
+Rotating the Box,MEDIUM,"Array, Two Pointers, Matrix",https://leetcode.com/problems/rotating-the-box,100.0,0.7909813050714205
+Available Captures for Rook,EASY,"Array, Matrix, Simulation",https://leetcode.com/problems/available-captures-for-rook,97.8,0.7036967165251763
+Squirrel Simulation,MEDIUM,"Array, Math",https://leetcode.com/problems/squirrel-simulation,97.8,0.572498298162015
+Walking Robot Simulation II,MEDIUM,"Design, Simulation",https://leetcode.com/problems/walking-robot-simulation-ii,97.8,0.2507536943378198
+Word Break,MEDIUM,"Array, Hash Table, String, Dynamic Programming, Trie, Memoization",https://leetcode.com/problems/word-break,97.8,0.4827380427522254
+Falling Squares,HARD,"Array, Segment Tree, Ordered Set",https://leetcode.com/problems/falling-squares,97.8,0.4628826064723501
+Number of Black Blocks,MEDIUM,"Array, Hash Table, Enumeration",https://leetcode.com/problems/number-of-black-blocks,97.8,0.3861732264480743
+Count Nice Pairs in an Array,MEDIUM,"Array, Hash Table, Math, Counting",https://leetcode.com/problems/count-nice-pairs-in-an-array,97.8,0.4853582921277765
+Pancake Sorting,MEDIUM,"Array, Two Pointers, Greedy, Sorting",https://leetcode.com/problems/pancake-sorting,97.8,0.7119131096022234
+Design a Text Editor,HARD,"Linked List, String, Stack, Design, Simulation, Doubly-Linked List",https://leetcode.com/problems/design-a-text-editor,76.2,0.4713807144713662
+Implement Trie (Prefix Tree),MEDIUM,"Hash Table, String, Design, Trie",https://leetcode.com/problems/implement-trie-prefix-tree,69.5,0.6793489174940865
+Integer to English Words,HARD,"Math, String, Recursion",https://leetcode.com/problems/integer-to-english-words,60.0,0.3435478950195029
+The Maze,MEDIUM,"Array, Depth-First Search, Breadth-First Search, Matrix",https://leetcode.com/problems/the-maze,60.0,0.5951548421014023
+Word Search II,HARD,"Array, String, Backtracking, Trie, Matrix",https://leetcode.com/problems/word-search-ii,60.0,0.3732635590067386

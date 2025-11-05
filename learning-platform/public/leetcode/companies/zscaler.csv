@@ -1,0 +1,25 @@
+question,difficulty,topics,link,frequency,acceptance
+Largest Number After Digit Swaps by Parity,EASY,"Sorting, Heap (Priority Queue)",https://leetcode.com/problems/largest-number-after-digit-swaps-by-parity,100.0,0.637345576330206
+Day of the Year,EASY,"Math, String",https://leetcode.com/problems/day-of-the-year,100.0,0.4818085939668305
+Apply Operations to Make Sum of Array Greater Than or Equal to k,MEDIUM,"Math, Greedy, Enumeration",https://leetcode.com/problems/apply-operations-to-make-sum-of-array-greater-than-or-equal-to-k,100.0,0.4338245855956792
+Maximum Strong Pair XOR I,EASY,"Array, Hash Table, Bit Manipulation, Trie, Sliding Window",https://leetcode.com/problems/maximum-strong-pair-xor-i,100.0,0.7484073520894932
+Maximum Strong Pair XOR II,HARD,"Array, Hash Table, Bit Manipulation, Trie, Sliding Window",https://leetcode.com/problems/maximum-strong-pair-xor-ii,100.0,0.3074288510152491
+Optimal Account Balancing,HARD,"Array, Dynamic Programming, Backtracking, Bit Manipulation, Bitmask",https://leetcode.com/problems/optimal-account-balancing,94.4,0.4993834011592058
+Robot Bounded In Circle,MEDIUM,"Math, String, Simulation",https://leetcode.com/problems/robot-bounded-in-circle,77.1,0.5622965278408281
+Find the Smallest Divisor Given a Threshold,MEDIUM,"Array, Binary Search",https://leetcode.com/problems/find-the-smallest-divisor-given-a-threshold,69.9,0.6364670242650312
+Two Sum,EASY,"Array, Hash Table",https://leetcode.com/problems/two-sum,69.9,0.5577700653216907
+Jump Game,MEDIUM,"Array, Dynamic Programming, Greedy",https://leetcode.com/problems/jump-game,69.9,0.3947917349128491
+Rotate Image,MEDIUM,"Array, Math, Matrix",https://leetcode.com/problems/rotate-image,69.9,0.7790170073838115
+Degree of an Array,EASY,"Array, Hash Table",https://leetcode.com/problems/degree-of-an-array,59.8,0.5742054384866819
+Linked List Cycle,EASY,"Hash Table, Linked List, Two Pointers",https://leetcode.com/problems/linked-list-cycle,59.8,0.5257071813494855
+Longest Substring Without Repeating Characters,MEDIUM,"Hash Table, String, Sliding Window",https://leetcode.com/problems/longest-substring-without-repeating-characters,59.8,0.36936145984598
+Moving Average from Data Stream,EASY,"Array, Design, Queue, Data Stream",https://leetcode.com/problems/moving-average-from-data-stream,59.8,0.7993794551727287
+Remove Duplicates from Sorted Array,EASY,"Array, Two Pointers",https://leetcode.com/problems/remove-duplicates-from-sorted-array,59.8,0.6035567835975525
+Longest Common Prefix,EASY,"String, Trie",https://leetcode.com/problems/longest-common-prefix,59.8,0.4548318229538721
+Search in Rotated Sorted Array,MEDIUM,"Array, Binary Search",https://leetcode.com/problems/search-in-rotated-sorted-array,59.8,0.4283727044199793
+Contains Duplicate,EASY,"Array, Hash Table, Sorting",https://leetcode.com/problems/contains-duplicate,59.8,0.6323641669359099
+Palindrome Linked List,EASY,"Linked List, Two Pointers, Stack, Recursion",https://leetcode.com/problems/palindrome-linked-list,59.8,0.5585939012301956
+Number of Divisible Triplet Sums,MEDIUM,"Array, Hash Table",https://leetcode.com/problems/number-of-divisible-triplet-sums,59.8,0.6780637725701113
+LRU Cache,MEDIUM,"Hash Table, Linked List, Design, Doubly-Linked List",https://leetcode.com/problems/lru-cache,59.8,0.4521484728871755
+Minimum Increment to Make Array Unique,MEDIUM,"Array, Greedy, Sorting, Counting",https://leetcode.com/problems/minimum-increment-to-make-array-unique,59.8,0.603327781549441
+Word Ladder,HARD,"Hash Table, String, Breadth-First Search",https://leetcode.com/problems/word-ladder,59.8,0.4281202394059843

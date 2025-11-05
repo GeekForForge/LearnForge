@@ -1,0 +1,33 @@
+question,difficulty,topics,link,frequency,acceptance
+Number of Islands,MEDIUM,"Array, Depth-First Search, Breadth-First Search, Union Find, Matrix",https://leetcode.com/problems/number-of-islands,100.0,0.6232005375415705
+Maximum Number of Visible Points,HARD,"Array, Math, Geometry, Sliding Window, Sorting",https://leetcode.com/problems/maximum-number-of-visible-points,92.9,0.3767605072174815
+Video Stitching,MEDIUM,"Array, Dynamic Programming, Greedy",https://leetcode.com/problems/video-stitching,92.9,0.5199920692617804
+Group Anagrams,MEDIUM,"Array, Hash Table, String, Sorting",https://leetcode.com/problems/group-anagrams,88.3,0.7092885297664818
+Course Schedule,MEDIUM,"Depth-First Search, Breadth-First Search, Graph, Topological Sort",https://leetcode.com/problems/course-schedule,85.6,0.492343272648647
+Shortest Word Distance,EASY,"Array, String",https://leetcode.com/problems/shortest-word-distance,85.6,0.6594949449257005
+Heaters,MEDIUM,"Array, Two Pointers, Binary Search, Sorting",https://leetcode.com/problems/heaters,82.5,0.3995299191494197
+Daily Temperatures,MEDIUM,"Array, Stack, Monotonic Stack",https://leetcode.com/problems/daily-temperatures,82.5,0.6736502832589849
+Course Schedule II,MEDIUM,"Depth-First Search, Breadth-First Search, Graph, Topological Sort",https://leetcode.com/problems/course-schedule-ii,79.0,0.5342347717848052
+Find Median from Data Stream,HARD,"Two Pointers, Design, Sorting, Heap (Priority Queue), Data Stream",https://leetcode.com/problems/find-median-from-data-stream,79.0,0.5327803189283605
+Search Suggestions System,MEDIUM,"Array, String, Binary Search, Trie, Sorting, Heap (Priority Queue)",https://leetcode.com/problems/search-suggestions-system,74.8,0.6505022273267432
+Making A Large Island,HARD,"Array, Depth-First Search, Breadth-First Search, Union Find, Matrix",https://leetcode.com/problems/making-a-large-island,69.7,0.5489029735459547
+Merge Intervals,MEDIUM,"Array, Sorting",https://leetcode.com/problems/merge-intervals,69.7,0.4939525543002352
+Flatten Binary Tree to Linked List,MEDIUM,"Linked List, Stack, Tree, Depth-First Search, Binary Tree",https://leetcode.com/problems/flatten-binary-tree-to-linked-list,63.2,0.6851017952147065
+Shortest Word Distance II,MEDIUM,"Array, Hash Table, Two Pointers, String, Design",https://leetcode.com/problems/shortest-word-distance-ii,63.2,0.621334883686483
+Basic Calculator II,MEDIUM,"Math, String, Stack",https://leetcode.com/problems/basic-calculator-ii,63.2,0.4581145526714955
+Flip Equivalent Binary Trees,MEDIUM,"Tree, Depth-First Search, Binary Tree",https://leetcode.com/problems/flip-equivalent-binary-trees,63.2,0.696793256042999
+Merge k Sorted Lists,HARD,"Linked List, Divide and Conquer, Heap (Priority Queue), Merge Sort",https://leetcode.com/problems/merge-k-sorted-lists,63.2,0.5677419253083275
+Valid Parentheses,EASY,"String, Stack",https://leetcode.com/problems/valid-parentheses,53.9,0.4232285107271765
+Number of Distinct Islands,MEDIUM,"Hash Table, Depth-First Search, Breadth-First Search, Union Find, Hash Function",https://leetcode.com/problems/number-of-distinct-islands,53.9,0.6225531873624047
+Rotting Oranges,MEDIUM,"Array, Breadth-First Search, Matrix",https://leetcode.com/problems/rotting-oranges,53.9,0.5661842002497466
+Minesweeper,MEDIUM,"Array, Depth-First Search, Breadth-First Search, Matrix",https://leetcode.com/problems/minesweeper,53.9,0.681241547837878
+Move Zeroes,EASY,"Array, Two Pointers",https://leetcode.com/problems/move-zeroes,53.9,0.6280404294781053
+Spiral Matrix,MEDIUM,"Array, Matrix, Simulation",https://leetcode.com/problems/spiral-matrix,53.9,0.5393974123278643
+Time Based Key-Value Store,MEDIUM,"Hash Table, String, Binary Search, Design",https://leetcode.com/problems/time-based-key-value-store,53.9,0.4936638835565728
+Insert into a Sorted Circular Linked List,MEDIUM,Linked List,https://leetcode.com/problems/insert-into-a-sorted-circular-linked-list,53.9,0.3812410472504833
+Find the Duplicate Number,MEDIUM,"Array, Two Pointers, Binary Search, Bit Manipulation",https://leetcode.com/problems/find-the-duplicate-number,53.9,0.6283574412311195
+Snakes and Ladders,MEDIUM,"Array, Breadth-First Search, Matrix",https://leetcode.com/problems/snakes-and-ladders,53.9,0.4779535373887946
+Search in Rotated Sorted Array,MEDIUM,"Array, Binary Search",https://leetcode.com/problems/search-in-rotated-sorted-array,53.9,0.4283722145334321
+Game of Life,MEDIUM,"Array, Matrix, Simulation",https://leetcode.com/problems/game-of-life,53.9,0.7141499668480139
+Basic Calculator,HARD,"Math, String, Stack, Recursion",https://leetcode.com/problems/basic-calculator,53.9,0.4558965465296108
+Race Car,HARD,Dynamic Programming,https://leetcode.com/problems/race-car,53.9,0.4412431163672474

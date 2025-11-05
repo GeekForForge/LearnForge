@@ -1,0 +1,19 @@
+question,difficulty,topics,link,frequency,acceptance
+Construct Target Array With Multiple Sums,HARD,"Array, Heap (Priority Queue)",https://leetcode.com/problems/construct-target-array-with-multiple-sums,100.0,0.3625871829356019
+Encode Number,MEDIUM,"Math, String, Bit Manipulation",https://leetcode.com/problems/encode-number,87.2,0.7006358626536668
+Find Numbers with Even Number of Digits,EASY,"Array, Math",https://leetcode.com/problems/find-numbers-with-even-number-of-digits,87.2,0.7941578445535484
+Finding Pairs With a Certain Sum,MEDIUM,"Array, Hash Table, Design",https://leetcode.com/problems/finding-pairs-with-a-certain-sum,87.2,0.491882680060992
+Get Biggest Three Rhombus Sums in a Grid,MEDIUM,"Array, Math, Sorting, Heap (Priority Queue), Matrix, Prefix Sum",https://leetcode.com/problems/get-biggest-three-rhombus-sums-in-a-grid,87.2,0.4926696126852092
+Substrings of Size Three with Distinct Characters,EASY,"Hash Table, String, Sliding Window, Counting",https://leetcode.com/problems/substrings-of-size-three-with-distinct-characters,87.2,0.7545470598622637
+3Sum With Multiplicity,MEDIUM,"Array, Hash Table, Two Pointers, Sorting, Counting",https://leetcode.com/problems/3sum-with-multiplicity,87.2,0.4579874402763626
+1-bit and 2-bit Characters,EASY,Array,https://leetcode.com/problems/1-bit-and-2-bit-characters,87.2,0.4511727696394956
+Find the K-Beauty of a Number,EASY,"Math, String, Sliding Window",https://leetcode.com/problems/find-the-k-beauty-of-a-number,87.2,0.6169362019005067
+Subtract the Product and Sum of Digits of an Integer,EASY,Math,https://leetcode.com/problems/subtract-the-product-and-sum-of-digits-of-an-integer,87.2,0.8664440229997958
+Exam Room,MEDIUM,"Design, Heap (Priority Queue), Ordered Set",https://leetcode.com/problems/exam-room,87.2,0.4286717936493996
+Range Frequency Queries,MEDIUM,"Array, Hash Table, Binary Search, Design, Segment Tree",https://leetcode.com/problems/range-frequency-queries,87.2,0.3977062468794972
+Maximum Number of Words You Can Type,EASY,"Hash Table, String",https://leetcode.com/problems/maximum-number-of-words-you-can-type,87.2,0.7468929476897604
+Sort the Matrix Diagonally,MEDIUM,"Array, Sorting, Matrix",https://leetcode.com/problems/sort-the-matrix-diagonally,87.2,0.8297868426498654
+Number of Subarrays with Bounded Maximum,MEDIUM,"Array, Two Pointers",https://leetcode.com/problems/number-of-subarrays-with-bounded-maximum,52.3,0.5394189202774706
+Subarray Sum Equals K,MEDIUM,"Array, Hash Table, Prefix Sum",https://leetcode.com/problems/subarray-sum-equals-k,52.3,0.4547632945224416
+Binary Tree Cameras,HARD,"Dynamic Programming, Tree, Depth-First Search, Binary Tree",https://leetcode.com/problems/binary-tree-cameras,52.3,0.4718287765270026
+Insert Delete GetRandom O(1),MEDIUM,"Array, Hash Table, Math, Design, Randomized",https://leetcode.com/problems/insert-delete-getrandom-o1,52.3,0.5499183718923905

@@ -1,0 +1,7 @@
+question,difficulty,topics,link,frequency,acceptance
+Minimum Penalty for a Shop,MEDIUM,"String, Prefix Sum",https://leetcode.com/problems/minimum-penalty-for-a-shop,100.0,0.6759443878546194
+Evaluate Division,MEDIUM,"Array, String, Depth-First Search, Breadth-First Search, Union Find, Graph, Shortest Path",https://leetcode.com/problems/evaluate-division,68.2,0.6314704969299972
+Cheapest Flights Within K Stops,MEDIUM,"Dynamic Programming, Depth-First Search, Breadth-First Search, Graph, Heap (Priority Queue), Shortest Path",https://leetcode.com/problems/cheapest-flights-within-k-stops,56.4,0.4039892773318477
+Optimal Account Balancing,HARD,"Array, Dynamic Programming, Backtracking, Bit Manipulation, Bitmask",https://leetcode.com/problems/optimal-account-balancing,51.5,0.4993810266893702
+Brace Expansion,MEDIUM,"String, Backtracking, Breadth-First Search",https://leetcode.com/problems/brace-expansion,51.5,0.6672212978369384
+Parallel Courses III,HARD,"Array, Dynamic Programming, Graph, Topological Sort",https://leetcode.com/problems/parallel-courses-iii,44.6,0.6674963944974485

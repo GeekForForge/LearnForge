@@ -1,0 +1,28 @@
+question,difficulty,topics,link,frequency,acceptance
+Change Null Values in a Table to the Previous Value,MEDIUM,Database,https://leetcode.com/problems/change-null-values-in-a-table-to-the-previous-value,100.0,0.5152052486922599
+Two Sum,EASY,"Array, Hash Table",https://leetcode.com/problems/two-sum,97.3,0.5577698935805033
+Merge k Sorted Lists,HARD,"Linked List, Divide and Conquer, Heap (Priority Queue), Merge Sort",https://leetcode.com/problems/merge-k-sorted-lists,91.0,0.5677423817534303
+Valid Parentheses,EASY,"String, Stack",https://leetcode.com/problems/valid-parentheses,82.5,0.4232287331904933
+Longest Palindromic Substring,MEDIUM,"Two Pointers, String, Dynamic Programming",https://leetcode.com/problems/longest-palindromic-substring,76.9,0.3584614184401339
+Palindrome Number,EASY,Math,https://leetcode.com/problems/palindrome-number,76.9,0.5922447925324843
+Second Highest Salary,MEDIUM,Database,https://leetcode.com/problems/second-highest-salary,76.9,0.4386518117872288
+Container With Most Water,MEDIUM,"Array, Two Pointers, Greedy",https://leetcode.com/problems/container-with-most-water,76.9,0.5778289005385611
+Rising Temperature,EASY,Database,https://leetcode.com/problems/rising-temperature,69.7,0.5018287657004238
+Reverse Integer,MEDIUM,Math,https://leetcode.com/problems/reverse-integer,69.7,0.3030899221460467
+Managers with at Least 5 Direct Reports,MEDIUM,Database,https://leetcode.com/problems/managers-with-at-least-5-direct-reports,69.7,0.4893967282364401
+Climbing Stairs,EASY,"Math, Dynamic Programming, Memoization",https://leetcode.com/problems/climbing-stairs,69.7,0.5354075759623981
+Minimum Time to Repair Cars,MEDIUM,"Array, Binary Search",https://leetcode.com/problems/minimum-time-to-repair-cars,59.5,0.5991672990715053
+Reverse Words in a String,MEDIUM,"Two Pointers, String",https://leetcode.com/problems/reverse-words-in-a-string,59.5,0.5191333530123619
+Max Consecutive Ones,EASY,Array,https://leetcode.com/problems/max-consecutive-ones,59.5,0.6248248491626799
+Kth Largest Element in an Array,MEDIUM,"Array, Divide and Conquer, Sorting, Heap (Priority Queue), Quickselect",https://leetcode.com/problems/kth-largest-element-in-an-array,59.5,0.6797700934843032
+Merge Intervals,MEDIUM,"Array, Sorting",https://leetcode.com/problems/merge-intervals,59.5,0.4939525616898277
+Coin Change,MEDIUM,"Array, Dynamic Programming, Breadth-First Search",https://leetcode.com/problems/coin-change,59.5,0.4649557971017352
+Longest Common Prefix,EASY,"String, Trie",https://leetcode.com/problems/longest-common-prefix,59.5,0.4548314437013565
+Edit Distance,MEDIUM,"String, Dynamic Programming",https://leetcode.com/problems/edit-distance,59.5,0.5878980065613459
+Reverse Linked List,EASY,"Linked List, Recursion",https://leetcode.com/problems/reverse-linked-list,59.5,0.7920658884935761
+Article Views I,EASY,Database,https://leetcode.com/problems/article-views-i,59.5,0.7714447529870836
+Find Customer Referee,EASY,Database,https://leetcode.com/problems/find-customer-referee,59.5,0.7170904181686228
+Majority Element,EASY,"Array, Hash Table, Divide and Conquer, Sorting, Counting",https://leetcode.com/problems/majority-element,59.5,0.657403393726359
+Best Time to Buy and Sell Stock,EASY,"Array, Dynamic Programming",https://leetcode.com/problems/best-time-to-buy-and-sell-stock,59.5,0.5525964364560344
+Pascal's Triangle,EASY,"Array, Dynamic Programming",https://leetcode.com/problems/pascals-triangle,59.5,0.7702154336843631
+Longest Substring Without Repeating Characters,MEDIUM,"Hash Table, String, Sliding Window",https://leetcode.com/problems/longest-substring-without-repeating-characters,59.5,0.3693614405294362

@@ -1,0 +1,12 @@
+question,difficulty,topics,link,frequency,acceptance
+Final Prices With a Special Discount in a Shop,EASY,"Array, Stack, Monotonic Stack",https://leetcode.com/problems/final-prices-with-a-special-discount-in-a-shop,100.0,0.8330161578030366
+Asteroid Collision,MEDIUM,"Array, Stack, Simulation",https://leetcode.com/problems/asteroid-collision,78.8,0.4550073716153288
+Furthest Building You Can Reach,MEDIUM,"Array, Greedy, Heap (Priority Queue)",https://leetcode.com/problems/furthest-building-you-can-reach,72.2,0.5037105972749183
+Gas Station,MEDIUM,"Array, Greedy",https://leetcode.com/problems/gas-station,72.2,0.4638358684554832
+3Sum,MEDIUM,"Array, Two Pointers, Sorting",https://leetcode.com/problems/3sum,72.2,0.3707112712968184
+Minimum Number of Increments on Subarrays to Form a Target Array,HARD,"Array, Dynamic Programming, Stack, Greedy, Monotonic Stack",https://leetcode.com/problems/minimum-number-of-increments-on-subarrays-to-form-a-target-array,72.2,0.724276749873114
+Minimum Falling Path Sum,MEDIUM,"Array, Dynamic Programming, Matrix",https://leetcode.com/problems/minimum-falling-path-sum,62.8,0.6143995522039412
+Shortest Common Supersequence ,HARD,"String, Dynamic Programming",https://leetcode.com/problems/shortest-common-supersequence,62.8,0.6132098086836925
+Number of Ways to Select Buildings,MEDIUM,"String, Dynamic Programming, Prefix Sum",https://leetcode.com/problems/number-of-ways-to-select-buildings,62.8,0.5047505427656327
+Partition Equal Subset Sum,MEDIUM,"Array, Dynamic Programming",https://leetcode.com/problems/partition-equal-subset-sum,62.8,0.4844393368677416
+Minimum Path Sum,MEDIUM,"Array, Dynamic Programming, Matrix",https://leetcode.com/problems/minimum-path-sum,62.8,0.6648161041583261

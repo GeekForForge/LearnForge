@@ -1,0 +1,5 @@
+question,difficulty,topics,link,frequency,acceptance
+Maximize Sum of Weights after Edge Removals,HARD,"Dynamic Programming, Tree, Depth-First Search",https://leetcode.com/problems/maximize-sum-of-weights-after-edge-removals,100.0,0.2908775121991564
+IPO,HARD,"Array, Greedy, Sorting, Heap (Priority Queue)",https://leetcode.com/problems/ipo,65.7,0.5301970818223468
+LFU Cache,HARD,"Hash Table, Linked List, Design, Doubly-Linked List",https://leetcode.com/problems/lfu-cache,65.7,0.4660922759966748
+Sliding Window Maximum,HARD,"Array, Queue, Sliding Window, Heap (Priority Queue), Monotonic Queue",https://leetcode.com/problems/sliding-window-maximum,65.7,0.4760402239032266

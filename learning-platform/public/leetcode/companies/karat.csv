@@ -1,0 +1,16 @@
+question,difficulty,topics,link,frequency,acceptance
+Text Justification,HARD,"Array, String, Simulation",https://leetcode.com/problems/text-justification,100.0,0.4815002699372671
+Check if Every Row and Column Contains All Numbers,EASY,"Array, Hash Table, Matrix",https://leetcode.com/problems/check-if-every-row-and-column-contains-all-numbers,89.6,0.528410934019593
+Find Words That Can Be Formed by Characters,EASY,"Array, Hash Table, String, Counting",https://leetcode.com/problems/find-words-that-can-be-formed-by-characters,88.5,0.7106798822031877
+Word Search,MEDIUM,"Array, String, Backtracking, Depth-First Search, Matrix",https://leetcode.com/problems/word-search,86.1,0.4526702064896755
+Alert Using Same Key-Card Three or More Times in a One Hour Period,MEDIUM,"Array, Hash Table, String, Sorting",https://leetcode.com/problems/alert-using-same-key-card-three-or-more-times-in-a-one-hour-period,80.2,0.4587327987118235
+Course Schedule,MEDIUM,"Depth-First Search, Breadth-First Search, Graph, Topological Sort",https://leetcode.com/problems/course-schedule,60.9,0.4923436346305696
+Ransom Note,EASY,"Hash Table, String, Counting",https://leetcode.com/problems/ransom-note,60.9,0.645236720828959
+Valid Sudoku,MEDIUM,"Array, Hash Table, Matrix",https://leetcode.com/problems/valid-sudoku,55.4,0.6227680872343923
+Number of Islands,MEDIUM,"Array, Depth-First Search, Breadth-First Search, Union Find, Matrix",https://leetcode.com/problems/number-of-islands,55.4,0.6232011443676149
+Maximal Square,MEDIUM,"Array, Dynamic Programming, Matrix",https://leetcode.com/problems/maximal-square,55.4,0.4876116072755284
+Subdomain Visit Count,MEDIUM,"Array, Hash Table, String, Counting",https://leetcode.com/problems/subdomain-visit-count,47.6,0.7683449765176875
+Word Search II,HARD,"Array, String, Backtracking, Trie, Matrix",https://leetcode.com/problems/word-search-ii,47.6,0.3732632087621308
+Course Schedule II,MEDIUM,"Depth-First Search, Breadth-First Search, Graph, Topological Sort",https://leetcode.com/problems/course-schedule-ii,47.6,0.5342347455287296
+Jump Game,MEDIUM,"Array, Dynamic Programming, Greedy",https://leetcode.com/problems/jump-game,47.6,0.3947921120555532
+Two Sum,EASY,"Array, Hash Table",https://leetcode.com/problems/two-sum,47.6,0.5577699688130624

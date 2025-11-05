@@ -1,0 +1,21 @@
+question,difficulty,topics,link,frequency,acceptance
+Maximum Length of Subarray With Positive Product,MEDIUM,"Array, Dynamic Programming, Greedy",https://leetcode.com/problems/maximum-length-of-subarray-with-positive-product,100.0,0.443941282723179
+Cycle Length Queries in a Tree,HARD,"Array, Tree, Binary Tree",https://leetcode.com/problems/cycle-length-queries-in-a-tree,100.0,0.5834553702182377
+Count Collisions on a Road,MEDIUM,"String, Stack, Simulation",https://leetcode.com/problems/count-collisions-on-a-road,97.6,0.4437803705532313
+Maximize the Confusion of an Exam,MEDIUM,"String, Binary Search, Sliding Window, Prefix Sum",https://leetcode.com/problems/maximize-the-confusion-of-an-exam,97.6,0.6861245004961151
+Number of People Aware of a Secret,MEDIUM,"Dynamic Programming, Queue, Simulation",https://leetcode.com/problems/number-of-people-aware-of-a-secret,97.6,0.4636862359780561
+Partition Array Into Two Arrays to Minimize Sum Difference,HARD,"Array, Two Pointers, Binary Search, Dynamic Programming, Bit Manipulation, Ordered Set, Bitmask",https://leetcode.com/problems/partition-array-into-two-arrays-to-minimize-sum-difference,95.0,0.2175272660052991
+House Robber,MEDIUM,"Array, Dynamic Programming",https://leetcode.com/problems/house-robber,80.5,0.5230512577734159
+Search in Rotated Sorted Array,MEDIUM,"Array, Binary Search",https://leetcode.com/problems/search-in-rotated-sorted-array,74.9,0.428373700950291
+Possible Bipartition,MEDIUM,"Depth-First Search, Breadth-First Search, Union Find, Graph",https://leetcode.com/problems/possible-bipartition,74.9,0.5150784103207557
+Stone Game VI,MEDIUM,"Array, Math, Greedy, Sorting, Heap (Priority Queue), Game Theory",https://leetcode.com/problems/stone-game-vi,74.9,0.5906614232919549
+Binary Tree Maximum Path Sum,HARD,"Dynamic Programming, Tree, Depth-First Search, Binary Tree",https://leetcode.com/problems/binary-tree-maximum-path-sum,67.8,0.4122432508651943
+Find the Count of Monotonic Pairs I,HARD,"Array, Math, Dynamic Programming, Combinatorics, Prefix Sum",https://leetcode.com/problems/find-the-count-of-monotonic-pairs-i,67.8,0.4642378517893483
+Next Permutation,MEDIUM,"Array, Two Pointers",https://leetcode.com/problems/next-permutation,67.8,0.4305779906185842
+Best Time to Buy and Sell Stock IV,HARD,"Array, Dynamic Programming",https://leetcode.com/problems/best-time-to-buy-and-sell-stock-iv,57.8,0.4708633093525179
+Minimum Insertion Steps to Make a String Palindrome,HARD,"String, Dynamic Programming",https://leetcode.com/problems/minimum-insertion-steps-to-make-a-string-palindrome,57.8,0.7242938226969341
+Edit Distance,MEDIUM,"String, Dynamic Programming",https://leetcode.com/problems/edit-distance,57.8,0.5878986584785902
+Maximum Product Subarray,MEDIUM,"Array, Dynamic Programming",https://leetcode.com/problems/maximum-product-subarray,57.8,0.3494174827564301
+Surrounded Regions,MEDIUM,"Array, Depth-First Search, Breadth-First Search, Union Find, Matrix",https://leetcode.com/problems/surrounded-regions,57.8,0.4288642186165671
+Sort Colors,MEDIUM,"Array, Two Pointers, Sorting",https://leetcode.com/problems/sort-colors,57.8,0.6758312389131401
+"Pow(x, n)",MEDIUM,"Math, Recursion",https://leetcode.com/problems/powx-n,57.8,0.3702322082141181

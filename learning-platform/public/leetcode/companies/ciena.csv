@@ -1,0 +1,3 @@
+question,difficulty,topics,link,frequency,acceptance
+Active Users,MEDIUM,Database,https://leetcode.com/problems/active-users,100.0,0.3660385155798
+Number of Unique Flavors After Sharing K Candies,MEDIUM,"Array, Hash Table, Sliding Window",https://leetcode.com/problems/number-of-unique-flavors-after-sharing-k-candies,100.0,0.597080998824099

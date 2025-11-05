@@ -1,0 +1,35 @@
+question,difficulty,topics,link,frequency,acceptance
+Implement Trie (Prefix Tree),MEDIUM,"Hash Table, String, Design, Trie",https://leetcode.com/problems/implement-trie-prefix-tree,100.0,0.679349409041436
+Copy List with Random Pointer,MEDIUM,"Hash Table, Linked List",https://leetcode.com/problems/copy-list-with-random-pointer,95.8,0.6053672896963543
+Top K Frequent Elements,MEDIUM,"Array, Hash Table, Divide and Conquer, Sorting, Heap (Priority Queue), Bucket Sort, Counting, Quickselect",https://leetcode.com/problems/top-k-frequent-elements,84.8,0.64566033934405
+Rotting Oranges,MEDIUM,"Array, Breadth-First Search, Matrix",https://leetcode.com/problems/rotting-oranges,84.8,0.5661845896959414
+Merge Intervals,MEDIUM,"Array, Sorting",https://leetcode.com/problems/merge-intervals,84.8,0.4939525543002352
+Design Authentication Manager,MEDIUM,"Hash Table, Linked List, Design, Doubly-Linked List",https://leetcode.com/problems/design-authentication-manager,84.8,0.5785379503322841
+Reaching Points,HARD,Math,https://leetcode.com/problems/reaching-points,77.0,0.336468882434809
+Find Median from Data Stream,HARD,"Two Pointers, Design, Sorting, Heap (Priority Queue), Data Stream",https://leetcode.com/problems/find-median-from-data-stream,77.0,0.5327805635591867
+Longest Substring Without Repeating Characters,MEDIUM,"Hash Table, String, Sliding Window",https://leetcode.com/problems/longest-substring-without-repeating-characters,77.0,0.3693614699180092
+Integer to Roman,MEDIUM,"Hash Table, Math, String",https://leetcode.com/problems/integer-to-roman,77.0,0.6861925425592491
+Excel Sheet Column Number,EASY,"Math, String",https://leetcode.com/problems/excel-sheet-column-number,77.0,0.6575291475554931
+Search Suggestions System,MEDIUM,"Array, String, Binary Search, Trie, Sorting, Heap (Priority Queue)",https://leetcode.com/problems/search-suggestions-system,77.0,0.6505022273267432
+Sort Colors,MEDIUM,"Array, Two Pointers, Sorting",https://leetcode.com/problems/sort-colors,77.0,0.6758310563118493
+Shortest Bridge,MEDIUM,"Array, Depth-First Search, Breadth-First Search, Matrix",https://leetcode.com/problems/shortest-bridge,66.0,0.5864849244498144
+House Robber II,MEDIUM,"Array, Dynamic Programming",https://leetcode.com/problems/house-robber-ii,66.0,0.4356270776721795
+Number of Atoms,HARD,"Hash Table, String, Stack, Sorting",https://leetcode.com/problems/number-of-atoms,66.0,0.6500029349858701
+Pairs of Songs With Total Durations Divisible by 60,MEDIUM,"Array, Hash Table, Counting",https://leetcode.com/problems/pairs-of-songs-with-total-durations-divisible-by-60,66.0,0.5324771514259002
+Meeting Rooms II,MEDIUM,"Array, Two Pointers, Greedy, Sorting, Heap (Priority Queue), Prefix Sum",https://leetcode.com/problems/meeting-rooms-ii,66.0,0.5214175430894478
+Design Add and Search Words Data Structure,MEDIUM,"String, Depth-First Search, Design, Trie",https://leetcode.com/problems/design-add-and-search-words-data-structure,66.0,0.470666926431652
+Count Good Nodes in Binary Tree,MEDIUM,"Tree, Depth-First Search, Breadth-First Search, Binary Tree",https://leetcode.com/problems/count-good-nodes-in-binary-tree,66.0,0.7349971749721809
+Number of Islands,MEDIUM,"Array, Depth-First Search, Breadth-First Search, Union Find, Matrix",https://leetcode.com/problems/number-of-islands,66.0,0.623200604966783
+Insert Delete GetRandom O(1),MEDIUM,"Array, Hash Table, Math, Design, Randomized",https://leetcode.com/problems/insert-delete-getrandom-o1,66.0,0.5499189028081347
+Two Sum,EASY,"Array, Hash Table",https://leetcode.com/problems/two-sum,66.0,0.5577699908511542
+Inorder Successor in BST,MEDIUM,"Tree, Depth-First Search, Binary Search Tree, Binary Tree",https://leetcode.com/problems/inorder-successor-in-bst,66.0,0.5066782117122497
+Reorder Routes to Make All Paths Lead to the City Zero,MEDIUM,"Depth-First Search, Breadth-First Search, Graph",https://leetcode.com/problems/reorder-routes-to-make-all-paths-lead-to-the-city-zero,66.0,0.6503424773250566
+LRU Cache,MEDIUM,"Hash Table, Linked List, Design, Doubly-Linked List",https://leetcode.com/problems/lru-cache,66.0,0.452147387470624
+Palindrome Permutation,EASY,"Hash Table, String, Bit Manipulation",https://leetcode.com/problems/palindrome-permutation,66.0,0.6850934894703868
+IPO,HARD,"Array, Greedy, Sorting, Heap (Priority Queue)",https://leetcode.com/problems/ipo,66.0,0.5302045214082566
+Optimal Partition of String,MEDIUM,"Hash Table, String, Greedy",https://leetcode.com/problems/optimal-partition-of-string,66.0,0.7822723454148762
+Boats to Save People,MEDIUM,"Array, Two Pointers, Greedy, Sorting",https://leetcode.com/problems/boats-to-save-people,66.0,0.6030079575995452
+Product of Array Except Self,MEDIUM,"Array, Prefix Sum",https://leetcode.com/problems/product-of-array-except-self,66.0,0.6777993521551884
+Clone Graph,MEDIUM,"Hash Table, Depth-First Search, Breadth-First Search, Graph",https://leetcode.com/problems/clone-graph,66.0,0.623857864474346
+3Sum,MEDIUM,"Array, Two Pointers, Sorting",https://leetcode.com/problems/3sum,66.0,0.3707100461339753
+Merge k Sorted Lists,HARD,"Linked List, Divide and Conquer, Heap (Priority Queue), Merge Sort",https://leetcode.com/problems/merge-k-sorted-lists,66.0,0.5677418947817154

@@ -1,0 +1,13 @@
+question,difficulty,topics,link,frequency,acceptance
+Two Sum,EASY,"Array, Hash Table",https://leetcode.com/problems/two-sum,100.0,0.5577699039659807
+Valid Parentheses,EASY,"String, Stack",https://leetcode.com/problems/valid-parentheses,94.1,0.4232287729354669
+Valid Anagram,EASY,"Hash Table, String, Sorting",https://leetcode.com/problems/valid-anagram,86.5,0.6666097010751223
+Best Time to Buy and Sell Stock,EASY,"Array, Dynamic Programming",https://leetcode.com/problems/best-time-to-buy-and-sell-stock,86.5,0.5525963802478652
+Subsets,MEDIUM,"Array, Backtracking, Bit Manipulation",https://leetcode.com/problems/subsets,75.8,0.8087943224256119
+Fizz Buzz,EASY,"Math, String, Simulation",https://leetcode.com/problems/fizz-buzz,75.8,0.7437059893592051
+Container With Most Water,MEDIUM,"Array, Two Pointers, Greedy",https://leetcode.com/problems/container-with-most-water,75.8,0.5778289005385611
+Rotate Image,MEDIUM,"Array, Math, Matrix",https://leetcode.com/problems/rotate-image,75.8,0.7790168587503742
+Longest Palindromic Substring,MEDIUM,"Two Pointers, String, Dynamic Programming",https://leetcode.com/problems/longest-palindromic-substring,75.8,0.3584614184401339
+Candy,HARD,"Array, Greedy",https://leetcode.com/problems/candy,75.8,0.4669983592386035
+Gas Station,MEDIUM,"Array, Greedy",https://leetcode.com/problems/gas-station,75.8,0.4638358809318818
+Coin Change,MEDIUM,"Array, Dynamic Programming, Breadth-First Search",https://leetcode.com/problems/coin-change,75.8,0.4649557971017352

@@ -1,0 +1,8 @@
+question,difficulty,topics,link,frequency,acceptance
+Validate Binary Search Tree,MEDIUM,"Tree, Depth-First Search, Binary Search Tree, Binary Tree",https://leetcode.com/problems/validate-binary-search-tree,100.0,0.3438047626970681
+Text Justification,HARD,"Array, String, Simulation",https://leetcode.com/problems/text-justification,92.2,0.4815026183267016
+Kth Largest Element in an Array,MEDIUM,"Array, Divide and Conquer, Sorting, Heap (Priority Queue), Quickselect",https://leetcode.com/problems/kth-largest-element-in-an-array,71.1,0.6797703802112421
+Add Binary,EASY,"Math, String, Bit Manipulation, Simulation",https://leetcode.com/problems/add-binary,71.1,0.556770384811513
+Spiral Matrix,MEDIUM,"Array, Matrix, Simulation",https://leetcode.com/problems/spiral-matrix,71.1,0.5393984752092467
+Block Placement Queries,HARD,"Array, Binary Search, Binary Indexed Tree, Segment Tree",https://leetcode.com/problems/block-placement-queries,71.1,0.168902023187088
+Number of Black Blocks,MEDIUM,"Array, Hash Table, Enumeration",https://leetcode.com/problems/number-of-black-blocks,71.1,0.3862287177941841

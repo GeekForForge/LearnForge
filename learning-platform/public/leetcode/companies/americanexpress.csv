@@ -1,0 +1,24 @@
+question,difficulty,topics,link,frequency,acceptance
+Minimum Deletions to Make Character Frequencies Unique,MEDIUM,"Hash Table, String, Greedy, Sorting",https://leetcode.com/problems/minimum-deletions-to-make-character-frequencies-unique,100.0,0.6129471469241242
+Maximum Equal Frequency,HARD,"Array, Hash Table",https://leetcode.com/problems/maximum-equal-frequency,97.9,0.374845333970087
+Percentage of Letter in String,EASY,String,https://leetcode.com/problems/percentage-of-letter-in-string,95.5,0.7449277284179817
+Minimum Number of Operations to Make Array XOR Equal to K,MEDIUM,"Array, Bit Manipulation",https://leetcode.com/problems/minimum-number-of-operations-to-make-array-xor-equal-to-k,95.5,0.8534717074376081
+Equal Sum Arrays With Minimum Number of Operations,MEDIUM,"Array, Hash Table, Greedy, Counting",https://leetcode.com/problems/equal-sum-arrays-with-minimum-number-of-operations,95.5,0.5393437505134651
+Find a Value of a Mysterious Function Closest to Target,HARD,"Array, Binary Search, Bit Manipulation, Segment Tree",https://leetcode.com/problems/find-a-value-of-a-mysterious-function-closest-to-target,95.5,0.4574925570625206
+Maximum XOR After Operations ,MEDIUM,"Array, Math, Bit Manipulation",https://leetcode.com/problems/maximum-xor-after-operations,95.5,0.7929730322297742
+Divide an Array Into Subarrays With Minimum Cost II,HARD,"Array, Hash Table, Sliding Window, Heap (Priority Queue)",https://leetcode.com/problems/divide-an-array-into-subarrays-with-minimum-cost-ii,95.5,0.3040626621997829
+Divide an Array Into Subarrays With Minimum Cost I,EASY,"Array, Sorting, Enumeration",https://leetcode.com/problems/divide-an-array-into-subarrays-with-minimum-cost-i,95.5,0.6578163145045879
+Maximize the Topmost Element After K Moves,MEDIUM,"Array, Greedy",https://leetcode.com/problems/maximize-the-topmost-element-after-k-moves,95.5,0.2348190186172053
+Ugly Number III,MEDIUM,"Math, Binary Search, Combinatorics, Number Theory",https://leetcode.com/problems/ugly-number-iii,95.5,0.3045001069756016
+Two Sum,EASY,"Array, Hash Table",https://leetcode.com/problems/two-sum,82.9,0.5577699987023336
+3Sum,MEDIUM,"Array, Two Pointers, Sorting",https://leetcode.com/problems/3sum,72.9,0.3707105022201885
+Valid Anagram,EASY,"Hash Table, String, Sorting",https://leetcode.com/problems/valid-anagram,72.9,0.6666098386966278
+Minimum Fuel Cost to Report to the Capital,MEDIUM,"Tree, Depth-First Search, Breadth-First Search, Graph",https://leetcode.com/problems/minimum-fuel-cost-to-report-to-the-capital,65.8,0.6435778675036323
+Add Digits,EASY,"Math, Simulation, Number Theory",https://leetcode.com/problems/add-digits,65.8,0.6791264192015334
+Valid Palindrome,EASY,"Two Pointers, String",https://leetcode.com/problems/valid-palindrome,65.8,0.5096356539693581
+Rotate Array,MEDIUM,"Array, Math, Two Pointers",https://leetcode.com/problems/rotate-array,65.8,0.4302138779169178
+Best Time to Buy and Sell Stock,EASY,"Array, Dynamic Programming",https://leetcode.com/problems/best-time-to-buy-and-sell-stock,65.8,0.5525964769624077
+Reconstruct a 2-Row Binary Matrix,MEDIUM,"Array, Greedy, Matrix",https://leetcode.com/problems/reconstruct-a-2-row-binary-matrix,55.9,0.4772217731480775
+Trapping Rain Water,HARD,"Array, Two Pointers, Dynamic Programming, Stack, Monotonic Stack",https://leetcode.com/problems/trapping-rain-water,55.9,0.651020475550146
+Longest Substring Without Repeating Characters,MEDIUM,"Hash Table, String, Sliding Window",https://leetcode.com/problems/longest-substring-without-repeating-characters,55.9,0.3693614014826408
+Permutations,MEDIUM,"Array, Backtracking",https://leetcode.com/problems/permutations,55.9,0.8066018990164369

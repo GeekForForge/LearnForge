@@ -1,0 +1,58 @@
+question,difficulty,topics,link,frequency,acceptance
+Integer to Roman,MEDIUM,"Hash Table, Math, String",https://leetcode.com/problems/integer-to-roman,100.0,0.6861936286502606
+Merge Intervals,MEDIUM,"Array, Sorting",https://leetcode.com/problems/merge-intervals,91.3,0.4939526500687338
+Number of Islands,MEDIUM,"Array, Depth-First Search, Breadth-First Search, Union Find, Matrix",https://leetcode.com/problems/number-of-islands,91.3,0.623201439975349
+Longest Palindromic Substring,MEDIUM,"Two Pointers, String, Dynamic Programming",https://leetcode.com/problems/longest-palindromic-substring,89.1,0.3584616666918127
+Container With Most Water,MEDIUM,"Array, Two Pointers, Greedy",https://leetcode.com/problems/container-with-most-water,89.1,0.5778294911573199
+Add Two Numbers,MEDIUM,"Linked List, Math, Recursion",https://leetcode.com/problems/add-two-numbers,86.7,0.462251854183053
+Unique Email Addresses,EASY,"Array, Hash Table, String",https://leetcode.com/problems/unique-email-addresses,86.7,0.6758621291144098
+Binary Tree Maximum Path Sum,HARD,"Dynamic Programming, Tree, Depth-First Search, Binary Tree",https://leetcode.com/problems/binary-tree-maximum-path-sum,86.7,0.4122433435353456
+All Nodes Distance K in Binary Tree,MEDIUM,"Hash Table, Tree, Depth-First Search, Breadth-First Search, Binary Tree",https://leetcode.com/problems/all-nodes-distance-k-in-binary-tree,86.7,0.6644228137982816
+Clone Graph,MEDIUM,"Hash Table, Depth-First Search, Breadth-First Search, Graph",https://leetcode.com/problems/clone-graph,86.7,0.6238583023997237
+Is Subsequence,EASY,"Two Pointers, String, Dynamic Programming",https://leetcode.com/problems/is-subsequence,86.7,0.4838256140732861
+Employees Earning More Than Their Managers,EASY,Database,https://leetcode.com/problems/employees-earning-more-than-their-managers,86.7,0.7153010087303053
+Verifying an Alien Dictionary,EASY,"Array, Hash Table, String",https://leetcode.com/problems/verifying-an-alien-dictionary,86.7,0.5557267307653706
+Binary Tree Right Side View,MEDIUM,"Tree, Depth-First Search, Breadth-First Search, Binary Tree",https://leetcode.com/problems/binary-tree-right-side-view,86.7,0.670426837476361
+Longest String Chain,MEDIUM,"Array, Hash Table, Two Pointers, String, Dynamic Programming, Sorting",https://leetcode.com/problems/longest-string-chain,86.7,0.6201509496821173
+Lowest Common Ancestor of a Binary Tree,MEDIUM,"Tree, Depth-First Search, Binary Tree",https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-tree,86.7,0.6675504416163782
+Shortest Word Distance,EASY,"Array, String",https://leetcode.com/problems/shortest-word-distance,86.7,0.6594959076066214
+K Closest Points to Origin,MEDIUM,"Array, Math, Divide and Conquer, Geometry, Sorting, Heap (Priority Queue), Quickselect",https://leetcode.com/problems/k-closest-points-to-origin,86.7,0.67939607844191
+Invalid Transactions,MEDIUM,"Array, Hash Table, String, Sorting",https://leetcode.com/problems/invalid-transactions,86.7,0.3127080304862309
+Group Shifted Strings,MEDIUM,"Array, Hash Table, String",https://leetcode.com/problems/group-shifted-strings,86.7,0.6737830758685182
+Search Suggestions System,MEDIUM,"Array, String, Binary Search, Trie, Sorting, Heap (Priority Queue)",https://leetcode.com/problems/search-suggestions-system,86.7,0.6505017277492126
+Copy List with Random Pointer,MEDIUM,"Hash Table, Linked List",https://leetcode.com/problems/copy-list-with-random-pointer,86.7,0.6053680913762596
+Validate Binary Search Tree,MEDIUM,"Tree, Depth-First Search, Binary Search Tree, Binary Tree",https://leetcode.com/problems/validate-binary-search-tree,86.7,0.343804803732738
+Design HashSet,EASY,"Array, Hash Table, Linked List, Design, Hash Function",https://leetcode.com/problems/design-hashset,86.7,0.6703367545106087
+Intersection of Two Arrays,EASY,"Array, Hash Table, Two Pointers, Binary Search, Sorting",https://leetcode.com/problems/intersection-of-two-arrays,86.7,0.7647444746389005
+3Sum,MEDIUM,"Array, Two Pointers, Sorting",https://leetcode.com/problems/3sum,86.7,0.3707106513486177
+Merge Two Sorted Lists,EASY,"Linked List, Recursion",https://leetcode.com/problems/merge-two-sorted-lists,86.7,0.6684092926873438
+Move Zeroes,EASY,"Array, Two Pointers",https://leetcode.com/problems/move-zeroes,86.7,0.6280401331228596
+Diameter of Binary Tree,EASY,"Tree, Depth-First Search, Binary Tree",https://leetcode.com/problems/diameter-of-binary-tree,86.7,0.6358631795526232
+Minimum Distance Between BST Nodes,EASY,"Tree, Depth-First Search, Breadth-First Search, Binary Search Tree, Binary Tree",https://leetcode.com/problems/minimum-distance-between-bst-nodes,86.7,0.6030334314366235
+Trapping Rain Water,HARD,"Array, Two Pointers, Dynamic Programming, Stack, Monotonic Stack",https://leetcode.com/problems/trapping-rain-water,86.7,0.6510209523696747
+Alien Dictionary,HARD,"Array, String, Depth-First Search, Breadth-First Search, Graph, Topological Sort",https://leetcode.com/problems/alien-dictionary,86.7,0.3667370774326646
+"Pow(x, n)",MEDIUM,"Math, Recursion",https://leetcode.com/problems/powx-n,86.7,0.3702315236919828
+Unique Morse Code Words,EASY,"Array, Hash Table, String",https://leetcode.com/problems/unique-morse-code-words,86.7,0.8324486964903255
+Subdomain Visit Count,MEDIUM,"Array, Hash Table, String, Counting",https://leetcode.com/problems/subdomain-visit-count,86.7,0.7683449765176875
+Palindrome Pairs,HARD,"Array, Hash Table, String, Trie",https://leetcode.com/problems/palindrome-pairs,86.7,0.3624381040688727
+Power of Four,EASY,"Math, Bit Manipulation, Recursion",https://leetcode.com/problems/power-of-four,86.7,0.494710431938566
+Maximum Subarray,MEDIUM,"Array, Divide and Conquer, Dynamic Programming",https://leetcode.com/problems/maximum-subarray,86.7,0.5209983117304944
+Median of Two Sorted Arrays,HARD,"Array, Binary Search, Divide and Conquer",https://leetcode.com/problems/median-of-two-sorted-arrays,84.1,0.4381465178962261
+Strong Password Checker,HARD,"String, Greedy, Heap (Priority Queue)",https://leetcode.com/problems/strong-password-checker,81.1,0.1462273021710512
+Rotting Oranges,MEDIUM,"Array, Breadth-First Search, Matrix",https://leetcode.com/problems/rotting-oranges,81.1,0.5661859692244714
+Decode String,MEDIUM,"String, Stack, Recursion",https://leetcode.com/problems/decode-string,77.8,0.6115257866374799
+Subsets,MEDIUM,"Array, Backtracking, Bit Manipulation",https://leetcode.com/problems/subsets,69.4,0.8087945532640931
+Word Search II,HARD,"Array, String, Backtracking, Trie, Matrix",https://leetcode.com/problems/word-search-ii,69.4,0.3732635028051379
+Roman to Integer,EASY,"Hash Table, Math, String",https://leetcode.com/problems/roman-to-integer,69.4,0.64866367367635
+Escape The Ghosts,MEDIUM,"Array, Math",https://leetcode.com/problems/escape-the-ghosts,63.8,0.6257654176993731
+As Far from Land as Possible,MEDIUM,"Array, Dynamic Programming, Breadth-First Search, Matrix",https://leetcode.com/problems/as-far-from-land-as-possible,63.8,0.5184355695888827
+Reconstruct Original Digits from English,MEDIUM,"Hash Table, Math, String",https://leetcode.com/problems/reconstruct-original-digits-from-english,63.8,0.5157334259339642
+Word Search,MEDIUM,"Array, String, Backtracking, Depth-First Search, Matrix",https://leetcode.com/problems/word-search,56.6,0.4526704051416151
+Find Peak Element,MEDIUM,"Array, Binary Search",https://leetcode.com/problems/find-peak-element,46.6,0.4650922980083712
+Count and Say,MEDIUM,String,https://leetcode.com/problems/count-and-say,46.6,0.6050669323131879
+Pascal's Triangle,EASY,"Array, Dynamic Programming",https://leetcode.com/problems/pascals-triangle,46.6,0.7702157635192212
+Minimum Time Takes to Reach Destination Without Drowning,HARD,"Array, Breadth-First Search, Matrix",https://leetcode.com/problems/minimum-time-takes-to-reach-destination-without-drowning,46.6,0.5199539524174981
+Valid Parentheses,EASY,"String, Stack",https://leetcode.com/problems/valid-parentheses,46.6,0.4232287912473047
+Lowest Common Ancestor of a Binary Tree III,MEDIUM,"Hash Table, Two Pointers, Tree, Binary Tree",https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-tree-iii,46.6,0.8246702504614473
+Two Sum,EASY,"Array, Hash Table",https://leetcode.com/problems/two-sum,46.6,0.5577701600579492
+Shortest Distance from All Buildings,HARD,"Array, Breadth-First Search, Matrix",https://leetcode.com/problems/shortest-distance-from-all-buildings,46.6,0.4437267220297094

@@ -1,0 +1,10 @@
+question,difficulty,topics,link,frequency,acceptance
+Valid Parentheses,EASY,"String, Stack",https://leetcode.com/problems/valid-parentheses,100.0,0.423229021440664
+Longest Substring Without Repeating Characters,MEDIUM,"Hash Table, String, Sliding Window",https://leetcode.com/problems/longest-substring-without-repeating-characters,94.0,0.3693616331947387
+Merge Sorted Array,EASY,"Array, Two Pointers, Sorting",https://leetcode.com/problems/merge-sorted-array,86.3,0.5291965716793704
+Longest Common Prefix,EASY,"String, Trie",https://leetcode.com/problems/longest-common-prefix,75.5,0.454831605612583
+Group Anagrams,MEDIUM,"Array, Hash Table, String, Sorting",https://leetcode.com/problems/group-anagrams,75.5,0.7092891274785598
+Two Sum,EASY,"Array, Hash Table",https://leetcode.com/problems/two-sum,75.5,0.5577703941113128
+3Sum,MEDIUM,"Array, Two Pointers, Sorting",https://leetcode.com/problems/3sum,75.5,0.3707110358869514
+Palindrome Number,EASY,Math,https://leetcode.com/problems/palindrome-number,75.5,0.5922453168200937
+Reverse String,EASY,"Two Pointers, String",https://leetcode.com/problems/reverse-string,75.5,0.7976439633443675

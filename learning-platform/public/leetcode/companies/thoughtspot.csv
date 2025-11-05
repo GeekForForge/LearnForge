@@ -1,0 +1,13 @@
+question,difficulty,topics,link,frequency,acceptance
+Count Subarrays With Median K,HARD,"Array, Hash Table, Prefix Sum",https://leetcode.com/problems/count-subarrays-with-median-k,100.0,0.4553062885040102
+Count Paths That Can Form a Palindrome in a Tree,HARD,"Dynamic Programming, Bit Manipulation, Tree, Depth-First Search, Bitmask",https://leetcode.com/problems/count-paths-that-can-form-a-palindrome-in-a-tree,89.5,0.4543955137720601
+LRU Cache,MEDIUM,"Hash Table, Linked List, Design, Doubly-Linked List",https://leetcode.com/problems/lru-cache,82.1,0.4521503674253356
+Minimum Window Substring,HARD,"Hash Table, String, Sliding Window",https://leetcode.com/problems/minimum-window-substring,82.1,0.4535080139186543
+Minimum Number of K Consecutive Bit Flips,HARD,"Array, Bit Manipulation, Queue, Sliding Window, Prefix Sum",https://leetcode.com/problems/minimum-number-of-k-consecutive-bit-flips,71.6,0.6217152009183782
+Snakes and Ladders,MEDIUM,"Array, Breadth-First Search, Matrix",https://leetcode.com/problems/snakes-and-ladders,71.6,0.4779591396819314
+Number of Islands,MEDIUM,"Array, Depth-First Search, Breadth-First Search, Union Find, Matrix",https://leetcode.com/problems/number-of-islands,71.6,0.6232017379911429
+Most Stones Removed with Same Row or Column,MEDIUM,"Hash Table, Depth-First Search, Union Find, Graph",https://leetcode.com/problems/most-stones-removed-with-same-row-or-column,71.6,0.6218985374837238
+Subarray Sums Divisible by K,MEDIUM,"Array, Hash Table, Prefix Sum",https://leetcode.com/problems/subarray-sums-divisible-by-k,71.6,0.5561796146835698
+Interleaving String,MEDIUM,"String, Dynamic Programming",https://leetcode.com/problems/interleaving-string,71.6,0.421793309385109
+Count Pairs of Connectable Servers in a Weighted Tree Network,MEDIUM,"Array, Tree, Depth-First Search",https://leetcode.com/problems/count-pairs-of-connectable-servers-in-a-weighted-tree-network,71.6,0.5419311727363849
+House Robber II,MEDIUM,"Array, Dynamic Programming",https://leetcode.com/problems/house-robber-ii,71.6,0.4356280849702812

@@ -1,0 +1,16 @@
+question,difficulty,topics,link,frequency,acceptance
+Decode String,MEDIUM,"String, Stack, Recursion",https://leetcode.com/problems/decode-string,100.0,0.6115259200424883
+Remove Boxes,HARD,"Array, Dynamic Programming, Memoization",https://leetcode.com/problems/remove-boxes,97.9,0.4829246222061351
+Minimum Factorization,MEDIUM,"Math, Greedy",https://leetcode.com/problems/minimum-factorization,97.9,0.3380261620450853
+Candy,HARD,"Array, Greedy",https://leetcode.com/problems/candy,62.4,0.4669983592386035
+Implement Rand10() Using Rand7(),MEDIUM,"Math, Rejection Sampling, Randomized, Probability and Statistics",https://leetcode.com/problems/implement-rand10-using-rand7,62.4,0.4585972286873645
+Immediate Food Delivery II,MEDIUM,Database,https://leetcode.com/problems/immediate-food-delivery-ii,62.4,0.5431581086799343
+Alien Dictionary,HARD,"Array, String, Depth-First Search, Breadth-First Search, Graph, Topological Sort",https://leetcode.com/problems/alien-dictionary,62.4,0.3667366393077476
+LRU Cache,MEDIUM,"Hash Table, Linked List, Design, Doubly-Linked List",https://leetcode.com/problems/lru-cache,62.4,0.452147872132123
+Remove Duplicates from Sorted List II,MEDIUM,"Linked List, Two Pointers",https://leetcode.com/problems/remove-duplicates-from-sorted-list-ii,62.4,0.4989097083986533
+Valid Parentheses,EASY,"String, Stack",https://leetcode.com/problems/valid-parentheses,62.4,0.4232286934455142
+Minimum Remove to Make Valid Parentheses,MEDIUM,"String, Stack",https://leetcode.com/problems/minimum-remove-to-make-valid-parentheses,62.4,0.7074595624352417
+Department Highest Salary,MEDIUM,Database,https://leetcode.com/problems/department-highest-salary,62.4,0.5481303192598069
+Next Greater Element I,EASY,"Array, Hash Table, Stack, Monotonic Stack",https://leetcode.com/problems/next-greater-element-i,62.4,0.7451231783605773
+Debounce,MEDIUM,,https://leetcode.com/problems/debounce,62.4,0.9181616559881716
+Merge Intervals,MEDIUM,"Array, Sorting",https://leetcode.com/problems/merge-intervals,62.4,0.4939524843951094

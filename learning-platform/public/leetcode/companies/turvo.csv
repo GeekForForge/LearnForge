@@ -1,0 +1,4 @@
+question,difficulty,topics,link,frequency,acceptance
+Minimum Difficulty of a Job Schedule,HARD,"Array, Dynamic Programming",https://leetcode.com/problems/minimum-difficulty-of-a-job-schedule,100.0,0.5965934207360405
+Count Good Triplets,EASY,"Array, Enumeration",https://leetcode.com/problems/count-good-triplets,100.0,0.8548398546656082
+Trapping Rain Water,HARD,"Array, Two Pointers, Dynamic Programming, Stack, Monotonic Stack",https://leetcode.com/problems/trapping-rain-water,67.0,0.6510870126857792

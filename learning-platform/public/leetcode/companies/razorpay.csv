@@ -1,0 +1,11 @@
+question,difficulty,topics,link,frequency,acceptance
+Minimum Total Cost to Make Arrays Unequal,HARD,"Array, Hash Table, Greedy, Counting",https://leetcode.com/problems/minimum-total-cost-to-make-arrays-unequal,100.0,0.4050688867604803
+Two Best Non-Overlapping Events,MEDIUM,"Array, Binary Search, Dynamic Programming, Sorting, Heap (Priority Queue)",https://leetcode.com/problems/two-best-non-overlapping-events,100.0,0.6083218765865931
+Most Beautiful Item for Each Query,MEDIUM,"Array, Binary Search, Sorting",https://leetcode.com/problems/most-beautiful-item-for-each-query,100.0,0.6204238729375727
+Shortest Subarray to be Removed to Make Array Sorted,MEDIUM,"Array, Two Pointers, Binary Search, Stack, Monotonic Stack",https://leetcode.com/problems/shortest-subarray-to-be-removed-to-make-array-sorted,79.1,0.5143014465781959
+Merge Intervals,MEDIUM,"Array, Sorting",https://leetcode.com/problems/merge-intervals,72.6,0.4939520705100966
+Excel Sheet Column Number,EASY,"Math, String",https://leetcode.com/problems/excel-sheet-column-number,63.4,0.657529430838357
+Decode String,MEDIUM,"String, Stack, Recursion",https://leetcode.com/problems/decode-string,63.4,0.6115274430176852
+Container With Most Water,MEDIUM,"Array, Two Pointers, Greedy",https://leetcode.com/problems/container-with-most-water,63.4,0.5778299323068349
+Rotate Array,MEDIUM,"Array, Math, Two Pointers",https://leetcode.com/problems/rotate-array,63.4,0.4302140262731135
+LRU Cache,MEDIUM,"Hash Table, Linked List, Design, Doubly-Linked List",https://leetcode.com/problems/lru-cache,63.4,0.4521500890965678

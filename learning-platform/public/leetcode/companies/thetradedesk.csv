@@ -1,0 +1,6 @@
+question,difficulty,topics,link,frequency,acceptance
+Find the Length of the Longest Common Prefix,MEDIUM,"Array, Hash Table, String, Trie",https://leetcode.com/problems/find-the-length-of-the-longest-common-prefix,100.0,0.564161205458434
+LRU Cache,MEDIUM,"Hash Table, Linked List, Design, Doubly-Linked List",https://leetcode.com/problems/lru-cache,66.1,0.452148887598132
+Best Time to Buy and Sell Stock,EASY,"Array, Dynamic Programming",https://leetcode.com/problems/best-time-to-buy-and-sell-stock,66.1,0.5525969358423186
+Basic Calculator II,MEDIUM,"Math, String, Stack",https://leetcode.com/problems/basic-calculator-ii,66.1,0.4581176497577298
+Word Ladder,HARD,"Hash Table, String, Breadth-First Search",https://leetcode.com/problems/word-ladder,66.1,0.4281218971060388

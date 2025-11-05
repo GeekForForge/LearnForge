@@ -1,0 +1,7 @@
+question,difficulty,topics,link,frequency,acceptance
+String Without AAA or BBB,MEDIUM,"String, Greedy",https://leetcode.com/problems/string-without-aaa-or-bbb,100.0,0.4451638785252939
+LRU Cache,MEDIUM,"Hash Table, Linked List, Design, Doubly-Linked List",https://leetcode.com/problems/lru-cache,70.3,0.452148887598132
+Lemonade Change,EASY,"Array, Greedy",https://leetcode.com/problems/lemonade-change,70.3,0.5844961101877493
+Construct the Longest New String,MEDIUM,"Math, Dynamic Programming, Greedy, Brainteaser",https://leetcode.com/problems/construct-the-longest-new-string,62.2,0.5384322081417517
+Merge Intervals,MEDIUM,"Array, Sorting",https://leetcode.com/problems/merge-intervals,62.2,0.4939525838584966
+Largest Number,MEDIUM,"Array, String, Greedy, Sorting",https://leetcode.com/problems/largest-number,62.2,0.4128053161945387

@@ -1,0 +1,6 @@
+question,difficulty,topics,link,frequency,acceptance
+Scramble String,HARD,"String, Dynamic Programming",https://leetcode.com/problems/scramble-string,100.0,0.4218411591949826
+Spiral Matrix,MEDIUM,"Array, Matrix, Simulation",https://leetcode.com/problems/spiral-matrix,71.5,0.5394612524875491
+Majority Element II,MEDIUM,"Array, Hash Table, Sorting, Counting",https://leetcode.com/problems/majority-element-ii,58.4,0.5438470001948768
+Number of Great Partitions,HARD,"Array, Dynamic Programming",https://leetcode.com/problems/number-of-great-partitions,58.4,0.3226402936149945
+Minimum Size Subarray Sum,MEDIUM,"Array, Binary Search, Sliding Window, Prefix Sum",https://leetcode.com/problems/minimum-size-subarray-sum,58.4,0.4939438522342745

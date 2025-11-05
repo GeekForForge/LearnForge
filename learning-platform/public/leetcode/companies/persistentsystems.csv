@@ -1,0 +1,11 @@
+question,difficulty,topics,link,frequency,acceptance
+Minimum Bit Flips to Convert Number,EASY,Bit Manipulation,https://leetcode.com/problems/minimum-bit-flips-to-convert-number,100.0,0.8758168602874182
+Group Anagrams,MEDIUM,"Array, Hash Table, String, Sorting",https://leetcode.com/problems/group-anagrams,84.6,0.7092901466874999
+Palindrome Number,EASY,Math,https://leetcode.com/problems/palindrome-number,73.2,0.5922447015916658
+Valid Parentheses,EASY,"String, Stack",https://leetcode.com/problems/valid-parentheses,73.2,0.4232292613944299
+Valid Anagram,EASY,"Hash Table, String, Sorting",https://leetcode.com/problems/valid-anagram,64.2,0.666610252002927
+Maximum Subarray,MEDIUM,"Array, Divide and Conquer, Dynamic Programming",https://leetcode.com/problems/maximum-subarray,64.2,0.5209993469708638
+Two Sum,EASY,"Array, Hash Table",https://leetcode.com/problems/two-sum,64.2,0.557770959097391
+Longest Substring Without Repeating Characters,MEDIUM,"Hash Table, String, Sliding Window",https://leetcode.com/problems/longest-substring-without-repeating-characters,64.2,0.3693618618373633
+Longest Palindromic Substring,MEDIUM,"Two Pointers, String, Dynamic Programming",https://leetcode.com/problems/longest-palindromic-substring,64.2,0.3584627777320859
+Merge Sorted Array,EASY,"Array, Two Pointers, Sorting",https://leetcode.com/problems/merge-sorted-array,64.2,0.5291970279778354

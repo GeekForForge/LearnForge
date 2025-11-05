@@ -1,0 +1,8 @@
+question,difficulty,topics,link,frequency,acceptance
+"Pow(x, n)",MEDIUM,"Math, Recursion",https://leetcode.com/problems/powx-n,100.0,0.3702313406018087
+Find the Smallest Divisor Given a Threshold,MEDIUM,"Array, Binary Search",https://leetcode.com/problems/find-the-smallest-divisor-given-a-threshold,100.0,0.6364670242650312
+Broken Calculator,MEDIUM,"Math, Greedy",https://leetcode.com/problems/broken-calculator,100.0,0.551297403214314
+Partition Array Into Two Arrays to Minimize Sum Difference,HARD,"Array, Two Pointers, Binary Search, Dynamic Programming, Bit Manipulation, Ordered Set, Bitmask",https://leetcode.com/problems/partition-array-into-two-arrays-to-minimize-sum-difference,100.0,0.2175277160154665
+Valid Parentheses,EASY,"String, Stack",https://leetcode.com/problems/valid-parentheses,100.0,0.4232288415727031
+Palindromic Substrings,MEDIUM,"Two Pointers, String, Dynamic Programming",https://leetcode.com/problems/palindromic-substrings,100.0,0.716780342298775
+Best Time to Buy and Sell Stock,EASY,"Array, Dynamic Programming",https://leetcode.com/problems/best-time-to-buy-and-sell-stock,100.0,0.5525967760941201

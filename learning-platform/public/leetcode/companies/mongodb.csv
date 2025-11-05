@@ -1,0 +1,15 @@
+question,difficulty,topics,link,frequency,acceptance
+Word Break,MEDIUM,"Array, Hash Table, String, Dynamic Programming, Trie, Memoization",https://leetcode.com/problems/word-break,100.0,0.4827386605332721
+Web Crawler Multithreaded,MEDIUM,"Depth-First Search, Breadth-First Search, Concurrency",https://leetcode.com/problems/web-crawler-multithreaded,95.2,0.5009673447851322
+Intersection of Two Arrays,EASY,"Array, Hash Table, Two Pointers, Binary Search, Sorting",https://leetcode.com/problems/intersection-of-two-arrays,95.2,0.7647441227907497
+Insert Interval,MEDIUM,Array,https://leetcode.com/problems/insert-interval,89.3,0.4347365838103625
+Merge Two Binary Trees,EASY,"Tree, Depth-First Search, Breadth-First Search, Binary Tree",https://leetcode.com/problems/merge-two-binary-trees,89.3,0.7869826404729717
+Stock Price Fluctuation ,MEDIUM,"Hash Table, Design, Heap (Priority Queue), Data Stream, Ordered Set",https://leetcode.com/problems/stock-price-fluctuation,89.3,0.4816387154783381
+Text Justification,HARD,"Array, String, Simulation",https://leetcode.com/problems/text-justification,89.3,0.4815007265841737
+LRU Cache,MEDIUM,"Hash Table, Linked List, Design, Doubly-Linked List",https://leetcode.com/problems/lru-cache,81.7,0.4521478518514751
+Merge k Sorted Lists,HARD,"Linked List, Divide and Conquer, Heap (Priority Queue), Merge Sort",https://leetcode.com/problems/merge-k-sorted-lists,81.7,0.5677423817534303
+Valid Sudoku,MEDIUM,"Array, Hash Table, Matrix",https://leetcode.com/problems/valid-sudoku,71.1,0.6227680872343923
+Search in Rotated Sorted Array,MEDIUM,"Array, Binary Search",https://leetcode.com/problems/search-in-rotated-sorted-array,71.1,0.4283724003980969
+Design Hit Counter,MEDIUM,"Array, Binary Search, Design, Queue, Data Stream",https://leetcode.com/problems/design-hit-counter,71.1,0.6920824458148753
+Sliding Window Maximum,HARD,"Array, Queue, Sliding Window, Heap (Priority Queue), Monotonic Queue",https://leetcode.com/problems/sliding-window-maximum,71.1,0.47604168114275
+Lowest Common Ancestor of a Binary Tree,MEDIUM,"Tree, Depth-First Search, Binary Tree",https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-tree,71.1,0.6675504432437741

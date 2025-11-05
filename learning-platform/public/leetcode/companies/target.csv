@@ -1,0 +1,5 @@
+question,difficulty,topics,link,frequency,acceptance
+Longest Path With Different Adjacent Characters,HARD,"Array, String, Tree, Depth-First Search, Graph, Topological Sort",https://leetcode.com/problems/longest-path-with-different-adjacent-characters,100.0,0.5391662377766341
+Product of the Last K Numbers,MEDIUM,"Array, Math, Design, Data Stream, Prefix Sum",https://leetcode.com/problems/product-of-the-last-k-numbers,100.0,0.6274634247482844
+Maximum Subarray,MEDIUM,"Array, Divide and Conquer, Dynamic Programming",https://leetcode.com/problems/maximum-subarray,100.0,0.5209990343890127
+Sort Colors,MEDIUM,"Array, Two Pointers, Sorting",https://leetcode.com/problems/sort-colors,100.0,0.6758312389131401

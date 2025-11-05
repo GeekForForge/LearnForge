@@ -1,0 +1,4 @@
+question,difficulty,topics,link,frequency,acceptance
+Find the Celebrity,MEDIUM,"Two Pointers, Graph, Interactive",https://leetcode.com/problems/find-the-celebrity,100.0,0.484395409739966
+Valid Palindrome,EASY,"Two Pointers, String",https://leetcode.com/problems/valid-palindrome,90.3,0.509681519795858
+Best Time to Buy and Sell Stock,EASY,"Array, Dynamic Programming",https://leetcode.com/problems/best-time-to-buy-and-sell-stock,79.7,0.5526330669787187

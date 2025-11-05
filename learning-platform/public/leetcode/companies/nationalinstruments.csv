@@ -1,0 +1,5 @@
+question,difficulty,topics,link,frequency,acceptance
+Decoded String at Index,MEDIUM,"String, Stack",https://leetcode.com/problems/decoded-string-at-index,100.0,0.3664800589890254
+Champagne Tower,MEDIUM,Dynamic Programming,https://leetcode.com/problems/champagne-tower,85.3,0.5827900024732158
+Trapping Rain Water,HARD,"Array, Two Pointers, Dynamic Programming, Stack, Monotonic Stack",https://leetcode.com/problems/trapping-rain-water,74.6,0.6510219501353552
+Snakes and Ladders,MEDIUM,"Array, Breadth-First Search, Matrix",https://leetcode.com/problems/snakes-and-ladders,66.0,0.4779591396819314

@@ -1,0 +1,22 @@
+question,difficulty,topics,link,frequency,acceptance
+Count Visited Nodes in a Directed Graph,HARD,"Dynamic Programming, Graph, Memoization",https://leetcode.com/problems/count-visited-nodes-in-a-directed-graph,100.0,0.2894238635035643
+Maximum Area of a Piece of Cake After Horizontal and Vertical Cuts,MEDIUM,"Array, Greedy, Sorting",https://leetcode.com/problems/maximum-area-of-a-piece-of-cake-after-horizontal-and-vertical-cuts,97.7,0.4123031611359338
+Sum of Distances,MEDIUM,"Array, Hash Table, Prefix Sum",https://leetcode.com/problems/sum-of-distances,97.7,0.3125901714694278
+Minimize Length of Array Using Operations,MEDIUM,"Array, Math, Greedy, Number Theory",https://leetcode.com/problems/minimize-length-of-array-using-operations,97.7,0.3486486486486486
+Minimum Number of Taps to Open to Water a Garden,HARD,"Array, Dynamic Programming, Greedy",https://leetcode.com/problems/minimum-number-of-taps-to-open-to-water-a-garden,75.5,0.5071750731742884
+Group Anagrams,MEDIUM,"Array, Hash Table, String, Sorting",https://leetcode.com/problems/group-anagrams,75.5,0.7092891274785598
+Palindromic Substrings,MEDIUM,"Two Pointers, String, Dynamic Programming",https://leetcode.com/problems/palindromic-substrings,68.6,0.7167807447797984
+Minimum Number of Groups to Create a Valid Assignment,MEDIUM,"Array, Hash Table, Greedy",https://leetcode.com/problems/minimum-number-of-groups-to-create-a-valid-assignment,68.6,0.2398086841075045
+Gas Station,MEDIUM,"Array, Greedy",https://leetcode.com/problems/gas-station,68.6,0.4638358382410811
+Car Fleet,MEDIUM,"Array, Stack, Sorting, Monotonic Stack",https://leetcode.com/problems/car-fleet,58.8,0.5347444943339748
+Total Cost to Hire K Workers,MEDIUM,"Array, Two Pointers, Heap (Priority Queue), Simulation",https://leetcode.com/problems/total-cost-to-hire-k-workers,58.8,0.4310667498440424
+3Sum,MEDIUM,"Array, Two Pointers, Sorting",https://leetcode.com/problems/3sum,58.8,0.3707109469426635
+Find the Count of Monotonic Pairs II,HARD,"Array, Math, Dynamic Programming, Combinatorics, Prefix Sum",https://leetcode.com/problems/find-the-count-of-monotonic-pairs-ii,58.8,0.2300009823504371
+Count Vowel Substrings of a String,EASY,"Hash Table, String",https://leetcode.com/problems/count-vowel-substrings-of-a-string,58.8,0.7148136172571481
+Two Sum,EASY,"Array, Hash Table",https://leetcode.com/problems/two-sum,58.8,0.5577703556090163
+Move Zeroes,EASY,"Array, Two Pointers",https://leetcode.com/problems/move-zeroes,58.8,0.6280403790240795
+Longest Substring Without Repeating Characters,MEDIUM,"Hash Table, String, Sliding Window",https://leetcode.com/problems/longest-substring-without-repeating-characters,58.8,0.3693615950183876
+Best Time to Buy and Sell Stock,EASY,"Array, Dynamic Programming",https://leetcode.com/problems/best-time-to-buy-and-sell-stock,58.8,0.5525967896337767
+Reverse Words in a String III,EASY,"Two Pointers, String",https://leetcode.com/problems/reverse-words-in-a-string-iii,58.8,0.8365992603319267
+Roman to Integer,EASY,"Hash Table, Math, String",https://leetcode.com/problems/roman-to-integer,58.8,0.6486641019099324
+Longest Palindromic Substring,MEDIUM,"Two Pointers, String, Dynamic Programming",https://leetcode.com/problems/longest-palindromic-substring,58.8,0.3584619548557867

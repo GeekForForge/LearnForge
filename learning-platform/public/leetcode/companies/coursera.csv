@@ -1,0 +1,12 @@
+question,difficulty,topics,link,frequency,acceptance
+Text Justification,HARD,"Array, String, Simulation",https://leetcode.com/problems/text-justification,100.0,0.4815044448867509
+N-th Tribonacci Number,EASY,"Math, Dynamic Programming, Memoization",https://leetcode.com/problems/n-th-tribonacci-number,100.0,0.635772586169985
+Reaching Points,HARD,Math,https://leetcode.com/problems/reaching-points,97.8,0.336468882434809
+Number of Music Playlists,HARD,"Math, Dynamic Programming, Combinatorics",https://leetcode.com/problems/number-of-music-playlists,97.8,0.5997531912847676
+Highest Grade For Each Student,MEDIUM,Database,https://leetcode.com/problems/highest-grade-for-each-student,97.8,0.7112558614059526
+Minimum Moves to Equal Array Elements,MEDIUM,"Array, Math",https://leetcode.com/problems/minimum-moves-to-equal-array-elements,97.8,0.577055426913269
+Minimum Increment to Make Array Unique,MEDIUM,"Array, Greedy, Sorting, Counting",https://leetcode.com/problems/minimum-increment-to-make-array-unique,97.8,0.603327781549441
+Special Binary String,HARD,"String, Recursion",https://leetcode.com/problems/special-binary-string,97.8,0.6351153721156971
+Rank Teams by Votes,MEDIUM,"Array, Hash Table, String, Sorting, Counting",https://leetcode.com/problems/rank-teams-by-votes,89.6,0.5940486478243189
+Search Suggestions System,MEDIUM,"Array, String, Binary Search, Trie, Sorting, Heap (Priority Queue)",https://leetcode.com/problems/search-suggestions-system,70.0,0.650501888721445
+Wildcard Matching,HARD,"String, Dynamic Programming, Greedy, Recursion",https://leetcode.com/problems/wildcard-matching,60.7,0.2989893938016153

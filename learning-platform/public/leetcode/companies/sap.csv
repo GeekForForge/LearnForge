@@ -1,0 +1,40 @@
+question,difficulty,topics,link,frequency,acceptance
+Two Sum,EASY,"Array, Hash Table",https://leetcode.com/problems/two-sum,100.0,0.5577700080775339
+Count Increasing Quadruplets,HARD,"Array, Dynamic Programming, Binary Indexed Tree, Enumeration, Prefix Sum",https://leetcode.com/problems/count-increasing-quadruplets,91.8,0.3389287349305661
+Maximum Students Taking Exam,HARD,"Array, Dynamic Programming, Bit Manipulation, Matrix, Bitmask",https://leetcode.com/problems/maximum-students-taking-exam,91.8,0.5221052082790261
+Container With Most Water,MEDIUM,"Array, Two Pointers, Greedy",https://leetcode.com/problems/container-with-most-water,91.8,0.5778285402185708
+Count the Number of Infection Sequences,HARD,"Array, Math, Combinatorics",https://leetcode.com/problems/count-the-number-of-infection-sequences,91.8,0.333877951147782
+Maximum Path Quality of a Graph,HARD,"Array, Backtracking, Graph",https://leetcode.com/problems/maximum-path-quality-of-a-graph,91.8,0.596989256918232
+Movie Rating,MEDIUM,Database,https://leetcode.com/problems/movie-rating,91.8,0.4151383644714689
+Longest Common Prefix,EASY,"String, Trie",https://leetcode.com/problems/longest-common-prefix,89.3,0.4548310468049041
+Valid Parentheses,EASY,"String, Stack",https://leetcode.com/problems/valid-parentheses,83.2,0.4232284180792206
+Number of Islands,MEDIUM,"Array, Depth-First Search, Breadth-First Search, Union Find, Matrix",https://leetcode.com/problems/number-of-islands,79.4,0.6232001329897883
+Valid Palindrome,EASY,"Two Pointers, String",https://leetcode.com/problems/valid-palindrome,69.6,0.5096354038561578
+Maximal Square,MEDIUM,"Array, Dynamic Programming, Matrix",https://leetcode.com/problems/maximal-square,69.6,0.4876121721909253
+Trapping Rain Water,HARD,"Array, Two Pointers, Dynamic Programming, Stack, Monotonic Stack",https://leetcode.com/problems/trapping-rain-water,69.6,0.6510201042238819
+Reverse Linked List,EASY,"Linked List, Recursion",https://leetcode.com/problems/reverse-linked-list,69.6,0.7920658766722495
+Maximum Subarray,MEDIUM,"Array, Divide and Conquer, Dynamic Programming",https://leetcode.com/problems/maximum-subarray,69.6,0.5209980984003728
+Longest Palindromic Substring,MEDIUM,"Two Pointers, String, Dynamic Programming",https://leetcode.com/problems/longest-palindromic-substring,62.7,0.3584610920604336
+Leftmost Column with at Least a One,MEDIUM,"Array, Binary Search, Matrix, Interactive",https://leetcode.com/problems/leftmost-column-with-at-least-a-one,62.7,0.5493943663976544
+Rotate String,EASY,"String, String Matching",https://leetcode.com/problems/rotate-string,62.7,0.6393953917504719
+Daily Temperatures,MEDIUM,"Array, Stack, Monotonic Stack",https://leetcode.com/problems/daily-temperatures,62.7,0.6736502832589849
+Kth Largest Element in an Array,MEDIUM,"Array, Divide and Conquer, Sorting, Heap (Priority Queue), Quickselect",https://leetcode.com/problems/kth-largest-element-in-an-array,62.7,0.6797704958912076
+Maximum Number of Weeks for Which You Can Work,MEDIUM,"Array, Greedy",https://leetcode.com/problems/maximum-number-of-weeks-for-which-you-can-work,62.7,0.4134942369616901
+Longest Consecutive Sequence,MEDIUM,"Array, Hash Table, Union Find",https://leetcode.com/problems/longest-consecutive-sequence,62.7,0.4704087723283638
+Best Time to Buy and Sell Stock,EASY,"Array, Dynamic Programming",https://leetcode.com/problems/best-time-to-buy-and-sell-stock,62.7,0.5525960788388533
+Remove Duplicates from Sorted Array,EASY,"Array, Two Pointers",https://leetcode.com/problems/remove-duplicates-from-sorted-array,62.7,0.6035558903761213
+Group Anagrams,MEDIUM,"Array, Hash Table, String, Sorting",https://leetcode.com/problems/group-anagrams,52.9,0.7092884996578606
+Max Consecutive Ones III,MEDIUM,"Array, Binary Search, Sliding Window, Prefix Sum",https://leetcode.com/problems/max-consecutive-ones-iii,52.9,0.659394298879811
+Coin Change,MEDIUM,"Array, Dynamic Programming, Breadth-First Search",https://leetcode.com/problems/coin-change,52.9,0.4649550308048306
+Binary Search Tree to Greater Sum Tree,MEDIUM,"Tree, Depth-First Search, Binary Search Tree, Binary Tree",https://leetcode.com/problems/binary-search-tree-to-greater-sum-tree,52.9,0.8827398009436621
+LRU Cache,MEDIUM,"Hash Table, Linked List, Design, Doubly-Linked List",https://leetcode.com/problems/lru-cache,52.9,0.4521471552799032
+Word Break,MEDIUM,"Array, Hash Table, String, Dynamic Programming, Trie, Memoization",https://leetcode.com/problems/word-break,52.9,0.4827379224085945
+Linked List Cycle,EASY,"Hash Table, Linked List, Two Pointers",https://leetcode.com/problems/linked-list-cycle,52.9,0.5257065185983861
+Maximum Employees to Be Invited to a Meeting,HARD,"Depth-First Search, Graph, Topological Sort",https://leetcode.com/problems/maximum-employees-to-be-invited-to-a-meeting,52.9,0.6210808912817661
+Sqrt(x),EASY,"Math, Binary Search",https://leetcode.com/problems/sqrtx,52.9,0.4037183318664056
+Valid Perfect Square,EASY,"Math, Binary Search",https://leetcode.com/problems/valid-perfect-square,52.9,0.4418962898676502
+Fibonacci Number,EASY,"Math, Dynamic Programming, Recursion, Memoization",https://leetcode.com/problems/fibonacci-number,52.9,0.7294492271152765
+Monotone Increasing Digits,MEDIUM,"Math, Greedy",https://leetcode.com/problems/monotone-increasing-digits,52.9,0.4872377608676912
+Maximum Depth of Binary Tree,EASY,"Tree, Depth-First Search, Breadth-First Search, Binary Tree",https://leetcode.com/problems/maximum-depth-of-binary-tree,52.9,0.7713809909365511
+Sort Array by Increasing Frequency,EASY,"Array, Hash Table, Sorting",https://leetcode.com/problems/sort-array-by-increasing-frequency,52.9,0.802688099698792
+Move Zeroes,EASY,"Array, Two Pointers",https://leetcode.com/problems/move-zeroes,52.9,0.6280403546766125

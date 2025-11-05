@@ -1,0 +1,7 @@
+question,difficulty,topics,link,frequency,acceptance
+Minimum Cost of Buying Candies With Discount,EASY,"Array, Greedy, Sorting",https://leetcode.com/problems/minimum-cost-of-buying-candies-with-discount,100.0,0.6220026757229598
+LRU Cache,MEDIUM,"Hash Table, Linked List, Design, Doubly-Linked List",https://leetcode.com/problems/lru-cache,88.3,0.4521499527233751
+Check If It Is a Good Array,HARD,"Array, Math, Number Theory",https://leetcode.com/problems/check-if-it-is-a-good-array,88.3,0.6136193766034381
+Count Primes,MEDIUM,"Array, Math, Enumeration, Number Theory",https://leetcode.com/problems/count-primes,88.3,0.3479067442001055
+Longest Common Prefix,EASY,"String, Trie",https://leetcode.com/problems/longest-common-prefix,88.3,0.4548320746397213
+Valid Anagram,EASY,"Hash Table, String, Sorting",https://leetcode.com/problems/valid-anagram,88.3,0.6666103435170908

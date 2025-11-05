@@ -1,0 +1,101 @@
+question,difficulty,topics,link,frequency,acceptance
+Exclusive Time of Functions,MEDIUM,"Array, Stack",https://leetcode.com/problems/exclusive-time-of-functions,100.0,0.6479177009848633
+Integer to Roman,MEDIUM,"Hash Table, Math, String",https://leetcode.com/problems/integer-to-roman,92.9,0.6861927118001762
+Fizz Buzz,EASY,"Math, String, Simulation",https://leetcode.com/problems/fizz-buzz,89.9,0.7437057263879774
+Roman to Integer,EASY,"Hash Table, Math, String",https://leetcode.com/problems/roman-to-integer,88.8,0.6486629287856299
+Best Time to Buy and Sell Stock,EASY,"Array, Dynamic Programming",https://leetcode.com/problems/best-time-to-buy-and-sell-stock,87.7,0.5525963643174824
+Two Sum,EASY,"Array, Hash Table",https://leetcode.com/problems/two-sum,85.3,0.5577699653967975
+Count Ways to Group Overlapping Ranges,MEDIUM,"Array, Sorting",https://leetcode.com/problems/count-ways-to-group-overlapping-ranges,85.3,0.3810753087566162
+Meeting Rooms II,MEDIUM,"Array, Two Pointers, Greedy, Sorting, Heap (Priority Queue), Prefix Sum",https://leetcode.com/problems/meeting-rooms-ii,82.6,0.5214162081616772
+Rotate Image,MEDIUM,"Array, Math, Matrix",https://leetcode.com/problems/rotate-image,81.1,0.7790165261990751
+Number of Divisible Triplet Sums,MEDIUM,"Array, Hash Table",https://leetcode.com/problems/number-of-divisible-triplet-sums,81.1,0.6780637725701113
+Minimum Absolute Difference,EASY,"Array, Sorting",https://leetcode.com/problems/minimum-absolute-difference,81.1,0.7065237783248814
+Minimum Operations to Make All Array Elements Equal,MEDIUM,"Array, Binary Search, Sorting, Prefix Sum",https://leetcode.com/problems/minimum-operations-to-make-all-array-elements-equal,81.1,0.3692031208906811
+Minimum Operations to Make Median of Array Equal to K,MEDIUM,"Array, Greedy, Sorting",https://leetcode.com/problems/minimum-operations-to-make-median-of-array-equal-to-k,75.9,0.4668790233814748
+Maximum Profitable Triplets With Increasing Prices I,MEDIUM,"Array, Binary Indexed Tree, Segment Tree",https://leetcode.com/problems/maximum-profitable-triplets-with-increasing-prices-i,73.9,0.5452064141931081
+Find The First Player to win K Games in a Row,MEDIUM,"Array, Simulation",https://leetcode.com/problems/find-the-first-player-to-win-k-games-in-a-row,73.9,0.3941278227126092
+Activity Participants,MEDIUM,Database,https://leetcode.com/problems/activity-participants,73.9,0.7229791494362948
+The kth Factor of n,MEDIUM,"Math, Number Theory",https://leetcode.com/problems/the-kth-factor-of-n,73.9,0.6957668800559188
+Find Products of Elements of Big Array,HARD,"Array, Binary Search, Bit Manipulation",https://leetcode.com/problems/find-products-of-elements-of-big-array,71.7,0.2179005331701774
+Merge Intervals,MEDIUM,"Array, Sorting",https://leetcode.com/problems/merge-intervals,71.7,0.4939526830267454
+Type of Triangle,EASY,"Array, Math, Sorting",https://leetcode.com/problems/type-of-triangle,71.7,0.4479472840401572
+Taking Maximum Energy From the Mystic Dungeon,MEDIUM,"Array, Prefix Sum",https://leetcode.com/problems/taking-maximum-energy-from-the-mystic-dungeon,71.7,0.4113351567966414
+Find Occurrences of an Element in an Array,MEDIUM,"Array, Hash Table",https://leetcode.com/problems/find-occurrences-of-an-element-in-an-array,71.7,0.725564552476571
+Find the Array Concatenation Value,EASY,"Array, Two Pointers, Simulation",https://leetcode.com/problems/find-the-array-concatenation-value,71.7,0.7103725089782409
+String Compression,MEDIUM,"Two Pointers, String",https://leetcode.com/problems/string-compression,71.7,0.580915717497265
+Minimum Levels to Gain More Points,MEDIUM,"Array, Prefix Sum",https://leetcode.com/problems/minimum-levels-to-gain-more-points,71.7,0.3911266875166984
+Sort the Students by Their Kth Score,MEDIUM,"Array, Sorting, Matrix",https://leetcode.com/problems/sort-the-students-by-their-kth-score,71.7,0.8563725976646489
+Longest Substring Without Repeating Characters,MEDIUM,"Hash Table, String, Sliding Window",https://leetcode.com/problems/longest-substring-without-repeating-characters,71.7,0.3693617467707291
+Average Value of Even Numbers That Are Divisible by Three,EASY,"Array, Math",https://leetcode.com/problems/average-value-of-even-numbers-that-are-divisible-by-three,71.7,0.6171273472553038
+Count the Number of Incremovable Subarrays II,HARD,"Array, Two Pointers, Binary Search",https://leetcode.com/problems/count-the-number-of-incremovable-subarrays-ii,71.7,0.3898850394318673
+Minimum Length of String After Operations,MEDIUM,"Hash Table, String, Counting",https://leetcode.com/problems/minimum-length-of-string-after-operations,71.7,0.7491674510951677
+Maximum Profitable Triplets With Increasing Prices II,HARD,"Array, Binary Indexed Tree, Segment Tree",https://leetcode.com/problems/maximum-profitable-triplets-with-increasing-prices-ii,71.7,0.433264887063655
+Count Vowel Strings in Ranges,MEDIUM,"Array, String, Prefix Sum",https://leetcode.com/problems/count-vowel-strings-in-ranges,71.7,0.6786629908928055
+Maximum Units on a Truck,EASY,"Array, Greedy, Sorting",https://leetcode.com/problems/maximum-units-on-a-truck,69.3,0.7425030722517598
+Longest Common Prefix,EASY,"String, Trie",https://leetcode.com/problems/longest-common-prefix,69.3,0.454830739997595
+Get Equal Substrings Within Budget,MEDIUM,"String, Binary Search, Sliding Window, Prefix Sum",https://leetcode.com/problems/get-equal-substrings-within-budget,66.5,0.5895138424805517
+Count Binary Substrings,EASY,"Two Pointers, String",https://leetcode.com/problems/count-binary-substrings,66.5,0.659166376012681
+Valid Parentheses,EASY,"String, Stack",https://leetcode.com/problems/valid-parentheses,66.5,0.4232283786055009
+Minimum Suffix Flips,MEDIUM,"String, Greedy",https://leetcode.com/problems/minimum-suffix-flips,63.5,0.7348245888613324
+Letter Combinations of a Phone Number,MEDIUM,"Hash Table, String, Backtracking",https://leetcode.com/problems/letter-combinations-of-a-phone-number,63.5,0.6385754372876457
+Maximum Sum of Distinct Subarrays With Length K,MEDIUM,"Array, Hash Table, Sliding Window",https://leetcode.com/problems/maximum-sum-of-distinct-subarrays-with-length-k,63.5,0.4263309346710954
+Numbers With Repeated Digits,HARD,"Math, Dynamic Programming",https://leetcode.com/problems/numbers-with-repeated-digits,63.5,0.4346119124099851
+Longest Palindromic Substring,MEDIUM,"Two Pointers, String, Dynamic Programming",https://leetcode.com/problems/longest-palindromic-substring,59.9,0.3584610937582798
+Lexicographically Smallest String After Substring Operation,MEDIUM,"String, Greedy",https://leetcode.com/problems/lexicographically-smallest-string-after-substring-operation,59.9,0.3234455453668943
+Merge Sorted Array,EASY,"Array, Two Pointers, Sorting",https://leetcode.com/problems/merge-sorted-array,59.9,0.5291952521829845
+Longest Consecutive Sequence,MEDIUM,"Array, Hash Table, Union Find",https://leetcode.com/problems/longest-consecutive-sequence,59.9,0.4704083978489664
+Count Pairs Of Similar Strings,EASY,"Array, Hash Table, String, Bit Manipulation, Counting",https://leetcode.com/problems/count-pairs-of-similar-strings,55.7,0.7248677862312117
+Maximum Subarray,MEDIUM,"Array, Divide and Conquer, Dynamic Programming",https://leetcode.com/problems/maximum-subarray,55.7,0.5209978093350673
+Shortest and Lexicographically Smallest Beautiful String,MEDIUM,"String, Sliding Window",https://leetcode.com/problems/shortest-and-lexicographically-smallest-beautiful-string,55.7,0.3966286564204264
+Spiral Matrix,MEDIUM,"Array, Matrix, Simulation",https://leetcode.com/problems/spiral-matrix,55.7,0.5393976057408939
+Number of Divisible Substrings,MEDIUM,"Hash Table, String, Counting, Prefix Sum",https://leetcode.com/problems/number-of-divisible-substrings,55.7,0.734086999262718
+Validate Binary Search Tree,MEDIUM,"Tree, Depth-First Search, Binary Search Tree, Binary Tree",https://leetcode.com/problems/validate-binary-search-tree,50.6,0.3438039944751672
+Smallest Missing Non-negative Integer After Operations,MEDIUM,"Array, Hash Table, Math, Greedy",https://leetcode.com/problems/smallest-missing-non-negative-integer-after-operations,50.6,0.3987738925814309
+Subarray Product Less Than K,MEDIUM,"Array, Binary Search, Sliding Window, Prefix Sum",https://leetcode.com/problems/subarray-product-less-than-k,50.6,0.5285345535980827
+Climbing Stairs,EASY,"Math, Dynamic Programming, Memoization",https://leetcode.com/problems/climbing-stairs,50.6,0.535407157402988
+Divide Players Into Teams of Equal Skill,MEDIUM,"Array, Hash Table, Two Pointers, Sorting",https://leetcode.com/problems/divide-players-into-teams-of-equal-skill,50.6,0.6892726777444839
+Minimum Swaps to Group All 1's Together II,MEDIUM,"Array, Sliding Window",https://leetcode.com/problems/minimum-swaps-to-group-all-1s-together-ii,50.6,0.6551706619353931
+Group Anagrams,MEDIUM,"Array, Hash Table, String, Sorting",https://leetcode.com/problems/group-anagrams,50.6,0.7092882545499255
+Find Minimum in Rotated Sorted Array,MEDIUM,"Array, Binary Search",https://leetcode.com/problems/find-minimum-in-rotated-sorted-array,44.1,0.5264826307240257
+Median of Two Sorted Arrays,HARD,"Array, Binary Search, Divide and Conquer",https://leetcode.com/problems/median-of-two-sorted-arrays,44.1,0.4381459230882614
+Subsets,MEDIUM,"Array, Backtracking, Bit Manipulation",https://leetcode.com/problems/subsets,44.1,0.8087958103111588
+Find the Index of the First Occurrence in a String,EASY,"Two Pointers, String, String Matching",https://leetcode.com/problems/find-the-index-of-the-first-occurrence-in-a-string,44.1,0.4497159674475679
+Subarray Sum Equals K,MEDIUM,"Array, Hash Table, Prefix Sum",https://leetcode.com/problems/subarray-sum-equals-k,44.1,0.4547620834300719
+Number of Operations to Make Network Connected,MEDIUM,"Depth-First Search, Breadth-First Search, Union Find, Graph",https://leetcode.com/problems/number-of-operations-to-make-network-connected,44.1,0.6466492016136093
+Palindrome Number,EASY,Math,https://leetcode.com/problems/palindrome-number,44.1,0.5922454050733309
+Next Permutation,MEDIUM,"Array, Two Pointers",https://leetcode.com/problems/next-permutation,44.1,0.4305775328017951
+Backspace String Compare,EASY,"Two Pointers, String, Stack, Simulation",https://leetcode.com/problems/backspace-string-compare,44.1,0.4948172369227153
+Trapping Rain Water,HARD,"Array, Two Pointers, Dynamic Programming, Stack, Monotonic Stack",https://leetcode.com/problems/trapping-rain-water,44.1,0.6510194684590559
+Odd String Difference,EASY,"Array, Hash Table, String",https://leetcode.com/problems/odd-string-difference,44.1,0.6106046482233423
+Single-Threaded CPU,MEDIUM,"Array, Sorting, Heap (Priority Queue)",https://leetcode.com/problems/single-threaded-cpu,44.1,0.4648191183347267
+Rotate Array,MEDIUM,"Array, Math, Two Pointers",https://leetcode.com/problems/rotate-array,44.1,0.4302138037383672
+Product of Array Except Self,MEDIUM,"Array, Prefix Sum",https://leetcode.com/problems/product-of-array-except-self,44.1,0.6777996916838567
+Longest Increasing Subsequence,MEDIUM,"Array, Binary Search, Dynamic Programming",https://leetcode.com/problems/longest-increasing-subsequence,44.1,0.5780836795005291
+Flipping an Image,EASY,"Array, Two Pointers, Bit Manipulation, Matrix, Simulation",https://leetcode.com/problems/flipping-an-image,44.1,0.8295545731388213
+Flip String to Monotone Increasing,MEDIUM,"String, Dynamic Programming",https://leetcode.com/problems/flip-string-to-monotone-increasing,44.1,0.6159572969522228
+Find The Original Array of Prefix Xor,MEDIUM,"Array, Bit Manipulation",https://leetcode.com/problems/find-the-original-array-of-prefix-xor,44.1,0.8810500495257456
+Intersection of Two Arrays,EASY,"Array, Hash Table, Two Pointers, Binary Search, Sorting",https://leetcode.com/problems/intersection-of-two-arrays,44.1,0.7647431845238689
+N-Queens,HARD,"Array, Backtracking",https://leetcode.com/problems/n-queens,35.0,0.728170759147081
+Find All Possible Stable Binary Arrays II,HARD,"Dynamic Programming, Prefix Sum",https://leetcode.com/problems/find-all-possible-stable-binary-arrays-ii,35.0,0.2591881513987932
+Removing Stars From a String,MEDIUM,"String, Stack, Simulation",https://leetcode.com/problems/removing-stars-from-a-string,35.0,0.779700381986175
+Minimum Number of Flips to Make the Binary String Alternating,MEDIUM,"String, Dynamic Programming, Sliding Window",https://leetcode.com/problems/minimum-number-of-flips-to-make-the-binary-string-alternating,35.0,0.4050971932716079
+Rearrange Array to Maximize Prefix Score,MEDIUM,"Array, Greedy, Sorting, Prefix Sum",https://leetcode.com/problems/rearrange-array-to-maximize-prefix-score,35.0,0.4154713786648543
+Range Product Queries of Powers,MEDIUM,"Array, Bit Manipulation, Prefix Sum",https://leetcode.com/problems/range-product-queries-of-powers,35.0,0.4190695285104862
+Happy Number,EASY,"Hash Table, Math, Two Pointers",https://leetcode.com/problems/happy-number,35.0,0.5807264413215366
+Degree of an Array,EASY,"Array, Hash Table",https://leetcode.com/problems/degree-of-an-array,35.0,0.5742057825337067
+Generate Parentheses,MEDIUM,"String, Dynamic Programming, Backtracking",https://leetcode.com/problems/generate-parentheses,35.0,0.7713286717803378
+LRU Cache,MEDIUM,"Hash Table, Linked List, Design, Doubly-Linked List",https://leetcode.com/problems/lru-cache,35.0,0.4521461104192241
+Majority Element,EASY,"Array, Hash Table, Divide and Conquer, Sorting, Counting",https://leetcode.com/problems/majority-element,35.0,0.6574029056733057
+Find the Duplicate Number,MEDIUM,"Array, Two Pointers, Binary Search, Bit Manipulation",https://leetcode.com/problems/find-the-duplicate-number,35.0,0.6283575565828284
+Increasing Triplet Subsequence,MEDIUM,"Array, Greedy",https://leetcode.com/problems/increasing-triplet-subsequence,35.0,0.3912499292176056
+Find Longest Calls,MEDIUM,Database,https://leetcode.com/problems/find-longest-calls,35.0,0.6278218425869433
+Partition Equal Subset Sum,MEDIUM,"Array, Dynamic Programming",https://leetcode.com/problems/partition-equal-subset-sum,35.0,0.4844385484671133
+132 Pattern,MEDIUM,"Array, Binary Search, Stack, Monotonic Stack, Ordered Set",https://leetcode.com/problems/132-pattern,35.0,0.3405666874402953
+The Employee That Worked on the Longest Task,EASY,Array,https://leetcode.com/problems/the-employee-that-worked-on-the-longest-task,35.0,0.5059108514906449
+Count Number of Teams,MEDIUM,"Array, Dynamic Programming, Binary Indexed Tree, Segment Tree",https://leetcode.com/problems/count-number-of-teams,35.0,0.7010096636659391
+Least Number of Unique Integers after K Removals,MEDIUM,"Array, Hash Table, Greedy, Sorting, Counting",https://leetcode.com/problems/least-number-of-unique-integers-after-k-removals,35.0,0.6341766250570863
+Task Scheduler,MEDIUM,"Array, Hash Table, Greedy, Sorting, Heap (Priority Queue), Counting",https://leetcode.com/problems/task-scheduler,35.0,0.615391540870786
+Minimum Operations to Reduce an Integer to 0,MEDIUM,"Dynamic Programming, Greedy, Bit Manipulation",https://leetcode.com/problems/minimum-operations-to-reduce-an-integer-to-0,35.0,0.5730954555475073
+Prime In Diagonal,EASY,"Array, Math, Matrix, Number Theory",https://leetcode.com/problems/prime-in-diagonal,35.0,0.3620654816211814
+Word Break,MEDIUM,"Array, Hash Table, String, Dynamic Programming, Trie, Memoization",https://leetcode.com/problems/word-break,35.0,0.4827375533449676
+Maximum Number of Tasks You Can Assign,HARD,"Array, Two Pointers, Binary Search, Greedy, Queue, Sorting, Monotonic Queue",https://leetcode.com/problems/maximum-number-of-tasks-you-can-assign,35.0,0.506049588007545

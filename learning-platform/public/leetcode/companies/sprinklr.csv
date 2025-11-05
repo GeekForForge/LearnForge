@@ -1,0 +1,42 @@
+question,difficulty,topics,link,frequency,acceptance
+Minimum Edge Weight Equilibrium Queries in a Tree,HARD,"Array, Tree, Graph, Strongly Connected Component",https://leetcode.com/problems/minimum-edge-weight-equilibrium-queries-in-a-tree,100.0,0.4281724754244862
+Apply Operations on Array to Maximize Sum of Squares,HARD,"Array, Hash Table, Greedy, Bit Manipulation",https://leetcode.com/problems/apply-operations-on-array-to-maximize-sum-of-squares,94.5,0.4317533157983099
+Next Greater Numerically Balanced Number,MEDIUM,"Hash Table, Math, Backtracking, Counting, Enumeration",https://leetcode.com/problems/next-greater-numerically-balanced-number,92.4,0.4908348429488163
+Maximize Score After N Operations,HARD,"Array, Math, Dynamic Programming, Backtracking, Bit Manipulation, Number Theory, Bitmask",https://leetcode.com/problems/maximize-score-after-n-operations,92.4,0.5785412456365975
+Maximum Score of Non-overlapping Intervals,HARD,"Array, Binary Search, Dynamic Programming, Sorting",https://leetcode.com/problems/maximum-score-of-non-overlapping-intervals,90.0,0.3064978278953693
+Closest Subsequence Sum,HARD,"Array, Two Pointers, Dynamic Programming, Bit Manipulation, Sorting, Bitmask",https://leetcode.com/problems/closest-subsequence-sum,90.0,0.4160445423134075
+Minimum Time to Revert Word to Initial State II,HARD,"String, Rolling Hash, String Matching, Hash Function",https://leetcode.com/problems/minimum-time-to-revert-word-to-initial-state-ii,90.0,0.3437109450940095
+Choose Edges to Maximize Score in a Tree,MEDIUM,"Dynamic Programming, Tree, Depth-First Search",https://leetcode.com/problems/choose-edges-to-maximize-score-in-a-tree,90.0,0.5582437275985663
+Number of Same-End Substrings,MEDIUM,"Array, Hash Table, String, Counting, Prefix Sum",https://leetcode.com/problems/number-of-same-end-substrings,90.0,0.6135626674185817
+Count the Number of Powerful Integers,HARD,"Math, String, Dynamic Programming",https://leetcode.com/problems/count-the-number-of-powerful-integers,90.0,0.4651365700919542
+Create Components With Same Value,HARD,"Array, Math, Tree, Depth-First Search, Enumeration",https://leetcode.com/problems/create-components-with-same-value,90.0,0.5196614658299269
+Minimum Time to Revert Word to Initial State I,MEDIUM,"String, Rolling Hash, String Matching, Hash Function",https://leetcode.com/problems/minimum-time-to-revert-word-to-initial-state-i,90.0,0.4129997016706443
+Apply Bitwise Operations to Make Strings Equal,MEDIUM,"String, Bit Manipulation",https://leetcode.com/problems/apply-bitwise-operations-to-make-strings-equal,90.0,0.4172484925420502
+Maximum Subarray Sum After One Operation,MEDIUM,"Array, Dynamic Programming",https://leetcode.com/problems/maximum-subarray-sum-after-one-operation,90.0,0.6525722684958353
+Number of Great Partitions,HARD,"Array, Dynamic Programming",https://leetcode.com/problems/number-of-great-partitions,90.0,0.3230350478435334
+Asteroid Collision,MEDIUM,"Array, Stack, Simulation",https://leetcode.com/problems/asteroid-collision,84.5,0.4550073716153288
+Robot Collisions,HARD,"Array, Stack, Sorting, Simulation",https://leetcode.com/problems/robot-collisions,72.9,0.5610641049690483
+Insert Delete GetRandom O(1),MEDIUM,"Array, Hash Table, Math, Design, Randomized",https://leetcode.com/problems/insert-delete-getrandom-o1,67.5,0.5499183718923905
+Number of Provinces,MEDIUM,"Depth-First Search, Breadth-First Search, Union Find, Graph",https://leetcode.com/problems/number-of-provinces,67.5,0.6865495230645632
+Minimize the Difference Between Target and Chosen Elements,MEDIUM,"Array, Dynamic Programming, Matrix",https://leetcode.com/problems/minimize-the-difference-between-target-and-chosen-elements,67.5,0.3587066177158844
+Serialize and Deserialize Binary Tree,HARD,"String, Tree, Depth-First Search, Breadth-First Search, Design, Binary Tree",https://leetcode.com/problems/serialize-and-deserialize-binary-tree,67.5,0.5896944200034516
+Minimum Number of Food Buckets to Feed the Hamsters,MEDIUM,"String, Dynamic Programming, Greedy",https://leetcode.com/problems/minimum-number-of-food-buckets-to-feed-the-hamsters,67.5,0.4704515515222482
+Validate IP Address,MEDIUM,String,https://leetcode.com/problems/validate-ip-address,60.4,0.2781752462045336
+Partition Labels,MEDIUM,"Hash Table, Two Pointers, String, Greedy",https://leetcode.com/problems/partition-labels,60.4,0.8153348894045592
+Max Points on a Line,HARD,"Array, Hash Table, Math, Geometry",https://leetcode.com/problems/max-points-on-a-line,60.4,0.2895538357155106
+Container With Most Water,MEDIUM,"Array, Two Pointers, Greedy",https://leetcode.com/problems/container-with-most-water,60.4,0.5778293416922462
+Set Matrix Zeroes,MEDIUM,"Array, Hash Table, Matrix",https://leetcode.com/problems/set-matrix-zeroes,60.4,0.6070895622880023
+Trapping Rain Water,HARD,"Array, Two Pointers, Dynamic Programming, Stack, Monotonic Stack",https://leetcode.com/problems/trapping-rain-water,60.4,0.6510218585991906
+Largest Rectangle in Histogram,HARD,"Array, Stack, Monotonic Stack",https://leetcode.com/problems/largest-rectangle-in-histogram,50.5,0.4737770262582829
+Sort Colors,MEDIUM,"Array, Two Pointers, Sorting",https://leetcode.com/problems/sort-colors,50.5,0.6758310923121347
+First Missing Positive,HARD,"Array, Hash Table",https://leetcode.com/problems/first-missing-positive,50.5,0.4108479047070338
+Longest Univalue Path,MEDIUM,"Tree, Depth-First Search, Binary Tree",https://leetcode.com/problems/longest-univalue-path,50.5,0.4262875699953458
+Russian Doll Envelopes,HARD,"Array, Binary Search, Dynamic Programming, Sorting",https://leetcode.com/problems/russian-doll-envelopes,50.5,0.3732991914997274
+Sum of Matrix After Queries,MEDIUM,"Array, Hash Table",https://leetcode.com/problems/sum-of-matrix-after-queries,50.5,0.3122581518062508
+LRU Cache,MEDIUM,"Hash Table, Linked List, Design, Doubly-Linked List",https://leetcode.com/problems/lru-cache,50.5,0.452148887598132
+Best Time to Buy and Sell Stock,EASY,"Array, Dynamic Programming",https://leetcode.com/problems/best-time-to-buy-and-sell-stock,50.5,0.5525969358423186
+Count Valid Paths in a Tree,HARD,"Math, Dynamic Programming, Tree, Depth-First Search, Number Theory",https://leetcode.com/problems/count-valid-paths-in-a-tree,50.5,0.3443275638070491
+Longest Valid Parentheses,HARD,"String, Dynamic Programming, Stack",https://leetcode.com/problems/longest-valid-parentheses,50.5,0.3631310390614595
+Single Element in a Sorted Array,MEDIUM,"Array, Binary Search",https://leetcode.com/problems/single-element-in-a-sorted-array,50.5,0.5920692446350735
+3Sum,MEDIUM,"Array, Two Pointers, Sorting",https://leetcode.com/problems/3sum,50.5,0.3707113114190416
+Sum of Subarray Minimums,MEDIUM,"Array, Dynamic Programming, Stack, Monotonic Stack",https://leetcode.com/problems/sum-of-subarray-minimums,50.5,0.3762339004345656

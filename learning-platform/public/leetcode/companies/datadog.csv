@@ -1,0 +1,21 @@
+question,difficulty,topics,link,frequency,acceptance
+Coin Change,MEDIUM,"Array, Dynamic Programming, Breadth-First Search",https://leetcode.com/problems/coin-change,100.0,0.4649550446279863
+Most Common Word,EASY,"Array, Hash Table, String, Counting",https://leetcode.com/problems/most-common-word,91.6,0.4457668953194325
+Maximum Depth of N-ary Tree,EASY,"Tree, Depth-First Search, Breadth-First Search",https://leetcode.com/problems/maximum-depth-of-n-ary-tree,89.4,0.7293402984873072
+Design Circular Queue,MEDIUM,"Array, Linked List, Design, Queue",https://leetcode.com/problems/design-circular-queue,86.9,0.5264418239354727
+Valid Word Abbreviation,EASY,"Two Pointers, String",https://leetcode.com/problems/valid-word-abbreviation,86.9,0.3685165676961013
+Meeting Scheduler,MEDIUM,"Array, Two Pointers, Sorting",https://leetcode.com/problems/meeting-scheduler,82.4,0.5522977372018112
+Maximum Vacation Days,HARD,"Array, Dynamic Programming, Matrix",https://leetcode.com/problems/maximum-vacation-days,68.7,0.4638178019415682
+Sliding Window Median,HARD,"Array, Hash Table, Sliding Window, Heap (Priority Queue)",https://leetcode.com/problems/sliding-window-median,68.7,0.3869181874102932
+People Whose List of Favorite Companies Is Not a Subset of Another List,MEDIUM,"Array, Hash Table, String",https://leetcode.com/problems/people-whose-list-of-favorite-companies-is-not-a-subset-of-another-list,68.7,0.5940981861048789
+Design Add and Search Words Data Structure,MEDIUM,"String, Depth-First Search, Design, Trie",https://leetcode.com/problems/design-add-and-search-words-data-structure,65.0,0.4706668909360868
+Binary Tree Maximum Path Sum,HARD,"Dynamic Programming, Tree, Depth-First Search, Binary Tree",https://leetcode.com/problems/binary-tree-maximum-path-sum,65.0,0.4122431171072241
+House Robber,MEDIUM,"Array, Dynamic Programming",https://leetcode.com/problems/house-robber,65.0,0.5230497155903974
+Check If It Is a Straight Line,EASY,"Array, Math, Geometry",https://leetcode.com/problems/check-if-it-is-a-straight-line,54.9,0.3970238997875605
+House Robber II,MEDIUM,"Array, Dynamic Programming",https://leetcode.com/problems/house-robber-ii,54.9,0.4356270221759367
+Binary Search Tree to Greater Sum Tree,MEDIUM,"Tree, Depth-First Search, Binary Search Tree, Binary Tree",https://leetcode.com/problems/binary-search-tree-to-greater-sum-tree,46.9,0.8827398009436621
+Greatest Common Divisor of Strings,EASY,"Math, String",https://leetcode.com/problems/greatest-common-divisor-of-strings,46.9,0.5272391455645378
+Find Words That Can Be Formed by Characters,EASY,"Array, Hash Table, String, Counting",https://leetcode.com/problems/find-words-that-can-be-formed-by-characters,46.9,0.7106791989419989
+Odd String Difference,EASY,"Array, Hash Table, String",https://leetcode.com/problems/odd-string-difference,46.9,0.6106046482233423
+Unique Number of Occurrences,EASY,"Array, Hash Table",https://leetcode.com/problems/unique-number-of-occurrences,46.9,0.782833801237841
+Path Sum,EASY,"Tree, Depth-First Search, Breadth-First Search, Binary Tree",https://leetcode.com/problems/path-sum,46.9,0.5300469157455725

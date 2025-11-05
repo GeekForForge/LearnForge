@@ -1,0 +1,6 @@
+question,difficulty,topics,link,frequency,acceptance
+Search Suggestions System,MEDIUM,"Array, String, Binary Search, Trie, Sorting, Heap (Priority Queue)",https://leetcode.com/problems/search-suggestions-system,100.0,0.6505018082357296
+Count Pairs of Connectable Servers in a Weighted Tree Network,MEDIUM,"Array, Tree, Depth-First Search",https://leetcode.com/problems/count-pairs-of-connectable-servers-in-a-weighted-tree-network,94.6,0.5419311727363849
+Beautiful Arrangement,MEDIUM,"Array, Dynamic Programming, Backtracking, Bit Manipulation, Bitmask",https://leetcode.com/problems/beautiful-arrangement,61.7,0.6452775069853577
+Best Time to Buy and Sell Stock,EASY,"Array, Dynamic Programming",https://leetcode.com/problems/best-time-to-buy-and-sell-stock,61.7,0.5525968841850246
+Valid Parentheses,EASY,"String, Stack",https://leetcode.com/problems/valid-parentheses,61.7,0.4232290763745945

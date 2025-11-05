@@ -1,0 +1,5 @@
+question,difficulty,topics,link,frequency,acceptance
+Group Anagrams,MEDIUM,"Array, Hash Table, String, Sorting",https://leetcode.com/problems/group-anagrams,100.0,0.7093188765735838
+Longest Common Subsequence,MEDIUM,"String, Dynamic Programming",https://leetcode.com/problems/longest-common-subsequence,92.9,0.5825142636275151
+LRU Cache,MEDIUM,"Hash Table, Linked List, Design, Doubly-Linked List",https://leetcode.com/problems/lru-cache,82.8,0.4522000276675747
+Diagonal Traverse II,MEDIUM,"Array, Sorting, Heap (Priority Queue)",https://leetcode.com/problems/diagonal-traverse-ii,82.8,0.5802072894694427

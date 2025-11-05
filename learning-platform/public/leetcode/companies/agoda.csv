@@ -1,0 +1,41 @@
+question,difficulty,topics,link,frequency,acceptance
+3Sum,MEDIUM,"Array, Two Pointers, Sorting",https://leetcode.com/problems/3sum,100.0,0.3707096441937613
+Find the Child Who Has the Ball After K Seconds,EASY,"Math, Simulation",https://leetcode.com/problems/find-the-child-who-has-the-ball-after-k-seconds,95.5,0.6151708335223921
+Best Time to Buy and Sell Stock,EASY,"Array, Dynamic Programming",https://leetcode.com/problems/best-time-to-buy-and-sell-stock,95.5,0.5525959754111676
+Capacity To Ship Packages Within D Days,MEDIUM,"Array, Binary Search",https://leetcode.com/problems/capacity-to-ship-packages-within-d-days,92.9,0.7211784106475069
+Longest Substring Without Repeating Characters,MEDIUM,"Hash Table, String, Sliding Window",https://leetcode.com/problems/longest-substring-without-repeating-characters,90.0,0.3693615344160106
+Unique Paths II,MEDIUM,"Array, Dynamic Programming, Matrix",https://leetcode.com/problems/unique-paths-ii,82.9,0.4315424243087263
+Minimum Absolute Difference,EASY,"Array, Sorting",https://leetcode.com/problems/minimum-absolute-difference,82.9,0.7065237783248814
+Daily Temperatures,MEDIUM,"Array, Stack, Monotonic Stack",https://leetcode.com/problems/daily-temperatures,82.9,0.6736502832589849
+House Robber,MEDIUM,"Array, Dynamic Programming",https://leetcode.com/problems/house-robber,72.9,0.523049630527837
+Minimum Window Substring,HARD,"Hash Table, String, Sliding Window",https://leetcode.com/problems/minimum-window-substring,65.8,0.4535065228818145
+Coin Change,MEDIUM,"Array, Dynamic Programming, Breadth-First Search",https://leetcode.com/problems/coin-change,65.8,0.4649550446279863
+Triangle,MEDIUM,"Array, Dynamic Programming",https://leetcode.com/problems/triangle,65.8,0.592942880327532
+Backspace String Compare,EASY,"Two Pointers, String, Stack, Simulation",https://leetcode.com/problems/backspace-string-compare,65.8,0.4948172369227153
+Brick Wall,MEDIUM,"Array, Hash Table",https://leetcode.com/problems/brick-wall,65.8,0.5585751978891821
+Find Pivot Index,EASY,"Array, Prefix Sum",https://leetcode.com/problems/find-pivot-index,65.8,0.6057036695144293
+Integer to Roman,MEDIUM,"Hash Table, Math, String",https://leetcode.com/problems/integer-to-roman,65.8,0.6861926887963155
+Two Sum,EASY,"Array, Hash Table",https://leetcode.com/problems/two-sum,55.9,0.5577698729377644
+Insert Delete GetRandom O(1),MEDIUM,"Array, Hash Table, Math, Design, Randomized",https://leetcode.com/problems/insert-delete-getrandom-o1,55.9,0.5499189489424546
+Subarray Product Less Than K,MEDIUM,"Array, Binary Search, Sliding Window, Prefix Sum",https://leetcode.com/problems/subarray-product-less-than-k,55.9,0.5285344933981581
+Merge Sorted Array,EASY,"Array, Two Pointers, Sorting",https://leetcode.com/problems/merge-sorted-array,55.9,0.5291956271063345
+Merge Intervals,MEDIUM,"Array, Sorting",https://leetcode.com/problems/merge-intervals,55.9,0.4939527033477293
+Best Time to Buy and Sell Stock II,MEDIUM,"Array, Dynamic Programming, Greedy",https://leetcode.com/problems/best-time-to-buy-and-sell-stock-ii,55.9,0.6950029224907471
+Squares of a Sorted Array,EASY,"Array, Two Pointers, Sorting",https://leetcode.com/problems/squares-of-a-sorted-array,55.9,0.7321916295529628
+Find the Smallest Divisor Given a Threshold,MEDIUM,"Array, Binary Search",https://leetcode.com/problems/find-the-smallest-divisor-given-a-threshold,55.9,0.6364604732557255
+Next Greater Element I,EASY,"Array, Hash Table, Stack, Monotonic Stack",https://leetcode.com/problems/next-greater-element-i,55.9,0.7451249169659646
+Reverse Substrings Between Each Pair of Parentheses,MEDIUM,"String, Stack",https://leetcode.com/problems/reverse-substrings-between-each-pair-of-parentheses,55.9,0.717268529079912
+Permutation in String,MEDIUM,"Hash Table, Two Pointers, String, Sliding Window",https://leetcode.com/problems/permutation-in-string,55.9,0.4724778525765767
+Longest Palindromic Substring,MEDIUM,"Two Pointers, String, Dynamic Programming",https://leetcode.com/problems/longest-palindromic-substring,55.9,0.3584611181029343
+Decode String,MEDIUM,"String, Stack, Recursion",https://leetcode.com/problems/decode-string,55.9,0.6115254553566836
+Lexicographically Smallest String After Substring Operation,MEDIUM,"String, Greedy",https://leetcode.com/problems/lexicographically-smallest-string-after-substring-operation,55.9,0.3234455453668943
+Jump Game II,MEDIUM,"Array, Dynamic Programming, Greedy",https://leetcode.com/problems/jump-game-ii,55.9,0.4150333481420457
+Move Zeroes,EASY,"Array, Two Pointers",https://leetcode.com/problems/move-zeroes,55.9,0.6280404117101285
+Sort Array by Increasing Frequency,EASY,"Array, Hash Table, Sorting",https://leetcode.com/problems/sort-array-by-increasing-frequency,55.9,0.802688099698792
+Can Place Flowers,EASY,"Array, Greedy",https://leetcode.com/problems/can-place-flowers,55.9,0.2889916494677351
+Find Median from Data Stream,HARD,"Two Pointers, Design, Sorting, Heap (Priority Queue), Data Stream",https://leetcode.com/problems/find-median-from-data-stream,55.9,0.5327803532552068
+Kth Smallest Element in a BST,MEDIUM,"Tree, Depth-First Search, Binary Search Tree, Binary Tree",https://leetcode.com/problems/kth-smallest-element-in-a-bst,55.9,0.7532960571851453
+Plus One,EASY,"Array, Math",https://leetcode.com/problems/plus-one,55.9,0.4754763346822571
+Group Anagrams,MEDIUM,"Array, Hash Table, String, Sorting",https://leetcode.com/problems/group-anagrams,55.9,0.7092884222670683
+Valid Parentheses,EASY,"String, Stack",https://leetcode.com/problems/valid-parentheses,55.9,0.4232283994953341
+Eliminate Maximum Number of Monsters,MEDIUM,"Array, Greedy, Sorting",https://leetcode.com/problems/eliminate-maximum-number-of-monsters,55.9,0.5078612806993201

@@ -1,0 +1,3 @@
+question,difficulty,topics,link,frequency,acceptance
+Sort Integers by The Number of 1 Bits,EASY,"Array, Bit Manipulation, Sorting, Counting",https://leetcode.com/problems/sort-integers-by-the-number-of-1-bits,100.0,0.7868465017725438
+Implement Trie (Prefix Tree),MEDIUM,"Hash Table, String, Design, Trie",https://leetcode.com/problems/implement-trie-prefix-tree,72.2,0.6793870356549373

@@ -1,0 +1,7 @@
+question,difficulty,topics,link,frequency,acceptance
+Best Time to Buy and Sell Stock,EASY,"Array, Dynamic Programming",https://leetcode.com/problems/best-time-to-buy-and-sell-stock,100.0,0.5525972417972461
+Minimum Cost of Buying Candies With Discount,EASY,"Array, Greedy, Sorting",https://leetcode.com/problems/minimum-cost-of-buying-candies-with-discount,100.0,0.6220026757229598
+Reverse String,EASY,"Two Pointers, String",https://leetcode.com/problems/reverse-string,89.2,0.797643473119005
+Delete Columns to Make Sorted,EASY,"Array, String",https://leetcode.com/problems/delete-columns-to-make-sorted,89.2,0.7477537485791238
+Palindrome Number,EASY,Math,https://leetcode.com/problems/palindrome-number,89.2,0.5922447149521741
+Two Sum,EASY,"Array, Hash Table",https://leetcode.com/problems/two-sum,89.2,0.557770943267532

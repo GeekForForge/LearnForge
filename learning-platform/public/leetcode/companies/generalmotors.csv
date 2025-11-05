@@ -1,0 +1,9 @@
+question,difficulty,topics,link,frequency,acceptance
+Number of Connected Components in an Undirected Graph,MEDIUM,"Depth-First Search, Breadth-First Search, Union Find, Graph",https://leetcode.com/problems/number-of-connected-components-in-an-undirected-graph,100.0,0.6420134726680878
+First Missing Positive,HARD,"Array, Hash Table",https://leetcode.com/problems/first-missing-positive,64.4,0.4108476119871277
+Minimum Path Sum,MEDIUM,"Array, Dynamic Programming, Matrix",https://leetcode.com/problems/minimum-path-sum,64.4,0.6648163958709197
+LRU Cache,MEDIUM,"Hash Table, Linked List, Design, Doubly-Linked List",https://leetcode.com/problems/lru-cache,56.8,0.4521500890965678
+The Number of Full Rounds You Have Played,MEDIUM,"Math, String",https://leetcode.com/problems/the-number-of-full-rounds-you-have-played,56.8,0.4340737028618474
+Last Visited Integers,EASY,"Array, Simulation",https://leetcode.com/problems/last-visited-integers,56.8,0.6103729276223355
+Widest Vertical Area Between Two Points Containing No Points,EASY,"Array, Sorting",https://leetcode.com/problems/widest-vertical-area-between-two-points-containing-no-points,56.8,0.8707948670605613
+Dot Product of Two Sparse Vectors,MEDIUM,"Array, Hash Table, Two Pointers, Design",https://leetcode.com/problems/dot-product-of-two-sparse-vectors,56.8,0.8993407794514465

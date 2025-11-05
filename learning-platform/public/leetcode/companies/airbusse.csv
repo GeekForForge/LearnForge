@@ -1,0 +1,6 @@
+question,difficulty,topics,link,frequency,acceptance
+Find the Number of Good Pairs II,MEDIUM,"Array, Hash Table",https://leetcode.com/problems/find-the-number-of-good-pairs-ii,100.0,0.2609128849118322
+Find the Number of Good Pairs I,EASY,"Array, Hash Table",https://leetcode.com/problems/find-the-number-of-good-pairs-i,100.0,0.8565227850351946
+Minimum Array Changes to Make Differences Equal,MEDIUM,"Array, Hash Table, Prefix Sum",https://leetcode.com/problems/minimum-array-changes-to-make-differences-equal,100.0,0.2336824341092966
+Longest Common Prefix,EASY,"String, Trie",https://leetcode.com/problems/longest-common-prefix,65.7,0.4548726079246024
+Two Sum,EASY,"Array, Hash Table",https://leetcode.com/problems/two-sum,65.7,0.5578039566314058

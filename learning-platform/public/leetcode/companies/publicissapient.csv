@@ -1,0 +1,6 @@
+question,difficulty,topics,link,frequency,acceptance
+Trapping Rain Water,HARD,"Array, Two Pointers, Dynamic Programming, Stack, Monotonic Stack",https://leetcode.com/problems/trapping-rain-water,100.0,0.6510222145708986
+Two Sum,EASY,"Array, Hash Table",https://leetcode.com/problems/two-sum,88.4,0.5577708772826631
+Group Anagrams,MEDIUM,"Array, Hash Table, String, Sorting",https://leetcode.com/problems/group-anagrams,88.4,0.709289925227846
+Valid Parentheses,EASY,"String, Stack",https://leetcode.com/problems/valid-parentheses,88.4,0.4232292748245516
+Longest Substring Without Repeating Characters,MEDIUM,"Hash Table, String, Sliding Window",https://leetcode.com/problems/longest-substring-without-repeating-characters,88.4,0.3693619526562289

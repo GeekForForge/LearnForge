@@ -1,0 +1,6 @@
+question,difficulty,topics,link,frequency,acceptance
+String to Integer (atoi),MEDIUM,String,https://leetcode.com/problems/string-to-integer-atoi,100.0,0.1922945791262246
+Brace Expansion,MEDIUM,"String, Backtracking, Breadth-First Search",https://leetcode.com/problems/brace-expansion,100.0,0.6672212978369384
+LRU Cache,MEDIUM,"Hash Table, Linked List, Design, Doubly-Linked List",https://leetcode.com/problems/lru-cache,88.7,0.4521488470379119
+Find the Duplicate Number,MEDIUM,"Array, Two Pointers, Binary Search, Bit Manipulation",https://leetcode.com/problems/find-the-duplicate-number,88.7,0.6283589472980362
+Group Anagrams,MEDIUM,"Array, Hash Table, String, Sorting",https://leetcode.com/problems/group-anagrams,88.7,0.7092891812279473

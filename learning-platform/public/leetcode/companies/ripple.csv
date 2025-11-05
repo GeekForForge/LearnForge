@@ -1,0 +1,13 @@
+question,difficulty,topics,link,frequency,acceptance
+Group Anagrams,MEDIUM,"Array, Hash Table, String, Sorting",https://leetcode.com/problems/group-anagrams,100.0,0.7092893962252986
+LRU Cache,MEDIUM,"Hash Table, Linked List, Design, Doubly-Linked List",https://leetcode.com/problems/lru-cache,100.0,0.452148887598132
+String Compression,MEDIUM,"Two Pointers, String",https://leetcode.com/problems/string-compression,100.0,0.5809147891016072
+Merge Intervals,MEDIUM,"Array, Sorting",https://leetcode.com/problems/merge-intervals,100.0,0.4939525838584966
+Product Sales Analysis I,EASY,Database,https://leetcode.com/problems/product-sales-analysis-i,88.3,0.8458587666069343
+Linked List Cycle II,MEDIUM,"Hash Table, Linked List, Two Pointers",https://leetcode.com/problems/linked-list-cycle-ii,88.3,0.5493375730428822
+Product of Array Except Self,MEDIUM,"Array, Prefix Sum",https://leetcode.com/problems/product-of-array-except-self,88.3,0.6778011597060136
+Subarray Sum Equals K,MEDIUM,"Array, Hash Table, Prefix Sum",https://leetcode.com/problems/subarray-sum-equals-k,88.3,0.4547634546015399
+Stock Price Fluctuation ,MEDIUM,"Hash Table, Design, Heap (Priority Queue), Data Stream, Ordered Set",https://leetcode.com/problems/stock-price-fluctuation,88.3,0.4816446151657419
+Maximum Subarray,MEDIUM,"Array, Divide and Conquer, Dynamic Programming",https://leetcode.com/problems/maximum-subarray,88.3,0.5209990970703741
+Koko Eating Bananas,MEDIUM,"Array, Binary Search",https://leetcode.com/problems/koko-eating-bananas,88.3,0.4906721933567012
+Basic Calculator,HARD,"Math, String, Stack, Recursion",https://leetcode.com/problems/basic-calculator,88.3,0.4558937744410077

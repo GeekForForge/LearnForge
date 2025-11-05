@@ -1,0 +1,10 @@
+question,difficulty,topics,link,frequency,acceptance
+Minimum Cost to Buy Apples,MEDIUM,"Array, Graph, Heap (Priority Queue), Shortest Path",https://leetcode.com/problems/minimum-cost-to-buy-apples,100.0,0.671071953010279
+Maximum XOR of Two Non-Overlapping Subtrees,HARD,"Tree, Depth-First Search, Graph, Trie",https://leetcode.com/problems/maximum-xor-of-two-non-overlapping-subtrees,100.0,0.4955277280858676
+Difference Between Maximum and Minimum Price Sum,HARD,"Array, Dynamic Programming, Tree, Depth-First Search",https://leetcode.com/problems/difference-between-maximum-and-minimum-price-sum,100.0,0.3183270902780164
+Number of Sub-arrays With Odd Sum,MEDIUM,"Array, Math, Dynamic Programming, Prefix Sum",https://leetcode.com/problems/number-of-sub-arrays-with-odd-sum,100.0,0.560402376129768
+Find the Winner of an Array Game,MEDIUM,"Array, Simulation",https://leetcode.com/problems/find-the-winner-of-an-array-game,100.0,0.567408906882591
+Find Longest Awesome Substring,HARD,"Hash Table, String, Bit Manipulation",https://leetcode.com/problems/find-longest-awesome-substring,100.0,0.4524148811644358
+Min Cost to Connect All Points,MEDIUM,"Array, Union Find, Graph, Minimum Spanning Tree",https://leetcode.com/problems/min-cost-to-connect-all-points,100.0,0.6902167172645849
+Largest Submatrix With Rearrangements,MEDIUM,"Array, Greedy, Sorting, Matrix",https://leetcode.com/problems/largest-submatrix-with-rearrangements,100.0,0.7517110676865972
+Binary Tree Maximum Path Sum,HARD,"Dynamic Programming, Tree, Depth-First Search, Binary Tree",https://leetcode.com/problems/binary-tree-maximum-path-sum,62.4,0.4122430202415382
