@@ -1,0 +1,4 @@
+question,difficulty,topics,link,frequency,acceptance
+Two Sum,EASY,"Array, Hash Table",https://leetcode.com/problems/two-sum,100.0,0.5577709298430229
+3Sum,MEDIUM,"Array, Two Pointers, Sorting",https://leetcode.com/problems/3sum,89.3,0.3707125880508768
+Design Hit Counter,MEDIUM,"Array, Binary Search, Design, Queue, Data Stream",https://leetcode.com/problems/design-hit-counter,89.3,0.6920831928267657

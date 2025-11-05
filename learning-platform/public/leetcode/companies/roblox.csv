@@ -1,0 +1,54 @@
+question,difficulty,topics,link,frequency,acceptance
+Reorganize String,MEDIUM,"Hash Table, String, Greedy, Sorting, Heap (Priority Queue), Counting",https://leetcode.com/problems/reorganize-string,100.0,0.5619634145417838
+Design Browser History,MEDIUM,"Array, Linked List, Stack, Design, Doubly-Linked List, Data Stream",https://leetcode.com/problems/design-browser-history,86.3,0.7774686768883133
+Task Scheduler,MEDIUM,"Array, Hash Table, Greedy, Sorting, Heap (Priority Queue), Counting",https://leetcode.com/problems/task-scheduler,85.4,0.615393301547845
+Design Hit Counter,MEDIUM,"Array, Binary Search, Design, Queue, Data Stream",https://leetcode.com/problems/design-hit-counter,81.5,0.6920824458148753
+Maximize Distance to Closest Person,MEDIUM,Array,https://leetcode.com/problems/maximize-distance-to-closest-person,81.5,0.4898732183487074
+Merge Intervals,MEDIUM,"Array, Sorting",https://leetcode.com/problems/merge-intervals,75.1,0.4939523849309626
+Text Justification,HARD,"Array, String, Simulation",https://leetcode.com/problems/text-justification,73.5,0.4814993566410409
+Convert Binary Number in a Linked List to Integer,EASY,"Linked List, Math",https://leetcode.com/problems/convert-binary-number-in-a-linked-list-to-integer,69.9,0.8121536256620584
+Students and Examinations,EASY,Database,https://leetcode.com/problems/students-and-examinations,69.9,0.604974385676898
+Number of Trusted Contacts of a Customer,MEDIUM,Database,https://leetcode.com/problems/number-of-trusted-contacts-of-a-customer,69.9,0.7522622225115554
+Group the People Given the Group Size They Belong To,MEDIUM,"Array, Hash Table, Greedy",https://leetcode.com/problems/group-the-people-given-the-group-size-they-belong-to,69.9,0.8741365069830305
+Count Number of Nice Subarrays,MEDIUM,"Array, Hash Table, Math, Sliding Window, Prefix Sum",https://leetcode.com/problems/count-number-of-nice-subarrays,69.9,0.7320996591376853
+Subdomain Visit Count,MEDIUM,"Array, Hash Table, String, Counting",https://leetcode.com/problems/subdomain-visit-count,69.9,0.7683449765176875
+Maximum Number of Occurrences of a Substring,MEDIUM,"Hash Table, String, Sliding Window",https://leetcode.com/problems/maximum-number-of-occurrences-of-a-substring,69.9,0.5342731408965465
+Magnetic Force Between Two Balls,MEDIUM,"Array, Binary Search, Sorting",https://leetcode.com/problems/magnetic-force-between-two-balls,69.9,0.7134574135311467
+Valid Parentheses,EASY,"String, Stack",https://leetcode.com/problems/valid-parentheses,67.8,0.4232284526697411
+Integer to English Words,HARD,"Math, String, Recursion",https://leetcode.com/problems/integer-to-english-words,67.8,0.3435478950195029
+Implement Trie (Prefix Tree),MEDIUM,"Hash Table, String, Design, Trie",https://leetcode.com/problems/implement-trie-prefix-tree,62.9,0.6793477899842462
+Rotate Image,MEDIUM,"Array, Math, Matrix",https://leetcode.com/problems/rotate-image,59.8,0.7790166005161556
+Number of Flowers in Full Bloom,HARD,"Array, Hash Table, Binary Search, Sorting, Prefix Sum, Ordered Set",https://leetcode.com/problems/number-of-flowers-in-full-bloom,56.2,0.5717535511066795
+Rotating the Box,MEDIUM,"Array, Two Pointers, Matrix",https://leetcode.com/problems/rotating-the-box,56.2,0.7909813050714205
+Spiral Matrix,MEDIUM,"Array, Matrix, Simulation",https://leetcode.com/problems/spiral-matrix,51.9,0.539397306376751
+Block Placement Queries,HARD,"Array, Binary Search, Binary Indexed Tree, Segment Tree",https://leetcode.com/problems/block-placement-queries,51.9,0.168902023187088
+Split Message Based on Limit,HARD,"String, Binary Search, Enumeration",https://leetcode.com/problems/split-message-based-on-limit,51.9,0.4261603375527427
+Trapping Rain Water,HARD,"Array, Two Pointers, Dynamic Programming, Stack, Monotonic Stack",https://leetcode.com/problems/trapping-rain-water,51.9,0.6510198658123436
+Subarrays with K Different Integers,HARD,"Array, Hash Table, Sliding Window, Counting",https://leetcode.com/problems/subarrays-with-k-different-integers,46.2,0.658657617557622
+Number of Adjacent Elements With the Same Color,MEDIUM,Array,https://leetcode.com/problems/number-of-adjacent-elements-with-the-same-color,46.2,0.5575544433923982
+Longest Common Prefix,EASY,"String, Trie",https://leetcode.com/problems/longest-common-prefix,46.2,0.4548309656922607
+Minimum Falling Path Sum II,HARD,"Array, Dynamic Programming, Matrix",https://leetcode.com/problems/minimum-falling-path-sum-ii,46.2,0.6381902247899858
+Largest Rectangle in Histogram,HARD,"Array, Stack, Monotonic Stack",https://leetcode.com/problems/largest-rectangle-in-histogram,46.2,0.4737767587697204
+Find the Length of the Longest Common Prefix,MEDIUM,"Array, Hash Table, String, Trie",https://leetcode.com/problems/find-the-length-of-the-longest-common-prefix,46.2,0.564161205458434
+First Missing Positive,HARD,"Array, Hash Table",https://leetcode.com/problems/first-missing-positive,46.2,0.4108465766394882
+Candy Crush,MEDIUM,"Array, Two Pointers, Matrix, Simulation",https://leetcode.com/problems/candy-crush,38.3,0.7736899161778655
+Basic Calculator IV,HARD,"Hash Table, Math, String, Stack, Recursion",https://leetcode.com/problems/basic-calculator-iv,38.3,0.4866033755274261
+Number of Recent Calls,EASY,"Design, Queue, Data Stream",https://leetcode.com/problems/number-of-recent-calls,38.3,0.7732793446019116
+Diagonal Traverse,MEDIUM,"Array, Matrix, Simulation",https://leetcode.com/problems/diagonal-traverse,38.3,0.6317318066223124
+Jump Game II,MEDIUM,"Array, Dynamic Programming, Greedy",https://leetcode.com/problems/jump-game-ii,38.3,0.4150331460676829
+Longest Consecutive Sequence,MEDIUM,"Array, Hash Table, Union Find",https://leetcode.com/problems/longest-consecutive-sequence,38.3,0.47040837691011
+Image Smoother,EASY,"Array, Matrix",https://leetcode.com/problems/image-smoother,38.3,0.6837229689163258
+Longest Substring Without Repeating Characters,MEDIUM,"Hash Table, String, Sliding Window",https://leetcode.com/problems/longest-substring-without-repeating-characters,38.3,0.3693616664795573
+Best Time to Buy and Sell Stock,EASY,"Array, Dynamic Programming",https://leetcode.com/problems/best-time-to-buy-and-sell-stock,38.3,0.5525961979681595
+Spiral Matrix II,MEDIUM,"Array, Matrix, Simulation",https://leetcode.com/problems/spiral-matrix-ii,38.3,0.734312719680276
+Brightest Position on Street,MEDIUM,"Array, Sorting, Prefix Sum, Ordered Set",https://leetcode.com/problems/brightest-position-on-street,38.3,0.605687821115855
+Rotting Oranges,MEDIUM,"Array, Breadth-First Search, Matrix",https://leetcode.com/problems/rotting-oranges,38.3,0.5661839890477366
+Employee Free Time,HARD,"Array, Line Sweep, Sorting, Heap (Priority Queue)",https://leetcode.com/problems/employee-free-time,38.3,0.7259759595862569
+Two Sum,EASY,"Array, Hash Table",https://leetcode.com/problems/two-sum,38.3,0.5577699500711366
+Minimum Number of Frogs Croaking,MEDIUM,"String, Counting",https://leetcode.com/problems/minimum-number-of-frogs-croaking,38.3,0.5078628152543851
+Minimum Absolute Difference Between Elements With Constraint,MEDIUM,"Array, Binary Search, Ordered Set",https://leetcode.com/problems/minimum-absolute-difference-between-elements-with-constraint,38.3,0.3406636948984646
+Word Search II,HARD,"Array, String, Backtracking, Trie, Matrix",https://leetcode.com/problems/word-search-ii,38.3,0.3732631460421123
+Accounts Merge,MEDIUM,"Array, Hash Table, String, Depth-First Search, Breadth-First Search, Union Find, Sorting",https://leetcode.com/problems/accounts-merge,38.3,0.5957996827596059
+Remove Colored Pieces if Both Neighbors are the Same Color,MEDIUM,"Math, String, Greedy, Game Theory",https://leetcode.com/problems/remove-colored-pieces-if-both-neighbors-are-the-same-color,38.3,0.6283932786999268
+Unique Paths,MEDIUM,"Math, Dynamic Programming, Combinatorics",https://leetcode.com/problems/unique-paths,38.3,0.6577287347956182
+Course Schedule,MEDIUM,"Depth-First Search, Breadth-First Search, Graph, Topological Sort",https://leetcode.com/problems/course-schedule,38.3,0.492343950231832

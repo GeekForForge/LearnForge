@@ -1,0 +1,30 @@
+question,difficulty,topics,link,frequency,acceptance
+Reachable Nodes With Restrictions,MEDIUM,"Array, Hash Table, Tree, Depth-First Search, Breadth-First Search, Union Find, Graph",https://leetcode.com/problems/reachable-nodes-with-restrictions,100.0,0.5950097060567419
+Length of Longest Subarray With at Most K Frequency,MEDIUM,"Array, Hash Table, Sliding Window",https://leetcode.com/problems/length-of-longest-subarray-with-at-most-k-frequency,100.0,0.5577122271225969
+Sum Of Special Evenly-Spaced Elements In Array,HARD,"Array, Dynamic Programming",https://leetcode.com/problems/sum-of-special-evenly-spaced-elements-in-array,100.0,0.4920049200492005
+Longest Ideal Subsequence,MEDIUM,"Hash Table, String, Dynamic Programming",https://leetcode.com/problems/longest-ideal-subsequence,100.0,0.4683468802993977
+First Missing Positive,HARD,"Array, Hash Table",https://leetcode.com/problems/first-missing-positive,94.4,0.4108473299971428
+Cheapest Flights Within K Stops,MEDIUM,"Dynamic Programming, Depth-First Search, Breadth-First Search, Graph, Heap (Priority Queue), Shortest Path",https://leetcode.com/problems/cheapest-flights-within-k-stops,82.7,0.4039895913277053
+Merge Intervals,MEDIUM,"Array, Sorting",https://leetcode.com/problems/merge-intervals,70.0,0.4939525709267929
+Trapping Rain Water,HARD,"Array, Two Pointers, Dynamic Programming, Stack, Monotonic Stack",https://leetcode.com/problems/trapping-rain-water,70.0,0.6510209523696747
+Jump Game,MEDIUM,"Array, Dynamic Programming, Greedy",https://leetcode.com/problems/jump-game,70.0,0.3947917663153907
+Minimum Window Substring,HARD,"Hash Table, String, Sliding Window",https://leetcode.com/problems/minimum-window-substring,70.0,0.4535065526573431
+Generate Parentheses,MEDIUM,"String, Dynamic Programming, Backtracking",https://leetcode.com/problems/generate-parentheses,60.0,0.7713291060549546
+Search a 2D Matrix II,MEDIUM,"Array, Binary Search, Divide and Conquer, Matrix",https://leetcode.com/problems/search-a-2d-matrix-ii,60.0,0.5522255521725299
+Longest Palindromic Substring,MEDIUM,"Two Pointers, String, Dynamic Programming",https://leetcode.com/problems/longest-palindromic-substring,60.0,0.3584616666918127
+Word Search,MEDIUM,"Array, String, Backtracking, Depth-First Search, Matrix",https://leetcode.com/problems/word-search,60.0,0.4526704051416151
+Regular Expression Matching,HARD,"String, Dynamic Programming, Recursion",https://leetcode.com/problems/regular-expression-matching,60.0,0.2928033823373457
+Implement Trie (Prefix Tree),MEDIUM,"Hash Table, String, Design, Trie",https://leetcode.com/problems/implement-trie-prefix-tree,60.0,0.6793483676231851
+Min Stack,MEDIUM,"Stack, Design",https://leetcode.com/problems/min-stack,60.0,0.5644518984236717
+Edit Distance,MEDIUM,"String, Dynamic Programming",https://leetcode.com/problems/edit-distance,60.0,0.5878982137282472
+Sliding Window Maximum,HARD,"Array, Queue, Sliding Window, Heap (Priority Queue), Monotonic Queue",https://leetcode.com/problems/sliding-window-maximum,60.0,0.4760423266245386
+Product of Array Except Self,MEDIUM,"Array, Prefix Sum",https://leetcode.com/problems/product-of-array-except-self,60.0,0.677800454261773
+Evaluate Division,MEDIUM,"Array, String, Depth-First Search, Breadth-First Search, Union Find, Graph, Shortest Path",https://leetcode.com/problems/evaluate-division,60.0,0.6314714847355362
+Longest Valid Parentheses,HARD,"String, Dynamic Programming, Stack",https://leetcode.com/problems/longest-valid-parentheses,60.0,0.3631311834249425
+Longest Substring Without Repeating Characters,MEDIUM,"Hash Table, String, Sliding Window",https://leetcode.com/problems/longest-substring-without-repeating-characters,60.0,0.3693615923652376
+Reverse Nodes in k-Group,HARD,"Linked List, Recursion",https://leetcode.com/problems/reverse-nodes-in-k-group,60.0,0.6304369585397218
+Increasing Triplet Subsequence,MEDIUM,"Array, Greedy",https://leetcode.com/problems/increasing-triplet-subsequence,60.0,0.3912498444009987
+Majority Element,EASY,"Array, Hash Table, Divide and Conquer, Sorting, Counting",https://leetcode.com/problems/majority-element,60.0,0.6574036573829073
+Jump Game II,MEDIUM,"Array, Dynamic Programming, Greedy",https://leetcode.com/problems/jump-game-ii,60.0,0.4150341471117889
+Find First and Last Position of Element in Sorted Array,MEDIUM,"Array, Binary Search",https://leetcode.com/problems/find-first-and-last-position-of-element-in-sorted-array,60.0,0.4682884788519396
+Insert Delete GetRandom O(1),MEDIUM,"Array, Hash Table, Math, Design, Randomized",https://leetcode.com/problems/insert-delete-getrandom-o1,60.0,0.5499193187657342

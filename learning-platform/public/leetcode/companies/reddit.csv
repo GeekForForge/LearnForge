@@ -1,0 +1,7 @@
+question,difficulty,topics,link,frequency,acceptance
+Word Ladder,HARD,"Hash Table, String, Breadth-First Search",https://leetcode.com/problems/word-ladder,100.0,0.4281192533926231
+Number of Ways to Buy Pens and Pencils,MEDIUM,"Math, Enumeration",https://leetcode.com/problems/number-of-ways-to-buy-pens-and-pencils,88.6,0.559085669756644
+LRU Cache,MEDIUM,"Hash Table, Linked List, Design, Doubly-Linked List",https://leetcode.com/problems/lru-cache,81.6,0.452147387470624
+Design Hit Counter,MEDIUM,"Array, Binary Search, Design, Queue, Data Stream",https://leetcode.com/problems/design-hit-counter,70.7,0.6920824458148753
+Logger Rate Limiter,EASY,"Hash Table, Design, Data Stream",https://leetcode.com/problems/logger-rate-limiter,70.7,0.766103057053701
+Number of Islands,MEDIUM,"Array, Depth-First Search, Breadth-First Search, Union Find, Matrix",https://leetcode.com/problems/number-of-islands,57.2,0.6232011443676149

@@ -1,0 +1,10 @@
+question,difficulty,topics,link,frequency,acceptance
+Longest Harmonious Subsequence,EASY,"Array, Hash Table, Sliding Window, Sorting, Counting",https://leetcode.com/problems/longest-harmonious-subsequence,100.0,0.5731264149524798
+Distribute Candies Among Children II,MEDIUM,"Math, Combinatorics, Enumeration",https://leetcode.com/problems/distribute-candies-among-children-ii,88.5,0.5613414290884233
+Longest Unequal Adjacent Groups Subsequence I,EASY,"Array, String, Dynamic Programming, Greedy",https://leetcode.com/problems/longest-unequal-adjacent-groups-subsequence-i,88.5,0.6756708309889311
+Largest 1-Bordered Square,MEDIUM,"Array, Dynamic Programming, Matrix",https://leetcode.com/problems/largest-1-bordered-square,88.5,0.5109808899476603
+Crawler Log Folder,EASY,"Array, String, Stack",https://leetcode.com/problems/crawler-log-folder,88.5,0.7160418239109896
+Managers with at Least 5 Direct Reports,MEDIUM,Database,https://leetcode.com/problems/managers-with-at-least-5-direct-reports,88.5,0.4893975992284871
+The Number of Employees Which Report to Each Employee,EASY,Database,https://leetcode.com/problems/the-number-of-employees-which-report-to-each-employee,88.5,0.5215799545486316
+Nth Highest Salary,MEDIUM,Database,https://leetcode.com/problems/nth-highest-salary,88.5,0.3803889168918484
+Product of Array Except Self,MEDIUM,"Array, Prefix Sum",https://leetcode.com/problems/product-of-array-except-self,88.5,0.6778016749535838

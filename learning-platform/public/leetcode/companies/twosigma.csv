@@ -1,0 +1,24 @@
+question,difficulty,topics,link,frequency,acceptance
+Minimum Operations to Reduce an Integer to 0,MEDIUM,"Dynamic Programming, Greedy, Bit Manipulation",https://leetcode.com/problems/minimum-operations-to-reduce-an-integer-to-0,100.0,0.5730954555475073
+Number of Provinces,MEDIUM,"Depth-First Search, Breadth-First Search, Union Find, Graph",https://leetcode.com/problems/number-of-provinces,100.0,0.6865501471036717
+Random Pick with Weight,MEDIUM,"Array, Math, Binary Search, Prefix Sum, Randomized",https://leetcode.com/problems/random-pick-with-weight,98.1,0.4827844806841818
+Maximum Subarray Sum with One Deletion,MEDIUM,"Array, Dynamic Programming",https://leetcode.com/problems/maximum-subarray-sum-with-one-deletion,96.0,0.4509647479065409
+Multiply Strings,MEDIUM,"Math, String, Simulation",https://leetcode.com/problems/multiply-strings,93.8,0.4228943914738829
+Wildcard Matching,HARD,"String, Dynamic Programming, Greedy, Recursion",https://leetcode.com/problems/wildcard-matching,93.8,0.2989831385599265
+Longest String Chain,MEDIUM,"Array, Hash Table, Two Pointers, String, Dynamic Programming, Sorting",https://leetcode.com/problems/longest-string-chain,93.8,0.6201512673699018
+Game of Life,MEDIUM,"Array, Matrix, Simulation",https://leetcode.com/problems/game-of-life,93.8,0.7141499668480139
+Power of Four,EASY,"Math, Bit Manipulation, Recursion",https://leetcode.com/problems/power-of-four,93.8,0.4947101228054184
+Intersection of Two Arrays,EASY,"Array, Hash Table, Two Pointers, Binary Search, Sorting",https://leetcode.com/problems/intersection-of-two-arrays,93.8,0.7647433018076383
+Maximum Sum Circular Subarray,MEDIUM,"Array, Divide and Conquer, Dynamic Programming, Queue, Monotonic Queue",https://leetcode.com/problems/maximum-sum-circular-subarray,93.8,0.4766973516813795
+Word Search II,HARD,"Array, String, Backtracking, Trie, Matrix",https://leetcode.com/problems/word-search-ii,91.3,0.373263264963344
+Merge k Sorted Lists,HARD,"Linked List, Divide and Conquer, Heap (Priority Queue), Merge Sort",https://leetcode.com/problems/merge-k-sorted-lists,72.1,0.5677423948386318
+Parallel Courses III,HARD,"Array, Dynamic Programming, Graph, Topological Sort",https://leetcode.com/problems/parallel-courses-iii,72.1,0.6674963944974485
+Design Memory Allocator,MEDIUM,"Array, Hash Table, Design, Simulation",https://leetcode.com/problems/design-memory-allocator,65.3,0.484441262323071
+Minimum Space Wasted From Packaging,HARD,"Array, Binary Search, Sorting, Prefix Sum",https://leetcode.com/problems/minimum-space-wasted-from-packaging,65.3,0.3263921285889987
+Design HashMap,EASY,"Array, Hash Table, Linked List, Design, Hash Function",https://leetcode.com/problems/design-hashmap,65.3,0.658939347368503
+Search Suggestions System,MEDIUM,"Array, String, Binary Search, Trie, Sorting, Heap (Priority Queue)",https://leetcode.com/problems/search-suggestions-system,55.7,0.6505022273267432
+Design Tic-Tac-Toe,MEDIUM,"Array, Hash Table, Design, Matrix, Simulation",https://leetcode.com/problems/design-tic-tac-toe,55.7,0.5860173363699457
+Robot Room Cleaner,HARD,"Backtracking, Interactive",https://leetcode.com/problems/robot-room-cleaner,55.7,0.7752279751307165
+Sum of Square Numbers,MEDIUM,"Math, Two Pointers, Binary Search",https://leetcode.com/problems/sum-of-square-numbers,55.7,0.3650554406304044
+Meeting Rooms II,MEDIUM,"Array, Two Pointers, Greedy, Sorting, Heap (Priority Queue), Prefix Sum",https://leetcode.com/problems/meeting-rooms-ii,55.7,0.5214181010083032
+Best Time to Buy and Sell Stock,EASY,"Array, Dynamic Programming",https://leetcode.com/problems/best-time-to-buy-and-sell-stock,55.7,0.5525962677169539

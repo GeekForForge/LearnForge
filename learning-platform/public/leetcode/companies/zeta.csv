@@ -1,0 +1,22 @@
+question,difficulty,topics,link,frequency,acceptance
+Apply Operations to Make Two Strings Equal,MEDIUM,"String, Dynamic Programming",https://leetcode.com/problems/apply-operations-to-make-two-strings-equal,100.0,0.2718017671917019
+Split Array Largest Sum,HARD,"Array, Binary Search, Dynamic Programming, Greedy, Prefix Sum",https://leetcode.com/problems/split-array-largest-sum,70.6,0.5809965654277032
+Task Scheduler,MEDIUM,"Array, Hash Table, Greedy, Sorting, Heap (Priority Queue), Counting",https://leetcode.com/problems/task-scheduler,70.6,0.6153929493806579
+Evaluate Division,MEDIUM,"Array, String, Depth-First Search, Breadth-First Search, Union Find, Graph, Shortest Path",https://leetcode.com/problems/evaluate-division,70.6,0.6314709369068677
+IPO,HARD,"Array, Greedy, Sorting, Heap (Priority Queue)",https://leetcode.com/problems/ipo,70.6,0.5301971990666143
+Next Greater Element II,MEDIUM,"Array, Stack, Monotonic Stack",https://leetcode.com/problems/next-greater-element-ii,70.6,0.6630261266286627
+Insert Delete GetRandom O(1),MEDIUM,"Array, Hash Table, Math, Design, Randomized",https://leetcode.com/problems/insert-delete-getrandom-o1,70.6,0.5499189723840695
+Maximum Profit in Job Scheduling,HARD,"Array, Binary Search, Dynamic Programming, Sorting",https://leetcode.com/problems/maximum-profit-in-job-scheduling,70.6,0.5441725885769202
+Capacity To Ship Packages Within D Days,MEDIUM,"Array, Binary Search",https://leetcode.com/problems/capacity-to-ship-packages-within-d-days,60.8,0.7211805149375666
+Longest Valid Parentheses,HARD,"String, Dynamic Programming, Stack",https://leetcode.com/problems/longest-valid-parentheses,60.8,0.3631311834249425
+Minimum Window Substring,HARD,"Hash Table, String, Sliding Window",https://leetcode.com/problems/minimum-window-substring,60.8,0.4535063912278081
+Count Univalue Subtrees,MEDIUM,"Tree, Depth-First Search, Binary Tree",https://leetcode.com/problems/count-univalue-subtrees,60.8,0.5718044395078012
+Trapping Rain Water,HARD,"Array, Two Pointers, Dynamic Programming, Stack, Monotonic Stack",https://leetcode.com/problems/trapping-rain-water,60.8,0.6510217577539866
+Minimum Operations to Write the Letter Y on a Grid,MEDIUM,"Array, Hash Table, Matrix, Counting",https://leetcode.com/problems/minimum-operations-to-write-the-letter-y-on-a-grid,60.8,0.6194290206869442
+Substring with Concatenation of All Words,HARD,"Hash Table, String, Sliding Window",https://leetcode.com/problems/substring-with-concatenation-of-all-words,60.8,0.3299748281160983
+Interleaving String,MEDIUM,"String, Dynamic Programming",https://leetcode.com/problems/interleaving-string,60.8,0.4217918336772443
+Longest Substring Without Repeating Characters,MEDIUM,"Hash Table, String, Sliding Window",https://leetcode.com/problems/longest-substring-without-repeating-characters,60.8,0.3693615643032219
+Number of Islands,MEDIUM,"Array, Depth-First Search, Breadth-First Search, Union Find, Matrix",https://leetcode.com/problems/number-of-islands,60.8,0.6232010872434103
+Find a Peak Element II,MEDIUM,"Array, Binary Search, Matrix",https://leetcode.com/problems/find-a-peak-element-ii,60.8,0.5319526829811091
+Insert Delete GetRandom O(1) - Duplicates allowed,HARD,"Array, Hash Table, Math, Design, Randomized",https://leetcode.com/problems/insert-delete-getrandom-o1-duplicates-allowed,60.8,0.3577140509982381
+Reverse Nodes in k-Group,HARD,"Linked List, Recursion",https://leetcode.com/problems/reverse-nodes-in-k-group,60.8,0.6304371463092185

@@ -1,0 +1,5 @@
+question,difficulty,topics,link,frequency,acceptance
+Sliding Window Maximum,HARD,"Array, Queue, Sliding Window, Heap (Priority Queue), Monotonic Queue",https://leetcode.com/problems/sliding-window-maximum,100.0,0.4760401567272566
+Sudoku Solver,HARD,"Array, Hash Table, Backtracking, Matrix",https://leetcode.com/problems/sudoku-solver,83.7,0.6390844622410038
+Frog Jump,HARD,"Array, Dynamic Programming",https://leetcode.com/problems/frog-jump,83.7,0.4655846450889997
+Minimum Cost to Cut a Stick,HARD,"Array, Dynamic Programming, Sorting",https://leetcode.com/problems/minimum-cost-to-cut-a-stick,83.7,0.6201789560190433

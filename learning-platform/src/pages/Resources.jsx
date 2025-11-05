@@ -1,45 +1,67 @@
+// src/pages/Resources.jsx
 import React, { useState, useEffect } from 'react';
-import { Search, TrendingUp, Star, Filter, SortAsc, Building2, ExternalLink } from 'lucide-react';
+import { Search, TrendingUp, Star, Filter, SortAsc, Building2, ExternalLink, XCircle } from 'lucide-react'; // ✅ ADDED XCircle
 import Papa from 'papaparse';
 
 const companyNames = [
-    "AMD", "Cohesity", "GSN Games", "LTI", "AQR Capital Management", "Coinbase", "Gameskraft", "Larsen & Toubro", "Accenture", "Comcast", "Garmin",
-    "Lendingkart Technologies", "Accolite", "Commvault", "Geico", "Lenskart", "Acko", "Compass", "General Motors", "Licious", "Activision", "Confluent",
-    "Genpact", "Liftoff", "Adobe", "ConsultAdd", "GoDaddy", "LinkedIn", "Affirm", "Coupang", "Gojek", "LiveRamp", "Agoda", "Coursera", "Goldman Sachs",
-    "Lowe's", "Airbnb", "Coveo", "Google", "Lucid", "Airbus SE", "Credit Karma", "Grab", "Luxoft", "Airtel", "Criteo", "Grammarly", "Lyft", "Airwallex",
-    "CrowdStrike", "Graviton", "MAQ Software", "Akamai", "Cruise", "Groupon", "MSCI", "Akuna Capital", "CureFit", "Groww", "Machine Zone", "Alibaba",
-    "DE Shaw", "Grubhub", "MakeMyTrip", "Altimetrik", "DP world", "Guidewire", "Mapbox", "Amadeus", "DRW", "Gusto", "Mastercard", "Amazon", "DXC Technology",
-    "HCL", "MathWorks", "Amdocs", "Darwinbox", "HP", "McKinsey", "American Express", "Databricks", "HPE", "Media.net", "Analytics quotient", "Datadog",
-    "HSBC", "Meesho", "Anduril", "Dataminr", "Harness", "Mercari", "Aon", "Delhivery", "HashedIn", "Meta", "Apollo.io", "Deliveroo", "Hertz", "Microsoft",
-    "AppDynamics", "Dell", "HiLabs", "Microstrategy", "AppFolio", "Deloitte", "Highspot", "Millennium", "Apple", "DeltaX", "Hive", "MindTree", "Applied Intuition",
-    "Deutsche Bank", "Hiver", "Mindtickle", "Arcesium", "DevRev", "Honeywell", "Miro", "Arista Networks", "Devsinc", "Hotstar", "Mitsogo", "Asana", "Devtron",
-    "Houzz", "Mixpanel", "Atlassian", "Directi", "Huawei", "Mobileye", "Attentive", "Disney", "Hubspot", "Moengage", "Audible", "Docusign", "Hudson River Trading",
-    "Moloco", "Aurora", "DoorDash", "Hulu", "MongoDB", "Autodesk", "Dream11", "IBM", "Morgan Stanley", "Avalara", "Dropbox", "IIT Bombay", "Mountblue", "Avito",
-    "Druva", "IMC", "Moveworks", "Axon", "Dunzo", "INDmoney", "Myntra", "BILL Holdings", "Duolingo", "IVP", "NCR", "BNY Mellon", "EPAM Systems", "IXL",
-    "Nagarro", "BP", "EY", "InMobi", "National Instruments", "Baidu", "EarnIn", "Indeed", "National Payments Corporation of India", "Bank of America",
-    "Edelweiss Group", "Info Edge", "Navan", "Barclays", "Electronic Arts", "Informatica", "Navi", "Bentley Systems", "Epic Systems", "Infosys", "NetApp",
-    "BharatPe", "Expedia", "Instacart", "NetEase", "BitGo", "FPT", "Intel", "Netflix", "BlackRock", "FactSet", "Intuit", "Netskope", "BlackStone", "Faire",
-    "J.P. Morgan", "Netsuite", "Blizzard", "Fastenal", "Jane Street", "Nextdoor", "Block", "Fidelity", "Jump Trading", "Niantic", "Bloomberg", "Fiverr",
-    "Juniper Networks", "Nielsen", "Bolt", "Flexera", "Juspay", "Nike", "Booking.com", "Flexport", "KLA", "NinjaCart", "Bosch", "Flipkart", "Kakao", "Nokia",
-    "Box", "Fortinet", "Karat", "Nordstrom", "Braze", "Freecharge", "Komprise", "Notion", "Brex", "FreshWorks", "LINE", "Nuro", "Bridgewater Associates",
-    "GE Digital", "Nutanix", "ByteDance", "GE Healthcare", "Nvidia", "CARS24", "GSA Capital", "Nykaa", "CEDCOSS", "OKX", "CME Group", "Odoo", "CRED",
-    "Okta", "CTC", "Ola Cabs", "CVENT", "OpenAI", "Cadence", "Opendoor", "Canonical", "Optiver", "Capgemini", "Optum", "Capital One", "Oracle", "Careem",
-    "Otter.ai", "Cashfree", "Ozon", "Celigo", "Palantir Technologies", "Chewy", "Palo Alto Networks", "Chime", "Patreon", "Circle", "PayPal", "Cisco",
-    "PayPay", "Citadel", "PayU", "Citigroup", "Paycom", "Citrix", "Paytm", "Clari", "Peloton", "Cleartrip", "PhonePe", "Cloudera", "Pinterest", "Cloudflare",
-    "Pocket Gems", "Coforge", "Point72", "Cognizant", "Pony.ai", "PornHub", "Poshmark", "Postmates", "PubMatic", "Publicis Sapient", "Pure Storage",
-    "Pwc", "QBurst", "Qualcomm", "Qualtrics", "Quora", "RBC", "Rakuten", "Reddit", "Remitly", "Revolut", "Riot Games", "Ripple", "Rippling", "Rivian",
-    "Robinhood", "Roblox", "Roche", "Rokt", "Roku", "Rubrik", "SAP", "SIG", "SOTI", "Salesforce", "Samsara", "Samsung", "Scale AI", "Sentry", "ServiceNow",
-    "ShareChat", "Shopee", "Shopify", "Siemens", "Sigmoid", "Slice", "Smartsheet", "Snap", "Snapdeal", "Snowflake", "SoFi", "Societe Generale", "Softwire",
-    "Sony", "SoundHound", "Splunk", "Spotify", "Sprinklr", "Squarepoint Capital", "Squarespace", "StackAdapt", "Stackline", "Stripe", "Sumo Logic",
-    "Swiggy", "Synopsys", "Tanium", "Target", "Tech Mahindra", "Tejas Networks", "Tekion", "Tencent", "Teradata", "Tesco", "Tesla", "Texas Instruments",
-    "The Trade Desk", "Thomson Reuters", "ThoughtWorks", "ThousandEyes", "Tiger Analytics", "TikTok", "Tinder", "Tinkoff", "Toast", "Toptal",
-    "Tower Research Capital", "Trexquant", "Trilogy", "Tripadvisor", "TuSimple", "Turing", "Turo", "Turvo", "Twilio", "Twitch", "Two Sigma",
-    "UBS", "UKG", "USAA", "Uber", "UiPath", "Unity", "Upstart", "Urban Company", "VK", "VMware", "Valve", "Vanguard", "Veeva Systems", "Verily",
-    "Veritas", "Verkada", "Vimeo", "Virtu Financial", "Virtusa", "Visa", "Walmart Labs", "Warnermedia", "WatchGuard", "Wayfair", "Waymo",
-    "WeRide", "Wealthfront", "Wells Fargo", "Western Digital", "Whatnot", "WinZO", "Wipro", "Wise", "Wish", "Wissen Technology", "Wix",
-    "Workday", "Works Applications", "WorldQuant", "X", "Yahoo", "Yandex", "Yelp", "Yext", "ZS Associates", "ZScaler", "Zalando", "Zendesk",
-    "Zenefits", "Zepto", "Zeta", "Zillow", "ZipRecruiter", "Zluri", "Zoho", "Zomato", "Zoom", "Zoox", "Zopsmart", "Zynga", "athenahealth",
-    "blinkit", "carwale", "ciena", "eBay", "fourkites", "instabase", "jio", "josh technology"
+    "AMD", "Cohesity", "GSN Games", "LTI", "AQR Capital Management", "Coinbase", "Gameskraft",
+    "Larsen & Toubro", "Accenture", "Comcast", "Garmin", "Lendingkart Technologies", "Accolite",
+    "Commvault", "Geico", "Lenskart", "Acko", "Compass", "General Motors", "Licious", "Activision",
+    "Confluent", "Genpact", "Liftoff", "Adobe", "ConsultAdd", "GoDaddy", "LinkedIn", "Affirm",
+    "Coupang", "Gojek", "LiveRamp", "Agoda", "Coursera", "Goldman Sachs", "Lowe's", "Airbnb",
+    "Coveo", "Google", "Lucid", "Airbus SE", "Credit Karma", "Grab", "Luxoft", "Airtel", "Criteo",
+    "Grammarly", "Lyft", "Airwallex", "CrowdStrike", "Graviton", "MAQ Software", "Akamai", "Cruise",
+    "Groupon", "MSCI", "Akuna Capital", "CureFit", "Groww", "Machine Zone", "Alibaba", "DE Shaw",
+    "Grubhub", "MakeMyTrip", "Altimetrik", "DP world", "Guidewire", "Mapbox", "Amadeus", "DRW",
+    "Gusto", "Mastercard", "Amazon", "DXC Technology", "HCL", "MathWorks", "Amdocs", "Darwinbox",
+    "HP", "McKinsey", "American Express", "Databricks", "HPE", "Media.net", "Analytics quotient",
+    "Datadog", "HSBC", "Meesho", "Anduril", "Dataminr", "Harness", "Mercari", "Aon", "Delhivery",
+    "HashedIn", "Meta", "Apollo.io", "Deliveroo", "Hertz", "Microsoft", "AppDynamics", "Dell",
+    "HiLabs", "Microstrategy", "AppFolio", "Deloitte", "Highspot", "Millennium", "Apple",
+    "DeltaX", "Hive", "MindTree", "Applied Intuition", "Deutsche Bank", "Hiver", "Mindtickle",
+    "Arcesium", "DevRev", "Honeywell", "Miro", "Arista Networks", "Devsinc", "Hotstar", "Mitsogo",
+    "Asana", "Devtron", "Houzz", "Mixpanel", "Atlassian", "Directi", "Huawei", "Mobileye",
+    "Attentive", "Disney", "Hubspot", "Moengage", "Audible", "Docusign", "Hudson River Trading",
+    "Moloco", "Aurora", "DoorDash", "Hulu", "MongoDB", "Autodesk", "Dream11", "IBM", "Morgan Stanley",
+    "Avalara", "Dropbox", "IIT Bombay", "Mountblue", "Avito", "Druva", "IMC", "Moveworks", "Axon",
+    "Dunzo", "INDmoney", "Myntra", "BILL Holdings", "Duolingo", "IVP", "NCR", "BNY Mellon",
+    "EPAM Systems", "IXL", "Nagarro", "BP", "EY", "InMobi", "National Instruments", "Baidu",
+    "EarnIn", "Indeed", "National Payments Corporation of India", "Bank of America", "Edelweiss Group",
+    "Info Edge", "Navan", "Barclays", "Electronic Arts", "Informatica", "Navi", "Bentley Systems",
+    "Epic Systems", "Infosys", "NetApp", "BharatPe", "Expedia", "Instacart", "NetEase", "BitGo",
+    "FPT", "Intel", "Netflix", "BlackRock", "FactSet", "Intuit", "Netskope", "BlackStone", "Faire",
+    "J.P. Morgan", "Netsuite", "Blizzard", "Fastenal", "Jane Street", "Nextdoor", "Block", "Fidelity",
+    "Jump Trading", "Niantic", "Bloomberg", "Fiverr", "Juniper Networks", "Nielsen", "Bolt", "Flexera",
+    "Juspay", "Nike", "Booking.com", "Flexport", "KLA", "NinjaCart", "Bosch", "Flipkart", "Kakao",
+    "Nokia", "Box", "Fortinet", "Karat", "Nordstrom", "Braze", "Freecharge", "Komprise", "Notion",
+    "Brex", "FreshWorks", "LINE", "Nuro", "Bridgewater Associates", "GE Digital", "Nutanix",
+    "ByteDance", "GE Healthcare", "Nvidia", "CARS24", "GSA Capital", "Nykaa", "CEDCOSS", "OKX",
+    "CME Group", "Odoo", "CRED", "Okta", "CTC", "Ola Cabs", "CVENT", "OpenAI", "Cadence", "Opendoor",
+    "Canonical", "Optiver", "Capgemini", "Optum", "Capital One", "Oracle", "Careem", "Otter.ai",
+    "Cashfree", "Ozon", "Celigo", "Palantir Technologies", "Chewy", "Palo Alto Networks", "Chime",
+    "Patreon", "Circle", "PayPal", "Cisco", "PayPay", "Citadel", "PayU", "Citigroup", "Paycom",
+    "Citrix", "Paytm", "Clari", "Peloton", "Cleartrip", "PhonePe", "Cloudera", "Pinterest",
+    "Cloudflare", "Pocket Gems", "Coforge", "Point72", "Cognizant", "Pony.ai", "PornHub", "Poshmark",
+    "Postmates", "PubMatic", "Publicis Sapient", "Pure Storage", "Pwc", "QBurst", "Qualcomm",
+    "Qualtrics", "Quora", "RBC", "Rakuten", "Reddit", "Remitly", "Revolut", "Riot Games", "Ripple",
+    "Rippling", "Rivian", "Robinhood", "Roblox", "Roche", "Rokt", "Roku", "Rubrik", "SAP", "SIG",
+    "SOTI", "Salesforce", "Samsara", "Samsung", "Scale AI", "Sentry", "ServiceNow", "ShareChat",
+    "Shopee", "Shopify", "Siemens", "Sigmoid", "Slice", "Smartsheet", "Snap", "Snapdeal", "Snowflake",
+    "SoFi", "Societe Generale", "Softwire", "Sony", "SoundHound", "Splunk", "Spotify", "Sprinklr",
+    "Squarepoint Capital", "Squarespace", "StackAdapt", "Stackline", "Stripe", "Sumo Logic", "Swiggy",
+    "Synopsys", "Tanium", "Target", "Tech Mahindra", "Tejas Networks", "Tekion", "Tencent", "Teradata",
+    "Tesco", "Tesla", "Texas Instruments", "The Trade Desk", "Thomson Reuters", "ThoughtWorks",
+    "ThousandEyes", "Tiger Analytics", "TikTok", "Tinder", "Tinkoff", "Toast", "Toptal",
+    "Tower Research Capital", "Trexquant", "Trilogy", "Tripadvisor", "TuSimple", "Turing", "Turo",
+    "Turvo", "Twilio", "Twitch", "Two Sigma", "UBS", "UKG", "USAA", "Uber", "UiPath", "Unity",
+    "Upstart", "Urban Company", "VK", "VMware", "Valve", "Vanguard", "Veeva Systems", "Verily",
+    "Veritas", "Verkada", "Vimeo", "Virtu Financial", "Virtusa", "Visa", "Walmart Labs", "Warnermedia",
+    "WatchGuard", "Wayfair", "Waymo", "WeRide", "Wealthfront", "Wells Fargo", "Western Digital",
+    "Whatnot", "WinZO", "Wipro", "Wise", "Wish", "Wissen Technology", "Wix", "Workday",
+    "Works Applications", "WorldQuant", "X", "Yahoo", "Yandex", "Yelp", "Yext", "ZS Associates",
+    "ZScaler", "Zalando", "Zendesk", "Zenefits", "Zepto", "Zeta", "Zillow", "ZipRecruiter", "Zluri",
+    "Zoho", "Zomato", "Zoom", "Zoox", "Zopsmart", "Zynga", "athenahealth", "blinkit", "carwale",
+    "ciena", "eBay", "fourkites", "instabase", "jio", "josh technology"
 ];
 
 const colorThemes = [
@@ -51,12 +73,29 @@ const colorThemes = [
     "from-rose-500 to-pink-500"
 ];
 
+const sanitizeFileName = (name) => {
+    return name
+        .toLowerCase()
+        .replace(/[^a-z0-9]/g, '')
+        .trim();
+};
+
 const companies = companyNames.map((name, i) => ({
     name,
-    file: `/leetcode/companies/${name.replace(/[^a-z0-9]/gi, '').toLowerCase()}.xlsx`,
+    file: `/leetcode/companies/${sanitizeFileName(name)}.csv`,
     count: 0,
     color: colorThemes[i % colorThemes.length]
 }));
+
+// ✅ FIX: Normalize difficulty to Title Case
+const normalizeDifficulty = (diff) => {
+    if (!diff) return '';
+    const d = diff.trim().toLowerCase();
+    if (d === 'easy') return 'Easy';
+    if (d === 'medium') return 'Medium';
+    if (d === 'hard') return 'Hard';
+    return diff.trim(); // Return as-is if unknown
+};
 
 export default function Resources() {
     const [search, setSearch] = useState('');
@@ -65,16 +104,67 @@ export default function Resources() {
     const [questions, setQuestions] = useState([]);
     const [difficultyFilter, setDifficultyFilter] = useState('All');
     const [sortBy, setSortBy] = useState('Frequency');
+    const [loading, setLoading] = useState(false);
+    const [error, setError] = useState(null);
 
     useEffect(() => {
         const co = companies.find(c => c.name === activeCompany);
         if (!co) return setQuestions([]);
+
+        setLoading(true);
+        setError(null);
+
         fetch(co.file)
-            .then(res => res.ok ? res.text() : "")
+            .then(res => {
+                if (!res.ok) {
+                    throw new Error(`File not found: ${co.file}`);
+                }
+                return res.text();
+            })
             .then(csv => {
-                if (!csv) return setQuestions([]);
-                const parsed = Papa.parse(csv, { header: true });
-                setQuestions(parsed.data.filter(q => !!q.Title || !!q.question || !!q.link));
+                if (!csv || csv.trim().length === 0) {
+                    setQuestions([]);
+                    setError(`No data found for ${activeCompany}`);
+                    return;
+                }
+
+                const parsed = Papa.parse(csv, {
+                    header: true,
+                    skipEmptyLines: true,
+                    transformHeader: (header) => header.trim()
+                });
+
+                console.log('✅ Parsed data for', activeCompany, ':', parsed.data);
+
+                // ✅ Filter and normalize
+                const validQuestions = parsed.data
+                    .filter(q => {
+                        const title = (q.question || q.Question || q.title || q.Title || '').trim();
+                        const link = (q.link || q.Link || q.url || q.URL || '').trim();
+                        return title.length > 0 || link.length > 0;
+                    })
+                    .map(q => ({
+                        ...q,
+                        // ✅ Normalize difficulty
+                        difficulty: normalizeDifficulty(q.difficulty || q.Difficulty || q.level || q.Level || ''),
+                        // ✅ Normalize other fields
+                        question: (q.question || q.Question || q.title || q.Title || '').trim(),
+                        topics: (q.topics || q.Topics || q.tags || q.Tags || '').trim(),
+                        link: (q.link || q.Link || q.url || q.URL || '').trim(),
+                        frequency: (q.frequency || q.Frequency || '0').toString(),
+                        acceptance: (q.acceptance || q.Acceptance_Rate || q.acceptance_rate || '0').toString()
+                    }));
+
+                console.log('✅ Normalized questions:', validQuestions);
+                setQuestions(validQuestions);
+            })
+            .catch(err => {
+                console.error('❌ Error loading questions:', err);
+                setQuestions([]);
+                setError(`Failed to load ${activeCompany} questions`);
+            })
+            .finally(() => {
+                setLoading(false);
             });
     }, [activeCompany]);
 
@@ -85,26 +175,38 @@ export default function Resources() {
 
     const filteredQuestions = React.useMemo(() => {
         let arr = questions;
+
         if (search) {
-            arr = arr.filter(q =>
-                (q.Title || q.question || '').toLowerCase().includes(search.toLowerCase()) ||
-                (q.Topics || q.topics || '').toLowerCase().includes(search.toLowerCase())
-            );
+            arr = arr.filter(q => {
+                const title = q.question.toLowerCase();
+                const topics = q.topics.toLowerCase();
+                return title.includes(search.toLowerCase()) || topics.includes(search.toLowerCase());
+            });
         }
+
         if (difficultyFilter !== 'All') {
-            arr = arr.filter(q => (q.Difficulty || q.difficulty) === difficultyFilter);
+            arr = arr.filter(q => q.difficulty === difficultyFilter);
         }
+
+        // ✅ FIX: Proper sorting
         arr = arr.slice().sort((a, b) => {
-            if (sortBy === 'Frequency')
-                return parseInt(b.Frequency || b.frequency || "0") - parseInt(a.Frequency || a.frequency || "0");
-            if (sortBy === 'Acceptance_Rate')
-                return parseInt(b.Acceptance_Rate || b.acceptance || "0") - parseInt(a.Acceptance_Rate || a.acceptance || "0");
+            if (sortBy === 'Frequency') {
+                const freqA = parseFloat(a.frequency) || 0;
+                const freqB = parseFloat(b.frequency) || 0;
+                return freqB - freqA;
+            }
+            if (sortBy === 'Acceptance_Rate') {
+                const accA = parseFloat(a.acceptance) || 0;
+                const accB = parseFloat(b.acceptance) || 0;
+                return accB - accA;
+            }
             if (sortBy === 'Difficulty') {
                 const order = { 'Easy': 1, 'Medium': 2, 'Hard': 3 };
-                return order[(b.Difficulty || b.difficulty)] - order[(a.Difficulty || a.difficulty)];
+                return (order[a.difficulty] || 0) - (order[b.difficulty] || 0);
             }
             return 0;
         });
+
         return arr;
     }, [questions, search, difficultyFilter, sortBy]);
 
@@ -120,8 +222,7 @@ export default function Resources() {
     const difficultyStats = React.useMemo(() => {
         const stats = { Easy: 0, Medium: 0, Hard: 0 };
         filteredQuestions.forEach(q => {
-            const diff = q.Difficulty || q.difficulty;
-            if (diff in stats) stats[diff]++;
+            if (q.difficulty in stats) stats[q.difficulty]++;
         });
         return stats;
     }, [filteredQuestions]);
@@ -140,8 +241,8 @@ export default function Resources() {
                             <Building2 className="w-5 h-5 text-neon-cyan" />
                             <h3 className="text-white font-bold text-base">Companies</h3>
                             <span className="ml-auto text-xs text-gray-400 bg-white/10 px-2 py-1 rounded-full">
-                {filteredCompanies.length}
-              </span>
+                                {filteredCompanies.length}
+                            </span>
                         </div>
                         <div className="relative">
                             <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" size={18} />
@@ -154,7 +255,6 @@ export default function Resources() {
                         </div>
                     </div>
 
-                    {/* Company Scroll Section */}
                     <div data-lenis-prevent className="flex-1 overflow-y-auto custom-scroll px-2 py-3">
                         <div className="space-y-2 pr-2">
                             {filteredCompanies.map(company => (
@@ -171,8 +271,8 @@ export default function Resources() {
                                         <div className="flex items-center gap-2.5">
                                             <div className={`w-2 h-2 rounded-full bg-gradient-to-r ${company.color} ${activeCompany === company.name ? 'animate-pulse' : ''}`} />
                                             <span className={`font-medium text-sm ${activeCompany === company.name ? 'text-white' : 'text-gray-200 group-hover:text-white'}`}>
-                        {company.name}
-                      </span>
+                                                {company.name}
+                                            </span>
                                         </div>
                                     </div>
                                 </div>
@@ -241,7 +341,20 @@ export default function Resources() {
 
                     {/* Questions Scroll Section */}
                     <div data-lenis-prevent className="flex-1 overflow-y-auto custom-scroll p-6">
-                        {filteredQuestions.length === 0 ? (
+                        {loading ? (
+                            <div className="flex flex-col items-center justify-center py-16 text-center">
+                                <div className="w-16 h-16 border-4 border-neon-cyan border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
+                                <p className="text-white text-xl">Loading questions...</p>
+                            </div>
+                        ) : error ? (
+                            <div className="flex flex-col items-center justify-center py-16 text-center">
+                                <div className="w-20 h-20 bg-red-500/10 rounded-full flex items-center justify-center mb-4">
+                                    <XCircle className="w-10 h-10 text-red-400" />
+                                </div>
+                                <p className="text-red-400 text-lg font-medium mb-2">{error}</p>
+                                <p className="text-gray-500 text-sm">The CSV file might be missing or incorrectly named</p>
+                            </div>
+                        ) : filteredQuestions.length === 0 ? (
                             <div className="flex flex-col items-center justify-center py-16 text-center">
                                 <div className="w-20 h-20 bg-white/5 rounded-full flex items-center justify-center mb-4">
                                     <Search className="w-10 h-10 text-gray-400" />
@@ -251,53 +364,47 @@ export default function Resources() {
                             </div>
                         ) : (
                             <div className="space-y-3">
-                                {filteredQuestions.map((q, idx) => {
-                                    const difficulty = q.Difficulty || q.difficulty;
-                                    const title = q.Title || q.question;
-                                    const topics = q.Topics || q.topics;
-                                    const link = q.Link || q.link;
-                                    const frequency = q.Frequency || q.frequency;
-                                    const acceptance = q.Acceptance_Rate || q.acceptance;
-                                    return (
-                                        <div
-                                            key={idx}
-                                            className="group bg-white/5 hover:bg-white/10 rounded-xl p-5 border border-white/10 hover:border-neon-cyan/30 transition-all cursor-pointer"
-                                            onClick={() => window.open(link, "_blank")}
-                                        >
-                                            <div className="flex items-start gap-4">
-                                                <div className="flex-shrink-0 w-7 h-7 bg-gradient-to-br from-neon-purple to-neon-cyan rounded-lg flex items-center justify-center text-white font-bold text-xs">{idx + 1}</div>
-                                                <div className="flex-1 min-w-0">
-                                                    <div className="flex items-center gap-3 mb-1">
-                                                        <h3 className="text-base font-semibold text-white group-hover:text-neon-cyan transition-colors flex items-center gap-2">
-                                                            {title}
-                                                            <ExternalLink className="w-4 h-4 opacity-0 group-hover:opacity-80 transition-opacity" />
-                                                        </h3>
-                                                        <span className={`px-3 py-1 rounded-lg text-xs font-bold border ${getDifficultyColor(difficulty)}`}>
-                              {difficulty}
-                            </span>
-                                                    </div>
-                                                    {topics && (
-                                                        <p className="text-gray-400 text-sm mb-2 line-clamp-1">{topics}</p>
+                                {filteredQuestions.map((q, idx) => (
+                                    <div
+                                        key={idx}
+                                        className="group bg-white/5 hover:bg-white/10 rounded-xl p-5 border border-white/10 hover:border-neon-cyan/30 transition-all cursor-pointer"
+                                        onClick={() => window.open(q.link, "_blank")}
+                                    >
+                                        <div className="flex items-start gap-4">
+                                            <div className="flex-shrink-0 w-7 h-7 bg-gradient-to-br from-neon-purple to-neon-cyan rounded-lg flex items-center justify-center text-white font-bold text-xs">{idx + 1}</div>
+                                            <div className="flex-1 min-w-0">
+                                                <div className="flex items-center gap-3 mb-1 flex-wrap">
+                                                    <h3 className="text-base font-semibold text-white group-hover:text-neon-cyan transition-colors flex items-center gap-2">
+                                                        {q.question || 'Untitled Question'}
+                                                        <ExternalLink className="w-4 h-4 opacity-0 group-hover:opacity-80 transition-opacity" />
+                                                    </h3>
+                                                    {q.difficulty && (
+                                                        <span className={`px-3 py-1 rounded-lg text-xs font-bold border ${getDifficultyColor(q.difficulty)}`}>
+                                                            {q.difficulty}
+                                                        </span>
                                                     )}
-                                                    <div className="flex flex-wrap items-center gap-4 text-xs">
-                                                        {frequency && (
-                                                            <div className="flex items-center gap-1.5 text-blue-400">
-                                                                <TrendingUp size={14} />
-                                                                <span className="font-medium">{frequency}% frequency</span>
-                                                            </div>
-                                                        )}
-                                                        {acceptance && (
-                                                            <div className="flex items-center gap-1.5 text-yellow-400">
-                                                                <Star size={14} />
-                                                                <span className="font-medium">{acceptance}% accepted</span>
-                                                            </div>
-                                                        )}
-                                                    </div>
+                                                </div>
+                                                {q.topics && (
+                                                    <p className="text-gray-400 text-sm mb-2 line-clamp-1">{q.topics}</p>
+                                                )}
+                                                <div className="flex flex-wrap items-center gap-4 text-xs">
+                                                    {q.frequency && parseFloat(q.frequency) > 0 && (
+                                                        <div className="flex items-center gap-1.5 text-blue-400">
+                                                            <TrendingUp size={14} />
+                                                            <span className="font-medium">{parseFloat(q.frequency).toFixed(1)}% frequency</span>
+                                                        </div>
+                                                    )}
+                                                    {q.acceptance && parseFloat(q.acceptance) > 0 && (
+                                                        <div className="flex items-center gap-1.5 text-yellow-400">
+                                                            <Star size={14} />
+                                                            <span className="font-medium">{(parseFloat(q.acceptance) * 100).toFixed(1)}% accepted</span>
+                                                        </div>
+                                                    )}
                                                 </div>
                                             </div>
                                         </div>
-                                    );
-                                })}
+                                    </div>
+                                ))}
                             </div>
                         )}
                     </div>

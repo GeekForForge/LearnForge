@@ -1,0 +1,6 @@
+question,difficulty,topics,link,frequency,acceptance
+Largest Palindromic Number,MEDIUM,"Hash Table, String, Greedy, Counting",https://leetcode.com/problems/largest-palindromic-number,100.0,0.3647241905510145
+Maximal Network Rank,MEDIUM,Graph,https://leetcode.com/problems/maximal-network-rank,100.0,0.6547542413356314
+LRU Cache,MEDIUM,"Hash Table, Linked List, Design, Doubly-Linked List",https://leetcode.com/problems/lru-cache,94.8,0.452152018581584
+3Sum,MEDIUM,"Array, Two Pointers, Sorting",https://leetcode.com/problems/3sum,78.7,0.3707134146355655
+Minimum Deletions to Make Character Frequencies Unique,MEDIUM,"Hash Table, String, Greedy, Sorting",https://leetcode.com/problems/minimum-deletions-to-make-character-frequencies-unique,78.7,0.6129466648455774

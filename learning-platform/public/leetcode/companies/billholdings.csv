@@ -1,0 +1,2 @@
+question,difficulty,topics,link,frequency,acceptance
+Number of Islands,MEDIUM,"Array, Depth-First Search, Breadth-First Search, Union Find, Matrix",https://leetcode.com/problems/number-of-islands,100.0,0.6232478097342165

@@ -1,0 +1,7 @@
+question,difficulty,topics,link,frequency,acceptance
+Number of 1 Bits,EASY,"Divide and Conquer, Bit Manipulation",https://leetcode.com/problems/number-of-1-bits,100.0,0.7450480575885099
+Top K Frequent Words,MEDIUM,"Array, Hash Table, String, Trie, Sorting, Heap (Priority Queue), Bucket Sort, Counting",https://leetcode.com/problems/top-k-frequent-words,92.6,0.5927711651861731
+Word Ladder,HARD,"Hash Table, String, Breadth-First Search",https://leetcode.com/problems/word-ladder,77.0,0.4281206428184247
+Kth Largest Element in a Stream,EASY,"Tree, Design, Binary Search Tree, Heap (Priority Queue), Binary Tree, Data Stream",https://leetcode.com/problems/kth-largest-element-in-a-stream,66.8,0.5985300600121747
+Event Emitter,MEDIUM,,https://leetcode.com/problems/event-emitter,58.8,0.7448014383989994
+Redundant Connection,MEDIUM,"Depth-First Search, Breadth-First Search, Union Find, Graph",https://leetcode.com/problems/redundant-connection,58.8,0.6645611638154983

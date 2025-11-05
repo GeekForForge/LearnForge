@@ -1,0 +1,3 @@
+question,difficulty,topics,link,frequency,acceptance
+Intersection of Two Arrays,EASY,"Array, Hash Table, Two Pointers, Binary Search, Sorting",https://leetcode.com/problems/intersection-of-two-arrays,100.0,0.7647454128954905
+Majority Element,EASY,"Array, Hash Table, Divide and Conquer, Sorting, Counting",https://leetcode.com/problems/majority-element,100.0,0.6574037471521952

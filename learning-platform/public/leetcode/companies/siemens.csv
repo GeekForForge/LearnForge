@@ -1,0 +1,26 @@
+question,difficulty,topics,link,frequency,acceptance
+Minimized Maximum of Products Distributed to Any Store,MEDIUM,"Array, Binary Search, Greedy",https://leetcode.com/problems/minimized-maximum-of-products-distributed-to-any-store,100.0,0.6260591717059817
+Peaks in Array,HARD,"Array, Binary Indexed Tree, Segment Tree",https://leetcode.com/problems/peaks-in-array,100.0,0.2578829389788294
+Number of Islands,MEDIUM,"Array, Depth-First Search, Breadth-First Search, Union Find, Matrix",https://leetcode.com/problems/number-of-islands,94.5,0.6232010354262733
+Valid Parentheses,EASY,"String, Stack",https://leetcode.com/problems/valid-parentheses,82.9,0.4232289239118503
+Merge Intervals,MEDIUM,"Array, Sorting",https://leetcode.com/problems/merge-intervals,82.9,0.4939527181265408
+Reverse Linked List,EASY,"Linked List, Recursion",https://leetcode.com/problems/reverse-linked-list,70.3,0.7920661983013875
+Contains Duplicate,EASY,"Array, Hash Table, Sorting",https://leetcode.com/problems/contains-duplicate,70.3,0.6323641222984913
+LFU Cache,HARD,"Hash Table, Linked List, Design, Doubly-Linked List",https://leetcode.com/problems/lfu-cache,70.3,0.466090667855411
+The Skyline Problem,HARD,"Array, Divide and Conquer, Binary Indexed Tree, Segment Tree, Line Sweep, Heap (Priority Queue), Ordered Set",https://leetcode.com/problems/the-skyline-problem,70.3,0.4396240927117757
+Best Time to Buy and Sell Stock,EASY,"Array, Dynamic Programming",https://leetcode.com/problems/best-time-to-buy-and-sell-stock,70.3,0.5525965444349556
+Merge Two Sorted Lists,EASY,"Linked List, Recursion",https://leetcode.com/problems/merge-two-sorted-lists,70.3,0.6684093351942102
+Letter Combinations of a Phone Number,MEDIUM,"Hash Table, String, Backtracking",https://leetcode.com/problems/letter-combinations-of-a-phone-number,70.3,0.638575832140434
+Maximum Product of Three Numbers,EASY,"Array, Math, Sorting",https://leetcode.com/problems/maximum-product-of-three-numbers,60.4,0.4531173391201489
+Minimum Add to Make Parentheses Valid,MEDIUM,"String, Stack, Greedy",https://leetcode.com/problems/minimum-add-to-make-parentheses-valid,60.4,0.746908249713867
+Group Anagrams,MEDIUM,"Array, Hash Table, String, Sorting",https://leetcode.com/problems/group-anagrams,60.4,0.7092889662302778
+Remove Duplicates from Sorted Array,EASY,"Array, Two Pointers",https://leetcode.com/problems/remove-duplicates-from-sorted-array,60.4,0.6035567835975525
+Angle Between Hands of a Clock,MEDIUM,Math,https://leetcode.com/problems/angle-between-hands-of-a-clock,60.4,0.6421501908804211
+Two Sum,EASY,"Array, Hash Table",https://leetcode.com/problems/two-sum,60.4,0.5577700653216907
+Palindrome Linked List,EASY,"Linked List, Two Pointers, Stack, Recursion",https://leetcode.com/problems/palindrome-linked-list,60.4,0.5585939012301956
+Valid Anagram,EASY,"Hash Table, String, Sorting",https://leetcode.com/problems/valid-anagram,60.4,0.6666098386966278
+Rotate List,MEDIUM,"Linked List, Two Pointers",https://leetcode.com/problems/rotate-list,60.4,0.3994484659194171
+3Sum,MEDIUM,"Array, Two Pointers, Sorting",https://leetcode.com/problems/3sum,60.4,0.3707105222814817
+Largest Number,MEDIUM,"Array, String, Greedy, Sorting",https://leetcode.com/problems/largest-number,60.4,0.4128049807936712
+First Missing Positive,HARD,"Array, Hash Table",https://leetcode.com/problems/first-missing-positive,60.4,0.4108466756573425
+Seat Reservation Manager,MEDIUM,"Design, Heap (Priority Queue)",https://leetcode.com/problems/seat-reservation-manager,60.4,0.6639500226519469

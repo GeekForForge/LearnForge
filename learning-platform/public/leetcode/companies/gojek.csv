@@ -1,0 +1,6 @@
+question,difficulty,topics,link,frequency,acceptance
+Binary Tree Level Order Traversal,MEDIUM,"Tree, Breadth-First Search, Binary Tree",https://leetcode.com/problems/binary-tree-level-order-traversal,100.0,0.706014341486616
+Simplify Path,MEDIUM,"String, Stack",https://leetcode.com/problems/simplify-path,100.0,0.4786401080268387
+Sliding Window Maximum,HARD,"Array, Queue, Sliding Window, Heap (Priority Queue), Monotonic Queue",https://leetcode.com/problems/sliding-window-maximum,100.0,0.4760520893988849
+Convert an Array Into a 2D Array With Conditions,MEDIUM,"Array, Hash Table",https://leetcode.com/problems/convert-an-array-into-a-2d-array-with-conditions,89.9,0.8630692551951445
+3Sum,MEDIUM,"Array, Two Pointers, Sorting",https://leetcode.com/problems/3sum,89.9,0.3707507594611761

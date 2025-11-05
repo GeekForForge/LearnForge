@@ -1,0 +1,50 @@
+question,difficulty,topics,link,frequency,acceptance
+Count and Say,MEDIUM,String,https://leetcode.com/problems/count-and-say,100.0,0.6050656775612677
+Reconstruct Itinerary,HARD,"Depth-First Search, Graph, Eulerian Circuit",https://leetcode.com/problems/reconstruct-itinerary,94.8,0.4360564496598489
+Shortest Path in a Grid with Obstacles Elimination,HARD,"Array, Breadth-First Search, Matrix",https://leetcode.com/problems/shortest-path-in-a-grid-with-obstacles-elimination,93.4,0.4560618572179266
+Optimal Account Balancing,HARD,"Array, Dynamic Programming, Backtracking, Bit Manipulation, Bitmask",https://leetcode.com/problems/optimal-account-balancing,92.4,0.4993810266893702
+Count Subarrays With Score Less Than K,HARD,"Array, Binary Search, Sliding Window, Prefix Sum",https://leetcode.com/problems/count-subarrays-with-score-less-than-k,90.8,0.624292227810353
+Maximum Profit in Job Scheduling,HARD,"Array, Binary Search, Dynamic Programming, Sorting",https://leetcode.com/problems/maximum-profit-in-job-scheduling,89.6,0.5441718927003354
+Bus Routes,HARD,"Array, Hash Table, Breadth-First Search",https://leetcode.com/problems/bus-routes,85.7,0.4695297092963377
+Expression Add Operators,HARD,"Math, String, Backtracking",https://leetcode.com/problems/expression-add-operators,85.0,0.4167625219870472
+Find Median from Data Stream,HARD,"Two Pointers, Design, Sorting, Heap (Priority Queue), Data Stream",https://leetcode.com/problems/find-median-from-data-stream,78.8,0.5327811901307457
+Shortest Way to Form String,MEDIUM,"Two Pointers, String, Binary Search, Greedy",https://leetcode.com/problems/shortest-way-to-form-string,76.6,0.6132842198320319
+Is Subsequence,EASY,"Two Pointers, String, Dynamic Programming",https://leetcode.com/problems/is-subsequence,74.2,0.4838254338584999
+Reorganize String,MEDIUM,"Hash Table, String, Greedy, Sorting, Heap (Priority Queue), Counting",https://leetcode.com/problems/reorganize-string,72.8,0.5619634145417838
+Longest Word in Dictionary,MEDIUM,"Array, Hash Table, String, Trie, Sorting",https://leetcode.com/problems/longest-word-in-dictionary,69.8,0.5345847539959035
+Design Search Autocomplete System,HARD,"String, Depth-First Search, Design, Trie, Sorting, Heap (Priority Queue), Data Stream",https://leetcode.com/problems/design-search-autocomplete-system,69.8,0.4940635941634056
+Find Median Given Frequency of Numbers,HARD,Database,https://leetcode.com/problems/find-median-given-frequency-of-numbers,66.2,0.4246215119099287
+Jump Game III,MEDIUM,"Array, Depth-First Search, Breadth-First Search",https://leetcode.com/problems/jump-game-iii,64.2,0.6603717968394102
+Find K-th Smallest Pair Distance,HARD,"Array, Two Pointers, Binary Search, Sorting",https://leetcode.com/problems/find-k-th-smallest-pair-distance,61.9,0.4579239829015915
+Coin Change,MEDIUM,"Array, Dynamic Programming, Breadth-First Search",https://leetcode.com/problems/coin-change,61.9,0.4649547506448627
+String Compression,MEDIUM,"Two Pointers, String",https://leetcode.com/problems/string-compression,59.2,0.580915717497265
+Sparse Matrix Multiplication,MEDIUM,"Array, Hash Table, Matrix",https://leetcode.com/problems/sparse-matrix-multiplication,59.2,0.6892246978864321
+Meeting Rooms III,HARD,"Array, Hash Table, Sorting, Heap (Priority Queue), Simulation",https://leetcode.com/problems/meeting-rooms-iii,59.2,0.4393472442856221
+Target Sum,MEDIUM,"Array, Dynamic Programming, Backtracking",https://leetcode.com/problems/target-sum,56.2,0.5076656697088596
+Unique Paths II,MEDIUM,"Array, Dynamic Programming, Matrix",https://leetcode.com/problems/unique-paths-ii,56.2,0.4315427288896417
+Minimize Result by Adding Parentheses to Expression,MEDIUM,"String, Enumeration",https://leetcode.com/problems/minimize-result-by-adding-parentheses-to-expression,52.7,0.6753303483673693
+The Number of Weak Characters in the Game,MEDIUM,"Array, Stack, Greedy, Sorting, Monotonic Stack",https://leetcode.com/problems/the-number-of-weak-characters-in-the-game,48.3,0.4423645048179132
+Is Graph Bipartite?,MEDIUM,"Depth-First Search, Breadth-First Search, Union Find, Graph",https://leetcode.com/problems/is-graph-bipartite,48.3,0.5771382449160527
+Employee Free Time,HARD,"Array, Line Sweep, Sorting, Heap (Priority Queue)",https://leetcode.com/problems/employee-free-time,48.3,0.7259759595862569
+Unique Paths III,HARD,"Array, Backtracking, Bit Manipulation, Matrix",https://leetcode.com/problems/unique-paths-iii,48.3,0.8233339994005395
+Top K Frequent Elements,MEDIUM,"Array, Hash Table, Divide and Conquer, Sorting, Heap (Priority Queue), Bucket Sort, Counting, Quickselect",https://leetcode.com/problems/top-k-frequent-elements,42.7,0.6456597904229384
+Accounts Merge,MEDIUM,"Array, Hash Table, String, Depth-First Search, Breadth-First Search, Union Find, Sorting",https://leetcode.com/problems/accounts-merge,42.7,0.5957996827596059
+Combination Sum,MEDIUM,"Array, Backtracking",https://leetcode.com/problems/combination-sum,42.7,0.7467470164230636
+Split Array Largest Sum,HARD,"Array, Binary Search, Dynamic Programming, Greedy, Prefix Sum",https://leetcode.com/problems/split-array-largest-sum,42.7,0.580995560819648
+Multiply Strings,MEDIUM,"Math, String, Simulation",https://leetcode.com/problems/multiply-strings,42.7,0.4228943914738829
+Letter Combinations of a Phone Number,MEDIUM,"Hash Table, String, Backtracking",https://leetcode.com/problems/letter-combinations-of-a-phone-number,42.7,0.6385756168067979
+Possible Bipartition,MEDIUM,"Depth-First Search, Breadth-First Search, Union Find, Graph",https://leetcode.com/problems/possible-bipartition,42.7,0.5150773648728767
+Single Element in a Sorted Array,MEDIUM,"Array, Binary Search",https://leetcode.com/problems/single-element-in-a-sorted-array,42.7,0.5920699695159606
+Meeting Rooms II,MEDIUM,"Array, Two Pointers, Greedy, Sorting, Heap (Priority Queue), Prefix Sum",https://leetcode.com/problems/meeting-rooms-ii,42.7,0.5214169179809166
+Snakes and Ladders,MEDIUM,"Array, Breadth-First Search, Matrix",https://leetcode.com/problems/snakes-and-ladders,34.9,0.4779534713832989
+The Maze,MEDIUM,"Array, Depth-First Search, Breadth-First Search, Matrix",https://leetcode.com/problems/the-maze,34.9,0.5951548421014023
+Find the Celebrity,MEDIUM,"Two Pointers, Graph, Interactive",https://leetcode.com/problems/find-the-celebrity,34.9,0.4843840356335517
+Find First and Last Position of Element in Sorted Array,MEDIUM,"Array, Binary Search",https://leetcode.com/problems/find-first-and-last-position-of-element-in-sorted-array,34.9,0.4682877790035566
+Shortest Path to Get All Keys,HARD,"Array, Bit Manipulation, Breadth-First Search, Matrix",https://leetcode.com/problems/shortest-path-to-get-all-keys,34.9,0.537030042053839
+Number of Islands,MEDIUM,"Array, Depth-First Search, Breadth-First Search, Union Find, Matrix",https://leetcode.com/problems/number-of-islands,34.9,0.6231998840453153
+Candy Crush,MEDIUM,"Array, Two Pointers, Matrix, Simulation",https://leetcode.com/problems/candy-crush,34.9,0.7736899161778655
+Dot Product of Two Sparse Vectors,MEDIUM,"Array, Hash Table, Two Pointers, Design",https://leetcode.com/problems/dot-product-of-two-sparse-vectors,34.9,0.8993424664218707
+Implement Trie (Prefix Tree),MEDIUM,"Hash Table, String, Design, Trie",https://leetcode.com/problems/implement-trie-prefix-tree,34.9,0.6793477899842462
+Sudoku Solver,HARD,"Array, Hash Table, Backtracking, Matrix",https://leetcode.com/problems/sudoku-solver,34.9,0.6390864248405232
+Find Minimum Time to Finish All Jobs,HARD,"Array, Dynamic Programming, Backtracking, Bit Manipulation, Bitmask",https://leetcode.com/problems/find-minimum-time-to-finish-all-jobs,34.9,0.4351858853182104
+Smallest Range Covering Elements from K Lists,HARD,"Array, Hash Table, Greedy, Sliding Window, Sorting, Heap (Priority Queue)",https://leetcode.com/problems/smallest-range-covering-elements-from-k-lists,34.9,0.6974692747987687

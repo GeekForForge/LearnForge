@@ -1,0 +1,3 @@
+question,difficulty,topics,link,frequency,acceptance
+Minimum Height Trees,MEDIUM,"Depth-First Search, Breadth-First Search, Graph, Topological Sort",https://leetcode.com/problems/minimum-height-trees,100.0,0.4201393030194603
+IPO,HARD,"Array, Greedy, Sorting, Heap (Priority Queue)",https://leetcode.com/problems/ipo,77.2,0.5301856067884377

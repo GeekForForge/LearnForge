@@ -1,0 +1,6 @@
+question,difficulty,topics,link,frequency,acceptance
+Clone Graph,MEDIUM,"Hash Table, Depth-First Search, Breadth-First Search, Graph",https://leetcode.com/problems/clone-graph,100.0,0.6238601074675428
+Insert Delete GetRandom O(1),MEDIUM,"Array, Hash Table, Math, Design, Randomized",https://leetcode.com/problems/insert-delete-getrandom-o1,100.0,0.5499172170512081
+LRU Cache,MEDIUM,"Hash Table, Linked List, Design, Doubly-Linked List",https://leetcode.com/problems/lru-cache,89.5,0.4521499177481188
+Design In-Memory File System,HARD,"Hash Table, String, Design, Trie, Sorting",https://leetcode.com/problems/design-in-memory-file-system,89.5,0.4816892756192675
+Cache With Time Limit,MEDIUM,,https://leetcode.com/problems/cache-with-time-limit,89.5,0.7578510164111569

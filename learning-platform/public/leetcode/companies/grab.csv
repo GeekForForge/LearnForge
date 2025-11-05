@@ -1,0 +1,14 @@
+question,difficulty,topics,link,frequency,acceptance
+Minimum Cost For Tickets,MEDIUM,"Array, Dynamic Programming",https://leetcode.com/problems/minimum-cost-for-tickets,100.0,0.6741376633860101
+Adding Two Negabinary Numbers,MEDIUM,"Array, Math",https://leetcode.com/problems/adding-two-negabinary-numbers,100.0,0.3689554769276132
+Minimum Number of Food Buckets to Feed the Hamsters,MEDIUM,"String, Dynamic Programming, Greedy",https://leetcode.com/problems/minimum-number-of-food-buckets-to-feed-the-hamsters,100.0,0.4704515515222482
+Reconstruct a 2-Row Binary Matrix,MEDIUM,"Array, Greedy, Matrix",https://leetcode.com/problems/reconstruct-a-2-row-binary-matrix,100.0,0.4772217731480775
+Two Sum,EASY,"Array, Hash Table",https://leetcode.com/problems/two-sum,78.1,0.55776997185251
+Longest Substring Without Repeating Characters,MEDIUM,"Hash Table, String, Sliding Window",https://leetcode.com/problems/longest-substring-without-repeating-characters,71.3,0.3693614488609451
+Longest Palindromic Substring,MEDIUM,"Two Pointers, String, Dynamic Programming",https://leetcode.com/problems/longest-palindromic-substring,71.3,0.358461281292868
+LRU Cache,MEDIUM,"Hash Table, Linked List, Design, Doubly-Linked List",https://leetcode.com/problems/lru-cache,71.3,0.4521475035659106
+Search a 2D Matrix,MEDIUM,"Array, Binary Search, Matrix",https://leetcode.com/problems/search-a-2d-matrix,61.6,0.5228973130364317
+Valid Parentheses,EASY,"String, Stack",https://leetcode.com/problems/valid-parentheses,61.6,0.4232286113783459
+Simplify Path,MEDIUM,"String, Stack",https://leetcode.com/problems/simplify-path,61.6,0.4785459897008844
+Daily Temperatures,MEDIUM,"Array, Stack, Monotonic Stack",https://leetcode.com/problems/daily-temperatures,61.6,0.6736501067841334
+Number of Steps to Reduce a Number in Binary Representation to One,MEDIUM,"String, Bit Manipulation, Simulation",https://leetcode.com/problems/number-of-steps-to-reduce-a-number-in-binary-representation-to-one,61.6,0.6138412550730682

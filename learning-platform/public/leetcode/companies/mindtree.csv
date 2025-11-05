@@ -1,0 +1,4 @@
+question,difficulty,topics,link,frequency,acceptance
+Count Integers With Even Digit Sum,EASY,"Math, Simulation",https://leetcode.com/problems/count-integers-with-even-digit-sum,100.0,0.6878335702551094
+Two Sum,EASY,"Array, Hash Table",https://leetcode.com/problems/two-sum,75.2,0.5577709731557225
+Average Time of Process per Machine,EASY,Database,https://leetcode.com/problems/average-time-of-process-per-machine,66.8,0.6862902426589198

@@ -1,0 +1,21 @@
+question,difficulty,topics,link,frequency,acceptance
+Find Palindrome With Fixed Length,MEDIUM,"Array, Math",https://leetcode.com/problems/find-palindrome-with-fixed-length,100.0,0.3736629741031472
+Make Array Non-decreasing or Non-increasing,HARD,"Dynamic Programming, Greedy",https://leetcode.com/problems/make-array-non-decreasing-or-non-increasing,100.0,0.6532793990176251
+Break a Palindrome,MEDIUM,"String, Greedy",https://leetcode.com/problems/break-a-palindrome,100.0,0.515441720680916
+Median of Two Sorted Arrays,HARD,"Array, Binary Search, Divide and Conquer",https://leetcode.com/problems/median-of-two-sorted-arrays,87.6,0.4381462083330783
+Best Time to Buy and Sell Stock,EASY,"Array, Dynamic Programming",https://leetcode.com/problems/best-time-to-buy-and-sell-stock,83.2,0.5525960541487699
+Two Sum,EASY,"Array, Hash Table",https://leetcode.com/problems/two-sum,77.8,0.5577700085826661
+Course Schedule,MEDIUM,"Depth-First Search, Breadth-First Search, Graph, Topological Sort",https://leetcode.com/problems/course-schedule,70.9,0.492343276216625
+LRU Cache,MEDIUM,"Hash Table, Linked List, Design, Doubly-Linked List",https://leetcode.com/problems/lru-cache,61.1,0.452147387470624
+Time Based Key-Value Store,MEDIUM,"Hash Table, String, Binary Search, Design",https://leetcode.com/problems/time-based-key-value-store,61.1,0.4936638835565728
+Search in Rotated Sorted Array,MEDIUM,"Array, Binary Search",https://leetcode.com/problems/search-in-rotated-sorted-array,61.1,0.4283724171601919
+Next Permutation,MEDIUM,"Array, Two Pointers",https://leetcode.com/problems/next-permutation,61.1,0.4305776984194165
+Reverse Nodes in k-Group,HARD,"Linked List, Recursion",https://leetcode.com/problems/reverse-nodes-in-k-group,61.1,0.6304370910860896
+Longest Common Prefix,EASY,"String, Trie",https://leetcode.com/problems/longest-common-prefix,61.1,0.4548312542311164
+Integer to Roman,MEDIUM,"Hash Table, Math, String",https://leetcode.com/problems/integer-to-roman,61.1,0.6861924193258928
+Koko Eating Bananas,MEDIUM,"Array, Binary Search",https://leetcode.com/problems/koko-eating-bananas,61.1,0.4906718189096972
+Longest Palindromic Substring,MEDIUM,"Two Pointers, String, Dynamic Programming",https://leetcode.com/problems/longest-palindromic-substring,61.1,0.3584612552504189
+Course Schedule II,MEDIUM,"Depth-First Search, Breadth-First Search, Graph, Topological Sort",https://leetcode.com/problems/course-schedule-ii,61.1,0.5342347717848052
+Copy List with Random Pointer,MEDIUM,"Hash Table, Linked List",https://leetcode.com/problems/copy-list-with-random-pointer,61.1,0.6053672896963543
+Rotting Oranges,MEDIUM,"Array, Breadth-First Search, Matrix",https://leetcode.com/problems/rotting-oranges,61.1,0.5661845896959414
+Intersection of Two Linked Lists,EASY,"Hash Table, Linked List, Two Pointers",https://leetcode.com/problems/intersection-of-two-linked-lists,61.1,0.6112535637858669

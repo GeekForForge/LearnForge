@@ -1,0 +1,3 @@
+question,difficulty,topics,link,frequency,acceptance
+Remove 9,HARD,Math,https://leetcode.com/problems/remove-9,100.0,0.5734518763568697
+Basic Calculator III,HARD,"Math, String, Stack, Recursion",https://leetcode.com/problems/basic-calculator-iii,100.0,0.5247155368101455

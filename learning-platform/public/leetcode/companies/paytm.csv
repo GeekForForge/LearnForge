@@ -1,0 +1,31 @@
+question,difficulty,topics,link,frequency,acceptance
+Remove All Adjacent Duplicates In String,EASY,"String, Stack",https://leetcode.com/problems/remove-all-adjacent-duplicates-in-string,100.0,0.715875534292082
+Minimize Maximum of Array,MEDIUM,"Array, Binary Search, Dynamic Programming, Greedy, Prefix Sum",https://leetcode.com/problems/minimize-maximum-of-array,97.6,0.4642315393483405
+Number of Unequal Triplets in Array,EASY,"Array, Hash Table, Sorting",https://leetcode.com/problems/number-of-unequal-triplets-in-array,97.6,0.7265003738190717
+Find Indices With Index and Value Difference I,EASY,"Array, Two Pointers",https://leetcode.com/problems/find-indices-with-index-and-value-difference-i,97.6,0.6026607149574311
+Find Indices With Index and Value Difference II,MEDIUM,"Array, Two Pointers",https://leetcode.com/problems/find-indices-with-index-and-value-difference-ii,97.6,0.3175419892149137
+Longest Nice Subarray,MEDIUM,"Array, Bit Manipulation, Sliding Window",https://leetcode.com/problems/longest-nice-subarray,97.6,0.6482945846552078
+Min Stack,MEDIUM,"Stack, Design",https://leetcode.com/problems/min-stack,94.9,0.5644518859966641
+Number of Divisible Substrings,MEDIUM,"Hash Table, String, Counting, Prefix Sum",https://leetcode.com/problems/number-of-divisible-substrings,80.2,0.734086999262718
+Linked List Cycle II,MEDIUM,"Hash Table, Linked List, Two Pointers",https://leetcode.com/problems/linked-list-cycle-ii,80.2,0.5493371897962611
+Valid Parentheses,EASY,"String, Stack",https://leetcode.com/problems/valid-parentheses,74.6,0.4232286325394436
+Container With Most Water,MEDIUM,"Array, Two Pointers, Greedy",https://leetcode.com/problems/container-with-most-water,74.6,0.5778288104589794
+Two Sum,EASY,"Array, Hash Table",https://leetcode.com/problems/two-sum,67.3,0.5577699822379825
+Reverse Words in a String,MEDIUM,"Two Pointers, String",https://leetcode.com/problems/reverse-words-in-a-string,67.3,0.5191333530123619
+Longest Palindromic Substring,MEDIUM,"Two Pointers, String, Dynamic Programming",https://leetcode.com/problems/longest-palindromic-substring,67.3,0.358461281292868
+Next Permutation,MEDIUM,"Array, Two Pointers",https://leetcode.com/problems/next-permutation,67.3,0.4305773963673777
+Longest Substring Without Repeating Characters,MEDIUM,"Hash Table, String, Sliding Window",https://leetcode.com/problems/longest-substring-without-repeating-characters,67.3,0.3693614308711458
+3Sum,MEDIUM,"Array, Two Pointers, Sorting",https://leetcode.com/problems/3sum,67.3,0.3707101551403813
+Word Search,MEDIUM,"Array, String, Backtracking, Depth-First Search, Matrix",https://leetcode.com/problems/word-search,57.2,0.4526702267974355
+Largest Number,MEDIUM,"Array, String, Greedy, Sorting",https://leetcode.com/problems/largest-number,57.2,0.4128051169745967
+Reverse Linked List,EASY,"Linked List, Recursion",https://leetcode.com/problems/reverse-linked-list,57.2,0.7920660065062484
+Trapping Rain Water,HARD,"Array, Two Pointers, Dynamic Programming, Stack, Monotonic Stack",https://leetcode.com/problems/trapping-rain-water,57.2,0.6510205336424274
+Execute Asynchronous Functions in Parallel,MEDIUM,,https://leetcode.com/problems/execute-asynchronous-functions-in-parallel,57.2,0.7767537485378044
+Longest Consecutive Sequence,MEDIUM,"Array, Hash Table, Union Find",https://leetcode.com/problems/longest-consecutive-sequence,57.2,0.470408901290127
+Second Highest Salary,MEDIUM,Database,https://leetcode.com/problems/second-highest-salary,57.2,0.4386521416285213
+Product of Array Except Self,MEDIUM,"Array, Prefix Sum",https://leetcode.com/problems/product-of-array-except-self,57.2,0.6778002355055325
+Best Time to Buy and Sell Stock II,MEDIUM,"Array, Dynamic Programming, Greedy",https://leetcode.com/problems/best-time-to-buy-and-sell-stock-ii,57.2,0.6950034213804929
+String Compression,MEDIUM,"Two Pointers, String",https://leetcode.com/problems/string-compression,57.2,0.580915717497265
+Sum of Subarray Minimums,MEDIUM,"Array, Dynamic Programming, Stack, Monotonic Stack",https://leetcode.com/problems/sum-of-subarray-minimums,57.2,0.3762351166424223
+Search in Rotated Sorted Array,MEDIUM,"Array, Binary Search",https://leetcode.com/problems/search-in-rotated-sorted-array,57.2,0.4283724510135921
+Find Minimum in Rotated Sorted Array,MEDIUM,"Array, Binary Search",https://leetcode.com/problems/find-minimum-in-rotated-sorted-array,57.2,0.52648304766644

@@ -1,0 +1,12 @@
+question,difficulty,topics,link,frequency,acceptance
+String Compression,MEDIUM,"Two Pointers, String",https://leetcode.com/problems/string-compression,100.0,0.580915717497265
+Number of Islands,MEDIUM,"Array, Depth-First Search, Breadth-First Search, Union Find, Matrix",https://leetcode.com/problems/number-of-islands,77.0,0.6232010354262733
+Merge Intervals,MEDIUM,"Array, Sorting",https://leetcode.com/problems/merge-intervals,77.0,0.4939526408318937
+Encode and Decode Strings,MEDIUM,"Array, String, Design",https://leetcode.com/problems/encode-and-decode-strings,77.0,0.4969946007931578
+Trapping Rain Water,HARD,"Array, Two Pointers, Dynamic Programming, Stack, Monotonic Stack",https://leetcode.com/problems/trapping-rain-water,77.0,0.651020475550146
+Best Time to Buy and Sell Stock,EASY,"Array, Dynamic Programming",https://leetcode.com/problems/best-time-to-buy-and-sell-stock,67.5,0.5525964297430098
+Move Zeroes,EASY,"Array, Two Pointers",https://leetcode.com/problems/move-zeroes,67.5,0.6280406361141927
+Time Based Key-Value Store,MEDIUM,"Hash Table, String, Binary Search, Design",https://leetcode.com/problems/time-based-key-value-store,67.5,0.4936643133682532
+Spiral Matrix,MEDIUM,"Array, Matrix, Simulation",https://leetcode.com/problems/spiral-matrix,67.5,0.5393982195779823
+Squares of a Sorted Array,EASY,"Array, Two Pointers, Sorting",https://leetcode.com/problems/squares-of-a-sorted-array,67.5,0.73219143688745
+Course Schedule,MEDIUM,"Depth-First Search, Breadth-First Search, Graph, Topological Sort",https://leetcode.com/problems/course-schedule,67.5,0.4923441398658555

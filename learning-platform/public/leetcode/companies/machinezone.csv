@@ -1,0 +1,3 @@
+question,difficulty,topics,link,frequency,acceptance
+Range Module,HARD,"Design, Segment Tree, Ordered Set",https://leetcode.com/problems/range-module,100.0,0.4419805147593428
+Number of Transactions per Visit,HARD,Database,https://leetcode.com/problems/number-of-transactions-per-visit,100.0,0.4835259445677009

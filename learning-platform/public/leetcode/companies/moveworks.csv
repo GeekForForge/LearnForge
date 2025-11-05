@@ -1,0 +1,7 @@
+question,difficulty,topics,link,frequency,acceptance
+Text Justification,HARD,"Array, String, Simulation",https://leetcode.com/problems/text-justification,100.0,0.4815035316083349
+Shortest Uncommon Substring in an Array,MEDIUM,"Array, Hash Table, String, Trie",https://leetcode.com/problems/shortest-uncommon-substring-in-an-array,92.7,0.4821341799216042
+Synonymous Sentences,MEDIUM,"Array, Hash Table, String, Backtracking, Union Find",https://leetcode.com/problems/synonymous-sentences,91.5,0.5657701813916468
+Word Break II,HARD,"Array, Hash Table, String, Dynamic Programming, Backtracking, Trie, Memoization",https://leetcode.com/problems/word-break-ii,86.0,0.5364545782263879
+Maximum Number of Removable Characters,MEDIUM,"Array, Two Pointers, String, Binary Search",https://leetcode.com/problems/maximum-number-of-removable-characters,52.0,0.4575968318361827
+Merge Intervals,MEDIUM,"Array, Sorting",https://leetcode.com/problems/merge-intervals,52.0,0.4939520668150291

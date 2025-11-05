@@ -1,0 +1,12 @@
+question,difficulty,topics,link,frequency,acceptance
+Maximum Area Rectangle With Point Constraints I,MEDIUM,"Array, Math, Binary Indexed Tree, Segment Tree, Geometry, Sorting, Enumeration",https://leetcode.com/problems/maximum-area-rectangle-with-point-constraints-i,100.0,0.4969370433242305
+Maximum Area Rectangle With Point Constraints II,HARD,"Array, Math, Binary Indexed Tree, Segment Tree, Geometry, Sorting",https://leetcode.com/problems/maximum-area-rectangle-with-point-constraints-ii,100.0,0.2059726486184761
+Special Binary String,HARD,"String, Recursion",https://leetcode.com/problems/special-binary-string,84.2,0.6351450158420667
+Minimum Length of Anagram Concatenation,MEDIUM,"Hash Table, String, Counting",https://leetcode.com/problems/minimum-length-of-anagram-concatenation,79.1,0.3972463749502319
+Count the Number of Good Subsequences,MEDIUM,"Hash Table, Math, String, Combinatorics, Counting",https://leetcode.com/problems/count-the-number-of-good-subsequences,79.1,0.5057235104197241
+Longest Consecutive Sequence,MEDIUM,"Array, Hash Table, Union Find",https://leetcode.com/problems/longest-consecutive-sequence,72.5,0.4703938693880114
+Two Sum,EASY,"Array, Hash Table",https://leetcode.com/problems/two-sum,72.5,0.5578041456499886
+Valid Word,EASY,String,https://leetcode.com/problems/valid-word,72.5,0.3872002241177207
+Best Time to Buy and Sell Stock,EASY,"Array, Dynamic Programming",https://leetcode.com/problems/best-time-to-buy-and-sell-stock,63.3,0.5526331434030223
+Angle Between Hands of a Clock,MEDIUM,Math,https://leetcode.com/problems/angle-between-hands-of-a-clock,63.3,0.6421431484309058
+Make a Positive Array,MEDIUM,"Array, Greedy, Prefix Sum",https://leetcode.com/problems/make-a-positive-array,63.3,0.3808630393996248

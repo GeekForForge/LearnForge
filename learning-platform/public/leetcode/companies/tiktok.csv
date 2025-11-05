@@ -1,0 +1,101 @@
+question,difficulty,topics,link,frequency,acceptance
+LRU Cache,MEDIUM,"Hash Table, Linked List, Design, Doubly-Linked List",https://leetcode.com/problems/lru-cache,96.0,0.4521454893758596
+Merge Intervals,MEDIUM,"Array, Sorting",https://leetcode.com/problems/merge-intervals,89.6,0.4939527547797844
+Longest Substring Without Repeating Characters,MEDIUM,"Hash Table, String, Sliding Window",https://leetcode.com/problems/longest-substring-without-repeating-characters,84.8,0.369361731848269
+Trapping Rain Water,HARD,"Array, Two Pointers, Dynamic Programming, Stack, Monotonic Stack",https://leetcode.com/problems/trapping-rain-water,82.2,0.6510193782985645
+Merge k Sorted Lists,HARD,"Linked List, Divide and Conquer, Heap (Priority Queue), Merge Sort",https://leetcode.com/problems/merge-k-sorted-lists,76.9,0.567741907864408
+Minimum Window Substring,HARD,"Hash Table, String, Sliding Window",https://leetcode.com/problems/minimum-window-substring,76.9,0.4535074763823223
+Word Search,MEDIUM,"Array, String, Backtracking, Depth-First Search, Matrix",https://leetcode.com/problems/word-search,76.0,0.4526692626904781
+Search in Rotated Sorted Array,MEDIUM,"Array, Binary Search",https://leetcode.com/problems/search-in-rotated-sorted-array,75.1,0.4283722138743466
+Longest Palindromic Substring,MEDIUM,"Two Pointers, String, Dynamic Programming",https://leetcode.com/problems/longest-palindromic-substring,73.1,0.35846104860827
+N-Queens,HARD,"Array, Backtracking",https://leetcode.com/problems/n-queens,73.1,0.7281704967757537
+Restore IP Addresses,MEDIUM,"String, Backtracking",https://leetcode.com/problems/restore-ip-addresses,72.1,0.531583393083398
+3Sum,MEDIUM,"Array, Two Pointers, Sorting",https://leetcode.com/problems/3sum,71.0,0.3707095131728428
+Combination Sum,MEDIUM,"Array, Backtracking",https://leetcode.com/problems/combination-sum,71.0,0.7467468656021409
+Word Ladder,HARD,"Hash Table, String, Breadth-First Search",https://leetcode.com/problems/word-ladder,69.8,0.4281180881873274
+Sqrt(x),EASY,"Math, Binary Search",https://leetcode.com/problems/sqrtx,68.6,0.4037179644428021
+Best Time to Buy and Sell Stock,EASY,"Array, Dynamic Programming",https://leetcode.com/problems/best-time-to-buy-and-sell-stock,67.4,0.5525965688982543
+Text Justification,HARD,"Array, String, Simulation",https://leetcode.com/problems/text-justification,67.4,0.4814993566410409
+Valid Parentheses,EASY,"String, Stack",https://leetcode.com/problems/valid-parentheses,66.0,0.4232282276281134
+Binary Tree Maximum Path Sum,HARD,"Dynamic Programming, Tree, Depth-First Search, Binary Tree",https://leetcode.com/problems/binary-tree-maximum-path-sum,64.6,0.4122427548197994
+Sort Colors,MEDIUM,"Array, Two Pointers, Sorting",https://leetcode.com/problems/sort-colors,64.6,0.6758312948649591
+Find Peak Element,MEDIUM,"Array, Binary Search",https://leetcode.com/problems/find-peak-element,64.6,0.4650921486454041
+Spiral Matrix,MEDIUM,"Array, Matrix, Simulation",https://leetcode.com/problems/spiral-matrix,64.6,0.5393974779242756
+Two Sum,EASY,"Array, Hash Table",https://leetcode.com/problems/two-sum,64.6,0.557769895737655
+Word Break II,HARD,"Array, Hash Table, String, Dynamic Programming, Backtracking, Trie, Memoization",https://leetcode.com/problems/word-break-ii,63.0,0.5364536357075469
+Construct Binary Tree from Preorder and Inorder Traversal,MEDIUM,"Array, Hash Table, Divide and Conquer, Tree, Binary Tree",https://leetcode.com/problems/construct-binary-tree-from-preorder-and-inorder-traversal,63.0,0.6683774773521286
+Combination Sum II,MEDIUM,"Array, Backtracking",https://leetcode.com/problems/combination-sum-ii,61.4,0.5767453180420465
+Permutations,MEDIUM,"Array, Backtracking",https://leetcode.com/problems/permutations,61.4,0.8066011364163758
+Generate Parentheses,MEDIUM,"String, Dynamic Programming, Backtracking",https://leetcode.com/problems/generate-parentheses,61.4,0.7713286717803378
+Maximum Subarray,MEDIUM,"Array, Divide and Conquer, Dynamic Programming",https://leetcode.com/problems/maximum-subarray,61.4,0.5209977684091738
+Edit Distance,MEDIUM,"String, Dynamic Programming",https://leetcode.com/problems/edit-distance,61.4,0.5878976197609908
+Find First and Last Position of Element in Sorted Array,MEDIUM,"Array, Binary Search",https://leetcode.com/problems/find-first-and-last-position-of-element-in-sorted-array,59.6,0.4682874104872264
+Container With Most Water,MEDIUM,"Array, Two Pointers, Greedy",https://leetcode.com/problems/container-with-most-water,57.6,0.5778283165036205
+Reverse Nodes in k-Group,HARD,"Linked List, Recursion",https://leetcode.com/problems/reverse-nodes-in-k-group,57.6,0.6304374335039493
+Regular Expression Matching,HARD,"String, Dynamic Programming, Recursion",https://leetcode.com/problems/regular-expression-matching,57.6,0.2928012366939696
+Word Break,MEDIUM,"Array, Hash Table, String, Dynamic Programming, Trie, Memoization",https://leetcode.com/problems/word-break,57.6,0.4827377619034214
+Longest Consecutive Sequence,MEDIUM,"Array, Hash Table, Union Find",https://leetcode.com/problems/longest-consecutive-sequence,55.5,0.4704082909337341
+Best Time to Buy and Sell Stock II,MEDIUM,"Array, Dynamic Programming, Greedy",https://leetcode.com/problems/best-time-to-buy-and-sell-stock-ii,55.5,0.6950025067480458
+Jump Game,MEDIUM,"Array, Dynamic Programming, Greedy",https://leetcode.com/problems/jump-game,55.5,0.3947919786729132
+Subsets,MEDIUM,"Array, Backtracking, Bit Manipulation",https://leetcode.com/problems/subsets,53.2,0.808795565390318
+Decode Ways,MEDIUM,"String, Dynamic Programming",https://leetcode.com/problems/decode-ways,53.2,0.3653098286175434
+Group Anagrams,MEDIUM,"Array, Hash Table, String, Sorting",https://leetcode.com/problems/group-anagrams,53.2,0.7092882781909262
+Merge Sorted Array,EASY,"Array, Two Pointers, Sorting",https://leetcode.com/problems/merge-sorted-array,53.2,0.5291951986224571
+Reorder List,MEDIUM,"Linked List, Two Pointers, Stack, Recursion",https://leetcode.com/problems/reorder-list,50.6,0.6250476843297371
+Unique Binary Search Trees,MEDIUM,"Math, Dynamic Programming, Tree, Binary Search Tree, Binary Tree",https://leetcode.com/problems/unique-binary-search-trees,50.6,0.6244520536210353
+Longest Common Prefix,EASY,"String, Trie",https://leetcode.com/problems/longest-common-prefix,50.6,0.4548305143026601
+Validate Binary Search Tree,MEDIUM,"Tree, Depth-First Search, Binary Search Tree, Binary Tree",https://leetcode.com/problems/validate-binary-search-tree,50.6,0.3438039571887417
+Next Permutation,MEDIUM,"Array, Two Pointers",https://leetcode.com/problems/next-permutation,50.6,0.4305773996508374
+Integer to Roman,MEDIUM,"Hash Table, Math, String",https://leetcode.com/problems/integer-to-roman,47.6,0.6861928580376627
+Minimum Path Sum,MEDIUM,"Array, Dynamic Programming, Matrix",https://leetcode.com/problems/minimum-path-sum,47.6,0.6648152266005115
+Parallel Courses III,HARD,"Array, Dynamic Programming, Graph, Topological Sort",https://leetcode.com/problems/parallel-courses-iii,47.6,0.6674963944974485
+Median of Two Sorted Arrays,HARD,"Array, Binary Search, Divide and Conquer",https://leetcode.com/problems/median-of-two-sorted-arrays,47.6,0.4381459158602527
+Surrounded Regions,MEDIUM,"Array, Depth-First Search, Breadth-First Search, Union Find, Matrix",https://leetcode.com/problems/surrounded-regions,47.6,0.4288644756244931
+Sort List,MEDIUM,"Linked List, Two Pointers, Divide and Conquer, Sorting, Merge Sort",https://leetcode.com/problems/sort-list,47.6,0.618074922962942
+Permutations II,MEDIUM,"Array, Backtracking, Sorting",https://leetcode.com/problems/permutations-ii,47.6,0.615917727605333
+Find All Possible Recipes from Given Supplies,MEDIUM,"Array, Hash Table, String, Graph, Topological Sort",https://leetcode.com/problems/find-all-possible-recipes-from-given-supplies,47.6,0.5646091593277981
+Reverse Words in a String,MEDIUM,"Two Pointers, String",https://leetcode.com/problems/reverse-words-in-a-string,44.2,0.5191327244735617
+Maximum Product Subarray,MEDIUM,"Array, Dynamic Programming",https://leetcode.com/problems/maximum-product-subarray,44.2,0.3494162954383182
+Binary Tree Level Order Traversal,MEDIUM,"Tree, Breadth-First Search, Binary Tree",https://leetcode.com/problems/binary-tree-level-order-traversal,44.2,0.7059658947038693
+Find Minimum in Rotated Sorted Array,MEDIUM,"Array, Binary Search",https://leetcode.com/problems/find-minimum-in-rotated-sorted-array,44.2,0.5264825291581084
+Reverse Linked List II,MEDIUM,Linked List,https://leetcode.com/problems/reverse-linked-list-ii,44.2,0.49591736647057
+Longest Substring with At Most Two Distinct Characters,MEDIUM,"Hash Table, String, Sliding Window",https://leetcode.com/problems/longest-substring-with-at-most-two-distinct-characters,44.2,0.5647336891491908
+Compare Version Numbers,MEDIUM,"Two Pointers, String",https://leetcode.com/problems/compare-version-numbers,44.2,0.4234711977763999
+Step-By-Step Directions From a Binary Tree Node to Another,MEDIUM,"String, Tree, Depth-First Search, Binary Tree",https://leetcode.com/problems/step-by-step-directions-from-a-binary-tree-node-to-another,44.2,0.5630838477366256
+Longest Valid Parentheses,HARD,"String, Dynamic Programming, Stack",https://leetcode.com/problems/longest-valid-parentheses,44.2,0.3631311456770452
+Add Two Numbers,MEDIUM,"Linked List, Math, Recursion",https://leetcode.com/problems/add-two-numbers,44.2,0.4622507658063209
+Climbing Stairs,EASY,"Math, Dynamic Programming, Memoization",https://leetcode.com/problems/climbing-stairs,44.2,0.5354071840932856
+Intersection of Two Linked Lists,EASY,"Hash Table, Linked List, Two Pointers",https://leetcode.com/problems/intersection-of-two-linked-lists,40.2,0.6112533936845744
+Missing Ranges,EASY,Array,https://leetcode.com/problems/missing-ranges,40.2,0.3526494595509856
+Multiply Strings,MEDIUM,"Math, String, Simulation",https://leetcode.com/problems/multiply-strings,40.2,0.4228941429852704
+Jump Game II,MEDIUM,"Array, Dynamic Programming, Greedy",https://leetcode.com/problems/jump-game-ii,40.2,0.4150330248226039
+Fraction to Recurring Decimal,MEDIUM,"Hash Table, Math, String",https://leetcode.com/problems/fraction-to-recurring-decimal,40.2,0.2622353839768554
+Distinct Subsequences,HARD,"String, Dynamic Programming",https://leetcode.com/problems/distinct-subsequences,40.2,0.500998941013352
+Merge Two Sorted Lists,EASY,"Linked List, Recursion",https://leetcode.com/problems/merge-two-sorted-lists,40.2,0.6684090913680062
+Simplify Path,MEDIUM,"String, Stack",https://leetcode.com/problems/simplify-path,35.4,0.4785432317744196
+Find Target Indices After Sorting Array,EASY,"Array, Binary Search, Sorting",https://leetcode.com/problems/find-target-indices-after-sorting-array,35.4,0.7728798563584792
+"Pow(x, n)",MEDIUM,"Math, Recursion",https://leetcode.com/problems/powx-n,35.4,0.3702318641045828
+Best Time to Buy and Sell Stock III,HARD,"Array, Dynamic Programming",https://leetcode.com/problems/best-time-to-buy-and-sell-stock-iii,35.4,0.5112087693447603
+Word Ladder II,HARD,"Hash Table, String, Backtracking, Breadth-First Search",https://leetcode.com/problems/word-ladder-ii,35.4,0.2715262860113065
+Valid Palindrome,EASY,"Two Pointers, String",https://leetcode.com/problems/valid-palindrome,35.4,0.5096357226652383
+Spiral Matrix II,MEDIUM,"Array, Matrix, Simulation",https://leetcode.com/problems/spiral-matrix-ii,35.4,0.734312719680276
+Remove Duplicates from Sorted Array II,MEDIUM,"Array, Two Pointers",https://leetcode.com/problems/remove-duplicates-from-sorted-array-ii,35.4,0.6290185479131098
+Path Sum II,MEDIUM,"Backtracking, Tree, Depth-First Search, Binary Tree",https://leetcode.com/problems/path-sum-ii,35.4,0.6049772910946117
+Binary Tree Zigzag Level Order Traversal,MEDIUM,"Tree, Breadth-First Search, Binary Tree",https://leetcode.com/problems/binary-tree-zigzag-level-order-traversal,35.4,0.6168283891746636
+Insert Interval,MEDIUM,Array,https://leetcode.com/problems/insert-interval,35.4,0.4347362871417847
+4Sum,MEDIUM,"Array, Two Pointers, Sorting",https://leetcode.com/problems/4sum,29.3,0.3821902011379304
+Linked List Cycle II,MEDIUM,"Hash Table, Linked List, Two Pointers",https://leetcode.com/problems/linked-list-cycle-ii,29.3,0.549336741044386
+Plus One,EASY,"Array, Math",https://leetcode.com/problems/plus-one,29.3,0.4754762109513449
+Swap Nodes in Pairs,MEDIUM,"Linked List, Recursion",https://leetcode.com/problems/swap-nodes-in-pairs,29.3,0.6720136828647639
+Path Sum,EASY,"Tree, Depth-First Search, Breadth-First Search, Binary Tree",https://leetcode.com/problems/path-sum,29.3,0.5300477871490744
+Maximal Rectangle,HARD,"Array, Dynamic Programming, Stack, Matrix, Monotonic Stack",https://leetcode.com/problems/maximal-rectangle,29.3,0.5370845822665518
+Valid Sudoku,MEDIUM,"Array, Hash Table, Matrix",https://leetcode.com/problems/valid-sudoku,29.3,0.6227675793740958
+Interleaving String,MEDIUM,"String, Dynamic Programming",https://leetcode.com/problems/interleaving-string,21.2,0.4217918033968859
+Clone Graph,MEDIUM,"Hash Table, Depth-First Search, Breadth-First Search, Graph",https://leetcode.com/problems/clone-graph,21.2,0.623857131048197
+Recover Binary Search Tree,MEDIUM,"Tree, Depth-First Search, Binary Search Tree, Binary Tree",https://leetcode.com/problems/recover-binary-search-tree,21.2,0.5632431226781013
+Subsets II,MEDIUM,"Array, Backtracking, Bit Manipulation",https://leetcode.com/problems/subsets-ii,21.2,0.595072748658621
+Valid Number,HARD,String,https://leetcode.com/problems/valid-number,21.2,0.2156351250311539
+Unique Paths,MEDIUM,"Math, Dynamic Programming, Combinatorics",https://leetcode.com/problems/unique-paths,21.2,0.6577286392782602
+Divide Two Integers,MEDIUM,"Math, Bit Manipulation",https://leetcode.com/problems/divide-two-integers,21.2,0.1839697508503305
+First Missing Positive,HARD,"Array, Hash Table",https://leetcode.com/problems/first-missing-positive,21.2,0.4108465766394882
+Sum of Subarray Ranges,MEDIUM,"Array, Stack, Monotonic Stack",https://leetcode.com/problems/sum-of-subarray-ranges,21.2,0.6013128650832208

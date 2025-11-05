@@ -1,0 +1,4 @@
+question,difficulty,topics,link,frequency,acceptance
+Longest Common Prefix,EASY,"String, Trie",https://leetcode.com/problems/longest-common-prefix,100.0,0.4548316479979901
+Trapping Rain Water,HARD,"Array, Two Pointers, Dynamic Programming, Stack, Monotonic Stack",https://leetcode.com/problems/trapping-rain-water,89.5,0.6510219501353552
+Meeting Rooms II,MEDIUM,"Array, Two Pointers, Greedy, Sorting, Heap (Priority Queue), Prefix Sum",https://leetcode.com/problems/meeting-rooms-ii,89.5,0.5214151420515921

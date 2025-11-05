@@ -1,0 +1,11 @@
+question,difficulty,topics,link,frequency,acceptance
+Find First and Last Position of Element in Sorted Array,MEDIUM,"Array, Binary Search",https://leetcode.com/problems/find-first-and-last-position-of-element-in-sorted-array,100.0,0.468288663109128
+LRU Cache,MEDIUM,"Hash Table, Linked List, Design, Doubly-Linked List",https://leetcode.com/problems/lru-cache,100.0,0.4521484931675215
+Move Zeroes,EASY,"Array, Two Pointers",https://leetcode.com/problems/move-zeroes,100.0,0.6280402079242245
+Reverse Linked List,EASY,"Linked List, Recursion",https://leetcode.com/problems/reverse-linked-list,87.3,0.7920663222242535
+Basic Calculator II,MEDIUM,"Math, String, Stack",https://leetcode.com/problems/basic-calculator-ii,87.3,0.4581175582517616
+Alien Dictionary,HARD,"Array, String, Depth-First Search, Breadth-First Search, Graph, Topological Sort",https://leetcode.com/problems/alien-dictionary,87.3,0.3667369950676969
+Path Sum III,MEDIUM,"Tree, Depth-First Search, Binary Tree",https://leetcode.com/problems/path-sum-iii,87.3,0.4609139543754039
+Reconstruct Original Digits from English,MEDIUM,"Hash Table, Math, String",https://leetcode.com/problems/reconstruct-original-digits-from-english,87.3,0.5157334259339642
+Group Anagrams,MEDIUM,"Array, Hash Table, String, Sorting",https://leetcode.com/problems/group-anagrams,87.3,0.709289019979725
+Merge k Sorted Lists,HARD,"Linked List, Divide and Conquer, Heap (Priority Queue), Merge Sort",https://leetcode.com/problems/merge-k-sorted-lists,87.3,0.5677428134833566

@@ -1,0 +1,3 @@
+question,difficulty,topics,link,frequency,acceptance
+Copy List with Random Pointer,MEDIUM,"Hash Table, Linked List",https://leetcode.com/problems/copy-list-with-random-pointer,100.0,0.6054351707054821
+LRU Cache,MEDIUM,"Hash Table, Linked List, Design, Doubly-Linked List",https://leetcode.com/problems/lru-cache,90.0,0.4522005323774689

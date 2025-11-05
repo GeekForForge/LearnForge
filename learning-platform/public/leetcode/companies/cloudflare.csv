@@ -1,0 +1,11 @@
+question,difficulty,topics,link,frequency,acceptance
+Design Circular Queue,MEDIUM,"Array, Linked List, Design, Queue",https://leetcode.com/problems/design-circular-queue,100.0,0.5264449504731188
+3Sum,MEDIUM,"Array, Two Pointers, Sorting",https://leetcode.com/problems/3sum,94.4,0.3707109382430966
+4Sum,MEDIUM,"Array, Two Pointers, Sorting",https://leetcode.com/problems/4sum,94.4,0.3821904958109747
+Design a Stack With Increment Operation,MEDIUM,"Array, Stack, Design",https://leetcode.com/problems/design-a-stack-with-increment-operation,84.3,0.8013123593723671
+Reaching Points,HARD,Math,https://leetcode.com/problems/reaching-points,84.3,0.336468882434809
+Design Hit Counter,MEDIUM,"Array, Binary Search, Design, Queue, Data Stream",https://leetcode.com/problems/design-hit-counter,74.5,0.6920831928267657
+Number of Islands,MEDIUM,"Array, Depth-First Search, Breadth-First Search, Union Find, Matrix",https://leetcode.com/problems/number-of-islands,69.9,0.6232012220926494
+LRU Cache,MEDIUM,"Hash Table, Linked List, Design, Doubly-Linked List",https://leetcode.com/problems/lru-cache,63.9,0.4521488064776229
+Game of Life,MEDIUM,"Array, Matrix, Simulation",https://leetcode.com/problems/game-of-life,55.5,0.7141524653374356
+Fizz Buzz,EASY,"Math, String, Simulation",https://leetcode.com/problems/fizz-buzz,55.5,0.7437061146887399

@@ -1,0 +1,6 @@
+question,difficulty,topics,link,frequency,acceptance
+Max Difference You Can Get From Changing an Integer,MEDIUM,"Math, Greedy",https://leetcode.com/problems/max-difference-you-can-get-from-changing-an-integer,100.0,0.4901474986248562
+Brick Wall,MEDIUM,"Array, Hash Table",https://leetcode.com/problems/brick-wall,89.2,0.5585762726172722
+Spiral Matrix,MEDIUM,"Array, Matrix, Simulation",https://leetcode.com/problems/spiral-matrix,89.2,0.5394630958493493
+Letter Combinations of a Phone Number,MEDIUM,"Hash Table, String, Backtracking",https://leetcode.com/problems/letter-combinations-of-a-phone-number,89.2,0.6386159754422588
+3Sum,MEDIUM,"Array, Two Pointers, Sorting",https://leetcode.com/problems/3sum,89.2,0.3707513382130997

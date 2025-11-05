@@ -1,0 +1,8 @@
+question,difficulty,topics,link,frequency,acceptance
+Concatenation of Array,EASY,"Array, Simulation",https://leetcode.com/problems/concatenation-of-array,100.0,0.9048989107329092
+Evaluate Division,MEDIUM,"Array, String, Depth-First Search, Breadth-First Search, Union Find, Graph, Shortest Path",https://leetcode.com/problems/evaluate-division,95.1,0.6314724725246107
+Valid Parentheses,EASY,"String, Stack",https://leetcode.com/problems/valid-parentheses,84.9,0.423228968266
+Lowest Common Ancestor of a Binary Tree,MEDIUM,"Tree, Depth-First Search, Binary Tree",https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-tree,73.8,0.6675515631209941
+Number of Visible People in a Queue,HARD,"Array, Stack, Monotonic Stack",https://leetcode.com/problems/number-of-visible-people-in-a-queue,64.9,0.7129705142972448
+Car Fleet,MEDIUM,"Array, Stack, Sorting, Monotonic Stack",https://leetcode.com/problems/car-fleet,64.9,0.5347444943339748
+Employee Free Time,HARD,"Array, Line Sweep, Sorting, Heap (Priority Queue)",https://leetcode.com/problems/employee-free-time,64.9,0.7259771560305982

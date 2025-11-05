@@ -1,0 +1,27 @@
+question,difficulty,topics,link,frequency,acceptance
+Rotting Oranges,MEDIUM,"Array, Breadth-First Search, Matrix",https://leetcode.com/problems/rotting-oranges,100.0,0.5661841837717154
+Time Based Key-Value Store,MEDIUM,"Hash Table, String, Binary Search, Design",https://leetcode.com/problems/time-based-key-value-store,94.3,0.4936630449185106
+Read N Characters Given read4 II - Call Multiple Times,HARD,"Array, Simulation, Interactive",https://leetcode.com/problems/read-n-characters-given-read4-ii-call-multiple-times,93.5,0.4290596992252771
+Minimum Window Substring,HARD,"Hash Table, String, Sliding Window",https://leetcode.com/problems/minimum-window-substring,91.9,0.4535067082137159
+Max Stack,HARD,"Linked List, Stack, Design, Doubly-Linked List, Ordered Set",https://leetcode.com/problems/max-stack,79.8,0.4553192278942039
+Convert Sorted List to Binary Search Tree,MEDIUM,"Linked List, Divide and Conquer, Tree, Binary Search Tree, Binary Tree",https://leetcode.com/problems/convert-sorted-list-to-binary-search-tree,78.2,0.6445920225309912
+Smallest Range Covering Elements from K Lists,HARD,"Array, Hash Table, Greedy, Sliding Window, Sorting, Heap (Priority Queue)",https://leetcode.com/problems/smallest-range-covering-elements-from-k-lists,74.6,0.6974692747987687
+Check Completeness of a Binary Tree,MEDIUM,"Tree, Breadth-First Search, Binary Tree",https://leetcode.com/problems/check-completeness-of-a-binary-tree,74.6,0.5837359987945151
+String Compression,MEDIUM,"Two Pointers, String",https://leetcode.com/problems/string-compression,74.6,0.580915717497265
+Car Pooling,MEDIUM,"Array, Sorting, Heap (Priority Queue), Simulation, Prefix Sum",https://leetcode.com/problems/car-pooling,74.6,0.5604938783980079
+Range Sum Query 2D - Immutable,MEDIUM,"Array, Design, Matrix, Prefix Sum",https://leetcode.com/problems/range-sum-query-2d-immutable,70.1,0.5652765632997782
+Min Stack,MEDIUM,"Stack, Design",https://leetcode.com/problems/min-stack,67.5,0.5644517299387589
+Word Ladder II,HARD,"Hash Table, String, Backtracking, Breadth-First Search",https://leetcode.com/problems/word-ladder-ii,64.4,0.271526407856053
+Longest Consecutive Sequence,MEDIUM,"Array, Hash Table, Union Find",https://leetcode.com/problems/longest-consecutive-sequence,60.8,0.4704086761606057
+Implement Trie (Prefix Tree),MEDIUM,"Hash Table, String, Design, Trie",https://leetcode.com/problems/implement-trie-prefix-tree,56.4,0.6793485897950162
+Water and Jug Problem,MEDIUM,"Math, Depth-First Search, Breadth-First Search",https://leetcode.com/problems/water-and-jug-problem,56.4,0.4308715749936997
+Longest Substring Without Repeating Characters,MEDIUM,"Hash Table, String, Sliding Window",https://leetcode.com/problems/longest-substring-without-repeating-characters,56.4,0.369361604178362
+Decode Ways,MEDIUM,"String, Dynamic Programming",https://leetcode.com/problems/decode-ways,56.4,0.3653093731038959
+Asteroid Collision,MEDIUM,"Array, Stack, Simulation",https://leetcode.com/problems/asteroid-collision,50.7,0.4550055560010539
+Meeting Rooms II,MEDIUM,"Array, Two Pointers, Greedy, Sorting, Heap (Priority Queue), Prefix Sum",https://leetcode.com/problems/meeting-rooms-ii,50.7,0.5214181010083032
+Product of Array Except Self,MEDIUM,"Array, Prefix Sum",https://leetcode.com/problems/product-of-array-except-self,50.7,0.6777996139428187
+Maximum Candies You Can Get from Boxes,HARD,"Array, Breadth-First Search, Graph",https://leetcode.com/problems/maximum-candies-you-can-get-from-boxes,50.7,0.687707430504175
+Sort List,MEDIUM,"Linked List, Two Pointers, Divide and Conquer, Sorting, Merge Sort",https://leetcode.com/problems/sort-list,50.7,0.618074922962942
+Process Tasks Using Servers,MEDIUM,"Array, Heap (Priority Queue)",https://leetcode.com/problems/process-tasks-using-servers,42.7,0.4114853370058328
+Find Minimum Time to Finish All Jobs,HARD,"Array, Dynamic Programming, Backtracking, Bit Manipulation, Bitmask",https://leetcode.com/problems/find-minimum-time-to-finish-all-jobs,42.7,0.4351858853182104
+Coordinate With Maximum Network Quality,MEDIUM,"Array, Enumeration",https://leetcode.com/problems/coordinate-with-maximum-network-quality,42.7,0.3843297437801707

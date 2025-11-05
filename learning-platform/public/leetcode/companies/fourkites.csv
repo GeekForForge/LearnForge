@@ -1,0 +1,4 @@
+question,difficulty,topics,link,frequency,acceptance
+Longest Unequal Adjacent Groups Subsequence II,MEDIUM,"Array, String, Dynamic Programming",https://leetcode.com/problems/longest-unequal-adjacent-groups-subsequence-ii,100.0,0.5135262321144675
+Longest Subarray With Maximum Bitwise AND,MEDIUM,"Array, Bit Manipulation, Brainteaser",https://leetcode.com/problems/longest-subarray-with-maximum-bitwise-and,100.0,0.6181425057525985
+Longest Unequal Adjacent Groups Subsequence I,EASY,"Array, String, Dynamic Programming, Greedy",https://leetcode.com/problems/longest-unequal-adjacent-groups-subsequence-i,100.0,0.6756708309889311

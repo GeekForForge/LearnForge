@@ -1,0 +1,5 @@
+question,difficulty,topics,link,frequency,acceptance
+Find Three Consecutive Integers That Sum to a Given Number,MEDIUM,"Math, Simulation",https://leetcode.com/problems/find-three-consecutive-integers-that-sum-to-a-given-number,100.0,0.6461909267018064
+Two Sum,EASY,"Array, Hash Table",https://leetcode.com/problems/two-sum,66.6,0.5577706633679903
+Best Time to Buy and Sell Stock,EASY,"Array, Dynamic Programming",https://leetcode.com/problems/best-time-to-buy-and-sell-stock,66.6,0.5525969539323237
+Palindrome Number,EASY,Math,https://leetcode.com/problems/palindrome-number,66.6,0.592245084409646

@@ -1,0 +1,6 @@
+question,difficulty,topics,link,frequency,acceptance
+Trapping Rain Water II,HARD,"Array, Breadth-First Search, Heap (Priority Queue), Matrix",https://leetcode.com/problems/trapping-rain-water-ii,100.0,0.588775626331106
+The Number of the Smallest Unoccupied Chair,MEDIUM,"Array, Hash Table, Heap (Priority Queue)",https://leetcode.com/problems/the-number-of-the-smallest-unoccupied-chair,82.5,0.6041168373473392
+Frog Jump,HARD,"Array, Dynamic Programming",https://leetcode.com/problems/frog-jump,82.5,0.4655899309885064
+Word Break,MEDIUM,"Array, Hash Table, String, Dynamic Programming, Trie, Memoization",https://leetcode.com/problems/word-break,82.5,0.4827562706373493
+Flatten Deeply Nested Array,MEDIUM,,https://leetcode.com/problems/flatten-deeply-nested-array,82.5,0.644355269140293

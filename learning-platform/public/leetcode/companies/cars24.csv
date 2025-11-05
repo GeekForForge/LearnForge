@@ -1,0 +1,9 @@
+question,difficulty,topics,link,frequency,acceptance
+Time Based Key-Value Store,MEDIUM,"Hash Table, String, Binary Search, Design",https://leetcode.com/problems/time-based-key-value-store,100.0,0.4936482629369147
+Online Election,MEDIUM,"Array, Hash Table, Binary Search, Design",https://leetcode.com/problems/online-election,94.5,0.5185121776930864
+Rabbits in Forest,MEDIUM,"Array, Hash Table, Math, Greedy",https://leetcode.com/problems/rabbits-in-forest,87.4,0.5826704796321077
+Open the Lock,MEDIUM,"Array, Hash Table, String, Breadth-First Search",https://leetcode.com/problems/open-the-lock,87.4,0.6074135869227004
+Bulls and Cows,MEDIUM,"Hash Table, String, Counting",https://leetcode.com/problems/bulls-and-cows,77.3,0.5138771783652719
+Counter,EASY,,https://leetcode.com/problems/counter,77.3,0.8224375327236066
+House Robber,MEDIUM,"Array, Dynamic Programming",https://leetcode.com/problems/house-robber,77.3,0.523059436068384
+Merge Intervals,MEDIUM,"Array, Sorting",https://leetcode.com/problems/merge-intervals,77.3,0.493984211255195

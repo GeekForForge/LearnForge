@@ -1,0 +1,47 @@
+question,difficulty,topics,link,frequency,acceptance
+Longest Substring Without Repeating Characters,MEDIUM,"Hash Table, String, Sliding Window",https://leetcode.com/problems/longest-substring-without-repeating-characters,100.0,0.369361704656187
+Find Followers Count,EASY,Database,https://leetcode.com/problems/find-followers-count,95.3,0.6956128892861001
+Minimum Changes To Make Alternating Binary String,EASY,String,https://leetcode.com/problems/minimum-changes-to-make-alternating-binary-string,95.3,0.6370145733299638
+Basic Calculator II,MEDIUM,"Math, String, Stack",https://leetcode.com/problems/basic-calculator-ii,92.6,0.4581138691872612
+Merge Intervals,MEDIUM,"Array, Sorting",https://leetcode.com/problems/merge-intervals,89.6,0.4939524622259912
+Number of Islands,MEDIUM,"Array, Depth-First Search, Breadth-First Search, Union Find, Matrix",https://leetcode.com/problems/number-of-islands,89.6,0.6232000863217745
+Design Circular Queue,MEDIUM,"Array, Linked List, Design, Queue",https://leetcode.com/problems/design-circular-queue,86.1,0.5264411843359923
+Building H2O,MEDIUM,Concurrency,https://leetcode.com/problems/building-h2o,86.1,0.5758696646024687
+Letter Combinations of a Phone Number,MEDIUM,"Hash Table, String, Backtracking",https://leetcode.com/problems/letter-combinations-of-a-phone-number,82.2,0.6385755479764873
+Valid Parentheses,EASY,"String, Stack",https://leetcode.com/problems/valid-parentheses,82.2,0.4232284155019281
+Top K Frequent Elements,MEDIUM,"Array, Hash Table, Divide and Conquer, Sorting, Heap (Priority Queue), Bucket Sort, Counting, Quickselect",https://leetcode.com/problems/top-k-frequent-elements,82.2,0.6456598842719755
+Container With Most Water,MEDIUM,"Array, Two Pointers, Greedy",https://leetcode.com/problems/container-with-most-water,77.5,0.5778282666830817
+LRU Cache,MEDIUM,"Hash Table, Linked List, Design, Doubly-Linked List",https://leetcode.com/problems/lru-cache,77.5,0.45214645870656
+Best Time to Buy and Sell Stock,EASY,"Array, Dynamic Programming",https://leetcode.com/problems/best-time-to-buy-and-sell-stock,77.5,0.5525962946831828
+Reverse Nodes in k-Group,HARD,"Linked List, Recursion",https://leetcode.com/problems/reverse-nodes-in-k-group,71.8,0.6304369033162786
+Maximum Number of Balloons,EASY,"Hash Table, String, Counting",https://leetcode.com/problems/maximum-number-of-balloons,71.8,0.5973679587648302
+Move Zeroes,EASY,"Array, Two Pointers",https://leetcode.com/problems/move-zeroes,71.8,0.6280401658078502
+Subarray Sum Equals K,MEDIUM,"Array, Hash Table, Prefix Sum",https://leetcode.com/problems/subarray-sum-equals-k,71.8,0.4547620144808089
+Decode the Message,EASY,"Hash Table, String",https://leetcode.com/problems/decode-the-message,71.8,0.8541555470834922
+3Sum,MEDIUM,"Array, Two Pointers, Sorting",https://leetcode.com/problems/3sum,71.8,0.3707096014078555
+Valid Anagram,EASY,"Hash Table, String, Sorting",https://leetcode.com/problems/valid-anagram,64.4,0.6666092421226094
+Reorganize String,MEDIUM,"Hash Table, String, Greedy, Sorting, Heap (Priority Queue), Counting",https://leetcode.com/problems/reorganize-string,64.4,0.5619638884801482
+Max Area of Island,MEDIUM,"Array, Depth-First Search, Breadth-First Search, Union Find, Matrix",https://leetcode.com/problems/max-area-of-island,64.4,0.7316419811417654
+Maximum Subarray,MEDIUM,"Array, Divide and Conquer, Dynamic Programming",https://leetcode.com/problems/maximum-subarray,64.4,0.5209980487725024
+Flatten Nested List Iterator,MEDIUM,"Stack, Tree, Depth-First Search, Design, Queue, Iterator",https://leetcode.com/problems/flatten-nested-list-iterator,54.1,0.6522839525510098
+Find Winner on a Tic Tac Toe Game,EASY,"Array, Hash Table, Matrix, Simulation",https://leetcode.com/problems/find-winner-on-a-tic-tac-toe-game,54.1,0.5418363660832548
+Trapping Rain Water,HARD,"Array, Two Pointers, Dynamic Programming, Stack, Monotonic Stack",https://leetcode.com/problems/trapping-rain-water,54.1,0.6510198658123436
+Basic Calculator,HARD,"Math, String, Stack, Recursion",https://leetcode.com/problems/basic-calculator,54.1,0.4558956559917942
+First Missing Positive,HARD,"Array, Hash Table",https://leetcode.com/problems/first-missing-positive,54.1,0.4108465766394882
+Repeated DNA Sequences,MEDIUM,"Hash Table, String, Bit Manipulation, Sliding Window, Rolling Hash, Hash Function",https://leetcode.com/problems/repeated-dna-sequences,54.1,0.5132038535315592
+Moving Average from Data Stream,EASY,"Array, Design, Queue, Data Stream",https://leetcode.com/problems/moving-average-from-data-stream,54.1,0.7993882465731537
+Group Anagrams,MEDIUM,"Array, Hash Table, String, Sorting",https://leetcode.com/problems/group-anagrams,54.1,0.7092883921583564
+Longest Palindromic Substring,MEDIUM,"Two Pointers, String, Dynamic Programming",https://leetcode.com/problems/longest-palindromic-substring,54.1,0.358461197928358
+Simplify Path,MEDIUM,"String, Stack",https://leetcode.com/problems/simplify-path,54.1,0.4785436883004094
+Largest Perimeter Triangle,EASY,"Array, Math, Greedy, Sorting",https://leetcode.com/problems/largest-perimeter-triangle,54.1,0.5736625993768019
+Missing Number,EASY,"Array, Hash Table, Math, Binary Search, Bit Manipulation, Sorting",https://leetcode.com/problems/missing-number,54.1,0.7006525195037366
+Construct Binary Tree from Preorder and Inorder Traversal,MEDIUM,"Array, Hash Table, Divide and Conquer, Tree, Binary Tree",https://leetcode.com/problems/construct-binary-tree-from-preorder-and-inorder-traversal,54.1,0.668377617598449
+Is Subsequence,EASY,"Two Pointers, String, Dynamic Programming",https://leetcode.com/problems/is-subsequence,54.1,0.4838254413675296
+Combination Sum II,MEDIUM,"Array, Backtracking",https://leetcode.com/problems/combination-sum-ii,54.1,0.5767451916246451
+Find Minimum in Rotated Sorted Array,MEDIUM,"Array, Binary Search",https://leetcode.com/problems/find-minimum-in-rotated-sorted-array,54.1,0.5264826982078754
+Design Bounded Blocking Queue,MEDIUM,Concurrency,https://leetcode.com/problems/design-bounded-blocking-queue,54.1,0.7299444681759931
+House Robber,MEDIUM,"Array, Dynamic Programming",https://leetcode.com/problems/house-robber,54.1,0.5230498170963667
+Reverse Linked List,EASY,"Linked List, Recursion",https://leetcode.com/problems/reverse-linked-list,54.1,0.792065721767758
+Course Schedule II,MEDIUM,"Depth-First Search, Breadth-First Search, Graph, Topological Sort",https://leetcode.com/problems/course-schedule-ii,54.1,0.5342350029047974
+Serialize and Deserialize Binary Tree,HARD,"String, Tree, Depth-First Search, Breadth-First Search, Design, Binary Tree",https://leetcode.com/problems/serialize-and-deserialize-binary-tree,54.1,0.5896945938574741
+Design Tic-Tac-Toe,MEDIUM,"Array, Hash Table, Design, Matrix, Simulation",https://leetcode.com/problems/design-tic-tac-toe,54.1,0.5860164938046469

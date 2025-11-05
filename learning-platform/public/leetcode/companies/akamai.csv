@@ -1,0 +1,8 @@
+question,difficulty,topics,link,frequency,acceptance
+N-Repeated Element in Size 2N Array,EASY,"Array, Hash Table",https://leetcode.com/problems/n-repeated-element-in-size-2n-array,100.0,0.7747973064210272
+Best Time to Buy and Sell Stock,EASY,"Array, Dynamic Programming",https://leetcode.com/problems/best-time-to-buy-and-sell-stock,72.2,0.5525967873583412
+Two Sum,EASY,"Array, Hash Table",https://leetcode.com/problems/two-sum,62.9,0.5577702792380397
+Median of Two Sorted Arrays,HARD,"Array, Binary Search, Divide and Conquer",https://leetcode.com/problems/median-of-two-sorted-arrays,62.9,0.4381466368571819
+Construct Binary Search Tree from Preorder Traversal,MEDIUM,"Array, Stack, Tree, Binary Search Tree, Monotonic Stack, Binary Tree",https://leetcode.com/problems/construct-binary-search-tree-from-preorder-traversal,62.9,0.8328129321513312
+Longest Palindrome,EASY,"Hash Table, String, Greedy",https://leetcode.com/problems/longest-palindrome,62.9,0.5556746201695723
+Pairs of Songs With Total Durations Divisible by 60,MEDIUM,"Array, Hash Table, Counting",https://leetcode.com/problems/pairs-of-songs-with-total-durations-divisible-by-60,62.9,0.5324771514259002

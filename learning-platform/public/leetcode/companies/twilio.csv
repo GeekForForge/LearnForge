@@ -1,0 +1,14 @@
+question,difficulty,topics,link,frequency,acceptance
+Maximize Greatness of an Array,MEDIUM,"Array, Two Pointers, Greedy, Sorting",https://leetcode.com/problems/maximize-greatness-of-an-array,100.0,0.5864617466875623
+Univalued Binary Tree,EASY,"Tree, Depth-First Search, Breadth-First Search, Binary Tree",https://leetcode.com/problems/univalued-binary-tree,93.3,0.7209294960383269
+Reformat Date,EASY,String,https://leetcode.com/problems/reformat-date,91.3,0.6733470658385863
+Letter Combinations of a Phone Number,MEDIUM,"Hash Table, String, Backtracking",https://leetcode.com/problems/letter-combinations-of-a-phone-number,65.4,0.6385757423813572
+Top K Frequent Elements,MEDIUM,"Array, Hash Table, Divide and Conquer, Sorting, Heap (Priority Queue), Bucket Sort, Counting, Quickselect",https://leetcode.com/problems/top-k-frequent-elements,65.4,0.645659866625562
+First Missing Positive,HARD,"Array, Hash Table",https://leetcode.com/problems/first-missing-positive,56.8,0.4108466261484428
+Minimum Number of Swaps to Make the String Balanced,MEDIUM,"Two Pointers, String, Stack, Greedy",https://leetcode.com/problems/minimum-number-of-swaps-to-make-the-string-balanced,56.8,0.7796926022806927
+Text Justification,HARD,"Array, String, Simulation",https://leetcode.com/problems/text-justification,56.8,0.4815003025229621
+Minimum Equal Sum of Two Arrays After Replacing Zeros,MEDIUM,"Array, Greedy",https://leetcode.com/problems/minimum-equal-sum-of-two-arrays-after-replacing-zeros,56.8,0.5016214325632321
+Group Anagrams,MEDIUM,"Array, Hash Table, String, Sorting",https://leetcode.com/problems/group-anagrams,56.8,0.7092888587313239
+Reconstruct Itinerary,HARD,"Depth-First Search, Graph, Eulerian Circuit",https://leetcode.com/problems/reconstruct-itinerary,56.8,0.4360565622834155
+Wildcard Matching,HARD,"String, Dynamic Programming, Greedy, Recursion",https://leetcode.com/problems/wildcard-matching,56.8,0.2989829339911512
+Ways to Make a Fair Array,MEDIUM,"Array, Prefix Sum",https://leetcode.com/problems/ways-to-make-a-fair-array,56.8,0.644989189340971

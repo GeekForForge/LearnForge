@@ -1,0 +1,5 @@
+question,difficulty,topics,link,frequency,acceptance
+Count Unguarded Cells in the Grid,MEDIUM,"Array, Matrix, Simulation",https://leetcode.com/problems/count-unguarded-cells-in-the-grid,100.0,0.6575999128429539
+Market Analysis I,MEDIUM,Database,https://leetcode.com/problems/market-analysis-i,100.0,0.571925862803579
+Market Analysis II,HARD,Database,https://leetcode.com/problems/market-analysis-ii,100.0,0.5784402208536844
+Max Chunks To Make Sorted,MEDIUM,"Array, Stack, Greedy, Sorting, Monotonic Stack",https://leetcode.com/problems/max-chunks-to-make-sorted,66.4,0.6404048068659659

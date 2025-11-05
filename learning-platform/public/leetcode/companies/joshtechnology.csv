@@ -1,0 +1,23 @@
+question,difficulty,topics,link,frequency,acceptance
+Move Zeroes,EASY,"Array, Two Pointers",https://leetcode.com/problems/move-zeroes,100.0,0.6280403790240795
+Add Two Numbers,MEDIUM,"Linked List, Math, Recursion",https://leetcode.com/problems/add-two-numbers,95.0,0.4622521516983059
+Largest Number,MEDIUM,"Array, String, Greedy, Sorting",https://leetcode.com/problems/largest-number,95.0,0.4128053161945387
+Remove Zero Sum Consecutive Nodes from Linked List,MEDIUM,"Hash Table, Linked List",https://leetcode.com/problems/remove-zero-sum-consecutive-nodes-from-linked-list,88.9,0.5286406766600661
+Maximum Twin Sum of a Linked List,MEDIUM,"Linked List, Two Pointers, Stack",https://leetcode.com/problems/maximum-twin-sum-of-a-linked-list,88.9,0.8147472951229525
+Reverse Odd Levels of Binary Tree,MEDIUM,"Tree, Depth-First Search, Breadth-First Search, Binary Tree",https://leetcode.com/problems/reverse-odd-levels-of-binary-tree,81.0,0.866394464658027
+Find Bottom Left Tree Value,MEDIUM,"Tree, Depth-First Search, Breadth-First Search, Binary Tree",https://leetcode.com/problems/find-bottom-left-tree-value,81.0,0.7175109020252438
+Count Pairs Whose Sum is Less than Target,EASY,"Array, Two Pointers, Binary Search, Sorting",https://leetcode.com/problems/count-pairs-whose-sum-is-less-than-target,81.0,0.8749491278191247
+Merge Nodes in Between Zeros,MEDIUM,"Linked List, Simulation",https://leetcode.com/problems/merge-nodes-in-between-zeros,81.0,0.8955413496627146
+Best Time to Buy and Sell Stock,EASY,"Array, Dynamic Programming",https://leetcode.com/problems/best-time-to-buy-and-sell-stock,81.0,0.5525968098867432
+Number of Good Leaf Nodes Pairs,MEDIUM,"Tree, Depth-First Search, Binary Tree",https://leetcode.com/problems/number-of-good-leaf-nodes-pairs,81.0,0.7177471264367816
+Find the Minimum and Maximum Number of Nodes Between Critical Points,MEDIUM,Linked List,https://leetcode.com/problems/find-the-minimum-and-maximum-number-of-nodes-between-critical-points,81.0,0.6945200779613259
+Find the Substring With Maximum Cost,MEDIUM,"Array, Hash Table, String, Dynamic Programming",https://leetcode.com/problems/find-the-substring-with-maximum-cost,69.9,0.5684542586750788
+Construct Smallest Number From DI String,MEDIUM,"String, Backtracking, Stack, Greedy",https://leetcode.com/problems/construct-smallest-number-from-di-string,69.9,0.8582927253741733
+Minimum Swaps to Group All 1's Together II,MEDIUM,"Array, Sliding Window",https://leetcode.com/problems/minimum-swaps-to-group-all-1s-together-ii,69.9,0.6551733570937285
+Longest Substring Without Repeating Characters,MEDIUM,"Hash Table, String, Sliding Window",https://leetcode.com/problems/longest-substring-without-repeating-characters,69.9,0.3693616511844462
+Reverse Nodes in k-Group,HARD,"Linked List, Recursion",https://leetcode.com/problems/reverse-nodes-in-k-group,69.9,0.6304371463092185
+Count Good Nodes in Binary Tree,MEDIUM,"Tree, Depth-First Search, Breadth-First Search, Binary Tree",https://leetcode.com/problems/count-good-nodes-in-binary-tree,69.9,0.735000400672318
+Trim a Binary Search Tree,MEDIUM,"Tree, Depth-First Search, Binary Search Tree, Binary Tree",https://leetcode.com/problems/trim-a-binary-search-tree,69.9,0.6637360647202037
+Remove K Digits,MEDIUM,"String, Stack, Greedy, Monotonic Stack",https://leetcode.com/problems/remove-k-digits,69.9,0.3494048385655791
+Daily Temperatures,MEDIUM,"Array, Stack, Monotonic Stack",https://leetcode.com/problems/daily-temperatures,69.9,0.6736509039874431
+Maximum Difference Between Node and Ancestor,MEDIUM,"Tree, Depth-First Search, Binary Tree",https://leetcode.com/problems/maximum-difference-between-node-and-ancestor,69.9,0.7806028577020944

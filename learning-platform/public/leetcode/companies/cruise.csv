@@ -1,0 +1,7 @@
+question,difficulty,topics,link,frequency,acceptance
+Synonymous Sentences,MEDIUM,"Array, Hash Table, String, Backtracking, Union Find",https://leetcode.com/problems/synonymous-sentences,100.0,0.5657701813916468
+Merge Intervals,MEDIUM,"Array, Sorting",https://leetcode.com/problems/merge-intervals,74.0,0.4939525764689584
+Unique Paths II,MEDIUM,"Array, Dynamic Programming, Matrix",https://leetcode.com/problems/unique-paths-ii,74.0,0.4315430597653034
+Unique Paths III,HARD,"Array, Backtracking, Bit Manipulation, Matrix",https://leetcode.com/problems/unique-paths-iii,74.0,0.8233339994005395
+LRU Cache,MEDIUM,"Hash Table, Linked List, Design, Doubly-Linked List",https://leetcode.com/problems/lru-cache,65.3,0.4521489022918771
+Course Schedule,MEDIUM,"Depth-First Search, Breadth-First Search, Graph, Topological Sort",https://leetcode.com/problems/course-schedule,65.3,0.4923445089786651

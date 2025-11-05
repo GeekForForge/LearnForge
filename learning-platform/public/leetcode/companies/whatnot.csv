@@ -1,0 +1,8 @@
+question,difficulty,topics,link,frequency,acceptance
+Number of Islands,MEDIUM,"Array, Depth-First Search, Breadth-First Search, Union Find, Matrix",https://leetcode.com/problems/number-of-islands,100.0,0.6232469776710805
+Valid Palindrome II,EASY,"Two Pointers, String, Greedy",https://leetcode.com/problems/valid-palindrome-ii,100.0,0.4302954750060481
+Group Anagrams,MEDIUM,"Array, Hash Table, String, Sorting",https://leetcode.com/problems/group-anagrams,87.8,0.7093187819722668
+Remove All Adjacent Duplicates In String,EASY,"String, Stack",https://leetcode.com/problems/remove-all-adjacent-duplicates-in-string,87.8,0.7159329806997172
+Search a 2D Matrix II,MEDIUM,"Array, Binary Search, Divide and Conquer, Matrix",https://leetcode.com/problems/search-a-2d-matrix-ii,78.1,0.5522809966288809
+Word Search,MEDIUM,"Array, String, Backtracking, Depth-First Search, Matrix",https://leetcode.com/problems/word-search,78.1,0.4527200676529069
+Squares of a Sorted Array,EASY,"Array, Two Pointers, Sorting",https://leetcode.com/problems/squares-of-a-sorted-array,78.1,0.7322021011211074

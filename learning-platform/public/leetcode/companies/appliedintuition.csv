@@ -1,0 +1,13 @@
+question,difficulty,topics,link,frequency,acceptance
+Merge Intervals,MEDIUM,"Array, Sorting",https://leetcode.com/problems/merge-intervals,100.0,0.4939843087245616
+Minesweeper,MEDIUM,"Array, Depth-First Search, Breadth-First Search, Matrix",https://leetcode.com/problems/minesweeper,96.9,0.6812276619036227
+Find Duplicate File in System,MEDIUM,"Array, Hash Table, String",https://leetcode.com/problems/find-duplicate-file-in-system,93.3,0.6757528599572867
+Word Abbreviation,HARD,"Array, String, Greedy, Trie, Sorting",https://leetcode.com/problems/word-abbreviation,89.0,0.6190250925545043
+Best Meeting Point,HARD,"Array, Math, Sorting, Matrix",https://leetcode.com/problems/best-meeting-point,89.0,0.6124969405912432
+Shortest Distance from All Buildings,HARD,"Array, Breadth-First Search, Matrix",https://leetcode.com/problems/shortest-distance-from-all-buildings,89.0,0.443752767487823
+Find First and Last Position of Element in Sorted Array,MEDIUM,"Array, Binary Search",https://leetcode.com/problems/find-first-and-last-position-of-element-in-sorted-array,77.0,0.4683359019471929
+Range Sum Query 2D - Immutable,MEDIUM,"Array, Design, Matrix, Prefix Sum",https://leetcode.com/problems/range-sum-query-2d-immutable,67.5,0.5653032094178108
+Design Circular Queue,MEDIUM,"Array, Linked List, Design, Queue",https://leetcode.com/problems/design-circular-queue,67.5,0.5264538620235254
+Cyclically Rotating a Grid,MEDIUM,"Array, Matrix, Simulation",https://leetcode.com/problems/cyclically-rotating-a-grid,67.5,0.5049956178790534
+Maximum Number of Visible Points,HARD,"Array, Math, Geometry, Sliding Window, Sorting",https://leetcode.com/problems/maximum-number-of-visible-points,67.5,0.3767861699413115
+Design HashMap,EASY,"Array, Hash Table, Linked List, Design, Hash Function",https://leetcode.com/problems/design-hashmap,67.5,0.6589595319508144

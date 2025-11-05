@@ -1,0 +1,4 @@
+question,difficulty,topics,link,frequency,acceptance
+LRU Cache,MEDIUM,"Hash Table, Linked List, Design, Doubly-Linked List",https://leetcode.com/problems/lru-cache,100.0,0.4521484728871755
+Path With Minimum Effort,MEDIUM,"Array, Binary Search, Depth-First Search, Breadth-First Search, Union Find, Heap (Priority Queue), Matrix",https://leetcode.com/problems/path-with-minimum-effort,88.3,0.61418869074625
+Find Median from Data Stream,HARD,"Two Pointers, Design, Sorting, Heap (Priority Queue), Data Stream",https://leetcode.com/problems/find-median-from-data-stream,88.3,0.532780181621694

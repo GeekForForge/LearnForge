@@ -1,0 +1,6 @@
+question,difficulty,topics,link,frequency,acceptance
+Find Words Containing Character,EASY,"Array, String",https://leetcode.com/problems/find-words-containing-character,100.0,0.9064075447850628
+Search Suggestions System,MEDIUM,"Array, String, Binary Search, Trie, Sorting, Heap (Priority Queue)",https://leetcode.com/problems/search-suggestions-system,85.4,0.6505018082357296
+Vertical Order Traversal of a Binary Tree,HARD,"Hash Table, Tree, Depth-First Search, Breadth-First Search, Sorting, Binary Tree",https://leetcode.com/problems/vertical-order-traversal-of-a-binary-tree,66.2,0.5133055579720943
+Count Number of Nice Subarrays,MEDIUM,"Array, Hash Table, Math, Sliding Window, Prefix Sum",https://leetcode.com/problems/count-number-of-nice-subarrays,66.2,0.7321007455952697
+Remove Invalid Parentheses,HARD,"String, Backtracking, Breadth-First Search",https://leetcode.com/problems/remove-invalid-parentheses,66.2,0.4923142983365193

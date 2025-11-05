@@ -1,0 +1,10 @@
+question,difficulty,topics,link,frequency,acceptance
+4Sum,MEDIUM,"Array, Two Pointers, Sorting",https://leetcode.com/problems/4sum,100.0,0.382192298675419
+Furthest Building You Can Reach,MEDIUM,"Array, Greedy, Heap (Priority Queue)",https://leetcode.com/problems/furthest-building-you-can-reach,100.0,0.5037115841594002
+Container With Most Water,MEDIUM,"Array, Two Pointers, Greedy",https://leetcode.com/problems/container-with-most-water,87.4,0.5778302959132524
+Largest Rectangle in Histogram,HARD,"Array, Stack, Monotonic Stack",https://leetcode.com/problems/largest-rectangle-in-histogram,87.4,0.4737769432634436
+Maximum Profit in Job Scheduling,HARD,"Array, Binary Search, Dynamic Programming, Sorting",https://leetcode.com/problems/maximum-profit-in-job-scheduling,87.4,0.5441735460704106
+Sliding Window Maximum,HARD,"Array, Queue, Sliding Window, Heap (Priority Queue), Monotonic Queue",https://leetcode.com/problems/sliding-window-maximum,87.4,0.4760400895519091
+Koko Eating Bananas,MEDIUM,"Array, Binary Search",https://leetcode.com/problems/koko-eating-bananas,87.4,0.4906778342214579
+Copy List with Random Pointer,MEDIUM,"Hash Table, Linked List",https://leetcode.com/problems/copy-list-with-random-pointer,87.4,0.6053683732470319
+House Robber III,MEDIUM,"Dynamic Programming, Tree, Depth-First Search, Binary Tree",https://leetcode.com/problems/house-robber-iii,87.4,0.5494576152947646

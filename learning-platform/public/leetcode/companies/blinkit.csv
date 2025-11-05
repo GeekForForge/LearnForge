@@ -1,0 +1,3 @@
+question,difficulty,topics,link,frequency,acceptance
+Avoid Flood in The City,MEDIUM,"Array, Hash Table, Binary Search, Greedy, Heap (Priority Queue)",https://leetcode.com/problems/avoid-flood-in-the-city,100.0,0.2739066722234919
+Single Element in a Sorted Array,MEDIUM,"Array, Binary Search",https://leetcode.com/problems/single-element-in-a-sorted-array,100.0,0.592074801559927

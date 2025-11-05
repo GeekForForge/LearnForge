@@ -1,0 +1,12 @@
+question,difficulty,topics,link,frequency,acceptance
+Count Vowel Substrings of a String,EASY,"Hash Table, String",https://leetcode.com/problems/count-vowel-substrings-of-a-string,100.0,0.7148136172571481
+Decode Ways,MEDIUM,"String, Dynamic Programming",https://leetcode.com/problems/decode-ways,92.9,0.3653107838606811
+Reach a Number,MEDIUM,"Math, Binary Search",https://leetcode.com/problems/reach-a-number,92.9,0.4389583072143981
+Longest Increasing Subsequence,MEDIUM,"Array, Binary Search, Dynamic Programming",https://leetcode.com/problems/longest-increasing-subsequence,86.5,0.5780858157770897
+Number of Longest Increasing Subsequence,MEDIUM,"Array, Dynamic Programming, Binary Indexed Tree, Segment Tree",https://leetcode.com/problems/number-of-longest-increasing-subsequence,82.5,0.499092190741395
+Reverse Nodes in k-Group,HARD,"Linked List, Recursion",https://leetcode.com/problems/reverse-nodes-in-k-group,77.6,0.630438836226103
+Count Unreachable Pairs of Nodes in an Undirected Graph,MEDIUM,"Depth-First Search, Breadth-First Search, Union Find, Graph",https://leetcode.com/problems/count-unreachable-pairs-of-nodes-in-an-undirected-graph,77.6,0.4933856658460681
+Rotating the Box,MEDIUM,"Array, Two Pointers, Matrix",https://leetcode.com/problems/rotating-the-box,62.2,0.7909877072612922
+Longest Palindromic Substring,MEDIUM,"Two Pointers, String, Dynamic Programming",https://leetcode.com/problems/longest-palindromic-substring,62.2,0.3584627048416074
+Find Peak Element,MEDIUM,"Array, Binary Search",https://leetcode.com/problems/find-peak-element,62.2,0.4650932158930429
+Add Two Numbers,MEDIUM,"Linked List, Math, Recursion",https://leetcode.com/problems/add-two-numbers,62.2,0.4622527265740443

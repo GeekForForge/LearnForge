@@ -1,0 +1,7 @@
+question,difficulty,topics,link,frequency,acceptance
+Total Distance Traveled,EASY,"Math, Simulation",https://leetcode.com/problems/total-distance-traveled,100.0,0.4016833878179837
+Camelcase Matching,MEDIUM,"Array, Two Pointers, String, Trie, String Matching",https://leetcode.com/problems/camelcase-matching,89.4,0.63780016867149
+Group Anagrams,MEDIUM,"Array, Hash Table, String, Sorting",https://leetcode.com/problems/group-anagrams,89.4,0.7092899316934461
+Subtree of Another Tree,EASY,"Tree, Depth-First Search, String Matching, Binary Tree, Hash Function",https://leetcode.com/problems/subtree-of-another-tree,89.4,0.4998476418026165
+Time Based Key-Value Store,MEDIUM,"Hash Table, String, Binary Search, Design",https://leetcode.com/problems/time-based-key-value-store,89.4,0.4936627725463274
+Decode String,MEDIUM,"String, Stack, Recursion",https://leetcode.com/problems/decode-string,89.4,0.6115272751413413

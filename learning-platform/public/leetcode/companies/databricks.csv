@@ -1,0 +1,35 @@
+question,difficulty,topics,link,frequency,acceptance
+Design Hit Counter,MEDIUM,"Array, Binary Search, Design, Queue, Data Stream",https://leetcode.com/problems/design-hit-counter,100.0,0.6920824458148753
+IP to CIDR,MEDIUM,"String, Bit Manipulation",https://leetcode.com/problems/ip-to-cidr,92.3,0.5492354970683057
+House Robber,MEDIUM,"Array, Dynamic Programming",https://leetcode.com/problems/house-robber,87.4,0.5230498170963667
+Design Tic-Tac-Toe,MEDIUM,"Array, Hash Table, Design, Matrix, Simulation",https://leetcode.com/problems/design-tic-tac-toe,85.5,0.5860164938046469
+House Robber II,MEDIUM,"Array, Dynamic Programming",https://leetcode.com/problems/house-robber-ii,84.8,0.4356274190232049
+Time Based Key-Value Store,MEDIUM,"Hash Table, String, Binary Search, Design",https://leetcode.com/problems/time-based-key-value-store,79.9,0.4936626255984377
+Snapshot Array,MEDIUM,"Array, Hash Table, Binary Search, Design",https://leetcode.com/problems/snapshot-array,71.9,0.3666537538924564
+Longest Palindrome by Concatenating Two Letter Words,MEDIUM,"Array, Hash Table, String, Greedy, Counting",https://leetcode.com/problems/longest-palindrome-by-concatenating-two-letter-words,67.0,0.5370286650749474
+Closest Leaf in a Binary Tree,MEDIUM,"Tree, Depth-First Search, Breadth-First Search, Binary Tree",https://leetcode.com/problems/closest-leaf-in-a-binary-tree,67.0,0.4704793196402153
+Minimum Absolute Difference Between Elements With Constraint,MEDIUM,"Array, Binary Search, Ordered Set",https://leetcode.com/problems/minimum-absolute-difference-between-elements-with-constraint,60.3,0.3406636948984646
+Smallest Range Covering Elements from K Lists,HARD,"Array, Hash Table, Greedy, Sliding Window, Sorting, Heap (Priority Queue)",https://leetcode.com/problems/smallest-range-covering-elements-from-k-lists,60.3,0.6974692747987687
+Step-By-Step Directions From a Binary Tree Node to Another,MEDIUM,"String, Tree, Depth-First Search, Binary Tree",https://leetcode.com/problems/step-by-step-directions-from-a-binary-tree-node-to-another,60.3,0.5630838477366256
+Split Message Based on Limit,HARD,"String, Binary Search, Enumeration",https://leetcode.com/problems/split-message-based-on-limit,57.5,0.4261603375527427
+Text Justification,HARD,"Array, String, Simulation",https://leetcode.com/problems/text-justification,54.1,0.4814993566410409
+Number of Flowers in Full Bloom,HARD,"Array, Hash Table, Binary Search, Sorting, Prefix Sum, Ordered Set",https://leetcode.com/problems/number-of-flowers-in-full-bloom,54.1,0.5717535511066795
+Web Crawler Multithreaded,MEDIUM,"Depth-First Search, Breadth-First Search, Concurrency",https://leetcode.com/problems/web-crawler-multithreaded,54.1,0.5009673573880699
+Count Integers in Intervals,HARD,"Design, Segment Tree, Ordered Set",https://leetcode.com/problems/count-integers-in-intervals,50.0,0.3416125060841183
+Number of Recent Calls,EASY,"Design, Queue, Data Stream",https://leetcode.com/problems/number-of-recent-calls,50.0,0.7732793446019116
+Longest Mountain in Array,MEDIUM,"Array, Two Pointers, Dynamic Programming, Enumeration",https://leetcode.com/problems/longest-mountain-in-array,44.6,0.4107832017720806
+Second Degree Follower,MEDIUM,Database,https://leetcode.com/problems/second-degree-follower,44.6,0.3999676139583839
+Find All Anagrams in a String,MEDIUM,"Hash Table, String, Sliding Window",https://leetcode.com/problems/find-all-anagrams-in-a-string,37.2,0.5220071349201708
+String to Integer (atoi),MEDIUM,String,https://leetcode.com/problems/string-to-integer-atoi,37.2,0.1922941794548009
+Spiral Matrix,MEDIUM,"Array, Matrix, Simulation",https://leetcode.com/problems/spiral-matrix,37.2,0.539397306376751
+Find Peak Element,MEDIUM,"Array, Binary Search",https://leetcode.com/problems/find-peak-element,37.2,0.4650921984332019
+Merge Intervals,MEDIUM,"Array, Sorting",https://leetcode.com/problems/merge-intervals,37.2,0.4939523849309626
+Longest Continuous Subarray With Absolute Diff Less Than or Equal to Limit,MEDIUM,"Array, Queue, Sliding Window, Heap (Priority Queue), Ordered Set, Monotonic Queue",https://leetcode.com/problems/longest-continuous-subarray-with-absolute-diff-less-than-or-equal-to-limit,37.2,0.5675053393759442
+Finding Pairs With a Certain Sum,MEDIUM,"Array, Hash Table, Design",https://leetcode.com/problems/finding-pairs-with-a-certain-sum,37.2,0.491882680060992
+Find the Length of the Longest Common Prefix,MEDIUM,"Array, Hash Table, String, Trie",https://leetcode.com/problems/find-the-length-of-the-longest-common-prefix,37.2,0.564161205458434
+Data Stream as Disjoint Intervals,HARD,"Binary Search, Design, Ordered Set",https://leetcode.com/problems/data-stream-as-disjoint-intervals,37.2,0.5950108773030263
+First Missing Positive,HARD,"Array, Hash Table",https://leetcode.com/problems/first-missing-positive,37.2,0.4108465766394882
+Maximum Profit in Job Scheduling,HARD,"Array, Binary Search, Dynamic Programming, Sorting",https://leetcode.com/problems/maximum-profit-in-job-scheduling,37.2,0.5441718927003354
+Course Schedule II,MEDIUM,"Depth-First Search, Breadth-First Search, Graph, Topological Sort",https://leetcode.com/problems/course-schedule-ii,37.2,0.5342350029047974
+Design A Leaderboard,MEDIUM,"Hash Table, Design, Sorting",https://leetcode.com/problems/design-a-leaderboard,37.2,0.6796315583908346
+Shortest Path in a Grid with Obstacles Elimination,HARD,"Array, Breadth-First Search, Matrix",https://leetcode.com/problems/shortest-path-in-a-grid-with-obstacles-elimination,37.2,0.4560618572179266

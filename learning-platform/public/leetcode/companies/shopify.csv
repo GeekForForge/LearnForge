@@ -1,0 +1,9 @@
+question,difficulty,topics,link,frequency,acceptance
+Walking Robot Simulation,MEDIUM,"Array, Hash Table, Simulation",https://leetcode.com/problems/walking-robot-simulation,100.0,0.5823045930701047
+LRU Cache,MEDIUM,"Hash Table, Linked List, Design, Doubly-Linked List",https://leetcode.com/problems/lru-cache,88.5,0.4521475035659106
+Design In-Memory File System,HARD,"Hash Table, String, Design, Trie, Sorting",https://leetcode.com/problems/design-in-memory-file-system,60.9,0.4816948941663167
+Encode and Decode TinyURL,MEDIUM,"Hash Table, String, Design, Hash Function",https://leetcode.com/problems/encode-and-decode-tinyurl,60.9,0.8636236617619221
+Design a Text Editor,HARD,"Linked List, String, Stack, Design, Simulation, Doubly-Linked List",https://leetcode.com/problems/design-a-text-editor,53.3,0.4713807144713662
+Find Users With Valid E-Mails,EASY,Database,https://leetcode.com/problems/find-users-with-valid-e-mails,53.3,0.441162559425633
+Design Tic-Tac-Toe,MEDIUM,"Array, Hash Table, Design, Matrix, Simulation",https://leetcode.com/problems/design-tic-tac-toe,53.3,0.5860157935441853
+Walls and Gates,MEDIUM,"Array, Breadth-First Search, Matrix",https://leetcode.com/problems/walls-and-gates,53.3,0.6296793327762211

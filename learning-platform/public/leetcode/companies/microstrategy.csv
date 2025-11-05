@@ -1,0 +1,10 @@
+question,difficulty,topics,link,frequency,acceptance
+Airplane Seat Assignment Probability,MEDIUM,"Math, Dynamic Programming, Brainteaser, Probability and Statistics",https://leetcode.com/problems/airplane-seat-assignment-probability,100.0,0.6665048936342312
+Zigzag Conversion,MEDIUM,String,https://leetcode.com/problems/zigzag-conversion,85.2,0.5160684284381445
+Backspace String Compare,EASY,"Two Pointers, String, Stack, Simulation",https://leetcode.com/problems/backspace-string-compare,80.4,0.49481803728999
+Top K Frequent Elements,MEDIUM,"Array, Hash Table, Divide and Conquer, Sorting, Heap (Priority Queue), Bucket Sort, Counting, Quickselect",https://leetcode.com/problems/top-k-frequent-elements,65.6,0.6456605377303972
+Best Time to Buy and Sell Stock,EASY,"Array, Dynamic Programming",https://leetcode.com/problems/best-time-to-buy-and-sell-stock,65.6,0.5525969471064145
+Battleships in a Board,MEDIUM,"Array, Depth-First Search, Matrix",https://leetcode.com/problems/battleships-in-a-board,65.6,0.7655996014075296
+Number of Ways to Build Sturdy Brick Wall,MEDIUM,"Array, Dynamic Programming, Bit Manipulation, Bitmask",https://leetcode.com/problems/number-of-ways-to-build-sturdy-brick-wall,65.6,0.494820388599701
+Permutations,MEDIUM,"Array, Backtracking",https://leetcode.com/problems/permutations,65.6,0.8066027210491278
+Minimum Number of Swaps to Make the String Balanced,MEDIUM,"Two Pointers, String, Stack, Greedy",https://leetcode.com/problems/minimum-number-of-swaps-to-make-the-string-balanced,65.6,0.7796899362639167

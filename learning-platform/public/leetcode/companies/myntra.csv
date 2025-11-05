@@ -1,0 +1,23 @@
+question,difficulty,topics,link,frequency,acceptance
+Maximum Earnings From Taxi,MEDIUM,"Array, Hash Table, Binary Search, Dynamic Programming, Sorting",https://leetcode.com/problems/maximum-earnings-from-taxi,100.0,0.4478158965049748
+Asteroid Collision,MEDIUM,"Array, Stack, Simulation",https://leetcode.com/problems/asteroid-collision,76.1,0.4550051349550971
+Trapping Rain Water,HARD,"Array, Two Pointers, Dynamic Programming, Stack, Monotonic Stack",https://leetcode.com/problems/trapping-rain-water,69.3,0.651020475550146
+Container With Most Water,MEDIUM,"Array, Two Pointers, Greedy",https://leetcode.com/problems/container-with-most-water,69.3,0.5778290777243622
+Rotting Oranges,MEDIUM,"Array, Breadth-First Search, Matrix",https://leetcode.com/problems/rotting-oranges,69.3,0.5661860286407837
+3Sum,MEDIUM,"Array, Two Pointers, Sorting",https://leetcode.com/problems/3sum,69.3,0.3707105510422595
+First Missing Positive,HARD,"Array, Hash Table",https://leetcode.com/problems/first-missing-positive,69.3,0.4108465120721653
+Largest Rectangle in Histogram,HARD,"Array, Stack, Monotonic Stack",https://leetcode.com/problems/largest-rectangle-in-histogram,69.3,0.4737757052465067
+Deepest Leaves Sum,MEDIUM,"Tree, Depth-First Search, Breadth-First Search, Binary Tree",https://leetcode.com/problems/deepest-leaves-sum,69.3,0.8634979671040474
+Repeated Substring Pattern,EASY,"String, String Matching",https://leetcode.com/problems/repeated-substring-pattern,69.3,0.4688976256075287
+Largest Number,MEDIUM,"Array, String, Greedy, Sorting",https://leetcode.com/problems/largest-number,69.3,0.4128049807936712
+LRU Cache,MEDIUM,"Hash Table, Linked List, Design, Doubly-Linked List",https://leetcode.com/problems/lru-cache,69.3,0.4521483567923895
+Lowest Common Ancestor of a Binary Tree,MEDIUM,"Tree, Depth-First Search, Binary Tree",https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-tree,59.7,0.6675507493321811
+Group Anagrams,MEDIUM,"Array, Hash Table, String, Sorting",https://leetcode.com/problems/group-anagrams,59.7,0.7092889662302778
+Minimum Time to Collect All Apples in a Tree,MEDIUM,"Hash Table, Tree, Depth-First Search, Breadth-First Search",https://leetcode.com/problems/minimum-time-to-collect-all-apples-in-a-tree,59.7,0.6297810592427932
+Maximal Square,MEDIUM,"Array, Dynamic Programming, Matrix",https://leetcode.com/problems/maximal-square,59.7,0.4876122310941201
+Wiggle Sort,MEDIUM,"Array, Greedy, Sorting",https://leetcode.com/problems/wiggle-sort,59.7,0.6822006472491909
+Target Sum,MEDIUM,"Array, Dynamic Programming, Backtracking",https://leetcode.com/problems/target-sum,59.7,0.5076670630713648
+Minimum Moves to Equal Array Elements II,MEDIUM,"Array, Math, Sorting",https://leetcode.com/problems/minimum-moves-to-equal-array-elements-ii,59.7,0.6095862132467602
+Two Sum,EASY,"Array, Hash Table",https://leetcode.com/problems/two-sum,59.7,0.557770083053179
+Flatten Binary Tree to Linked List,MEDIUM,"Linked List, Stack, Tree, Depth-First Search, Binary Tree",https://leetcode.com/problems/flatten-binary-tree-to-linked-list,59.7,0.6851019754160277
+Best Time to Buy and Sell Stock,EASY,"Array, Dynamic Programming",https://leetcode.com/problems/best-time-to-buy-and-sell-stock,59.7,0.5525965062043136

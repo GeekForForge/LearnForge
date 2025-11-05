@@ -1,0 +1,4 @@
+question,difficulty,topics,link,frequency,acceptance
+Count Equal and Divisible Pairs in an Array,EASY,Array,https://leetcode.com/problems/count-equal-and-divisible-pairs-in-an-array,100.0,0.8408345683046082
+Task Scheduler,MEDIUM,"Array, Hash Table, Greedy, Sorting, Heap (Priority Queue), Counting",https://leetcode.com/problems/task-scheduler,66.8,0.6153922450527325
+Best Time to Buy and Sell Stock,EASY,"Array, Dynamic Programming",https://leetcode.com/problems/best-time-to-buy-and-sell-stock,66.8,0.5525974824425262

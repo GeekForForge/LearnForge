@@ -1,0 +1,26 @@
+question,difficulty,topics,link,frequency,acceptance
+Simple Bank System,MEDIUM,"Array, Hash Table, Design, Simulation",https://leetcode.com/problems/simple-bank-system,100.0,0.61430278408412
+Find Duplicate File in System,MEDIUM,"Array, Hash Table, String",https://leetcode.com/problems/find-duplicate-file-in-system,94.7,0.6757346336455794
+Game of Life,MEDIUM,"Array, Matrix, Simulation",https://leetcode.com/problems/game-of-life,92.7,0.7141503237777483
+Web Crawler,MEDIUM,"String, Depth-First Search, Breadth-First Search, Interactive",https://leetcode.com/problems/web-crawler,92.7,0.6876521792062333
+Web Crawler Multithreaded,MEDIUM,"Depth-First Search, Breadth-First Search, Concurrency",https://leetcode.com/problems/web-crawler-multithreaded,92.7,0.5009673447851322
+Word Pattern II,MEDIUM,"Hash Table, String, Backtracking",https://leetcode.com/problems/word-pattern-ii,90.4,0.4860240848819029
+Minimize Malware Spread II,HARD,"Array, Hash Table, Depth-First Search, Breadth-First Search, Union Find, Graph",https://leetcode.com/problems/minimize-malware-spread-ii,90.4,0.4464651170529608
+Minimize Malware Spread,HARD,"Array, Hash Table, Depth-First Search, Breadth-First Search, Union Find, Graph",https://leetcode.com/problems/minimize-malware-spread,90.4,0.4244663007511927
+Seat Reservation Manager,MEDIUM,"Design, Heap (Priority Queue)",https://leetcode.com/problems/seat-reservation-manager,90.4,0.6639500226519469
+Design Hit Counter,MEDIUM,"Array, Binary Search, Design, Queue, Data Stream",https://leetcode.com/problems/design-hit-counter,90.4,0.6920824458148753
+Check If It Is a Good Array,HARD,"Array, Math, Number Theory",https://leetcode.com/problems/check-if-it-is-a-good-array,90.4,0.6136037655804933
+Design a Text Editor,HARD,"Linked List, String, Stack, Design, Simulation, Doubly-Linked List",https://leetcode.com/problems/design-a-text-editor,90.4,0.4713807144713662
+Two Sum,EASY,"Array, Hash Table",https://leetcode.com/problems/two-sum,90.4,0.5577699113119969
+Median of Two Sorted Arrays,HARD,"Array, Binary Search, Divide and Conquer",https://leetcode.com/problems/median-of-two-sorted-arrays,90.4,0.438146383161466
+Word Pattern,EASY,"Hash Table, String",https://leetcode.com/problems/word-pattern,90.4,0.4306076461166752
+Number of Valid Words for Each Puzzle,HARD,"Array, Hash Table, String, Bit Manipulation, Trie",https://leetcode.com/problems/number-of-valid-words-for-each-puzzle,90.4,0.471197042934319
+Word Break II,HARD,"Array, Hash Table, String, Dynamic Programming, Backtracking, Trie, Memoization",https://leetcode.com/problems/word-break-ii,90.4,0.5364546303753539
+Grid Illumination,HARD,"Array, Hash Table",https://leetcode.com/problems/grid-illumination,90.4,0.3804456061737615
+Letter Combinations of a Phone Number,MEDIUM,"Hash Table, String, Backtracking",https://leetcode.com/problems/letter-combinations-of-a-phone-number,90.4,0.6385757423813572
+Max Area of Island,MEDIUM,"Array, Depth-First Search, Breadth-First Search, Union Find, Matrix",https://leetcode.com/problems/max-area-of-island,87.9,0.7316425827029596
+Guess the Word,HARD,"Array, Math, String, Interactive, Game Theory",https://leetcode.com/problems/guess-the-word,68.7,0.3765162794319245
+Top K Frequent Elements,MEDIUM,"Array, Hash Table, Divide and Conquer, Sorting, Heap (Priority Queue), Bucket Sort, Counting, Quickselect",https://leetcode.com/problems/top-k-frequent-elements,61.9,0.6456600118097364
+Merge Intervals,MEDIUM,"Array, Sorting",https://leetcode.com/problems/merge-intervals,61.9,0.4939525616898277
+Number of Islands,MEDIUM,"Array, Depth-First Search, Breadth-First Search, Union Find, Matrix",https://leetcode.com/problems/number-of-islands,52.4,0.6232009446678927
+Number of Islands II,HARD,"Array, Hash Table, Union Find",https://leetcode.com/problems/number-of-islands-ii,52.4,0.4012700022922468

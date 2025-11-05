@@ -1,0 +1,4 @@
+question,difficulty,topics,link,frequency,acceptance
+Insert Delete GetRandom O(1) - Duplicates allowed,HARD,"Array, Hash Table, Math, Design, Randomized",https://leetcode.com/problems/insert-delete-getrandom-o1-duplicates-allowed,100.0,0.3577140509982381
+Insert Delete GetRandom O(1),MEDIUM,"Array, Hash Table, Math, Design, Randomized",https://leetcode.com/problems/insert-delete-getrandom-o1,95.0,0.5499185337366445
+Subdomain Visit Count,MEDIUM,"Array, Hash Table, String, Counting",https://leetcode.com/problems/subdomain-visit-count,79.6,0.7683456932210888

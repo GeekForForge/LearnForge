@@ -1,0 +1,9 @@
+question,difficulty,topics,link,frequency,acceptance
+Create a Session Bar Chart,EASY,Database,https://leetcode.com/problems/create-a-session-bar-chart,100.0,0.750556206088993
+Design a File Sharing System,MEDIUM,"Hash Table, Design, Sorting, Heap (Priority Queue), Data Stream",https://leetcode.com/problems/design-a-file-sharing-system,100.0,0.4217279076829638
+Toss Strange Coins,MEDIUM,"Array, Math, Dynamic Programming, Probability and Statistics",https://leetcode.com/problems/toss-strange-coins,100.0,0.5813783755604213
+LRU Cache,MEDIUM,"Hash Table, Linked List, Design, Doubly-Linked List",https://leetcode.com/problems/lru-cache,92.1,0.4521484728871755
+Reverse Vowels of a String,EASY,"Two Pointers, String",https://leetcode.com/problems/reverse-vowels-of-a-string,64.4,0.5818746518118435
+Letter Combinations of a Phone Number,MEDIUM,"Hash Table, String, Backtracking",https://leetcode.com/problems/letter-combinations-of-a-phone-number,64.4,0.6385759218994662
+Unique Email Addresses,EASY,"Array, Hash Table, String",https://leetcode.com/problems/unique-email-addresses,64.4,0.6758621291144098
+Find Median from Data Stream,HARD,"Two Pointers, Design, Sorting, Heap (Priority Queue), Data Stream",https://leetcode.com/problems/find-median-from-data-stream,64.4,0.5327801472952072

@@ -1,0 +1,10 @@
+question,difficulty,topics,link,frequency,acceptance
+Best Time to Buy and Sell Stock,EASY,"Array, Dynamic Programming",https://leetcode.com/problems/best-time-to-buy-and-sell-stock,100.0,0.5525969245782094
+Minimum Number of Frogs Croaking,MEDIUM,"String, Counting",https://leetcode.com/problems/minimum-number-of-frogs-croaking,72.5,0.5078628152543851
+Basic Calculator II,MEDIUM,"Math, String, Stack",https://leetcode.com/problems/basic-calculator-ii,72.5,0.4581173080242341
+H-Index,MEDIUM,"Array, Sorting, Counting Sort",https://leetcode.com/problems/h-index,58.8,0.4028680134601828
+4Sum,MEDIUM,"Array, Two Pointers, Sorting",https://leetcode.com/problems/4sum,58.8,0.3821904958109747
+Rotting Oranges,MEDIUM,"Array, Breadth-First Search, Matrix",https://leetcode.com/problems/rotting-oranges,58.8,0.566186375137294
+Fibonacci Number,EASY,"Math, Dynamic Programming, Recursion, Memoization",https://leetcode.com/problems/fibonacci-number,58.8,0.7294495999148303
+Design Circular Queue,MEDIUM,"Array, Linked List, Design, Queue",https://leetcode.com/problems/design-circular-queue,58.8,0.5264455900606018
+String Compression,MEDIUM,"Two Pointers, String",https://leetcode.com/problems/string-compression,58.8,0.5809147253686685

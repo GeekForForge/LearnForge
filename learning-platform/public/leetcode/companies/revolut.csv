@@ -1,0 +1,12 @@
+question,difficulty,topics,link,frequency,acceptance
+Longest Common Prefix,EASY,"String, Trie",https://leetcode.com/problems/longest-common-prefix,100.0,0.4548723109600173
+Perfect Squares,MEDIUM,"Math, Dynamic Programming, Breadth-First Search",https://leetcode.com/problems/perfect-squares,90.2,0.5567499609828845
+Reverse Linked List II,MEDIUM,Linked List,https://leetcode.com/problems/reverse-linked-list-ii,86.9,0.495939234379108
+Binary Tree Paths,EASY,"String, Backtracking, Tree, Depth-First Search, Binary Tree",https://leetcode.com/problems/binary-tree-paths,83.0,0.6656851312174555
+Remove Duplicates from Sorted List,EASY,Linked List,https://leetcode.com/problems/remove-duplicates-from-sorted-list,78.2,0.5487561131550139
+Find All Anagrams in a String,MEDIUM,"Hash Table, String, Sliding Window",https://leetcode.com/problems/find-all-anagrams-in-a-string,78.2,0.5220315664185695
+Binary Tree Level Order Traversal II,MEDIUM,"Tree, Breadth-First Search, Binary Tree",https://leetcode.com/problems/binary-tree-level-order-traversal-ii,63.2,0.6601281342865891
+Permutation in String,MEDIUM,"Hash Table, Two Pointers, String, Sliding Window",https://leetcode.com/problems/permutation-in-string,63.2,0.4725154718440558
+Random Pick with Weight,MEDIUM,"Array, Math, Binary Search, Prefix Sum, Randomized",https://leetcode.com/problems/random-pick-with-weight,63.2,0.4827956964132365
+Merge Two Sorted Lists,EASY,"Linked List, Recursion",https://leetcode.com/problems/merge-two-sorted-lists,63.2,0.6684414597105074
+Missing Number,EASY,"Array, Hash Table, Math, Binary Search, Bit Manipulation, Sorting",https://leetcode.com/problems/missing-number,63.2,0.7007172641908024
