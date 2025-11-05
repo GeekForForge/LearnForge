@@ -1,14 +1,17 @@
 // src/pages/Leaderboard.jsx
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
+import { useNavigate } from 'react-router-dom';
 import { Trophy, Medal, Flame, Star, Award, TrendingUp } from 'lucide-react';
 
 const Leaderboard = ({ setCurrentPage }) => {
+    const navigate = useNavigate();
     const [timeRange, setTimeRange] = useState('week'); // week, month, all-time
 
     const leaderboardData = [
         {
             rank: 1,
+            userId: 1, // ✅ ADD userId for backend
             name: 'Vikram Patel',
             username: '@vikram-dev',
             avatar: 'https://ui-avatars.com/api/?name=Vikram+Patel&background=FFD700&color=000',
@@ -20,6 +23,7 @@ const Leaderboard = ({ setCurrentPage }) => {
         },
         {
             rank: 2,
+            userId: 2,
             name: 'Priya Sharma',
             username: '@priya-dev',
             avatar: 'https://ui-avatars.com/api/?name=Priya+Sharma&background=C0C0C0&color=000',
@@ -31,6 +35,7 @@ const Leaderboard = ({ setCurrentPage }) => {
         },
         {
             rank: 3,
+            userId: 3,
             name: 'Ananya Singh',
             username: '@ananya-learns',
             avatar: 'https://ui-avatars.com/api/?name=Ananya+Singh&background=CD7F32&color=fff',
@@ -42,6 +47,7 @@ const Leaderboard = ({ setCurrentPage }) => {
         },
         {
             rank: 4,
+            userId: 4,
             name: 'Rahul Kumar',
             username: '@rahul-code',
             avatar: 'https://ui-avatars.com/api/?name=Rahul+Kumar&background=8B5CF6&color=fff',
@@ -53,6 +59,7 @@ const Leaderboard = ({ setCurrentPage }) => {
         },
         {
             rank: 5,
+            userId: 5,
             name: 'Samarth Patil',
             username: '@samarth-sachin',
             avatar: 'https://ui-avatars.com/api/?name=Samarth+Patil&background=06B6D4&color=fff',
@@ -64,6 +71,7 @@ const Leaderboard = ({ setCurrentPage }) => {
         },
         {
             rank: 6,
+            userId: 6,
             name: 'Neha Gupta',
             username: '@neha-codes',
             avatar: 'https://ui-avatars.com/api/?name=Neha+Gupta&background=EC4899&color=fff',
@@ -75,6 +83,7 @@ const Leaderboard = ({ setCurrentPage }) => {
         },
         {
             rank: 7,
+            userId: 7,
             name: 'Arjun Singh',
             username: '@arjun-dev',
             avatar: 'https://ui-avatars.com/api/?name=Arjun+Singh&background=F59E0B&color=fff',
@@ -86,6 +95,7 @@ const Leaderboard = ({ setCurrentPage }) => {
         },
         {
             rank: 8,
+            userId: 8,
             name: 'Divya Reddy',
             username: '@divya-learns',
             avatar: 'https://ui-avatars.com/api/?name=Divya+Reddy&background=10B981&color=fff',
@@ -177,16 +187,24 @@ const Leaderboard = ({ setCurrentPage }) => {
                                     {getRankMedalIcon(user.rank)}
                                 </div>
 
-                                {/* User Info */}
+                                {/* User Info - Make clickable */}
                                 <div className="flex-1 min-w-0">
                                     <div className="flex items-center gap-3 mb-1">
+                                        {/* ✅ Clickable Avatar */}
                                         <img
                                             src={user.avatar}
                                             alt={user.name}
-                                            className="w-10 h-10 rounded-full"
+                                            onClick={() => navigate(`/user/${user.userId}`)}
+                                            className="w-10 h-10 rounded-full cursor-pointer hover:ring-2 hover:ring-neon-cyan transition-all"
                                         />
                                         <div className="min-w-0">
-                                            <p className="text-white font-bold truncate">{user.name}</p>
+                                            {/* ✅ Clickable Name */}
+                                            <button
+                                                onClick={() => navigate(`/user/${user.userId}`)}
+                                                className="text-white font-bold truncate hover:text-neon-cyan transition-colors text-left"
+                                            >
+                                                {user.name}
+                                            </button>
                                             <p className="text-gray-400 text-sm truncate">{user.username}</p>
                                         </div>
                                         <span className="text-2xl">{user.badge}</span>

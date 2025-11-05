@@ -9,9 +9,10 @@ import {
     MapPin, Calendar, Clock, Star, Target, Coffee,
     Home, Bell, MessageSquare, Briefcase, User
 } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const Feed = () => {
+    const navigate = useNavigate();
     const [activeTab, setActiveTab] = useState('forYou');
     const [postText, setPostText] = useState('');
     const [searchQuery, setSearchQuery] = useState('');
@@ -466,7 +467,8 @@ const Feed = () => {
                                                             <img
                                                                 src={post.user.avatar}
                                                                 alt={post.user.name}
-                                                                className="w-12 h-12 rounded-full border-2 border-neon-purple"
+                                                                onClick={() => navigate(`/user/${post.user.id}`)}
+                                                                className="w-12 h-12 rounded-full border-2 border-neon-purple cursor-pointer hover:ring-2 hover:ring-neon-cyan transition-all"
                                                             />
                                                             {post.user.online && (
                                                                 <div className="absolute bottom-0 right-0 w-3 h-3 bg-green-500 rounded-full border-2 border-dark-800"></div>
@@ -474,7 +476,12 @@ const Feed = () => {
                                                         </div>
                                                         <div className="flex-1">
                                                             <div className="flex items-center gap-2 mb-1">
-                                                                <h4 className="text-white font-bold">{post.user.name}</h4>
+                                                                <button
+                                                                    onClick={() => navigate(`/user/${post.user.id}`)}
+                                                                    className="text-white font-bold hover:text-neon-cyan transition-colors cursor-pointer text-left"
+                                                                >
+                                                                    {post.user.name}
+                                                                </button>
                                                                 <span className="text-lg">{post.user.badge}</span>
                                                                 <span className="text-xs text-neon-cyan bg-neon-cyan/10 px-2 py-1 rounded-full">
                                                                     Lv {post.user.level}
@@ -668,15 +675,22 @@ const Feed = () => {
                                                         <img
                                                             src={user.avatar}
                                                             alt={user.name}
-                                                            className="w-16 h-16 rounded-full border-2 border-neon-cyan"
+                                                            onClick={() => navigate(`/user/${user.id}`)}
+                                                            className="w-16 h-16 rounded-full border-2 border-neon-cyan cursor-pointer hover:ring-2 hover:ring-neon-cyan transition-all"
                                                         />
                                                         {user.online && (
                                                             <div className="absolute bottom-0 right-0 w-3 h-3 bg-green-500 rounded-full border-2 border-dark-800"></div>
                                                         )}
                                                     </div>
+
                                                     <div className="flex-1 min-w-0">
                                                         <div className="flex items-center gap-2 mb-1">
-                                                            <h3 className="text-white font-bold text-lg truncate">{user.name}</h3>
+                                                            <button
+                                                                onClick={() => navigate(`/user/${user.id}`)}
+                                                                className="text-white font-bold text-lg truncate hover:text-neon-cyan transition-colors cursor-pointer"
+                                                            >
+                                                                {user.name}
+                                                            </button>
                                                             <span className="text-xs text-neon-purple bg-neon-purple/10 px-2 py-1 rounded-full">
                                                                 Lv {user.level}
                                                             </span>
@@ -691,7 +705,10 @@ const Feed = () => {
                                                 {/* Skills */}
                                                 <div className="flex flex-wrap gap-2 mb-4">
                                                     {user.skills.map((skill, idx) => (
-                                                        <span key={idx} className="px-2 py-1 bg-white/5 text-gray-300 text-xs rounded-full border border-white/10">
+                                                        <span
+                                                            key={idx}
+                                                            className="px-2 py-1 bg-white/5 text-gray-300 text-xs rounded-full border border-white/10"
+                                                        >
                                                             {skill}
                                                         </span>
                                                     ))}
@@ -716,6 +733,7 @@ const Feed = () => {
                                                     </div>
                                                 </div>
 
+                                                {/* Follow Button */}
                                                 <motion.button
                                                     whileHover={{ scale: 1.02 }}
                                                     whileTap={{ scale: 0.98 }}

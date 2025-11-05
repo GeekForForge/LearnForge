@@ -395,6 +395,30 @@ class ApiService {
             };
         }
     }
+
+    async getUserById(userId) {
+        try {
+            console.log('🎯 ApiService: Fetching user:', userId);
+            const response = await fetch(`${API_BASE_URL}/users/${userId}`, {
+                method: 'GET',
+                credentials: 'include',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+            });
+
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+
+            const user = await response.json();
+            console.log('✅ ApiService: User received:', user);
+            return user;
+        } catch (error) {
+            console.error('❌ ApiService: Error fetching user:', error);
+            throw error;
+        }
+    }
 }
 
 export default new ApiService();

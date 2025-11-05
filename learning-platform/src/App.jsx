@@ -11,6 +11,7 @@ import ProfilePage from './pages/ProfilePage';
 import LoginPage from './pages/LoginPage';
 import SignUpPage from './pages/SignUpPage';
 import SettingsPage from './pages/SettingsPage';
+import UserProfilePage from './pages/UserProfilePage';
 import AuthCallbackPage from './pages/AuthCallbackPage';
 import AboutPage from './pages/AboutPage';
 import Feed from './pages/Feed';
@@ -163,6 +164,10 @@ function AppContent() {
                                     <AdminPageNew setCurrentPage={setCurrentPage} />
                                 </ProtectedAdminRoute>
                             }
+                        />
+                        <Route
+                            path="/user/:userId"
+                            element={<UserProfilePage setCurrentPage={setCurrentPage} />}
                         />
                     </Routes>
                 </motion.div>
