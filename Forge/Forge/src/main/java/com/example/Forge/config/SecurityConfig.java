@@ -1,7 +1,7 @@
 package com.example.Forge.config;
 
-import com.example.Forge.repository.UserRepository;
 import com.example.Forge.entity.User;
+import com.example.Forge.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -14,7 +14,7 @@ import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
-import java.util.Arrays;
+import java.util.List;
 
 @Configuration
 @EnableWebSecurity
@@ -42,7 +42,7 @@ public class SecurityConfig {
                         .userInfoEndpoint(userInfo -> userInfo
                                 .userService(customOAuth2UserGoogleService)
                         )
-                        .successHandler(customSuccessHandler()) // <-- important!
+                        .successHandler(customSuccessHandler())
                         .defaultSuccessUrl("http://localhost:3000/", true)
                 )
                 .logout(logout -> logout.logoutSuccessUrl("/").permitAll());
@@ -50,7 +50,10 @@ public class SecurityConfig {
         return http.build();
     }
 
-    // Store your User object in session after successful OAuth2 login
+    /**
+     * ✅ Custom success handler:
+     * Stores user in session and redirects to frontend.
+     */
     @Bean
     public AuthenticationSuccessHandler customSuccessHandler() {
         return (request, response, authentication) -> {
@@ -67,16 +70,24 @@ public class SecurityConfig {
         };
     }
 
+    /**
+     * ✅ CORS configuration (Spring Boot 3.2+ compatible)
+     */
     @Bean
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
-        configuration.setAllowedOrigins(Arrays.asList(
+
+        // 🔒 Add all your frontend URLs here
+        configuration.setAllowedOriginPatterns(List.of(
                 "http://localhost:3000",
                 "http://localhost:5173",
+                "http://localhost:5174",
                 "https://learn-forge-xi.vercel.app"
         ));
-        configuration.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE", "OPTIONS"));
-        configuration.setAllowedHeaders(Arrays.asList("*"));
+
+        configuration.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS"));
+        configuration.setAllowedHeaders(List.of("*"));
+        configuration.setExposedHeaders(List.of("Authorization", "Set-Cookie"));
         configuration.setAllowCredentials(true);
 
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
