@@ -236,6 +236,28 @@ class ApiService {
         }
     }
 
+    async updateUser(userId, data) {
+        try {
+            const response = await fetch(`${API_BASE_URL}/users/${userId}`, {
+                method: 'PUT',
+                credentials: 'include',
+                headers: {
+                    'Content-Type': 'application/json',
+                    // Note: You may need to add Authorization headers if your endpoint is secured
+                },
+                body: JSON.stringify(data),
+            });
+            if (!response.ok) {
+                const errorText = await response.text();
+                throw new Error(errorText || 'Failed to update user');
+            }
+            return await response.json();
+        } catch (error) {
+            console.error('❌ Error updating user:', error);
+            throw error;
+        }
+    }
+
     async updateWatchTime(userId, lessonId, watchTimeSeconds) {
         try {
             const response = await fetch(`${API_BASE_URL}/progress/watch-time`, {
@@ -393,6 +415,29 @@ class ApiService {
                 longestStreak: 0,
                 totalLessonsCompleted: 0
             };
+        }
+    }
+
+    // ============================================
+    // LEETCODE METHODS (NEW)
+    // ============================================
+    async getLeetCodeMetrics(handle) {
+        try {
+            console.log(`🎯 ApiService: Fetching LeetCode stats for ${handle}`);
+            const response = await fetch(`${API_BASE_URL}/leetcode/${handle}`, {
+                method: 'GET',
+                credentials: 'include',
+            });
+            if (!response.ok) {
+                const errorData = await response.text();
+                throw new Error(errorData || 'Failed to fetch LeETCode metrics');
+            }
+            const data = await response.json();
+            console.log('✅ ApiService: LeetCode stats received:', data);
+            return data;
+        } catch (error) {
+            console.error('❌ ApiService: Error in getLeetCodeMetrics:', error);
+            throw error;
         }
     }
 }
