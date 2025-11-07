@@ -468,9 +468,7 @@ const LandingPage = ({ setCurrentPage }) => {
             {/*    </motion.div>*/}
             {/*</section>*/}
 
-
-
-            {/* FINAL CTA - Modified for Leetcode Company Wise */}
+            {/* FINAL CTA - Minimal */}
             <section className="py-32 relative">
                 <div className="container mx-auto px-6 max-w-4xl">
                     <motion.div
@@ -481,17 +479,18 @@ const LandingPage = ({ setCurrentPage }) => {
                         className="text-center bg-white/[0.03] backdrop-blur-xl rounded-3xl p-16 border border-white/[0.05] relative overflow-hidden"
                     >
                         <div className="absolute inset-0 bg-gradient-to-r from-neon-purple/5 via-neon-cyan/5 to-neon-pink/5" />
+
                         <div className="relative z-10">
                             <Sparkles size={32} className="mx-auto text-neon-cyan mb-6" />
-                            <h2 className="text-5xl md:text-6xl font-bold mb-6 text-gradient">
-                                Leetcode Company Wise
+                            <h2 className="text-5xl md:text-7xl font-bold mb-6 text-gradient">
+                                Ready to Build?
                             </h2>
                             <p className="text-lg text-gray-400 mb-10 max-w-xl mx-auto">
-                                Company-focused Leetcode interview lists—find and practice questions by company!
+                                Join developers mastering real skills through hands-on projects
                             </p>
-                            <Link to="/resources">
+                            <Link to="/courses">
                                 <button className="group px-10 py-4 bg-white text-black rounded-full font-bold hover:bg-white/90 transition-all inline-flex items-center gap-2">
-                                    Explore Resources
+                                    Start Learning
                                     <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
                                 </button>
                             </Link>
@@ -499,8 +498,6 @@ const LandingPage = ({ setCurrentPage }) => {
                     </motion.div>
                 </div>
             </section>
-
-
 
             <div className="h-20" />
         </div>

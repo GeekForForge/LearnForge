@@ -83,6 +83,60 @@ CREATE TABLE user_streaks (
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
     FOREIGN KEY (user_id) REFERENCES users(user_id) ON DELETE CASCADE
 );
+CREATE TABLE question (
+  id BIGINT AUTO_INCREMENT PRIMARY KEY,
+  topic VARCHAR(255),
+  subtopic VARCHAR(255),
+  difficulty VARCHAR(255),
+  question TEXT,
+  answer VARCHAR(255),
+  explanation TEXT
+);
+CREATE TABLE question_options (
+  question_id BIGINT NOT NULL,
+  options VARCHAR(255),
+  FOREIGN KEY (question_id) REFERENCES question(id)
+);
+
+CREATE TABLE arena_result (
+  id BIGINT AUTO_INCREMENT PRIMARY KEY,
+  user_id VARCHAR(255),
+  topic VARCHAR(255),
+  difficulty VARCHAR(255),
+  score INT,
+  total_questions INT,
+  accuracy DOUBLE,
+  time_taken INT,
+  played_at DATETIME
+);
+CREATE TABLE user_progress (
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    user_id BIGINT NOT NULL,
+    total_questions INT DEFAULT 0,
+    correct_answers INT DEFAULT 0,
+    xp_points INT DEFAULT 0,
+    streak_days INT DEFAULT 0,
+    last_played TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (user_id) REFERENCES users(user_id)
+);
+-- question_completion table (MySQL / Workbench version)
+CREATE TABLE question_completion (
+    user_email       VARCHAR(100) NOT NULL,
+    company_slug     VARCHAR(80)  NOT NULL,       -- e.g. 'accenture'
+    question_uid     VARCHAR(160) NOT NULL,       -- stable unique ID per question
+    completed        BOOLEAN      NOT NULL DEFAULT TRUE,
+    completed_at     TIMESTAMP    NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    updated_at       TIMESTAMP    NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    question_title   TEXT,
+    question_link    TEXT,
+    PRIMARY KEY (user_email, company_slug, question_uid)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- Helpful secondary index for lookups
+CREATE INDEX idx_completion_user_company
+    ON question_completion (user_email, company_slug);
+
+
 
 
 
