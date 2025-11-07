@@ -119,6 +119,22 @@ CREATE TABLE user_progress (
     last_played TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (user_id) REFERENCES users(user_id)
 );
+-- question_completion table (MySQL / Workbench version)
+CREATE TABLE question_completion (
+    user_email       VARCHAR(100) NOT NULL,
+    company_slug     VARCHAR(80)  NOT NULL,       -- e.g. 'accenture'
+    question_uid     VARCHAR(160) NOT NULL,       -- stable unique ID per question
+    completed        BOOLEAN      NOT NULL DEFAULT TRUE,
+    completed_at     TIMESTAMP    NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    updated_at       TIMESTAMP    NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    question_title   TEXT,
+    question_link    TEXT,
+    PRIMARY KEY (user_email, company_slug, question_uid)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- Helpful secondary index for lookups
+CREATE INDEX idx_completion_user_company
+    ON question_completion (user_email, company_slug);
 
 
 
