@@ -1,4 +1,7 @@
 package com.example.Forge.repository;
 
-public interface LeetCodeHandleRawRepository {
+import com.example.Forge.leetcode.LeetCodeHandleRaw;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface LeetCodeHandleRawRepository extends JpaRepository<LeetCodeHandleRaw , Long> {
 }

@@ -1,6 +1,6 @@
 // src/App.jsx
 import React, { useEffect, useState } from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import './globals.css';
 
@@ -22,6 +22,10 @@ import Messages from './pages/Messages';
 import Notifications from './pages/Notifications';
 import Resources from './pages/Resources';
 import UserProfilePage from "./pages/UserProfilePage";
+
+// New: connected accounts settings UI (separate route)
+// Create file: src/pages/SettingsConnectedAccounts.jsx (code provided earlier)
+import SettingsConnectedAccounts from './pages/SettingsConnectedAccounts';
 
 // Admin
 import ProtectedAdminRoute from './components/ProtectedAdminRoute';
@@ -130,10 +134,18 @@ function AppContent() {
                         <Route path="/login" element={<LoginPage setCurrentPage={setCurrentPage} />} />
                         <Route path="/signup" element={<SignUpPage setCurrentPage={setCurrentPage} />} />
                         <Route path="/settings" element={<SettingsPage setCurrentPage={setCurrentPage} />} />
+
+                        {/* New: direct route for connected accounts UI */}
+                        <Route
+                            path="/settings/connected"
+                            element={<SettingsConnectedAccounts setCurrentPage={setCurrentPage} />}
+                        />
+                        {/* optional: if you want /settings to redirect straight to the connected tab */}
+                        <Route path="/settings/*" element={<Navigate to="/settings/connected" replace />} />
+
                         <Route path="/auth/callback" element={<AuthCallbackPage setCurrentPage={setCurrentPage} />} />
                         <Route path="/about" element={<AboutPage setCurrentPage={setCurrentPage} />} />
                         <Route path="/user/:userId" element={<UserProfilePage setCurrentPage={setCurrentPage} />} />
-
 
                         {/* Resources */}
                         <Route path="/resources" element={<Resources setCurrentPage={setCurrentPage} />} />
