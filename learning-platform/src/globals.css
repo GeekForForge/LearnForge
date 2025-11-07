@@ -67,6 +67,7 @@ iframe[src*="youtube.com"] {
   --color-orange-400: rgba(230, 129, 97, 1);
   --color-orange-500: rgba(168, 75, 47, 1);
 
+
   /* RGB versions for opacity control */
   --color-brown-600-rgb: 94, 82, 64;
   --color-teal-500-rgb: 33, 128, 141;
@@ -1269,4 +1270,83 @@ html {
             0 0 10px #85edfc,
             0 0 16px #6ec0ff,
             0 0 22px #61dafb;
+}
+
+
+.heatmap-container .react-calendar-heatmap {
+    font-family: var(--font-family-base);
+}
+
+.heatmap-container .react-calendar-heatmap text {
+    font-size: 8px;
+    fill: var(--color-text-secondary);
+}
+
+/* --- Light Mode Colors --- */
+.heatmap-container .react-calendar-heatmap .color-empty {
+    fill: var(--color-gray-200); /* Your light "empty" square color */
+}
+.heatmap-container .react-calendar-heatmap .color-github-1 {
+    fill: rgba(var(--color-teal-500-rgb), 0.3); /* Lightest Teal */
+}
+.heatmap-container .react-calendar-heatmap .color-github-2 {
+    fill: var(--color-teal-500);
+}
+.heatmap-container .react-calendar-heatmap .color-github-3 {
+    fill: var(--color-teal-600);
+}
+.heatmap-container .react-calendar-heatmap .color-github-4 {
+    fill: var(--color-teal-700); /* Darkest Teal */
+}
+
+/* --- Dark Mode Colors --- */
+@media (prefers-color-scheme: dark) {
+    .heatmap-container .react-calendar-heatmap .color-empty {
+        fill: var(--color-charcoal-700); /* Your dark "empty" square color */
+    }
+    .heatmap-container .react-calendar-heatmap .color-github-1 {
+        fill: var(--color-teal-700); /* Darkest (for lightest activity) */
+    }
+    .heatmap-container .react-calendar-heatmap .color-github-2 {
+        fill: var(--color-teal-600);
+    }
+    .heatmap-container .react-calendar-heatmap .color-github-3 {
+        fill: var(--color-teal-400);
+    }
+    .heatmap-container .react-calendar-heatmap .color-github-4 {
+        fill: var(--color-teal-300); /* Brightest (for most activity) */
+    }
+}
+
+/* Also respect your manual [data-color-scheme] switcher */
+[data-color-scheme="dark"] .heatmap-container .react-calendar-heatmap .color-empty {
+    fill: var(--color-charcoal-700);
+}
+[data-color-scheme="dark"] .heatmap-container .react-calendar-heatmap .color-github-1 {
+    fill: var(--color-teal-700);
+}
+[data-color-scheme="dark"] .heatmap-container .react-calendar-heatmap .color-github-2 {
+    fill: var(--color-teal-600);
+}
+[data-color-scheme="dark"] .heatmap-container .react-calendar-heatmap .color-github-3 {
+    fill: var(--color-teal-400);
+}
+[data-color-scheme="dark"] .heatmap-container .react-calendar-heatmap .color-github-4 {
+    fill: var(--color-teal-300);
+}
+
+[data-color-scheme="light"] .heatmap-container .react-calendar-heatmap .color-empty {
+    fill: var(--color-gray-200);
+}
+[data-color-scheme="light"] .heatmap-container .react-calendar-heatmap .color-github-1 {
+    fill: rgba(var(--color-teal-500-rgb), 0.3);
+}
+[data-color-scheme="light"] .heatmap-container .react-calendar-heatmap .color-github-2 {
+    fill: var(--color-teal-500);
+}
+[data-color-scheme="light"] .heatmap-container .react-calendar-heatmap .color-github-3 {
+    fill: var(--color-teal-600);
+}
+[data-color-scheme="light"] .heatmap-container .react-calendar-heatmap .color-github-4 {
+    fill: var(--color-teal-700);
 }
