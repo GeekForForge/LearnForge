@@ -41,6 +41,10 @@ import SmoothScrolling from './components/SmoothScrolling';
 // Contexts
 import { AuthProvider } from './context/AuthContext';
 import { ProgressProvider } from './context/ProgressContext';
+import ArenaLanding from "./pages/ArenaLanding";
+import ArenaSurvey from "./pages/ArenaSurvey";
+import ArenaGame from "./pages/ArenaGame";
+import ArenaResult from "./pages/ArenaResult";
 
 function AppContent() {
     const [currentPage, setCurrentPage] = useState('landing');
@@ -117,7 +121,10 @@ function AppContent() {
                         <Route path="/notifications" element={<Notifications setCurrentPage={setCurrentPage} />} />
                         <Route path="/leaderboard" element={<Leaderboard setCurrentPage={setCurrentPage} />} />
                         <Route path="/community" element={<Community setCurrentPage={setCurrentPage} />} />
-
+                        <Route path="/arena" element={<ArenaLanding />} />
+                        <Route path="/arena/survey" element={<ArenaSurvey />} />
+                        <Route path="/arena/play" element={<ArenaGame />} />
+                        <Route path="/arena/result" element={<ArenaResult />} />
                         {/* Courses */}
                         <Route path="/courses" element={<CoursesPage setCurrentPage={setCurrentPage} />} />
                         <Route path="/course/:id" element={<CourseDetailPage setCurrentPage={setCurrentPage} />} />

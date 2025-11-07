@@ -2,23 +2,9 @@
 
 import { db } from '../firebase';
 import {
-    collection,
-    query,
-    onSnapshot,
-    orderBy,
-    addDoc,
-    serverTimestamp,
-    doc,
-    updateDoc,
-    arrayUnion,
-    arrayRemove,
-    where,
-    runTransaction,
-    increment,
-    deleteDoc,
-    setDoc,
-    getDoc,
-    getDocs
+    collection, query, onSnapshot, orderBy, addDoc, serverTimestamp,
+    doc, updateDoc, arrayUnion, arrayRemove, where, runTransaction,
+    increment, deleteDoc, setDoc, getDoc, getDocs
 } from 'firebase/firestore';
 import {
     Heart, MessageCircle, Share2, Bookmark, Send, Smile,
@@ -27,12 +13,392 @@ import {
     Sparkles, Zap, Image, Video, GitBranch, Eye,
     MapPin, Calendar, Clock, Star, Target, Coffee,
     Home, Bell, MessageSquare, Briefcase, User,
-    ChevronLeft, ChevronRight, ArrowLeft, Paperclip
+    ChevronLeft, ChevronRight, ArrowLeft, Paperclip,
+    X, Calendar as CalendarIcon, ChevronDown, ChevronUp
 } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
 import { Link, useNavigate } from 'react-router-dom';
 import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+
+
+// ✅ FIXED Calendar Component (now works properly)
+const CalendarModal = ({ isOpen, onClose, onDateSelect }) => {
+    const [selectedDate, setSelectedDate] = useState('');
+    const [currentMonth, setCurrentMonth] = useState(new Date());
+
+    // Helper: get all days in month
+    const getDaysInMonth = (date) => {
+        const year = date.getFullYear();
+        const month = date.getMonth();
+        const firstDay = new Date(year, month, 1);
+        const lastDay = new Date(year, month + 1, 0);
+        const days = [];
+
+        // Add empty placeholders before first day
+        for (let i = 0; i < firstDay.getDay(); i++) {
+            days.push(null);
+        }
+
+        // Add actual days
+        for (let i = 1; i <= lastDay.getDate(); i++) {
+            days.push(new Date(year, month, i));
+        }
+        return days;
+    };
+
+    const days = getDaysInMonth(currentMonth);
+    const monthNames = [
+        "January", "February", "March", "April", "May", "June",
+        "July", "August", "September", "October", "November", "December"
+    ];
+
+    const handleDateClick = (date) => {
+        if (date) {
+            const formattedDate = date.toLocaleDateString('en-US', {
+                weekday: 'long',
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric'
+            });
+            setSelectedDate(formattedDate);
+        }
+    };
+
+    const handleConfirm = () => {
+        if (selectedDate) {
+            onDateSelect(selectedDate);
+            onClose();
+        }
+    };
+
+    const navigateMonth = (direction) => {
+        setCurrentMonth(new Date(currentMonth.getFullYear(), currentMonth.getMonth() + direction, 1));
+    };
+
+    // 🧠 Debugging (you can remove later)
+    console.log("CalendarModal rendered → isOpen:", isOpen);
+
+    if (!isOpen) return null;
+
+    return (
+        <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            // ✅ raised z-index so modal always visible above Feed
+            className="fixed inset-0 bg-black/80 backdrop-blur-sm z-[9999] flex items-center justify-center p-4"
+            onClick={onClose}
+        >
+            <motion.div
+                initial={{ scale: 0.9, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                exit={{ scale: 0.9, opacity: 0 }}
+                className="bg-gray-900 rounded-2xl border border-gray-700 p-6 w-full max-w-md mx-auto shadow-xl shadow-neon-purple/20"
+                onClick={(e) => e.stopPropagation()} // ✅ prevents instant close
+            >
+                <div className="flex items-center justify-between mb-6">
+                    <h3 className="text-white font-bold text-lg">Select Event Date</h3>
+                    <button
+                        onClick={onClose}
+                        className="p-2 rounded-xl hover:bg-white/10 transition-all"
+                    >
+                        <X className="w-5 h-5 text-white" />
+                    </button>
+                </div>
+
+                {/* Calendar Header */}
+                <div className="flex items-center justify-between mb-4">
+                    <button
+                        onClick={() => navigateMonth(-1)}
+                        className="p-2 rounded-xl hover:bg-white/10 transition-all"
+                    >
+                        <ChevronLeft className="w-5 h-5 text-white" />
+                    </button>
+                    <h4 className="text-white font-semibold">
+                        {monthNames[currentMonth.getMonth()]} {currentMonth.getFullYear()}
+                    </h4>
+                    <button
+                        onClick={() => navigateMonth(1)}
+                        className="p-2 rounded-xl hover:bg-white/10 transition-all"
+                    >
+                        <ChevronRight className="w-5 h-5 text-white" />
+                    </button>
+                </div>
+
+                {/* Calendar Grid */}
+                <div className="grid grid-cols-7 gap-1 mb-4">
+                    {['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'].map(day => (
+                        <div key={day} className="text-center text-gray-400 text-sm font-medium py-2">
+                            {day}
+                        </div>
+                    ))}
+                    {days.map((date, index) => (
+                        <button
+                            key={index}
+                            onClick={() => handleDateClick(date)}
+                            disabled={!date}
+                            className={`p-2 rounded-xl text-sm transition-all ${
+                                date
+                                    ? selectedDate && date.toDateString() === new Date(selectedDate).toDateString()
+                                        ? 'bg-gradient-to-r from-neon-purple to-neon-cyan text-white'
+                                        : 'text-white hover:bg-white/10'
+                                    : 'text-transparent'
+                            }`}
+                        >
+                            {date ? date.getDate() : ''}
+                        </button>
+                    ))}
+                </div>
+
+                {/* Selected Date */}
+                {selectedDate && (
+                    <div className="bg-white/5 rounded-xl p-4 mb-4">
+                        <div className="flex items-center gap-2 text-neon-cyan mb-1">
+                            <CalendarIcon className="w-4 h-4" />
+                            <span className="text-sm font-semibold">Selected Date</span>
+                        </div>
+                        <p className="text-white text-sm">{selectedDate}</p>
+                    </div>
+                )}
+
+                {/* Action Buttons */}
+                <div className="flex gap-3">
+                    <button
+                        onClick={onClose}
+                        className="flex-1 py-3 rounded-xl bg-white/10 text-white font-semibold hover:bg-white/20 transition-all"
+                    >
+                        Cancel
+                    </button>
+                    <button
+                        onClick={handleConfirm}
+                        disabled={!selectedDate}
+                        className="flex-1 py-3 rounded-xl bg-gradient-to-r from-neon-purple to-neon-cyan text-white font-semibold hover:shadow-lg hover:shadow-neon-cyan/20 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+                    >
+                        Add Date
+                    </button>
+                </div>
+            </motion.div>
+        </motion.div>
+    );
+};
+
+// Code Formatter Component with Syntax Highlighting
+const CodeFormatter = ({ code, language = 'javascript' }) => {
+    const [formattedCode, setFormattedCode] = useState(code);
+
+    useEffect(() => {
+        // Enhanced code formatting with language-specific patterns
+        const formatCode = (code, lang) => {
+            let lines = code.split('\n');
+            let indentLevel = 0;
+            let formattedLines = [];
+
+            // Language-specific keywords for basic highlighting
+            const keywords = {
+                python: ['def', 'class', 'if', 'else', 'elif', 'for', 'while', 'import', 'from', 'as', 'return', 'True', 'False', 'None', 'and', 'or', 'not', 'in', 'is'],
+                javascript: ['function', 'class', 'if', 'else', 'for', 'while', 'return', 'const', 'let', 'var', 'true', 'false', 'null', 'undefined', 'export', 'import', 'from', 'default'],
+                java: ['public', 'private', 'class', 'static', 'void', 'if', 'else', 'for', 'while', 'return', 'true', 'false', 'null', 'new', 'this'],
+                cpp: ['#include', 'using', 'namespace', 'std', 'int', 'float', 'double', 'char', 'void', 'class', 'public', 'private', 'if', 'else', 'for', 'while', 'return', 'true', 'false', 'nullptr'],
+                html: ['<!DOCTYPE', '<html', '<head', '<body', '<div', '<span', '<p', '<h1', '<h2', '<h3', '<a', '<img', '<script', '<style', '<link'],
+                css: ['@import', '@media', '@keyframes', '.', '#', 'margin', 'padding', 'color', 'background', 'font', 'display', 'position', 'width', 'height'],
+                typescript: ['interface', 'type', 'enum', 'function', 'class', 'if', 'else', 'for', 'while', 'return', 'const', 'let', 'true', 'false', 'null', 'undefined', 'export', 'import', 'from']
+            };
+
+            const langKeywords = keywords[lang] || keywords.javascript;
+
+            for (let line of lines) {
+                const trimmedLine = line.trim();
+                if (!trimmedLine) {
+                    formattedLines.push('');
+                    continue;
+                }
+
+                // Decrease indent for closing braces/brackets
+                if (trimmedLine.endsWith('}') || trimmedLine.endsWith('];') || trimmedLine === ');' || trimmedLine.endsWith('>')) {
+                    indentLevel = Math.max(0, indentLevel - 1);
+                }
+
+                // Add current line with proper indentation and basic syntax highlighting
+                let formattedLine = '  '.repeat(indentLevel);
+
+                // Basic syntax highlighting
+                const words = trimmedLine.split(/(\s+)/);
+                const highlightedWords = words.map(word => {
+                    if (langKeywords.includes(word.trim())) {
+                        return `<span class="text-blue-400 font-semibold">${word}</span>`;
+                    } else if (word.match(/^["'].*["']$/) || word.match(/^\d+$/)) {
+                        return `<span class="text-green-400">${word}</span>`;
+                    } else if (word.match(/^[{}()\[\];,]$/)) {
+                        return `<span class="text-yellow-400">${word}</span>`;
+                    } else if (word.match(/^\/\/|\/\*|\*\/$/)) {
+                        return `<span class="text-gray-500">${word}</span>`;
+                    }
+                    return word;
+                });
+
+                formattedLine += highlightedWords.join('');
+                formattedLines.push(formattedLine);
+
+                // Increase indent for opening braces/brackets
+                if (trimmedLine.endsWith('{') || trimmedLine.endsWith('=[') || trimmedLine.endsWith('(') || trimmedLine.endsWith('<')) {
+                    indentLevel += 1;
+                }
+            }
+
+            return formattedLines.join('\n');
+        };
+
+        setFormattedCode(formatCode(code, language));
+    }, [code, language]);
+
+    return (
+        <div className="bg-gray-900 rounded-xl p-4 overflow-x-auto border border-gray-700">
+            <div className="flex items-center justify-between mb-3">
+                <div className="flex items-center gap-2">
+                    <div className="w-3 h-3 bg-red-500 rounded-full"></div>
+                    <div className="w-3 h-3 bg-yellow-500 rounded-full"></div>
+                    <div className="w-3 h-3 bg-green-500 rounded-full"></div>
+                </div>
+                <div className="flex items-center gap-2 text-gray-400 text-sm">
+                    <Code className="w-4 h-4" />
+                    <span className="font-mono">{language}</span>
+                </div>
+            </div>
+            <pre className="text-sm font-mono whitespace-pre overflow-x-auto">
+                <code
+                    className="text-gray-100"
+                    dangerouslySetInnerHTML={{ __html: formattedCode }}
+                />
+            </pre>
+        </div>
+    );
+};
+
+// Enhanced Read More Component with WhatsApp-style nested expansion
+const ReadMore = ({ text, maxLength = 500, nestedLength = 1500 }) => {
+    const [isExpanded, setIsExpanded] = useState(false);
+    const [isFullyExpanded, setIsFullyExpanded] = useState(false);
+
+    if (!text) return null;
+
+    // If text is within first level limit
+    if (text.length <= maxLength) {
+        return (
+            <p className="text-white text-base leading-relaxed whitespace-pre-line">
+                {text}
+            </p>
+        );
+    }
+
+    // If text is within second level limit and expanded
+    if (isExpanded && text.length <= nestedLength) {
+        return (
+            <div>
+                <p className="text-white text-base leading-relaxed whitespace-pre-line">
+                    {text}
+                </p>
+                <button
+                    onClick={() => setIsExpanded(false)}
+                    className="mt-2 text-neon-cyan hover:text-neon-purple transition-colors font-semibold text-sm flex items-center gap-1"
+                >
+                    <ChevronUp className="w-4 h-4" />
+                    Show Less
+                </button>
+            </div>
+        );
+    }
+
+    // If text exceeds second level limit and needs nested expansion
+    if (text.length > nestedLength) {
+        if (!isExpanded) {
+            // First level - show truncated text
+            return (
+                <div>
+                    <p className="text-white text-base leading-relaxed whitespace-pre-line">
+                        {text.slice(0, maxLength)}...
+                    </p>
+                    <button
+                        onClick={() => setIsExpanded(true)}
+                        className="mt-2 text-neon-cyan hover:text-neon-purple transition-colors font-semibold text-sm flex items-center gap-1"
+                    >
+                        <ChevronDown className="w-4 h-4" />
+                        Read More
+                    </button>
+                </div>
+            );
+        } else if (!isFullyExpanded) {
+            // Second level - show more content but not all
+            return (
+                <div>
+                    <p className="text-white text-base leading-relaxed whitespace-pre-line">
+                        {text.slice(0, nestedLength)}...
+                    </p>
+                    <div className="flex gap-3 mt-2">
+                        <button
+                            onClick={() => setIsFullyExpanded(true)}
+                            className="text-neon-cyan hover:text-neon-purple transition-colors font-semibold text-sm flex items-center gap-1"
+                        >
+                            <ChevronDown className="w-4 h-4" />
+                            Read More
+                        </button>
+                        <button
+                            onClick={() => setIsExpanded(false)}
+                            className="text-gray-400 hover:text-white transition-colors text-sm flex items-center gap-1"
+                        >
+                            <ChevronUp className="w-4 h-4" />
+                            Show Less
+                        </button>
+                    </div>
+                </div>
+            );
+        } else {
+            // Fully expanded - show all content
+            return (
+                <div>
+                    <p className="text-white text-base leading-relaxed whitespace-pre-line">
+                        {text}
+                    </p>
+                    <button
+                        onClick={() => {
+                            setIsFullyExpanded(false);
+                            setIsExpanded(false);
+                        }}
+                        className="mt-2 text-neon-cyan hover:text-neon-purple transition-colors font-semibold text-sm flex items-center gap-1"
+                    >
+                        <ChevronUp className="w-4 h-4" />
+                        Show Less
+                    </button>
+                </div>
+            );
+        }
+    }
+
+    // Fallback for normal expansion
+    return (
+        <div>
+            <p className="text-white text-base leading-relaxed whitespace-pre-line">
+                {isExpanded ? text : `${text.slice(0, maxLength)}...`}
+            </p>
+            <button
+                onClick={() => setIsExpanded(!isExpanded)}
+                className="mt-2 text-neon-cyan hover:text-neon-purple transition-colors font-semibold text-sm flex items-center gap-1"
+            >
+                {isExpanded ? (
+                    <>
+                        <ChevronUp className="w-4 h-4" />
+                        Show Less
+                    </>
+                ) : (
+                    <>
+                        <ChevronDown className="w-4 h-4" />
+                        Read More
+                    </>
+                )}
+            </button>
+        </div>
+    );
+};
 
 const formatTimestamp = (timestamp) => {
     if (!timestamp) return 'Just now';
@@ -62,12 +428,10 @@ const ChatWindow = ({ chatId, otherUser, onBack }) => {
     const [loading, setLoading] = useState(false);
     const messagesEndRef = useRef(null);
 
-    // Auto-scroll to the latest message
     useEffect(() => {
         messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
     }, [messages]);
 
-    // Fetch messages for the selected chat
     useEffect(() => {
         if (!chatId) {
             setMessages([]);
@@ -290,6 +654,9 @@ const Feed = () => {
     const [searchQuery, setSearchQuery] = useState('');
     const [isSidebarOpen, setIsSidebarOpen] = useState(true);
     const [friendsSearchQuery, setFriendsSearchQuery] = useState('');
+    const [showCalendar, setShowCalendar] = useState(false);
+    const [postType, setPostType] = useState('text'); // 'text', 'code', 'event'
+    const [codeLanguage, setCodeLanguage] = useState('javascript');
 
     // Chat state
     const [selectedChat, setSelectedChat] = useState(null);
@@ -389,6 +756,31 @@ const Feed = () => {
         return () => unsubscribe();
     }, [user]);
 
+    // Handle calendar date selection
+    const handleDateSelect = (date) => {
+        const eventText = `🗓️ **Event Date:** ${date}\n\n`;
+        setPostText(prev => eventText + (prev || ''));
+        setPostType('event');
+        setShowCalendar(false); // Close calendar after selection
+    };
+
+    // Handle code post creation
+    const handleCodePost = () => {
+        setPostType('code');
+        const codeTemplate = `\`\`\`${codeLanguage}\n// Write your ${codeLanguage} code here\n\n\`\`\`\n`;
+        setPostText(prev => prev + codeTemplate);
+    };
+
+    // Handle language change
+    const handleLanguageChange = (newLanguage) => {
+        setCodeLanguage(newLanguage);
+        if (postType === 'code' && postText.includes('```')) {
+            // Update the code block language in the existing text
+            const updatedText = postText.replace(/```(\w+)?/, `\`\`\`${newLanguage}`);
+            setPostText(updatedText);
+        }
+    };
+
     // Create post
     const handleCreatePost = async () => {
         if (!postText.trim() || !user) return;
@@ -406,7 +798,8 @@ const Feed = () => {
             userTitle: user.bio || '',
             likedBy: [],
             bookmarkedBy: [],
-            type: 'text',
+            type: postType,
+            language: postType === 'code' ? codeLanguage : null,
             tags: [],
             comments: 0,
             shares: 0,
@@ -421,6 +814,8 @@ const Feed = () => {
                 });
             });
             setPostText('');
+            setPostType('text');
+            setCodeLanguage('javascript');
         } catch (error) {
             console.error("Error creating post: ", error);
         }
@@ -545,6 +940,50 @@ const Feed = () => {
         } catch (error) {
             console.error("Error following/unfollowing user: ", error);
         }
+    };
+
+    // Render post content based on type
+    const renderPostContent = (post) => {
+        if (post.type === 'code' && post.content.includes('```')) {
+            // Extract code from markdown code blocks
+            const codeMatch = post.content.match(/```(?:\w+)?\n([\s\S]*?)```/);
+            if (codeMatch) {
+                const code = codeMatch[1].trim();
+                const beforeCode = post.content.split('```')[0];
+                const afterCode = post.content.split('```')[2];
+
+                return (
+                    <div className="space-y-4">
+                        {/* Text before code */}
+                        {beforeCode && (
+                            <ReadMore text={beforeCode} maxLength={300} nestedLength={800} />
+                        )}
+                        {/* Code block */}
+                        <CodeFormatter code={code} language={post.language || 'javascript'} />
+                        {/* Text after code */}
+                        {afterCode && (
+                            <ReadMore text={afterCode} maxLength={300} nestedLength={800} />
+                        )}
+                    </div>
+                );
+            }
+        } else if (post.type === 'event') {
+            return (
+                <div className="space-y-4">
+                    <div className="flex items-center gap-3 p-4 bg-gradient-to-r from-neon-purple/20 to-neon-cyan/20 rounded-xl border border-neon-purple/30">
+                        <Calendar className="w-6 h-6 text-neon-purple" />
+                        <div>
+                            <span className="text-neon-purple font-semibold text-sm">EVENT</span>
+                            <p className="text-white text-sm mt-1">Check the date mentioned below</p>
+                        </div>
+                    </div>
+                    <ReadMore text={post.content} maxLength={300} nestedLength={800} />
+                </div>
+            );
+        }
+
+        // Default text post
+        return <ReadMore text={post.content} maxLength={500} nestedLength={1500} />;
     };
 
     const filteredUsers = discoverUsers.filter(user =>
@@ -773,27 +1212,89 @@ const Feed = () => {
                                                             <textarea
                                                                 value={postText}
                                                                 onChange={(e) => setPostText(e.target.value)}
-                                                                placeholder="Share your learning journey..."
-                                                                className="w-full bg-white/5 text-white rounded-2xl p-4 border border-white/10 focus:border-neon-purple focus:outline-none resize-none backdrop-blur-sm"
-                                                                rows="3"
+                                                                placeholder={
+                                                                    postType === 'code'
+                                                                        ? `Write your ${codeLanguage} code here... (Use code blocks for formatting)`
+                                                                        : "Share your learning journey..."
+                                                                }
+                                                                className="w-full bg-white/5 text-white rounded-2xl p-4 border border-white/10 focus:border-neon-purple focus:outline-none resize-none backdrop-blur-sm font-mono"
+                                                                rows={postType === 'code' ? 6 : 3}
                                                             />
+
+                                                            {/* Post Type Indicators */}
+                                                            <div className="flex items-center gap-2 mt-2">
+                                                                {postType === 'code' && (
+                                                                    <div className="flex items-center gap-2 px-3 py-1 bg-neon-cyan/20 text-neon-cyan rounded-full text-xs font-semibold">
+                                                                        <Code className="w-3 h-3" />
+                                                                        Code Post • {codeLanguage}
+                                                                    </div>
+                                                                )}
+                                                                {postType === 'event' && (
+                                                                    <div className="flex items-center gap-2 px-3 py-1 bg-neon-purple/20 text-neon-purple rounded-full text-xs font-semibold">
+                                                                        <Calendar className="w-3 h-3" />
+                                                                        Event Post
+                                                                    </div>
+                                                                )}
+                                                            </div>
+
                                                             <div className="flex items-center justify-between mt-4">
                                                                 <div className="flex gap-2">
-                                                                    {[
-                                                                        { icon: <Code className="w-5 h-5" />, label: 'Code' },
-                                                                        { icon: <Calendar className="w-5 h-5" />, label: 'Event' }
-                                                                    ].map((item, index) => (
-                                                                        <button key={index} className="flex items-center gap-2 px-3 py-2 text-gray-300 hover:text-white hover:bg-white/5 rounded-xl transition-all">
-                                                                            {item.icon}
-                                                                            <span className="text-xs">{item.label}</span>
-                                                                        </button>
-                                                                    ))}
+                                                                    {/* Code Button */}
+                                                                    <motion.button
+                                                                        whileHover={{ scale: 1.05 }}
+                                                                        whileTap={{ scale: 0.95 }}
+                                                                        onClick={handleCodePost}
+                                                                        className={`flex items-center gap-2 px-3 py-2 rounded-xl transition-all ${
+                                                                            postType === 'code'
+                                                                                ? 'bg-neon-cyan/20 text-neon-cyan'
+                                                                                : 'text-gray-300 hover:text-neon-cyan hover:bg-neon-cyan/10'
+                                                                        }`}
+                                                                    >
+                                                                        <Code className="w-4 h-4" />
+                                                                        <span className="text-xs">Code</span>
+                                                                    </motion.button>
+
+                                                                    {/* Calendar/Event Button */}
+                                                                    <motion.button
+                                                                        whileHover={{ scale: 1.05 }}
+                                                                        whileTap={{ scale: 0.95 }}
+                                                                        onClick={() => setShowCalendar(true)}
+                                                                        className={`flex items-center gap-2 px-3 py-2 rounded-xl transition-all ${
+                                                                            postType === 'event'
+                                                                                ? 'bg-neon-purple/20 text-neon-purple'
+                                                                                : 'text-gray-300 hover:text-neon-purple hover:bg-neon-purple/10'
+                                                                        }`}
+                                                                    >
+                                                                        <Calendar className="w-4 h-4" />
+                                                                        <span className="text-xs">Event</span>
+                                                                    </motion.button>
+
+                                                                    {/* Language Selector for Code Posts - FIXED DROPDOWN COLORS */}
+                                                                    {postType === 'code' && (
+                                                                        <div className="relative">
+                                                                            <select
+                                                                                value={codeLanguage}
+                                                                                onChange={(e) => handleLanguageChange(e.target.value)}
+                                                                                className="px-3 py-2 bg-gray-800 text-white rounded-xl border border-gray-600 text-xs focus:outline-none focus:border-neon-cyan appearance-none cursor-pointer pr-8"
+                                                                            >
+                                                                                <option value="javascript" className="bg-gray-800 text-white">JavaScript</option>
+                                                                                <option value="python" className="bg-gray-800 text-white">Python</option>
+                                                                                <option value="java" className="bg-gray-800 text-white">Java</option>
+                                                                                <option value="cpp" className="bg-gray-800 text-white">C++</option>
+                                                                                <option value="html" className="bg-gray-800 text-white">HTML</option>
+                                                                                <option value="css" className="bg-gray-800 text-white">CSS</option>
+                                                                                <option value="typescript" className="bg-gray-800 text-white">TypeScript</option>
+                                                                            </select>
+                                                                            <ChevronDown className="absolute right-2 top-1/2 transform -translate-y-1/2 text-gray-400 w-3 h-3 pointer-events-none" />
+                                                                        </div>
+                                                                    )}
                                                                 </div>
                                                                 <motion.button
                                                                     onClick={handleCreatePost}
                                                                     whileHover={{ scale: 1.05 }}
                                                                     whileTap={{ scale: 0.95 }}
-                                                                    className="px-6 py-3 bg-gradient-to-r from-neon-purple to-neon-cyan text-white rounded-xl font-semibold hover:shadow-lg hover:shadow-neon-cyan/20 transition-all flex items-center gap-2"
+                                                                    disabled={!postText.trim()}
+                                                                    className="px-6 py-3 bg-gradient-to-r from-neon-purple to-neon-cyan text-white rounded-xl font-semibold hover:shadow-lg hover:shadow-neon-cyan/20 transition-all flex items-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
                                                                 >
                                                                     <Rocket className="w-4 h-4" />
                                                                     Post
@@ -835,10 +1336,30 @@ const Feed = () => {
                                                                             alt={post.userName}
                                                                             className="w-12 h-12 rounded-full border-2 border-neon-purple"
                                                                         />
+                                                                        {/* Post Type Badge */}
+                                                                        {post.type !== 'text' && (
+                                                                            <div className="absolute -top-1 -right-1">
+                                                                                {post.type === 'code' && (
+                                                                                    <div className="bg-neon-cyan text-white rounded-full p-1">
+                                                                                        <Code className="w-3 h-3" />
+                                                                                    </div>
+                                                                                )}
+                                                                                {post.type === 'event' && (
+                                                                                    <div className="bg-neon-purple text-white rounded-full p-1">
+                                                                                        <Calendar className="w-3 h-3" />
+                                                                                    </div>
+                                                                                )}
+                                                                            </div>
+                                                                        )}
                                                                     </div>
                                                                     <div className="flex-1">
                                                                         <div className="flex items-center gap-2 mb-1">
                                                                             <h4 className="text-white font-bold">{post.userName}</h4>
+                                                                            {post.type === 'code' && post.language && (
+                                                                                <span className="px-2 py-1 bg-neon-cyan/20 text-neon-cyan text-xs rounded-full font-semibold">
+                                                                                    {post.language}
+                                                                                </span>
+                                                                            )}
                                                                         </div>
                                                                         <div className="flex items-center gap-2 text-gray-300 text-sm">
                                                                             <span>@{post.userName.toLowerCase().replace(' ', '-')}</span>
@@ -854,13 +1375,11 @@ const Feed = () => {
 
                                                             {/* Post Content */}
                                                             <div className="mt-4">
-                                                                <p className="text-white text-base leading-relaxed mb-3">
-                                                                    {post.content}
-                                                                </p>
+                                                                {renderPostContent(post)}
 
                                                                 {/* Tags */}
                                                                 {post.tags && post.tags.length > 0 && (
-                                                                    <div className="flex flex-wrap gap-2 mb-4">
+                                                                    <div className="flex flex-wrap gap-2 mt-4">
                                                                         {post.tags.map((tag, idx) => (
                                                                             <span key={idx} className="px-3 py-1 bg-neon-purple/20 text-neon-purple text-xs rounded-full font-semibold">
                                                                                 {tag}
@@ -1081,6 +1600,11 @@ const Feed = () => {
                     </div>
                 </div>
             </div>
+            <CalendarModal
+                isOpen={showCalendar}
+                onClose={() => setShowCalendar(false)}
+                onDateSelect={handleDateSelect}
+            />
         </div>
     );
 };
