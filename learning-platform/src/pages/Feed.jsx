@@ -1334,7 +1334,8 @@ const Feed = () => {
                                                                         <img
                                                                             src={post.userAvatar}
                                                                             alt={post.userName}
-                                                                            className="w-12 h-12 rounded-full border-2 border-neon-purple"
+                                                                            onClick={() => navigate(`/user/${post.userId}`)} // ✅ ADD THIS
+                                                                            className="w-12 h-12 rounded-full border-2 border-neon-purple cursor-pointer hover:ring-2 hover:ring-neon-cyan transition-all" // ✅ ADD cursor-pointer
                                                                         />
                                                                         {/* Post Type Badge */}
                                                                         {post.type !== 'text' && (
@@ -1354,7 +1355,12 @@ const Feed = () => {
                                                                     </div>
                                                                     <div className="flex-1">
                                                                         <div className="flex items-center gap-2 mb-1">
-                                                                            <h4 className="text-white font-bold">{post.userName}</h4>
+                                                                            <button
+                                                                                onClick={() => navigate(`/user/${post.userId}`)}
+                                                                                className="text-white font-bold hover:text-neon-cyan transition-colors cursor-pointer"
+                                                                            >
+                                                                                {post.userName}
+                                                                            </button>
                                                                             {post.type === 'code' && post.language && (
                                                                                 <span className="px-2 py-1 bg-neon-cyan/20 text-neon-cyan text-xs rounded-full font-semibold">
                                                                                     {post.language}
@@ -1520,13 +1526,17 @@ const Feed = () => {
                                                                         <img
                                                                             src={discoverUser.avatarUrl || `https://ui-avatars.com/api/?name=${discoverUser.name}&background=10B981&color=fff`}
                                                                             alt={discoverUser.name}
-                                                                            className="w-16 h-16 rounded-full border-2 border-neon-cyan"
+                                                                            onClick={() => navigate(`/user/${discoverUser.id}`)}
+                                                                            className="w-16 h-16 rounded-full border-2 border-neon-cyan cursor-pointer hover:ring-2 hover:ring-neon-cyan transition-all"
                                                                         />
                                                                     </div>
                                                                     <div className="flex-1 min-w-0">
-                                                                        <div className="flex items-center gap-2 mb-1">
-                                                                            <h3 className="text-white font-bold text-lg truncate">{discoverUser.name}</h3>
-                                                                        </div>
+                                                                        <button
+                                                                            onClick={() => navigate(`/user/${discoverUser.id}`)} // ✅ ADD THIS
+                                                                            className="text-white font-bold text-lg truncate hover:text-neon-cyan transition-colors cursor-pointer" // ✅ ADD hover effect
+                                                                        >
+                                                                            {discoverUser.name}
+                                                                        </button>
                                                                         <p className="text-gray-300 text-sm truncate">@{discoverUser.username || discoverUser.name.toLowerCase()}</p>
                                                                         <p className="text-neon-cyan text-xs mt-1">{discoverUser.title || discoverUser.bio}</p>
                                                                     </div>
