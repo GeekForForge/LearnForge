@@ -2,8 +2,7 @@
 import React, { createContext, useState, useContext, useEffect } from 'react';
 import ApiService from '../services/api';
 import { db } from '../firebase';
-// ✅ Import updateDoc
-import { doc, setDoc, getDoc, updateDoc } from 'firebase/firestore';
+import { doc, setDoc, getDoc } from 'firebase/firestore';
 
 const BASE_URL = process.env.REACT_APP_BACKEND_URL || "http://localhost:8080/api";
 const GOOGLE_CLIENT_ID = "354410344753-k7kj6li8pgociktjun9g6ig8hohdt3p7.apps.googleusercontent.com";
@@ -15,12 +14,6 @@ export const AuthProvider = ({ children }) => {
     const [isAuthenticated, setIsAuthenticated] = useState(false);
     const [loading, setLoading] = useState(true);
 
-    // On mount: try to load session (covers OAuth redirects)
-    useEffect(() => {
-        fetchCurrentUserDirect();
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, []);
-
     // Fetch session-backed user (used on mount)
     const fetchCurrentUserDirect = async () => {
         try {
@@ -31,28 +24,15 @@ export const AuthProvider = ({ children }) => {
             if (!res.ok) {
                 setUser(null);
                 setIsAuthenticated(false);
-                setLoading(false); // ✅ Set loading false on failure
+                setLoading(false);
                 return;
             }
 
             const userData = await res.json();
 
             if (userData && userData.email) {
-                // ✅ Call fetchUser to sync Firestore
                 await fetchUser(userData);
                 console.log('✅ User loaded from session:', userData.email);
-
-                // If we arrived via OAuth (Google backend callback) redirect to /landing
-                const urlParams = new URLSearchParams(window.location.search);
-                const hasCode = urlParams.get('code');
-                const pathname = window.location.pathname || '';
-
-                if (hasCode || pathname.includes('/auth/google/callback') || pathname.includes('/auth/callback')) {
-                    // Replace history state then navigate to landing
-                    window.history.replaceState({}, document.title, '/landing');
-                    // Hard navigation to ensure route loads after backend session created
-                    window.location.href = '/landing';
-                }
             } else {
                 setUser(null);
                 setIsAuthenticated(false);
@@ -67,11 +47,10 @@ export const AuthProvider = ({ children }) => {
     };
 
     // Standard fetch user (used after login flows)
-    // ✅ Can now accept userData to prevent a double-fetch
+    // Can accept userDataFromApi to avoid double fetch
     const fetchUser = async (userDataFromApi) => {
         let userData = userDataFromApi;
         try {
-            // If data wasn't passed in, fetch it
             if (!userData) {
                 setLoading(true);
                 userData = await ApiService.getCurrentUser();
@@ -80,7 +59,7 @@ export const AuthProvider = ({ children }) => {
             if (userData && !userData.error) {
                 console.log('✅ AuthContext: User authenticated via API:', userData.email);
 
-                // ✅ --- THIS IS THE CRITICAL FIX ---
+                // Firestore sync (create or merge)
                 let firestoreData = null;
 
                 try {
@@ -91,7 +70,6 @@ export const AuthProvider = ({ children }) => {
                         const avatar = userData.avatarUrl || `https://ui-avatars.com/api/?name=${encodeURIComponent(userData.name || userData.email)}`;
 
                         if (!docSnap.exists()) {
-                            // --- User is NEW ---
                             const userDataForFirestore = {
                                 userId: userData.userId,
                                 name: userData.name,
@@ -102,13 +80,12 @@ export const AuthProvider = ({ children }) => {
                                 followersCount: 0,
                                 followingCount: 0,
                                 postsCount: 0,
-                                leetcodeHandle: null // Create the field
+                                leetcodeHandle: null
                             };
                             await setDoc(userDocRef, userDataForFirestore);
-                            firestoreData = userDataForFirestore; // Use this new data
+                            firestoreData = userDataForFirestore;
                             console.log('✨ Firestore: created user document');
                         } else {
-                            // --- User EXISTS, merge API data ---
                             await setDoc(userDocRef, {
                                 name: userData.name,
                                 email: userData.email,
@@ -117,7 +94,6 @@ export const AuthProvider = ({ children }) => {
                                 location: userData.location || ''
                             }, { merge: true });
 
-                            // Read the *merged* document back from Firestore
                             const updatedDocSnap = await getDoc(userDocRef);
                             firestoreData = updatedDocSnap.data();
                             console.log('🔄 Firestore: merged user document');
@@ -126,7 +102,6 @@ export const AuthProvider = ({ children }) => {
                 } catch (fsErr) {
                     console.warn('Firestore sync skipped / failed:', fsErr);
                 }
-                // --- END OF FIX ---
 
                 setUser({
                     // Base data from API
@@ -137,7 +112,6 @@ export const AuthProvider = ({ children }) => {
                     bio: userData.bio,
                     location: userData.location,
                     isAdmin: userData.isAdmin || false,
-                    // ✅ Data from Firestore
                     leetcodeHandle: firestoreData?.leetcodeHandle || null
                 });
                 setIsAuthenticated(true);
@@ -159,12 +133,98 @@ export const AuthProvider = ({ children }) => {
         }
     };
 
-    // ... (rest of AuthProvider: loginWithGithub, loginWithGoogle, etc. are unchanged) ...
+    // Handle GitHub callback: backend exchanges code and sets session cookie.
+    // We POST the code to backend endpoint then refresh client session via fetchUser()
+    const handleGithubCallback = async (code) => {
+        try {
+            const response = await fetch(`${BASE_URL}/auth/github`, {
+                method: 'POST',
+                credentials: 'include',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ code }),
+            });
+
+            if (!response.ok) {
+                console.error('GitHub callback backend returned non-OK:', response.status);
+                return false;
+            }
+
+            const data = await response.json();
+            console.log('GitHub callback response:', data);
+
+            // Refresh session user and redirect to landing
+            const ok = await fetchUser();
+            if (ok) {
+                try {
+                    const newUrl = '/landing';
+                    window.history.replaceState({}, document.title, newUrl);
+                    window.location.href = newUrl;
+                } catch (e) {
+                    window.location.href = '/landing';
+                }
+            }
+            return ok;
+        } catch (error) {
+            console.error('GitHub callback error:', error);
+            return false;
+        }
+    };
+
+    // On mount: detect OAuth callback and skip provider session-check if we are on callback route.
+    // This prevents a race where AuthProvider shows "not authenticated" before AuthCallbackPage finishes.
+    useEffect(() => {
+        (async () => {
+            try {
+                const params = new URLSearchParams(window.location.search);
+                const code = params.get('code');
+                const pathname = window.location.pathname || '';
+
+                // If we are on dedicated callback route, the component will handle the code.
+                const isCallbackRoute = pathname.startsWith('/auth/callback');
+
+                if (isCallbackRoute) {
+                    console.log('AuthProvider: on /auth/callback — skipping initial session-check (callback page will handle auth).');
+                    setLoading(false);
+                    return;
+                }
+
+                // If code is present but NOT on callback route, we handle it centrally.
+                if (code) {
+                    setLoading(true);
+                    console.log('AuthProvider: Detected OAuth code on non-callback route — handling it centrally.', code);
+
+                    const ok = await handleGithubCallback(code);
+
+                    // Clean URL (remove ?code)
+                    try {
+                        const base = window.location.pathname;
+                        window.history.replaceState({}, document.title, base);
+                    } catch (e) { /* ignore */ }
+
+                    if (!ok) {
+                        await fetchCurrentUserDirect();
+                    }
+                } else {
+                    // Normal startup: load session-backed user
+                    await fetchCurrentUserDirect();
+                }
+            } catch (err) {
+                console.error('Auth init error:', err);
+                setUser(null);
+                setIsAuthenticated(false);
+            } finally {
+                setLoading(false);
+            }
+        })();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
+
+    // GitHub OAuth - redirect user to backend (or GitHub directly)
     const loginWithGithub = () => {
         const clientId = 'Ov23litSllTjFFL7HGIv';
         const redirectUri = 'http://localhost:3000/auth/callback';
         const scope = 'read:user user:email';
-        const githubAuthUrl = `https://github.com/login/oauth/authorize?client_id=${clientId}&redirect_uri=${redirectUri}&scope=${scope}`;
+        const githubAuthUrl = `https://github.com/login/oauth/authorize?client_id=${clientId}&redirect_uri=${encodeURIComponent(redirectUri)}&scope=${encodeURIComponent(scope)}`;
         window.location.href = githubAuthUrl;
     };
     const loginWithGoogle = () => {
@@ -199,34 +259,8 @@ export const AuthProvider = ({ children }) => {
             return false;
         }
     };
-    const handleGithubCallback = async (code) => {
-        try {
-            const response = await fetch(`${BASE_URL}/auth/github`, {
-                method: 'POST',
-                credentials: 'include',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ code }),
-            });
 
-            if (!response.ok) {
-                console.error('GitHub callback backend returned non-OK:', response.status);
-                return false;
-            }
-
-            const data = await response.json();
-            console.log('GitHub callback response:', data);
-
-            const ok = await fetchUser();
-            if (ok) {
-                window.history.replaceState({}, document.title, '/landing');
-                window.location.href = '/landing';
-            }
-            return ok;
-        } catch (error) {
-            console.error('GitHub callback error:', error);
-            return false;
-        }
-    };
+    // Generic login helper (client-side)
     const login = (userData) => {
         setUser(userData);
         setIsAuthenticated(true);
@@ -275,7 +309,6 @@ export const AuthProvider = ({ children }) => {
                 login,
                 logout,
                 fetchUser,
-                updateUser,
                 fetchCurrentUserDirect,
                 loginWithGithub,
                 loginWithGoogle,
