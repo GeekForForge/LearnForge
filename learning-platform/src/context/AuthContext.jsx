@@ -2,7 +2,7 @@
 import React, { createContext, useState, useContext, useEffect } from 'react';
 import ApiService from '../services/api';
 import { db } from '../firebase';
-import { doc, setDoc, getDoc } from 'firebase/firestore';
+import {doc, setDoc, getDoc, updateDoc} from 'firebase/firestore';
 
 const BASE_URL = process.env.REACT_APP_BACKEND_URL || "http://localhost:8080/api";
 const GOOGLE_CLIENT_ID = "354410344753-k7kj6li8pgociktjun9g6ig8hohdt3p7.apps.googleusercontent.com";
