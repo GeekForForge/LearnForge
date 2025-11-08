@@ -6,6 +6,7 @@
   "dependencies": {
     "@react-three/drei": "^9.122.0",
     "@react-three/fiber": "^8.18.0",
+    "@stomp/stompjs": "^7.2.1",
     "@studio-freight/react-lenis": "^0.0.47",
     "@types/three": "^0.158.3",
     "axios": "^1.12.2",
@@ -24,6 +25,7 @@
     "react-scripts": "5.0.1",
     "react-toastify": "^11.0.5",
     "react-youtube": "^10.1.0",
+    "sockjs-client": "^1.6.1",
     "three": "^0.158.0",
     "xlsx": "^0.18.5"
   },

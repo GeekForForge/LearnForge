@@ -31,10 +31,15 @@ const ArenaLanding = () => {
             title: "Multiplayer",
             icon: <Users size={48} />,
             gradient: "from-orange-500 to-pink-500",
-            onClick: () => alert("Multiplayer mode coming soon! 🚀"),
+            onClick: () => {
+                // Generate a random roomId for the match
+                const roomId = Math.random().toString(36).substr(2, 6).toUpperCase();
+                navigate(`/arena/multiplayer/${roomId}`);
+            },
             desc: "Compete live with friends around the world",
-            badge: "SOON",
-            delay: 0.2
+            badge: "BETA",
+            delay: 0.2,
+            featured: true
         },
         {
             title: "Company Questions",
@@ -101,8 +106,6 @@ const ArenaLanding = () => {
                         ease: "easeInOut"
                     }}
                 />
-
-                {/* Enhanced floating particles */}
                 {Array.from({ length: 20 }).map((_, i) => (
                     <motion.div
                         key={i}
@@ -127,7 +130,6 @@ const ArenaLanding = () => {
             </div>
 
             <div className="max-w-7xl mx-auto px-6 relative z-10">
-                {/* Enhanced Header - Stats Bar Removed */}
                 <motion.div
                     initial={{ opacity: 0, y: -30 }}
                     animate={{ opacity: 1, y: 0 }}
@@ -150,7 +152,6 @@ const ArenaLanding = () => {
                             />
                         </div>
                     </motion.div>
-
                     <motion.h1
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
@@ -159,7 +160,6 @@ const ArenaLanding = () => {
                     >
                         CODE ARENA
                     </motion.h1>
-
                     <motion.p
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
@@ -184,7 +184,6 @@ const ArenaLanding = () => {
                         </div>
                         <h2 className="text-3xl font-bold text-white">Featured Challenges</h2>
                     </motion.div>
-
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-12">
                         {featuredCards.map((card, index) => (
                             <motion.div
@@ -197,10 +196,7 @@ const ArenaLanding = () => {
                                 className="group cursor-pointer"
                             >
                                 <div className="relative bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-sm rounded-3xl p-8 border border-white/10 hover:border-cyan-400/30 transition-all h-full shadow-2xl">
-                                    {/* Glow effect */}
                                     <div className="absolute inset-0 bg-gradient-to-r from-purple-500/10 to-cyan-500/10 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity" />
-
-                                    {/* Badge */}
                                     <div className="absolute top-6 right-6">
                                         <span className={`px-3 py-1.5 rounded-full text-xs font-bold ${
                                             card.badge === "POPULAR" ? "bg-gradient-to-r from-purple-500 to-pink-500 text-white" :
@@ -210,14 +206,10 @@ const ArenaLanding = () => {
                                             {card.badge}
                                         </span>
                                     </div>
-
                                     <div className="flex items-start gap-6">
-                                        {/* Icon */}
                                         <div className={`w-20 h-20 rounded-2xl flex items-center justify-center text-white bg-gradient-to-r ${card.gradient} shadow-lg`}>
                                             {card.icon}
                                         </div>
-
-                                        {/* Content */}
                                         <div className="flex-1 text-left">
                                             <h3 className="text-2xl font-bold text-white mb-3 group-hover:text-cyan-300 transition-colors">
                                                 {card.title}
@@ -265,7 +257,6 @@ const ArenaLanding = () => {
                                 className="group cursor-pointer"
                             >
                                 <div className="relative bg-white/5 backdrop-blur-sm rounded-2xl p-6 border border-white/10 hover:border-white/20 transition-all h-full">
-                                    {/* Badge */}
                                     <div className="absolute top-4 right-4">
                                         <span className={`px-2 py-1 rounded-full text-xs font-bold ${
                                             card.badge === "SOON" ? "bg-orange-500/20 text-orange-400" :
@@ -274,13 +265,9 @@ const ArenaLanding = () => {
                                             {card.badge}
                                         </span>
                                     </div>
-
-                                    {/* Icon */}
                                     <div className={`w-16 h-16 mx-auto mb-4 rounded-2xl flex items-center justify-center text-white bg-gradient-to-r ${card.gradient}`}>
                                         {card.icon}
                                     </div>
-
-                                    {/* Content */}
                                     <div className="text-center">
                                         <h3 className="text-xl font-bold text-white mb-3 group-hover:text-cyan-300 transition-colors">
                                             {card.title}
@@ -303,7 +290,7 @@ const ArenaLanding = () => {
                     </div>
                 </div>
 
-                {/* Enhanced Bottom CTA */}
+                {/* Bottom CTA - unchanged */}
                 <motion.div
                     initial={{ opacity: 0, y: 30 }}
                     animate={{ opacity: 1, y: 0 }}
@@ -311,12 +298,10 @@ const ArenaLanding = () => {
                     className="text-center mt-16"
                 >
                     <div className="relative bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-sm border border-white/10 rounded-3xl p-8 max-w-4xl mx-auto overflow-hidden">
-                        {/* Background pattern */}
                         <div className="absolute inset-0 opacity-5">
                             <div className="absolute top-0 left-0 w-32 h-32 bg-cyan-400 rounded-full blur-3xl"></div>
                             <div className="absolute bottom-0 right-0 w-32 h-32 bg-purple-400 rounded-full blur-3xl"></div>
                         </div>
-
                         <div className="relative z-10">
                             <motion.div
                                 animate={{ rotate: 360 }}

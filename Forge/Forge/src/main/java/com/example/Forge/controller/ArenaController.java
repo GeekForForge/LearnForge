@@ -3,6 +3,7 @@ package com.example.Forge.controller;
 import com.example.Forge.model.Question;
 import com.example.Forge.entity.UserProgress;
 import com.example.Forge.service.ArenaService;
+import com.example.Forge.service.QuestionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -19,20 +20,22 @@ public class ArenaController {
 
     @Autowired
     private ArenaService arenaService;
+    @Autowired
+    private QuestionService questionService;
 
-    /**
-     * GET /api/arena/start
-     * Returns 10 random questions
-     */
+
+//    @GetMapping("/start")
+//    public List<Question> startGame(@RequestParam(defaultValue = "10") int count) {
+//        return arenaService.getRandomQuestions(count);
+//    }
     @GetMapping("/start")
-    public List<Question> startGame(@RequestParam(defaultValue = "10") int count) {
-        return arenaService.getRandomQuestions(count);
-    }
+    public List<Question> startArena(
+            @RequestParam String topic,
+            @RequestParam String difficulty,
+            @RequestParam(defaultValue = "5") int count) {
 
-    /**
-     * POST /api/arena/submit
-     * Receives answers and returns XP + results
-     */
+        return questionService.getRandomQuestions(topic, difficulty, count);
+    }
     @PostMapping("/submit")
     public Map<String, Object> submitAnswers(@RequestParam Long userId, @RequestBody Map<Long, String> answers) {
         return arenaService.evaluateAnswers(userId, answers);
