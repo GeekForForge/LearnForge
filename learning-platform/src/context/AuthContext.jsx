@@ -2,7 +2,7 @@
 import React, { createContext, useState, useContext, useEffect } from 'react';
 import ApiService from '../services/api';
 import { db } from '../firebase';
-import { doc, setDoc, getDoc } from 'firebase/firestore';
+import {doc, setDoc, getDoc, updateDoc} from 'firebase/firestore';
 
 const BASE_URL = process.env.REACT_APP_BACKEND_URL || "http://localhost:8080/api";
 const GOOGLE_CLIENT_ID = "354410344753-k7kj6li8pgociktjun9g6ig8hohdt3p7.apps.googleusercontent.com";
@@ -104,6 +104,7 @@ export const AuthProvider = ({ children }) => {
                 }
 
                 setUser({
+                    // Base data from API
                     userId: userData.userId,
                     name: userData.name,
                     email: userData.email,
@@ -226,16 +227,12 @@ export const AuthProvider = ({ children }) => {
         const githubAuthUrl = `https://github.com/login/oauth/authorize?client_id=${clientId}&redirect_uri=${encodeURIComponent(redirectUri)}&scope=${encodeURIComponent(scope)}`;
         window.location.href = githubAuthUrl;
     };
-
-    // Google OAuth - redirect to Google consent (backend callback URL used)
     const loginWithGoogle = () => {
         const googleAuthUrl = `https://accounts.google.com/o/oauth2/v2/auth?client_id=${GOOGLE_CLIENT_ID}&redirect_uri=${encodeURIComponent(
             `${BASE_URL}/auth/google/callback`
         )}&response_type=code&scope=openid%20email%20profile`;
         window.location.href = googleAuthUrl;
     };
-
-    // Optional: email/password login via ApiService
     const loginWithEmail = async (email, password) => {
         try {
             const result = await ApiService.loginWithEmail(email, password);
@@ -249,7 +246,6 @@ export const AuthProvider = ({ children }) => {
             return false;
         }
     };
-
     const signupWithEmail = async (name, email, password) => {
         try {
             const result = await ApiService.signupWithEmail(name, email, password);
@@ -269,8 +265,6 @@ export const AuthProvider = ({ children }) => {
         setUser(userData);
         setIsAuthenticated(true);
     };
-
-    // Logout
     const logout = async () => {
         try {
             await fetch(`${BASE_URL}/auth/logout`, {
@@ -285,6 +279,26 @@ export const AuthProvider = ({ children }) => {
             setIsAuthenticated(false);
         }
     };
+
+    // ✅ This function is used by SettingsPage.jsx
+    // It updates Firestore and then re-runs fetchUser to sync state
+    const updateUser = async (data) => {
+        if (!user) return false;
+        try {
+            const userDocRef = doc(db, 'users', user.userId);
+            // 1. Update Firestore
+            await updateDoc(userDocRef, data);
+
+            // 2. WAIT for fetchUser to complete and update state
+            await fetchUser();
+
+            return true;
+        } catch (error) {
+            console.error("Error updating user data:", error);
+            return false;
+        }
+    };
+
 
     return (
         <AuthContext.Provider

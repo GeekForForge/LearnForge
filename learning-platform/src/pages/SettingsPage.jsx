@@ -10,6 +10,9 @@ import { useAuth } from '../context/AuthContext';
 import axios from 'axios';
 
 const SettingsPage = ({ setCurrentPage }) => {
+
+
+
     const navigate = useNavigate();
     const { user, isAuthenticated, updateUser, logout } = useAuth();
 
@@ -24,7 +27,6 @@ const SettingsPage = ({ setCurrentPage }) => {
 
     const API_BASE_URL = 'http://localhost:8080/api';
 
-    // Real user profile data from backend
     const [profileData, setProfileData] = useState({
         name: '',
         email: '',
@@ -91,7 +93,6 @@ const SettingsPage = ({ setCurrentPage }) => {
         }
     };
 
-    // ✅ HANDLE PROFILE SAVE
     const handleProfileSave = async () => {
         setIsLoading(true);
         try {
@@ -118,8 +119,15 @@ const SettingsPage = ({ setCurrentPage }) => {
             setIsLoading(false);
         }
     };
+    function extractLeetCodeHandle(input) {
+        const match = input.match(/leetcode\.com\/([a-zA-Z0-9_-]+)/);
+        if (match) return match[1];
+        // Allow classic usernames directly
+        const usernameMatch = input.match(/^[a-zA-Z0-9_-]{2,16}$/);
+        if (usernameMatch) return input.trim();
+        return input.replace(/^https?:\/\/|\/+$/g, '').trim();
+    }
 
-    // ✅ HANDLE PLATFORM CONNECTION
     const handlePlatformConnect = async (platform) => {
         const url = platformUrls[platform];
 
@@ -128,24 +136,34 @@ const SettingsPage = ({ setCurrentPage }) => {
             return;
         }
 
-        // Basic URL validation
         const urlPatterns = {
             leetcode: /leetcode\.com/,
             gfg: /geeksforgeeks\.org/,
             codechef: /codechef\.com/
         };
 
-        if (!urlPatterns[platform].test(url)) {
+        if (platform !== "leetcode" && !urlPatterns[platform].test(url)) {
             showMessage('error', `Please enter a valid ${platform} profile URL`);
             return;
         }
 
         setIsLoading(true);
         try {
-            const updatedProfileData = {
-                ...profileData,
-                [`${platform}Url`]: url
-            };
+            let updatedProfileData = { ...profileData };
+            if (platform === "leetcode") {
+
+                const handle = extractLeetCodeHandle(url);
+                if (!handle) {
+                    showMessage('error', "Please enter a valid LeetCode handle or URL.");
+                    setIsLoading(false);
+                    return;
+                }
+                updatedProfileData.leetcodeUrl = `https://leetcode.com/${handle}`;
+                // ALSO save the handle in user object for stats fetch!
+                await updateUser({ leetcodeHandle: handle });
+            } else {
+                updatedProfileData[`${platform}Url`] = url;
+            }
 
             const response = await axios.put(
                 `${API_BASE_URL}/users/${user.userId}`,
@@ -169,6 +187,7 @@ const SettingsPage = ({ setCurrentPage }) => {
             setIsLoading(false);
         }
     };
+
 
     // ✅ HANDLE PLATFORM DISCONNECT
     const handlePlatformDisconnect = async (platform) => {
