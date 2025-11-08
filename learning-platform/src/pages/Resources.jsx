@@ -321,7 +321,6 @@ export default function Resources() {
                     <div className="flex items-center gap-2 mb-2">
                         <Sparkles className="w-6 h-6 text-neon-cyan" />
                         <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold bg-gradient-to-r from-neon-cyan via-neon-purple to-neon-pink bg-clip-text text-transparent">
-                            Interview Resources
                         </h1>
                     </div>
                     <p className="text-gray-300 text-sm sm:text-base">Master coding interviews with curated problems from top tech companies</p>
