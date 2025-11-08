@@ -1,4 +1,3 @@
-// src/services/api.js
 const API_BASE_URL = 'http://localhost:8080/api';
 // const API_BASE_URL = 'https://learnforge.onrender.com/api';
 
@@ -236,28 +235,6 @@ class ApiService {
         }
     }
 
-    async updateUser(userId, data) {
-        try {
-            const response = await fetch(`${API_BASE_URL}/users/${userId}`, {
-                method: 'PUT',
-                credentials: 'include',
-                headers: {
-                    'Content-Type': 'application/json',
-                    // Note: You may need to add Authorization headers if your endpoint is secured
-                },
-                body: JSON.stringify(data),
-            });
-            if (!response.ok) {
-                const errorText = await response.text();
-                throw new Error(errorText || 'Failed to update user');
-            }
-            return await response.json();
-        } catch (error) {
-            console.error('❌ Error updating user:', error);
-            throw error;
-        }
-    }
-
     async updateWatchTime(userId, lessonId, watchTimeSeconds) {
         try {
             const response = await fetch(`${API_BASE_URL}/progress/watch-time`, {
@@ -287,6 +264,33 @@ class ApiService {
             return null;
         }
     }
+
+    // ✅ --- NEW FUNCTION ---
+    // This is needed by SettingsPage.jsx
+    async updateUser(userId, data) {
+        try {
+            console.log(`🎯 ApiService: Updating user ${userId}`);
+            const response = await fetch(`${API_BASE_URL}/users/${userId}`, {
+                method: 'PUT',
+                credentials: 'include',
+                headers: {
+                    'Content-Type': 'application/json',
+                    // Note: You may need to add Authorization headers if your endpoint is secured
+                },
+                body: JSON.stringify(data),
+            });
+            if (!response.ok) {
+                const errorText = await response.text();
+                throw new Error(errorText || 'Failed to update user');
+            }
+            return await response.json();
+        } catch (error) {
+            console.error('❌ Error updating user:', error);
+            throw error;
+        }
+    }
+    // --- END NEW FUNCTION ---
+
 
     // ============================================
     // AUTH METHODS
@@ -334,7 +338,6 @@ class ApiService {
         }
     }
 
-    // ✅ NEW: Email/Password Login
     async loginWithEmail(email, password) {
         try {
             console.log('🔐 ApiService: Email login attempt');
@@ -360,7 +363,6 @@ class ApiService {
         }
     }
 
-    // ✅ NEW: Email/Password Signup
     async signupWithEmail(name, email, password) {
         try {
             console.log('🔐 ApiService: Email signup attempt');
@@ -430,7 +432,7 @@ class ApiService {
             });
             if (!response.ok) {
                 const errorData = await response.text();
-                throw new Error(errorData || 'Failed to fetch LeETCode metrics');
+                throw new Error(errorData || 'Failed to fetch LeetCode metrics');
             }
             const data = await response.json();
             console.log('✅ ApiService: LeetCode stats received:', data);

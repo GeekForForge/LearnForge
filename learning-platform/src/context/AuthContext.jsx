@@ -2,7 +2,8 @@
 import React, { createContext, useState, useContext, useEffect } from 'react';
 import ApiService from '../services/api';
 import { db } from '../firebase';
-import { doc, setDoc, getDoc } from 'firebase/firestore'; // Removed unused 'updateDoc'
+// ✅ Import updateDoc
+import { doc, setDoc, getDoc, updateDoc } from 'firebase/firestore';
 
 const BASE_URL = process.env.REACT_APP_BACKEND_URL || "http://localhost:8080/api";
 const GOOGLE_CLIENT_ID = "354410344753-k7kj6li8pgociktjun9g6ig8hohdt3p7.apps.googleusercontent.com";
@@ -41,7 +42,17 @@ export const AuthProvider = ({ children }) => {
                 await fetchUser(userData);
                 console.log('✅ User loaded from session:', userData.email);
 
-                // ... (rest of OAuth redirect logic) ...
+                // If we arrived via OAuth (Google backend callback) redirect to /landing
+                const urlParams = new URLSearchParams(window.location.search);
+                const hasCode = urlParams.get('code');
+                const pathname = window.location.pathname || '';
+
+                if (hasCode || pathname.includes('/auth/google/callback') || pathname.includes('/auth/callback')) {
+                    // Replace history state then navigate to landing
+                    window.history.replaceState({}, document.title, '/landing');
+                    // Hard navigation to ensure route loads after backend session created
+                    window.location.href = '/landing';
+                }
             } else {
                 setUser(null);
                 setIsAuthenticated(false);
@@ -118,6 +129,7 @@ export const AuthProvider = ({ children }) => {
                 // --- END OF FIX ---
 
                 setUser({
+                    // Base data from API
                     userId: userData.userId,
                     name: userData.name,
                     email: userData.email,
@@ -125,7 +137,7 @@ export const AuthProvider = ({ children }) => {
                     bio: userData.bio,
                     location: userData.location,
                     isAdmin: userData.isAdmin || false,
-                    // ✅ This now correctly sets the leetcodeHandle
+                    // ✅ Data from Firestore
                     leetcodeHandle: firestoreData?.leetcodeHandle || null
                 });
                 setIsAuthenticated(true);
@@ -147,27 +159,20 @@ export const AuthProvider = ({ children }) => {
         }
     };
 
-    // ... (rest of AuthProvider: loginWithGithub, loginWithGoogle, etc.) ...
-    // GitHub OAuth - redirect user to backend (or GitHub directly)
+    // ... (rest of AuthProvider: loginWithGithub, loginWithGoogle, etc. are unchanged) ...
     const loginWithGithub = () => {
-        // If your backend handles exchange, direct to backend auth route (recommended).
-        // Example: window.location.href = `${BASE_URL}/oauth2/authorization/github`
         const clientId = 'Ov23litSllTjFFL7HGIv';
         const redirectUri = 'http://localhost:3000/auth/callback';
         const scope = 'read:user user:email';
         const githubAuthUrl = `https://github.com/login/oauth/authorize?client_id=${clientId}&redirect_uri=${redirectUri}&scope=${scope}`;
         window.location.href = githubAuthUrl;
     };
-
-    // Google OAuth - redirect to Google consent (backend callback URL used)
     const loginWithGoogle = () => {
         const googleAuthUrl = `https://accounts.google.com/o/oauth2/v2/auth?client_id=${GOOGLE_CLIENT_ID}&redirect_uri=${encodeURIComponent(
             `${BASE_URL}/auth/google/callback`
         )}&response_type=code&scope=openid%20email%20profile`;
         window.location.href = googleAuthUrl;
     };
-
-    // Optional: email/password login via ApiService
     const loginWithEmail = async (email, password) => {
         try {
             const result = await ApiService.loginWithEmail(email, password);
@@ -181,7 +186,6 @@ export const AuthProvider = ({ children }) => {
             return false;
         }
     };
-
     const signupWithEmail = async (name, email, password) => {
         try {
             const result = await ApiService.signupWithEmail(name, email, password);
@@ -195,9 +199,6 @@ export const AuthProvider = ({ children }) => {
             return false;
         }
     };
-
-    // Handle GitHub callback: backend exchanges code and sets session cookie
-    // We POST the code to backend endpoint then refresh client session via fetchUser()
     const handleGithubCallback = async (code) => {
         try {
             const response = await fetch(`${BASE_URL}/auth/github`, {
@@ -215,7 +216,6 @@ export const AuthProvider = ({ children }) => {
             const data = await response.json();
             console.log('GitHub callback response:', data);
 
-            // Refresh session user and redirect to landing
             const ok = await fetchUser();
             if (ok) {
                 window.history.replaceState({}, document.title, '/landing');
@@ -227,14 +227,10 @@ export const AuthProvider = ({ children }) => {
             return false;
         }
     };
-
-    // Generic login helper (client-side)
     const login = (userData) => {
         setUser(userData);
         setIsAuthenticated(true);
     };
-
-    // Logout
     const logout = async () => {
         try {
             await fetch(`${BASE_URL}/auth/logout`, {
@@ -250,6 +246,26 @@ export const AuthProvider = ({ children }) => {
         }
     };
 
+    // ✅ This function is used by SettingsPage.jsx
+    // It updates Firestore and then re-runs fetchUser to sync state
+    const updateUser = async (data) => {
+        if (!user) return false;
+        try {
+            const userDocRef = doc(db, 'users', user.userId);
+            // 1. Update Firestore
+            await updateDoc(userDocRef, data);
+
+            // 2. WAIT for fetchUser to complete and update state
+            await fetchUser();
+
+            return true;
+        } catch (error) {
+            console.error("Error updating user data:", error);
+            return false;
+        }
+    };
+
+
     return (
         <AuthContext.Provider
             value={{
@@ -258,7 +274,8 @@ export const AuthProvider = ({ children }) => {
                 loading,
                 login,
                 logout,
-                fetchUser, // ✅ This is now exported
+                fetchUser,
+                updateUser,
                 fetchCurrentUserDirect,
                 loginWithGithub,
                 loginWithGoogle,

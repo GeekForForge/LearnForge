@@ -28,7 +28,10 @@ const LeetCodeStats = () => {
                 setMetrics(data);
             } catch (err) {
                 console.error('Error fetching LeetCode metrics', err);
-                if (mounted) setMetrics(null);
+                if (mounted) {
+                    setError('Failed to load stats. Check handle.');
+                    setMetrics(null);
+                }
             } finally {
                 if (mounted) setLoading(false);
             }
@@ -48,13 +51,20 @@ const LeetCodeStats = () => {
     }
 
     if (loading) {
-        return <div className="text-center p-8">Loading LeetCode stats for "{leetcodeHandle}"...</div>;
+        return (
+            <div className="bg-gray-900 rounded-3xl p-8 border border-neon-purple/30 text-center">
+                <div className="w-8 h-8 border-2 border-neon-cyan border-t-transparent rounded-full animate-spin mx-auto mb-3"></div>
+                <p className="text-gray-300">Loading stats for "{leetcodeHandle}"...</p>
+            </div>
+        );
     }
 
-    if (!metrics) {
+    if (error || !metrics) {
         return (
-            <div className="text-center p-6 bg-gray-900 rounded-lg border border-red-500/20">
-                <p className="text-red-400">Could not load LeetCode stats for "{leetcodeHandle}".</p>
+            <div className="text-center p-6 bg-gray-900 rounded-3xl border border-red-500/30">
+                <Target size={36} className="mx-auto mb-4 text-red-400" />
+                <p className="text-red-400">{error || `Could not load stats for "${leetcodeHandle}"`}</p>
+                <p className="text-gray-400 text-sm mt-2">Please check the handle in Settings.</p>
             </div>
         );
     }

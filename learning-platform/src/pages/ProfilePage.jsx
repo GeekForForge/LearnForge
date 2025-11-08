@@ -241,7 +241,6 @@ const ProfilePage = ({ setCurrentPage }) => {
 
                     {/* === CONDITIONAL RENDER: CONNECT OR SHOW STATS === */}
                     { !leetcodeHandle ? (
-                        // --- 1. SHOW "CONNECT" FORM ---
                         <motion.div
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
@@ -513,8 +512,6 @@ const ProfilePage = ({ setCurrentPage }) => {
         </div>
     );
 };
-
-// --- YOUR HELPER COMPONENTS (Unchanged) ---
 
 // Stat Card Component
 const StatCard = ({ icon, label, value, color }) => {
