@@ -442,6 +442,25 @@ class ApiService {
             throw error;
         }
     }
+
+    async syncLeetCodeMetrics(handle) {
+        try {
+            const response = await fetch(`${API_BASE_URL}/leetcode/sync/${handle}`, {
+                method: "POST",
+                credentials: "include"
+            });
+            if (!response.ok) {
+                const errorData = await response.text();
+                throw new Error(errorData || "Failed to force sync LeetCode metrics");
+            }
+            const data = await response.json();
+            console.log("ApiService: LeetCode stats forced sync received", data);
+            return data;
+        } catch (error) {
+            console.error("ApiService Error in syncLeetCodeMetrics", error);
+            throw error;
+        }
+    }
 }
 
 export default new ApiService();

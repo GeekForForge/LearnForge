@@ -1,63 +1,66 @@
-// src/pages/SettingsConnectedAccounts.jsx
 import React, { useState, useEffect } from 'react';
 import { useAuth } from '../context/AuthContext';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { Code, Unlink, CheckCircle, Loader, Link as LinkIcon } from 'lucide-react';
+import ApiService from '../services/api'; // make sure it's imported!
 
 const SettingsConnectedAccounts = () => {
-    const { user, updateUser } = useAuth();
+    const { user, updateUser, fetchUser } = useAuth(); // fetchUser for forced reload
     const [handleInput, setHandleInput] = useState('');
     const [isSaving, setIsSaving] = useState(false);
 
-    // Sync local input state with user's actual handle
     useEffect(() => {
-        if (user?.leetcodeHandle) {
-            setHandleInput(user.leetcodeHandle);
-        } else {
-            setHandleInput('');
-        }
+        setHandleInput(user?.leetcodeHandle || '');
     }, [user]);
+
+    function extractLeetCodeHandle(input) {
+        const match = input.match(/leetcode\.com\/([a-zA-Z0-9_-]+)/);
+        if (match) return match[1];
+
+        const usernameMatch = input.match(/^[a-zA-Z0-9_-]{2,16}$/);
+        if (usernameMatch) return input.trim();
+        return input.replace(/^https?:\/\/|\/+$/g, '').trim();
+    }
 
     const saveHandle = async (e) => {
         e?.preventDefault?.();
         if (!user) return;
-
         const trimmed = handleInput.trim();
-        if (!trimmed) {
-            toast.error('Please enter a valid handle.');
+
+        const finalHandle = extractLeetCodeHandle(trimmed);
+
+        if (!finalHandle) {
+            toast.error('Please enter a valid LeetCode handle or profile URL.');
             return;
         }
-
         setIsSaving(true);
         try {
-            const success = await updateUser({
-                leetcodeHandle: trimmed
-            });
-
+            const success = await updateUser({ leetcodeHandle: finalHandle });
             if (success) {
-                toast.success('LeetCode handle connected.');
+                try { await ApiService.syncLeetCodeMetrics(finalHandle); } catch {}
+                await fetchUser();
+                toast.success('LeetCode handle connected and stats refreshed!');
             } else {
                 toast.error('Failed to connect LeetCode handle.');
             }
         } catch (err) {
-            console.error('Error saving handle', err);
             toast.error('Failed to save handle.');
         } finally {
             setIsSaving(false);
         }
     };
 
+
+    // On disconnect: Remove handle, refresh user context
     const removeHandle = async () => {
         if (!user) return;
         setIsSaving(true);
         try {
-            const success = await updateUser({
-                leetcodeHandle: null
-            });
-
+            const success = await updateUser({ leetcodeHandle: null });
             if (success) {
                 setHandleInput('');
+                await fetchUser();
                 toast.success('LeetCode handle disconnected.');
             } else {
                 toast.error('Failed to disconnect handle.');
