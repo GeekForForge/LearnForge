@@ -1,7 +1,9 @@
 package com.example.Forge.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Data;
+
 import java.util.Date;
 
 @Entity
@@ -11,19 +13,19 @@ public class Resource {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    //temporary
-//    @Column(name = "resource_id")
     @Column(name = "id")
     private Long id;
 
-    @Column(name = "lesson_id", nullable = false)
-    private Long lessonId;
+    @JsonIgnore
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "lesson_id", nullable = false)
+    private Lesson lesson;
 
     @Column(nullable = false)
     private String title;
 
     @Column(nullable = false)
-    private String type;
+    private String type;   // GFG, GitHub, StackOverflow
 
     @Column(nullable = false, length = 500)
     private String url;

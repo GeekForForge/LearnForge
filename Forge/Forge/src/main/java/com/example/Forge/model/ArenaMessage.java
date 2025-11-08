@@ -4,6 +4,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -15,4 +17,7 @@ public class ArenaMessage {
     private int questionIndex;
     private String answer;
     private int score;
+    private List<String> players;
+
+
 }

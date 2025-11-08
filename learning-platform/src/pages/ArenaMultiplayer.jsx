@@ -8,23 +8,21 @@ import { Users, Sword, Loader2, Crown, Zap, Target, Trophy, MessageCircle, Send,
 
 const WS_URL = "http://localhost:8080/api/ws/arena";
 
-const getRandomUser = () => "user_" + Math.floor(Math.random() * 100000);
-const getRandomAvatar = () =>
-    `https://api.dicebear.com/7.x/bottts/svg?seed=${Math.floor(Math.random() * 10000)}`;
-
 const ArenaMultiplayer = () => {
     const { roomId } = useParams();
     const [client, setClient] = useState(null);
     const [connected, setConnected] = useState(false);
     const [players, setPlayers] = useState([]);
     const [messages, setMessages] = useState([]);
-    const [userId] = useState(getRandomUser());
-    const [avatarUrl] = useState(getRandomAvatar());
     const [gameState, setGameState] = useState("waiting");
     const [countdown, setCountdown] = useState(3);
     const [newMessage, setNewMessage] = useState("");
     const stompRef = useRef(null);
     const messagesEndRef = useRef(null);
+
+    // Get user info from localStorage
+    const userId = localStorage.getItem("username") || "Guest";
+    const avatarUrl = localStorage.getItem("avatarUrl") || `https://api.dicebear.com/7.x/bottts/svg?seed=${userId}`;
 
     const scrollToBottom = () => {
         messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
