@@ -4,6 +4,7 @@
   "description": "Immersive futuristic learning platform for programming and tech courses",
   "private": true,
   "dependencies": {
+    "@monaco-editor/react": "^4.7.0",
     "@react-three/drei": "^9.122.0",
     "@react-three/fiber": "^8.18.0",
     "@stomp/stompjs": "^7.2.1",
