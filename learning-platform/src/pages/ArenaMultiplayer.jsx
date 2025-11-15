@@ -1,53 +1,39 @@
-import React, { useEffect, useState, useRef } from "react";
+// =========================================
+// ArenaMultiplayer.jsx (MERGED & UPDATED)
+// With REAL Judge0 execution + Enhanced UI
+// =========================================
+
+import React, { useEffect, useState, useRef, useCallback } from "react";
 import { useParams } from "react-router-dom";
 import { Client } from "@stomp/stompjs";
 import SockJS from "sockjs-client";
 import { motion, AnimatePresence } from "framer-motion";
 import Editor from "@monaco-editor/react";
 import {
-    Users,
-    Sword,
-    Loader2,
-    Crown,
-    Zap,
-    Target,
-    MessageCircle,
-    Send,
-    Code2,
-    Trophy,
-    Clock,
-    Play,
-    CheckCircle,
-    ChevronDown,
-    ChevronUp,
-    Terminal,
-    Cpu,
-    AlertCircle,
-    CheckSquare,
-    X,
-    Star,
-    Shield,
-    Sparkles,
-    GripVertical,
+    Users, Sword, MessageCircle, Send, Code2, Trophy, Clock,
+    Play, CheckCircle, ChevronDown, ChevronUp, Terminal, Cpu,
+    CheckSquare, X, Shield, Sparkles, GripVertical, Zap,
+    Loader2, Crown, Target, AlertCircle, Star
 } from "lucide-react";
 
 const WS_URL = "http://localhost:8080/api/ws/arena";
 
+// Resize Panel Component
 const ResizablePanel = ({ children, defaultWidth, minWidth = 200, maxWidth = 800, onResize }) => {
     const [width, setWidth] = useState(defaultWidth);
     const [isResizing, setIsResizing] = useState(false);
     const panelRef = useRef(null);
 
-    const startResizing = React.useCallback((e) => {
+    const startResizing = useCallback((e) => {
         e.preventDefault();
         setIsResizing(true);
     }, []);
 
-    const stopResizing = React.useCallback(() => {
+    const stopResizing = useCallback(() => {
         setIsResizing(false);
     }, []);
 
-    const resize = React.useCallback((e) => {
+    const resize = useCallback((e) => {
         if (isResizing && panelRef.current) {
             const newWidth = e.clientX - panelRef.current.getBoundingClientRect().left;
             if (newWidth >= minWidth && newWidth <= maxWidth) {
@@ -58,11 +44,11 @@ const ResizablePanel = ({ children, defaultWidth, minWidth = 200, maxWidth = 800
     }, [isResizing, minWidth, maxWidth, onResize]);
 
     useEffect(() => {
-        window.addEventListener('mousemove', resize);
-        window.addEventListener('mouseup', stopResizing);
+        window.addEventListener("mousemove", resize);
+        window.addEventListener("mouseup", stopResizing);
         return () => {
-            window.removeEventListener('mousemove', resize);
-            window.removeEventListener('mouseup', stopResizing);
+            window.removeEventListener("mousemove", resize);
+            window.removeEventListener("mouseup", stopResizing);
         };
     }, [resize, stopResizing]);
 
@@ -87,19 +73,34 @@ const ResizablePanel = ({ children, defaultWidth, minWidth = 200, maxWidth = 800
 
 const ArenaMultiplayer = () => {
     const { roomId } = useParams();
+
     const [connected, setConnected] = useState(false);
     const [players, setPlayers] = useState([]);
     const [messages, setMessages] = useState([]);
     const [gameState, setGameState] = useState("waiting");
     const [countdown, setCountdown] = useState(3);
     const [newMessage, setNewMessage] = useState("");
-    const [code, setCode] = useState(`function twoSum(nums, target) {\n    const map = new Map();\n    for (let i = 0; i < nums.length; i++) {\n        const complement = target - nums[i];\n        if (map.has(complement)) {\n            return [map.get(complement), i];\n        }\n        map.set(nums[i], i);\n    }\n    return [];\n}`);
+
+    const [code, setCode] = useState(
+        `function twoSum(nums, target) {
+    const map = new Map();
+    for (let i = 0; i < nums.length; i++) {
+        const complement = target - nums[i];
+        if (map.has(complement)) {
+            return [map.get(complement), i];
+        }
+        map.set(nums[i], i);
+    }
+    return [];
+}`
+    );
+
     const [gameTime, setGameTime] = useState(300);
     const [selectedLanguage, setSelectedLanguage] = useState("javascript");
-    const [showTestCases, setShowTestCases] = useState(true);
-    const [showOutput, setShowOutput] = useState(false);
     const [output, setOutput] = useState("");
     const [submissionResult, setSubmissionResult] = useState(null);
+    const [showOutput, setShowOutput] = useState(false);
+    const [showTestCases, setShowTestCases] = useState(true);
 
     // Panel widths state
     const [problemWidth, setProblemWidth] = useState(400);
@@ -111,12 +112,12 @@ const ArenaMultiplayer = () => {
     const messageInputRef = useRef(null);
     const chatContainerRef = useRef(null);
 
-    // Mock problem data
+    // Mock problem
     const [problem, setProblem] = useState({
         id: 1,
         title: "Two Sum",
         difficulty: "Easy",
-        description: `Given an array of integers nums and an integer target, return indices of the two numbers such that they add up to target.`,
+        description: "Given an array of integers nums and an integer target, return indices of the two numbers such that they add up to target.",
         examples: [
             {
                 input: "nums = [2,7,11,15], target = 9",
@@ -137,13 +138,14 @@ const ArenaMultiplayer = () => {
         ]
     });
 
+    // TEMP USER
     const [user, setUser] = useState({
-        username: "Guest_" + Math.floor(Math.random() * 10000),
+        username: "Player_" + Math.floor(Math.random() * 10000),
         avatarUrl: "",
         level: Math.floor(Math.random() * 50) + 1
     });
 
-    // ✅ Fetch logged-in user info
+    // Load logged-in user
     useEffect(() => {
         const fetchUser = async () => {
             try {
@@ -188,7 +190,9 @@ const ArenaMultiplayer = () => {
         }
     }, [messages]);
 
+    // ==========================
     // WebSocket Connection
+    // ==========================
     useEffect(() => {
         if (!user.username) return;
 
@@ -251,7 +255,9 @@ const ArenaMultiplayer = () => {
         return () => stomp.deactivate();
     }, [roomId, user]);
 
+    // ==========================
     // Game Countdown
+    // ==========================
     useEffect(() => {
         if (players.length === 2 && gameState === "waiting") {
             setGameState("starting");
@@ -269,7 +275,9 @@ const ArenaMultiplayer = () => {
         }
     }, [players.length, gameState]);
 
+    // ==========================
     // Game Timer
+    // ==========================
     const startGameTimer = () => {
         const timerInterval = setInterval(() => {
             setGameTime((prev) => {
@@ -289,7 +297,9 @@ const ArenaMultiplayer = () => {
         return `${mins}:${secs < 10 ? '0' : ''}${secs}`;
     };
 
-    // Send Chat Message
+    // ==========================
+    // Chat Functions
+    // ==========================
     const sendMessage = (e) => {
         if (e) {
             e.preventDefault();
@@ -324,27 +334,66 @@ const ArenaMultiplayer = () => {
         setCode(value);
     };
 
-    const runCode = () => {
-        setOutput("Running test cases...\n\n✅ Test Case 1: Passed\n✅ Test Case 2: Passed\n✅ Test Case 3: Passed\n\nAll sample test cases passed!");
+    // ==========================
+    // REAL Judge0 Execution
+    // ==========================
+    const runCode = async () => {
         setShowOutput(true);
-    };
+        setOutput("⌛ Running...");
 
-    const submitCode = () => {
-        setSubmissionResult({ type: "evaluating", message: "Evaluating your solution..." });
-
-        // Simulate evaluation
-        setTimeout(() => {
-            const passed = Math.random() > 0.3;
-            setSubmissionResult({
-                type: passed ? "passed" : "failed",
-                message: passed ? "All test cases passed! 🎉" : "Some test cases failed ❌",
-                details: passed ? "Your solution beat 85% of other submissions!" : "Failed on hidden test case #7"
+        try {
+            const res = await fetch("http://localhost:8080/api/execute", {
+                method: "POST",
+                headers: {"Content-Type": "application/json"},
+                body: JSON.stringify({
+                    language: selectedLanguage,
+                    code: code,
+                    input: ""
+                })
             });
 
-            if (passed) {
-                setOutput("🎉 All test cases passed!\n\n✅ 15/15 test cases passed\n⏱️ Runtime: 45ms (Beats 85%)\n💾 Memory: 41.2MB (Beats 92%)");
-            }
-        }, 2000);
+            const data = await res.json();
+            setOutput(data.stderr ? data.stderr : data.stdout || "No output");
+        } catch (err) {
+            setOutput("❌ Execution server error");
+        }
+    };
+
+    const submitCode = async () => {
+        setSubmissionResult({
+            type: "evaluating",
+            message: "Evaluating your solution..."
+        });
+
+        try {
+            const res = await fetch("http://localhost:8080/api/execute", {
+                method: "POST",
+                headers: {"Content-Type": "application/json"},
+                body: JSON.stringify({
+                    language: selectedLanguage,
+                    code: code,
+                    input: ""
+                })
+            });
+
+            const data = await res.json();
+            const passed = !data.stderr;
+
+            setOutput(data.stdout || data.stderr);
+
+            setSubmissionResult({
+                type: passed ? "passed" : "failed",
+                message: passed ? "All test cases passed 🎉" : "Error occurred ❌",
+                details: passed ? data.stdout : data.stderr
+            });
+
+        } catch (err) {
+            setSubmissionResult({
+                type: "failed",
+                message: "Execution Server Error",
+                details: "Cannot connect to Judge0 backend."
+            });
+        }
     };
 
     const closeResultModal = () => {
@@ -361,10 +410,7 @@ const ArenaMultiplayer = () => {
     };
 
     return (
-        // CHANGED: Removed background gradients - now fully transparent
         <div className="min-h-screen bg-transparent pt-16 pb-4 relative overflow-hidden">
-            {/* REMOVED: Background effects divs to keep it transparent */}
-
             {/* Main Grid Layout with Resizable Panels */}
             <div className="h-[calc(100vh-4rem)] flex gap-2 px-2">
                 {/* Left Sidebar - Problem Statement - RESIZABLE */}
