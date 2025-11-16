@@ -1,18 +1,19 @@
+// src/pages/ArenaGame.jsx
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { motion, AnimatePresence } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 import {
-    Clock,
     Trophy,
-    Star,
     Zap,
     CheckCircle,
     XCircle,
     AlertCircle,
     Brain,
-    Timer
+    Timer,
 } from "lucide-react";
+
+const API_BASE_URL = process.env.REACT_APP_API_URL || "http://localhost:8080/api";
 
 const ArenaGame = () => {
     const [questions, setQuestions] = useState([]);
@@ -22,45 +23,53 @@ const ArenaGame = () => {
     const [selected, setSelected] = useState(null);
     const [timeLeft, setTimeLeft] = useState(30);
     const [isAnswering, setIsAnswering] = useState(false);
+    const [error, setError] = useState(null);
+
+    // Accurate time spent calculation
+    const [questionStart, setQuestionStart] = useState(Date.now());
+    const [totalElapsed, setTotalElapsed] = useState(0);
+
     const navigate = useNavigate();
 
     useEffect(() => {
         const prefs = JSON.parse(localStorage.getItem("arenaPreferences")) || {
-            selectedTopic: "Computer Science",
+            selectedTopic: "Data Structures",
             difficulty: "medium",
             count: 5,
         };
 
-        // ✅ Map frontend topic name to backend topic
-        const topicMap = {
-            "Computer Science": "DSA",
-            "Mathematics": "Algorithms",
-            "General Knowledge": "General",
-            "Science": "Operating Systems"
-        };
-
-        const topic = topicMap[prefs.selectedTopic] || "DSA";
+        setLoading(true);
+        setError(null);
 
         axios
-            .get("http://localhost:8080/api/arena/start", {
+            .get(`${API_BASE_URL}/arena/start`, {
                 params: {
-                    topic: topic,
+                    topic: prefs.selectedTopic,
                     difficulty: prefs.difficulty,
                     count: prefs.count,
                 },
+                withCredentials: true,
             })
             .then((res) => {
                 const formatted = res.data.map((q) => ({
+                    id: q.id,
                     question: q.questionText,
                     options: [q.optionA, q.optionB, q.optionC, q.optionD],
                     answer: q.correctAnswer,
                 }));
                 setQuestions(formatted);
                 setLoading(false);
+                setIndex(0);
+                setScore(0);
+                setQuestionStart(Date.now());
+                setTotalElapsed(0);
             })
             .catch((err) => {
-                console.error("Error fetching questions:", err);
                 setLoading(false);
+                setError(
+                    err?.response?.data?.message ||
+                    "Failed to load questions. Try again!"
+                );
             });
     }, []);
 
@@ -71,14 +80,14 @@ const ArenaGame = () => {
         } else if (timeLeft === 0 && !isAnswering) {
             handleTimeUp();
         }
-    }, [timeLeft, loading, isAnswering]);
+    }, [timeLeft, loading, isAnswering, questions]);
 
     const handleTimeUp = () => {
         setIsAnswering(true);
         setSelected("timeup");
         setTimeout(() => {
-            nextQuestion();
-        }, 2000);
+            nextQuestion("timeup");
+        }, 1500);
     };
 
     const handleSelect = (option) => {
@@ -87,28 +96,51 @@ const ArenaGame = () => {
         setIsAnswering(true);
         setSelected(option);
 
-        if (option === questions[index].answer) {
-            setScore(score + 1);
-        }
-
         setTimeout(() => {
-            nextQuestion();
-        }, 1500);
+            nextQuestion(option);
+        }, 1200);
     };
 
-    const nextQuestion = () => {
+    // The fix: always compute the correct final score and accurate time spent
+    const nextQuestion = (selectedOption) => {
+        const now = Date.now();
+        const spentThisQuestion = Math.round((now - questionStart) / 1000); // seconds
+        const newElapsed = totalElapsed + spentThisQuestion;
+
+        let isCurrentCorrect = false;
+        if (
+            selectedOption &&
+            selectedOption !== "timeup" &&
+            questions[index] &&
+            selectedOption === questions[index].answer
+        ) {
+            isCurrentCorrect = true;
+        }
+        const newScore = isCurrentCorrect ? score + 1 : score;
+
         if (index + 1 < questions.length) {
             setIndex(index + 1);
             setSelected(null);
             setIsAnswering(false);
             setTimeLeft(30);
+            setScore(newScore);
+            setTotalElapsed(newElapsed);
+            setQuestionStart(now); // reset for next question
         } else {
-            localStorage.setItem("arenaResult", JSON.stringify({
-                score,
-                total: questions.length,
-                timeSpent: (questions.length * 30) - timeLeft
-            }));
-            navigate("/arena/result");
+            // On last question, save last elapsed
+            localStorage.setItem(
+                "arenaResult",
+                JSON.stringify({
+                    score: newScore,
+                    total: questions.length,
+                    timeSpent: newElapsed, // total seconds user actually spent
+                })
+            );
+            setScore(newScore);
+            setTotalElapsed(newElapsed);
+            setTimeout(() => {
+                navigate("/arena/result");
+            }, 400);
         }
     };
 
@@ -120,9 +152,12 @@ const ArenaGame = () => {
     };
 
     const getOptionIcon = (option) => {
-        if (!selected) return <div className="w-6 h-6 rounded-full border-2 border-gray-500" />;
-        if (option === questions[index].answer) return <CheckCircle className="text-green-400" size={20} />;
-        if (option === selected && option !== questions[index].answer) return <XCircle className="text-red-400" size={20} />;
+        if (!selected)
+            return <div className="w-6 h-6 rounded-full border-2 border-gray-500" />;
+        if (option === questions[index].answer)
+            return <CheckCircle className="text-green-400" size={24} />;
+        if (option === selected && option !== questions[index].answer)
+            return <XCircle className="text-red-400" size={24} />;
         return <div className="w-6 h-6 rounded-full border-2 border-gray-600" />;
     };
 
@@ -155,6 +190,22 @@ const ArenaGame = () => {
         );
     }
 
+    if (error) {
+        return (
+            <div className="min-h-screen flex flex-col items-center justify-center text-white">
+                <AlertCircle className="text-red-400 mb-4" size={48} />
+                <h2 className="text-red-300 font-bold text-2xl mb-2">Error</h2>
+                <p className="max-w-md text-center text-gray-300 mb-4">{error}</p>
+                <button
+                    onClick={() => window.location.reload()}
+                    className="px-6 py-2 bg-gradient-to-r from-cyan-500 to-blue-500 text-white rounded-lg"
+                >
+                    Retry
+                </button>
+            </div>
+        );
+    }
+
     if (!loading && questions.length === 0) {
         return (
             <div className="min-h-screen flex items-center justify-center text-white">
@@ -168,20 +219,16 @@ const ArenaGame = () => {
 
     return (
         <div className="min-h-screen bg-transparent pt-20 pb-12 relative overflow-hidden">
-            {/* Background */}
             <div className="absolute inset-0 overflow-hidden pointer-events-none">
                 <div className="absolute top-0 left-0 w-64 h-64 bg-purple-500/10 rounded-full blur-3xl"></div>
                 <div className="absolute bottom-0 right-0 w-64 h-64 bg-cyan-500/10 rounded-full blur-3xl"></div>
             </div>
-
             <div className="max-w-4xl mx-auto px-6 relative z-10">
-                {/* Header Stats */}
                 <motion.div
                     initial={{ opacity: 0, y: -30 }}
                     animate={{ opacity: 1, y: 0 }}
                     className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-8"
                 >
-                    {/* Progress */}
                     <div className="bg-white/5 backdrop-blur-sm rounded-2xl p-4 border border-white/10">
                         <div className="flex items-center justify-between mb-2">
                             <span className="text-gray-400 text-sm">Progress</span>
@@ -196,45 +243,35 @@ const ArenaGame = () => {
                             />
                         </div>
                     </div>
-
-                    {/* Score */}
                     <div className="bg-white/5 backdrop-blur-sm rounded-2xl p-4 border border-white/10">
                         <div className="flex items-center gap-2 mb-1">
-                            <Trophy className="text-yellow-400" size={18} />
+                            <Trophy className="text-yellow-400" size={20} />
                             <span className="text-gray-400 text-sm">Score</span>
                         </div>
-                        <div className="text-2xl font-bold text-white">{score}</div>
+                        <div className="text-3xl font-bold text-white">{score}</div>
                     </div>
-
-                    {/* Timer */}
                     <div className={`bg-white/5 backdrop-blur-sm rounded-2xl p-4 border ${
                         timeLeft <= 10 ? 'border-red-400/50' : 'border-white/10'
                     }`}>
                         <div className="flex items-center gap-2 mb-1">
-                            <Timer className={timeLeft <= 10 ? "text-red-400" : "text-cyan-400"} size={18} />
+                            <Timer className={timeLeft <= 10 ? "text-red-400" : "text-cyan-400"} size={20} />
                             <span className="text-gray-400 text-sm">Time Left</span>
                         </div>
-                        <div className={`text-2xl font-bold ${
+                        <div className={`text-3xl font-bold ${
                             timeLeft <= 10 ? 'text-red-400' : 'text-white'
                         }`}>
                             {timeLeft}s
                         </div>
                     </div>
-
-                    {/* Streak */}
                     <div className="bg-white/5 backdrop-blur-sm rounded-2xl p-4 border border-white/10">
                         <div className="flex items-center gap-2 mb-1">
-                            <Zap className="text-orange-400" size={18} />
+                            <Zap className="text-orange-400" size={20} />
                             <span className="text-gray-400 text-sm">Streak</span>
                         </div>
-                        <div className="text-2xl font-bold text-white">
-                            {score > 0 && selected === questions[index - 1]?.answer ? Math.min(score, 5) : 0}
-                            {score > 0 && selected === questions[index - 1]?.answer && <span className="text-orange-400 text-lg">🔥</span>}
-                        </div>
+                        <div className="text-3xl font-bold text-white">{score}</div>
                     </div>
                 </motion.div>
 
-                {/* Question Card */}
                 <motion.div
                     key={index}
                     initial={{ opacity: 0, x: 50 }}
@@ -243,23 +280,23 @@ const ArenaGame = () => {
                     className="bg-gradient-to-br from-gray-900/80 to-black/90 backdrop-blur-xl rounded-3xl p-8 border border-white/10 mb-8"
                 >
                     <div className="flex items-center gap-3 mb-6">
-                        <div className="w-12 h-12 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-2xl flex items-center justify-center">
-                            <Brain className="text-white" size={24} />
+                        <div className="w-14 h-14 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-2xl flex items-center justify-center">
+                            <Brain className="text-white" size={28} />
                         </div>
                         <div>
-                            <h2 className="text-gray-400 text-sm font-semibold">Question {index + 1}</h2>
+                            <h2 className="text-gray-400 text-base font-semibold">Question {index + 1}</h2>
                             <div className="flex items-center gap-2">
-                                <div className="w-2 h-2 bg-cyan-400 rounded-full"></div>
-                                <span className="text-cyan-400 text-sm">Battle in Progress</span>
+                                <div className="w-2 h-2 bg-cyan-400 rounded-full" />
+                                <span className="text-cyan-400 text-base">Battle in Progress</span>
                             </div>
                         </div>
                     </div>
 
-                    <h1 className="text-2xl md:text-3xl font-bold text-white mb-8 leading-relaxed">
+                    <h1 className="text-3xl md:text-4xl font-bold text-white mb-10 leading-relaxed">
                         {currentQuestion.question}
                     </h1>
 
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <AnimatePresence>
                             {currentQuestion.options.map((option, i) => (
                                 <motion.button
@@ -267,19 +304,19 @@ const ArenaGame = () => {
                                     initial={{ opacity: 0, y: 20 }}
                                     animate={{ opacity: 1, y: 0 }}
                                     transition={{ delay: i * 0.1 }}
-                                    whileHover={!selected ? { scale: 1.02, y: -2 } : {}}
+                                    whileHover={!selected ? { scale: 1.03, y: -3 } : {}}
                                     whileTap={!selected ? { scale: 0.98 } : {}}
                                     onClick={() => handleSelect(option)}
-                                    className={`p-6 rounded-2xl border-2 text-left transition-all duration-300 bg-gradient-to-r ${getOptionColor(option)} ${
-                                        !selected ? 'cursor-pointer hover:shadow-lg' : 'cursor-default'
+                                    className={`p-7 rounded-2xl border-2 text-left transition-all duration-300 bg-gradient-to-r text-xl md:text-2xl ${getOptionColor(option)} ${
+                                        !selected ? 'cursor-pointer hover:shadow-xl' : 'cursor-default'
                                     }`}
                                     disabled={!!selected}
                                 >
-                                    <div className="flex items-center gap-4">
+                                    <div className="flex items-center gap-5">
                                         {getOptionIcon(option)}
-                                        <span className="text-white font-semibold text-lg flex-1">
-                      {option}
-                    </span>
+                                        <span className="text-white font-semibold flex-1">
+                                            {option}
+                                        </span>
                                     </div>
                                 </motion.button>
                             ))}
@@ -292,12 +329,12 @@ const ArenaGame = () => {
                                 initial={{ opacity: 0, y: 20 }}
                                 animate={{ opacity: 1, y: 0 }}
                                 exit={{ opacity: 0, y: -20 }}
-                                className="mt-6 p-4 bg-red-500/20 border border-red-400/30 rounded-2xl flex items-center gap-3"
+                                className="mt-8 p-4 bg-red-500/20 border border-red-400/30 rounded-2xl flex items-center gap-3"
                             >
-                                <AlertCircle className="text-red-400" size={24} />
+                                <AlertCircle className="text-red-400" size={28} />
                                 <div>
-                                    <div className="text-red-400 font-semibold">Time's Up!</div>
-                                    <div className="text-red-300 text-sm">Moving to next question...</div>
+                                    <div className="text-red-400 font-semibold text-lg">Time's Up!</div>
+                                    <div className="text-red-300 text-base">Moving to next question...</div>
                                 </div>
                             </motion.div>
                         )}
