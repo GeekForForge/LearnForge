@@ -50,8 +50,6 @@ public class ResourceController {
 
         Lesson lesson = lessonRepository.findById(lessonId)
                 .orElseThrow(() -> new RuntimeException("Lesson not found with id " + lessonId));
-
-        // Link both sides
         resource.setLesson(lesson);
 
         Resource saved = resourceService.addResource(resource);
@@ -81,13 +79,8 @@ public class ResourceController {
         Lesson lesson = lessonRepository.findById(lessonId)
                 .orElseThrow(() -> new RuntimeException("Lesson not found with id " + lessonId));
 
-        // Use the scraper service to get fresh data
-        List<Resource> scraped = scraperService.fetchResources(lesson.getLessonName());
-
-        // Link all scraped resources to the lesson
-        for (Resource r : scraped) {
-            r.setLesson(lesson);
-        }
+        // Use the scraper service to get mapped Resource entities
+        List<Resource> scraped = scraperService.fetchAndMapResources(lesson.getLessonName(), lesson);
 
         // Save in DB
         resourceService.saveAll(scraped);

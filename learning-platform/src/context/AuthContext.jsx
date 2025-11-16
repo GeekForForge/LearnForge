@@ -295,7 +295,7 @@ export const AuthProvider = ({ children }) => {
                 signupWithEmail,
                 handleGithubCallback,
                 updateUser
-                updateUser     // ✅——— ADD THIS LINE!
+                    // ✅——— ADD THIS LINE!
             }}
         >
             {children}

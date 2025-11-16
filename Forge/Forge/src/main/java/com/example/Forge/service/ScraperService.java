@@ -1,77 +1,78 @@
+// src/main/java/com/example/Forge/service/ScraperService.java
 package com.example.Forge.service;
 
+import com.example.Forge.entity.Lesson;
 import com.example.Forge.entity.Resource;
-import org.jsoup.Jsoup;
-import org.jsoup.nodes.Document;
-import org.jsoup.nodes.Element;
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.stereotype.Service;
 
-import java.net.URLEncoder;
-import java.nio.charset.StandardCharsets;
+import java.net.URI;
+import java.net.http.HttpClient;
+import java.net.http.HttpRequest;
+import java.net.http.HttpResponse;
 import java.util.*;
 
 @Service
 public class ScraperService {
 
-    public List<Resource> fetchResources(String query) {
-        System.out.println("🔍 Fetching relevant links for: " + query);
-        List<Resource> results = new ArrayList<>();
-        Set<String> urls = new HashSet<>();
+    public List<Resource> fetchAndMapResources(String query, Lesson lesson) {
+        List<Resource> resources = new ArrayList<>();
+        try {
+            HttpClient client = HttpClient.newHttpClient();
+            ObjectMapper mapper = new ObjectMapper();
 
-        // List of target sites
-        Map<String, String> sites = Map.of(
-                "GFG", "geeksforgeeks.org",
-                "LeetCode", "leetcode.com",
-                "StackOverflow", "stackoverflow.com",
-                "GitHub", "github.com"
-        );
+            // Prepare payload for Python microservice
+            Map<String, Object> payload = new HashMap<>();
+            payload.put("query", query);
+            payload.put("limit", 4);
 
-        for (Map.Entry<String, String> entry : sites.entrySet()) {
-            String platform = entry.getKey();
-            String domain = entry.getValue();
+            String jsonBody = mapper.writeValueAsString(payload);
 
-            try {
-                String searchUrl = "https://www.google.com/search?q=" +
-                        URLEncoder.encode(query + " site:" + domain, StandardCharsets.UTF_8);
+            HttpRequest req = HttpRequest.newBuilder()
+                    .uri(URI.create("http://127.0.0.1:8000/fetch")) // match port/run of your FastAPI server
+                    .header("Content-Type", "application/json")
+                    .POST(HttpRequest.BodyPublishers.ofString(jsonBody))
+                    .build();
 
-                Document doc = Jsoup.connect(searchUrl)
-                        .userAgent("Mozilla/5.0 (Windows NT 10.0; Win64; x64)")
-                        .timeout(10000)
-                        .get();
+            HttpResponse<String> resp = client.send(req, HttpResponse.BodyHandlers.ofString());
 
-                int count = 0;
-                for (Element link : doc.select("a[href^=https]")) {
-                    String href = link.attr("href");
-                    if (href.contains(domain)
-                            && !href.contains("google.com")
-                            && urls.add(href)
-                            && count < 4) {
+            if (resp.statusCode() == 200) {
+                // Unwrap the grouped 'results' object
+                Map<String, Object> fullResp = mapper.readValue(resp.body(), new TypeReference<>() {});
+                Map<String, List<Map<String, Object>>> results =
+                        (Map<String, List<Map<String, Object>>>) fullResp.get("results");
 
-                        Resource r = new Resource();
-                        r.setTitle(link.text().isEmpty() ? platform + " Resource" : link.text());
-                        r.setUrl(href);
-                        r.setType(platform);
-                        r.setDescription(platform + " result for " + query);
+                if (results != null) {
+                    for (List<Map<String, Object>> group : results.values()) {
+                        for (Map<String, Object> entry : group) {
+                            Resource resource = new Resource();
+                            resource.setTitle((String) entry.get("title"));
+                            resource.setType((String) entry.get("type"));
+                            resource.setUrl((String) entry.get("url"));
 
-                        results.add(r);
-                        count++;
+                            // Set description from scraped.summary, fallback to scraped.snippet
+                            Map<String, Object> scraped = (Map<String, Object>) entry.get("scraped");
+                            if (scraped != null) {
+                                String summary = (String) scraped.get("summary");
+                                String snippet = (String) scraped.get("snippet");
+                                resource.setDescription(
+                                        summary != null && !summary.isEmpty() ? summary : snippet
+                                );
+                            }
+                            // Set Lesson reference from parameter
+                            resource.setLesson(lesson);
+                            resources.add(resource);
+                        }
                     }
                 }
-
-                System.out.println("✅ " + platform + " results added: " + count);
-            } catch (Exception e) {
-                System.err.println("⚠️ " + platform + " scrape failed: " + e.getMessage());
+            } else {
+                System.err.println("Python microservice error: " + resp.statusCode());
             }
+        } catch (Exception e) {
+            System.err.println("Error calling Python microservice: " + e.getMessage());
         }
-
-        // Deduplicate final results
-        Map<String, Resource> unique = new LinkedHashMap<>();
-        for (Resource r : results) {
-            unique.putIfAbsent(r.getUrl(), r);
-        }
-
-        List<Resource> finalResults = new ArrayList<>(unique.values());
-        System.out.println("✅ Final unique links: " + finalResults.size());
-        return finalResults;
+        return resources;
     }
 }
+
