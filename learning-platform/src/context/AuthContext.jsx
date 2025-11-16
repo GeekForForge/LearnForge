@@ -1,4 +1,3 @@
-// src/context/AuthContext.jsx
 import React, { createContext, useState, useContext, useEffect } from 'react';
 import ApiService from '../services/api';
 import { db } from '../firebase';
@@ -74,7 +73,10 @@ export const AuthProvider = ({ children }) => {
                                 followersCount: 0,
                                 followingCount: 0,
                                 postsCount: 0,
-                                leetcodeHandle: null
+                                leetcodeHandle: null,
+                                leetcodeUrl: null, // leetcodeUrl was missing, good to add
+                                gfgUrl: null,       // <-- ADDED
+                                codechefUrl: null   // <-- ADDED
                             };
                             await setDoc(userDocRef, userDataForFirestore);
                             firestoreData = userDataForFirestore;
@@ -105,7 +107,10 @@ export const AuthProvider = ({ children }) => {
                     bio: userData.bio,
                     location: userData.location,
                     isAdmin: userData.isAdmin || false,
-                    leetcodeHandle: firestoreData?.leetcodeHandle || null
+                    leetcodeHandle: firestoreData?.leetcodeHandle || null,
+                    leetcodeUrl: firestoreData?.leetcodeUrl || null, // leetcodeUrl was missing, good to add
+                    gfgUrl: firestoreData?.gfgUrl || null,           // <-- ADDED
+                    codechefUrl: firestoreData?.codechefUrl || null   // <-- ADDED
                 });
                 setIsAuthenticated(true);
                 return true;
@@ -265,6 +270,7 @@ export const AuthProvider = ({ children }) => {
         try {
             const userDocRef = doc(db, 'users', user.userId);
             await updateDoc(userDocRef, data);
+            await fetchUser(); // This re-fetches and updates the global user state
             await fetchUser();
             return true;
         } catch (error) {
@@ -288,6 +294,7 @@ export const AuthProvider = ({ children }) => {
                 loginWithEmail,
                 signupWithEmail,
                 handleGithubCallback,
+                updateUser
                 updateUser     // ✅——— ADD THIS LINE!
             }}
         >

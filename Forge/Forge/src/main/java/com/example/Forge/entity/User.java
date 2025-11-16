@@ -61,7 +61,6 @@ public class User {
     @Column(name = "is_admin", nullable = false)
     private Boolean isAdmin = false;
 
-    // Constructors
     public User() {
         this.userId = UUID.randomUUID().toString();
         this.createdAt = LocalDateTime.now();

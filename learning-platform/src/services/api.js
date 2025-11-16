@@ -2,9 +2,6 @@ const API_BASE_URL = 'http://localhost:8080/api';
 // const API_BASE_URL = 'https://learnforge.onrender.com/api';
 
 class ApiService {
-    // ============================================
-    // COURSE METHODS
-    // ============================================
 
     async getAllCourses() {
         try {
@@ -21,6 +18,110 @@ class ApiService {
         }
     }
 
+    async getGfgMetrics(handle) {
+        try {
+            console.log(`🎯 ApiService: Fetching GFG stats for ${handle}`);
+            const response = await fetch(`${API_BASE_URL}/gfg/${handle}`, { // Assumes /api/gfg
+                method: 'GET',
+                credentials: 'include',
+            });
+            if (!response.ok) {
+                const errorData = await response.text();
+                throw new Error(errorData || 'Failed to fetch GFG metrics');
+            }
+
+            // --- UPDATED BLOCK ---
+            // 1. Get response as text first
+            const text = await response.text();
+
+            // 2. Check if text is empty
+            if (!text || text.trim() === '') {
+                console.log('✅ ApiService: GFG user not found or not connected (empty response).');
+                return null; // Return null, which is expected
+            }
+
+            // 3. Only parse if text is not empty
+            const data = JSON.parse(text);
+            console.log('✅ ApiService: GFG stats received:', data);
+            return data;
+            // --- END UPDATED BLOCK ---
+
+        } catch (error) {
+            console.error('❌ ApiService: Error in getGfgMetrics:', error);
+            throw error;
+        }
+    }
+
+    async syncGfgMetrics(handle) {
+        try {
+            const response = await fetch(`${API_BASE_URL}/gfg/sync/${handle}`, { // Assumes /api/gfg
+                method: "POST",
+                credentials: "include"
+            });
+            if (!response.ok) {
+                const errorData = await response.text();
+                throw new Error(errorData || "Failed to force sync GFG metrics");
+            }
+            return await response.json();
+        } catch (error) {
+            console.error("ApiService Error in syncGfgMetrics", error);
+            throw error;
+        }
+    }
+
+    // ============================================
+    // CODECHEF METHODS (NEW)
+    // ============================================
+    async getCodeChefMetrics(handle) {
+        try {
+            console.log(`🎯 ApiService: Fetching CodeChef stats for ${handle}`);
+            const response = await fetch(`${API_BASE_URL}/codechef/${handle}`, { // Assumes /api/codechef
+                method: 'GET',
+                credentials: 'include',
+            });
+            if (!response.ok) {
+                const errorData = await response.text();
+                throw new Error(errorData || 'Failed to fetch CodeChef metrics');
+            }
+
+            // --- UPDATED BLOCK ---
+            // 1. Get response as text first
+            const text = await response.text();
+
+            // 2. Check if text is empty
+            if (!text || text.trim() === '') {
+                console.log('✅ ApiService: CodeChef user not found or not connected (empty response).');
+                return null; // Return null, which is expected
+            }
+
+            // 3. Only parse if text is not empty
+            const data = JSON.parse(text); // This was line 72
+            console.log('✅ ApiService: CodeChef stats received:', data);
+            return data;
+            // --- END UPDATED BLOCK ---
+
+        } catch (error) {
+            console.error('❌ ApiService: Error in getCodeChefMetrics:', error);
+            throw error;
+        }
+    }
+
+    async syncCodeChefMetrics(handle) {
+        try {
+            const response = await fetch(`${API_BASE_URL}/codechef/sync/${handle}`, { // Assumes /api/codechef
+                method: "POST",
+                credentials: "include"
+            });
+            if (!response.ok) {
+                const errorData = await response.text();
+                throw new Error(errorData || "Failed to force sync CodeChef metrics");
+            }
+            return await response.json();
+        } catch (error) {
+            console.error("ApiService Error in syncCodeChefMetrics", error);
+            throw error;
+        }
+    }
     async getCourseById(id) {
         try {
             console.log('🎯 ApiService: Fetching course ID:', id);
@@ -434,7 +535,16 @@ class ApiService {
                 const errorData = await response.text();
                 throw new Error(errorData || 'Failed to fetch LeetCode metrics');
             }
-            const data = await response.json();
+
+            // --- UPDATED BLOCK ---
+            const text = await response.text();
+            if (!text || text.trim() === '') {
+                console.log('✅ ApiService: LeetCode user not found or not connected (empty response).');
+                return null;
+            }
+            const data = JSON.parse(text);
+            // --- END UPDATED BLOCK ---
+
             console.log('✅ ApiService: LeetCode stats received:', data);
             return data;
         } catch (error) {

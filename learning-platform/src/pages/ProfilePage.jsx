@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import {
     BookOpen, Award, TrendingUp, Target, Clock, CheckCircle,
     User, Mail, Calendar, Settings, Edit3, ChevronRight, Flame, Trophy,
-    Code, Star, Zap, Crown, Medal, Link as LinkIcon // Import LinkIcon
+    Code, Star, Zap, Crown, Medal, Link as LinkIcon, Loader // <-- Import Loader
 } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
 import { useProgress } from '../context/ProgressContext';
@@ -28,13 +28,25 @@ const ProfilePage = ({ setCurrentPage }) => {
         longestStreak: 0,
         totalLessonsCompleted: 0
     });
+
+    // LeetCode State
     const [leetcodeStats, setLeetcodeStats] = useState(null);
     const [leetcodeLoading, setLeetcodeLoading] = useState(true);
+
+    // --- ADDED: GFG & CodeChef State ---
+    const [gfgStats, setGfgStats] = useState(null);
+    const [gfgLoading, setGfgLoading] = useState(false);
+    const [codechefStats, setCodechefStats] = useState(null);
+    const [codechefLoading, setCodechefLoading] = useState(false);
+    // --- END ADDED ---
+
     const [handleInput, setHandleInput] = useState('');
     const [isSaving, setIsSaving] = useState(false);
 
     // This is now dynamic from AuthContext
     const leetcodeHandle = user?.leetcodeHandle;
+    const gfgUrl = user?.gfgUrl; // <-- ADDED
+    const codechefUrl = user?.codechefUrl; // <-- ADDED
 
     useEffect(() => {
         setCurrentPage('profile');
@@ -48,8 +60,28 @@ const ProfilePage = ({ setCurrentPage }) => {
         if (user) {
             loadProfileData();
         }
-    }, [user]);
+    }, [user]); // user dependency is correct
 
+    // --- ADDED: Handle Extractors ---
+    const extractGfgHandle = (url) => {
+        if (!url) return null;
+        try {
+            // Handles both geeksforgeeks.org/user/ and geeksforgeeks.org/auth/
+            const match = url.match(/geeksforgeeks\.org\/(user|auth)\/([a-zA-Z0-9_-]+)/);
+            return match ? match[2] : null;
+        } catch (e) { return null; }
+    };
+
+    const extractCodeChefHandle = (url) => {
+        if (!url) return null;
+        try {
+            const match = url.match(/codechef\.com\/users\/([a-zA-Z0-9_-]+)/);
+            return match ? match[1] : null;
+        } catch (e) { return null; }
+    };
+    // --- END ADDED ---
+
+    // LeetCode Loader
     useEffect(() => {
         if (leetcodeHandle) {
             loadLeetcodeData(leetcodeHandle);
@@ -57,6 +89,52 @@ const ProfilePage = ({ setCurrentPage }) => {
             setLeetcodeLoading(false);
         }
     }, [leetcodeHandle]);
+
+    // --- ADDED: GFG & CodeChef Loaders ---
+    // GFG Loader
+    useEffect(() => {
+        const handle = extractGfgHandle(gfgUrl);
+        if (handle) {
+            const loadData = async () => {
+                setGfgLoading(true);
+                try {
+                    const data = await ApiService.getGfgMetrics(handle);
+                    setGfgStats(data);
+                } catch (e) {
+                    console.error("Failed to load GFG stats", e);
+                    setGfgStats(null);
+                } finally {
+                    setGfgLoading(false);
+                }
+            };
+            loadData();
+        } else {
+            setGfgStats(null); // Clear stats if URL is removed
+        }
+    }, [gfgUrl]);
+
+    // CodeChef Loader
+    useEffect(() => {
+        const handle = extractCodeChefHandle(codechefUrl);
+        if (handle) {
+            const loadData = async () => {
+                setCodechefLoading(true);
+                try {
+                    const data = await ApiService.getCodeChefMetrics(handle);
+                    setCodechefStats(data);
+                } catch (e) {
+                    console.error("Failed to load CodeChef stats", e);
+                    setCodechefStats(null);
+                } finally {
+                    setCodechefLoading(false);
+                }
+            };
+            loadData();
+        } else {
+            setCodechefStats(null); // Clear stats if URL is removed
+        }
+    }, [codechefUrl]);
+    // --- END ADDED ---
 
     const loadLeetcodeData = async (handle) => {
         setLeetcodeLoading(true);
@@ -103,25 +181,13 @@ const ProfilePage = ({ setCurrentPage }) => {
         }
     };
 
+    // This function is no longer needed on this page, as SettingsPage handles it
+    /*
     const handleSaveHandle = async (e) => {
         e.preventDefault();
-        if (!handleInput || !user) return;
-
-        setIsSaving(true);
-        const userDocRef = doc(db, "users", user.userId);
-
-        try {
-            await updateDoc(userDocRef, {
-                leetcodeHandle: handleInput
-            });
-            await fetchUser();
-        } catch (error) {
-            console.error("❌ Error saving handle:", error);
-        } finally {
-            setIsSaving(false);
-            setHandleInput('');
-        }
+        // ...
     };
+    */
 
     const getCourseProgress = async (courseId) => {
         try {
@@ -156,7 +222,7 @@ const ProfilePage = ({ setCurrentPage }) => {
         return Math.round((summary.completedLessons / summary.totalLessons) * 100);
     };
 
-    if ((loading || !user) && !leetcodeStats) {
+    if (loading) { // Simplified loading check
         return (
             <div className="min-h-screen pt-24 pb-12 flex items-center justify-center">
                 <div className="text-center">
@@ -165,6 +231,12 @@ const ProfilePage = ({ setCurrentPage }) => {
                 </div>
             </div>
         );
+    }
+
+    // This check is for after loading, if user somehow still null
+    if (!user) {
+        navigate('/login');
+        return null;
     }
 
     return (
@@ -240,16 +312,16 @@ const ProfilePage = ({ setCurrentPage }) => {
                     </div>
 
                     {/* === CONDITIONAL RENDER: CONNECT OR SHOW STATS === */}
-                    { !leetcodeHandle ? (
+                    { !leetcodeHandle && !gfgUrl && !codechefUrl ? (
                         <motion.div
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
                             className="bg-gray-900 rounded-3xl p-8 border border-neon-purple/30 text-center"
                         >
                             <LinkIcon size={48} className="mx-auto text-neon-cyan mb-4" />
-                            <h3 className="text-2xl font-bold text-white mb-2">Connect Your LeetCode</h3>
+                            <h3 className="text-2xl font-bold text-white mb-2">Connect Your Profiles</h3>
                             <p className="text-gray-400 mb-6">
-                                Go to Settings > Connected Accounts to link your LeetCode handle.
+                                Go to Settings > Connected Accounts to link your LeetCode, GFG, and CodeChef handles.
                             </p>
                             <button
                                 onClick={() => navigate('/settings')}
@@ -258,26 +330,8 @@ const ProfilePage = ({ setCurrentPage }) => {
                                 Go to Settings
                             </button>
                         </motion.div>
-                    ) : leetcodeLoading ? (
-                        // --- 2. SHOW LOADING SPINNER ---
-                        <div className="text-center p-10 bg-gray-900 rounded-3xl border border-neon-purple/30">
-                            <div className="w-8 h-8 border-2 border-neon-cyan border-t-transparent rounded-full animate-spin mx-auto mb-3"></div>
-                            <p className="text-gray-300">Loading LeetCode Stats for "{leetcodeHandle}"...</p>
-                        </div>
-                    ) : !leetcodeStats ? (
-                        // --- 3. SHOW ERROR MESSAGE ---
-                        <div className="text-center p-10 bg-gray-900 rounded-3xl border border-red-500/30">
-                            <p className="text-red-400">Could not load LeetCode stats for "{leetcodeHandle}".</p>
-                            <p className="text-gray-400 text-sm mt-2">Handle might be incorrect or the API is down.</p>
-                            <button
-                                onClick={() => navigate('/settings')}
-                                className="mt-4 px-4 py-2 text-xs bg-white/10 rounded-lg text-white hover:bg-white/20"
-                            >
-                                Change Handle
-                            </button>
-                        </div>
                     ) : (
-                        // --- 4. SHOW STATS (Your existing JSX, now populated) ---
+                        // --- 4. SHOW STATS GRID ---
                         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
                             {/* Main Stats Card - NOW DYNAMIC */}
                             <motion.div
@@ -289,87 +343,135 @@ const ProfilePage = ({ setCurrentPage }) => {
 
                                 <div className="relative z-10">
                                     <div className="flex items-center justify-between mb-8">
-                                        <h3 className="text-2xl font-bold text-white">LeetCode Stats ({leetcodeStats.handle})</h3>
+                                        <h3 className="text-2xl font-bold text-white">
+                                            {leetcodeHandle ? `LeetCode Stats (${leetcodeHandle})` : "LeetCode Stats"}
+                                        </h3>
                                     </div>
 
+                                    {/* === STATS HEADER GRID (NOW FULLY DYNAMIC) === */}
                                     <div className="grid grid-cols-3 gap-6 mb-8">
+                                        {/* 1. LEETCODE */}
                                         <div className="text-center">
-                                            <div className="text-5xl font-bold bg-gradient-to-r from-green-400 to-cyan-400 bg-clip-text text-transparent mb-2">
-                                                {leetcodeStats.totalSolved}
-                                            </div>
-                                            <div className="flex items-center justify-center gap-2 text-gray-300">
-                                                <div className="w-3 h-3 bg-green-500 rounded-full"></div>
-                                                <span className="text-sm">Total Solved</span>
-                                            </div>
+                                            {leetcodeLoading ? (
+                                                <Loader className="animate-spin text-green-400 mx-auto mt-4" />
+                                            ) : (
+                                                <>
+                                                    <div className={`text-5xl font-bold bg-gradient-to-r from-green-400 to-cyan-400 bg-clip-text text-transparent mb-2 ${!leetcodeStats ? 'opacity-50' : ''}`}>
+                                                        {leetcodeStats?.totalSolved || 0}
+                                                    </div>
+                                                    <div className={`flex items-center justify-center gap-2 text-gray-300 ${!leetcodeStats ? 'opacity-50' : ''}`}>
+                                                        <div className="w-3 h-3 bg-green-500 rounded-full"></div>
+                                                        <span className="text-sm">LeetCode</span>
+                                                    </div>
+                                                </>
+                                            )}
                                         </div>
-                                        <div className="text-center opacity-50">
-                                            <div className="text-5xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent mb-2">
-                                                0
-                                            </div>
-                                            <div className="flex items-center justify-center gap-2 text-gray-300">
-                                                <div className="w-3 h-3 bg-blue-500 rounded-full"></div>
-                                                <span className="text-sm">CodeStudio</span>
-                                            </div>
+
+                                        {/* 2. GEEKSFORGEEKS (Replaced placeholder) */}
+                                        <div className="text-center">
+                                            {gfgLoading ? (
+                                                <Loader className="animate-spin text-green-400 mx-auto mt-4" />
+                                            ) : (
+                                                <>
+                                                    <div className={`text-5xl font-bold bg-gradient-to-r from-green-400 to-cyan-400 bg-clip-text text-transparent mb-2 ${!gfgStats ? 'opacity-50' : ''}`}>
+                                                        {gfgStats?.totalProblemsSolved || 0}
+                                                    </div>
+                                                    <div className={`flex items-center justify-center gap-2 text-gray-300 ${!gfgStats ? 'opacity-50' : ''}`}>
+                                                        <div className="w-3 h-3 bg-green-500 rounded-full"></div>
+                                                        <span className="text-sm">GeeksforGeeks</span>
+                                                    </div>
+                                                </>
+                                            )}
                                         </div>
-                                        <div className="text-center opacity-50">
-                                            <div className="text-5xl font-bold bg-gradient-to-r from-orange-400 to-red-400 bg-clip-text text-transparent mb-2">
-                                                0
-                                            </div>
-                                            <div className="flex items-center justify-center gap-2 text-gray-300">
-                                                <div className="w-3 h-3 bg-orange-500 rounded-full"></div>
-                                                <span className="text-sm">GeeksforGeeks</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className="bg-black/50 rounded-2xl p-6 border border-white/10 mb-8">
-                                        <h4 className="text-lg font-semibold text-white mb-4 flex items-center gap-2">
-                                            <Zap className="text-yellow-400" size={20} />
-                                            Difficulty Breakdown
-                                        </h4>
-                                        <div className="grid grid-cols-3 gap-4">
-                                            <div className="text-center">
-                                                <div className="text-2xl font-bold text-green-400 mb-1">
-                                                    {leetcodeStats.easy}
-                                                </div>
-                                                <div className="text-xs text-gray-400">Easy</div>
-                                            </div>
-                                            <div className="text-center">
-                                                <div className="text-2xl font-bold text-yellow-400 mb-1">
-                                                    {leetcodeStats.medium}
-                                                </div>
-                                                <div className="text-xs text-gray-400">Medium</div>
-                                            </div>
-                                            <div className="text-center">
-                                                <div className="text-2xl font-bold text-red-400 mb-1">
-                                                    {leetcodeStats.hard}
-                                                </div>
-                                                <div className="text-xs text-gray-400">Hard</div>
-                                            </div>
+
+                                        {/* 3. CODECHEF (Replaced placeholder) */}
+                                        <div className="text-center">
+                                            {codechefLoading ? (
+                                                <Loader className="animate-spin text-yellow-400 mx-auto mt-4" />
+                                            ) : (
+                                                <>
+                                                    <div className={`text-5xl font-bold bg-gradient-to-r from-yellow-400 to-orange-500 bg-clip-text text-transparent mb-2 ${!codechefStats ? 'opacity-50' : ''}`}>
+                                                        {codechefStats?.currentRating || 0}
+                                                    </div>
+                                                    <div className={`flex items-center justify-center gap-2 text-gray-300 ${!codechefStats ? 'opacity-50' : ''}`}>
+                                                        <div className="w-3 h-3 bg-yellow-500 rounded-full"></div>
+                                                        <span className="text-sm">CodeChef</span>
+                                                    </div>
+                                                </>
+                                            )}
                                         </div>
                                     </div>
-                                    <div className="bg-black/50 rounded-2xl p-6 border border-white/10">
-                                        <h4 className="text-lg font-semibold text-white mb-4 flex items-center gap-2">
-                                            <Calendar size={20} className="text-cyan-400" />
-                                            Activity Heatmap
-                                        </h4>
-                                        <div className="heatmap-container">
-                                            <CalendarHeatmap
-                                                startDate={new Date(new Date().setFullYear(new Date().getFullYear() - 1))}
-                                                endDate={new Date()}
-                                                values={getHeatmapData(leetcodeStats.calendar)}
-                                                classForValue={(value) => {
-                                                    if (!value || value.count === 0) return 'color-empty';
-                                                    if (value.count > 4) return 'color-github-4';
-                                                    return `color-github-${value.count}`;
-                                                }}
-                                                tooltipDataAttrs={value => {
-                                                    const date = value.date ? new Date(value.date).toDateString() : 'No data';
-                                                    const count = value.count || 0;
-                                                    return { 'data-tip': `${date}: ${count} submissions` };
-                                                }}
-                                            />
+
+                                    {/* LeetCode Specifics */}
+                                    {leetcodeLoading ? (
+                                        <div className="text-center p-4">
+                                            <Loader className="animate-spin text-neon-cyan mx-auto" />
                                         </div>
-                                    </div>
+                                    ) : !leetcodeStats ? (
+                                        <div className="text-center p-6 bg-black/50 rounded-2xl border border-white/10">
+                                            <p className="text-gray-400">
+                                                {leetcodeHandle ? `Could not load LeetCode stats for "${leetcodeHandle}".` : "LeetCode not connected."}
+                                            </p>
+                                            <button
+                                                onClick={() => navigate('/settings')}
+                                                className="mt-4 px-4 py-2 text-xs bg-white/10 rounded-lg text-white hover:bg-white/20"
+                                            >
+                                                {leetcodeHandle ? "Check Handle" : "Connect"}
+                                            </button>
+                                        </div>
+                                    ) : (
+                                        <>
+                                            <div className="bg-black/50 rounded-2xl p-6 border border-white/10 mb-8">
+                                                <h4 className="text-lg font-semibold text-white mb-4 flex items-center gap-2">
+                                                    <Zap className="text-yellow-400" size={20} />
+                                                    LeetCode Difficulty Breakdown
+                                                </h4>
+                                                <div className="grid grid-cols-3 gap-4">
+                                                    <div className="text-center">
+                                                        <div className="text-2xl font-bold text-green-400 mb-1">
+                                                            {leetcodeStats.easy}
+                                                        </div>
+                                                        <div className="text-xs text-gray-400">Easy</div>
+                                                    </div>
+                                                    <div className="text-center">
+                                                        <div className="text-2xl font-bold text-yellow-400 mb-1">
+                                                            {leetcodeStats.medium}
+                                                        </div>
+                                                        <div className="text-xs text-gray-400">Medium</div>
+                                                    </div>
+                                                    <div className="text-center">
+                                                        <div className="text-2xl font-bold text-red-400 mb-1">
+                                                            {leetcodeStats.hard}
+                                                        </div>
+                                                        <div className="text-xs text-gray-400">Hard</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div className="bg-black/50 rounded-2xl p-6 border border-white/10">
+                                                <h4 className="text-lg font-semibold text-white mb-4 flex items-center gap-2">
+                                                    <Calendar size={20} className="text-cyan-400" />
+                                                    LeetCode Activity Heatmap
+                                                </h4>
+                                                <div className="heatmap-container">
+                                                    <CalendarHeatmap
+                                                        startDate={new Date(new Date().setFullYear(new Date().getFullYear() - 1))}
+                                                        endDate={new Date()}
+                                                        values={getHeatmapData(leetcodeStats.calendar)}
+                                                        classForValue={(value) => {
+                                                            if (!value || value.count === 0) return 'color-empty';
+                                                            if (value.count > 4) return 'color-github-4';
+                                                            return `color-github-${value.count}`;
+                                                        }}
+                                                        tooltipDataAttrs={value => {
+                                                            const date = value.date ? new Date(value.date).toDateString() : 'No data';
+                                                            const count = value.count || 0;
+                                                            return { 'data-tip': `${date}: ${count} submissions` };
+                                                        }}
+                                                    />
+                                                </div>
+                                            </div>
+                                        </>
+                                    )}
                                 </div>
                             </motion.div>
 
@@ -552,7 +654,7 @@ const CourseCard = ({ course, progressData, getCourseProgress, navigate }) => {
             setProgress(p);
         };
         loadProgress();
-    }, [course.courseId, progressData]);
+    }, [course.courseId, progressData, getCourseProgress]); // Added getCourseProgress to deps
 
     const courseProgress = progressData[course.courseId];
     const completedCount = courseProgress?.completedLessons?.length || 0;
