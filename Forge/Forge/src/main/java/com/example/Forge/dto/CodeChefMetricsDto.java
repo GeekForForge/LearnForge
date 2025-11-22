@@ -7,21 +7,24 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class CodeChefMetricsDto {
     public String handle;
 
-    @JsonProperty("rating") // <-- ADDED
+    // Maps "rating" from JSON to this field
+    @JsonProperty("rating")
     public int currentRating;
 
-    @JsonProperty("highest_rating") // <-- ADDED
+    // Maps "highest_rating" from JSON
+    @JsonProperty("highest_rating")
     public int highestRating;
 
-    @JsonProperty("stars") // <-- This one is the same
+    @JsonProperty("stars")
     public String stars;
 
-    @JsonProperty("global_rank") // <-- ADDED
+    // Maps "global_rank" from JSON
+    @JsonProperty("global_rank")
     public String globalRank;
 
-    @JsonProperty("country_rank") // <-- ADDED
+    // Maps "country_rank" from JSON
+    @JsonProperty("country_rank")
     public String countryRank;
 
     public String lastFetched;
-
 }

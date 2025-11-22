@@ -8,11 +8,7 @@ import {
 } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
 import axios from 'axios';
-
 const SettingsPage = ({ setCurrentPage }) => {
-
-
-
     const navigate = useNavigate();
     const { user, isAuthenticated, updateUser, logout } = useAuth(); // updateUser is from AuthContext
 
@@ -106,18 +102,16 @@ const SettingsPage = ({ setCurrentPage }) => {
                 {
                     headers: {
                         'Content-Type': 'application/json',
-                        // You might need an auth token here if your API is secured
                     }
                 }
             );
 
-            // Also update Firestore/AuthContext
             await updateUser({
                 name: profileData.name,
                 bio: profileData.bio,
                 location: profileData.location,
                 website: profileData.website,
-                email: profileData.email // Be careful updating email if it's a login credential
+                email: profileData.email
             });
 
             console.log('✅ Profile updated (API):', response.data);
@@ -129,8 +123,6 @@ const SettingsPage = ({ setCurrentPage }) => {
             setIsLoading(false);
         }
     };
-
-    // --- UPDATED HELPER FUNCTIONS ---
 
     function extractLeetCodeHandle(input) {
         if (!input) return null;
@@ -147,15 +139,14 @@ const SettingsPage = ({ setCurrentPage }) => {
 
     function extractGfgHandle(input) {
         if (!input) return null;
-        // Try URL first
+
         const urlMatch = input.match(/geeksforgeeks\.org\/(user|auth)\/([a-zA-Z0-9_-]+)/);
         if (urlMatch) return urlMatch[2];
 
-        // Try plain username
         const usernameMatch = input.match(/^[a-zA-Z0-9_-]+$/);
         if (usernameMatch) return input.trim();
 
-        return null; // Invalid input
+        return null;
     }
 
     function extractCodeChefHandle(input) {
@@ -168,78 +159,54 @@ const SettingsPage = ({ setCurrentPage }) => {
         const usernameMatch = input.match(/^[a-zA-Z0-9_-]+$/);
         if (usernameMatch) return input.trim();
 
-        return null; // Invalid input
+        return null;
     }
-    // --- END UPDATED HELPER FUNCTIONS ---
 
-
-    // --- HEAVILY UPDATED FUNCTION ---
     const handlePlatformConnect = async (platform) => {
-        const input = platformUrls[platform].trim(); // Get the raw input
-
+        const input = platformUrls[platform].trim();
         if (!input) {
             showMessage('error', `Please enter your ${platform} profile URL or username`);
             return;
         }
 
-        // --- REMOVED OLD URL VALIDATION ---
         setIsLoading(true);
         try {
-            let updatedProfileData = { ...profileData }; // For API
-            let firestoreUpdateData = {}; // <-- For Firestore/AuthContext
-            let handle = null; // <-- Variable to store the extracted handle
+            let updatedProfileData = { ...profileData };
+            let firestoreUpdateData = {};
+            let handle = null;
 
             if (platform === "leetcode") {
                 handle = extractLeetCodeHandle(input);
-                if (!handle) {
-                    showMessage('error', "Invalid LeetCode handle or URL.");
-                    setIsLoading(false);
-                    return;
-                }
+                if (!handle) { showMessage('error', "Invalid LeetCode handle or URL."); setIsLoading(false); return; }
                 updatedProfileData.leetcodeUrl = `https://leetcode.com/${handle}`;
-                // Data for Firestore
                 firestoreUpdateData = { leetcodeHandle: handle, leetcodeUrl: updatedProfileData.leetcodeUrl };
-
             } else if (platform === "gfg") {
                 handle = extractGfgHandle(input);
-                if (!handle) {
-                    showMessage('error', "Invalid GFG username or URL.");
-                    setIsLoading(false);
-                    return;
-                }
-                // Standardize on one URL format
+                if (!handle) { showMessage('error', "Invalid GFG username or URL."); setIsLoading(false); return; }
                 updatedProfileData.gfgUrl = `https://www.geeksforgeeks.org/user/${handle}/`;
                 firestoreUpdateData = { gfgUrl: updatedProfileData.gfgUrl };
-
             } else if (platform === "codechef") {
                 handle = extractCodeChefHandle(input);
-                if (!handle) {
-                    showMessage('error', "Invalid CodeChef username or URL.");
-                    setIsLoading(false);
-                    return;
-                }
+                if (!handle) { showMessage('error', "Invalid CodeChef username or URL."); setIsLoading(false); return; }
                 updatedProfileData.codechefUrl = `https://www.codechef.com/users/${handle}`;
-                firestoreUpdateData = { codechefUrl: updatedProfileData.codechefUrl };
+                firestoreUpdateData = { codechefUrl: updatedProfileData.codechefUrl};
             }
 
-            // 1. Update Backend API
-            const response = await axios.put(
+            await axios.put(
                 `${API_BASE_URL}/users/${user.userId}`,
                 updatedProfileData,
-                {
-                    headers: {
-                        'Content-Type': 'application/json',
-                        // Auth token if needed
-                    }
-                }
+                { headers: { 'Content-Type': 'application/json' } }
             );
 
-            // 2. Update Firestore & AuthContext (This updates the global state)
             await updateUser(firestoreUpdateData);
 
-            console.log(`✅ ${platform} connected (API):`, response.data);
-            showMessage('success', `${platform.charAt(0).toUpperCase() + platform.slice(1)} profile connected successfully!`);
+            // --- CRUCIAL PATCH HERE ---
+            if (typeof fetchUser === 'function') {
+                await fetchUser(); // <-- This refreshes the user context so ProfilePage will get the new handle!
+            }
+            // --- END PATCH ---
 
+            showMessage('success', `${platform.charAt(0).toUpperCase() + platform.slice(1)} profile connected successfully!`);
         } catch (err) {
             console.error(`❌ Error connecting ${platform}:`, err);
             showMessage('error', err.response?.data || `Failed to connect ${platform}`);
@@ -247,10 +214,8 @@ const SettingsPage = ({ setCurrentPage }) => {
             setIsLoading(false);
         }
     };
-    // --- END UPDATED FUNCTION ---
 
 
-    // ✅ HANDLE PLATFORM DISCONNECT (No changes needed, already correct)
     const handlePlatformDisconnect = async (platform) => {
         setIsLoading(true);
         try {

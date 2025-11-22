@@ -47,7 +47,7 @@ const ProfilePage = ({ setCurrentPage }) => {
     const leetcodeHandle = user?.leetcodeHandle;
     const gfgUrl = user?.gfgUrl; // <-- ADDED
     const codechefUrl = user?.codechefUrl; // <-- ADDED
-
+    const codechefHandle = user?.codechefHandle;
     useEffect(() => {
         setCurrentPage('profile');
         if (!isAuthenticated) {
@@ -79,9 +79,7 @@ const ProfilePage = ({ setCurrentPage }) => {
             return match ? match[1] : null;
         } catch (e) { return null; }
     };
-    // --- END ADDED ---
 
-    // LeetCode Loader
     useEffect(() => {
         if (leetcodeHandle) {
             loadLeetcodeData(leetcodeHandle);
@@ -109,21 +107,18 @@ const ProfilePage = ({ setCurrentPage }) => {
             };
             loadData();
         } else {
-            setGfgStats(null); // Clear stats if URL is removed
+            setGfgStats(null);
         }
     }, [gfgUrl]);
 
-    // CodeChef Loader
     useEffect(() => {
-        const handle = extractCodeChefHandle(codechefUrl);
-        if (handle) {
+        if (codechefHandle) {
             const loadData = async () => {
                 setCodechefLoading(true);
                 try {
-                    const data = await ApiService.getCodeChefMetrics(handle);
+                    const data = await ApiService.getCodeChefMetrics(codechefHandle);
                     setCodechefStats(data);
                 } catch (e) {
-                    console.error("Failed to load CodeChef stats", e);
                     setCodechefStats(null);
                 } finally {
                     setCodechefLoading(false);
@@ -131,10 +126,10 @@ const ProfilePage = ({ setCurrentPage }) => {
             };
             loadData();
         } else {
-            setCodechefStats(null); // Clear stats if URL is removed
+            setCodechefStats(null);
         }
-    }, [codechefUrl]);
-    // --- END ADDED ---
+    }, [codechefHandle]);
+
 
     const loadLeetcodeData = async (handle) => {
         setLeetcodeLoading(true);
