@@ -275,6 +275,7 @@ export const AuthProvider = ({ children }) => {
             const userDocRef = doc(db, 'users', user.userId);
             await updateDoc(userDocRef, data);
             await fetchUser(); // This re-fetches and updates the global user state
+            await fetchUser();
             return true;
         } catch (error) {
             console.error("Error updating user data:", error);
@@ -298,6 +299,7 @@ export const AuthProvider = ({ children }) => {
                 signupWithEmail,
                 handleGithubCallback,
                 updateUser
+                updateUser     // ✅——— ADD THIS LINE!
             }}
         >
             {children}

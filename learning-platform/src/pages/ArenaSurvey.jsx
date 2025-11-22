@@ -15,41 +15,59 @@ import {
     Globe,
     Atom,
     Settings,
-    Play
+    Database,
+    Play,
+    AlertCircle
 } from "lucide-react";
+
+// API Base URL - Update this to match your backend URL
+const API_BASE_URL = process.env.REACT_APP_API_URL || "http://localhost:8080/api";
 
 const topics = [
     {
-        name: "Computer Science",
+        name: "Data Structures",
+        apiValue: "Data Structures",
         icon: <Brain size={24} />,
-        description: "Algorithms, Data Structures, Programming",
+        description: "Stacks, Queues, Trees, Graphs",
         color: "from-blue-500 to-cyan-400",
         bgColor: "bg-blue-500/10",
         borderColor: "border-blue-500/30"
     },
     {
-        name: "Mathematics",
-        icon: <Calculator size={24} />,
-        description: "Logic, Calculus, Discrete Math",
+        name: "Algorithms",
+        apiValue: "Algorithms",
+        icon: <Zap size={24} />,
+        description: "Sorting, Searching, Dynamic Programming",
         color: "from-green-500 to-emerald-400",
         bgColor: "bg-green-500/10",
         borderColor: "border-green-500/30"
     },
     {
-        name: "General Knowledge",
-        icon: <Globe size={24} />,
-        description: "Trivia, Facts, World Knowledge",
+        name: "Operating Systems",
+        apiValue: "Operating Systems",
+        icon: <Settings size={24} />,
+        description: "Processes, Scheduling, Memory Management",
         color: "from-orange-500 to-yellow-400",
         bgColor: "bg-orange-500/10",
         borderColor: "border-orange-500/30"
     },
     {
-        name: "Science",
-        icon: <Atom size={24} />,
-        description: "Physics, Chemistry, Biology",
+        name: "DBMS",
+        apiValue: "DBMS",
+        icon: <Database size={24} />,
+        description: "SQL, Transactions, Normalization",
         color: "from-purple-500 to-pink-400",
         bgColor: "bg-purple-500/10",
         borderColor: "border-purple-500/30"
+    },
+    {
+        name: "Computer Networks",
+        apiValue: "Computer Networks",
+        icon: <Globe size={24} />,
+        description: "Protocols, TCP/IP, OSI Layers",
+        color: "from-red-500 to-orange-400",
+        bgColor: "bg-red-500/10",
+        borderColor: "border-red-500/30"
     }
 ];
 
@@ -81,22 +99,81 @@ const difficulties = [
 ];
 
 const ArenaSurvey = () => {
-    const [selectedTopic, setSelectedTopic] = useState("Computer Science");
+    const [selectedTopic, setSelectedTopic] = useState("Data Structures");
     const [difficulty, setDifficulty] = useState("medium");
     const [count, setCount] = useState(5);
     const [currentStep, setCurrentStep] = useState(0);
+    const [isLoading, setIsLoading] = useState(false);
+    const [error, setError] = useState(null);
     const navigate = useNavigate();
 
-    const handleStart = () => {
-        localStorage.setItem(
-            "arenaPreferences",
-            JSON.stringify({ selectedTopic, difficulty, count })
-        );
-        navigate("/arena/play");
+    const handleStart = async () => {
+        setIsLoading(true);
+        setError(null);
+
+        try {
+            // Get the API value for the selected topic
+            const topicObj = topics.find(t => t.name === selectedTopic);
+            const topicValue = topicObj?.apiValue || selectedTopic;
+
+            // Fetch questions from backend
+            const response = await fetch(
+                `${API_BASE_URL}/arena/start?topic=${encodeURIComponent(topicValue)}&difficulty=${difficulty}&count=${count}`,
+                {
+                    method: 'GET',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    credentials: 'include' // Include credentials for CORS
+                }
+            );
+
+            if (!response.ok) {
+                throw new Error(`Failed to fetch questions: ${response.status} ${response.statusText}`);
+            }
+
+            const questions = await response.json();
+
+            if (!questions || questions.length === 0) {
+                throw new Error('No questions available for the selected criteria');
+            }
+
+            // Store questions and preferences in localStorage
+            localStorage.setItem(
+                "arenaQuestions",
+                JSON.stringify(questions)
+            );
+            localStorage.setItem(
+                "arenaPreferences",
+                JSON.stringify({
+                    selectedTopic: topicValue,
+                    difficulty,
+                    count
+                })
+            );
+
+            // Navigate to play page
+            navigate("/arena/play", {
+                state: {
+                    questions,
+                    topic: topicValue,
+                    difficulty,
+                    count
+                }
+            });
+
+        } catch (err) {
+            console.error("Error starting arena:", err);
+            setError(err.message || "Failed to start the arena. Please try again.");
+            setIsLoading(false);
+        }
     };
 
     const nextStep = () => setCurrentStep(prev => Math.min(prev + 1, 2));
-    const prevStep = () => setCurrentStep(prev => Math.max(prev - 1, 0));
+    const prevStep = () => {
+        setError(null); // Clear error when going back
+        setCurrentStep(prev => Math.max(prev - 1, 0));
+    };
 
     const getStepIcon = (step) => {
         switch(step) {
@@ -188,39 +265,61 @@ const ArenaSurvey = () => {
                     </motion.p>
                 </motion.div>
 
+                {/* Error Message */}
+                <AnimatePresence>
+                    {error && (
+                        <motion.div
+                            initial={{ opacity: 0, y: -20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            exit={{ opacity: 0, y: -20 }}
+                            className="mb-6 p-4 bg-red-500/10 border border-red-500/30 rounded-xl flex items-center gap-3"
+                        >
+                            <AlertCircle className="text-red-400" size={20} />
+                            <p className="text-red-300 flex-1">{error}</p>
+                            <button
+                                onClick={() => setError(null)}
+                                className="text-red-400 hover:text-red-300"
+                            >
+                                ×
+                            </button>
+                        </motion.div>
+                    )}
+                </AnimatePresence>
+
                 {/* Progress Steps */}
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.5 }}
-                    className="flex justify-center mb-12"
+                    className="flex justify-center mb-12 overflow-x-auto"
                 >
-                    <div className="flex items-center gap-8">
+                    <div className="flex items-center gap-4 md:gap-8">
                         {steps.map((step, index) => (
-                            <motion.div
-                                key={index}
-                                className={`flex items-center gap-3 ${
-                                    index <= currentStep ? 'text-cyan-400' : 'text-gray-500'
-                                }`}
-                                whileHover={{ scale: 1.05 }}
-                            >
-                                <div className={`w-12 h-12 rounded-xl flex items-center justify-center border-2 ${
-                                    index <= currentStep
-                                        ? 'bg-cyan-500/20 border-cyan-400'
-                                        : 'bg-gray-500/20 border-gray-500'
-                                }`}>
-                                    {getStepIcon(index)}
-                                </div>
-                                <div className="text-left">
-                                    <div className="text-sm font-semibold">{step.title}</div>
-                                    <div className="text-xs text-gray-400">{step.subtitle}</div>
-                                </div>
+                            <React.Fragment key={index}>
+                                <motion.div
+                                    className={`flex items-center gap-3 ${
+                                        index <= currentStep ? 'text-cyan-400' : 'text-gray-500'
+                                    }`}
+                                    whileHover={{ scale: 1.05 }}
+                                >
+                                    <div className={`w-12 h-12 rounded-xl flex items-center justify-center border-2 ${
+                                        index <= currentStep
+                                            ? 'bg-cyan-500/20 border-cyan-400'
+                                            : 'bg-gray-500/20 border-gray-500'
+                                    }`}>
+                                        {getStepIcon(index)}
+                                    </div>
+                                    <div className="text-left hidden md:block">
+                                        <div className="text-sm font-semibold">{step.title}</div>
+                                        <div className="text-xs text-gray-400">{step.subtitle}</div>
+                                    </div>
+                                </motion.div>
                                 {index < steps.length - 1 && (
                                     <div className={`w-8 h-0.5 ${
                                         index < currentStep ? 'bg-cyan-400' : 'bg-gray-600'
                                     }`} />
                                 )}
-                            </motion.div>
+                            </React.Fragment>
                         ))}
                     </div>
                 </motion.div>
@@ -256,7 +355,7 @@ const ArenaSurvey = () => {
                                             onClick={() => setSelectedTopic(topic.name)}
                                             className={`p-6 rounded-2xl border-2 cursor-pointer transition-all ${
                                                 selectedTopic === topic.name
-                                                    ? `${topic.bgColor} ${topic.borderColor} border-2 shadow-lg shadow-${topic.color.split('-')[1]}-500/25`
+                                                    ? `${topic.bgColor} ${topic.borderColor} border-2 shadow-lg`
                                                     : 'bg-white/5 border-white/10 hover:border-white/20'
                                             }`}
                                         >
@@ -274,7 +373,7 @@ const ArenaSurvey = () => {
                                                         animate={{ scale: 1 }}
                                                         className="w-6 h-6 bg-green-500 rounded-full flex items-center justify-center"
                                                     >
-                                                        <Star size={12} className="text-white" />
+                                                        <Star size={12} className="text-white fill-white" />
                                                     </motion.div>
                                                 )}
                                             </div>
@@ -397,8 +496,8 @@ const ArenaSurvey = () => {
                     {/* Navigation Buttons */}
                     <div className="flex justify-between mt-12 pt-8 border-t border-white/10">
                         <motion.button
-                            whileHover={{ scale: 1.05 }}
-                            whileTap={{ scale: 0.95 }}
+                            whileHover={{ scale: currentStep === 0 ? 1 : 1.05 }}
+                            whileTap={{ scale: currentStep === 0 ? 1 : 0.95 }}
                             onClick={prevStep}
                             className={`px-8 py-3 rounded-xl font-semibold flex items-center gap-2 ${
                                 currentStep === 0
@@ -422,14 +521,31 @@ const ArenaSurvey = () => {
                             </motion.button>
                         ) : (
                             <motion.button
-                                whileHover={{ scale: 1.05 }}
-                                whileTap={{ scale: 0.95 }}
+                                whileHover={{ scale: isLoading ? 1 : 1.05 }}
+                                whileTap={{ scale: isLoading ? 1 : 0.95 }}
                                 onClick={handleStart}
-                                className="px-8 py-3 bg-gradient-to-r from-purple-600 to-cyan-500 text-white font-bold rounded-xl flex items-center gap-2 hover:shadow-lg hover:shadow-cyan-500/25"
+                                disabled={isLoading}
+                                className={`px-8 py-3 bg-gradient-to-r from-purple-600 to-cyan-500 text-white font-bold rounded-xl flex items-center gap-2 hover:shadow-lg hover:shadow-cyan-500/25 ${
+                                    isLoading ? 'opacity-50 cursor-not-allowed' : ''
+                                }`}
                             >
-                                <Play size={20} />
-                                START BATTLE
-                                <Zap size={16} />
+                                {isLoading ? (
+                                    <>
+                                        <motion.div
+                                            animate={{ rotate: 360 }}
+                                            transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
+                                        >
+                                            <Settings size={20} />
+                                        </motion.div>
+                                        LOADING...
+                                    </>
+                                ) : (
+                                    <>
+                                        <Play size={20} />
+                                        START BATTLE
+                                        <Zap size={16} />
+                                    </>
+                                )}
                             </motion.button>
                         )}
                     </div>

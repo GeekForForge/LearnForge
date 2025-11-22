@@ -32,6 +32,9 @@ public class Lesson {
     @JsonIgnore
     private Course course;
 
+    @OneToMany(mappedBy = "lesson", cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
+    private List<Resource> resources = new ArrayList<>();
+
     @Column(name = "created_at")
     @Temporal(TemporalType.TIMESTAMP)
     private Date createdAt;
@@ -39,10 +42,6 @@ public class Lesson {
     @Column(name = "updated_at")
     @Temporal(TemporalType.TIMESTAMP)
     private Date updatedAt;
-
-    // ✅ Resources field (not stored in DB, populated at runtime)
-    @Transient
-    private List<Resource> resources = new ArrayList<>();
 
     @PrePersist
     protected void onCreate() {
