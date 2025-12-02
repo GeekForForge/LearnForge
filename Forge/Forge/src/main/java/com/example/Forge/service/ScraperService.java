@@ -30,7 +30,7 @@ public class ScraperService {
             String jsonBody = mapper.writeValueAsString(payload);
 
             HttpRequest req = HttpRequest.newBuilder()
-                    .uri(URI.create("http://127.0.0.1:8000/fetch")) // match port/run of your FastAPI server
+                    .uri(URI.create("https://scrapping-hc4s.onrender.com/fetch")) // match port/run of your FastAPI server
                     .header("Content-Type", "application/json")
                     .POST(HttpRequest.BodyPublishers.ofString(jsonBody))
                     .build();
