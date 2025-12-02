@@ -267,6 +267,10 @@ export const AuthProvider = ({ children }) => {
     // ✅ Fix: Expose updateUser!
     const updateUser = async (data) => {
         if (!user) return false;
+        if (!data || typeof data !== 'object') {
+            console.warn('updateUser called with invalid data. Data must be an object.');
+            return false;
+        }
         try {
             const userDocRef = doc(db, 'users', user.userId);
             await updateDoc(userDocRef, data);
