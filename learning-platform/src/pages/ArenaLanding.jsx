@@ -16,7 +16,7 @@ const ArenaLanding = () => {
 
     const cards = [
         {
-            title: "Play vs Computer",
+            title: "MCQ",
             icon: <Sword size={48} />,
             gradient: "from-purple-600 to-cyan-500",
             borderGradient: "from-purple-400 to-cyan-400",
