@@ -218,6 +218,7 @@ export const AuthProvider = ({ children }) => {
         )}&response_type=code&scope=openid%20email%20profile`;
         window.location.href = googleAuthUrl;
     };
+
     const loginWithEmail = async (email, password) => {
         try {
             const result = await ApiService.loginWithEmail(email, password);
@@ -299,7 +300,6 @@ export const AuthProvider = ({ children }) => {
                 signupWithEmail,
                 handleGithubCallback,
                 updateUser
-                    // ✅——— ADD THIS LINE!
             }}
         >
             {children}

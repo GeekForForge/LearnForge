@@ -25,7 +25,7 @@ import UserProfilePage from "./pages/UserProfilePage";
 // New: connected accounts settings UI (separate route)
 // Create file: src/pages/SettingsConnectedAccounts.jsx (code provided earlier)
 import SettingsConnectedAccounts from './pages/SettingsConnectedAccounts';
-import ArenaMultiplayer  from "./pages/ArenaMultiplayer";
+import ArenaMultiplayer from "./pages/ArenaMultiplayer";
 // Admin
 import ProtectedAdminRoute from './components/ProtectedAdminRoute';
 import AdminPageNew from './pages/AdminPageNew';
@@ -122,7 +122,7 @@ function AppContent() {
                         <Route path="/community" element={<Community setCurrentPage={setCurrentPage} />} />
                         <Route path="/arena" element={<ArenaLanding />} />
                         <Route path="/arena/survey" element={<ArenaSurvey />} />
-                        <Route path="/arena/play" element={<ArenaGame/>} />
+                        <Route path="/arena/play" element={<ArenaGame />} />
                         <Route path="/arena/result" element={<ArenaResult />} />
                         <Route path="/arena/multiplayer/:roomId" element={<ArenaMultiplayer />} />
 
