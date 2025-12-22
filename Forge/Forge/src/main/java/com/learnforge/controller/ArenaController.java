@@ -23,11 +23,11 @@ public class ArenaController {
     @Autowired
     private QuestionService questionService;
 
-
-//    @GetMapping("/start")
-//    public List<Question> startGame(@RequestParam(defaultValue = "10") int count) {
-//        return arenaService.getRandomQuestions(count);
-//    }
+    // @GetMapping("/start")
+    // public List<Question> startGame(@RequestParam(defaultValue = "10") int count)
+    // {
+    // return arenaService.getRandomQuestions(count);
+    // }
     @GetMapping("/start")
     public List<Question> startArena(
             @RequestParam String topic,
@@ -36,8 +36,9 @@ public class ArenaController {
 
         return questionService.getRandomQuestions(topic, difficulty, count);
     }
+
     @PostMapping("/submit")
-    public Map<String, Object> submitAnswers(@RequestParam Long userId, @RequestBody Map<Long, String> answers) {
+    public Map<String, Object> submitAnswers(@RequestParam String userId, @RequestBody Map<Long, String> answers) {
         return arenaService.evaluateAnswers(userId, answers);
     }
 
@@ -45,8 +46,18 @@ public class ArenaController {
      * GET /api/arena/stats/{userId}
      * Returns user progress (XP, accuracy, etc.)
      */
+    /**
+     * GET /api/arena/stats/{userId}
+     * Returns user progress (XP, accuracy, etc.)
+     */
     @GetMapping("/stats/{userId}")
-    public Optional<UserProgress> getProgress(@PathVariable Long userId) {
+    public Optional<UserProgress> getProgress(@PathVariable String userId) {
         return arenaService.getUserProgress(userId);
+    }
+
+    @GetMapping("/leaderboard")
+    public List<com.learnforge.dto.LeaderboardEntryDto> getLeaderboard(
+            @RequestParam(defaultValue = "week") String type) {
+        return arenaService.getLeaderboard(type);
     }
 }

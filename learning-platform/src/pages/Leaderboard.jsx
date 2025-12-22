@@ -6,108 +6,36 @@ import { Trophy, Medal, Flame, Star, Award, TrendingUp, Crown, Zap, Target } fro
 const Leaderboard = ({ setCurrentPage }) => {
     const [timeRange, setTimeRange] = useState('week'); // week, month, all-time
 
-    const leaderboardData = [
-        {
-            rank: 1,
-            name: 'Vikram Patel',
-            username: '@vikram-dev',
-            avatar: 'https://ui-avatars.com/api/?name=Vikram+Patel&background=FFD700&color=000',
-            level: 25,
-            xp: 8500,
-            streak: 45,
-            badge: '💎',
-            positionChange: 0,
-            progress: 85
-        },
-        {
-            rank: 2,
-            name: 'Priya Sharma',
-            username: '@priya-dev',
-            avatar: 'https://ui-avatars.com/api/?name=Priya+Sharma&background=C0C0C0&color=000',
-            level: 22,
-            xp: 7200,
-            streak: 32,
-            badge: '⭐',
-            positionChange: 1,
-            progress: 72
-        },
-        {
-            rank: 3,
-            name: 'Ananya Singh',
-            username: '@ananya-learns',
-            avatar: 'https://ui-avatars.com/api/?name=Ananya+Singh&background=CD7F32&color=fff',
-            level: 19,
-            xp: 5800,
-            streak: 28,
-            badge: '🔥',
-            positionChange: -1,
-            progress: 58
-        },
-        {
-            rank: 4,
-            name: 'Rahul Kumar',
-            username: '@rahul-code',
-            avatar: 'https://ui-avatars.com/api/?name=Rahul+Kumar&background=8B5CF6&color=fff',
-            level: 18,
-            xp: 5200,
-            streak: 21,
-            badge: '🌟',
-            positionChange: 0,
-            progress: 52
-        },
-        {
-            rank: 5,
-            name: 'Samarth Patil',
-            username: '@samarth-sachin',
-            avatar: 'https://ui-avatars.com/api/?name=Samarth+Patil&background=06B6D4&color=fff',
-            level: 15,
-            xp: 4200,
-            streak: 7,
-            badge: '✨',
-            positionChange: 2,
-            progress: 42
-        },
-        {
-            rank: 6,
-            name: 'Neha Gupta',
-            username: '@neha-codes',
-            avatar: 'https://ui-avatars.com/api/?name=Neha+Gupta&background=EC4899&color=fff',
-            level: 14,
-            xp: 3800,
-            streak: 15,
-            badge: '🎯',
-            positionChange: -1,
-            progress: 38
-        },
-        {
-            rank: 7,
-            name: 'Arjun Singh',
-            username: '@arjun-dev',
-            avatar: 'https://ui-avatars.com/api/?name=Arjun+Singh&background=F59E0B&color=fff',
-            level: 13,
-            xp: 3500,
-            streak: 12,
-            badge: '🚀',
-            positionChange: 0,
-            progress: 35
-        },
-        {
-            rank: 8,
-            name: 'Divya Reddy',
-            username: '@divya-learns',
-            avatar: 'https://ui-avatars.com/api/?name=Divya+Reddy&background=10B981&color=fff',
-            level: 12,
-            xp: 3200,
-            streak: 10,
-            badge: '💪',
-            positionChange: -2,
-            progress: 32
-        },
-    ];
+    const [leaderboardData, setLeaderboardData] = useState([]);
+    const [loading, setLoading] = useState(true);
 
     React.useEffect(() => {
         setCurrentPage('leaderboard');
     }, [setCurrentPage]);
+
+    React.useEffect(() => {
+        const fetchLeaderboard = async () => {
+            setLoading(true);
+            try {
+                // Determine API param based on UI selection
+                // UI: 'week', 'month', 'all-time' -> API: 'week', 'month', 'all-time'
+                const response = await fetch(`${process.env.REACT_APP_API_URL || 'http://localhost:8080/api'}/arena/leaderboard?type=${timeRange}`);
+                if (response.ok) {
+                    const data = await response.json();
+                    // If data is empty, maintain empty array, else use data
+                    setLeaderboardData(data);
+                } else {
+                    console.error("Failed to fetch leaderboard");
+                }
+            } catch (error) {
+                console.error("Error fetching leaderboard:", error);
+            } finally {
+                setLoading(false);
+            }
+        };
+
+        fetchLeaderboard();
+    }, [timeRange]);
 
     const getRankStyle = (rank) => {
         switch (rank) {
@@ -141,6 +69,14 @@ const Leaderboard = ({ setCurrentPage }) => {
                 };
         }
     };
+
+    if (loading) {
+        return (
+            <div className="min-h-screen pt-20 flex items-center justify-center">
+                <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-cyan-500"></div>
+            </div>
+        );
+    }
 
     return (
         <div className="min-h-screen pt-20">
@@ -185,11 +121,10 @@ const Leaderboard = ({ setCurrentPage }) => {
                             whileHover={{ scale: 1.05 }}
                             whileTap={{ scale: 0.95 }}
                             onClick={() => setTimeRange(range)}
-                            className={`px-6 py-3 rounded-2xl font-semibold backdrop-blur-lg border transition-all ${
-                                timeRange === range
+                            className={`px-6 py-3 rounded-2xl font-semibold backdrop-blur-lg border transition-all ${timeRange === range
                                     ? 'bg-gradient-to-r from-purple-500/30 to-cyan-500/30 text-white border-purple-400/50 shadow-lg shadow-purple-500/20'
                                     : 'bg-white/5 text-white/70 border-white/20 hover:border-white/40 hover:text-white'
-                            }`}
+                                }`}
                         >
                             {range === 'week' && 'This Week'}
                             {range === 'month' && 'This Month'}
@@ -356,9 +291,8 @@ const Leaderboard = ({ setCurrentPage }) => {
                                         {/* Position Change */}
                                         <div className="text-center w-12">
                                             {user.positionChange !== 0 && (
-                                                <div className={`flex items-center justify-center ${
-                                                    user.positionChange > 0 ? 'text-green-400' : 'text-red-400'
-                                                }`}>
+                                                <div className={`flex items-center justify-center ${user.positionChange > 0 ? 'text-green-400' : 'text-red-400'
+                                                    }`}>
                                                     <TrendingUp size={20} className={user.positionChange < 0 ? 'rotate-180' : ''} />
                                                     <span className="text-sm font-bold ml-1">{Math.abs(user.positionChange)}</span>
                                                 </div>

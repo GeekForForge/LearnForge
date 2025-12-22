@@ -60,8 +60,8 @@ public class CodeChefService {
     }
 
     public CodeChefMetricsDto fetchAndCompute(String handle) throws Exception {
-        // --- UPDATED API PATH ---
-        String fullApiUrl = codechefApiUrl + "/api/codechef/" + handle;
+        // --- UPDATED API PATH - Using more reliable API ---
+        String fullApiUrl = "https://codechef-api.vercel.app/handle/" + handle;
         log.debug("Fetching CodeChef stats from: {}", fullApiUrl);
 
         String resp = webClient.get()
@@ -70,17 +70,16 @@ public class CodeChefService {
                 .onStatus(
                         status -> status.is4xxClientError(),
                         response -> {
-                            log.warn("CodeChef API returned 4xx for handle '{}': status={}", handle, response.statusCode());
+                            log.warn("CodeChef API returned 4xx for handle '{}': status={}", handle,
+                                    response.statusCode());
                             return Mono.empty();
-                        }
-                )
+                        })
                 .onStatus(
                         status -> status.is5xxServerError(),
                         response -> response.bodyToMono(String.class).flatMap(b -> {
                             log.error("CodeChef API returned 5xx: status={}, body={}", response.statusCode(), b);
                             return Mono.<Throwable>error(new RuntimeException("CodeChef API 5xx Error: " + b));
-                        })
-                )
+                        }))
                 .bodyToMono(String.class)
                 .block(Duration.ofSeconds(30));
 

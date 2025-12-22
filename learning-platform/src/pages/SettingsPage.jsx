@@ -10,7 +10,7 @@ import { useAuth } from '../context/AuthContext';
 import axios from 'axios';
 const SettingsPage = ({ setCurrentPage }) => {
     const navigate = useNavigate();
-    const { user, isAuthenticated, updateUser, logout } = useAuth(); // updateUser is from AuthContext
+    const { user, isAuthenticated, updateUser, logout, fetchUser } = useAuth(); // updateUser is from AuthContext
 
     const [activeTab, setActiveTab] = useState('profile');
     const [isLoading, setIsLoading] = useState(false);
@@ -189,7 +189,7 @@ const SettingsPage = ({ setCurrentPage }) => {
                 handle = extractCodeChefHandle(input);
                 if (!handle) { showMessage('error', "Invalid CodeChef username or URL."); setIsLoading(false); return; }
                 updatedProfileData.codechefUrl = `https://www.codechef.com/users/${handle}`;
-                firestoreUpdateData = { codechefUrl: updatedProfileData.codechefUrl};
+                firestoreUpdateData = { codechefHandle: handle, codechefUrl: updatedProfileData.codechefUrl };
             }
 
             await axios.put(
@@ -246,8 +246,7 @@ const SettingsPage = ({ setCurrentPage }) => {
 
             console.log(`✅ ${platform} disconnected (API):`, response.data);
             showMessage('success', `${platform.charAt(0).toUpperCase() + platform.slice(1)} profile disconnected!`);
-        } catch (err)
-        {
+        } catch (err) {
             console.error(`❌ Error disconnecting ${platform}:`, err);
             showMessage('error', err.response?.data || `Failed to disconnect ${platform}`);
         } finally {
@@ -333,28 +332,8 @@ const SettingsPage = ({ setCurrentPage }) => {
             color: 'text-orange-500',
             bgColor: 'bg-orange-500/10',
             borderColor: 'border-orange-500/30',
-            placeholder: 'LeetCode username or URL', // <-- UPDATED
+            placeholder: 'LeetCode username or URL',
             description: 'Track your coding problems and solutions'
-        },
-        {
-            id: 'gfg',
-            name: 'GeeksforGeeks',
-            icon: Cpu,
-            color: 'text-green-500',
-            bgColor: 'bg-green-500/10',
-            borderColor: 'border-green-500/30',
-            placeholder: 'GFG username or URL', // <-- UPDATED
-            description: 'Connect your DSA practice profile'
-        },
-        {
-            id: 'codechef',
-            name: 'CodeChef',
-            icon: Award,
-            color: 'text-yellow-500',
-            bgColor: 'bg-yellow-500/10',
-            borderColor: 'border-yellow-500/30',
-            placeholder: 'CodeChef username or URL', // <-- UPDATED
-            description: 'Sync your competitive programming progress'
         }
     ];
     // --- END UPDATED PLACEHOLDERS ---
@@ -424,11 +403,10 @@ const SettingsPage = ({ setCurrentPage }) => {
                                         key={tab.id}
                                         onClick={() => setActiveTab(tab.id)}
                                         whileHover={{ scale: 1.02, x: 5 }}
-                                        className={`w-full flex items-center space-x-3 px-4 py-3 rounded-xl transition-all duration-300 ${
-                                            activeTab === tab.id
-                                                ? 'bg-gradient-to-r from-neon-purple/20 to-neon-cyan/20 text-neon-cyan border border-neon-purple/30'
-                                                : 'text-gray-300 hover:text-white hover:bg-white/5'
-                                        }`}
+                                        className={`w-full flex items-center space-x-3 px-4 py-3 rounded-xl transition-all duration-300 ${activeTab === tab.id
+                                            ? 'bg-gradient-to-r from-neon-purple/20 to-neon-cyan/20 text-neon-cyan border border-neon-purple/30'
+                                            : 'text-gray-300 hover:text-white hover:bg-white/5'
+                                            }`}
                                     >
                                         <tab.icon size={20} />
                                         <span className="font-medium">{tab.label}</span>
@@ -466,9 +444,9 @@ const SettingsPage = ({ setCurrentPage }) => {
                                             ) : (
                                                 <div className="w-20 h-20 rounded-full bg-gradient-to-br from-neon-purple to-neon-cyan p-1">
                                                     <div className="w-full h-full rounded-full bg-dark-800 flex items-center justify-center">
-                            <span className="text-2xl font-orbitron font-bold text-white">
-                              {user.name?.charAt(0) || 'U'}
-                            </span>
+                                                        <span className="text-2xl font-orbitron font-bold text-white">
+                                                            {user.name?.charAt(0) || 'U'}
+                                                        </span>
                                                     </div>
                                                 </div>
                                             )}
@@ -593,8 +571,8 @@ const SettingsPage = ({ setCurrentPage }) => {
                                         </div>
                                         {user.provider === 'github' ? (
                                             <span className="px-4 py-2 bg-green-500/20 text-green-400 font-medium rounded-lg border border-green-500/30">
-                        Connected
-                      </span>
+                                                Connected
+                                            </span>
                                         ) : (
                                             <motion.button
                                                 onClick={() => window.location.href = '/login'}
@@ -629,9 +607,9 @@ const SettingsPage = ({ setCurrentPage }) => {
 
                                                     {isPlatformConnected ? (
                                                         <div className="flex items-center space-x-3 self-end md:self-auto">
-                                                          <span className="hidden md:inline-flex px-4 py-2 bg-green-500/20 text-green-400 font-medium rounded-lg border border-green-500/30">
-                                                            Connected
-                                                          </span>
+                                                            <span className="hidden md:inline-flex px-4 py-2 bg-green-500/20 text-green-400 font-medium rounded-lg border border-green-500/30">
+                                                                Connected
+                                                            </span>
                                                             <motion.button
                                                                 onClick={() => handlePlatformDisconnect(platform.id)}
                                                                 whileHover={{ scale: 1.05 }}

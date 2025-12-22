@@ -9,7 +9,10 @@ import org.springframework.stereotype.Component;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Component
 public class DataSeeder implements CommandLineRunner {
@@ -35,37 +38,48 @@ public class DataSeeder implements CommandLineRunner {
                 return;
             }
 
-            // Clear existing questions to ensure a clean slate (User requested restart with
-            // new JSON)
-            // Note: This might fail if there are foreign key constraints (e.g. from
-            // arena_results)
-            // If so, we might need to delete those first or catch the exception.
-            try {
-                long count = questionRepository.count();
-                if (count > 0) {
-                    System.out.println("🧹 Clearing " + count + " existing questions...");
-                    questionRepository.deleteAll();
-                    System.out.println("✅ Existing questions cleared.");
-                }
-            } catch (Exception e) {
-                System.out.println("⚠️ Could not clear existing questions (likely used in results): " + e.getMessage());
-                System.out.println("ℹ️ Proceeding with upsert/merge logic...");
-            }
-
             List<QuestionJsonDto> dtos = objectMapper.readValue(inputStream,
                     new TypeReference<List<QuestionJsonDto>>() {
                     });
-            int addedCount = 0;
 
+            long dbParams = questionRepository.count();
+            // Optimization: If DB has roughly same amount of data and we assume it's good,
+            // we could skip.
+            // But to fix "null options" issue, we act smart:
+            // Fetch all and map by Question Text for O(1) lookup.
             List<Question> existingQuestions = questionRepository.findAll();
+            Map<String, Question> questionMap = new HashMap<>();
+            for (Question q : existingQuestions) {
+                if (q.getQuestionText() != null) {
+                    questionMap.put(q.getQuestionText(), q);
+                }
+            }
+
+            int addedCount = 0;
+            int updatedCount = 0;
+
+            List<Question> toSave = new ArrayList<>();
 
             for (QuestionJsonDto dto : dtos) {
-                // Check if question exists by text
-                boolean exists = existingQuestions.stream()
-                        .anyMatch(existing -> existing.getQuestionText() != null &&
-                                existing.getQuestionText().equals(dto.getQuestion()));
+                Question existing = questionMap.get(dto.getQuestion());
 
-                if (!exists) {
+                if (existing != null) {
+                    // Check if options are missing (fixing the null issue)
+                    if (existing.getOptionA() == null && dto.getOptions() != null && dto.getOptions().size() >= 4) {
+                        existing.setOptionA(dto.getOptions().get(0));
+                        existing.setOptionB(dto.getOptions().get(1));
+                        existing.setOptionC(dto.getOptions().get(2));
+                        existing.setOptionD(dto.getOptions().get(3));
+
+                        // Also update other possibly missing fields if needed
+                        existing.setCorrectAnswer(dto.getAnswer());
+                        existing.setExplanation(dto.getExplanation());
+
+                        toSave.add(existing);
+                        updatedCount++;
+                    }
+                } else {
+                    // Create new
                     Question q = new Question();
                     q.setTopic(dto.getTopic());
                     q.setSubtopic(dto.getSubtopic());
@@ -74,7 +88,6 @@ public class DataSeeder implements CommandLineRunner {
                     q.setExplanation(dto.getExplanation());
                     q.setCorrectAnswer(dto.getAnswer());
 
-                    // Map options array to individual fields
                     if (dto.getOptions() != null && dto.getOptions().size() >= 4) {
                         q.setOptionA(dto.getOptions().get(0));
                         q.setOptionB(dto.getOptions().get(1));
@@ -82,15 +95,17 @@ public class DataSeeder implements CommandLineRunner {
                         q.setOptionD(dto.getOptions().get(3));
                     }
 
-                    questionRepository.save(q);
+                    toSave.add(q);
                     addedCount++;
                 }
             }
 
-            if (addedCount > 0) {
-                System.out.println("✅ Added " + addedCount + " new questions from JSON.");
+            if (!toSave.isEmpty()) {
+                questionRepository.saveAll(toSave);
+                System.out.println("✅ Data Seeding: Added " + addedCount + " new, Updated " + updatedCount
+                        + " existing questions.");
             } else {
-                System.out.println("ℹ️ All questions from JSON already exist in DB.");
+                System.out.println("✅ All questions are up to date.");
             }
 
         } catch (IOException e) {

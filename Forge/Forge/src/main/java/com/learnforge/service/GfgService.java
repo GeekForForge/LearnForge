@@ -58,8 +58,8 @@ public class GfgService {
     }
 
     public GfgMetricsDto fetchAndCompute(String handle) throws Exception {
-        // --- UPDATED API PATH ---
-        String fullApiUrl = gfgApiUrl + "/api?username=" + handle;
+        // --- UPDATED API PATH - Using more reliable API ---
+        String fullApiUrl = "https://gfgstatsapi.vercel.app/" + handle;
         log.debug("Fetching GFG stats from: {}", fullApiUrl);
 
         String resp = webClient.get()
@@ -70,15 +70,13 @@ public class GfgService {
                         response -> {
                             log.warn("GFG API returned 4xx for handle '{}': status={}", handle, response.statusCode());
                             return Mono.empty();
-                        }
-                )
+                        })
                 .onStatus(
                         status -> status.is5xxServerError(),
                         response -> response.bodyToMono(String.class).flatMap(b -> {
                             log.error("GFG API returned 5xx: status={}, body={}", response.statusCode(), b);
                             return Mono.<Throwable>error(new RuntimeException("GFG API 5xx Error: " + b));
-                        })
-                )
+                        }))
                 .bodyToMono(String.class)
                 .block(Duration.ofSeconds(30));
 

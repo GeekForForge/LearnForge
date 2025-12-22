@@ -4,22 +4,18 @@ import { useNavigate } from 'react-router-dom';
 import {
     BookOpen, Award, TrendingUp, Target, Clock, CheckCircle,
     User, Mail, Calendar, Settings, Edit3, ChevronRight, Flame, Trophy,
-    Code, Star, Zap, Crown, Medal, Link as LinkIcon, Loader // <-- Import Loader
+    Code, Star, Zap, Crown, Medal, Link as LinkIcon, Loader,
+    Brain, TrendingUp as TrendingUpIcon, Target as TargetIcon, Clock as ClockIcon
 } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
 import { useProgress } from '../context/ProgressContext';
 import ProgressBar from '../components/ProgressBar';
 import StreakDisplay from '../components/StreakDisplay';
 import ApiService from '../services/api';
-import CalendarHeatmap from 'react-calendar-heatmap';
-import 'react-calendar-heatmap/dist/styles.css';
-import { db } from '../firebase';
-import { doc, updateDoc } from 'firebase/firestore';
-
 
 const ProfilePage = ({ setCurrentPage }) => {
     const navigate = useNavigate();
-    const { user, isAuthenticated, fetchUser } = useAuth();
+    const { user, isAuthenticated } = useAuth();
     const { summary, progressData, refreshSummary, refreshProgress } = useProgress();
     const [enrolledCourses, setEnrolledCourses] = useState([]);
     const [loading, setLoading] = useState(true);
@@ -32,22 +28,8 @@ const ProfilePage = ({ setCurrentPage }) => {
     // LeetCode State
     const [leetcodeStats, setLeetcodeStats] = useState(null);
     const [leetcodeLoading, setLeetcodeLoading] = useState(true);
-
-    // --- ADDED: GFG & CodeChef State ---
-    const [gfgStats, setGfgStats] = useState(null);
-    const [gfgLoading, setGfgLoading] = useState(false);
-    const [codechefStats, setCodechefStats] = useState(null);
-    const [codechefLoading, setCodechefLoading] = useState(false);
-    // --- END ADDED ---
-
-    const [handleInput, setHandleInput] = useState('');
-    const [isSaving, setIsSaving] = useState(false);
-
-    // This is now dynamic from AuthContext
     const leetcodeHandle = user?.leetcodeHandle;
-    const gfgUrl = user?.gfgUrl; // <-- ADDED
-    const codechefUrl = user?.codechefUrl; // <-- ADDED
-    const codechefHandle = user?.codechefHandle;
+
     useEffect(() => {
         setCurrentPage('profile');
         if (!isAuthenticated) {
@@ -60,25 +42,7 @@ const ProfilePage = ({ setCurrentPage }) => {
         if (user) {
             loadProfileData();
         }
-    }, [user]); // user dependency is correct
-
-    // --- ADDED: Handle Extractors ---
-    const extractGfgHandle = (url) => {
-        if (!url) return null;
-        try {
-            // Handles both geeksforgeeks.org/user/ and geeksforgeeks.org/auth/
-            const match = url.match(/geeksforgeeks\.org\/(user|auth)\/([a-zA-Z0-9_-]+)/);
-            return match ? match[2] : null;
-        } catch (e) { return null; }
-    };
-
-    const extractCodeChefHandle = (url) => {
-        if (!url) return null;
-        try {
-            const match = url.match(/codechef\.com\/users\/([a-zA-Z0-9_-]+)/);
-            return match ? match[1] : null;
-        } catch (e) { return null; }
-    };
+    }, [user]);
 
     useEffect(() => {
         if (leetcodeHandle) {
@@ -87,49 +51,6 @@ const ProfilePage = ({ setCurrentPage }) => {
             setLeetcodeLoading(false);
         }
     }, [leetcodeHandle]);
-
-    // --- ADDED: GFG & CodeChef Loaders ---
-    // GFG Loader
-    useEffect(() => {
-        const handle = extractGfgHandle(gfgUrl);
-        if (handle) {
-            const loadData = async () => {
-                setGfgLoading(true);
-                try {
-                    const data = await ApiService.getGfgMetrics(handle);
-                    setGfgStats(data);
-                } catch (e) {
-                    console.error("Failed to load GFG stats", e);
-                    setGfgStats(null);
-                } finally {
-                    setGfgLoading(false);
-                }
-            };
-            loadData();
-        } else {
-            setGfgStats(null);
-        }
-    }, [gfgUrl]);
-
-    useEffect(() => {
-        if (codechefHandle) {
-            const loadData = async () => {
-                setCodechefLoading(true);
-                try {
-                    const data = await ApiService.getCodeChefMetrics(codechefHandle);
-                    setCodechefStats(data);
-                } catch (e) {
-                    setCodechefStats(null);
-                } finally {
-                    setCodechefLoading(false);
-                }
-            };
-            loadData();
-        } else {
-            setCodechefStats(null);
-        }
-    }, [codechefHandle]);
-
 
     const loadLeetcodeData = async (handle) => {
         setLeetcodeLoading(true);
@@ -164,7 +85,7 @@ const ProfilePage = ({ setCurrentPage }) => {
             if (user.userId) {
                 try {
                     const streak = await ApiService.getUserStreak(user.userId);
-                    setStreakData(streak); // This is correct, no mapping needed
+                    setStreakData(streak);
                 } catch (error) {
                     console.error('❌ Error fetching streak:', error);
                 }
@@ -175,14 +96,6 @@ const ProfilePage = ({ setCurrentPage }) => {
             setLoading(false);
         }
     };
-
-    // This function is no longer needed on this page, as SettingsPage handles it
-    /*
-    const handleSaveHandle = async (e) => {
-        e.preventDefault();
-        // ...
-    };
-    */
 
     const getCourseProgress = async (courseId) => {
         try {
@@ -197,27 +110,12 @@ const ProfilePage = ({ setCurrentPage }) => {
         }
     };
 
-    const getHeatmapData = (calendar) => {
-        if (!calendar) return [];
-        const today = new Date();
-        const oneYearAgo = new Date();
-        oneYearAgo.setFullYear(today.getFullYear() - 1);
-
-        return Object.keys(calendar).map(timestamp => {
-            const date = new Date(parseInt(timestamp) * 1000);
-            return {
-                date: date.toISOString().split('T')[0], // 'YYYY-MM-DD'
-                count: calendar[timestamp]
-            };
-        }).filter(item => new Date(item.date) >= oneYearAgo);
-    };
-
     const calculateOverallProgress = () => {
         if (!summary || !summary.totalLessons) return 0;
         return Math.round((summary.completedLessons / summary.totalLessons) * 100);
     };
 
-    if (loading) { // Simplified loading check
+    if (loading) {
         return (
             <div className="min-h-screen pt-24 pb-12 flex items-center justify-center">
                 <div className="text-center">
@@ -228,7 +126,6 @@ const ProfilePage = ({ setCurrentPage }) => {
         );
     }
 
-    // This check is for after loading, if user somehow still null
     if (!user) {
         navigate('/login');
         return null;
@@ -236,28 +133,39 @@ const ProfilePage = ({ setCurrentPage }) => {
 
     return (
         <div className="min-h-screen pt-20 pb-12">
-            <div className="container mx-auto px-6 max-w-7xl">
-                {/* === YOUR PROFILE HEADER (Unchanged) === */}
+            <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+                {/* === PROFILE HEADER === */}
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
-                    className="bg-gradient-to-r from-neon-purple/20 to-neon-cyan/20 rounded-3xl p-8 mb-8 border border-white/10"
+                    className="bg-black/30 backdrop-blur-md rounded-3xl p-6 md:p-8 mb-8 border border-white/20 shadow-2xl shadow-neon-cyan/10"
                 >
                     <div className="flex flex-col md:flex-row items-start md:items-center gap-6">
-                        <img
-                            src={user.avatarUrl || 'https://via.placeholder.com/120'}
-                            alt={user.name}
-                            className="w-32 h-32 rounded-full border-4 border-neon-cyan shadow-lg shadow-neon-cyan/30"
-                        />
-                        <div className="flex-1">
-                            <h1 className="text-4xl font-bold text-white mb-2">{user.name}</h1>
-                            <div className="flex flex-wrap items-center gap-4 text-sm text-gray-400 mb-4">
-                                <div className="flex items-center gap-2">
+                        <div className="relative">
+                            <div className="absolute inset-0 bg-gradient-to-r from-neon-purple to-neon-cyan rounded-2xl blur-md opacity-50"></div>
+                            <img
+                                src={user.avatarUrl || 'https://via.placeholder.com/120'}
+                                alt={user.name}
+                                className="relative w-28 h-28 md:w-32 md:h-32 rounded-2xl border-4 border-white/30 shadow-lg shadow-neon-cyan/30"
+                            />
+                            <div className="absolute -bottom-2 -right-2 w-10 h-10 bg-gradient-to-r from-neon-purple to-neon-cyan rounded-full flex items-center justify-center border-2 border-white/50 shadow-lg">
+                                <User size={18} className="text-white" />
+                            </div>
+                        </div>
+                        <div className="flex-1 space-y-4">
+                            <div>
+                                <h1 className="text-4xl md:text-5xl font-bold text-white mb-3">{user.name}</h1>
+                                <p className="text-gray-300 text-lg md:text-xl">
+                                    Learning to code, one lesson at a time
+                                </p>
+                            </div>
+                            <div className="flex flex-wrap items-center gap-3 md:gap-4 text-base text-gray-300">
+                                <div className="flex items-center gap-2 bg-white/10 px-3 py-2 rounded-lg backdrop-blur-sm">
                                     <Mail size={16} />
                                     <span>{user.email}</span>
                                 </div>
                                 {user.createdAt && (
-                                    <div className="flex items-center gap-2">
+                                    <div className="flex items-center gap-2 bg-white/10 px-3 py-2 rounded-lg backdrop-blur-sm">
                                         <Calendar size={16} />
                                         <span>Joined {new Date(user.createdAt).toLocaleDateString()}</span>
                                     </div>
@@ -265,9 +173,9 @@ const ProfilePage = ({ setCurrentPage }) => {
                             </div>
                             {summary && summary.totalLessons > 0 && (
                                 <div className="max-w-md">
-                                    <div className="flex items-center justify-between mb-2">
-                                        <span className="text-sm text-gray-300">Overall Progress</span>
-                                        <span className="text-sm font-bold text-neon-cyan">{calculateOverallProgress()}%</span>
+                                    <div className="flex items-center justify-between mb-3">
+                                        <span className="text-lg font-medium text-gray-300">Overall Progress</span>
+                                        <span className="text-lg font-bold text-neon-cyan">{calculateOverallProgress()}%</span>
                                     </div>
                                     <ProgressBar
                                         progress={calculateOverallProgress()}
@@ -276,7 +184,7 @@ const ProfilePage = ({ setCurrentPage }) => {
                                         animated={true}
                                         showLabel={false}
                                     />
-                                    <p className="text-xs text-gray-400 mt-2">
+                                    <p className="text-base text-gray-300 mt-3">
                                         {summary.completedLessons} of {summary.totalLessons} lessons completed
                                     </p>
                                 </div>
@@ -284,7 +192,7 @@ const ProfilePage = ({ setCurrentPage }) => {
                         </div>
                         <button
                             onClick={() => navigate('/settings')}
-                            className="px-6 py-3 bg-white/10 hover:bg-white/20 rounded-xl text-white font-medium flex items-center gap-2 transition-all border border-white/20"
+                            className="px-5 py-2.5 bg-white/10 backdrop-blur-sm hover:bg-white/20 rounded-xl text-white font-medium flex items-center gap-2 transition-all border border-white/20 shadow-lg hover:shadow-neon-cyan/20 self-start md:self-center"
                         >
                             <Settings size={18} />
                             Settings
@@ -292,354 +200,343 @@ const ProfilePage = ({ setCurrentPage }) => {
                     </div>
                 </motion.div>
 
-                {/* === CODING STATS - NOW DYNAMIC === */}
-                <motion.div
-                    initial={{ opacity: 0, y: 30 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.1 }}
-                    className="mb-8"
-                >
-                    <div className="flex items-center gap-3 mb-6">
-                        <div className="p-2 bg-gradient-to-r from-neon-purple to-neon-cyan rounded-xl">
-                            <Code className="text-white" size={28} />
-                        </div>
-                        <h2 className="text-3xl font-bold text-white">Problem Solving Stats</h2>
-                    </div>
-
-                    {/* === CONDITIONAL RENDER: CONNECT OR SHOW STATS === */}
-                    { !leetcodeHandle && !gfgUrl && !codechefUrl ? (
+                {/* === MAIN CONTENT GRID === */}
+                <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-8">
+                    {/* LEFT COLUMN - Stats & Streak */}
+                    <div className="lg:col-span-2 space-y-6">
+                        {/* Quick Stats */}
                         <motion.div
-                            initial={{ opacity: 0 }}
-                            animate={{ opacity: 1 }}
-                            className="bg-gray-900 rounded-3xl p-8 border border-neon-purple/30 text-center"
+                            initial={{ opacity: 0, y: 30 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ delay: 0.1 }}
+                            className="grid grid-cols-2 md:grid-cols-4 gap-4"
                         >
-                            <LinkIcon size={48} className="mx-auto text-neon-cyan mb-4" />
-                            <h3 className="text-2xl font-bold text-white mb-2">Connect Your Profiles</h3>
-                            <p className="text-gray-400 mb-6">
-                                Go to Settings > Connected Accounts to link your LeetCode, GFG, and CodeChef handles.
-                            </p>
-                            <button
-                                onClick={() => navigate('/settings')}
-                                className="px-6 py-3 bg-gradient-to-r from-neon-purple to-neon-cyan text-white font-bold rounded-xl transition-opacity hover:opacity-90"
-                            >
-                                Go to Settings
-                            </button>
+                            <StatCard
+                                icon={<BookOpen className="text-neon-purple" size={24} />}
+                                label="Total Courses"
+                                value={summary?.totalCourses || 0}
+                                color="purple"
+                                trend="+2"
+                            />
+                            <StatCard
+                                icon={<CheckCircle className="text-green-400" size={24} />}
+                                label="Completed"
+                                value={summary?.completedCourses || 0}
+                                color="green"
+                                trend="+1"
+                            />
+                            <StatCard
+                                icon={<Target className="text-neon-cyan" size={24} />}
+                                label="Lessons Done"
+                                value={summary?.completedLessons || 0}
+                                color="cyan"
+                                trend="+5"
+                            />
+                            <StatCard
+                                icon={<TrendingUp className="text-yellow-400" size={24} />}
+                                label="Progress"
+                                value={`${calculateOverallProgress()}%`}
+                                color="yellow"
+                            />
                         </motion.div>
-                    ) : (
-                        // --- 4. SHOW STATS GRID ---
-                        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-                            {/* Main Stats Card - NOW DYNAMIC */}
-                            <motion.div
-                                whileHover={{ scale: 1.02, y: -5 }}
-                                className="lg:col-span-2 bg-gradient-to-br from-gray-900 to-black rounded-3xl p-8 border border-neon-purple/30 relative overflow-hidden"
-                            >
-                                <div className="absolute top-0 right-0 w-32 h-32 bg-neon-cyan/10 rounded-full blur-2xl"></div>
-                                <div className="absolute bottom-0 left-0 w-24 h-24 bg-neon-purple/10 rounded-full blur-2xl"></div>
 
-                                <div className="relative z-10">
-                                    <div className="flex items-center justify-between mb-8">
-                                        <h3 className="text-2xl font-bold text-white">
-                                            {leetcodeHandle ? `LeetCode Stats (${leetcodeHandle})` : "LeetCode Stats"}
-                                        </h3>
-                                    </div>
-
-                                    {/* === STATS HEADER GRID (NOW FULLY DYNAMIC) === */}
-                                    <div className="grid grid-cols-3 gap-6 mb-8">
-                                        {/* 1. LEETCODE */}
-                                        <div className="text-center">
-                                            {leetcodeLoading ? (
-                                                <Loader className="animate-spin text-green-400 mx-auto mt-4" />
-                                            ) : (
-                                                <>
-                                                    <div className={`text-5xl font-bold bg-gradient-to-r from-green-400 to-cyan-400 bg-clip-text text-transparent mb-2 ${!leetcodeStats ? 'opacity-50' : ''}`}>
-                                                        {leetcodeStats?.totalSolved || 0}
-                                                    </div>
-                                                    <div className={`flex items-center justify-center gap-2 text-gray-300 ${!leetcodeStats ? 'opacity-50' : ''}`}>
-                                                        <div className="w-3 h-3 bg-green-500 rounded-full"></div>
-                                                        <span className="text-sm">LeetCode</span>
-                                                    </div>
-                                                </>
-                                            )}
-                                        </div>
-
-                                        {/* 2. GEEKSFORGEEKS (Replaced placeholder) */}
-                                        <div className="text-center">
-                                            {gfgLoading ? (
-                                                <Loader className="animate-spin text-green-400 mx-auto mt-4" />
-                                            ) : (
-                                                <>
-                                                    <div className={`text-5xl font-bold bg-gradient-to-r from-green-400 to-cyan-400 bg-clip-text text-transparent mb-2 ${!gfgStats ? 'opacity-50' : ''}`}>
-                                                        {gfgStats?.totalProblemsSolved || 0}
-                                                    </div>
-                                                    <div className={`flex items-center justify-center gap-2 text-gray-300 ${!gfgStats ? 'opacity-50' : ''}`}>
-                                                        <div className="w-3 h-3 bg-green-500 rounded-full"></div>
-                                                        <span className="text-sm">GeeksforGeeks</span>
-                                                    </div>
-                                                </>
-                                            )}
-                                        </div>
-
-                                        {/* 3. CODECHEF (Replaced placeholder) */}
-                                        <div className="text-center">
-                                            {codechefLoading ? (
-                                                <Loader className="animate-spin text-yellow-400 mx-auto mt-4" />
-                                            ) : (
-                                                <>
-                                                    <div className={`text-5xl font-bold bg-gradient-to-r from-yellow-400 to-orange-500 bg-clip-text text-transparent mb-2 ${!codechefStats ? 'opacity-50' : ''}`}>
-                                                        {codechefStats?.currentRating || 0}
-                                                    </div>
-                                                    <div className={`flex items-center justify-center gap-2 text-gray-300 ${!codechefStats ? 'opacity-50' : ''}`}>
-                                                        <div className="w-3 h-3 bg-yellow-500 rounded-full"></div>
-                                                        <span className="text-sm">CodeChef</span>
-                                                    </div>
-                                                </>
-                                            )}
-                                        </div>
-                                    </div>
-
-                                    {/* LeetCode Specifics */}
-                                    {leetcodeLoading ? (
-                                        <div className="text-center p-4">
-                                            <Loader className="animate-spin text-neon-cyan mx-auto" />
-                                        </div>
-                                    ) : !leetcodeStats ? (
-                                        <div className="text-center p-6 bg-black/50 rounded-2xl border border-white/10">
-                                            <p className="text-gray-400">
-                                                {leetcodeHandle ? `Could not load LeetCode stats for "${leetcodeHandle}".` : "LeetCode not connected."}
-                                            </p>
-                                            <button
-                                                onClick={() => navigate('/settings')}
-                                                className="mt-4 px-4 py-2 text-xs bg-white/10 rounded-lg text-white hover:bg-white/20"
-                                            >
-                                                {leetcodeHandle ? "Check Handle" : "Connect"}
-                                            </button>
-                                        </div>
-                                    ) : (
-                                        <>
-                                            <div className="bg-black/50 rounded-2xl p-6 border border-white/10 mb-8">
-                                                <h4 className="text-lg font-semibold text-white mb-4 flex items-center gap-2">
-                                                    <Zap className="text-yellow-400" size={20} />
-                                                    LeetCode Difficulty Breakdown
-                                                </h4>
-                                                <div className="grid grid-cols-3 gap-4">
-                                                    <div className="text-center">
-                                                        <div className="text-2xl font-bold text-green-400 mb-1">
-                                                            {leetcodeStats.easy}
-                                                        </div>
-                                                        <div className="text-xs text-gray-400">Easy</div>
-                                                    </div>
-                                                    <div className="text-center">
-                                                        <div className="text-2xl font-bold text-yellow-400 mb-1">
-                                                            {leetcodeStats.medium}
-                                                        </div>
-                                                        <div className="text-xs text-gray-400">Medium</div>
-                                                    </div>
-                                                    <div className="text-center">
-                                                        <div className="text-2xl font-bold text-red-400 mb-1">
-                                                            {leetcodeStats.hard}
-                                                        </div>
-                                                        <div className="text-xs text-gray-400">Hard</div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div className="bg-black/50 rounded-2xl p-6 border border-white/10">
-                                                <h4 className="text-lg font-semibold text-white mb-4 flex items-center gap-2">
-                                                    <Calendar size={20} className="text-cyan-400" />
-                                                    LeetCode Activity Heatmap
-                                                </h4>
-                                                <div className="heatmap-container">
-                                                    <CalendarHeatmap
-                                                        startDate={new Date(new Date().setFullYear(new Date().getFullYear() - 1))}
-                                                        endDate={new Date()}
-                                                        values={getHeatmapData(leetcodeStats.calendar)}
-                                                        classForValue={(value) => {
-                                                            if (!value || value.count === 0) return 'color-empty';
-                                                            if (value.count > 4) return 'color-github-4';
-                                                            return `color-github-${value.count}`;
-                                                        }}
-                                                        tooltipDataAttrs={value => {
-                                                            const date = value.date ? new Date(value.date).toDateString() : 'No data';
-                                                            const count = value.count || 0;
-                                                            return { 'data-tip': `${date}: ${count} submissions` };
-                                                        }}
-                                                    />
-                                                </div>
-                                            </div>
-                                        </>
-                                    )}
+                        {/* Learning Streak */}
+                        <motion.div
+                            initial={{ opacity: 0, y: 30 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ delay: 0.2 }}
+                            className="bg-gradient-to-br from-orange-500/10 to-red-500/5 backdrop-blur-md rounded-2xl p-6 border border-orange-500/30 shadow-lg"
+                        >
+                            <div className="flex items-center gap-3 mb-6">
+                                <div className="p-2 bg-gradient-to-r from-orange-500 to-red-500 rounded-lg shadow-lg">
+                                    <Flame className="text-white" size={24} />
                                 </div>
-                            </motion.div>
+                                <div>
+                                    <h2 className="text-xl font-bold text-white">Learning Streak</h2>
+                                    <p className="text-sm text-gray-300">Keep learning daily to maintain your streak!</p>
+                                </div>
+                            </div>
+                            <div className="relative">
+                                <div className="absolute inset-0 bg-gradient-to-r from-orange-500/5 to-red-500/5 rounded-xl blur-sm"></div>
+                                <StreakDisplay
+                                    currentStreak={streakData.currentStreak}
+                                    longestStreak={streakData.longestStreak}
+                                    totalLessonsCompleted={streakData.totalLessonsCompleted}
+                                />
+                            </div>
+                        </motion.div>
 
-                            {/* === YOUR AWARDS SECTION (Unchanged) === */}
-                            <motion.div
-                                whileHover={{ scale: 1.02, y: -5 }}
-                                className="bg-gradient-to-br from-gray-900 to-black rounded-3xl p-8 border border-yellow-500/30 relative overflow-hidden"
-                            >
-                                <div className="absolute top-0 right-0 w-24 h-24 bg-yellow-500/10 rounded-full blur-2xl"></div>
-                                <div className="relative z-10">
-                                    <h3 className="text-2xl font-bold text-white mb-6 flex items-center gap-3">
-                                        <Crown className="text-yellow-400" size={28} />
-                                        Awards & Achievements
-                                    </h3>
-                                    <div className="text-center mb-6">
-                                        <div className="text-6xl font-bold bg-gradient-to-r from-yellow-400 to-orange-500 bg-clip-text text-transparent mb-2">
-                                            2
-                                        </div>
-                                        <p className="text-gray-400 text-sm">Badges Earned</p>
+                        {/* Enrolled Courses */}
+                        <motion.div
+                            initial={{ opacity: 0, y: 30 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ delay: 0.3 }}
+                            className="bg-black/30 backdrop-blur-md rounded-2xl p-6 border border-white/20 shadow-lg"
+                        >
+                            <div className="flex items-center justify-between mb-6">
+                                <div className="flex items-center gap-3">
+                                    <div className="p-2 bg-gradient-to-r from-neon-purple to-neon-cyan rounded-lg shadow-lg">
+                                        <BookOpen className="text-white" size={24} />
                                     </div>
-                                    <div className="space-y-4">
-                                        <div className="flex items-center gap-4 p-4 bg-yellow-500/10 rounded-2xl border border-yellow-500/20">
-                                            <div className="w-12 h-12 bg-gradient-to-r from-yellow-400 to-orange-500 rounded-xl flex items-center justify-center">
-                                                <Medal className="text-white" size={24} />
-                                            </div>
-                                            <div>
-                                                <div className="text-white font-semibold">Problem Solver</div>
-                                                <div className="text-yellow-400 text-sm">100+ Questions</div>
-                                            </div>
-                                        </div>
-                                        <div className="flex items-center gap-4 p-4 bg-purple-500/10 rounded-2xl border border-purple-500/20">
-                                            <div className="w-12 h-12 bg-gradient-to-r from-purple-400 to-pink-500 rounded-xl flex items-center justify-center">
-                                                <Star className="text-white" size={24} />
-                                            </div>
-                                            <div>
-                                                <div className="text-white font-semibold">Consistency King</div>
-                                                <div className="text-purple-400 text-sm">7-Day Streak</div>
-                                            </div>
-                                        </div>
+                                    <h2 className="text-xl font-bold text-white">My Courses</h2>
+                                </div>
+                                <button
+                                    onClick={() => navigate('/courses')}
+                                    className="text-neon-cyan hover:text-white transition-colors text-sm font-medium flex items-center gap-1 hover:underline"
+                                >
+                                    View All
+                                    <ChevronRight size={16} />
+                                </button>
+                            </div>
+
+                            {enrolledCourses.length > 0 ? (
+                                <div className="space-y-4">
+                                    {enrolledCourses.slice(0, 3).map((course) => (
+                                        <CourseCard
+                                            key={course.courseId}
+                                            course={course}
+                                            progressData={progressData}
+                                            getCourseProgress={getCourseProgress}
+                                            navigate={navigate}
+                                        />
+                                    ))}
+                                </div>
+                            ) : (
+                                <div className="text-center py-8">
+                                    <div className="w-16 h-16 mx-auto mb-4 bg-gradient-to-r from-neon-purple/20 to-neon-cyan/20 backdrop-blur-sm rounded-full flex items-center justify-center">
+                                        <BookOpen size={32} className="text-neon-cyan" />
                                     </div>
-                                    <button className="w-full mt-6 py-3 bg-gradient-to-r from-yellow-500 to-orange-500 text-white font-bold rounded-xl hover:shadow-lg hover:shadow-yellow-500/25 transition-all">
-                                        View All Achievements
+                                    <h3 className="text-lg font-bold text-white mb-2">No Courses Yet</h3>
+                                    <p className="text-gray-300 mb-6">Start your learning journey today!</p>
+                                    <button
+                                        onClick={() => navigate('/courses')}
+                                        className="px-6 py-2 bg-gradient-to-r from-neon-purple to-neon-cyan text-white font-medium rounded-lg hover:shadow-lg hover:shadow-neon-cyan/30 transition-all shadow-lg"
+                                    >
+                                        Explore Courses
                                     </button>
                                 </div>
-                            </motion.div>
-                        </div>
-                    )}
-                </motion.div>
-
-                {/* === YOUR STREAK SECTION (Unchanged) === */}
-                <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.2 }}
-                    className="mb-8"
-                >
-                    <h2 className="text-2xl font-bold text-white mb-4 flex items-center gap-2">
-                        <Flame className="text-orange-400" size={28} />
-                        Your Learning Streak
-                    </h2>
-                    <StreakDisplay
-                        currentStreak={streakData.currentStreak}
-                        longestStreak={streakData.longestStreak}
-                        totalLessonsCompleted={streakData.totalLessonsCompleted}
-                    />
-                </motion.div>
-
-                {/* === YOUR STATS CARDS (Unchanged) === */}
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-                    <StatCard
-                        icon={<BookOpen className="text-neon-purple" size={28} />}
-                        label="Total Courses"
-                        value={summary?.totalCourses || 0}
-                        color="purple"
-                    />
-                    <StatCard
-                        icon={<CheckCircle className="text-green-400" size={28} />}
-                        label="Completed Courses"
-                        value={summary?.completedCourses || 0}
-                        color="green"
-                    />
-                    <StatCard
-                        icon={<Target className="text-neon-cyan" size={28} />}
-                        label="Lessons Done"
-                        value={`${summary?.completedLessons || 0}/${summary?.totalLessons || 0}`}
-                        color="cyan"
-                    />
-                    <StatCard
-                        icon={<TrendingUp className="text-yellow-400" size={28} />}
-                        label="Avg Progress"
-                        value={`${calculateOverallProgress()}%`}
-                        color="yellow"
-                    />
-                </div>
-
-                {/* === YOUR ENROLLED COURSES (Unchanged) === */}
-                <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.3 }}
-                >
-                    <div className="flex items-center justify-between mb-6">
-                        <h2 className="text-3xl font-bold text-white">My Courses</h2>
-                        <button
-                            onClick={() => navigate('/courses')}
-                            className="text-neon-cyan hover:text-white transition-colors flex items-center gap-2"
-                        >
-                            Browse More
-                            <ChevronRight size={20} />
-                        </button>
+                            )}
+                        </motion.div>
                     </div>
 
-                    {enrolledCourses.length > 0 ? (
-                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                            {enrolledCourses.map((course) => (
-                                <CourseCard
-                                    key={course.courseId}
-                                    course={course}
-                                    progressData={progressData}
-                                    getCourseProgress={getCourseProgress}
-                                    navigate={navigate}
+                    {/* RIGHT COLUMN - Coding Stats & Awards */}
+                    <div className="space-y-6">
+                        {/* LeetCode Stats */}
+                        <motion.div
+                            initial={{ opacity: 0, y: 30 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ delay: 0.2 }}
+                            className="bg-gradient-to-br from-cyan-500/10 to-blue-500/5 backdrop-blur-md rounded-2xl p-6 border border-cyan-500/30 shadow-lg"
+                        >
+                            <div className="flex items-center gap-3 mb-6">
+                                <div className="p-2 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-lg shadow-lg">
+                                    <Code className="text-white" size={24} />
+                                </div>
+                                <div>
+                                    <h2 className="text-xl font-bold text-white">Problem Solving</h2>
+                                    <p className="text-sm text-gray-300">
+                                        {leetcodeHandle ? `@${leetcodeHandle}` : "Connect your LeetCode"}
+                                    </p>
+                                </div>
+                            </div>
+
+                            {!leetcodeHandle ? (
+                                <div className="text-center py-4">
+                                    <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-gradient-to-r from-cyan-500/20 to-blue-500/20 backdrop-blur-sm flex items-center justify-center">
+                                        <LinkIcon size={32} className="text-cyan-400" />
+                                    </div>
+                                    <h3 className="text-lg font-bold text-white mb-2">Connect LeetCode</h3>
+                                    <p className="text-gray-300 text-sm mb-4">Track your coding progress</p>
+                                    <button
+                                        onClick={() => navigate('/settings')}
+                                        className="px-4 py-2 bg-gradient-to-r from-cyan-600 to-blue-600 text-white font-medium rounded-lg hover:shadow-lg hover:shadow-cyan-500/30 transition-all w-full shadow-lg"
+                                    >
+                                        Connect Now
+                                    </button>
+                                </div>
+                            ) : (
+                                <>
+                                    {leetcodeLoading ? (
+                                        <div className="text-center py-8">
+                                            <Loader className="animate-spin text-cyan-400 mx-auto" size={32} />
+                                            <p className="text-gray-300 mt-2">Loading stats...</p>
+                                        </div>
+                                    ) : leetcodeStats ? (
+                                        <>
+                                            <div className="text-center mb-8 relative">
+                                                <div className="absolute inset-0 bg-gradient-to-r from-green-400/5 to-cyan-400/5 rounded-xl blur-md"></div>
+                                                <div className="relative py-4">
+                                                    <div className="text-7xl md:text-8xl font-bold bg-gradient-to-r from-green-400 to-cyan-400 bg-clip-text text-transparent mb-3">
+                                                        {leetcodeStats.totalSolved || 0}
+                                                    </div>
+                                                    <p className="text-lg text-gray-300">Problems Solved</p>
+                                                </div>
+                                            </div>
+
+                                            <div className="space-y-4">
+                                                <div className="grid grid-cols-3 gap-3">
+                                                    <DifficultyBadge
+                                                        level="Easy"
+                                                        count={leetcodeStats.easy}
+                                                        color="green"
+                                                    />
+                                                    <DifficultyBadge
+                                                        level="Medium"
+                                                        count={leetcodeStats.medium}
+                                                        color="yellow"
+                                                    />
+                                                    <DifficultyBadge
+                                                        level="Hard"
+                                                        count={leetcodeStats.hard}
+                                                        color="red"
+                                                    />
+                                                </div>
+
+
+                                            </div>
+                                        </>
+                                    ) : (
+                                        <div className="text-center py-4">
+                                            <p className="text-gray-300">Could not load LeetCode stats</p>
+                                            <button
+                                                onClick={() => loadLeetcodeData(leetcodeHandle)}
+                                                className="mt-3 px-4 py-2 text-sm bg-white/10 backdrop-blur-sm rounded-lg text-white hover:bg-white/20 transition-all"
+                                            >
+                                                Retry
+                                            </button>
+                                        </div>
+                                    )}
+                                </>
+                            )}
+                        </motion.div>
+
+                        {/* Awards & Achievements */}
+                        <motion.div
+                            initial={{ opacity: 0, y: 30 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ delay: 0.3 }}
+                            className="bg-gradient-to-br from-yellow-500/10 to-orange-500/5 backdrop-blur-md rounded-2xl p-6 border border-yellow-500/30 shadow-lg"
+                        >
+                            <div className="flex items-center gap-3 mb-6">
+                                <div className="p-2 bg-gradient-to-r from-yellow-500 to-orange-500 rounded-lg shadow-lg">
+                                    <Trophy className="text-white" size={24} />
+                                </div>
+                                <div>
+                                    <h2 className="text-xl font-bold text-white">Achievements</h2>
+                                    <p className="text-sm text-gray-300">Earn badges by completing milestones</p>
+                                </div>
+                            </div>
+
+                            <div className="space-y-4">
+                                <AchievementBadge
+                                    icon={<Medal className="text-yellow-400" size={20} />}
+                                    title="Quick Learner"
+                                    description="Complete 10 lessons in one week"
+                                    achieved={true}
+                                    color="yellow"
                                 />
-                            ))}
-                        </div>
-                    ) : (
-                        <div className="bg-white/5 border border-white/10 rounded-2xl p-12 text-center">
-                            <BookOpen size={64} className="mx-auto text-gray-500 mb-4" />
-                            <h3 className="text-xl font-bold text-white mb-2">No Courses Yet</h3>
-                            <p className="text-gray-400 mb-6">Start learning by enrolling in a course!</p>
-                            <button
-                                onClick={() => navigate('/courses')}
-                                className="px-8 py-3 bg-gradient-to-r from-neon-purple to-neon-cyan text-white font-bold rounded-xl hover:shadow-lg hover:shadow-neon-cyan/50 transition-all"
-                            >
-                                Explore Courses
+                                <AchievementBadge
+                                    icon={<Brain className="text-purple-400" size={20} />}
+                                    title="Problem Solver"
+                                    description="Solve 50+ coding problems"
+                                    achieved={leetcodeStats?.totalSolved >= 50}
+                                    color="purple"
+                                />
+                                <AchievementBadge
+                                    icon={<Star className="text-cyan-400" size={20} />}
+                                    title="Consistency King"
+                                    description="7-day learning streak"
+                                    achieved={streakData.currentStreak >= 7}
+                                    color="cyan"
+                                />
+                            </div>
+
+                            <button className="w-full mt-6 py-2.5 bg-gradient-to-r from-yellow-600 to-orange-600 text-white font-medium rounded-lg hover:shadow-lg hover:shadow-yellow-500/30 transition-all shadow-lg">
+                                View All Badges
                             </button>
-                        </div>
-                    )}
-                </motion.div>
+                        </motion.div>
+                    </div>
+                </div>
             </div>
         </div>
     );
 };
 
-// Stat Card Component
-const StatCard = ({ icon, label, value, color }) => {
+// Updated Stat Card Component
+const StatCard = ({ icon, label, value, color, trend }) => {
     const colorClasses = {
-        purple: 'bg-neon-purple/20 border-neon-purple/30',
-        cyan: 'bg-neon-cyan/20 border-neon-cyan/30',
-        green: 'bg-green-500/20 border-green-500/30',
-        yellow: 'bg-yellow-500/20 border-yellow-500/30'
+        purple: 'bg-gradient-to-br from-purple-500/10 to-purple-500/5 border-purple-500/30',
+        cyan: 'bg-gradient-to-br from-cyan-500/10 to-cyan-500/5 border-cyan-500/30',
+        green: 'bg-gradient-to-br from-green-500/10 to-green-500/5 border-green-500/30',
+        yellow: 'bg-gradient-to-br from-yellow-500/10 to-yellow-500/5 border-yellow-500/30'
     };
 
     return (
-        <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            whileHover={{ y: -5 }}
-            className={`${colorClasses[color]} border backdrop-blur-sm rounded-2xl p-6 transition-all`}
-        >
-            <div className="flex items-center gap-4">
-                <div className="w-14 h-14 rounded-xl bg-white/10 flex items-center justify-center">
+        <div className={`${colorClasses[color]} backdrop-blur-md rounded-xl p-4 border shadow-lg`}>
+            <div className="flex items-start justify-between">
+                <div className="w-10 h-10 rounded-lg bg-white/10 flex items-center justify-center mb-3">
                     {icon}
                 </div>
-                <div>
-                    <p className="text-gray-400 text-sm mb-1">{label}</p>
-                    <p className="text-3xl font-bold text-white">{value}</p>
-                </div>
+                {trend && (
+                    <span className={`text-xs font-semibold px-2 py-1 rounded-full ${color === 'green' ? 'bg-green-500/20 text-green-400' :
+                        color === 'yellow' ? 'bg-yellow-500/20 text-yellow-400' :
+                            color === 'cyan' ? 'bg-cyan-500/20 text-cyan-400' :
+                                'bg-purple-500/20 text-purple-400'
+                        }`}>
+                        {trend}
+                    </span>
+                )}
             </div>
-        </motion.div>
+            <p className="text-4xl font-bold text-white mb-2">{value}</p>
+            <p className="text-base text-gray-300">{label}</p>
+        </div>
     );
 };
 
-// Course Card Component
+// New Difficulty Badge Component
+const DifficultyBadge = ({ level, count, color }) => {
+    const colorClasses = {
+        green: 'bg-green-500/10 border-green-500/30 text-green-400',
+        yellow: 'bg-yellow-500/10 border-yellow-500/30 text-yellow-400',
+        red: 'bg-red-500/10 border-red-500/30 text-red-400'
+    };
+
+    return (
+        <div className={`${colorClasses[color]} backdrop-blur-sm border rounded-xl p-4 text-center shadow-lg`}>
+            <div className="text-2xl font-bold">{count || 0}</div>
+            <div className="text-sm opacity-90">{level}</div>
+        </div>
+    );
+};
+
+// New Achievement Badge Component
+const AchievementBadge = ({ icon, title, description, achieved, color }) => {
+    const achievedClasses = achieved
+        ? {
+            purple: 'bg-purple-500/10 border-purple-500/40',
+            cyan: 'bg-cyan-500/10 border-cyan-500/40',
+            yellow: 'bg-yellow-500/10 border-yellow-500/40'
+        }[color]
+        : 'bg-white/5 border-white/20 opacity-60';
+
+    return (
+        <div className={`flex items-center gap-3 p-3 rounded-xl border backdrop-blur-sm ${achievedClasses} transition-all hover:scale-[1.02]`}>
+            <div className={`w-12 h-12 rounded-lg ${achieved ? 'bg-gradient-to-br from-white/10 to-white/5' : 'bg-white/5'
+                } flex items-center justify-center shadow-lg`}>
+                {icon}
+            </div>
+            <div className="flex-1">
+                <div className={`font-medium ${achieved ? 'text-white' : 'text-gray-400'}`}>{title}</div>
+                <div className="text-xs text-gray-300">{description}</div>
+            </div>
+            {achieved && (
+                <CheckCircle size={16} className="text-green-400" />
+            )}
+        </div>
+    );
+};
+
+// Updated Course Card Component
 const CourseCard = ({ course, progressData, getCourseProgress, navigate }) => {
     const [progress, setProgress] = useState(0);
 
@@ -649,49 +546,51 @@ const CourseCard = ({ course, progressData, getCourseProgress, navigate }) => {
             setProgress(p);
         };
         loadProgress();
-    }, [course.courseId, progressData, getCourseProgress]); // Added getCourseProgress to deps
+    }, [course.courseId, progressData, getCourseProgress]);
 
     const courseProgress = progressData[course.courseId];
     const completedCount = courseProgress?.completedLessons?.length || 0;
 
     return (
         <motion.div
-            whileHover={{ y: -8 }}
+            whileHover={{ y: -2 }}
             onClick={() => navigate(`/course/${course.courseId}`)}
-            className="bg-white/5 backdrop-blur-sm rounded-2xl overflow-hidden border border-white/10 hover:border-neon-cyan/50 cursor-pointer transition-all group"
+            className="group bg-gradient-to-r from-white/5 to-white/10 backdrop-blur-md hover:from-white/10 hover:to-white/15 rounded-xl p-4 border border-white/20 hover:border-neon-cyan/40 cursor-pointer transition-all shadow-lg hover:shadow-neon-cyan/10"
         >
-            <div className="h-32 bg-gradient-to-br from-neon-purple/20 to-neon-cyan/20 flex items-center justify-center relative">
-                <BookOpen size={48} className="text-white opacity-30 group-hover:opacity-50 transition-opacity" />
-                <div className="absolute top-4 right-4">
-          <span className={`px-3 py-1 rounded-full text-xs font-semibold ${
-              course.difficulty === 'Beginner' ? 'bg-green-500/20 text-green-400' :
-                  course.difficulty === 'Intermediate' ? 'bg-yellow-500/20 text-yellow-400' :
-                      'bg-red-500/20 text-red-400'
-          }`}>
-            {course.difficulty}
-          </span>
+            <div className="flex items-start gap-3">
+                <div className="relative">
+                    <div className="absolute inset-0 bg-gradient-to-br from-neon-purple/20 to-neon-cyan/20 rounded-lg blur-sm"></div>
+                    <div className="relative w-12 h-12 rounded-lg bg-gradient-to-br from-neon-purple/30 to-neon-cyan/30 flex items-center justify-center">
+                        <BookOpen size={20} className="text-white" />
+                    </div>
                 </div>
-            </div>
-            <div className="p-6">
-        <span className="text-xs text-neon-cyan font-medium uppercase tracking-wider">
-          {course.category}
-        </span>
-                <h3 className="text-lg font-bold text-white mt-2 mb-2 group-hover:text-neon-cyan transition-colors">
-                    {course.courseTitle}
-                </h3>
-                <p className="text-sm text-gray-400 mb-4">
-                    {completedCount > 0 ? `${completedCount} lessons completed` : 'Just started'}
-                </p>
-                <ProgressBar
-                    progress={progress}
-                    color="purple"
-                    size="sm"
-                    animated={false}
-                    showLabel={false}
-                />
-                <div className="flex items-center justify-between mt-2">
-                    <span className="text-xs text-gray-400">Progress</span>
-                    <span className="text-xs font-bold text-white">{progress}%</span>
+                <div className="flex-1 min-w-0">
+                    <div className="flex items-center justify-between mb-1">
+                        <h3 className="font-bold text-white truncate group-hover:text-neon-cyan transition-colors">
+                            {course.courseTitle}
+                        </h3>
+                        <span className={`text-xs px-2 py-1 rounded-full backdrop-blur-sm ${course.difficulty === 'Beginner' ? 'bg-green-500/20 text-green-400 border border-green-500/30' :
+                            course.difficulty === 'Intermediate' ? 'bg-yellow-500/20 text-yellow-400 border border-yellow-500/30' :
+                                'bg-red-500/20 text-red-400 border border-red-500/30'
+                            }`}>
+                            {course.difficulty}
+                        </span>
+                    </div>
+                    <p className="text-xs text-gray-300 mb-3">
+                        {completedCount > 0 ? `${completedCount} lessons completed` : 'Not started yet'}
+                    </p>
+                    <div className="flex items-center gap-2">
+                        <div className="flex-1">
+                            <ProgressBar
+                                progress={progress}
+                                color="purple"
+                                size="sm"
+                                animated={false}
+                                showLabel={false}
+                            />
+                        </div>
+                        <span className="text-xs font-bold text-white whitespace-nowrap">{progress}%</span>
+                    </div>
                 </div>
             </div>
         </motion.div>

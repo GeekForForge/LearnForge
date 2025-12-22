@@ -1,7 +1,9 @@
 // src/pages/ArenaResult.jsx
-import React from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
+import axios from "axios";
+import { useAuth } from "../context/AuthContext";
 import {
     Trophy,
     Star,
@@ -18,8 +20,14 @@ import {
     Award
 } from "lucide-react";
 
+const API_BASE_URL = process.env.REACT_APP_API_URL || "http://localhost:8080/api";
+
 const ArenaResult = () => {
     const navigate = useNavigate();
+    const { user } = useAuth();
+    const [submitting, setSubmitting] = useState(false);
+    const submittedRef = useRef(false);
+
     const result = JSON.parse(localStorage.getItem("arenaResult")) || {
         score: 0,
         total: 5,
@@ -29,6 +37,32 @@ const ArenaResult = () => {
     const percentage = Math.round((result.score / result.total) * 100);
     const timeSpentMinutes = Math.floor(result.timeSpent / 60);
     const timeSpentSeconds = result.timeSpent % 60;
+
+    useEffect(() => {
+        const answers = JSON.parse(localStorage.getItem("arenaAnswers"));
+
+        if (user && user.userId && answers && !submittedRef.current) {
+            submittedRef.current = true;
+            setSubmitting(true);
+
+            axios.post(`${API_BASE_URL}/arena/submit?userId=${user.userId}`, answers, {
+                headers: { 'Content-Type': 'application/json' },
+                withCredentials: true
+            })
+                .then(res => {
+                    console.log("XP Updated:", res.data);
+                    setSubmitting(false);
+                    // Optional: Clear answers to prevent re-submission on refresh? 
+                    // localStorage.removeItem("arenaAnswers"); 
+                    // Keeping it might be safer for now if user refreshes immediately.
+                })
+                .catch(err => {
+                    console.error("Failed to submit result:", err);
+                    setSubmitting(false);
+                    submittedRef.current = false; // Allow retry?
+                });
+        }
+    }, [user]);
 
     // Performance evaluation
     const getPerformance = () => {
