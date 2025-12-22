@@ -25,6 +25,8 @@ const ArenaGame = () => {
     const [isAnswering, setIsAnswering] = useState(false);
     const [error, setError] = useState(null);
 
+    const [userAnswers, setUserAnswers] = useState({});
+
     // Accurate time spent calculation
     const [questionStart, setQuestionStart] = useState(Date.now());
     const [totalElapsed, setTotalElapsed] = useState(0);
@@ -61,6 +63,7 @@ const ArenaGame = () => {
                 setLoading(false);
                 setIndex(0);
                 setScore(0);
+                setUserAnswers({});
                 setQuestionStart(Date.now());
                 setTotalElapsed(0);
             })
@@ -107,12 +110,22 @@ const ArenaGame = () => {
         const spentThisQuestion = Math.round((now - questionStart) / 1000); // seconds
         const newElapsed = totalElapsed + spentThisQuestion;
 
+        const currentQ = questions[index];
+        // Record Answer
+        const updatedAnswers = { ...userAnswers };
+        if (currentQ && currentQ.id) {
+            // If timeup, we might send "TIMEUP" or empty.
+            // Backend expects string.
+            updatedAnswers[currentQ.id] = selectedOption === "timeup" ? "SKIP" : selectedOption;
+        }
+        setUserAnswers(updatedAnswers);
+
         let isCurrentCorrect = false;
         if (
             selectedOption &&
             selectedOption !== "timeup" &&
-            questions[index] &&
-            selectedOption === questions[index].answer
+            currentQ &&
+            selectedOption === currentQ.answer
         ) {
             isCurrentCorrect = true;
         }
@@ -136,6 +149,8 @@ const ArenaGame = () => {
                     timeSpent: newElapsed, // total seconds user actually spent
                 })
             );
+            localStorage.setItem("arenaAnswers", JSON.stringify(updatedAnswers));
+
             setScore(newScore);
             setTotalElapsed(newElapsed);
             setTimeout(() => {
@@ -250,16 +265,14 @@ const ArenaGame = () => {
                         </div>
                         <div className="text-3xl font-bold text-white">{score}</div>
                     </div>
-                    <div className={`bg-white/5 backdrop-blur-sm rounded-2xl p-4 border ${
-                        timeLeft <= 10 ? 'border-red-400/50' : 'border-white/10'
-                    }`}>
+                    <div className={`bg-white/5 backdrop-blur-sm rounded-2xl p-4 border ${timeLeft <= 10 ? 'border-red-400/50' : 'border-white/10'
+                        }`}>
                         <div className="flex items-center gap-2 mb-1">
                             <Timer className={timeLeft <= 10 ? "text-red-400" : "text-cyan-400"} size={20} />
                             <span className="text-gray-400 text-sm">Time Left</span>
                         </div>
-                        <div className={`text-3xl font-bold ${
-                            timeLeft <= 10 ? 'text-red-400' : 'text-white'
-                        }`}>
+                        <div className={`text-3xl font-bold ${timeLeft <= 10 ? 'text-red-400' : 'text-white'
+                            }`}>
                             {timeLeft}s
                         </div>
                     </div>
@@ -307,9 +320,8 @@ const ArenaGame = () => {
                                     whileHover={!selected ? { scale: 1.03, y: -3 } : {}}
                                     whileTap={!selected ? { scale: 0.98 } : {}}
                                     onClick={() => handleSelect(option)}
-                                    className={`p-7 rounded-2xl border-2 text-left transition-all duration-300 bg-gradient-to-r text-xl md:text-2xl ${getOptionColor(option)} ${
-                                        !selected ? 'cursor-pointer hover:shadow-xl' : 'cursor-default'
-                                    }`}
+                                    className={`p-7 rounded-2xl border-2 text-left transition-all duration-300 bg-gradient-to-r text-xl md:text-2xl ${getOptionColor(option)} ${!selected ? 'cursor-pointer hover:shadow-xl' : 'cursor-default'
+                                        }`}
                                     disabled={!!selected}
                                 >
                                     <div className="flex items-center gap-5">

@@ -1,9 +1,6 @@
 package com.learnforge.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -19,12 +16,34 @@ public class ArenaResult {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(name = "user_id", nullable = false, length = 36)
     private String userId;
+
+    @Column(name = "topic")
     private String topic;
+
+    @Column(name = "difficulty")
     private String difficulty;
+
+    @Column(name = "score")
     private int score;
+
+    @Column(name = "total_questions")
     private int totalQuestions;
+
+    @Column(name = "accuracy")
     private double accuracy;
+
+    @Column(name = "time_taken")
     private int timeTaken;
-    private LocalDateTime playedAt = LocalDateTime.now();
+
+    @Column(name = "played_at")
+    private LocalDateTime playedAt;
+
+    @PrePersist
+    protected void onCreate() {
+        if (playedAt == null) {
+            playedAt = LocalDateTime.now();
+        }
+    }
 }

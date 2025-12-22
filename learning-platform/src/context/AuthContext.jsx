@@ -108,9 +108,10 @@ export const AuthProvider = ({ children }) => {
                     location: userData.location,
                     isAdmin: userData.isAdmin || false,
                     leetcodeHandle: firestoreData?.leetcodeHandle || null,
-                    leetcodeUrl: firestoreData?.leetcodeUrl || null, // leetcodeUrl was missing, good to add
-                    gfgUrl: firestoreData?.gfgUrl || null,           // <-- ADDED
-                    codechefUrl: firestoreData?.codechefUrl || null   // <-- ADDED
+                    leetcodeUrl: firestoreData?.leetcodeUrl || null,
+                    gfgUrl: firestoreData?.gfgUrl || null,
+                    codechefUrl: firestoreData?.codechefUrl || null,
+                    codechefHandle: firestoreData?.codechefHandle || null
                 });
                 setIsAuthenticated(true);
                 return true;
