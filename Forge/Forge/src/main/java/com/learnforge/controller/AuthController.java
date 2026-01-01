@@ -39,14 +39,14 @@ public class AuthController {
             if (user != null) {
                 session.setAttribute("user", user);
                 session.setAttribute("userId", user.getUserId());
-                session.setMaxInactiveInterval(30 * 60);
+                session.setMaxInactiveInterval(7 * 24 * 60 * 60); // 7 days
 
                 // Session cookie is auto-created, just ensure proper settings
                 Cookie cookie = new Cookie("JSESSIONID", session.getId());
                 cookie.setPath("/");
                 cookie.setHttpOnly(true);
-                cookie.setSecure(true);
-                cookie.setMaxAge(30 * 60);
+                cookie.setSecure(false); // Changed to false for localhost
+                cookie.setMaxAge(7 * 24 * 60 * 60); // 7 days
                 response.addCookie(cookie);
             }
             return ResponseEntity.ok(authResponse);
@@ -69,13 +69,13 @@ public class AuthController {
             if (user != null) {
                 session.setAttribute("user", user);
                 session.setAttribute("userId", user.getUserId());
-                session.setMaxInactiveInterval(30 * 60);
+                session.setMaxInactiveInterval(7 * 24 * 60 * 60); // 7 days
 
                 Cookie cookie = new Cookie("JSESSIONID", session.getId());
                 cookie.setPath("/");
                 cookie.setHttpOnly(true);
-                cookie.setSecure(true);
-                cookie.setMaxAge(30 * 60);
+                cookie.setSecure(false); // Changed to false for localhost
+                cookie.setMaxAge(7 * 24 * 60 * 60); // 7 days
                 response.addCookie(cookie);
             }
             return ResponseEntity.ok(authResponse);
@@ -97,13 +97,13 @@ public class AuthController {
             if (user != null) {
                 session.setAttribute("user", user);
                 session.setAttribute("userId", user.getUserId());
-                session.setMaxInactiveInterval(30 * 60);
+                session.setMaxInactiveInterval(7 * 24 * 60 * 60); // 7 days
 
                 Cookie cookie = new Cookie("JSESSIONID", session.getId());
                 cookie.setPath("/");
                 cookie.setHttpOnly(true);
-                cookie.setSecure(true);
-                cookie.setMaxAge(30 * 60);
+                cookie.setSecure(false); // Changed to false for localhost
+                cookie.setMaxAge(7 * 24 * 60 * 60); // 7 days
                 response.addCookie(cookie);
 
                 // ✅ Redirect to home or landing page!
@@ -141,8 +141,7 @@ public class AuthController {
         if (user != null) {
             return ResponseEntity.ok(Map.of(
                     "authenticated", true,
-                    "email", user.getEmail()
-            ));
+                    "email", user.getEmail()));
         }
         return ResponseEntity.ok(Map.of("authenticated", false));
     }
