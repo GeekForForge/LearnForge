@@ -326,6 +326,7 @@ const ArenaMultiplayer = () => {
     const handleKeyPress = (e) => {
         if (e.key === "Enter" && !e.shiftKey) {
             e.preventDefault();
+            e.stopPropagation();
             sendMessage(e);
         }
     };
@@ -344,7 +345,7 @@ const ArenaMultiplayer = () => {
         try {
             const res = await fetch("http://localhost:8080/api/execute", {
                 method: "POST",
-                headers: {"Content-Type": "application/json"},
+                headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({
                     language: selectedLanguage,
                     code: code,
@@ -368,7 +369,7 @@ const ArenaMultiplayer = () => {
         try {
             const res = await fetch("http://localhost:8080/api/execute", {
                 method: "POST",
-                headers: {"Content-Type": "application/json"},
+                headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({
                     language: selectedLanguage,
                     code: code,
@@ -601,9 +602,8 @@ const ArenaMultiplayer = () => {
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.2 }}
-                        className={`flex-1 backdrop-blur-2xl rounded-2xl border border-white/10 bg-white/5 shadow-2xl overflow-hidden flex flex-col ${
-                            gameState === "waiting" ? "filter blur-sm pointer-events-none" : ""
-                        }`}
+                        className={`flex-1 backdrop-blur-2xl rounded-2xl border border-white/10 bg-white/5 shadow-2xl overflow-hidden flex flex-col ${gameState === "waiting" ? "filter blur-sm pointer-events-none" : ""
+                            }`}
                     >
                         {/* Editor Container */}
                         <div className="flex-1 min-h-0">
@@ -738,11 +738,10 @@ const ArenaMultiplayer = () => {
                                             {msg.userId === user.username ? "You" : msg.userId}
                                         </p>
                                         <div
-                                            className={`rounded-2xl px-4 py-3 backdrop-blur-xl border shadow-lg ${
-                                                msg.userId === user.username
+                                            className={`rounded-2xl px-4 py-3 backdrop-blur-xl border shadow-lg ${msg.userId === user.username
                                                     ? "bg-cyan-500/20 border-cyan-400/30 rounded-br-none"
                                                     : "bg-purple-500/20 border-purple-400/30 rounded-bl-none"
-                                            }`}
+                                                }`}
                                         >
                                             {msg.message && <p className="text-white text-sm">{msg.message}</p>}
                                             {msg.action === "JOINED" && (
@@ -857,11 +856,10 @@ const ArenaMultiplayer = () => {
                                     <motion.div
                                         initial={{ scale: 0 }}
                                         animate={{ scale: 1 }}
-                                        className={`w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-6 ${
-                                            submissionResult.type === "passed"
+                                        className={`w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-6 ${submissionResult.type === "passed"
                                                 ? "bg-gradient-to-r from-green-500 to-emerald-500"
                                                 : "bg-gradient-to-r from-red-500 to-pink-500"
-                                        }`}
+                                            }`}
                                     >
                                         {submissionResult.type === "passed" ? (
                                             <CheckSquare className="w-8 h-8 text-white" />
@@ -869,9 +867,8 @@ const ArenaMultiplayer = () => {
                                             <X className="w-8 h-8 text-white" />
                                         )}
                                     </motion.div>
-                                    <h3 className={`text-2xl font-bold mb-2 ${
-                                        submissionResult.type === "passed" ? "text-green-400" : "text-red-400"
-                                    }`}>
+                                    <h3 className={`text-2xl font-bold mb-2 ${submissionResult.type === "passed" ? "text-green-400" : "text-red-400"
+                                        }`}>
                                         {submissionResult.type === "passed" ? "Solution Accepted! 🎉" : "Solution Rejected"}
                                     </h3>
                                     <p className="text-white/60 mb-6">{submissionResult.message}</p>
