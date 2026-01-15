@@ -26,6 +26,7 @@ import UserProfilePage from "./pages/UserProfilePage";
 // Create file: src/pages/SettingsConnectedAccounts.jsx (code provided earlier)
 import SettingsConnectedAccounts from './pages/SettingsConnectedAccounts';
 import ArenaMultiplayer from "./pages/ArenaMultiplayer";
+import AIPage from './pages/AIPage';
 // Admin
 import ProtectedAdminRoute from './components/ProtectedAdminRoute';
 import AdminPageNew from './pages/AdminPageNew';
@@ -125,6 +126,7 @@ function AppContent() {
                         <Route path="/arena/play" element={<ArenaGame />} />
                         <Route path="/arena/result" element={<ArenaResult />} />
                         <Route path="/arena/multiplayer/:roomId" element={<ArenaMultiplayer />} />
+                        <Route path="/ai" element={<AIPage />} />
 
                         {/* Courses */}
                         <Route path="/courses" element={<CoursesPage setCurrentPage={setCurrentPage} />} />
