@@ -3,8 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
-    Menu, X, User, BookOpen, Home, Settings, LogIn, LogOut, Info,
-    Trophy, Sword, MessageSquare, ChevronRight
+    Home, BookOpen, User, Menu, X, LogOut, Settings, Award, Sword, Sparkles, ChevronRight, LogIn, MessageSquare, Info
 } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
 
@@ -38,6 +37,8 @@ const Navbar = ({ currentPage, setCurrentPage }) => {
         else if (path === '/profile') setCurrentPage('profile');
         else if (path === '/settings') setCurrentPage('settings');
         else if (path === '/login') setCurrentPage('login');
+        else if (path === '/dashboard') setCurrentPage('dashboard');
+        else if (path === '/ai') setCurrentPage('ai');
     }, [location, setCurrentPage]);
 
     const handleLogout = () => {
@@ -61,6 +62,7 @@ const Navbar = ({ currentPage, setCurrentPage }) => {
         { name: 'Home', path: '/', icon: Home, key: 'home' },
         { name: 'Feed', path: '/feed', icon: MessageSquare, key: 'feed' },
         { name: 'Arena', path: '/arena', icon: Sword, key: 'arena', isPremium: true },
+        { name: 'AI Assistant', path: '/ai', icon: Sparkles, key: 'ai' },
         { name: 'Courses', path: '/courses', icon: BookOpen, key: 'courses' },
         { name: 'About', path: '/about', icon: Info, key: 'about' },
     ] : [
@@ -71,7 +73,7 @@ const Navbar = ({ currentPage, setCurrentPage }) => {
 
     const userMenuItems = [
         { name: 'Profile', path: '/profile', icon: User, key: 'profile' },
-        { name: 'Leaderboard', path: '/leaderboard', icon: Trophy, key: 'leaderboard' },
+        { name: 'Leaderboard', path: '/leaderboard', icon: Award, key: 'leaderboard' },
         { name: 'Settings', path: '/settings', icon: Settings, key: 'settings' },
     ];
 
@@ -79,11 +81,10 @@ const Navbar = ({ currentPage, setCurrentPage }) => {
         <motion.nav
             initial={{ y: -100 }}
             animate={{ y: 0 }}
-            className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-                scrolled
-                    ? 'bg-dark-900/95 backdrop-blur-xl border-b border-white/10'
-                    : 'bg-transparent'
-            }`}
+            className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled
+                ? 'bg-dark-900/95 backdrop-blur-xl border-b border-white/10'
+                : 'bg-transparent'
+                }`}
         >
             <div className="container mx-auto px-6 py-4">
                 <div className="flex items-center justify-between">
@@ -107,13 +108,12 @@ const Navbar = ({ currentPage, setCurrentPage }) => {
                             >
                                 <motion.div
                                     whileHover={{ y: -2 }}
-                                    className={`flex items-center space-x-2 px-4 py-2 rounded-lg transition-all duration-300 ${
-                                        currentPage === item.key
-                                            ? item.isPremium
-                                                ? 'text-yellow-400 bg-yellow-400/10'
-                                                : 'text-neon-purple bg-neon-purple/10'
-                                            : 'text-gray-300 hover:text-white hover:bg-white/5'
-                                    } ${item.isPremium ? 'border border-yellow-400/30' : ''}`}
+                                    className={`flex items-center space-x-2 px-4 py-2 rounded-lg transition-all duration-300 ${currentPage === item.key
+                                        ? item.isPremium
+                                            ? 'text-yellow-400 bg-yellow-400/10'
+                                            : 'text-neon-purple bg-neon-purple/10'
+                                        : 'text-gray-300 hover:text-white hover:bg-white/5'
+                                        } ${item.isPremium ? 'border border-yellow-400/30' : ''}`}
                                 >
                                     <item.icon size={18} />
                                     <span className="font-medium">{item.name}</span>
@@ -128,11 +128,10 @@ const Navbar = ({ currentPage, setCurrentPage }) => {
                                 {currentPage === item.key && (
                                     <motion.div
                                         layoutId="activeTab"
-                                        className={`absolute bottom-0 left-0 right-0 h-0.5 ${
-                                            item.isPremium
-                                                ? 'bg-gradient-to-r from-yellow-400 to-orange-500'
-                                                : 'bg-gradient-to-r from-neon-purple to-neon-cyan'
-                                        }`}
+                                        className={`absolute bottom-0 left-0 right-0 h-0.5 ${item.isPremium
+                                            ? 'bg-gradient-to-r from-yellow-400 to-orange-500'
+                                            : 'bg-gradient-to-r from-neon-purple to-neon-cyan'
+                                            }`}
                                         initial={false}
                                         transition={{ type: "spring", stiffness: 500, damping: 30 }}
                                     />
@@ -197,11 +196,10 @@ const Navbar = ({ currentPage, setCurrentPage }) => {
                                                         key={item.key}
                                                         to={item.path}
                                                         onClick={() => setIsUserMenuOpen(false)}
-                                                        className={`flex items-center space-x-3 px-4 py-3 rounded-lg transition-all text-base group ${
-                                                            currentPage === item.key
-                                                                ? 'bg-neon-purple/20 text-neon-purple border border-neon-purple/30'
-                                                                : 'text-gray-300 hover:text-white hover:bg-white/5 hover:border hover:border-white/10'
-                                                        }`}
+                                                        className={`flex items-center space-x-3 px-4 py-3 rounded-lg transition-all text-base group ${currentPage === item.key
+                                                            ? 'bg-neon-purple/20 text-neon-purple border border-neon-purple/30'
+                                                            : 'text-gray-300 hover:text-white hover:bg-white/5 hover:border hover:border-white/10'
+                                                            }`}
                                                     >
                                                         <item.icon size={20} />
                                                         <span className="font-medium">{item.name}</span>
@@ -270,13 +268,12 @@ const Navbar = ({ currentPage, setCurrentPage }) => {
                                         key={item.key}
                                         to={item.path}
                                         onClick={() => setIsOpen(false)}
-                                        className={`flex items-center space-x-3 px-4 py-3 mx-2 rounded-xl transition-all group ${
-                                            currentPage === item.key
-                                                ? item.isPremium
-                                                    ? 'text-yellow-400 bg-yellow-400/10 border border-yellow-400/30'
-                                                    : 'text-neon-purple bg-neon-purple/10 border border-neon-purple/30'
-                                                : 'text-gray-300 hover:text-white hover:bg-white/5 hover:border hover:border-white/10'
-                                        }`}
+                                        className={`flex items-center space-x-3 px-4 py-3 mx-2 rounded-xl transition-all group ${currentPage === item.key
+                                            ? item.isPremium
+                                                ? 'text-yellow-400 bg-yellow-400/10 border border-yellow-400/30'
+                                                : 'text-neon-purple bg-neon-purple/10 border border-neon-purple/30'
+                                            : 'text-gray-300 hover:text-white hover:bg-white/5 hover:border hover:border-white/10'
+                                            }`}
                                     >
                                         <item.icon size={18} />
                                         <span className="font-medium">{item.name}</span>
@@ -298,11 +295,10 @@ const Navbar = ({ currentPage, setCurrentPage }) => {
                                                 key={item.key}
                                                 to={item.path}
                                                 onClick={() => setIsOpen(false)}
-                                                className={`flex items-center space-x-3 px-4 py-3 mx-2 rounded-xl transition-all group ${
-                                                    currentPage === item.key
-                                                        ? 'text-neon-cyan bg-neon-cyan/10 border border-neon-cyan/30'
-                                                        : 'text-gray-300 hover:text-white hover:bg-white/5 hover:border hover:border-white/10'
-                                                }`}
+                                                className={`flex items-center space-x-3 px-4 py-3 mx-2 rounded-xl transition-all group ${currentPage === item.key
+                                                    ? 'text-neon-cyan bg-neon-cyan/10 border border-neon-cyan/30'
+                                                    : 'text-gray-300 hover:text-white hover:bg-white/5 hover:border hover:border-white/10'
+                                                    }`}
                                             >
                                                 <item.icon size={18} />
                                                 <span className="font-medium">{item.name}</span>

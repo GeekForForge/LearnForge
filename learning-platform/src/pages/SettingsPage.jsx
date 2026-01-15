@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import {
     User, Mail, Lock, Eye, EyeOff, Save, Trash2,
     Github, Chrome, Unlink, Bell, Shield, Globe, Upload,
-    CheckCircle, AlertCircle, Loader, Code, Cpu, Award
+    CheckCircle, AlertCircle, Loader, Code, Cpu, Award, Zap
 } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
 import axios from 'axios';
@@ -650,6 +650,84 @@ const SettingsPage = ({ setCurrentPage }) => {
                                             </div>
                                         );
                                     })}
+
+                                    {/* Gemini API Key Section */}
+                                    <div className="p-6 rounded-xl border border-purple-500/30 bg-purple-500/5">
+                                        <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+                                            <div className="flex items-center space-x-4">
+                                                <div className={`w-12 h-12 rounded-full flex items-center justify-center ${localStorage.getItem('gemini_api_key') ? 'bg-purple-500/20' : 'bg-gray-500/20'}`}>
+                                                    <Zap size={24} className={localStorage.getItem('gemini_api_key') ? 'text-purple-500' : 'text-gray-500'} />
+                                                </div>
+                                                <div>
+                                                    <h4 className="font-medium text-white text-lg">AI Assistant</h4>
+                                                    <p className="text-sm text-gray-400">
+                                                        {localStorage.getItem('gemini_api_key')
+                                                            ? <span className="text-purple-400 font-medium">Gemini API Key Active</span>
+                                                            : 'Connect your Gemini API Key for AI features'}
+                                                    </p>
+                                                </div>
+                                            </div>
+
+                                            {localStorage.getItem('gemini_api_key') ? (
+                                                <div className="flex items-center gap-3 self-end md:self-auto">
+                                                    <span className="px-4 py-2 bg-purple-500/20 text-purple-400 font-medium rounded-lg border border-purple-500/30 flex items-center gap-2">
+                                                        <CheckCircle size={16} />
+                                                        Connected
+                                                    </span>
+                                                    <motion.button
+                                                        onClick={() => {
+                                                            if (window.confirm('Are you sure you want to disconnect your Gemini API key?')) {
+                                                                localStorage.removeItem('gemini_api_key');
+                                                                window.location.reload();
+                                                            }
+                                                        }}
+                                                        whileHover={{ scale: 1.05 }}
+                                                        className="p-2 text-gray-400 hover:text-red-400 hover:bg-red-500/10 rounded-lg transition-all"
+                                                        title="Disconnect"
+                                                    >
+                                                        <Unlink size={20} />
+                                                    </motion.button>
+                                                </div>
+                                            ) : (
+                                                <div className="flex items-center gap-2 w-full md:w-auto">
+                                                    <input
+                                                        id="gemini-api-key-input"
+                                                        type="password"
+                                                        placeholder="Enter Gemini API Key"
+                                                        className="flex-1 md:w-80 px-4 py-2 bg-white/10 backdrop-blur-lg border border-white/20 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:border-purple-500 transition-all"
+                                                        onKeyDown={(e) => {
+                                                            if (e.key === 'Enter') {
+                                                                const value = e.target.value.trim();
+                                                                if (value) {
+                                                                    localStorage.setItem('gemini_api_key', value);
+                                                                    showMessage('success', 'Gemini API Key connected successfully!');
+                                                                    setTimeout(() => window.location.reload(), 1000);
+                                                                }
+                                                            }
+                                                        }}
+                                                    />
+                                                    <motion.button
+                                                        onClick={() => {
+                                                            const input = document.getElementById('gemini-api-key-input');
+                                                            const value = input?.value.trim();
+                                                            if (value) {
+                                                                localStorage.setItem('gemini_api_key', value);
+                                                                showMessage('success', 'Gemini API Key connected successfully!');
+                                                                setTimeout(() => window.location.reload(), 1000);
+                                                            } else {
+                                                                showMessage('error', 'Please enter a valid API key');
+                                                            }
+                                                        }}
+                                                        whileHover={{ scale: 1.05 }}
+                                                        className="px-4 py-2 bg-gradient-to-r from-purple-600 to-purple-500 hover:from-purple-500 hover:to-purple-400 text-white font-medium rounded-lg transition-all flex items-center space-x-2"
+                                                    >
+                                                        <CheckCircle size={16} />
+                                                        <span className="hidden md:inline">Connect</span>
+                                                    </motion.button>
+                                                </div>
+                                            )}
+                                        </div>
+                                    </div>
 
                                     {/* Info Section */}
                                     <div className="bg-gradient-to-r from-neon-cyan/10 to-neon-purple/10 p-6 rounded-xl border border-white/10">
